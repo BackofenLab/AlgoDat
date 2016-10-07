@@ -27,7 +27,7 @@ It's easy, just do make:
 make
 ```
 
-Ok, you need to have the Latex world installed.
+Ok, you need to have the Latex world installed and you need to have the Corporate Design latex package available. More information can be found here: http://www.zuv.uni-freiburg.de/service/cd ... ok maybe not so easy.
 
 
 ## Clone repository 
