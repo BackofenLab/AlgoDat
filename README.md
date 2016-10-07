@@ -19,6 +19,17 @@ The official version of the course is stored in the master branch. The aim of th
 
 *Immediately correct bugs you find in the master branch*
 
+### Build slides and excercies
+
+It's easy, just do make:
+
+```
+make
+```
+
+Ok, you need to have the Latex world installed.
+
+
 ## Clone repository 
 `$ git clone https://github.com/BackofenLab/BioinformaticsI.git`
 
