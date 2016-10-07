@@ -1,0 +1,40 @@
+\begin{tikzpicture}[
+  vertice/.style={
+    circle,
+    draw=Mittel-Blau,
+    color=Mittel-Blau,
+    inner sep=0em,
+    minimum size=1.75em,
+    line width=0.1em,
+    font=\large
+  }, edge/.style={
+    draw=Mittel-Gruen,
+    line width=0.2em
+  }
+]%
+\draw (0.0, 0.0) node[vertice] (vert0) {0};
+\draw (2.0, 1.0) node[vertice] (vert1) {1};
+\draw (4.0, -1.0) node[vertice] (vert2) {2};
+\draw (1.0, -1.5) node[vertice] (vert3) {3};
+\draw (-1.0, -1.75) node[vertice] (vert4) {4};
+
+\draw (4.5, 0.75) node[vertice] (vert5) {5};
+\draw (6.0, 1.25) node[vertice] (vert6) {6};
+\draw (6.0, -1.25) node[vertice] (vert7) {7};
+
+\draw (7.0, 0.75) node[vertice] (vert8) {8};
+\draw (8.0, 1.0) node[vertice] (vert9) {9};
+
+\draw (-2.0, 1.0) node[vertice] (vert10) {10};
+
+\draw[edge] (vert0) -- (vert1);
+\draw[edge] (vert1) -- (vert2);
+\draw[edge] (vert1) -- (vert3);
+\draw[edge] (vert2) -- (vert3);
+\draw[edge] (vert3) -- (vert4);
+
+\draw[edge] (vert5) -- (vert7);
+\draw[edge] (vert6) -- (vert7);
+
+\draw[edge] (vert8) -- (vert9);
+\end{tikzpicture}%

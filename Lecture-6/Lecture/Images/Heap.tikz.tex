@@ -1,0 +1,48 @@
+\begin{adjustbox}{height=0.35\linewidth}
+  \begin{tikzpicture}[
+    node/.style={
+      circle,
+      draw=black,
+      color=black,
+      line width=0.075em
+    },
+    path/.style={
+      ->,
+      line width=0.15em,
+      color=Mittel-Blau
+    },
+    lleft/.style={
+      color=Mittel-Gruen,
+      shift={(-0.6em,-0.5em)}
+    },
+    lright/.style={
+      color=Mittel-Gruen!80!black,
+      shift={(0.6em,-0.5em)}
+    },
+    level/.style={
+      sibling distance = 10.0em/#1,
+      level distance = 3.0em
+    }
+  ]
+  
+  \node [node] (root) {}
+  child [path] {
+    node [node] {}
+    child {
+      node [node] {}
+      child {node [node] {}}
+      child {node [node] {}}
+    }
+    child {
+      node [node] {}
+      child {node [node] {}}
+      child {node [node] {}}
+    }
+  }
+  child [path] {
+    node [node] {}
+    child {node [node] {}}
+    child {node [node] {}}
+  };
+  \end{tikzpicture}
+\end{adjustbox}

@@ -1,0 +1,803 @@
+\section{Priority Queue}
+
+\toclesssubsection{Introduction}
+
+\begin{frame}{Priority Queue}{Introduction}
+  \textbf{Definition:}
+  \begin{itemize}
+    \item
+      A priority queue saves a set of elements
+    \item
+      Each element contains a key and a value like a map
+    \item
+      There is a total order (like ${\color{Mittel-Blau}\leq}$) defined on the
+      keys
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+%TODO(Tobias): Use tabbed environment
+\begin{frame}{Priority Queue}{Introduction}
+  \textbf{Definition:}
+  \begin{itemize}
+    \item
+      The priority queue supports the following operations:
+  \end{itemize}
+  \begin{tabular}{ll}
+    {\color{Mittel-Blau}\texttt{insert(key, value):}} &
+    Inserts a new element into the queue
+  \end{tabular}
+  \begin{tabular}{ll}
+    {\color{Mittel-Blau}\texttt{getMin():}} &
+    Returns the element with the smallest key\\
+    {\color{Mittel-Blau}\texttt{deleteMin():}} &
+    Removes the element with the smalles key
+  \end{tabular}
+  \vspace{1.0em}
+  \begin{itemize}
+    \item
+      Sometimes additional operations are defined:
+  \end{itemize}
+  \begin{tabular}{ll}
+    {\color{Mittel-Blau}\texttt{changeKey(item, key):}} &
+    Changes the key of the element
+  \end{tabular}
+  \begin{tabular}{ll}
+    {\color{Mittel-Blau}\texttt{remove(item):}} &
+    Removes the element from the queue
+  \end{tabular}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Priority Queue}{Introduction}
+  \textbf{Special features:}
+  \begin{itemize}
+    \item
+      Multiple elements with the same key
+      \begin{itemize}
+        \item
+          No problem and for many applications necessary
+        \item
+          If there is more than one element with the smallest key
+          \begin{tabular}{ll}
+            {\color{Mittel-Blau}\texttt{getMin():}} &
+            Returns just one of the possible elements\\
+            {\color{Mittel-Blau}\texttt{deleteMin():}} &
+            Deletes the element returned by
+            {\color{Mittel-Blau}\texttt{getMin}}
+          \end{tabular}
+      \end{itemize}
+      \vspace{0.5em}
+    \item
+      \enquote{Handle} to queue element (only some implementations)
+      \begin{itemize}
+        \item
+          There is no quick-access to a element in the queue
+        \item
+          Thats why {\color{Mittel-Blau}\texttt{insert}} and
+          {\color{Mittel-Blau}\texttt{getMin}} return an \enquote{handle}
+          or accessor object
+        \item
+          {\color{Mittel-Blau}\texttt{changeKey}} and
+          {\color{Mittel-Blau}\texttt{remove}} take this handle as argument
+        \item
+          The handle is used to locate the element in the heap
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Priority Queue}{Python}
+  \vspace{-1.0em}
+  \lstinputlisting[
+    language=Python,
+    basicstyle=\scriptesize,
+    tabsize=4,
+    style={python-idle-code},
+    escapechar={@}
+  ]{Lecture/Code/PriorityQueue.py}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Priority Queue}{Java}
+  \lstinputlisting[
+    language=Java,
+    basicstyle=\scriptesize,
+    tabsize=4,
+    style={java-eclipse-code},
+    breaklines=false,
+    escapechar={@},
+    emph={q,i1,i2},
+    emphstyle=\color{java_variable}
+  ]{Lecture/Code/PriorityQueuePart1.java}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Priority Queue}{Java}
+  \lstinputlisting[
+    language=Java,
+    basicstyle=\scriptesize,
+    tabsize=4,
+    style={java-eclipse-code},
+    breaklines=false,
+    escapechar={@},
+    emph={q,i2,i3,i4},
+    emphstyle=\color{java_variable}
+  ]{Lecture/Code/PriorityQueuePart2.java}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Priority Queue}{C++}
+  \lstinputlisting[
+    language=C++,
+    basicstyle=\small,
+    tabsize=4,
+    style={cpp-eclipse-code},
+    breaklines=false,
+    morekeywords={endl},
+    escapechar={@}
+  ]{Lecture/Code/PriorityQueuePart1.cpp}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Priority Queue}{C++}
+  \vspace{-1.0em}
+  \lstinputlisting[
+    language=C++,
+    basicstyle=\small,
+    tabsize=4,
+    style={cpp-eclipse-code},
+    breaklines=false,
+    morekeywords={endl},
+    escapechar={@}
+  ]{Lecture/Code/PriorityQueuePart2.cpp}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Priority Queue}{Application Example}
+  \textbf{Example 1:}
+  \begin{itemize}
+    \item
+      Calculation of the sorted union of $k$ sorted lists\\
+      (multi-way merge or $k$-way merge)
+  \end{itemize}
+  \begin{figure}[!h]
+    \begin{columns}
+      \begin{column}[t]{0.5\linewidth}
+        \begin{tabularx}{\linewidth}{c|X|X|X|X|X|}
+          \cline{2-6}
+          $L_1:$ & 3 & 5 & 8 & 12 & $\dots$\\
+          \cline{2-6}
+        \end{tabularx}
+        \hfill\\[1.25em]
+        \begin{tabularx}{\linewidth}{c|X|X|X|X|X|}
+          \cline{2-6}
+          $L_2:$ & 4 & 5 & 6 & 7 & $\dots$\\
+          \cline{2-6}
+        \end{tabularx}
+      \end{column}
+      \begin{column}[t]{0.5\textwidth}
+        \begin{tabularx}{\linewidth}{c|X|X|X|X|X|}
+          \cline{2-6}
+          $L_3:$ & 1 & 10 & 11 & 24 & $\dots$\\
+          \cline{2-6}
+        \end{tabularx}
+      \end{column}
+    \end{columns}
+    \hfill\\
+    $\underbrace{\hspace{\linewidth}}$\\[0.5em]
+    \begin{tabularx}{\linewidth}{c|X|X|X|X|X|X|X|X|X|X|}
+      \cline{2-11}
+      $\Rightarrow R:$ & 1 & 3 & 4 & 5 & 5 & 6 & 7 & 8 & 10 & $\dots$\\
+      \cline{2-11}
+    \end{tabularx}
+    \caption{3-way merge}
+    \label{fig:priority_queue:three_way_merge}
+  \end{figure}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Priority Queue}{Application Example}
+  \textbf{Example 1:}
+  \begin{itemize}
+    \item
+      Calculation of the sorted union of ${\color{Mittel-Blau}k}$ sorted lists\\
+      (multi-way merge or ${\color{Mittel-Blau}k}$-way merge)
+    \item
+      Runtime:
+      ${\color{Mittel-Blau}N}$: length of resulting list
+      \begin{itemize}
+        \item
+          Trivial:
+          \begin{math}
+            \Theta({\color{Mittel-Blau}N} \cdot {\color{Mittel-Blau}k})
+          \end{math},
+          minimum calculation $\Theta({\color{Mittel-Blau}k})$
+        \item
+          Priority queue:
+          \begin{math}
+            \Theta({\color{Mittel-Blau}N} \cdot \log {\color{Mittel-Blau}k})
+          \end{math},
+          minimum calculation  $\Theta(\log {\color{Mittel-Blau}k})$
+      \end{itemize}
+    \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Priority Queue}{Implementation}
+  \textbf{Idea:}
+  \begin{itemize}
+    \item
+      Save elements as tuples in a binary heap
+    \item
+      Summary from lecture 1 (\textit{HeapSort}):
+    \begin{itemize}
+      \item
+        Nearly complete binary tree
+      \item
+        {\color{Mittel-Blau}Heap condition}:\\
+        The key of each node ${\color{Mittel-Blau}\leq}$ the keys of the
+        children\\
+    \end{itemize}
+  \end{itemize}
+  \vspace{-0.5em}
+  \begin{figure}[!h]
+    \begin{adjustbox}{height=0.3\textwidth}
+      \input{Lecture/Images/Heap.tikz}%
+    \end{adjustbox}
+    \vspace{-0.75em}
+    \caption{Heap with 11 nodes}%
+    \label{fig:priority_queue:impl_heap}%
+  \end{figure}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Priority Queue}{Implementation}
+ \begin{figure}[!h]%
+   \vspace{-1.5em}
+   \begin{minipage}[b]{0.4\textwidth}%
+     \input{Lecture/Images/PriorityQueueHeap.tikz}%
+    \end{minipage}
+    \hfill
+    \begin{tabular}[b]{ccccc}
+      {\color{Mittel-Gruen}0}&
+      {\color{Mittel-Gruen}1}&
+      {\color{Mittel-Gruen}2}&
+      {\color{Mittel-Gruen}3}&
+      {\color{Mittel-Gruen}4}\\
+      \hline
+      \multicolumn{1}{|c}{4, {\color{green2}B}}&%
+      \multicolumn{1}{|c}{8, {\color{green2}M}}&%
+      \multicolumn{1}{|c}{5, {\color{green2}A}}&%
+      \multicolumn{1}{|c}{17, {\color{green2}Q}}&%
+      \multicolumn{1}{|c|}{9, {\color{green2}H}}\\
+      \hline
+    \end{tabular}
+    \vspace{-0.5em}
+    \caption{Min heap stored in array}%
+    \label{fig:priority_queue:impl_min_heap}%
+  \end{figure}%
+  \vspace{-1.0em}
+  \textbf{Storing a binary heap:}
+  \begin{itemize}
+    \item
+      Number nodes from top to bottom and left to right starting with 0
+      and store entries in array
+    \item
+      Children of node ${\color{Mittel-Blau}i}$ are the nodes
+      ${\color{Mittel-Blau}2\,i+1}$ and ${\color{Mittel-Blau}2\,i+2}$
+    \item
+      Parent node of node ${\color{Mittel-Blau}i}$ is
+      $\displaystyle {\color{Mittel-Blau}\mathrm{floor}((i-1)/2)}$
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Priority Queue}{Implementation - Insertion}
+  \textbf{Inserting an element:}
+  {\color{Mittel-Blau}\texttt{insert(key, itgem)}}
+  \begin{itemize}
+    \item
+      Append the element at the end of the array
+    \item
+      The {\color{Mittel-Blau}heap condition} may be violated, but only at the
+      last index
+    \item
+      Repair {\color{Mittel-Blau}heap condition}
+      $\Rightarrow$ We will see later how to do this
+  \end{itemize}
+  \begin{figure}[!h]
+    \begin{adjustbox}{height=0.275\linewidth}
+      \input{Lecture/Images/PriorityQueueHeap.tikz}%
+    \end{adjustbox}
+    \raisebox{3.0em}{
+      $\stackrel{\color{Mittel-Blau}\texttt{
+          insert(1, {\color{green2}X})
+        }}{\Rightarrow}$
+      }\hspace{-1.5em}
+      \begin{adjustbox}{height=0.275\linewidth}
+        \input{Lecture/Images/PriorityQueueHeapInsert.tikz}%
+      \end{adjustbox}
+      %    \vspace{-0.5em}
+      %    \caption{Inserting into the priority queue}%
+      \label{fig:priority_queue:impl_insert}%
+    \end{figure}%
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Priority Queue}{Implementation}
+  \textbf{Returning the minimum:}
+  {\color{Mittel-Blau}\texttt{getMin()}}
+  \begin{itemize}
+    \item
+      If the heap is empty return {\color{Mittel-Blau}None}
+    \item
+      Else return the first element
+  \end{itemize}
+  \begin{figure}[!h]
+    \begin{adjustbox}{height=0.275\linewidth}
+      \input{Lecture/Images/PriorityQueueHeapPeek.tikz}%
+    \end{adjustbox}
+    \hspace{1.75em}\raisebox{3.0em}{
+      $\stackrel{\color{Mittel-Blau}\texttt{getMin}}{\Rightarrow}$
+      \hspace{1.75em}
+      (4, {\color{green2}B})
+    }
+    \hfill
+    %    \vspace{-0.5em}
+    %    \caption{Returning the smallest element of the priotity queue}%
+    \label{fig:priority_queue:impl_peek}%
+  \end{figure}%
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Priority Queue}{Implementation}
+  \textbf{Removing the minimum:}
+  {\color{Mittel-Blau}\texttt{deleteMin()}}
+  \begin{itemize}
+    \item
+      Swap the last element with the first element and shrink the heap by one
+    \item
+      The {\color{Mittel-Blau}heap condition} may be violated, but only at the
+      first index
+    \item
+      Repair {\color{Mittel-Blau}heap condition}
+  \end{itemize}
+  \begin{figure}[!h]
+    \begin{adjustbox}{height=0.275\linewidth}
+      \input{Lecture/Images/PriorityQueueHeapPrePop.tikz}%
+    \end{adjustbox}
+    \hspace{0.5em}\raisebox{3.0em}{
+      $\stackrel{\color{Mittel-Blau}\texttt{deleteMin}}{\Rightarrow}$
+    }\hspace{-1.5em}
+    \begin{adjustbox}{height=0.275\linewidth}
+      \input{Lecture/Images/PriorityQueueHeapPostPop.tikz}%
+    \end{adjustbox}
+    %    \vspace{-0.5em}
+    %    \caption{Removing the smallest element of the priotity queue}%
+    \label{fig:priority_queue:impl_pop}%
+  \end{figure}%
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Priority Queue}{Implementation}
+  \textbf{Changing the key (priority):}
+  {\color{Mittel-Blau}\texttt{changeKey(item, key)}}
+  \begin{itemize}
+    \item
+      The element (queue item) is given as argument
+    \item
+      Replace the value of the key
+    \item
+      The {\color{Mittel-Blau}heap condition} may be violated, but only at the
+      element index and only in one direction (up / down)
+    \item
+      Repair {\color{Mittel-Blau}heap condition}
+  \end{itemize}
+    \begin{figure}[!h]
+      \begin{adjustbox}{height=0.275\linewidth}
+        \input{Lecture/Images/PriorityQueueHeapPreChangeKey.tikz}%
+      \end{adjustbox}
+      \hspace{0.25em}\raisebox{3.0em}{
+        $\stackrel{\color{Mittel-Blau}\texttt{changeKey}}{\Rightarrow}$
+      }\hspace{-1.5em}
+      \begin{adjustbox}{height=0.275\linewidth}
+        \input{Lecture/Images/PriorityQueueHeapPostChangeKey.tikz}%
+      \end{adjustbox}
+      %    \vspace{-0.5em}
+      %    \caption{Changing the key of an element}%
+      \label{fig:priority_queue:impl_change_key}%
+    \end{figure}%
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Priority Queue}{Implementation}
+  \textbf{Changing the key (priority):}
+  {\color{Mittel-Blau}\texttt{changeKey(item, key)}}
+  \begin{itemize}
+    \item
+      The {\color{Mittel-Blau}heap condition} may be violated, but only at the
+      element index and only in one direction (up / down)
+    \item
+      Repair {\color{Mittel-Blau}heap condition}
+  \end{itemize}
+    \begin{figure}[!h]
+      \begin{adjustbox}{height=0.275\linewidth}
+        \input{Lecture/Images/PriorityQueueHeapPreChangeKey.tikz}%
+      \end{adjustbox}
+      \hspace{0.25em}\raisebox{3.0em}{
+        $\stackrel{\color{Mittel-Blau}\texttt{changeKey}}{\Rightarrow}$
+      }\hspace{-1.5em}
+      \begin{adjustbox}{height=0.275\linewidth}
+        \input{Lecture/Images/PriorityQueueHeapPostChangeKey2.tikz}%
+      \end{adjustbox}
+      %    \vspace{-0.5em}
+      %    \caption{Changing the key of an element}%
+      \label{fig:priority_queue:impl_change_key2}%
+    \end{figure}%
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Priority Queue}{Implementation}
+  \textbf{Removing an element:}
+  {\color{Mittel-Blau}\texttt{remove(item)}}
+  \begin{itemize}
+    \item
+      The element (queue item) is given as argument
+    \item
+      Replace the element with the last element and shrink the heap by one
+    \item
+      The {\color{Mittel-Blau}heap condition} may be violated, but only at the
+      element index and only in one direction (up / down)
+    \item
+      Repair {\color{Mittel-Blau}heap condition}
+  \end{itemize}
+    \begin{figure}[!h]
+      \begin{adjustbox}{height=0.275\linewidth}
+        \input{Lecture/Images/PriorityQueueHeapPreRemove.tikz}%
+      \end{adjustbox}
+      \hspace{0.5em}\raisebox{3.0em}{
+        $\stackrel{\color{Mittel-Blau}\texttt{remove}}{\Rightarrow}$
+      }\hspace{-1.0em}
+      \begin{adjustbox}{height=0.275\linewidth}
+        \input{Lecture/Images/PriorityQueueHeapPostRemove.tikz}%
+      \end{adjustbox}
+      %    \vspace{-0.5em}
+      %    \caption{Removing a random element from the priotity queue}%
+      \label{fig:priority_queue:impl_remove}%
+    \end{figure}%
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Priority Queue}{Implementation - Reaparing the Heap}
+  \textbf{Repairing after modifying operations:}
+  \begin{itemize}
+    \item
+      The heap condition can be violated after using
+      {\color{Mittel-Blau}\texttt{insert}},
+      {\color{Mittel-Blau}\texttt{deleteMin}},
+      {\color{Mittel-Blau}\texttt{changeKey}},
+      {\color{Mittel-Blau}\texttt{remove}},
+      but only at one known position with index ${\color{Mittel-Blau}i}$
+    \item
+      Heap conditions can be violated in two directions:
+      \begin{itemize}
+        \item
+          Downwards:
+          The key at index ${\color{Mittel-Blau}i}$ is not
+          ${\color{Mittel-Blau}\leq}$ than the value of its children
+        \item
+          Upwards:
+          The key at index ${\color{Mittel-Blau}i}$ is not
+          ${\color{Mittel-Blau}\geq}$ than the value of its parent
+      \end{itemize}
+    \item
+      We need two repair methods:
+      {\color{Mittel-Blau}\texttt{repairHeapUp}},
+      {\color{Mittel-Blau}\texttt{repairHeapDown}}
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Priority Queue}{Implementation - Reaparing the Heap}
+  {\color{Mittel-Blau}\texttt{\textbf{repairHeapDown:}}}
+  \begin{itemize}
+    \item
+      {\color{Mittel-Blau}Sift} the element until the
+      {\color{Mittel-Blau}heap condition} is valid
+      \begin{itemize}
+        \item
+          Change node with child, which has the lower key of both children
+        \item
+          If the {\color{Mittel-Blau}heap condition} is violated repeat for
+          the child node
+      \end{itemize}
+  \end{itemize}
+  \begin{center}
+    \begin{figure}[!h]%
+      \begin{columns}%
+        \begin{column}{0.45\textwidth}%
+          \begin{minipage}{\textwidth}%
+            \begin{center}%
+              \input{Lecture/Images/HeapRepairDown_First.tikz}%
+            \end{center}%
+          \end{minipage}%
+        \end{column}%
+        \begin{column}{0.45\textwidth}%
+          \begin{minipage}{\textwidth}%
+            \begin{center}%
+              \input{Lecture/Images/HeapRepairDown_Second.tikz}%
+            \end{center}%
+          \end{minipage}%
+        \end{column}%
+      \end{columns}%
+      \caption{Repairing the heap downwards}%
+      \label{fig:priority_queue:impl_repair_heap_down}%
+    \end{figure}
+  \end{center}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Priority Queue}{Implementation - Reaparing the Heap}
+  {\color{Mittel-Blau}\texttt{\textbf{repairHeapDown:}}}
+  \begin{itemize}
+    \item
+      {\color{Mittel-Blau}Sift} the element until the
+      {\color{Mittel-Blau}heap condition} is valid
+      \begin{itemize}
+        \item
+          Change node with child, which has the lower key of both children
+        \item
+          If the {\color{Mittel-Blau}heap condition} is violated repeat for
+          the child node
+      \end{itemize}
+  \end{itemize}
+  \begin{center}
+    \begin{figure}[!h]%
+      \begin{columns}%
+        \begin{column}{0.45\textwidth}%
+          \begin{minipage}{\textwidth}%
+            \begin{center}%
+              \input{Lecture/Images/HeapRepairDown_Second.tikz}%
+            \end{center}%
+          \end{minipage}%
+        \end{column}%
+        \begin{column}{0.45\textwidth}%
+          \begin{minipage}{\textwidth}%
+            \begin{center}%
+              \input{Lecture/Images/HeapRepairDown_Third.tikz}%
+            \end{center}%
+          \end{minipage}%
+        \end{column}%
+      \end{columns}%
+      \caption{Repairing the heap downwards}%
+      \label{fig:priority_queue:impl_repair_heap_down2}%
+    \end{figure}
+  \end{center}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Priority Queue}{Implementation - Reaparing the Heap}
+  {\color{Mittel-Blau}\texttt{\textbf{repairHeapUp:}}}
+  \begin{itemize}
+    \item
+      Change node with parent
+    \item
+      If the {\color{Mittel-Blau}heap condition} is violated repeat for parent
+      node
+  \end{itemize}
+  \begin{center}
+    \begin{figure}[!h]%
+      \begin{columns}%
+        \begin{column}{0.45\textwidth}%
+          \begin{minipage}{\textwidth}%
+            \begin{center}%
+              \input{Lecture/Images/HeapRepairUp_First.tikz}%
+            \end{center}%
+          \end{minipage}%
+        \end{column}%
+        \begin{column}{0.45\textwidth}%
+          \begin{minipage}{\textwidth}%
+            \begin{center}%
+              \input{Lecture/Images/HeapRepairUp_Second.tikz}%
+            \end{center}%
+          \end{minipage}%
+        \end{column}%
+      \end{columns}%
+      \caption{Repairing the heap upwards}%
+      \label{fig:priority_queue:impl_repair_heap_up}%
+    \end{figure}
+  \end{center}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Priority Queue}{Implementation - Reaparing the Heap}
+  {\color{Mittel-Blau}\texttt{\textbf{repairHeapUp:}}}
+  \begin{itemize}
+    \item
+      Change node with parent
+    \item
+      If the {\color{Mittel-Blau}heap condition} is violated repeat for parent
+      node
+  \end{itemize}
+  \begin{center}
+    \begin{figure}[!h]%
+      \begin{columns}%
+        \begin{column}{0.45\textwidth}%
+          \begin{minipage}{\textwidth}%
+            \begin{center}%
+              \input{Lecture/Images/HeapRepairUp_Second.tikz}%
+            \end{center}%
+          \end{minipage}%
+        \end{column}%
+        \begin{column}{0.45\textwidth}%
+          \begin{minipage}{\textwidth}%
+            \begin{center}%
+              \input{Lecture/Images/HeapRepairUp_Third.tikz}%
+            \end{center}%
+          \end{minipage}%
+        \end{column}%
+      \end{columns}%
+      \caption{Repairing the heap upwards}%
+      \label{fig:priority_queue:impl_repair_heap_up2}%
+    \end{figure}
+  \end{center}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Priority Queue}{Implementation - Reaparing the Heap -
+    Priority Queue Item}
+  \textbf{Index of a priority queue item:}
+  \begin{itemize}
+    \item
+      Attention:
+      For {\color{Mittel-Blau}\texttt{changeKey}} and
+      {\color{Mittel-Blau}\texttt{remove}} the item has to \enquote{know} where
+      it is located in the heap
+    \item
+      Remember for {\color{Mittel-Blau}\texttt{repairHeapUp}} and
+      {\color{Mittel-Blau}\texttt{repairHeapDown}}:\\
+      Update the index if moving an heap element
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Priority Queue}{Implementation - Reaparing the Heap -
+    Priority Queue Item - Python}
+  \lstinputlisting[
+    language=Python,
+    basicstyle=\scriptesize,
+    tabsize=4,
+    style={python-idle-code},
+    escapechar={@},
+    emph={PriorityQueueItem, __init__},
+    emphstyle=\color{blue}
+  ]{Lecture/Code/PriorityQueueItem.py}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Priority Queue}{Implementation - Reaparing the Heap -
+    Priority Queue Item - Java}
+  \lstinputlisting[
+    language=Java,
+    basicstyle=\scriptesize,
+    tabsize=4,
+    style={java-eclipse-code},
+    breaklines=false,
+    mathescape=true,
+%    escapechar={@},
+    emph={key, value, heapIndex},
+    emphstyle=\color{java_static}
+  ]{Lecture/Code/PriorityQueueItem.java}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Priority Queue}{Implementation - Reaparing the Heap -
+    Priority Queue Item - C++}
+  \lstinputlisting[
+    language=C++,
+    basicstyle=\small,
+    tabsize=4,
+    style={cpp-eclipse-code},
+    breaklines=false,
+    morekeywords={endl},
+    escapechar={@}
+  ]{Lecture/Code/PriorityQueueItem.cpp}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Priority Queue}{Complexity}
+  \textbf{Summary lecture 1:}
+  \begin{itemize}
+    \item
+      A full binary tree with $n$ elements, has a {\color{Mittel-Blau}depth} of
+      $\mathcal{O}(\log n)$
+    \item
+      The maximum distance from the root to a leaf can be
+      $\mathcal{O}(\log n)$ elements
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Priority Queue}{Complexity}
+  \textbf{Costs / runtime:}
+  \begin{itemize}
+    \item
+      Repairing the heap upwards and downwards:\\
+      We have only one path to traverse: $\mathcal{O}(\log n)$
+    \item
+      {\color{Mittel-Blau}\texttt{insert}},
+      {\color{Mittel-Blau}\texttt{deleteMin}},
+      {\color{Mittel-Blau}\texttt{changeKey}},
+      {\color{Mittel-Blau}\texttt{remove}}:\\
+      We have to repair the heap: $\mathcal{O}(\log n)$
+    \item
+      {\color{Mittel-Blau}\texttt{getMin}}:
+      Return the element at index 0: $\mathcal{O}(1)$
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Priority Queue}{Complexity}
+  \textbf{Improvements (Fibonacci heaps):}
+  \begin{itemize}
+    \item
+      {\color{Mittel-Blau}\texttt{getMin}},
+      {\color{Mittel-Blau}\texttt{insert}} and
+      {\color{Mittel-Blau}\texttt{decreaseKey}}
+      in amortized time of $\mathcal{O}(1)$
+    \item
+      {\color{Mittel-Blau}\texttt{deleteMin}}
+      in amortized time $\mathcal{O}(\log n)$
+  \end{itemize}
+  \hfill\\[0.5em]
+  \textbf{Practical experience:}
+  \begin{itemize}
+    \item
+      The binary heap is simpler: Costs for managing the structure are low
+    \item
+      If the number of elemenents is relatively small so the difference is
+      negligible
+    \item
+      Example:
+    \begin{itemize}
+      \item
+        For ${\color{Mittel-Blau}n = 2^{10}} \approx 1,000$ is the the
+        {\color{Mittel-Blau}depth}
+        $\log_2 n$ only 10
+      \item
+        For ${\color{Mittel-Blau}n = 2^{20}} \approx 1,000,000$ is the
+        {\color{Mittel-Blau}depth}
+        $\log_2 n$ only 20
+    \end{itemize}
+  \end{itemize}
+\end{frame}

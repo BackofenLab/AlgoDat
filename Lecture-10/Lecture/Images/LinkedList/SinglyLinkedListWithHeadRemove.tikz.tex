@@ -1,0 +1,47 @@
+\begin{adjustbox}{width=\linewidth}%
+\begin{tikzpicture}[
+  element/.style={
+    draw={Mittel-Blau},
+    fill={white},
+    line width=0.075em
+  }, element_head/.style={
+    draw={Mittel-Blau},
+    fill={white},
+    pattern=north east lines,
+    pattern color={Mittel-Blau},
+    line width=0.075em
+   }, element_link/.style={
+    draw={Mittel-Blau},
+    fill={Hell-Blau},
+    line width=0.075em
+  }, arrow/.style={
+    draw={Mittel-Blau},
+    line width=0.125em
+  }
+]%
+% Draw elements
+\foreach \x in {3,2,...,-1}{
+  \draw[element_link] (1.5*\x, 1.0) rectangle (1.5*\x + 1.0, 0.75);
+  \ifnum \x=-1
+    \draw[element_head] (1.5*\x, 0.25) rectangle (1.5*\x + 1.0, 0.75);
+  \else
+    \draw[element] (1.5*\x, 0.25) rectangle (1.5*\x + 1.0, 0.75);
+    \draw (1.5*\x + 0.5, 0.5) node {\footnotesize \x};
+  \fi
+  
+  \draw[->, arrow] (1.5*\x + 1.0, 0.875) -- (1.5*\x + 1.5, 0.875);
+}
+
+% Pointer
+\draw (-1.25, 1.25) node[anchor=south] {\footnotesize \texttt{head}};
+\draw[->, arrow] (-1.25, 1.25) -- (-1.25, 1.0);
+
+\draw (3.25, 1.25) node[anchor=south] {\footnotesize \texttt{cur}};
+\draw[->, arrow] (3.25, 1.25) -- (3.25, 1.0);
+
+\draw (4.75, 1.25) node[anchor=south] {\footnotesize \texttt{last}};
+\draw[->, arrow] (4.75, 1.25) -- (4.75, 1.0);
+
+\draw (6.5, 0.875) node {\footnotesize\texttt{\color{Mittel-Blau}None}};
+\end{tikzpicture}%
+\end{adjustbox}%

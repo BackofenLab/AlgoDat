@@ -1,0 +1,64 @@
+\begin{tikzpicture}[
+  root/.style={
+    draw=none
+  }, node/.style={
+    rectangle,
+    color=black,
+    draw=Mittel-Blau,
+    fill=Hell-Blau,
+    line width=0.15em,
+    minimum size=2.0em,
+    inner sep=0em
+  }, path_start/.style={
+%    -{Computer Modern Rightarrow[length=0.5em]},
+    -{Stealth[length=1.25em]},
+    line width=0.25em,
+    color=Mittel-Gruen
+  }, path/.style={
+    path_start,
+%    {Circle[scale=0.5,round]}-{Computer Modern Rightarrow[length=0.5em]},
+    {Circle[scale=0.5,round]}-{Stealth[length=1.25em]},
+    shorten <=-0.35em
+  }, tree/.style={
+    draw,
+    very thick,
+    shape border uses incircle,
+    shape border rotate=90,
+    isosceles triangle,
+    isosceles triangle apex angle=55,
+    minimum height=5.0em,
+    yshift=-2.5em,
+    color=black,
+    draw=Mittel-Blau,
+    fill=Hell-Blau,
+    line width=0.15em
+  }, level/.style={
+    sibling distance = 2.0em,
+  }, level/.style={
+    level distance = 3.0em
+  }, level 2/.style={
+    sibling distance = 8.0em,
+    level distance = 5.0em
+  }, level 3/.style={
+    sibling distance = 8.0em,
+    level distance = 5.0em
+  }]
+\node (0, 0) [root] (root) {}
+child [path_start] {
+  node [node] {\Large y}
+  child [path, edge from parent path={
+    (\tikzparentnode.south west) -- (\tikzchildnode.north)}
+  ] {
+    node [node] {\Large x}
+    child [path, edge from parent path={
+      (\tikzparentnode.south west) -- (\tikzchildnode.north)}
+    ] { node [tree] {\Large A} }
+    child [path, edge from parent path={
+      (\tikzparentnode.south east) -- (\tikzchildnode.north)}
+    ] { node [tree] {\Large B} }
+  }
+  child [path, edge from parent path={
+    (\tikzparentnode.south east) -- (\tikzchildnode.north)}
+  ] { node [tree] {\Large C} }
+};
+\end{tikzpicture}

@@ -1,0 +1,350 @@
+\section{Binary Search Trees}
+
+\begin{frame}{Binary Search Trees}{Introduction}
+  \textbf{Runtime of a search tree:}
+  \begin{tabbing}
+    {\color{Mittel-Blau}\texttt{next}} /
+    {\color{Mittel-Blau}\texttt{previous}} \=\kill
+    {\color{Mittel-Blau}\texttt{next}} /
+    {\color{Mittel-Blau}\texttt{previous}}\>
+    in $\mathcal{O}(1)$\\
+    \hspace{1.5em}Each element has a pointer to its predecessor /\\
+    \hspace{1.5em}successor\\[0.5em]
+    {\color{Mittel-Blau}\texttt{insert}} /
+    {\color{Mittel-Blau}\texttt{remove}} \>
+    in $\mathcal{O}(\log n)$\\[0.5em]
+    {\color{Mittel-Blau}\texttt{lookup}} \>
+    up to $\Theta(n)$\\
+    \hspace{1.5em}A tree helps searching efficiently\\[0.5em]
+  \end{tabbing}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Binary Search Trees}{Introduction}
+  \textbf{Idea:}
+  \begin{itemize}
+    \item
+      We define a total order for the search tree
+    \item
+      All nodes of the left subtree have {\color{Mittel-Blau}smaller keys}
+      than the current node
+    \item
+      All nodes of the right subtree have {\color{Mittel-Blau}bigger keys}
+      than the current node
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Binary Search Trees}{Introduction}
+  \begin{figure}
+    \input{Lecture/Images/BinarySearchTree/BinarySearchTree_Example1.tikz}
+    \caption{A binary search tree}
+    \label{fig:binary_search_trees:binary_tree_example1}
+  \end{figure}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Binary Search Trees}{Introduction}
+  \begin{figure}
+    \input{Lecture/Images/BinarySearchTree/BinarySearchTree_Example2.tikz}
+    \caption{Another binary search tree}
+    \label{fig:binary_search_trees:binary_tree_example2}
+  \end{figure}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Binary Search Trees}{Introduction}
+  \begin{figure}
+    \input{Lecture/Images/BinarySearchTree/BinarySearchTree_Example3.tikz}
+    \caption{\textbf{Not} a binary search tree}
+    \label{fig:binary_search_trees:binary_tree_example3}
+  \end{figure}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Binary Search Trees}{Implementation}
+  \textbf{Implementation:}
+  \begin{itemize}
+    \item
+      We link all nodes through pointer / references
+    \item
+      Each node has a pointer / reference to its children
+      (\texttt{\color{Mittel-Blau}leftChild} /
+      \texttt{\color{Mittel-Blau}rightChild})
+  \end{itemize}
+  \begin{figure}
+    \input{Lecture/Images/BinarySearchTree/BinarySearchTree_Impl1.tikz}
+    \caption{Binary search tree with references}
+    \label{fig:binary_search_trees:binary_tree_impl1}
+  \end{figure}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Binary Search Trees}{Implementation}
+  \textbf{Implementation:}
+  \begin{itemize}
+    \item
+      We create a sorted doubly linked list of all elements
+    \item
+      This enables an efficient implementation of
+      (\texttt{\color{Mittel-Blau}next} /
+      \texttt{\color{Mittel-Blau}previous})
+  \end{itemize}
+  \begin{figure}
+    \input{Lecture/Images/BinarySearchTree/BinarySearchTree_Impl2.tikz}
+    \caption{Binary search tree with links}
+    \label{fig:binary_search_trees:binary_tree_impl2}
+  \end{figure}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Binary Search Trees}{Implementation - Lookup}
+  \textbf{Lookup:}
+  \begin{itemize}
+    \item
+      Definition:\\
+      \enquote{
+        Search the element with the given key.
+        If no element is found return the element with the next (bigger) key.
+      }
+    \item
+      We search from the root downwards:
+      \begin{itemize}
+        \item
+          Compare the searched key with the key of the node
+        \item
+          Go to the left / right until the child is
+          \texttt{\color{Mittel-Blau}None} or the key is found
+        \item
+          If the key is not found return the next bigger one
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Binary Search Trees}{Implementation - Lookup}
+  \textbf{For each node applies the total order:}\\
+  \hspace{1.5em}keys of left subtree
+  < \texttt{\color{Mittel-Blau}node.key} < keys of right 
+  subtree
+  \begin{columns}
+    \begin{column}{0.77\linewidth}
+      \begin{figure}
+        \begin{adjustbox}{width=\linewidth}
+          \input{Lecture/Images/BinarySearchTree/BinarySearchTree_Impl1.tikz}
+        \end{adjustbox}
+        \caption{Binary search tree with total order
+          \enquote{\color{Mittel-Blau}<}}
+        \label{fig:binary_search_trees:binary_tree_lookup}
+      \end{figure}
+    \end{column}
+    \begin{column}{0.23\linewidth}
+      \textbf{Examples:}
+      \begin{compactitem}[{\color{Uni-Grau}\footnotesize$\blacksquare$}]
+        \item
+          \texttt{\color{red}lookup(14)}
+        \item
+          \texttt{\color{Mittel-Gruen!50!blue}lookup(6)}
+        \item
+          \texttt{\color{yellow!50!orange}lookup(19)}
+      \end{compactitem}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Binary Search Trees}{Implementation - Insert}
+  \textbf{Insert:}
+  \begin{itemize}
+    \item
+      We search for the key in our search tree
+    \item
+      If a node is found we replace the value with the new one
+    \item
+      Else we insert a new node at the corresponding
+      \texttt{\color{Mittel-Blau}None} entry
+  \end{itemize}
+  \begin{figure}
+    \input{Lecture/Images/BinarySearchTree/BinarySearchTree_Impl1.tikz}
+    \caption{Binary search tree with total order
+      \enquote{\color{Mittel-Blau}<}}
+    \label{fig:binary_search_trees:binary_tree_insert}
+  \end{figure}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Binary Search Trees}{Implementation - Remove}
+  \textbf{Remove:} Case 1: The node \enquote{5} has no children\\
+  \begin{itemize}
+    \item
+      Find {\color{Mittel-Blau}parent} of node \enquote{5} (\enquote{6})
+    \item
+      Set left / right child of node \enquote{6} to
+      \texttt{\color{Mittel-Blau}None} depending on position of node \enquote{5}
+  \end{itemize}
+  \begin{figure}
+    \input{Lecture/Images/BinarySearchTree/BinarySearchTree_Remove.tikz}
+    \caption{Binary search tree with total order
+      \enquote{\color{Mittel-Blau}<}}
+    \label{fig:binary_search_trees:binary_tree_remove_no_child}
+  \end{figure}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Binary Search Trees}{Implementation - Remove}
+  \textbf{Remove:} Case 1: The node \enquote{5} has no children\\
+  \begin{itemize}
+    \item
+      Find {\color{Mittel-Blau}parent} of node \enquote{5} (\enquote{6})
+    \item
+      Set left / right child of node \enquote{6} to
+      \texttt{\color{Mittel-Blau}None} depending on position of node \enquote{5}
+  \end{itemize}
+  \begin{figure}
+    \input{Lecture/Images/BinarySearchTree/BinarySearchTree_RemoveNoChild.tikz}
+    \caption{Binary search tree after delting node \enquote{5}}
+    \label{fig:binary_search_trees:binary_tree_remove_no_child_result}
+  \end{figure}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Binary Search Trees}{Implementation - Remove}
+  \textbf{Remove:} Case 2: The node \enquote{12} has one child\\
+  \begin{itemize}
+    \item
+      Find the {\color{Mittel-Blau}child} of node \enquote{12} (\enquote{14})
+    \item
+      Find the {\color{Mittel-Blau}parent} of node \enquote{12} (\enquote{8})
+    \item
+      Set left / right {\color{Mittel-Blau}child} of node \enquote{8} to
+      \enquote{14} depending on position of node \enquote{12}
+      (skip node \enquote{14})
+  \end{itemize}
+  \vspace{-0.5em}
+  \begin{figure}
+    \input{Lecture/Images/BinarySearchTree/BinarySearchTree_Remove.tikz}
+    \vspace{-0.75em}
+    \caption{Binary search tree with total order
+      \enquote{\color{Mittel-Blau}<}}
+    \label{fig:binary_search_trees:binary_tree_remove_one_child}
+  \end{figure}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Binary Search Trees}{Implementation - Remove}
+  \textbf{Remove:} Case 2: The node \enquote{12} has one child\\
+  \begin{itemize}
+    \item
+      Find the {\color{Mittel-Blau}child} of node \enquote{12} (\enquote{14})
+    \item
+      Find the {\color{Mittel-Blau}parent} of node \enquote{12} (\enquote{8})
+    \item
+      Set left / right {\color{Mittel-Blau}child} of node \enquote{8} to
+      \enquote{14} depending on position of node \enquote{12}
+      (skip node \enquote{14})
+  \end{itemize}
+  \vspace{-0.5em}
+  \begin{figure}
+    \input{Lecture/Images/BinarySearchTree/BinarySearchTree_RemoveOneChild.tikz}
+    \vspace{-0.75em}
+    \caption{Binary search tree after delting node \enquote{12}}
+    \label{fig:binary_search_trees:binary_tree_remove_one_child_result}
+  \end{figure}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Binary Search Trees}{Implementation - Remove}
+  \textbf{Remove:} Case 3: The node \enquote{4} has two children\\
+  \begin{itemize}
+    \item
+      Find the {\color{Mittel-Blau}successor} of node \enquote{4} (\enquote{5})
+    \item
+      Replace the value of node \enquote{4} with the value of node \enquote{5}
+    \item
+      Delete node \enquote{5} (the {\color{Mittel-Blau}successor} of node
+      \enquote{4}) with remove-case 1 or 2
+    \item
+      There is no left node because we are deleting the
+      {\color{Mittel-Blau}predecessor}
+  \end{itemize}
+  \vspace{-1.5em}
+  \begin{figure}
+    \input{Lecture/Images/BinarySearchTree/BinarySearchTree_Remove.tikz}
+    \label{fig:binary_search_trees:binary_tree_remove_two_children}
+  \end{figure}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Binary Search Trees}{Implementation - Remove}
+  \textbf{Remove:} Case 3: The node \enquote{4} has two children\\
+  \begin{itemize}
+    \item
+      Find the {\color{Mittel-Blau}successor} of node \enquote{4} (\enquote{5})
+    \item
+      Replace the value of node \enquote{4} with the value of node \enquote{5}
+    \item
+      Delete node \enquote{5} (the {\color{Mittel-Blau}successor} of node
+      \enquote{4}) with remove-case 1 or 2
+    \item
+      There is no left node because we are deleting the
+      {\color{Mittel-Blau}predecessor}
+  \end{itemize}
+  \vspace{-1.5em}
+  \begin{figure}
+    \input{Lecture/Images/BinarySearchTree/BinarySearchTree_RemoveTwoChildren.tikz}
+    \label{fig:binary_search_trees:binary_tree_remove_two_children_result}
+  \end{figure}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Binary Search Trees}{Runtime Complexity}
+  \textbf{How long takes \texttt{\color{Mittel-Blau}insert} and
+    \texttt{\color{Mittel-Blau}lookup}?}
+  \begin{itemize}
+    \item
+      Up to $\Theta(d)$, with $d$ being the
+      {\color{Mittel-Blau}depth of the tree}\\
+      (The longest path from the root to a leaf)
+    \item
+      {\color{Mittel-Blau}Best case} with ${\color{Mittel-Blau}d = \log n}$
+      the runtime is ${\color{Mittel-Blau}\Theta(\log n)}$
+    \item
+      {\color{Mittel-Blau}Worst case} with ${\color{Mittel-Blau}d = n}$
+      the runtime is ${\color{Mittel-Blau}\Theta(n)}$
+    \item
+      If we \textbf{always} want to have a runtime of $\Theta(\log n)$ then
+      we have to {\color{Mittel-Blau}rebalance} the tree
+  \end{itemize}
+  \vspace{-2.0em}
+  \begin{columns}%
+    \begin{column}[b]{0.4\textwidth}%
+      \begin{figure}%
+        \input{Lecture/Images/BinarySearchTree/BinaryTreeWorst.tikz}%
+        \caption{Degenerated binary tree ${\color{Mittel-Blau}d = n}$}%
+      \end{figure}%
+    \end{column}%
+    \begin{column}[b]{0.6\textwidth}%
+      \begin{figure}%
+        \input{Lecture/Images/BinarySearchTree/BinaryTreeBest.tikz}%
+        \caption{Complete binary tree ${\color{Mittel-Blau}d = \log n}$}%
+        \vspace{0.85em}%
+      \end{figure}%
+    \end{column}%
+  \end{columns}%
+\end{frame}

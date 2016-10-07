@@ -1,0 +1,83 @@
+\begin{adjustbox}{height=0.35\linewidth}
+\begin{tikzpicture}[
+  node/.style={
+    circle,
+    draw=black,
+    color=black,
+    line width=0.1em,
+    minimum size=2.0em,
+    inner sep=0em
+  }, node_null/.style={
+    draw=none,
+    color=Mittel-Blau,
+    font=\Large
+  }, path/.style={
+    line width=0.25em,
+    color=Mittel-Blau
+  }, link/.style={
+    <->,
+    dotted,
+    line width=0.25em,
+    color=Mittel-Gruen
+  }, lleft/.style={
+    color=Mittel-Gruen,
+    shift={(-0.5em,-0.75em)}
+  }, lright/.style={
+    color=Mittel-Gruen!80!black,
+    shift={(0.5em,-0.75em)}
+  }, level/.style={
+    sibling distance = 20.0em/#1,
+    level distance = 4.0em
+  }, level 4/.style={
+    sibling distance = 3.5em,
+  }]
+\node (0, 0) [node] (root) {12}
+child [->, path] {
+  node [node] (child_left) {7}
+  child [->, path] {
+    node [node] (child_left_left) {3}
+    child [->, path] { node [node_null] {\texttt{None}} }
+    child [->, path] {
+      node [node] (child_left_left_right) {5}
+      child [->, path] { node [node_null] {\texttt{None}} }
+      child [->, path] { node [node_null] {\texttt{None}} }
+    }
+  }
+  child [->, path] {
+    node [node] (child_left_right) {10}
+    child [->, path] { node [node_null] {\texttt{None}} }
+    child [->, path] { node [node_null] {\texttt{None}} }
+  }
+}
+child [->, path] {
+  node [node] (child_right) {18}
+  child [->, path] {
+    node [node] (child_right_left) {15}
+    child [->, path] {
+      node [node] (child_right_left_left) {14}
+      child [->, path] { node [node_null] {\texttt{None}} }
+      child [->, path] { node [node_null] {\texttt{None}} }
+    }
+    child [->, path] {
+      node [node] (child_right_left_right) {16}
+      child [->, path] { node [node_null] {\texttt{None}} }
+      child [->, path] { node [node_null] {\texttt{None}} }
+    }
+  }
+  child [->, path] { node [node_null] {\texttt{None}} }
+};
+\draw node[left=of child_left_left] (head) {\Large\texttt{head}};
+\draw node[right=of child_right] (tail) {\Large\texttt{tail}};
+
+\draw[link] (head) -- (child_left_left);
+\draw[link] (child_left_left) -- (child_left_left_right);
+\draw[link] (child_left_left_right) -- (child_left);
+\draw[link] (child_left) -- (child_left_right);
+\draw[link] (child_left_right) -- (root);
+\draw[link] (root) -- (child_right_left_left);
+\draw[link] (child_right_left_left) -- (child_right_left);
+\draw[link] (child_right_left) -- (child_right_left_right);
+\draw[link] (child_right_left_right) -- (child_right);
+\draw[link] (child_right) -- (tail);
+\end{tikzpicture}
+\end{adjustbox}

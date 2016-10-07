@@ -1,0 +1,248 @@
+\section{Associative Arrays}
+
+\subsection{Introduction}
+
+\begin{frame}{Associative Arrays}{Introduction}
+  \textbf{Normal array:}\\
+  \begin{displaymath}
+    A = [0 \Rightarrow A_0, \; 1 \Rightarrow A_1, \;
+      2 \Rightarrow A_2, \; 3 \Rightarrow A_3, \; \dotsc]
+  \end{displaymath}
+  \begin{itemize}
+    \item
+      Searching elements by {\color{Mittel-Blau}index}\\
+    \item
+      Lookup of element with index $"3"$:\\
+      $\hspace{1.5em}\Rightarrow A[3] = A_3$
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Associative Arrays}{Introduction}
+  \textbf{Associative array:}\\
+  \begin{displaymath}
+    A = \left[\begin{array}{l}
+      "Europa" \Rightarrow A_0, \; "Amerika" \Rightarrow A_1,\\
+      "Asien" \Rightarrow A_2, \; "Afrika" \Rightarrow A_3,\\
+      \dotsc
+    \end{array}\right]
+  \end{displaymath}
+  \begin{itemize}
+    \item
+      Searching elements by {\color{Mittel-Blau}key}\\
+    \item
+      The keys can be of any type with unique elements
+    \item
+      Lookup of element with key $"Afrika"$:\\
+      $\hspace{1.5em}\Rightarrow A["Afrika"] = A_3$
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\subsection{Practical Example}
+
+\begin{frame}{Associative Arrays}{Practical Example}
+  \vspace{-2.0em}
+  \begin{columns}
+    \begin{column}{0.9\textwidth}
+      \begin{table}[!t]
+        \caption{Country data query from \url{http://geonames.org}}
+        \label{tab:extended_sorting:country_query}
+        \begin{tabular}{ccccc}
+          ISO & ISO3 & Country & Continent & $\dots$\\
+          \midrule
+          AD & AND & Andorra & EU & $\dots$\\
+          AE & ARE & United Arab Emirates & AS & $\dots$\\
+          AF & AFG & Afghanistan & AS & $\dots$\\
+          AG & ATG & Antigua and Barbuda & NA & $\dots$\\
+          AI & AIA & Anguilla & NA & $\dots$\\
+          AL & ALB & Albania & EU & $\dots$\\
+          AM & ARM & Armenia & AS & $\dots$\\
+          AO & AGO & Angola & AF & $\dots$\\
+          AQ & ATA & Antarctica & AN & $\dots$\\
+          $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\ddots$
+        \end{tabular}
+      \end{table}
+    \end{column}
+    \begin{column}{0.1\textwidth}
+      \vspace{-6.0em}
+      \qrcode[height=6em]{http://www.geonames.org/}\\
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Associative Arrays}{Practical Example}
+  \textbf{Task:}
+  How many countries belong to each continent?
+  \begin{itemize}
+    \item
+      We are interested in column 2 (country) and 3 (continent)
+    \item
+      There are two typical ways to solve this:
+      \begin{itemize}
+        \item
+          Using Sorting
+        \item
+          Using an associative array
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\subsubsection{Sorting}
+
+\begin{frame}<beamer>{\LectureToC}
+  \tableofcontents[currentsection,currentsubsection]
+\end{frame}
+
+\begin{frame}{Associative Arrays}{Practical Example}
+  \textbf{Idea using sorting:}
+  \begin{itemize}
+    \item
+      We sort the columns 2 and 3 by continent, so that all countries
+      with the same continent are grouped in one block
+    \item
+      We count the size of the blocks\\[0.5em]
+      \textbf{Disadvantage:}
+      \begin{itemize}
+        \item
+          Runtime of $\Theta (n \log n)$
+        \item
+          We have to iterate the array twice (sort and then count)
+      \end{itemize}
+      \textbf{Advantage:}
+      \begin{itemize}
+        \item
+          Easy to implement (even with simple linux / unix commands)
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Associative Arrays}{Practical Example -
+    Sorting With Linux / Unix Commands}
+  \textbf{Input:}
+  \begin{itemize}
+    \item
+      The data is saved as tab seperated text (countryInfo.txt)
+    \item
+      Comments begin with a hash sign \#
+  \end{itemize}
+  \hfill\\[1.0em]
+  \textbf{Commands:}
+  \begin{itemize}
+    \item
+      \textbf{grep}: Selects a specific set of lines (filter by ...)\\
+      \texttt{grep -v '\^{}\#' countryInfo.txt}\\
+      $\hspace{1.5em}$\texttt{-v}: not\\
+      $\hspace{1.5em}$\texttt{\^{}\#}: \# at start of line
+    \item
+      \textbf{cut}: Selects specific columns of each line (tab separated)\\
+      \texttt{cut -f5,9}\\
+      $\hspace{1.5em}$\texttt{-f5,9}: columns 5 and 9
+      (columns 2, 3 of Table~\ref{tab:extended_sorting:country_query})\\
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Associative Arrays}{Practical Example -
+    Sorting With Linux / Unix Commands}
+  \textbf{Commands:}
+  \begin{itemize}
+    \item
+    \textbf{sort}: Sorts lines by a key\\
+      \texttt{sort -t '\hspace{1.5em}' -k2,2}\\
+      $\hspace{1.5em}$\texttt{-t '\hspace{1.5em}'}: Separator: Tab
+      (Insert with \texttt{CTRL-V TAB})\\
+      $\hspace{1.5em}$\texttt{-k2,2}: Key from column 2 to 2
+    \item
+      \textbf{uniq}: Finds or counts unique keys\\
+      \texttt{uniq -c}\\
+      $\hspace{1.5em}$\texttt{-c}: count occurences of keys\\
+    \item
+      \textbf{head}: Displays a provided number of lines\\
+      \texttt{head -n30}\\
+      $\hspace{1.5em}$\texttt{-n30}: Displays the first 30 lines
+    \item
+      \textbf{less}: Displays the file page wise
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Associative Arrays}{Practical Example -
+    Sorting With Linux / Unix Commands}
+  \textbf{Sort countries by continent:}\\
+  \texttt{grep -v '\^{}\#' countryInfo.txt | cut -f5,9 \textbackslash}\\
+    $\hspace{1.5em}$\texttt{| sort -t '$\hspace{1.5em}$' -k2,2 | less}
+  \vspace{-2.5em}
+  \begin{columns}
+    \begin{column}[t]{0.5\linewidth}
+      \begin{table}[!h]
+        \caption{Resulting data}
+        \label{tab:extended_sorting:country_sorted}
+        \begin{tabular}{cc}
+          Algeria & AF\\
+          Angola & AF\\
+          Benin & AF\\
+          Botswana & AF\\
+          Burkina Faso & AF\\
+          Burundi & AF\\
+          Cameroon & AF\\
+          Cape Verde & AF\\
+          $\vdots$ & $\vdots$
+        \end{tabular}
+      \end{table}
+    \end{column}
+    \begin{column}[t]{0.5\linewidth}%
+      \begin{figure}[!h]%
+        \caption{Data pipeline}%
+        \label{fig:extended_sorting:country_sort_pipeline}%
+        \def\SBData{less/1,sort/1,cut/1,grep/0}%
+        \input{Lecture/Images/SortBlocks.tikz}%
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Associative Arrays}{Practical Example -
+    Sorting With Linux / Unix Commands}
+  \textbf{Count countries per continent:}\\
+  \texttt{grep -v '\^{}\#' countryInfo.txt | cut -f9 \textbackslash}\\
+  $\hspace{1.5em}$\texttt{| sort | uniq -c | sort -nr}
+  \vspace{-2.5em}
+  \begin{columns}
+    \begin{column}[t]{0.5\linewidth}
+      \begin{table}[!h]
+        \caption{Resulting data}
+        \label{tab:extended_sorting:country_counted}
+        \begin{tabular}{cc}
+          58 & AF\\
+          54 & EU\\
+          52 & AS\\
+          42 & NA\\
+          27 & OC\\
+          14 & SA\\
+          5 & AN
+        \end{tabular}
+      \end{table}
+    \end{column}
+    \begin{column}[t]{0.5\linewidth}%
+      \begin{figure}[!h]%
+        \caption{Data pipeline}%
+        \label{fig:extended_sorting:country_count_pipeline}%
+        \def\SBData{sort/1,uniq/1,sort/1,cut/1,grep/0}%
+        \input{Lecture/Images/SortBlocks.tikz}%
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}

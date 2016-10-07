@@ -1,0 +1,492 @@
+\subsection{Hash Map}
+
+\begin{frame}{Associative Arrays}{The Hash Map}
+  \textbf{Idea:}
+  \begin{itemize}
+    \item
+      Mapping the keys onto indices with a {\color{Mittel-Blau}hash function}
+    \item
+      Store the values at the calculated indices in a normal array
+  \end{itemize}
+  \textbf{Example:}
+  \begin{itemize}
+    \item
+      Key set: $k = \{3904, 3126, 5148, 4522, 8769\}$
+    \item
+      Hash function:
+      $h(k) = k \;\mathrm{mod}\; 5 \hspace*{1.0em} \in \{0, \ldots, 4\}$
+    \item
+      The resulting indices are ranging from $0$ to $4$\\
+      $\Rightarrow$ We need an array T with $m = 5$ elements
+    \item
+      The array elements are called {\color{Mittel-Blau}buckets}
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Associative Arrays}{The Hash Map}
+  \textbf{Example:}
+  \begin{itemize}
+    \item
+      Key set: $k = \{3904, 3126, 5148, 4522, 8769\}$
+    \item
+      Hash function:
+      $h(k) = k \;\mathrm{mod}\; 5 \hspace*{1.0em} \in \{0, \ldots, 4\}$
+  \end{itemize}
+  \textbf{Storage:}
+  \begin{itemize}
+    \item
+      \lstinline[
+        language=Python,
+        style={python-idle-code},
+        basicstyle=\small,
+%        morekeywords={insert}
+      ]|insert(3904, "A")|:
+      $\hspace*{0.5em} h(3904) = 4$
+      $\hspace*{0.5em} \Rightarrow$
+      \lstinline[
+        language=Python,
+        style={python-idle-code},
+        basicstyle=\small,
+%        morekeywords={append}
+      ]|T[4] = (3904, "A")|
+    \item
+      \lstinline[
+        language=Python,
+        style={python-idle-code},
+        basicstyle=\small,
+%        morekeywords={insert}
+      ]|insert(3126, "B")|:
+      $\hspace*{0.5em} h(3126) = 1$
+      $\hspace*{0.5em} \Rightarrow$
+      \lstinline[
+        language=Python,
+        style={python-idle-code},
+        basicstyle=\small,
+%        morekeywords={append}
+      ]|T[1] = (3126, "B")|
+    \item
+      \lstinline[
+        language=Python,
+        style={python-idle-code},
+        basicstyle=\small,
+%        morekeywords={insert}
+      ]|insert(5148, "C")|:
+      $\hspace*{0.5em} h(5148) = 3$
+      $\hspace*{0.5em} \Rightarrow$
+      \lstinline[
+        language=Python,
+        style={python-idle-code},
+        basicstyle=\small,
+%        morekeywords={append}
+      ]|T[3] = (5148, "C")|
+  \end{itemize}
+  \vspace*{-1.0em}
+  \begin{table}[!b]
+    \caption{Hash table T}
+    \label{tab:hash_table_example_introduction}
+    \begin{tabularx}{0.875\textwidth}{l|ccccc}
+      {} & 0 & 1 & 2 & 3 & 4\\
+      \midrule
+      Bucket &
+      {} &
+      \lstinline[
+        language=Python,
+        style={python-idle-code},
+        basicstyle=\small
+      ]|(3126, "B")| &
+      {} &
+      \lstinline[
+        language=Python,
+        style={python-idle-code},
+        basicstyle=\small
+      ]|(5148, "C")| &
+      \lstinline[
+        language=Python,
+        style={python-idle-code},
+        basicstyle=\small
+      ]|(3904, "A")|
+    \end{tabularx}
+  \end{table}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Associative Arrays}{The Hash Map}
+  \textbf{Example:}
+  \begin{itemize}
+    \item
+    Key set: $k = \{3904, 3126, 5148, 4522, 8769\}$
+    \item
+    Hash function:
+    $h(k) = k \;\mathrm{mod}\; 5 \hspace*{1.0em} \in \{0, \ldots, 4\}$
+  \end{itemize}
+  \textbf{Searching:}
+  \begin{itemize}
+    \item
+      \lstinline[
+        language=Python,
+        style={python-idle-code},
+        basicstyle=\small,
+%        morekeywords={search}
+      ]|search(3904)|:
+      $\hspace*{0.5em} h(3904) = 4$
+      $\hspace*{0.5em} \Rightarrow$
+      \lstinline[
+        language=Python,
+        style={python-idle-code},
+        basicstyle=\small
+      ]|T[4]|
+      $\rightarrow$
+      \lstinline[
+        language=Python,
+        style={python-idle-code},
+        basicstyle=\small
+      ]|(3904, "A")|
+    \item
+      \lstinline[
+        language=Python,
+        style={python-idle-code},
+        basicstyle=\small,
+%        morekeywords={search}
+      ]|search(4522)|:
+      $\hspace*{0.5em} h(4522) = 2$
+      $\hspace*{0.5em} \Rightarrow$
+      \lstinline[
+        language=Python,
+        style={python-idle-code},
+        basicstyle=\small
+      ]|T[2]|
+      $\rightarrow$
+      {}\\
+      $\Rightarrow$ Value with key 4522 does not exist
+    \item
+      Search time: $\mathcal{O}(1)$
+  \end{itemize}
+  \vspace*{-1.0em}
+  \begin{table}[!b]
+    \caption{Hash table T}
+    \label{tab:hash_table_example_introduction2}
+    \begin{tabularx}{0.875\textwidth}{l|ccccc}
+      {} & 0 & 1 & 2 & 3 & 4\\
+      \midrule
+      Bucket &
+      {} &
+      \lstinline[
+        language=Python,
+        style={python-idle-code},
+        basicstyle=\small
+      ]|(3126, "B")| &
+      {} &
+      \lstinline[
+        language=Python,
+        style={python-idle-code},
+        basicstyle=\small
+      ]|(5148, "C")| &
+      \lstinline[
+        language=Python,
+        style={python-idle-code},
+        basicstyle=\small
+      ]|(3904, "A")|
+    \end{tabularx}
+  \end{table}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Associative Arrays}{Hash Collisions}
+  \textbf{Example:}
+  \begin{itemize}
+    \item
+    Key set: $k = \{3904, 3126, 5148, 4522, 8769\}$
+    \item
+    Hash function:
+    $h(k) = k \;\mathrm{mod}\; 5 \hspace*{1.0em} \in \{0, \ldots, 4\}$
+  \end{itemize}
+  \textbf{Further inserting:}
+  \begin{itemize}
+    \item
+      \lstinline[
+        language=Python,
+        style={python-idle-code},
+        basicstyle=\small,
+%        morekeywords={insert}
+      ]|insert(8769, "D")|:
+      $\hspace*{0.5em} h(8769) = 4$
+      $\hspace*{0.5em} \Rightarrow$
+      \lstinline[
+        language=Python,
+        style={python-idle-code},
+        basicstyle=\small,
+%        morekeywords={append}
+      ]|T[4] = (8769, "D")|
+    \item
+      More often than expected
+      \begin{itemize}
+        \item
+          \textbf{Birthday problem:}
+          With 23 people we have the probability of $0.5$ that 2 of them have
+          the same birthday
+      \end{itemize}
+  \end{itemize}
+  \vspace*{-1.0em}
+  \begin{table}[!b]
+    \caption{Hash table T}
+    \label{tab:hash_table_example_introduction3}
+    \begin{tabularx}{0.875\textwidth}{l|ccccc}
+      {} & 0 & 1 & 2 & 3 & 4\\
+      \midrule
+      Bucket &
+      {} &
+      \lstinline[
+        language=Python,
+        style={python-idle-code},
+        basicstyle=\small
+      ]|(3126, "B")| &
+      {} &
+      \lstinline[
+        language=Python,
+        style={python-idle-code},
+        basicstyle=\small
+      ]|(5148, "C")| &
+      $\begin{array}{@{}l@{}}
+        \lstinline[
+          language=Python,
+          style={python-idle-code},
+          basicstyle=\small
+        ]|(3904, "A"),|\\
+        \lstinline[
+          language=Python,
+          style={python-idle-code},
+          basicstyle=\small
+        ]|(8769, "D")|
+      \end{array}$
+    \end{tabularx}
+  \end{table}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Associative Arrays}{Hash Collisions}
+  \textbf{Problem:}
+  \begin{itemize}
+    \item
+      Two keys are equal $h(x) = h(y)$ but not the values $x \neq y$
+  \end{itemize}
+  \textbf{Easiest Solution:}
+  \begin{itemize}
+    \item
+      Represent each bucket as list of key value pairs
+    \item
+      Append new values to the end of the list
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Associative Arrays}{Hash Collisions}
+  \textbf{Example:}
+  \begin{itemize}
+    \item
+    Key set: $k = \{3904, 3126, 5148, 4522\}$
+    \item
+    Hash function:
+    $h(k) = k \;\mathrm{mod}\; 5 \hspace*{1.0em} \in \{0, \ldots, 4\}$
+  \end{itemize}
+  \textbf{Inserting:}
+  \begin{itemize}
+    \item
+      \dots
+    \item
+      \lstinline[
+        language=Python,
+        style={python-idle-code},
+        basicstyle=\small,
+%        morekeywords={insert}
+      ]|insert(8769, "D")|:
+      $\hspace*{0.5em} h(8769) = 4$
+      $\hspace*{0.5em} \Rightarrow$
+      \lstinline[
+        language=Python,
+        style={python-idle-code},
+        basicstyle=\small,
+%        morekeywords={append}
+      ]|T[4].append((8769, "D"))|
+    \item
+      \lstinline[
+        language=Python,
+        style={python-idle-code},
+        basicstyle=\small,
+%        morekeywords={search}
+      ]|search(8769)|:
+      $\hspace*{0.5em} h(8769) = 4$\\
+      $\hspace*{1.5em} \Rightarrow$
+      \lstinline[
+        language=Python,
+        style={python-idle-code},
+        basicstyle=\small,
+      %        morekeywords={append}
+      ]|T[4]|
+      $\Rightarrow$
+      \lstinline[
+        language=Python,
+        style={python-idle-code},
+        basicstyle=\small,
+%        morekeywords={append}
+      ]|[(3904, "A"), (8769, "D")]|
+  \end{itemize}
+  \vspace*{-1.0em}
+  \begin{table}[!b]
+    \caption{Hash table T}
+    \label{tab:hash_table_example_linked}
+    \begin{tabularx}{\textwidth}{l|ccccc}
+      {} & 0 & 1 & 2 & 3 & 4\\
+      \midrule
+      Bucket &
+      \lstinline[
+        language=Python,
+        style={python-idle-code},
+        basicstyle=\small
+      ]|[]| &
+      \lstinline[
+        language=Python,
+        style={python-idle-code},
+        basicstyle=\small
+      ]|[(3126, "B")]| &
+      \lstinline[
+        language=Python,
+        style={python-idle-code},
+        basicstyle=\small
+      ]|[]| &
+      \lstinline[
+        language=Python,
+        style={python-idle-code},
+        basicstyle=\small
+      ]|[(5148, "C")]| &
+      $\left[\begin{array}{@{}l@{}}
+        \lstinline[
+          language=Python,
+          style={python-idle-code},
+          basicstyle=\small
+        ]|(3904, "A"),|\\
+        \lstinline[
+          language=Python,
+          style={python-idle-code},
+          basicstyle=\small
+        ]|(8769, "D")|
+      \end{array}\right]$
+    \end{tabularx}
+  \end{table}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Associative Arrays}{Expected Runtime}
+  \begin{columns}
+    \begin{column}{0.6\linewidth}
+      {\color{Mittel-Blau}Best case}:
+      \begin{itemize}
+        \item
+          We have $n$ keys which are equally distributed over $m$ buckets
+        \item
+          We have $\approx \frac{n}{m}$ pairs per bucket
+        \item
+          The runtime is nearly $\mathcal{O}(1)$ for searching when \textbf{not}
+          $n \gg m$
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.3\linewidth}
+      \begin{table}[!h]
+        \caption{Best case ($m = 5, \, n = 10$)}
+        \label{tab:hash_table_runtime_best_case}
+        \begin{tabularx}{\textwidth}{c|c}
+          {} & Bucket\\
+          \midrule
+          0 & \lstinline[
+            language=Python,
+            style={python-idle-code},
+            basicstyle=\small,
+            mathescape
+          ]|[($\ldots$), ($\ldots$)]|\\
+          1 & \lstinline[
+            language=Python,
+            style={python-idle-code},
+            basicstyle=\small,
+            mathescape
+          ]|[($\ldots$), ($\ldots$)]|\\
+          2 & \lstinline[
+            language=Python,
+            style={python-idle-code},
+            basicstyle=\small,
+            mathescape
+          ]|[($\ldots$), ($\ldots$)]|\\
+          3 & \lstinline[
+            language=Python,
+            style={python-idle-code},
+            basicstyle=\small,
+            mathescape
+          ]|[($\ldots$), ($\ldots$)]|\\
+          4 & \lstinline[
+            language=Python,
+            style={python-idle-code},
+            basicstyle=\small,
+            mathescape
+          ]|[($\ldots$), ($\ldots$)]|
+        \end{tabularx}
+      \end{table}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Associative Arrays}{Expected Runtime}
+  \begin{columns}
+    \begin{column}{0.5\linewidth}
+      {\color{Mittel-Blau}Worst case}:
+      \begin{itemize}
+        \item
+          All $n$ keys are mapped onto the same bucket
+        \item
+          The runtime is $\mathcal{O}(n)$ for searching
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.4\linewidth}
+      \begin{table}[!h]
+        \caption{Worst case ($m = 5, \, n = 10$)}
+        \label{tab:hash_table_runtime_worst_case}
+        \begin{tabularx}{\textwidth}{c|c}
+          {} & Bucket\\
+          \midrule
+          0 & \lstinline[
+            language=Python,
+            style={python-idle-code},
+            basicstyle=\small
+          ]|[]|\\
+          1 & \lstinline[
+            language=Python,
+            style={python-idle-code},
+            basicstyle=\small
+          ]|[]|\\
+          2 & \lstinline[
+            language=Python,
+            style={python-idle-code},
+            basicstyle=\small,
+            mathescape
+          ]|[($\ldots$), ($\ldots$), $\;\ldots\;$, ($\ldots$)]|\\
+          3 & \lstinline[
+            language=Python,
+            style={python-idle-code},
+            basicstyle=\small
+          ]|[]|\\
+          4 & \lstinline[
+            language=Python,
+            style={python-idle-code},
+            basicstyle=\small
+          ]|[]|
+        \end{tabularx}
+      \end{table}
+    \end{column}
+  \end{columns}
+\end{frame}

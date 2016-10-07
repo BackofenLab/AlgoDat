@@ -1,0 +1,35 @@
+\begin{adjustbox}{width=\linewidth}
+\begin{tikzpicture}[
+  node/.style={
+    color=black
+  }, node_focus/.style={
+    rectangle,
+    color=black,
+    draw={yellow!80!orange},
+    line width=0.25em,
+  }, path/.style={
+    ->,
+    line width=0.25em,
+    color=Mittel-Blau
+  }, path_error/.style={
+    <-,
+    line width=0.25em,
+    color=red
+  }, level/.style={
+    sibling distance = 8.0em/#1,
+    level distance = 4.0em
+  }
+]
+\node [node] {(4, {\color{green2}B})}
+child [path] {
+  node [node] {(8, {\color{green2}M})}
+  child [path] {node [node_focus] {(17, {\color{green2}W})}}
+  child [path] {node [node] {(9, {\color{green2}H})}}
+}
+child [path] {
+  node [node] {(5, {\color{green2}A})}
+  child [path] {node [node] {(11, {\color{green2}E})}}
+  child [path] {node [node] {(29, {\color{green2}Y})}}
+};
+\end{tikzpicture}
+\end{adjustbox}

@@ -1,0 +1,53 @@
+\begin{adjustbox}{width=0.7\linewidth}%
+\begin{tikzpicture}[
+  bucket/.style={
+    draw={Mittel-Blau},
+    fill={white},
+    line width=0.075em
+  }, bucket_text/.style={
+    draw=none,
+    color=black
+  }, arrow_taken/.style={
+    draw={Mittel-Gruen},
+    line width=0.125em
+  }, arrow_shadow/.style={
+    draw={Mittel-Gruen!40!white},
+    line width=0.125em
+  }, hash_text/.style={
+    draw=none,
+    color={Mittel-Blau}
+  }, hash_text_final/.style={
+    draw=none,
+    color={Mittel-Blau}
+  }
+]%
+\foreach \x/\xi in {
+  \relax/0,\relax/1,\relax/2,\relax/3,
+  X/4,X/5,X/6,
+  \relax/7,\relax/8,
+  {\color{Mittel-Blau}s}/9,
+  \relax/10,\relax/11
+}{
+  \draw[bucket] (\xi, 0.0) rectangle (\xi + 1.0, 0.5);
+  \draw (\xi + 0.5, 0.25) node[bucket_text] {\x};
+  \draw (\xi + 0.5, 0.5) node[bucket_text, anchor=south] {\xi};
+}
+
+\foreach \type/\from/\to/\spacea/\spaceb in {
+  shadow/9/1/0.05/0.0,
+  taken/4/9/-0.05/-0.05,
+  taken/6/4/0.05/0.05,
+  taken/5/6/0.05/-0.05
+}{
+  \draw
+    (\from + 0.5 + \spacea, 1.0)
+    edge[->, arrow_\type, in=90, out=90]
+    (\to + 0.5 + \spaceb, 1.0);
+}
+
+\draw (9.5, -0.75) node[hash_text] {\large $h(s, 3)$};
+\draw (5.5, -0.75) node[hash_text_final] {\large $h(s, 0)$};
+\draw (9.5, -0.5) edge[->, arrow_taken, color={Mittel-Blau}] (9.5, -0.1);
+\draw (5.5, -0.5) edge[->, arrow_taken] (5.5, -0.1);
+\end{tikzpicture}%
+\end{adjustbox}%

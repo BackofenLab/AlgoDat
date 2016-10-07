@@ -1,0 +1,109 @@
+\begin{tikzpicture}[
+  vertex/.style={
+    circle,
+    color=Mittel-Blau,
+    draw=Mittel-Blau,
+    inner sep=0em,
+    minimum size=1.75em,
+    line width=0.1em,
+    font=\large
+  }, edge/.style={
+    draw=Mittel-Gruen,
+    line width=0.2em
+  }, edge_arrow/.style={
+    edge,
+    ->
+  }, edge_level_1/.style={
+    edge_arrow,
+    preaction={
+      draw,
+      -,
+      opacity=0.5,
+      orange!50!yellow,
+      double=orange!50!yellow,
+      double distance=2\pgflinewidth,
+    }
+  }, edge_level_2/.style={
+    edge_arrow,
+    preaction={
+      draw,
+      -,
+      opacity=0.5,
+      Hell-Gruen,
+      double=Hell-Gruen,
+      double distance=2\pgflinewidth,
+    }
+  }, edge_level_3/.style={
+    edge_arrow,
+    preaction={
+      draw,
+      -,
+      opacity=0.5,
+      cyan,
+      double=cyan,
+      double distance=2\pgflinewidth,
+    }
+  }, vertex_level_0/.style={
+    vertex,
+    fill=red!60!white
+  }, vertex_level_1/.style={
+    vertex,
+    fill=orange!50!yellow
+  }, vertex_level_2/.style={
+    vertex,
+    fill=Hell-Gruen
+  }, vertex_level_3/.style={
+    vertex,
+    fill=cyan!50!white
+  }, edge_label/.style={
+    sloped,
+    anchor=south,
+    auto=false
+  }
+]%
+% Draw vertices
+\draw (0.0, 0.0) node[vertex_level_0] (vert0) {0};
+\draw (2.5, 1.0) node[vertex_level_3] (vert1) {6};
+\draw (2.0, -2.5) node[vertex_level_1] (vert2) {2};
+\draw (9.0, 0.0) node[vertex_level_1] (vert3) {1};
+\draw (5.0, 2.0) node[vertex_level_1] (vert4) {3};
+\draw (11.0, -2.0) node[vertex_level_2] (vert5) {5};
+\draw (7.0, -3.0) node[vertex_level_1] (vert6) {4};
+\draw (7.5, 1.5) node[vertex] (vert7) {};
+\draw (9.5, 2.0) node[vertex] (vert8) {};
+
+% Layer below
+\draw[edge_level_1] (vert3) -- (vert2);
+\draw[edge_level_3] (vert0) -- (vert1);
+
+% Draw edges
+\draw[edge_level_1] (vert0) -- (vert3);
+
+\draw[edge_arrow] (vert1) to node[edge_label] {back edge} (vert4);
+\draw[edge_level_2] (vert3) -- (vert5);
+
+\draw[edge_level_1] (vert4) -- (vert6);
+
+\draw[edge_level_1] (vert2) -- (vert4);
+\draw[edge_arrow] (vert6) to node[edge_label, below] {back edge} (vert3);
+
+\draw[edge_arrow]
+  (vert7) to node[above, shift={(0em, 1.5em)}, align=left]
+  {Not reachable from\\start-node {\color{Mittel-Blau}$s$}} (vert8);
+
+% Layer above
+\draw[edge_arrow] (vert0) to node[edge_label] {forward edge} (vert2);
+
+% Draw labels
+\foreach \i/\text/\color in {
+  0/start-node/red!85!black,%
+  1/path 1/orange!50!yellow,%
+  2/path 2/Hell-Gruen,%
+  3/path 3/cyan%
+}{
+\draw (-3.0, 3.0 - \i*0.75)
+  node[vertex_level_\i, minimum size=1.25em,
+    label={[anchor=west,color=\color]right:\LARGE \text}
+  ] {};
+}
+\end{tikzpicture}%

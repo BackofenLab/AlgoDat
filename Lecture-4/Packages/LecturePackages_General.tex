@@ -1,0 +1,38 @@
+\usepackage[binary-units=true]{siunitx}
+
+\usepackage{adjustbox}
+
+\usepackage{tabularx, colortbl, collcell, multirow, hhline, booktabs} % Tables
+
+\usepackage{tikz}
+\usetikzlibrary{patterns,arrows,decorations.pathreplacing,shapes.geometric}
+
+\usepackage{wasysym} % Checkmark etc.
+
+\usepackage{listings} % Code
+\input{Styles/Code/listings-python.prf} % Python style
+\input{Styles/Code/listings-java-eclipse.prf} % Java style
+\input{Styles/Code/listings-cpp-eclipse.prf} % C++ style
+
+% From:
+%http://tex.stackexchange.com/questions/59780/can-i-use-lstinline-for-table-column
+\newcommand{\pythonintabular}[1]{\lstinline[%
+  language=Python,%
+  style={python-idle-code},%
+  basicstyle=\small,%
+  mathescape%
+  ]|#1|}%
+\newcolumntype{P}[1]{%
+  @{}>{\cellcolor{Hell-Blau!50!white}\collectcell\pythonintabular}%
+  p{#1}%
+  <{\endcollectcell}@{}%
+}
+\newcolumntype{O}[1]{%
+  @{}>{\cellcolor{yellow!15!white}\centering\arraybackslash}p{#1}@{}%
+}
+\newcolumntype{L}{%
+  @{}>{\cellcolor{yellow!15!white}\centering\arraybackslash}X<{}@{}%
+}
+
+\usepackage{commath}
+\usepackage{qrcode}

@@ -1,0 +1,31 @@
+\begin{adjustbox}{height=0.6\linewidth}
+\begin{tikzpicture}[
+  node/.style={
+    circle,
+    draw=black,
+    color=black,
+    line width=0.1em,
+    minimum size=2.0em,
+    inner sep=0em
+  }, node_null/.style={
+    draw=none,
+    color=Mittel-Blau,
+    font=\Large
+  }, path/.style={
+    line width=0.25em,
+    color=Mittel-Blau
+  }, level/.style={
+    sibling distance = 8.0em/#1,
+    level distance = 4.0em
+  }]
+\node (0, 0) [node] (root) {8}
+child [->, path] {
+  node [node] {7}
+  child [->, path] {
+    node [node] {3}
+  }
+  child [->, path] { node [node_null] {\texttt{None}} }
+}
+child [->, path] { node [node_null] {\texttt{None}} };
+\end{tikzpicture}
+\end{adjustbox}

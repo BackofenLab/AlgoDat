@@ -1,0 +1,91 @@
+\tikzstyle{node}=[
+  draw,
+  circle,
+  very thick,
+  color=black,
+  fill=white
+]%
+%
+\tikzstyle{node_tree}=[
+  draw,
+  circle,
+  very thick,
+  color=black,
+  fill=white
+]%
+%
+\tikzstyle{tree}=[
+  draw,
+  very thick,
+  shape border uses incircle,
+  isosceles triangle,
+  shape border rotate=90,
+  yshift=-4em,
+  color=black,
+  fill=green!50!white,
+  minimum height=8.0em
+]%
+%
+\tikzstyle{path}=[
+  draw,
+  very thick,
+  color=black
+]%
+%
+\tikzstyle{brace}=[
+  very thick,
+  color=black,
+  decoration={
+    brace,
+    raise=0.75em,
+    amplitude=15pt
+  },
+  decorate
+]%
+%
+\tikzstyle{line}=[
+draw,
+loosely dotted,
+very thick,
+color=black
+]%
+\begin{adjustbox}{height=7.0em}
+\begin{tikzpicture}[
+  level/.style={
+    sibling distance = 8.0em,
+    level distance = 1.5em
+  }
+]
+\node [node, label={[anchor=south]above:Root}] (root) {}
+child [path] {
+  child {
+    node[tree] {}
+  }
+  node [node_tree] {}
+}
+child [path] {
+  child {
+    node[tree] {}
+  }
+  node [node_tree] {}
+};
+% --------------------------------- left brace ---------------------------------
+\draw (-2.75, -3.5) [brace] -- node [
+  color=black,
+  pos=0.5,
+  xshift=-3.5em,
+  rotate=90,
+  font=\huge
+] {$d+1$} (-2.75, 0.0);
+\draw (-2.75, 0.0) [line] -- (-0.5, 0.0);
+% --------------------------------- right brace --------------------------------
+\draw (2.75, -3.5) [brace,decoration={mirror}] -- node [
+  color=black,
+  pos=0.5,
+  xshift=3.5em,
+  rotate=90,
+  font=\huge
+] {$d$} (2.75, -0.5);
+\draw (2.75, -0.5) [line] -- (2.0, -0.5);
+\end{tikzpicture}
+\end{adjustbox}

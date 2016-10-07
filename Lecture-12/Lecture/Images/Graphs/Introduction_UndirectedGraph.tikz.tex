@@ -1,0 +1,29 @@
+\begin{tikzpicture}[
+  vertice/.style={
+    circle,
+    draw=Mittel-Blau,
+    color=Mittel-Blau,
+    inner sep=0em,
+    minimum size=1.75em,
+    line width=0.1em,
+    font=\large
+  }, edge/.style={
+    draw={Mittel-Gruen},
+    line width=0.2em
+  }, edge_arrow/.style={
+    edge,
+    ->
+  }
+]%
+\draw (0.0, 0.0) node[vertice] (vert0) {0};
+\draw (2.0, 0.0) node[vertice] (vert1) {1};
+\draw (4.0, -0.75) node[vertice] (vert2) {2};
+\draw (1.5, -1.0) node[vertice] (vert3) {3};
+\draw (-1.0, -1.5) node[vertice] (vert4) {4};
+
+\draw[edge] (vert0) to (vert1);
+\draw[edge] (vert1) to (vert2);
+\draw[edge] (vert1) to (vert3);
+\draw[edge] (vert2) to (vert3);
+\draw[edge] (vert3) to (vert4);
+\end{tikzpicture}%

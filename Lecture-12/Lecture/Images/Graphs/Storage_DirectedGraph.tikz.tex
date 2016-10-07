@@ -1,0 +1,33 @@
+\begin{tikzpicture}[
+  vertice/.style={
+    circle,
+    draw=Mittel-Blau,
+    color=Mittel-Blau,
+    inner sep=0em,
+    minimum size=1.75em,
+    line width=0.1em,
+    font=\large
+  }, edge/.style={
+    draw=Mittel-Gruen,
+    line width=0.2em
+  }, edge_arrow/.style={
+    edge,
+    ->
+  }, edge_cost/.style={
+    midway,
+    color=Hell-Gruen,
+    font=\Large
+  }
+]%
+\draw (0.0, 0.0) node[vertice] (vert0) {0};
+\draw (5.0, 0.25) node[vertice] (vert1) {1};
+\draw (4.0, -3.0) node[vertice] (vert2) {2};
+\draw (0.0, -3.5) node[vertice] (vert3) {3};
+
+\draw[edge_arrow] (vert0) to node[edge_cost, above] {2} (vert1);
+\draw[edge_arrow] (vert0) to node[edge_cost, right] {3} (vert3);
+\draw[edge_arrow] (vert1) to node[edge_cost, right] {9} (vert2);
+\draw[edge_arrow, bend right=15] (vert2) to node[edge_cost, above] {-1} (vert3);
+\draw[edge_arrow] (vert3) to node[edge_cost, above] {7} (vert1);
+\draw[edge_arrow, bend right=15] (vert3) to node[edge_cost, below] {-2} (vert2);
+\end{tikzpicture}%

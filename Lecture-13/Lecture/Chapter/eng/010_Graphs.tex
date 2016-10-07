@@ -1,0 +1,65 @@
+\section{Graphs}
+
+\begin{frame}{Graphs}{Paths}
+  For a graph {\color{Mittel-Blau}$G = (V, E)$}:
+  \begin{itemize}
+    \item
+      A path of {\color{Mittel-Blau}$G$} is a sequence of edges
+      \begin{math}
+        {\color{Mittel-Blau}u_1},
+        {\color{Mittel-Blau}u_2},
+        \dots,
+        {\color{Mittel-Blau}u_i} \in {\color{Mittel-Blau}V}
+      \end{math}
+      with
+      \begin{itemize}
+        \item
+          Undirected graph:
+          \begin{math}
+            \{{\color{Mittel-Blau}u_1}, {\color{Mittel-Blau}u_2}\},
+            \{{\color{Mittel-Blau}u_2}, {\color{Mittel-Blau}u_3}\},
+            \dots,
+            \{{\color{Mittel-Blau}u_{i-1}}, {\color{Mittel-Blau}u_i}\} \in
+            {\color{Mittel-Blau}E}
+          \end{math}
+        \item
+          Directed graph:
+          \begin{math}
+            ({\color{Mittel-Blau}u_1}, {\color{Mittel-Blau}u_2}),
+            ({\color{Mittel-Blau}u_2}, {\color{Mittel-Blau}u_3}),
+            \dots,
+            ({\color{Mittel-Blau}u_{i-1}}, {\color{Mittel-Blau}u_i}) \in
+            {\color{Mittel-Blau}E}
+          \end{math}
+      \end{itemize}
+    \item
+      The {\color{Mittel-Blau}length of a path} is
+      \begin{itemize}
+        \item
+          Without weights:
+          {\color{Mittel-Blau}number of edges} taken
+        \item
+          With weigts:
+          {\color{Mittel-Blau}sum of weigths of edges} taken
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Graphs}{Paths}
+  For a graph {\color{Mittel-Blau}$G = (V, E)$}:
+  \begin{itemize}
+    \item
+      The {\color{Mittel-Blau}shortest path} between two vertices
+      ${\color{Mittel-Blau}u}, {\color{Mittel-Blau}v}$ is the path
+      \begin{math}
+      {\color{Mittel-Blau}P}
+      = ({\color{Mittel-Blau}u}, \dots, {\color{Mittel-Blau}v})
+      \end{math}
+      with the shortest length ${\color{Mittel-Blau}d(u,v)}$ or lowest costs
+    \item
+      The {\color{Mittel-Blau}diameter} of a graph is the length / the costs of
+      the {\color{Mittel-Blau}longest shortest path}
+  \end{itemize}
+\end{frame}
