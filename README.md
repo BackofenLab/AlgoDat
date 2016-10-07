@@ -4,6 +4,8 @@ This course comprises of a 2 SWS lecture and a 2 SWS exercise class in English, 
 
 This repository stores the source code that is required for the Algorithms and Data Structures course containing source code and images for the lecture and the exercises. Each semester, the people responsible for teaching a course usually want to modify and personalize the existing teaching material. In the past this has been an extremely painful and error-prone process. This repository should help with keeping track of "bug fixes" and personal modifications to make life easier for future teaching tasks. Our [teaching webpage](http://www.bioinf.uni-freiburg.de/Lehre/index.html?en) contains all compiled versions of previous lectures and this repository should contain the corresponding source code.
 
+This material is loosly based on the material of [Prof. Hannah Bast](https://ad.informatik.uni-freiburg.de/staff/bast)
+
 ## Lecturer
 Prof. Dr. Rolf Backofen
 
