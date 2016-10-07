@@ -1,0 +1,54 @@
+\begin{tikzpicture}[
+  node/.style={
+    circle,
+    draw=black,
+    color=black,
+    line width=0.1em,
+    minimum size=2.0em,
+    inner sep=0em
+  }, path/.style={
+    line width=0.25em,
+    color=Mittel-Blau
+  }, path_error/.style={
+    line width=0.25em,
+    color=red
+  }, lleft/.style={
+    color=Mittel-Gruen,
+    shift={(-1.0em,-0.75em)}
+  }, lright/.style={
+    color=Mittel-Gruen!80!black,
+    shift={(1.0em,-0.75em)}
+  }, level/.style={
+    sibling distance = 16.0em/#1,
+    level distance = 4.0em
+  }, level 3/.style={
+    sibling distance = 3.5em,
+  }]
+\node (0, 0) [node, label={[lleft]:0}] (root) {8}
+child [->, path] {
+  node [node, label={[lleft]:0}] {4}
+  child [->, path] {
+    node [node, label={[lleft]:0}] {2}
+    child [->, path] { node [node, label={[lleft]:0}] {1} }
+    child [->, path] { node [node, label={[lright]:0}] {3} }
+  }
+  child [->, path] {
+    node [node, label={[lright]:0}] {6}
+    child [->, path] { node [node, label={[lleft]:0}] {5} }
+    child [->, path] { node [node, label={[lright]:0}] {7} }
+  }
+}
+child [->, path] {
+  node [node, label={[lright]:0}] {12}
+  child [->, path] {
+    node [node, label={[lleft]:0}] {10}
+    child [->, path] { node [node, label={[lleft]:0}] {9} }
+    child [->, path] { node [node, label={[lright]:0}] {11} }
+  }
+  child [->, path] {
+    node [node, label={[lright]:0}] {14}
+    child [->, path] { node [node, label={[lleft]:0}] {13} }
+    child [->, path] { node [node, label={[lright]:0}] {15} }
+  }
+};
+\end{tikzpicture}

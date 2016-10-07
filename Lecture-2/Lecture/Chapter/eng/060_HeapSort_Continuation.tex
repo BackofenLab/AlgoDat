@@ -1,0 +1,98 @@
+% Reset to Heapsort
+\setcounter{subsubsection}{2}
+
+\begin{frame}<beamer>{Structure}
+  \tableofcontents[currentsection,currentsubsection]
+\end{frame}
+
+\begin{frame}{Runtime - Heapsort 3/6}
+  Runtime of \textit{heapify} with depth of $d$:
+  \begin{itemize}
+    \item
+      No costs at depth $d$ with $2^{d - 1}$ (or less) nodes.
+    \item
+      In a full heap with depth $d$ are $2 \, d - 1$ non-root nodes.\\
+      The cost for \textbf{sifting} with depth $1$ are $1 \, C$
+      ({\color{Mittel-Blau}compare})\\
+      or $2 \, C$ ({\color{Mittel-Blau}compare} and {\color{Mittel-Blau}swap})
+  \end{itemize}%
+  \begin{figure}[!h]%
+    \begin{table}%
+      \begin{center}%
+        \begin{tabular}{c|c|c|c}
+          Depth:     & Nodes:    & Path length: & Costs per node:\\
+          \hline
+          $d - 1$    & $2^d$     & 1            & $\leq 2 \cdot C$\\
+          $d - 2$    & $2^{d-1}$ & 2            & $\leq 4 \cdot C$\\
+          $\vdots$   & $\vdots$  & $\vdots$     & $\vdots$ 
+        \end{tabular}%
+        \caption{Sifting costs}%
+        \label{tab:sifting_costs}%
+      \end{center}%
+    \end{table}%
+  \end{figure}
+\end{frame}
+
+%_______________________________________________________________________________
+%_______________________________________________________________________________
+
+\begin{frame}{Runtime - Heapsort 4/6}
+  
+  
+  \begin{itemize}
+    \item
+      Runtime for heapify:
+      \[\displaystyle
+      T(d) \leq C \cdot \sum \limits^d_{i=2} \left(i \cdot 2^{d-i} \right)
+      \leq C \cdot 2^{d + 1}\]
+    \item
+      Runtime for the other operations:
+      \begin{itemize}
+        \item
+          Constant costs for taking out $n \, \times$ maximum.
+        \item
+          Maximum of $d$ steps repairing the heap $n$ times.
+        \item
+          Depth of heap at the start is $d \leq 1 + \log_2 n$
+        \item
+          Remove costs:
+          \begin{itemize}
+            \item
+              Constant size:
+              $T(n) \leq n \cdot (1 +\log_2 n) \cdot C$
+            \item
+              But the number of elements is decreasing:\\
+              $T(n) \leq 2 \cdot n  \, \log_2 n \cdot C$ (for $n > 2$).
+          \end{itemize}
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+%_______________________________________________________________________________
+%_______________________________________________________________________________
+
+\begin{frame}{Runtime - Heapsort 6/6}
+  Runtime costs:
+  \begin{itemize}
+    \item
+      Heapify: $T(n) \leq 4 \cdot n \cdot C$
+    \item
+      Remove: $T(n) \leq 2 \cdot n \, \log_2 n \cdot C$
+    \item
+      Total runtime: $T(n) \leq 6 \cdot n \, \log_2 n \cdot C$
+    \item
+      Constraints:
+      \begin{itemize}
+        \item
+          Upper bound:
+          $C_2 \cdot n \, \log_2 n \geq T(n)$ (for $n \geq 2$)
+        \item
+          Lower bound:
+          $C_1 \cdot n \, \log_2 n \leq T(n)$ (for $n \geq 2$)
+        \item
+          $\Rightarrow$ $C_1$ and $C_2$ are constant
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\setcounter{subsubsection}{0}

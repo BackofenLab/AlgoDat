@@ -1,0 +1,112 @@
+\NeedsTeXFormat{LaTeX2e}
+\listfiles
+\setcounter{errorcontextlines}{\maxdimen}
+\documentclass{beamer}
+
+\input{build/Config}
+
+\input{Packages/LecturePackages_General}
+\input{Packages/LecturePackages_\LectureLanguage}
+
+\usepackage{ufcd}
+\input{Settings/LectureSettings_General}
+\input{Settings/LectureSettings_\LectureLanguage}
+
+% We need topics for our sources for grouping
+% old: \usepackage[backend=bibtex]{biblatex}
+\usepackage[defaultbib]{bibtopic}
+\bibliographystyle{alpha}
+\renewcommand{\thebtauxfile}{\jobname.\arabic{btauxfile}.btaux}
+%%% Source of eatdot
+%%%http://tex.stackexchange.com/questions/152892/how-to-delete-a-full-stop-on-reference-ending
+\newcommand\eatdot[1]{}
+
+\usepackage[autostyle=true]{csquotes}
+
+%%% Source of subtoc-fix
+%%% http://stackoverflow.com/questions/2795478/latex-beamer-prevent-showing-the-toc-at-one-occation
+\usepackage{ifthen}
+
+\newboolean{sectiontoc}
+\setboolean{sectiontoc}{true} % default to true
+\newcommand{\toclesssection}[1]{
+  \setboolean{sectiontoc}{false}
+  \section{#1}
+  \setboolean{sectiontoc}{true}
+}
+
+\newboolean{subsectiontoc}
+\setboolean{subsectiontoc}{true} % default to true
+\newcommand{\toclesssubsection}[1]{
+  \setboolean{subsectiontoc}{false}
+  \subsection{#1}
+  \setboolean{subsectiontoc}{true}
+}
+
+\pgfdeclareimage[height=1cm]{imtek-logo}{ufcd-logo-imtek-color}
+\pgfdeclareimage[height=1.3cm]{iif-logo}{ufcd-logo-iif-color}
+\logo{\pgfuseimage{imtek-logo}}
+
+\title[beamer-ufcd]{\PresentationTitle}
+\subtitle{\PresentationDescription}
+\author[\PresentationAuthor]{\PresentationAuthorText}
+\institute[\PresentationInstitute]{\PresentationInstituteText}
+\date[\PresentationDate]{\PresentationSmallTitle, \PresentationDate}
+
+\AtBeginSection[]
+{
+  \ifthenelse{\boolean{sectiontoc}}{
+    \begin{frame}<beamer>{\LectureToC}
+      \tableofcontents[currentsection]
+    \end{frame}
+  }
+}
+
+\AtBeginSubsection[]
+{
+  \ifthenelse{\boolean{subsectiontoc}}{
+    \begin{frame}<beamer>{\LectureToC}
+      \tableofcontents[currentsection,currentsubsection]
+    \end{frame}
+  }
+}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{\LectureToC}
+  \tableofcontents
+  % Die Option [pausesections] k"onnte n"utzlich sein.
+\end{frame}
+
+\ifthenelse{\boolean{\PresentationLectureFeedback}}{
+  \ifthenelse{\boolean{\PresentationExerciseFeedback}}{
+    \section{\LectureFeedbackSection}
+  }{}
+}{}
+
+\ifthenelse{\boolean{\PresentationExerciseFeedback}}{
+  \toclesssubsection{\LectureFeedbackExercisesSection}
+  \input{Lecture/FeedbackExercises_\LectureLanguage}
+}{}
+
+\ifthenelse{\boolean{\PresentationLectureFeedback}}{
+  \toclesssubsection{\LectureFeedbackLectureSection}
+  \input{Lecture/FeedbackLecture_\LectureLanguage}
+}{}
+
+\input{build/Chapters_\LectureLanguage}
+
+\appendix
+\section<presentation>*{\appendixname}
+\subsection<presentation>*{\LectureFurtherLiterature}
+
+\begin{frame}[allowframebreaks]%
+  \frametitle<presentation>{\LectureFurtherLiterature}
+  \input{Lecture/Literature/Literature_\LectureLanguage}
+\end{frame}
+
+\end{document}

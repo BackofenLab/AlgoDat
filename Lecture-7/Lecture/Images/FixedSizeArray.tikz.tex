@@ -1,0 +1,108 @@
+\raisebox{-0.25em}{%
+\begin{adjustbox}{height=1.5em}%
+\begin{tikzpicture}[%
+  element/.style={
+    draw=black,
+    fill={black!20!white}
+  }, element_copy/.style={
+    draw=black,
+    fill={Hell-Blau}
+  }, element_delete/.style={
+    draw=black,
+    fill=white
+  }, element_delete_cross/.style={
+    draw=red,
+    line cap=round,
+    line width=0.25em
+  }, element_insert/.style={
+      draw=black,
+      fill={yellow!50!white}
+  }, element_free/.style={
+    draw=black,
+    fill=white
+  }, arrow_copy/.style={
+    ->,
+    line width=0.3em,
+    color={Mittel-Gruen}
+  }, arrow_insert/.style={
+    ->,
+    line width=0.3em,
+    color={Hell-Gruen}
+  }
+]%
+\foreach \x in {0,...,\FSAelements}{
+  \ifnum \x<\FSAelements
+    \draw[element]
+      (\x, 0.0)
+      rectangle
+      (\x + 1.0, 1.0);
+    \draw (\x + 0.5, 0.5) node {\Huge \x};
+  \fi
+}
+\foreach \x in {0,...,\FSAcopy}{
+  \ifnum \x<\FSAcopy
+    \draw[element_copy]
+      (\x + \FSAelements, 0.0)
+      rectangle
+      (\x + \FSAelements + 1.0, 1.0);
+    \FPeval{\value}{clip(\x+\FSAelements)}
+    \draw (\x + \FSAelements + 0.5, 0.5)
+      node {\Huge \value};
+    \draw[arrow_copy]
+      (\x + \FSAelements + 0.5, 1.4) --
+      (\x + \FSAelements + 0.5, 0.75);
+  \fi
+}
+\foreach \x in {0,...,\FSAdelete}{
+  \ifnum \x<\FSAdelete
+  \draw[element_delete]
+    (\x + \FSAelements + \FSAcopy, 0.0)
+    rectangle
+    (\x + \FSAelements + \FSAcopy + 1.0, 1.0);
+  \FPeval{\value}{clip(\x+\FSAelements+\FSAcopy)}
+  \draw (\x + \FSAelements + \FSAcopy + 0.5, 0.5)
+    node {\Huge \value};
+  \fi
+}
+\foreach \x in {0,...,\FSAinsert}{
+  \ifnum \x<\FSAinsert
+    \draw[element_insert]
+      (\x + \FSAelements + \FSAcopy + \FSAdelete, 0.0)
+      rectangle
+      (\x + \FSAelements + \FSAcopy + \FSAdelete + 1.0, 1.0);
+    \FPeval{\value}{clip(\x+\FSAelements+\FSAcopy+\FSAdelete)}
+    \draw (\x + \FSAelements + \FSAcopy + \FSAdelete + 0.5, 0.5)
+      node {\Huge \value};
+    \draw[arrow_insert]
+      (\x + \FSAelements + \FSAcopy + \FSAdelete + 0.5, 1.4) --
+      (\x + \FSAelements + \FSAcopy + \FSAdelete + 0.5, 0.75);
+  \fi
+}
+\foreach \x in {0,...,\FSAsize}{
+  \FPeval{\value}{clip(\FSAelements+\FSAcopy+\FSAdelete+\FSAinsert-2)}
+  \ifnum \x>\value
+    \FPeval{\value}{clip(\FSAsize-1)}
+    \ifnum \x<\value
+      \draw[element_free]
+        (\x + 1.0, 0.0)
+        rectangle
+        (\x + 2.0, 1.0);
+      \FPeval{\value}{clip(\value+1)}
+%      \draw (\x + 1.5, 0.5)
+%        node {\Huge \value};
+    \fi
+  \fi
+}
+\foreach \x in {0,...,\FSAdelete}{
+  \ifnum \x<\FSAdelete
+  \draw[element_delete_cross]
+    (\x + \FSAelements + \FSAcopy, 1.0) --
+    (\x + \FSAelements + \FSAcopy + 1.0, 0.0);
+  \draw[element_delete_cross]
+    (\x + \FSAelements + \FSAcopy, 0.0) --
+    (\x + \FSAelements + \FSAcopy + 1.0, 1.0);
+  \fi
+}
+\end{tikzpicture}%
+\end{adjustbox}%
+}%

@@ -1,0 +1,31 @@
+\ProvidesFile{listings-cpp-eclipse.prf}
+    [  listings language file]
+\usepackage{xcolor}
+\usepackage{textcomp}
+
+\definecolor{cpp_string}{rgb}{0.16, 0.00, 1.00} % #6F00FF
+\definecolor{cpp_comment}{rgb}{0.25, 0.5, 0.37} % #88BAA2
+\definecolor{cpp_keyword}{rgb}{0.5, 0.00, 0.33} % #BA009A
+\definecolor{cpp_typedef}{rgb}{0.00, 0.31, 0.20} % #00967B
+
+\definecolor{cpp_static}{rgb}{0.00, 0.00, 0.75} % #0000C0
+%\definecolor{cpp_variable}{rgb}{0.42, 0.24, 0.24} % #7F009A
+
+\lstdefinestyle{cpp-eclipse-code}{%
+  language=C++,                   % the language
+  showspaces=false,
+  showtabs=false,
+  breaklines=true,
+  showstringspaces=false,
+  breakatwhitespace=true,
+  basicstyle=\normalsize\ttfamily,   % size of the fonts for the code
+  % Color settings to match Eclipse style
+  keywordstyle=\color{cpp_keyword},       % core keywords
+  keywordstyle={[2]\color{cpp_keyword}}, % built-ins
+  stringstyle=\color{cpp_string},
+  commentstyle=\color{cpp_comment},
+  upquote=true,                      % requires textcomp
+}
+\endinput
+%%
+%% End of file `listings-cpp-eclipse.prf'.

@@ -1,0 +1,56 @@
+\begin{adjustbox}{width=\linewidth}%
+\begin{tikzpicture}[
+  element/.style={
+    draw={Mittel-Blau},
+    fill={white},
+    line width=0.075em
+  }, element_head/.style={
+    draw={Mittel-Blau},
+    fill={white},
+    pattern=north east lines,
+    pattern color={Mittel-Blau},
+    line width=0.075em
+  }, element_link/.style={
+    draw={Mittel-Blau},
+    fill={Hell-Blau},
+    line width=0.075em
+  }, arrow/.style={
+    draw={Mittel-Blau},
+    line width=0.125em
+  }
+]%
+% Draw elements
+\foreach \x in {4,3,...,0}{
+  \ifnum \x=3 \else
+    \draw[element_link] (1.5*\x, 0.5) rectangle (1.5*\x + 1.0, 0.75);
+    \draw[element_link] (1.5*\x, 1.0) rectangle (1.5*\x + 1.0, 0.75);
+    \draw[element] (1.5*\x, 0.0) rectangle (1.5*\x + 1.0, 0.5);
+    
+    \ifnum \x<4
+      \draw (1.5*\x + 0.5, 0.25) node {\footnotesize \x};
+    \else
+      \draw (1.5*\x + 0.5, 0.25) node {\footnotesize $n$};
+    \fi
+    
+    \draw[->, arrow] (1.5*\x + 0.5, 1.5) -- (1.5*\x + 0.5, 1.0);
+  \fi
+  
+  \ifnum \x<4
+    \draw[->, arrow] (1.5*\x + 1.0, 0.875) -- (1.5*\x + 1.5, 0.875);
+    \draw[<-, arrow] (1.5*\x + 1.0, 0.625) -- (1.5*\x + 1.5, 0.625);
+  \fi
+}
+
+% Pointer
+\draw[->, arrow] (7.0, 0.875) -- (7.5, 0.875) -- (7.5, -0.5) --
+  (-0.5, -0.5) -- (-0.5, 0.875) -- (0.0, 0.875);
+\draw[<-, arrow] (7.0, 0.625) -- (7.25, 0.625) -- (7.25, -0.25) --
+  (-0.25, -0.25) -- (-0.25, 0.625) -- (0.0, 0.625);
+
+\draw (5.0, 0.5) node {\footnotesize ...};
+
+% Draw navigation structure
+\draw[element] (0.0, 1.5) rectangle (7.0, 2.25);
+\draw (3.5, 1.825) node {\footnotesize tree navigation structre};
+\end{tikzpicture}%
+\end{adjustbox}%4

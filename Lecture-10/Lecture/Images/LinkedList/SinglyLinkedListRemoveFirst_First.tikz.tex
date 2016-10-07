@@ -1,0 +1,33 @@
+\begin{adjustbox}{width=\linewidth}%
+\begin{tikzpicture}[
+  element/.style={
+    draw={Mittel-Blau},
+    fill={white},
+    line width=0.075em
+  }, element_link/.style={
+    draw={Mittel-Blau},
+    fill={Hell-Blau},
+    line width=0.075em
+  }, arrow/.style={
+    draw={Mittel-Blau},
+    line width=0.125em
+  }
+]%
+\foreach \x/\value in {-1/0, 0/{$n_0$}, 1/{$n_1$}, 2/{$n_2$}, 3/{$n_3$}}{
+  \ifnum \x>-1
+    \draw[element_link] (1.5*\x, 1.0) rectangle (1.5*\x + 1.0, 0.75);
+    \draw[element] (1.5*\x, 0.25) rectangle (1.5*\x + 1.0, 0.75);
+    
+    \draw (1.5*\x + 0.5, 0.5) node {\value};
+  \fi
+  
+  \draw[->, arrow] (1.5*\x + 1.0, 0.875) -- (1.5*\x + 1.5, 0.875);
+}
+
+\draw (-0.5, 0.875) node[anchor=east] {\footnotesize \texttt{first}};
+\draw (6.0, 0.875) node[anchor=west] {\footnotesize{\color{Mittel-Blau}None}};
+
+\draw (0.25, 1.25) node[anchor=south] {\footnotesize \texttt{cur}};
+\draw[->, arrow] (0.25, 1.25) -- (0.25, 1.0);
+\end{tikzpicture}%
+\end{adjustbox}%

@@ -1,0 +1,326 @@
+\section{Cache Efficiency}
+
+
+\begin{frame}{Cache Efficiency}{Background}
+	\begin{itemize}
+		\item
+			Until now we counted the answer of operations as a reference for the 
+			runtime of the algorithm/program
+		\item
+			On the next slide we see an example, were this is not possible
+	\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Cache Efficiency}{Example}
+	\begin{itemize}
+		\item
+			We add up the elements of a field of size n
+		\begin{itemize}
+			\item
+				in natural order: $a[1] + a[2] + a[3] + a[4] + a[5]$
+			\item
+				in random order: $a[2] + a[5] + a[1] + a[3] + a[4]$
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Cache Efficiency}{Example program}
+
+TODO: Phyton program -> look at slide 5 \vspace{2em}
+
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Cache Efficiency}{Example program 2}
+
+TODO: Phyton program -> look at slide 6 \vspace{2em}
+
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Cache Efficiency}{Example program 3}
+
+TODO: Phyton program -> look at slide 7 \vspace{2em}
+
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Cache Efficiency}{Example program 4}
+
+TODO: Phyton program -> look at slide 8 \vspace{2em}
+
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Cache Efficiency}{Output of the Example program}
+
+TODO: Table -> look at slide 9 \vspace{2em}
+
+	\begin{itemize}
+		\item
+			The number of operations are for both identical but the runtime are a lot 
+			different
+		\item
+			the cost for the cache efficiency are much different
+	\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Cache Efficiency}{CPU Cache}
+	
+	TODO: Graphics -> look at slide 10 \vspace{2em}
+	
+	\textbf{Layout:}
+	\begin{itemize}
+		\item
+			Accessing one byte of the main memory costs around \SI{100}{\nano \second}
+		\item
+			Accessing one byte of L1-Cache costs around \SI{1}{\nano \second}
+		\item
+			For accessing one or more bytes in the main memory, we load a whole block 
+			of around 100 bytes in the cache, so it is not necessary to access the 
+			main memory anymore for data from the block
+	\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Cache Efficiency}{CPU Chache}
+
+TODO: Graphics -> look at slide 10 \vspace{2em}
+
+	\begin{itemize}
+		\item
+			The Cache has space for a lot of these blocks
+		\begin{itemize}
+			\item
+				a normal L1-cache has \SI{100}{\kilo \byte}
+		\end{itemize}
+		\item
+			if the cache is full, one block will be deleted
+		\begin{itemize}
+			\item
+				for example the least recently used (LRU) block
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Cache Efficiency}{Block-operations terminology}
+	
+	TODO: Graphics -> look at slide 12 \vspace{2em}
+	
+	\textbf{Terminology:}
+	\begin{itemize}
+		\item
+			We have a fast and a slow cache
+		\item
+			The slow cache is in blocks of size B separated
+		\item
+			The fast cache has size M (Space for M/B blocks)
+	\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Cache Efficiency}{Block-operations terminology}
+	\textbf{Terminology:}
+	\begin{itemize}
+		\item
+			Is the needed block not in the fast cache, the block is loaded in the 
+			fast cache
+		\item
+			The program can choose which blocks are held in the fast cache
+		\item
+			We count the number of block operations
+		\item
+			In praxis we also count the number of operations in the fast memory
+	\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Cache Efficiency}{Block-operations locality}
+	
+	TODO: Graphics -> look at slide 13 \vspace{2em}
+	
+	\textbf{For accessing the cache B times}
+	\begin{itemize}
+		\item
+			best case: 1 block operation $\rightarrow$ good locality
+		\item
+			worst case: B block operations $\rightarrow$ bad locality
+	\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Cache Efficiency}{Block-operations locality}
+	\textbf{Variations}\\
+	varies only by small constant factor in the number of block operations
+	\begin{itemize}
+		\item
+		exact separation in blocks of the slow cache 
+		\item
+		weather the memory unit is 1 byte or 4 byte or 8 byte
+	\end{itemize}
+	\textbf{We note}\\
+	\begin{itemize}
+		\item
+		it only gets interesting when the input size is larger than M, otherwise 
+		we could load the whole input in the fast cache
+	\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Cache Efficiency}{Block-operations in praxis}
+	\textbf{Typical values}(for Server)
+	\begin{itemize}
+		\item
+			CPU Cache: B = 128 Bytes, M = $6 \cdot \SI{32}{\kilo \byte}$ (L1),\\
+			 $6 \cdot \SI{256}{\kilo \byte}$ (L2)
+		\item
+			Disk Cache: B = $\SI{64}{\kilo \byte}$, M = $\SI{64}{\giga \byte}$
+		\begin{itemize}
+			\item
+				The most operating systems uses all unused main memory as disk cache
+		\end{itemize}
+	\end{itemize}
+	\textbf{terminology}
+	\begin{itemize}
+		\item
+			Block operations in the CPU cache is called cache misses
+		\item
+			Block operations in disk cache is called IOs
+		\begin{itemize}
+			\item
+				IO oder I/O = Input/Output
+		\end{itemize}
+		\item
+			We talk about cache efficiency and IO efficiency
+	\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Cache Efficiency}{Block-operations Example}
+	\textbf{Example 1:}\\
+	ArraySumMain program
+	\begin{itemize}
+		\item
+			If we iterate over the elements in the order 1, 2, 3, ... is the number 
+			of block operations: ceil(n/B)
+	\end{itemize}
+	
+	TODO: Graphics -> look at slide 15 \vspace{2em}
+	
+	\begin{itemize}
+		\item
+			If we iterate over the elements in a random order is the number block 
+			operations in the worst case: n
+	\end{itemize}
+		
+		TODO: Graphics -> look at slide 15 \vspace{2em}
+		
+	\begin{itemize}
+		\item
+			This is a theoretical factor of B difference and this is the main reason 
+			for the runtime difference
+	\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Cache Efficiency}{Block-operations Example}
+	In praxis is the factor << B 
+	\begin{itemize}
+		\item
+			even in a random order, we need to access 4 nearby bytes (one int) for 
+			one element
+		\item
+			Also, if not n >> M, the next element is sometimes randomly already in  
+			the cache memory
+	\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Cache Efficiency}{Example 2 QuickSort}
+	\textbf{Example 2:}\\
+	sort with QuickSort
+	\begin{itemize}
+		\item
+			How QuickSort works
+		\item
+			Strategy: divide and concur -> later
+		\begin{itemize}
+			\item
+				Divide the input field in two parts, so that all elements in the left 
+				part $\leq$ all in the right part
+			\item
+				To Divide we choose any element ("Pivot" -Element), for example the 
+				first one or the last one
+			\item
+				Ideally have both parts the same size
+			\item
+				we sort then both parts recursive
+		\end{itemize}
+	\end{itemize}
+	
+	TODO: Graphics -> look at slide 17 \vspace{2em}
+	
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Cache Efficiency}{Quicksort algorithm}
+	
+	TODO: look at slide 18 \vspace{2em}
+	
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Cache Efficiency}{number of operations in Quicksort}
+	\begin{itemize}
+		\item
+			T(n) is the runtime for the input size n
+		\item
+			fields are separated perfectly in the middle
+		\item
+			n is a power of two and recursion $k = \log_2 n$
+	\end{itemize}
+	
+	TODO: Math -> look at slide 19 \vspace{2em}
+	
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Cache Efficiency}{number of block operations in Quicksort}
+
+TODO: Graphics -> look at slide 20 \vspace{2em}
+
+	\begin{itemize}
+		\item
+			Let IO(n) the number of block operations for the\\
+			input size n
+		\item
+			The assumption is the same as before, but recursion depth $k = \log_2 
+			(n/B)$ why ?
+	\end{itemize}
+	
+	TODO: Math -> look at slide 20 \vspace{2em}
+	
+\end{frame}

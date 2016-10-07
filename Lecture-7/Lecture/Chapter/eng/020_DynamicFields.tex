@@ -1,0 +1,541 @@
+\section{Dynamic Fields}
+
+\subsection{Introduction}
+
+\begin{frame}{Dynamic Fields}{Introduction}
+  \begin{itemize}
+    \item
+      The field is created with an initial size
+    \item
+      The size can be dynamicly modified
+    \item
+      \textbf{Problem:}
+      We need a dynamic structure to store the data
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dynamic Fields}{Python}
+  \textbf{Python:}
+  \lstinputlisting[
+    language=Python,
+    basicstyle=\small,
+    tabsize=4,
+    style={python-idle-code},
+    escapechar={@}
+  ]{Lecture/Code/DynamicLists.py}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dynamic Fields}{Java}
+  \textbf{Java:}
+  \lstinputlisting[
+    language=Java,
+    basicstyle=\small,
+    tabsize=4,
+    style={java-eclipse-code},
+    escapechar={@},
+    emph={words},
+    emphstyle=\color{java_variable}
+  ]{Lecture/Code/DynamicField.java}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dynamic Fields}{C++}
+  \textbf{C++:}
+  \lstinputlisting[
+    language=C++,
+    basicstyle=\small,
+    tabsize=4,
+    style={cpp-eclipse-code},
+    morekeywords={endl},
+    escapechar={@}
+  ]{Lecture/Code/DynamicField.cpp}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dynamic Fields}{Implementation 1}
+  \begin{itemize}
+    \item
+      We store the data in a fixed-size array with the needed size
+    \item
+      \textbf{Append:}
+      \begin{itemize}
+        \item
+          Create fixed-size array with the needed size
+        \item
+          Copy elements from the old to the new array
+      \end{itemize}
+    \item
+      \textbf{Remove:}
+      \begin{itemize}
+        \item
+          Create fixed-size array with the needed size
+        \item
+          Copy elements from the old to the new array
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dynamic Fields}{Implementation 1}
+  \begin{itemize}
+    \item
+      We resize the field before each append
+    \item
+      We choose the size exactly as needed
+  \end{itemize}
+  \lstinputlisting[
+    language=Python,
+    basicstyle=\small,
+    tabsize=4,
+    style={python-idle-code},
+    escapechar={@},
+%    morekeywords={self},
+    emph={DynamicArray, capacity, __init__},
+    emphstyle=\color{blue}
+  ]{Lecture/Code/DynamicListImpl1_Part1.py}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dynamic Fields}{Implementation 1}
+  \lstinputlisting[
+    language=Python,
+    basicstyle=\small,
+    tabsize=4,
+    style={python-idle-code},
+    escapechar={@},
+%    morekeywords={self},
+    breaklines=false,
+    emph={DynamicArray, append},
+    emphstyle=\color{blue}
+  ]{Lecture/Code/DynamicListImpl1_Part2.py}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dynamic Fields}{Implementation 1}
+  \begin{figure}
+    \caption{Runtime of \textit{DynamicArray}}
+    \label{fig:runtime_dynamic_array_impl1}
+    %TODO
+  \end{figure}
+  \begin{itemize}
+    \item
+      Why is the runtime qubic?
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dynamic Fields}{Implementation 1}
+  \textbf{Runtime:}\\[0.5em]
+  \begin{tabularx}{\linewidth}{@{}lcl}
+    \def\FSAsize{1}\def\FSAelements{0}%
+    \def\FSAcopy{0}\def\FSAdelete{0}\def\FSAinsert{1}%
+    \input{Lecture/Images/FixedSizeArray.tikz} &
+    $\mathcal{O}(1)$ &
+    write 1 element\\
+    \def\FSAsize{2}\def\FSAelements{0}%
+    \def\FSAcopy{1}\def\FSAdelete{0}\def\FSAinsert{1}%
+    \input{Lecture/Images/FixedSizeArray.tikz} &
+    $\mathcal{O}(1 + {\color{Mittel-Blau}1})$ &
+    write 1 element, {\color{Mittel-Blau}copy 1 element}\\
+    \def\FSAsize{3}\def\FSAelements{0}%
+    \def\FSAcopy{2}\def\FSAdelete{0}\def\FSAinsert{1}%
+    \input{Lecture/Images/FixedSizeArray.tikz} &
+    $\mathcal{O}(1 + {\color{Mittel-Blau}2})$ &
+    write 1 element, {\color{Mittel-Blau}copy 2 elements}\\
+    \def\FSAsize{4}\def\FSAelements{0}%
+    \def\FSAcopy{3}\def\FSAdelete{0}\def\FSAinsert{1}%
+    \input{Lecture/Images/FixedSizeArray.tikz} &
+    $\mathcal{O}(1 + {\color{Mittel-Blau}3})$ &
+    write 1 element, {\color{Mittel-Blau}copy 3 elements}\\
+    \def\FSAsize{5}\def\FSAelements{0}%
+    \def\FSAcopy{4}\def\FSAdelete{0}\def\FSAinsert{1}%
+    \input{Lecture/Images/FixedSizeArray.tikz} &
+    $\mathcal{O}(1 + {\color{Mittel-Blau}4})$ &
+    write 1 element, {\color{Mittel-Blau}copy 4 elements}\\
+    \def\FSAsize{6}\def\FSAelements{0}%
+    \def\FSAcopy{5}\def\FSAdelete{0}\def\FSAinsert{1}%
+    \input{Lecture/Images/FixedSizeArray.tikz} &
+    $\mathcal{O}(1 + {\color{Mittel-Blau}5})$ &
+    write 1 element, {\color{Mittel-Blau}copy 5 elements}\\
+    \hspace*{1.5em}\dots & \dots & \hspace*{1.5em}\dots
+  \end{tabularx}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dynamic Fields}{Implementation 1}
+  \textbf{Analysis:}
+  \begin{itemize}
+    \item
+      Let $T(n)$ be the runtime of $n$ sequential append operations
+    \item
+      Let $T_i$ be the runtime of each $i$-th operation
+      \begin{itemize}
+        \item
+          We have to copy $i-1$ elements
+        \item
+          The runtime of each copy operation
+          $T_i = C_1 \cdot (i - 1) \in \mathcal{O}(i)$ is linear
+      \end{itemize}
+  \end{itemize}
+  \begin{align*}
+    T(n) &= \sum_{i=1}^n T_i
+      = \sum_{i=1}^n \left(C_1 \cdot (i-1) \right)
+      = C_1 \cdot \sum_{i=1}^n (i-1)\\
+      &= C_1 \cdot \dfrac{n^2-n}{2} \in \mathcal{O}(n^2)
+  \end{align*}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dynamic Fields}{Implementation 2}
+  \begin{itemize}
+    \item
+      \textbf{Idea:}
+      Better resize stratergy
+    \item
+      We allocate more space than needed
+    \item
+      We over-allocate a constant amount of elements
+      \begin{itemize}
+        \item
+          Amount: $C = 3$ or $C = 100$
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dynamic Fields}{Implementation 2}
+  \lstinputlisting[
+    language=Python,
+    basicstyle=\small,
+    tabsize=4,
+    style={python-idle-code},
+    escapechar={@},
+    %    morekeywords={self},
+    breaklines=false,
+    emph={DynamicArray, append},
+    emphstyle=\color{blue}
+  ]{Lecture/Code/DynamicListImpl2_Part2.py}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dynamic Fields}{Implementation 2}
+  \begin{figure}
+    \caption{Runtime of \textit{DynamicArray}}
+    \label{fig:runtime_dynamic_array_impl2}
+    %TODO
+  \end{figure}
+  \begin{itemize}
+    \item
+      Why is the runtime still qubic?
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dynamic Fields}{Implementation 2}
+  \textbf{Runtime for $C = 3$:}\\[0.5em]
+  \begin{tabularx}{\linewidth}{@{}lcl}
+    \def\FSAsize{3}\def\FSAelements{0}%
+    \def\FSAcopy{0}\def\FSAdelete{0}\def\FSAinsert{1}%
+    \input{Lecture/Images/FixedSizeArray.tikz} &
+    $\mathcal{O}(1)$ &
+    write 1 element\\
+    \def\FSAsize{3}\def\FSAelements{1}%
+    \def\FSAcopy{0}\def\FSAdelete{0}\def\FSAinsert{1}%
+    \input{Lecture/Images/FixedSizeArray.tikz} &
+    $\mathcal{O}(1)$ &
+    write 1 element\\
+    \def\FSAsize{3}\def\FSAelements{2}%
+    \def\FSAcopy{0}\def\FSAdelete{0}\def\FSAinsert{1}%
+    \input{Lecture/Images/FixedSizeArray.tikz} &
+    $\mathcal{O}(1)$ &
+    write 1 element\\
+    \def\FSAsize{6}\def\FSAelements{0}%
+    \def\FSAcopy{3}\def\FSAdelete{0}\def\FSAinsert{1}%
+    \input{Lecture/Images/FixedSizeArray.tikz} &
+    $\mathcal{O}(1 + {\color{Mittel-Blau}3})$ &
+    write 1 element, {\color{Mittel-Blau}copy 3 elements}\\
+    \def\FSAsize{6}\def\FSAelements{4}%
+    \def\FSAcopy{0}\def\FSAdelete{0}\def\FSAinsert{1}%
+    \input{Lecture/Images/FixedSizeArray.tikz} &
+    $\mathcal{O}(1)$ &
+    write 1 element\\
+    \def\FSAsize{6}\def\FSAelements{5}%
+    \def\FSAcopy{0}\def\FSAdelete{0}\def\FSAinsert{1}%
+    \input{Lecture/Images/FixedSizeArray.tikz} &
+    $\mathcal{O}(1)$ &
+    write 1 element\\
+    \def\FSAsize{9}\def\FSAelements{0}%
+    \def\FSAcopy{6}\def\FSAdelete{0}\def\FSAinsert{1}%
+    \input{Lecture/Images/FixedSizeArray.tikz} &
+    $\mathcal{O}(1 + {\color{Mittel-Blau}6})$ &
+    write 1 element, {\color{Mittel-Blau}copy 6 elements}\\
+    \hspace*{1.5em}\dots & \dots & \hspace*{1.5em}\dots
+  \end{tabularx}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dynamic Fields}{Implementation 2}
+  \textbf{Analysis:}
+  \begin{itemize}
+    \item
+      $\frac{C - 1}{C} = \frac{2}{3}$ of all operations are $\in \mathcal{O}(1)$
+    \item
+      Every $C$ steps we have a copy operation
+    \begin{itemize}
+      \item
+        We have to copy $\frac{i- 1}{C}$ elements
+      \item
+        The runtime of each copy operation is linear\\
+        $\Rightarrow T_i =
+          \underbrace{
+            C_2\vphantom{\begin{cases}C_1\\0\end{cases}}
+          }_\text{insert}
+          + \underbrace{\begin{cases}
+            C_1 \cdot \frac{i - 1}{C} & \text{if } i \mod C = 1\\
+            0 & \text{else}
+            \end{cases}}_\text{copy}
+          \in \mathcal{O}(i)$
+    \end{itemize}
+  \end{itemize}
+  \begin{align*}
+    T(n)
+      &= \sum_{i=1}^{n} T_i
+      = \sum_{i=1}^{n/C} \left(C_1 \cdot C \cdot (i-1) \right)
+        + \sum_{i=1}^n C_2\\
+      &= \sum_{i=1}^{n/C} \left(C_1 \cdot C \cdot (i-1) \right)
+        + \underbrace{\dots}_{\mathcal{O}(n)}
+  \end{align*}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dynamic Fields}{Implementation 2}
+  \textbf{Analysis:}
+  \begin{itemize}
+    \item
+      The factor of $n^2$ is getting smaller
+    \item
+      The runtime still remains $T(n) \in \mathcal{O}(n^2)$
+  \end{itemize}
+  \begin{align*}%
+    T(n)
+      &= \sum_{i=1}^{n/C} \left(C_1 \cdot C \cdot (i-1) \right)
+        + \underbrace{\dots}_{\mathcal{O}(n)}\\
+    {} &\approx C_1 \cdot C \cdot \sum_{i=1}^{n/C} (i-1)
+    = C_1 \cdot C \cdot \dfrac{\frac{n^2}{C^2}-\frac{n}{C}}{2}\\
+    {} &= C_1 \cdot \dfrac{\frac{n^2}{C}-n}{2}
+    \in \mathcal{O}(n^2)
+  \end{align*}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dynamic Fields}{Implementation 3}
+  \begin{itemize}
+    \item
+      \textbf{Idea:}
+      Multiply the size with a constant $C > 1$
+      \begin{itemize}
+        \item
+          Amount: $C = 2$ or $C = \frac{3}{2}$
+      \end{itemize}
+    \item
+      The distance between reallocations is increasing
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dynamic Fields}{Implementation 3}
+  \lstinputlisting[
+    language=Python,
+    basicstyle=\small,
+    tabsize=4,
+    style={python-idle-code},
+    escapechar={@},
+%    morekeywords={self},
+    breaklines=false,
+    emph={DynamicArray, append},
+    emphstyle=\color{blue}
+  ]{Lecture/Code/DynamicListImpl3_Part2.py}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dynamic Fields}{Implementation 3}
+  \begin{figure}
+    \caption{Runtime of \textit{DynamicArray}}
+    \label{fig:runtime_dynamic_array_impl3}
+    %TODO
+  \end{figure}
+  \begin{itemize}
+    \item
+      Now the runtime is linear with some bumps. Why?
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dynamic Fields}{Implementation 2}
+  \textbf{Runtime for $C = 2$ (Double the size):}\\[0.5em]
+  \begin{tabularx}{\linewidth}{@{}lcl}
+    \def\FSAsize{1}\def\FSAelements{0}%
+    \def\FSAcopy{0}\def\FSAdelete{0}\def\FSAinsert{1}%
+    \input{Lecture/Images/FixedSizeArray.tikz} &
+    $\mathcal{O}(1)$ &
+    write 1\\
+    \def\FSAsize{2}\def\FSAelements{0}%
+    \def\FSAcopy{1}\def\FSAdelete{0}\def\FSAinsert{1}%
+    \input{Lecture/Images/FixedSizeArray.tikz} &
+    $\mathcal{O}(1 + {\color{Mittel-Blau}1})$ &
+    write 1, {\color{Mittel-Blau}copy 1 element}\\
+    \def\FSAsize{4}\def\FSAelements{0}%
+    \def\FSAcopy{2}\def\FSAdelete{0}\def\FSAinsert{1}%
+    \input{Lecture/Images/FixedSizeArray.tikz} &
+    $\mathcal{O}(1 + {\color{Mittel-Blau}2})$ &
+    write 1, {\color{Mittel-Blau}copy 2 elements}\\
+    \def\FSAsize{4}\def\FSAelements{3}%
+    \def\FSAcopy{0}\def\FSAdelete{0}\def\FSAinsert{1}%
+    \input{Lecture/Images/FixedSizeArray.tikz} &
+    $\mathcal{O}(1)$ &
+    write 1\\
+    \def\FSAsize{8}\def\FSAelements{0}%
+    \def\FSAcopy{4}\def\FSAdelete{0}\def\FSAinsert{1}%
+    \input{Lecture/Images/FixedSizeArray.tikz} &
+    $\mathcal{O}(1 + {\color{Mittel-Blau}4})$ &
+    write 1, {\color{Mittel-Blau}copy 4 elements}\\
+    \def\FSAsize{8}\def\FSAelements{5}%
+    \def\FSAcopy{0}\def\FSAdelete{0}\def\FSAinsert{1}%
+    \input{Lecture/Images/FixedSizeArray.tikz} &
+    $\mathcal{O}(1)$ &
+    write 1\\
+    \def\FSAsize{8}\def\FSAelements{6}%
+    \def\FSAcopy{0}\def\FSAdelete{0}\def\FSAinsert{1}%
+    \input{Lecture/Images/FixedSizeArray.tikz} &
+    $\mathcal{O}(1)$ &
+    write 1\\
+    \def\FSAsize{8}\def\FSAelements{7}%
+    \def\FSAcopy{0}\def\FSAdelete{0}\def\FSAinsert{1}%
+    \input{Lecture/Images/FixedSizeArray.tikz} &
+    $\mathcal{O}(1)$ &
+    write 1\\
+    \def\FSAsize{10}\def\FSAelements{0}%
+    \def\FSAcopy{8}\def\FSAdelete{0}\def\FSAinsert{1}%
+    \input{Lecture/Images/FixedSizeArray.tikz}%
+    \hspace*{0.25em}$\cdots$ &
+    $\mathcal{O}(1 + {\color{Mittel-Blau}8})$ &
+    write 1, {\color{Mittel-Blau}copy 8 elements}\\
+    \hspace*{1.5em}\dots & \dots & \hspace*{1.5em}\dots
+  \end{tabularx}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dynamic Fields}{Implementation 3}
+  \textbf{Analysis:}
+  \begin{itemize}
+    \item
+      The number of $\mathcal{O}(1)$ operations is increasing
+    \item
+      We need to copy the array every $C^i$ steps $(1, 2, 4, 8,\dots)$\\[0.5em]
+      $\Rightarrow T_\text{copy} = C_1 \cdot C^{(i-1)}$\\
+      $\Rightarrow T_i
+        = \underbrace{
+            C_2\vphantom{\begin{cases}C_1\\0\end{cases}}
+          }_\text{insert}
+          + \underbrace{\begin{cases}
+            C_1 \cdot C^{(i-1)} & \text{if } log_C(i-1) \in \mathbb{N}\\
+            0 & \text{else}
+          \end{cases}}_\text{copy}$
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dynamic Fields}{Implementation 3}
+  \textbf{Analysis:}
+  Assuming $C = 2$
+  \begin{align*}
+    T_i
+      &= \underbrace{
+        C_2\vphantom{\begin{cases}C_1\\0\end{cases}}
+      }_\text{insert}
+      + \underbrace{\begin{cases}
+        C_1 \cdot 2^{(i-1)} & \text{if } log_2(i-1) \in \mathbb{N}\\
+        0 & \text{else}
+        \end{cases}}_\text{copy}\\
+    \Rightarrow k &= \mathrm{floor}(\log_2(n-1))
+      = \left\lfloor\log_2(n-1)\right\rfloor\\
+    T(n) &= C_2 \cdot \sum_{i=1}^{n} 1
+        + C_1 \cdot \underbrace{\sum_{i=0}^{k} 2^i}_{2^{(k+1)}-1}
+      = C_2 \cdot n + C_1 \cdot (2^{(k+1)}-1)
+  \end{align*}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dynamic Fields}{Implementation 3}
+  \textbf{Analysis:}
+  Assuming $C = 2, \, k = \left\lfloor\log_2(n-1)\right\rfloor$
+  \begin{align*}
+    T(n) &= C_2 \cdot n + C_1 \cdot (2^{(k+1)}-1)\\
+    {} &\leq C_2 \cdot n + C_1 \cdot 2^{(k+1)}
+      = C_2 \cdot n + 2 \, C_1 \cdot 2^{k}\\
+    {} &\leq C_2 \cdot n + 2 \, C_1 \cdot (n - 1)\\
+    {} &\leq C_2 \cdot n + 2 \, C_1 \cdot n
+      = \underbrace{(C_2 + 2 C_1)}_{C_3} \cdot n\\
+    \Rightarrow T(n) &\leq C_3 \cdot n \in \mathcal{O}(n)
+  \end{align*}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dynamic Fields}{Shrinking}
+  \textbf{How do we shrink the array?}
+  \begin{itemize}
+    \item
+      \textbf{Idea:}
+      Shrink the array by a constant factor
+      $C_\text{shrink} = \frac{1}{2}$ or $C_\text{shrink} = \frac{1}{8}$
+    \item
+      If we \textit{append} directly after \textit{shrinking} we have to
+      resize the array
+      \begin{itemize}
+        \item
+          We only shrink the array by $\frac{1}{2}$ of the possible amount
+        \item
+          We have enough space to insert or delete more elements
+       \end{itemize}
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dynamic Fields}{Shrinking}
+  \textbf{Analysis:}
+  \begin{itemize}
+    \item
+      \textbf{Difficult:}
+      We have a random number of \textit{append} / \textit{remove} operations
+    \item
+      We can not exactly predict when resizing is happening
+    \item
+      We do an amortized runtime analysis \cite{wikipedia_amortized_analysis}
+  \end{itemize}
+\end{frame}

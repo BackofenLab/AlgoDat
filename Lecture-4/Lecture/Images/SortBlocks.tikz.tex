@@ -1,0 +1,29 @@
+\begin{adjustbox}{height=0.8\linewidth}%
+\begin{tikzpicture}[%
+  box/.style={
+    draw={Mittel-Blau},
+    fill={Hell-Blau},
+    line width=0.05em
+  }, box_text/.style={
+    draw=none,
+    color=black
+  }, arrow/.style={
+  draw={Mittel-Gruen},
+    fill={Hell-Gruen},
+    line width=0.05em
+  }
+]%
+\foreach \text/\arrow [count=\y] in \SBData {
+  \ifnum \arrow>0
+    \draw[arrow]
+      (0.25, \y + 1.0) -- (0.75, \y + 1.0) -- (0.75, \y + 0.75) --
+      (1.0, \y + 0.75) -- (0.5, \y + 0.5) -- (0.0, \y + 0.75) --
+      (0.25, \y + 0.75) -- cycle;
+  \fi
+}
+\foreach \text/\arrow [count=\y] in \SBData {
+  \draw[box] (0.0, \y) rectangle (1.0, \y + 0.5);
+  \draw (0.5, \y + 0.25) node[box_text] {\text};
+}
+\end{tikzpicture}%
+\end{adjustbox}%

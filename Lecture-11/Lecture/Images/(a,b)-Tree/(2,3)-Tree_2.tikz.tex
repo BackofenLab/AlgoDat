@@ -1,0 +1,79 @@
+\begin{tikzpicture}[
+  node/.style={
+    rectangle,
+    color=black,
+    draw=Mittel-Blau,
+    fill=Hell-Blau,
+    line width=0.15em,
+    minimum size=2.0em,
+    inner sep=0em
+  }, path_start/.style={
+%    -{Computer Modern Rightarrow[length=0.5em]},
+    -{Stealth[length=1.25em]},
+    line width=0.25em,
+    color=Mittel-Gruen
+  }, path/.style={
+    path_start,
+%    {Circle[scale=0.5,round]}-{Computer Modern Rightarrow[length=0.5em]},
+    {Circle[scale=0.5,round]}-{Stealth[length=1.25em]},
+    shorten <=-0.35em
+  }, level/.style={
+    sibling distance=0.0em,
+    level distance=5.0em
+  }]
+\node [node] {8}
+child [path, xshift=-6em, edge from parent path={
+  (\tikzparentnode.south west) -- (\tikzchildnode.north)}
+] {
+  node [node, xshift=0em] {4}
+  child [path, xshift=-3.0em, edge from parent path={
+    (\tikzparentnode.south west) -- (\tikzchildnode.north)}
+  ] {
+    node [node] {2}
+    child [path, xshift=-1.5em, edge from parent path={
+      (\tikzparentnode.south west) -- (\tikzchildnode.north)}
+    ] { node [node] {1} }
+    child [path, xshift=1.5em, edge from parent path={
+      (\tikzparentnode.south east) -- (\tikzchildnode.north)}
+    ] { node [node] {3} }
+  }
+  child [path, xshift=3.0em, edge from parent path={
+    (\tikzparentnode.south east) -- (\tikzchildnode.north)}
+  ] {
+    node [node] {6}
+    child [path, xshift=-1.5em, edge from parent path={
+      (\tikzparentnode.south west) -- (\tikzchildnode.north)}
+    ] { node [node] {5} }
+    child [path, xshift=1.5em, edge from parent path={
+      (\tikzparentnode.south east) -- (\tikzchildnode.north)}
+    ] { node [node] {7} }
+  }
+}
+child [path, xshift=6em, edge from parent path={
+  (\tikzparentnode.south east) -- (\tikzchildnode.north)}
+] {
+  node [node, xshift=0em] {12}
+  child [path, xshift=-3.0em, edge from parent path={
+    (\tikzparentnode.south west) -- (\tikzchildnode.north)}
+  ] {
+    node [node] {10}
+    child [path, xshift=-1.5em, edge from parent path={
+      (\tikzparentnode.south west) -- (\tikzchildnode.north)}
+    ] { node [node] {9} }
+    child [path, xshift=1.5em, edge from parent path={
+      (\tikzparentnode.south east) -- (\tikzchildnode.north)}
+    ] { node [node, minimum width=0.5em] {} }
+  }
+  child [path, xshift=3.0em, edge from parent path={
+    (\tikzparentnode.south east) -- (\tikzchildnode.north)}
+  ] {
+    node [node] {14}
+    child [path, xshift=-1.5em, edge from parent path={
+      (\tikzparentnode.south west) -- (\tikzchildnode.north)}
+    ] { node [node] {13} }
+    child [path, xshift=1.5em, edge from parent path={
+      (\tikzparentnode.south east) -- (\tikzchildnode.north)}
+    ] { node [node] {15} }
+  }
+};
+\end{tikzpicture}

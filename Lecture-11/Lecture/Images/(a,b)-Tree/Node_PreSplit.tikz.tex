@@ -1,0 +1,46 @@
+\begin{tikzpicture}[
+  node/.style={
+    rectangle,
+    color=black,
+    draw=Mittel-Blau,
+    fill=Hell-Blau,
+    line width=0.15em,
+    minimum size=2.0em,
+    inner sep=0em
+  }, path_start/.style={
+%    -{Computer Modern Rightarrow[length=0.5em]},
+    -{Stealth[length=1.25em]},
+    line width=0.25em,
+    color=Mittel-Gruen
+  }, path/.style={
+    path_start,
+%    {Circle[scale=0.5,round]}-{Computer Modern Rightarrow[length=0.5em]},
+    {Circle[scale=0.5,round]}-{Stealth[length=1.25em]},
+    shorten <=-0.35em
+  }, level/.style={
+    sibling distance=0.0em,
+    level distance=5.0em
+  }, background/.style={
+    fill=black!20!white,
+    color=black!20!white
+  }, full/.style={
+    fill=orange!40!yellow,
+    draw=red!20!orange
+  }]
+\node [node, xshift=-1em, background] { }
+child [path, -, xshift=-5em, yshift=2em, background, edge from parent path={
+  (\tikzparentnode.south west) -- (\tikzchildnode.north)}
+] { };
+\node [node, xshift=1em, background] { }
+child [path, xshift=-1em, edge from parent path={
+  (\tikzparentnode.south west) -- (node1.north east)}
+] {
+  node [node, full, xshift=-3em] {2}
+  node [node, full, xshift=-1em] (node1) {10}
+  node [node, full, xshift=1em] {15}
+  node [node, full, xshift=3em] {24}
+}
+child [path, -, xshift=5em, yshift=2em, background, edge from parent path={
+  (\tikzparentnode.south east) -- (\tikzchildnode.north)}
+] { };
+\end{tikzpicture}

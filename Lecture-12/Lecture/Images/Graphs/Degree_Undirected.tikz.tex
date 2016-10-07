@@ -1,0 +1,23 @@
+\begin{tikzpicture}[
+  vertice/.style={
+    circle,
+    draw=Mittel-Blau,
+    color=Mittel-Blau,
+    inner sep=0em,
+    minimum size=1.75em,
+    line width=0.1em,
+    font=\large
+  }, edge/.style={
+    draw=Mittel-Gruen,
+    line width=0.2em
+  }
+]%
+
+\draw (0.0, 0.0) node[vertice] (vert0) {};
+
+\draw[edge] (vert0) -- (30:4em);
+\draw[edge] (vert0) -- (0:4em);
+\draw[edge] (vert0) -- (330:4em);
+
+\draw[edge] (vert0) -- (180:4em);
+\end{tikzpicture}%

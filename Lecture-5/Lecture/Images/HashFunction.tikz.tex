@@ -1,0 +1,52 @@
+\begin{adjustbox}{height=0.35\linewidth}%
+\begin{tikzpicture}[
+  body/.style={
+    draw=none,
+    fill={Mittel-Blau!40!white}
+  }, arrow/.style={
+    ->,
+    draw={Mittel-Blau},
+    line width=0.25em
+  }, bucket/.style={
+    draw=black,
+    fill={Hell-Gruen}
+  }, key/.style={
+    draw=black,
+    fill={yellow!80!white}
+  }
+]%
+\draw[body] (0, 0) -- (0, 10) -- (3, 7) -- (3, 3) -- (0, 0);
+
+\draw (-2.0, 5.0) node[anchor=east](x) {\Huge Key set $\mathbb{U}$};
+\draw (5.0, 5.0) node[anchor=west](x) {\Huge T (Hashtable)};
+
+%\draw (-2.0, 5.0) node[anchor=east](x) {\Huge $\mathbb{U}$};
+%\draw (5.0, 5.0) node[anchor=west](x) {\Huge T};
+
+%\draw (1.5, 10.5) node[color={Mittel-Blau}](x) {\Huge $h_1$};
+
+\foreach \y in {8,...,-8}{
+  \draw[key]
+    (-1.0, 0.5*\y + 5.25) -- (-1.5, 0.5*\y + 5.25) --
+    (-1.5, 0.5*\y + 4.75) -- (-1.0, 0.5*\y + 4.75) --
+    (-1.0, 0.5*\y + 5.25);
+}
+
+\foreach \i/\o in {
+    4.0/-2.0, 3.5/1.0, 3.0/-3.0, 2.5/2.0, 2.0/3.0, 1.5/3.0, 1.0/1.0,
+    0.5/2.0, 0.0/-2.0, -0.5/0.0, -1.0/-1.0, -1.5/-1.0, -2.0/-2.0,
+    -2.5/-3.0, -3.0/3.0, -3.5/-1.0, -4.0/2.0
+  } {
+  \draw[arrow]
+    (-0.5, \i + 5.0) -- (0.0, \i + 5.0) --
+    (3.0, 0.5*\o + 5.0) -- (3.5, 0.5*\o + 5.0);
+}
+
+\foreach \y in {3.0, 2.0, 1.0, 0.0, -1.0, -2.0, -3.0} {
+  \draw[bucket]
+    (3.75, 0.5*\y + 5.25) -- (4.25, 0.5*\y + 5.25) --
+    (4.25, 0.5*\y + 4.75) -- (3.75, 0.5*\y + 4.75) --
+    (3.75, 0.5*\y + 5.25);
+}
+\end{tikzpicture}%
+\end{adjustbox}%

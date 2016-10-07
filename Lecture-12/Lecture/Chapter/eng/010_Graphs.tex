@@ -1,0 +1,414 @@
+\section{Graphs}
+\subsection{Introduction}
+
+\begin{frame}{Graphs}{Introduction}
+  \textbf{Terminology:}
+  \begin{itemize}
+    \item
+      Each Graph {\color{Mittel-Blau}$G = (V, E)$} is build of:
+      \begin{itemize}
+        \item
+          A set of vertices {\color{Mittel-Blau}$V = \{v_1, v_2, \dotsc\}$}
+        \item
+          A set of edges {\color{Mittel-Blau}$E = \{e_1, e_2, \dotsc\}$}
+       \end{itemize}
+     \item
+       Each edge connects two vertices
+       ({\color{Mittel-Blau}$u, v \in V$})
+       \begin{itemize}
+         \item
+           Undirected edge: {\color{Mittel-Blau}$e = \{u, v\}$} (set)
+         \item
+           Directed edge: {\color{Mittel-Blau}$e = (u, v)$} (tuple)
+        \end{itemize}
+      \item
+        Self-loops are also possible:
+        {\color{Mittel-Blau}$e = (u, u)$} or
+        {\color{Mittel-Blau}$e = \{u, u\}$}
+  \end{itemize}
+  \vspace{-1.0em}
+  \begin{columns}
+    \begin{column}[b]{0.5\linewidth}
+      \begin{figure}
+        \begin{adjustbox}{width=0.75\linewidth}
+          \input{Lecture/Images/Graphs/Introduction_UndirectedGraph.tikz}
+        \end{adjustbox}
+        \caption{Undirected graph}
+        \label{fig:graphs:introduction_undirected}
+      \end{figure}
+    \end{column}
+    \begin{column}[b]{0.5\linewidth}
+      \begin{figure}
+        \begin{adjustbox}{width=0.75\linewidth}
+          \input{Lecture/Images/Graphs/Introduction_DirectedGraph.tikz}
+        \end{adjustbox}
+        \vspace{-1.0em}
+        \caption{Directed graph}
+        \label{fig:graphs:introduction_directed}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Graphs}{Introduction}
+  \textbf{Weighted graph:}
+  \begin{itemize}
+    \item
+      Each edge is marked with a real number named {\color{Mittel-Blau}weight}
+    \item
+      The {\color{Mittel-Blau}weight} is also named {\color{Mittel-Blau}length}
+      or {\color{Mittel-Blau}cost} of the edge depending on the application
+  \end{itemize}
+  \begin{figure}
+    \begin{adjustbox}{width=0.75\linewidth}
+      \input{Lecture/Images/Graphs/Introduction_WeightedGraph.tikz}
+    \end{adjustbox}
+    \caption{Weighted graph}
+    \label{fig:graphs:introduction_weighted}
+  \end{figure}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Graphs}{Introduction}
+  \begin{columns}
+    \begin{column}{0.40\linewidth}
+      \textbf{Example:} Road network
+      \begin{itemize}
+        \item
+          Corssing: {\color{Mittel-Blau}vertices}
+        \item
+          Roads: {\color{Mittel-Blau}edges}
+        \item
+          Travel time:\\
+          {\color{Mittel-Blau}costs of the edges}
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.6\linewidth}
+      \begin{figure}[!h]
+        \includegraphics[width=\linewidth]
+          {Lecture/Images/Graphs/Freiburg_OpenStreetMap.png}
+        \caption{Map of Freiburg $\copyright$~OpenStreetMap}
+        \label{fig:graphs:introduction_freiburg_osm}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+
+%-------------------------------------------------------------------------------
+
+\subsection{Implementation}
+
+\begin{frame}{Graphs}{Implementation}
+  \textbf{How to represent this graph digitally?}
+  \begin{itemize}
+    \item
+      {\color{Mittel-Blau}Adjacency matrix} with space consumtion
+      \begin{math}
+        \color{Mittel-Blau}
+        \Theta(\vert V \vert^2)
+      \end{math}
+  \end{itemize}
+  \begin{columns}
+    \begin{column}{0.45\linewidth}
+      \begin{figure}[!h]
+        \begin{adjustbox}{width=0.75\linewidth}
+          \input{Lecture/Images/Graphs/Storage_DirectedGraph.tikz}
+        \end{adjustbox}
+        \caption{Weighted graph with {\color{Mittel-Blau}$\vert V \vert = 4$},
+          {\color{Mittel-Blau}$\vert E \vert = 6$}}
+      \end{figure}
+    \end{column}
+    \begin{column}{0.45\linewidth}
+      \begin{figure}[!h]
+        \begin{tabular}{p{0.25em}p{1.15em}p{1.15em}p{1.15em}p{1.15em}p{1.15em}}
+          {} & {} & \multicolumn{4}{c}{end-vertice}\\
+          {} & {} & {%
+            \def\verticenumber{0}%
+            \input{Lecture/Images/Graphs/GraphVertice.tikz}%
+          } & {%
+            \def\verticenumber{1}%
+            \input{Lecture/Images/Graphs/GraphVertice.tikz}%
+          } & {%
+            \def\verticenumber{2}%
+            \input{Lecture/Images/Graphs/GraphVertice.tikz}%
+          } & {%
+            \def\verticenumber{3}%
+            \input{Lecture/Images/Graphs/GraphVertice.tikz}%
+          }\\
+          \cline{3-6}
+          \multirow{4}{1em}{
+            \rotatebox{90}{start-vertice}
+          } & {%
+            \def\verticenumber{0}%
+            \input{Lecture/Images/Graphs/GraphVertice.tikz}%
+          } &
+          \multicolumn{1}{|c|}{} & \multicolumn{1}{c}{\color{Mittel-Gruen}2} &
+          \multicolumn{1}{|c|}{} & \multicolumn{1}{c|}{\color{Mittel-Gruen}3}\\
+          \cline{3-6}
+          {} & {%
+            \def\verticenumber{1}%
+            \input{Lecture/Images/Graphs/GraphVertice.tikz}%
+          } &
+          \multicolumn{1}{|c|}{} & \multicolumn{1}{c}{} &
+          \multicolumn{1}{|c|}{\color{Mittel-Gruen}9} & \multicolumn{1}{c|}{}\\
+          \cline{3-6}
+          {} & {%
+            \def\verticenumber{2}%
+            \input{Lecture/Images/Graphs/GraphVertice.tikz}%
+          } &
+          \multicolumn{1}{|c|}{} & \multicolumn{1}{c}{} &
+          \multicolumn{1}{|c|}{} & \multicolumn{1}{c|}{\color{Mittel-Gruen}-1}\\
+          \cline{3-6}
+          {} & {%
+            \def\verticenumber{3}%
+            \input{Lecture/Images/Graphs/GraphVertice.tikz}%
+          } &
+          \multicolumn{1}{|c|}{} & \multicolumn{1}{c}{\color{Mittel-Gruen}7} &
+          \multicolumn{1}{|c|}{\color{Mittel-Gruen}-2} & \multicolumn{1}{c|}{}\\
+          \cline{3-6}
+        \end{tabular}
+        \caption{Adjacency matrix}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Graphs}{Implementation}
+  \textbf{How to represent this graph digitally?}
+  \begin{itemize}
+    \item
+      {\color{Mittel-Blau}Adjacency list / fields} with space consumtion
+      \begin{math}
+        \color{Mittel-Blau}
+        \Theta(\vert V \vert + \vert E \vert)
+      \end{math}
+    \item
+      Each list item stores the {\color{Mittel-Blau}target vertice}
+      and the {\color{Mittel-Gruen}cost} of the edge
+  \end{itemize}
+  \begin{columns}
+    \begin{column}{0.45\linewidth}
+      \begin{figure}[!h]
+        \begin{adjustbox}{width=0.75\linewidth}
+          \input{Lecture/Images/Graphs/Storage_DirectedGraph.tikz}
+        \end{adjustbox}
+        \caption{Weighted graph with {\color{Mittel-Blau}$\vert V \vert = 4$},
+          {\color{Mittel-Blau}$\vert E \vert = 6$}}
+      \end{figure}
+    \end{column}
+    \begin{column}{0.45\linewidth}
+      \begin{figure}[!h]
+        \begin{tabular}{p{0.25em}p{1.0em}p{1.0em}p{1.0em}p{1.0em}p{1.0em}}
+          \cline{3-4}
+          \multirow{4}{1em}{
+            \rotatebox{90}{start-vertice}
+          } & {%
+            \def\verticenumber{0}%
+            \input{Lecture/Images/Graphs/GraphVertice.tikz}%
+          } &
+          \multicolumn{1}{|c|}{{\color{Mittel-Blau}1}, \color{Mittel-Gruen}2} &
+          \multicolumn{1}{c|}{{\color{Mittel-Blau}3}, \color{Mittel-Gruen}3}\\
+          \cline{3-4}
+          {} & {%
+            \def\verticenumber{1}%
+            \input{Lecture/Images/Graphs/GraphVertice.tikz}%
+          } &
+          \multicolumn{1}{|c|}{{\color{Mittel-Blau}2}, \color{Mittel-Gruen}9}\\
+          \cline{3-3}
+          {} & {%
+            \def\verticenumber{2}%
+            \input{Lecture/Images/Graphs/GraphVertice.tikz}%
+          } &
+          \multicolumn{1}{|c|}{{\color{Mittel-Blau}3}, \color{Mittel-Gruen}-1}\\
+          \cline{3-4}
+          {} & {%
+            \def\verticenumber{3}%
+            \input{Lecture/Images/Graphs/GraphVertice.tikz}%
+          } &
+          \multicolumn{1}{|c|}{{\color{Mittel-Blau}1}, \color{Mittel-Gruen}7} &
+          \multicolumn{1}{c|}{{\color{Mittel-Blau}2}, \color{Mittel-Gruen}-2}\\
+          \cline{3-4}
+        \end{tabular}
+        \caption{Adjacency matrix}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Graphs}{Implementation}
+  \textbf{Visual ordering:}
+  \begin{itemize}
+    \item
+      Graph is fully defined through the
+      {\color{Mittel-Blau}adjacency matrix / list}
+    \item
+      (Type of) visual display of the graph is unimportant
+  \end{itemize}
+  \begin{columns}
+    \begin{column}[b]{0.4\linewidth}
+      \begin{figure}[!h]
+        \begin{adjustbox}{width=0.8\linewidth}
+          \input{Lecture/Images/Graphs/Storage_DirectedGraph.tikz}
+        \end{adjustbox}
+        \vspace{-0.75em}
+        \caption{Weighted graph with {\color{Mittel-Blau}$\vert V \vert = 4$},
+          {\color{Mittel-Blau}$\vert E \vert = 6$}}
+      \end{figure}
+    \end{column}
+    \begin{column}[b]{0.55\linewidth}
+      \begin{figure}[!h]
+        \begin{adjustbox}{width=0.875\linewidth}
+          \input{Lecture/Images/Graphs/Storage_DirectedGraphOrdered.tikz}
+        \end{adjustbox}
+        \vspace{-0.75em}
+        \caption{Same graph ordered by number}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Graphs}{Implementation - Python}
+  \lstinputlisting[
+    language=Python,
+    basicstyle=\small,
+    tabsize=4,
+    style={python-idle-code},
+    breaklines=false,
+    escapechar={@},
+    emph={Graph, __init__, addVertice, addEdge, toString},
+    emphstyle={\color{blue}}
+  ]{Lecture/Code/Graph/GraphPart1.py}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Graphs}{Implementation - Python}
+  \lstinputlisting[
+    language=Python,
+    basicstyle=\small,
+    tabsize=4,
+    style={python-idle-code},
+    breaklines=false,
+    escapechar={@},
+    emph={Graph, __init__, addVertice, addEdge, toString},
+    emphstyle={\color{blue}}
+  ]{Lecture/Code/Graph/GraphPart2.py}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Graphs}{Implementation - Java}
+  \lstinputlisting[
+    language=Java,
+    basicstyle=\small,
+    tabsize=4,
+    style={java-eclipse-code},
+    breaklines=false,
+    emph={vertices, edges},
+    emphstyle=\color{java_static}
+  ]{Lecture/Code/Graph/GraphPart1.java}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Graphs}{Implementation - Java}
+  \lstinputlisting[
+    language=Java,
+    basicstyle=\small,
+    tabsize=4,
+    style={java-eclipse-code},
+    breaklines=false,
+    emph={vertex},
+    emphstyle=\color{java_variable},
+    mathescape=true
+  ]{Lecture/Code/Graph/GraphPart2.java}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Graphs}{Implementation - Java}
+  \vspace{-0.5em}
+  \lstinputlisting[
+    language=Java,
+    basicstyle=\small,
+    tabsize=4,
+    style={java-eclipse-code},
+    breaklines=false,
+    emph={from, to},
+    emphstyle=\color{java_variable},
+    mathescape=true
+  ]{Lecture/Code/Graph/GraphPart3.java}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Graphs}{Implementation - C++ - Header}
+  \lstinputlisting[
+    language=C++,
+    basicstyle=\small,
+    tabsize=4,
+    style={cpp-eclipse-code},
+    morekeywords={endl},
+    emph={_vertices, _edges},
+    emphstyle=\color{cpp_static},
+    escapechar={@}
+  ]{Lecture/Code/Graph/Graph.h}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Graphs}{Implementation - C++}
+  \lstinputlisting[
+    language=C++,
+    basicstyle=\small,
+    tabsize=4,
+    style={cpp-eclipse-code},
+    morekeywords={endl},
+    emph={_vertices, _edges},
+    emphstyle=\color{cpp_static},
+    escapechar={@}
+  ]{Lecture/Code/Graph/GraphPart1.cpp}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Graphs}{Implementation - C++}
+  \vspace{-1.0ems}
+  \lstinputlisting[
+    language=C++,
+    basicstyle=\small,
+    tabsize=4,
+    style={cpp-eclipse-code},
+    breaklines=false,
+    morekeywords={endl},
+    emph={_vertices, _edges},
+    emphstyle=\color{cpp_static},
+    escapechar={@}
+  ]{Lecture/Code/Graph/GraphPart2.cpp}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Graphs}{Implementation - C++}
+  \lstinputlisting[
+    language=C++,
+    basicstyle=\small,
+    tabsize=4,
+    style={cpp-eclipse-code},
+    breaklines=false,
+    morekeywords={endl},
+    emph={_vertices, _edges},
+    emphstyle=\color{cpp_static},
+    escapechar={@}
+  ]{Lecture/Code/Graph/GraphPart3.cpp}
+\end{frame}

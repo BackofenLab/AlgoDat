@@ -1,0 +1,34 @@
+\begin{adjustbox}{width=\linewidth}
+\begin{tikzpicture}[
+  node/.style={
+    color=black
+  }, path/.style={
+    ->,
+    line width=0.25em,
+    color=Mittel-Blau
+  }, path_error/.style={
+    <-,
+    line width=0.25em,
+    color=red
+  }, lleft/.style={
+    color=Mittel-Gruen,
+    shift={(-0.5em,-0.75em)}
+  }, lright/.style={
+    color=Mittel-Gruen!80!black,
+    shift={(0.5em,-0.75em)}
+  }, level/.style={
+    sibling distance = 8.0em/#1,
+    level distance = 4.0em
+  }
+]
+\node [node] (root) {(11, {\color{green2}E})}
+child [path_error] {
+  node [node] {(8, {\color{green2}M})}
+  child [path] {node [node] {(17, {\color{green2}Q})}}
+  child [path] {node [node] {(9, {\color{green2}H})}}
+}
+child [path_error] {
+  node [node] {(5, {\color{green2}A})}
+};
+\end{tikzpicture}
+\end{adjustbox}

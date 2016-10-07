@@ -1,0 +1,41 @@
+\begin{adjustbox}{width=\linewidth}%
+\begin{tikzpicture}[
+  element/.style={
+    draw={Mittel-Blau},
+    fill={white},
+    line width=0.075em
+  }, element_link/.style={
+    draw={Mittel-Blau},
+    fill={Hell-Blau},
+    line width=0.075em
+  }, arrow/.style={
+    draw={Mittel-Blau},
+    line width=0.125em
+  }
+]%
+\foreach \x in {3,2,...,-1}{
+  \ifnum \x>-1
+    \ifnum \x=2 \else
+      \draw[element_link] (1.5*\x, 0.5) rectangle (1.5*\x + 1.0, 0.75);
+      \draw[element_link] (1.5*\x, 1.0) rectangle (1.5*\x + 1.0, 0.75);
+      \draw[element] (1.5*\x, 0.0) rectangle (1.5*\x + 1.0, 0.5);
+      
+      \ifnum \x<3
+        \draw (1.5*\x + 0.5, 0.25) node {\footnotesize \x};
+      \else
+        \draw (1.5*\x + 0.5, 0.25) node {\footnotesize n};
+      \fi
+    \fi
+  \fi
+  
+  \draw[->, arrow] (1.5*\x + 1.0, 0.875) -- (1.5*\x + 1.5, 0.875);
+  \draw[<-, arrow] (1.5*\x + 1.0, 0.625) -- (1.5*\x + 1.5, 0.625);
+}
+
+\draw (-1.0, 0.875) node {\footnotesize First};
+\draw (-1.0, 0.625) node {\footnotesize{\color{Mittel-Blau}None}};
+\draw (3.5, 0.5) node {\footnotesize ...};
+\draw (6.5, 0.625) node {\footnotesize Last};
+\draw (6.5, 0.875) node {\footnotesize{\color{Mittel-Blau}None}};
+\end{tikzpicture}%
+\end{adjustbox}%

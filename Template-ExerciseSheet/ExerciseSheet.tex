@@ -1,0 +1,22 @@
+\documentclass[ngerman,12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\input{build/Config}
+
+\input{Packages/Packages_General}
+\input{Packages/Packages_\SettingsLanguage}
+
+\input{Settings/Settings_General}
+\input{Settings/Settings_\SettingsLanguage}
+
+% We need topics for our sources for grouping
+\usepackage[defaultbib]{bibtopic}
+\bibliographystyle{alpha}
+\renewcommand{\thebtauxfile}{\jobname.\arabic{btauxfile}.btaux}
+
+%\begin{document}
+\input{Template}
+\input{ExerciseSheet/ExerciseSheet_\SettingsLanguage}
+\end{document}
