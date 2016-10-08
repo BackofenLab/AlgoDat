@@ -19,16 +19,33 @@ The official version of the course is stored in the master branch. The aim of th
 
 *Immediately correct bugs you find in the master branch*
 
+
 ### Build slides and excercies
 
-It's easy, just do make:
+You need the following localy installed:
 
 ```
-make
+Windows:
+MikTeX + Cygwin + Make
+
+Linux:
+TeXlive + Make
 ```
 
-Ok, you need to have the Latex world installed and you need to have the Corporate Design latex package available. More information can be found here: http://www.zuv.uni-freiburg.de/service/cd ... ok maybe not so easy.
+It's easy, just use `make` in the root directory:
 
+```
+Windows:
+make build
+
+Linux:
+make build_server
+```
+
+Use `make help` to retrieve a usage info.
+If you want to only build one lecture / exercisesheet use ```make build``` in the desired subdirectory.
+
+To use the University of Freiburg design you have to install it manually and use the `DESIGN` switch. More information can be found here: http://www.zuv.uni-freiburg.de/service/cd
 
 ## Clone repository 
 `$ git clone https://github.com/BackofenLab/BioinformaticsI.git`
