@@ -11,12 +11,20 @@
 \input{Settings/Settings_General}
 \input{Settings/Settings_\SettingsLanguage}
 
-% We need topics for our sources for grouping
-\usepackage[defaultbib]{bibtopic}
-\bibliographystyle{alpha}
-\renewcommand{\thebtauxfile}{\jobname.\arabic{btauxfile}.btaux}
+% GENERALLY USEFUL MATH MAKROS
+\def\ceil#1{{\left\lceil#1\right\rceil}}
+\def\floor#1{{\left\lfloor#1\right\rfloor}}
+\def\mod{\mbox{ mod }}
+\def\div{\mbox{ div }}
+\def\sm{\backslash}
+\def\IN{\mathbb{N}}
+\def\IZ{\mathbb{Z}}
+\def\IR{\mathbb{R}}
+\def\Oh#1{\mathcal{O}\left(#1\right)}
+\def\Om#1{\Omega\left(#1\right)}
+\def\Th#1{\Theta\left(#1\right)}
+\def\eps{\varepsilon}
 
-%\begin{document}
-\input{Template}
-\input{ExerciseSheet/ExerciseSheet_\SettingsLanguage}
+\input{Styles/Sheet/\SettingsDesign/Template}
+\input{build/Exercises_\SettingsLanguage}
 \end{document}

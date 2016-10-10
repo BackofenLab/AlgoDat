@@ -1,97 +1,112 @@
 NAME := ExerciseSheet
 EXPORT_DIR := ExerciseSheets
+EXERCISES_NAME := Exercises
 
-ROOT_DIR := $(shell dirname "$(realpath $(lastword $(MAKEFILE_LIST)))")
+MAKEFILE_PATH := $(word $(words $(MAKEFILE_LIST)), $(MAKEFILE_LIST))
+ROOT_DIR := $(shell dirname "$(realpath $(MAKEFILE_PATH))")
 FULL_NAME := $(shell basename "$(ROOT_DIR)")
 
+LANGUAGE ?= eng
+PROGLANG ?= python
+DESIGN ?= plain
+
+BUILD_NAME = $(NAME)_$(LANGUAGE)
+BUILD_EXERCISES_NAME = $(EXERCISES_NAME)_$(LANGUAGE)
+
 all: clean build
+
+# ------------------------------------------------------------------------------
+help:
+	@echo "Language:"
+	@echo "	Use switch LANGUAGE=<value> to set the language"
+	@echo "	eng: english"
+	@echo
+	@echo "Programming Language:"
+	@echo "	Use switch PROGLANG=<value> to set the language"
+	@echo "	java: Java"
+	@echo "	cpp: C++"
+	@echo "	python: Python"
+	@echo
+	@echo "Design:"
+	@echo "	Use switch DESIGN=<value> to set the lecture design"
+	@echo "	ufcd: Design of University of Freiburg"
+	@echo "	plain: Standard design of the beamer template"
+	@echo
+	@echo "MikTeX: (Windows)"
+	@echo "	clean: Clean all build files"
+	@echo "	build: Build the files in the specified language"
+	@echo "	export: Build and export all files into the destination folders"
+	@echo
+	@echo "TeX: (General)"
+	@echo "	build_server:"
+	@echo "		Build the sheet into the source directory"
+	@echo "	export_server: Build and export all files into the destination folders"
 
 # ------------------------------------------------------------------------------
 clean:
 	@echo "Cleaning"
 	@rm -r -f build
 
-help:
-	@echo "Targets:"
-	@echo "	clean: Cleans the workspace"
-	@echo "	----------------------------------------------------------"
-	@echo "	build/LANGUAGE: Builds the files in the specified language"
-	@echo "	build -> build/eng: Builds the english files"
-	@echo "	----------------------------------------------------------"
-	@echo "	rebuild/LANGUAGE: Rebuilds the files in the specified language"
-	@echo "	rebuild -> rebuild/eng: Rebuilds the english files"
-	@echo "	----------------------------------------------------------"
-	@echo "	export/LANGUAGE: Builds and exports the specified language"
-	@echo "	export -> export/eng: Builds and exports the english files"
-	@echo "	----------------------------------------------------------"
-	@echo "	export_now/LANGUAGE: Only exports the specified language"
-	@echo "	export_now -> export_now/eng: Only exports the english files"
-
-build: build/eng
-export: export/eng
-export_now: export_now/eng
-
 # ------------------------------------------------------------------------------
-build/eng: NEXT_TARGET := do_build
-build/eng: config/eng
-
-build/deu: NEXT_TARGET := do_build
-build/deu: config/deu
-
-rebuild/eng: clean build/eng
-
-rebuild/deu: clean build/deu
-
-export/eng: NEXT_TARGET := do_export
-export/eng: config/eng
-
-export/deu: NEXT_TARGET := do_export
-export/deu: config/deu
-
-export_now/eng: NEXT_TARGET := do_export_now
-export_now/eng: config/eng
-
-export_now/deu: NEXT_TARGET := do_export_now
-export_now/deu: config/deu
-
-# ------------------------------------------------------------------------------
-do_export_now:
+build: directories build/$(BUILD_NAME).pdf
+export: build
 	@echo "Exporting"
 	@mkdir -p ../$(EXPORT_DIR)
 	@cp build/$(BUILD_NAME).pdf ../$(EXPORT_DIR)/$(FULL_NAME)_$(LANGUAGE).pdf
 
 # ------------------------------------------------------------------------------
-do_export: do_build do_export_now
-
-# ------------------------------------------------------------------------------
-do_build: build/$(BUILD_NAME).pdf
+build_server: directories_server build_server_forced
+export_server: build_server
+	@echo "Exporting (server)"
+	@cp $(BUILD_NAME).pdf ../$(FULL_NAME)_$(LANGUAGE).pdf
 
 # ------------------------------------------------------------------------------
 directories:
 	@echo "Creating directories"
 	@mkdir -p build
 
-# ------------------------------------------------------------------------------
-config: directories
-	@echo "Configuring to $(LANGUAGE_NAME) ($(NAME)_$(LANGUAGE))"
-	@$(MAKE) --no-print-directory $(NEXT_TARGET) LANGUAGE=$(LANGUAGE) LANGUAGE_NAME=$(LANGUAGE_NAME) BUILD_NAME="$(NAME)_$(LANGUAGE)"
-
-config/eng:
-	@$(MAKE) --no-print-directory config NEXT_TARGET=$(NEXT_TARGET) LANGUAGE=eng LANGUAGE_NAME=english
-
-config/deu:
-	@$(MAKE) --no-print-directory config NEXT_TARGET=$(NEXT_TARGET) LANGUAGE=deu LANGUAGE_NAME=german
+directories_server:
+	@echo "Creating directories (server)"
+	@mkdir -p build
 
 # ------------------------------------------------------------------------------
-build/$(BUILD_NAME).pdf:
+build/$(BUILD_EXERCISES_NAME).tex:
+	@echo "Reading chapters ($(BUILD_EXERCISES_NAME))"
+	@ls Content/Exercises/$(LANGUAGE)/*.tex | awk '{printf "\\input{%s}\n", $$1}' > build/$(BUILD_EXERCISES_NAME).tex
+
+# ------------------------------------------------------------------------------
+build/$(BUILD_NAME).pdf: build/$(BUILD_EXERCISES_NAME).tex
 	@echo "Building $(BUILD_NAME).pdf"
 	@
-	@echo "Creating $(LANGUAGE_NAME) config"
+	@echo "Creating $(LANGUAGE) config"
 	@echo '\def\SettingsLanguage{$(LANGUAGE)}' > build/Config.tex
-	@echo '\def\SettingsLanguageName{$(LANGUAGE_NAME)}' >> build/Config.tex
+	@echo '\def\SettingsProgLanguage{$(PROGLANG)}' >> build/Config.tex
+	@echo '\def\SettingsDesign{$(DESIGN)}' >> build/Config.tex
 	@
-	@echo "Building (1st iteration)"
+	@echo "Building"
 	@latexmk -pdf -quiet -aux-directory=build -output-directory=build $(NAME).tex
 	@
 	@echo "Moving output"
 	@mv build/$(NAME).pdf build/$(BUILD_NAME).pdf
+
+# ------------------------------------------------------------------------------
+# Server (Do everything manually)
+build_server_forced: build/$(BUILD_CHAPTER_NAME).tex
+	@echo "Building $(BUILD_NAME).pdf (server)"
+	@
+	@echo "Creating $(LANGUAGE) config"
+	@echo '\def\SettingsLanguage{$(LANGUAGE)}' > build/Config.tex
+	@echo '\def\SettingsProgLanguage{$(PROGLANG)}' >> build/Config.tex
+	@echo '\def\SettingsDesign{$(DESIGN)}' >> build/Config.tex
+	@
+	@echo "Building (1st iteration)"
+	@pdflatex -interaction=batchmode -disable-installer -quiet $(NAME).tex
+	@
+	@echo "Building (2nd iteration)"
+	@pdflatex -interaction=batchmode -disable-installer -quiet $(NAME).tex
+	@
+	@echo "Building (3rd iteration)"
+	@pdflatex -interaction=batchmode -disable-installer -quiet $(NAME).tex
+	@
+	@echo "Moving output"
+	@mv $(NAME).pdf $(BUILD_NAME).pdf
