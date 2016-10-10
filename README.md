@@ -48,7 +48,7 @@ If you want to only build one lecture / exercisesheet use ```make build``` in th
 To use the University of Freiburg design you have to install it manually and use the `DESIGN` switch. More information can be found here: http://www.zuv.uni-freiburg.de/service/cd
 
 ## Clone repository 
-`$ git clone https://github.com/BackofenLab/BioinformaticsI.git`
+`$ git clone https://github.com/BackofenLab/AlgoDat.git`
 
 ## Creating your own branch
 Use the material in the master branch as a starting point and make your changes in your branch. First create your own branch
