@@ -1,0 +1,12 @@
+Let $\|U\| = \lbrace 0,1,2,\dots,N-1 \rbrace$ be a universe of $\mathbf{N}$
+potential keys, p a prime number $\geq \|U\|$ and m the size of the hash table.
+We have seen in the lecture that the class of hash functions
+\begin{math}
+  H = \lbrace h_{a,b}: a \in \lbrace 1, \dots, p-1 \rbrace,
+    b \in \lbrace 0, \dots, p-1 \rbrace\rbrace
+\end{math}
+with $h_{a,b}(x) = ((ax + b) mod p) mod m$ is $c$ universal.
+
+In the following exercises you will write a program which demonstrates that
+this property holds. The amount of code should be relatively minor this time.
+Most importantly, you need to understand the concept of universality.

@@ -1,0 +1,45 @@
+\exercise{2} \points{5}\\
+Expand the class \textit{DynamicArrayMain} such that different tests can be
+selected (ideally by using a command line argument to set the test).
+Make the program produce an output which represents the accumulated runtime
+for a sequence of $n$ operations.
+You can plot your results e.g. with \textit{gnuplot} (see description below).
+
+Implement the following tests:
+\begin{itemize}
+  \item[Test 1:]
+    A sequence of 10 million \textit{append} operations starting with an empty
+    array.
+  \item[Test 2:]
+    A sequence of 10 million \textit{remove} operations starting with an array
+    containing 10 million elements.
+  \item[Test 3:]
+    A sequence of 10 million operations starting with an array containing 1
+    million elements.
+    The operations should start with \textit{append} and then alternate after
+    each reallocation between \textit{append} and \textit{remove}.
+  \item[Test 4:]
+    Same as Test 3, but this time starting with \textit{remove}.
+\end{itemize}
+Generate runtime plots for all tests and commit them inside a subdirectory
+\textit{non-code} as part of your solution into the SVN directory.
+You can e.g. use \textit{gnuplot} for plotting the runtime.
+Make your program generate a text file (e.g. "runtime.txt") or just redirect
+the standard output of your program into the text file on the command line:
+
+\texttt{./DynamicArrayMain > runtime.txt}
+
+The text file should have the following format:\\
+\textit{<input size 1> <TAB> <runtime 1>}\\
+\textit{<input size 2> <TAB> <runtime 2>}\\
+...\\
+\textit{<input size n> <TAB> <runtime n>}
+
+Based on this file you can generate a plot with the following command:\\
+\texttt{gnuplot -e "plot 'runtime.txt'; pause -1;"}
+
+A window will subsequently pop up, containing the desired plot.
+You can then store the plot e.g. in JPEG format.
+For details on the used parameters please check gnuplot’s man pages by
+executing \enquote{\texttt{man gnuplot}} or have a look here:
+\url{http://www.gnuplot.info/docs\_4.6/gnuplot.pdf}

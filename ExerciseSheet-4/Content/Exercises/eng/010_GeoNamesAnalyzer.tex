@@ -1,0 +1,27 @@
+\exercise{1} \points{15}\\
+Write a class \textit{GeoNamesAnalyzer} with the following methods:
+\begin{enumerate}
+  \item
+    A method \textit{readInfoFromFile} to get the described information from
+    the \textit{GeoNames.org} tab-separated table file \textit{allCountries.txt}
+    which you can find on our website.
+    All lines in the file with a P in column 7 are localities.
+    You can find the locality names in column 2.
+    Only consider localities with inhabitants (column 15).
+    You can find the country code in column 9.
+  \item
+    A method \textit{computeMostFrequentCityNamesUsingSorting} which
+    calculates the most-frequent world-wide locality names via sorting.
+  \item
+    A method \textit{computeMostFrequentCityNamesUsingMap} which does the
+    same, but instead of sorting via the usage of associative arrays.
+    Write one unit test for each of the two compute\ldots methods.
+    Do not use the \textit{allCountries.txt} file for testing,
+    but instead generate a small table with your program
+    (or simply use the Linux command line for generating a test table).
+    
+    \textbf{ATTENTION}: Do not upload the \textit{allCountries.txt} file into
+    the SVN directory!
+\end{enumerate}
+
+Hints: TODO
