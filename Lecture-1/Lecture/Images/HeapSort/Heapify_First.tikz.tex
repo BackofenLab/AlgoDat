@@ -1,0 +1,48 @@
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+\begin{tikzpicture}[
+  node/.style={
+    color=black
+  },
+  path/.style={
+    ->,
+    line width=0.25em,
+    color=Mittel-Blau
+  },
+  path_error/.style={
+    <-,
+    line width=0.25em,
+    color=red!70!gray
+  },
+  lleft/.style={
+    color=Mittel-Gruen,
+    shift={(-0.5em,-0.5em)}
+  },
+  lright/.style={
+    color=Mittel-Gruen!80!black,
+    shift={(0.5em,-0.5em)}
+  },
+  level/.style={
+    sibling distance = 7.0em/#1,
+    level distance = 4.0em
+  }
+]%
+\begin{pgfonlayer}{main}
+  \node [node, label={[lleft]:0}] {11}
+  child [path] {
+    node [node, label={[lleft]:1}] (left) {\textbf{7}}
+    child[path_error] {node [node, label={[lleft]:3}] {3}}
+    child[path_error] {node [node, label={[lright]:4}] {2}}
+  }
+  child [path] {
+    node [node, label={[lright]:2}] (right) {\textbf{8}}
+    child[path_error] {node [node, label={[lleft]:5}] {5}}
+    child[path_error] {node [node, label={[lright]:6}] {4}}
+  };
+\end{pgfonlayer}
+
+\begin{pgfonlayer}{background}
+  \fill [color={Hell-Blau!40}] ($(left) - (1.0, 1.80) - (0.25, 0.025)$)
+    rectangle ($(right) + (1.0, 0.2) + (0.25, 0.025)$);
+\end{pgfonlayer}
+\end{tikzpicture}

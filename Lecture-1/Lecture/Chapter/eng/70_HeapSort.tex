@@ -30,9 +30,9 @@
   \begin{columns}
     \begin{column}{0.45\textwidth}
       \begin{figure}[!h]
-        \begin{minipage}{\textwidth}
-          \input{Lecture/Images/MinHeap_Valid.tikz}
-        \end{minipage}
+        \begin{adjustbox}{width=\linewidth}
+          \input{Lecture/Images/Heap/MinHeap_Valid.tikz}
+        \end{adjustbox}
         \caption{Valid min heap}
         \label{fig:minheap_valid}
       \end{figure}
@@ -40,9 +40,9 @@
     \hspace*{0.1em}%
     \begin{column}{0.45\textwidth}
       \begin{figure}[!h]
-        \begin{minipage}{\textwidth}
-          \input{Lecture/Images/MinHeap_Invalid.tikz}
-        \end{minipage}
+        \begin{adjustbox}{width=\linewidth}
+          \input{Lecture/Images/Heap/MinHeap_Invalid.tikz}
+        \end{adjustbox}
         \caption{Invalid min heap}
         \label{fig:minheap_invalid}
       \end{figure}
@@ -72,9 +72,9 @@
   \begin{columns}%
     \begin{column}{0.5\textwidth}
       \begin{figure}[!h]%
-        \begin{minipage}{\textwidth}%
-          \input{Lecture/Images/MinHeap_Numbered.tikz}%
-        \end{minipage}%
+        \begin{adjustbox}{width=\linewidth}
+          \input{Lecture/Images/Heap/MinHeap_Numbered.tikz}%
+        \end{adjustbox}
         \vspace*{-0.5em}%
         \caption{Min heap}%
         \label{fig:minheap_numbered}%
@@ -84,26 +84,24 @@
       \begin{table}[!h]
         \caption{Elements stored in array}
         \label{tab:minheap_numbered}
-        \begin{minipage}{12.97em}
-          \begin{tabularx}{\textwidth}{ccccccc}
-            {\color{Mittel-Gruen}0}&
-            {\color{Mittel-Gruen}1}&
-            {\color{Mittel-Gruen}2}&
-            {\color{Mittel-Gruen}3}&
-            {\color{Mittel-Gruen}4}&
-            {\color{Mittel-Gruen}5}&
-            {\color{Mittel-Gruen}6}\\
-            \hline
-            \multicolumn{1}{|c}{4}&%
-            \multicolumn{1}{|c}{8}&%
-            \multicolumn{1}{|c}{5}&%
-            \multicolumn{1}{|c}{17}&%
-            \multicolumn{1}{|c}{9}&%
-            \multicolumn{1}{|c}{11}&%
-            \multicolumn{1}{|c|}{7}\\
-            \hline
-          \end{tabularx}
-        \end{minipage}
+        \begin{tabular}{ccccccc}
+          {\color{Mittel-Gruen}0}&
+          {\color{Mittel-Gruen}1}&
+          {\color{Mittel-Gruen}2}&
+          {\color{Mittel-Gruen}3}&
+          {\color{Mittel-Gruen}4}&
+          {\color{Mittel-Gruen}5}&
+          {\color{Mittel-Gruen}6}\\
+          \hline
+          \multicolumn{1}{|c}{4}&%
+          \multicolumn{1}{|c}{8}&%
+          \multicolumn{1}{|c}{5}&%
+          \multicolumn{1}{|c}{17}&%
+          \multicolumn{1}{|c}{9}&%
+          \multicolumn{1}{|c}{11}&%
+          \multicolumn{1}{|c|}{7}\\
+          \hline
+        \end{tabular}
       \end{table}
     \end{column}
   \end{columns}
@@ -125,21 +123,21 @@
   \begin{figure}[!h]%
     \begin{columns}%
       \begin{column}{0.3\textwidth}%
-        \begin{minipage}{\textwidth}%
-          \input{Lecture/Images/MinHeap_Repair_First.tikz}%
-        \end{minipage}%
+        \begin{adjustbox}{width=\linewidth}
+          \input{Lecture/Images/HeapSort/MinHeap_Repair_First.tikz}%
+        \end{adjustbox}%
       \end{column}%
       \hspace*{0.05em}%
       \begin{column}{0.3\textwidth}%
-        \begin{minipage}{\textwidth}%
-          \input{Lecture/Images/MinHeap_Repair_Second.tikz}%
-        \end{minipage}
+        \begin{adjustbox}{width=\linewidth}
+          \input{Lecture/Images/HeapSort/MinHeap_Repair_Second.tikz}%
+        \end{adjustbox}
       \end{column}%
       \hspace*{0.05em}%
       \begin{column}{0.3\textwidth}%
-        \begin{minipage}{\textwidth}%
-          \input{Lecture/Images/MinHeap_Repair_Third.tikz}%
-        \end{minipage}%
+        \begin{adjustbox}{width=\linewidth}
+          \input{Lecture/Images/HeapSort/MinHeap_Repair_Third.tikz}%
+        \end{adjustbox}%
       \end{column}%
     \end{columns}%
     \caption{Repair of a min heap}%
@@ -173,25 +171,25 @@
     \begin{figure}[!h]%
       \begin{columns}%
         \begin{column}{0.33\textwidth}%
-          \begin{minipage}{\textwidth}%
-            \begin{center}%
-              \input{Lecture/Images/HeapSort_First.tikz}%
-            \end{center}%
-          \end{minipage}%
+          \begin{centering}
+            \begin{adjustbox}{height=8em}
+              \input{Lecture/Images/HeapSort/HeapSort_First.tikz}%
+            \end{adjustbox}%
+          \end{centering}
         \end{column}%
         \begin{column}{0.33\textwidth}%
-          \begin{minipage}{\textwidth}%
-            \begin{center}%
-              \input{Lecture/Images/HeapSort_Second.tikz}%
-            \end{center}%
-          \end{minipage}%
+          \begin{centering}
+            \begin{adjustbox}{height=8em}
+              \input{Lecture/Images/HeapSort/HeapSort_Second.tikz}%
+            \end{adjustbox}%
+          \end{centering}
         \end{column}%
         \begin{column}{0.33\textwidth}%
-          \begin{minipage}{\textwidth}%
-            \begin{center}%
-              \input{Lecture/Images/HeapSort_Third.tikz}%
-            \end{center}%
-          \end{minipage}%
+          \begin{centering}
+            \begin{adjustbox}{height=8em}
+              \input{Lecture/Images/HeapSort/HeapSort_Third.tikz}%
+            \end{adjustbox}%
+          \end{centering}
         \end{column}%
       \end{columns}%
       \caption{One iteration of HeapSort}%
@@ -224,93 +222,81 @@
   \begin{table}[!h]%
     \caption{Input in array}%
     \label{tab:heapify_numbers}%
-    \begin{minipage}{12.41em}
-      \begin{tabularx}{\textwidth}{ccccccc}
-        {\color{Mittel-Gruen}0}&
-        {\color{Mittel-Gruen}1}&
-        {\color{Mittel-Gruen}2}&
-        {\color{Mittel-Gruen}3}&
-        {\color{Mittel-Gruen}4}&
-        {\color{Mittel-Gruen}5}&
-        {\color{Mittel-Gruen}6}\\
-        \hline
-        \multicolumn{1}{|c}{11}&%
-        \multicolumn{1}{|c}{7}&%
-        \multicolumn{1}{|c}{8}&%
-        \multicolumn{1}{|c}{3}&%
-        \multicolumn{1}{|c}{2}&%
-        \multicolumn{1}{|c}{5}&%
-        \multicolumn{1}{|c|}{4}\\
-        \hline
-      \end{tabularx}
-    \end{minipage}
+    \begin{tabular}{ccccccc}
+      {\color{Mittel-Gruen}0}&
+      {\color{Mittel-Gruen}1}&
+      {\color{Mittel-Gruen}2}&
+      {\color{Mittel-Gruen}3}&
+      {\color{Mittel-Gruen}4}&
+      {\color{Mittel-Gruen}5}&
+      {\color{Mittel-Gruen}6}\\
+      \hline
+      \multicolumn{1}{|c}{11}&%
+      \multicolumn{1}{|c}{7}&%
+      \multicolumn{1}{|c}{8}&%
+      \multicolumn{1}{|c}{3}&%
+      \multicolumn{1}{|c}{2}&%
+      \multicolumn{1}{|c}{5}&%
+      \multicolumn{1}{|c|}{4}\\
+      \hline
+    \end{tabular}
   \end{table}
   \vspace*{-0.5em}
-  \begin{center}
+  \begin{centering}
     \begin{figure}[!h]%
       \begin{columns}%
         \begin{column}{0.425\textwidth}%
-          \begin{minipage}{\textwidth}%
-            \begin{center}%
-              \input{Lecture/Images/Heapify_First.tikz}%
-            \end{center}%
-          \end{minipage}%
+          \begin{adjustbox}{width=\linewidth}%
+            \input{Lecture/Images/HeapSort/Heapify_First.tikz}%
+          \end{adjustbox}%
         \end{column}%
         \begin{column}{0.425\textwidth}%
-          \begin{minipage}{\textwidth}%
-            \begin{center}%
-              \input{Lecture/Images/Heapify_Second.tikz}%
-            \end{center}%
-          \end{minipage}%
+          \begin{adjustbox}{width=\linewidth}%
+              \input{Lecture/Images/HeapSort/Heapify_Second.tikz}%
+          \end{adjustbox}%
         \end{column}%
       \end{columns}%
       \caption{Heapify lower layer}%
       \label{fig:heapify_lower}%
     \end{figure}
-  \end{center}
+  \end{centering}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
 \begin{frame}{HeapSort - Algorithm 8 / 10}
-  \begin{center}
+  \begin{centering}
    \begin{figure}[!h]%
      \begin{columns}%
        \begin{column}{0.425\textwidth}%
-         \begin{minipage}{\textwidth}%
-           \begin{center}%
-             \input{Lecture/Images/Heapify_Third.tikz}%
-            \end{center}%
-          \end{minipage}%
-        \end{column}%
-        \begin{column}{0.425\textwidth}%
-          \begin{minipage}{\textwidth}%
-            \begin{center}%
-              \input{Lecture/Images/Heapify_Fourth.tikz}%
-            \end{center}%
-          \end{minipage}%
+         \begin{adjustbox}{width=\linewidth}%
+           \input{Lecture/Images/HeapSort/Heapify_Third.tikz}%
+         \end{adjustbox}%
+       \end{column}%
+       \begin{column}{0.425\textwidth}%
+          \begin{adjustbox}{width=\linewidth}%
+            \input{Lecture/Images/HeapSort/Heapify_Fourth.tikz}%
+          \end{adjustbox}%
         \end{column}%
       \end{columns}%
       \caption{Heapify upper layer}%
       \label{fig:heapify_upper}%
     \end{figure}
-  \end{center}
+  \end{centering}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
 \begin{frame}{HeapSort - Algorithm 9 / 10}
-  \begin{center}
+  \begin{centering}
     \begin{figure}[!h]
-      \begin{center}%
-        \begin{minipage}{0.425\textwidth}%
-          \input{Lecture/Images/Heapify_Fifth.tikz}%
-        \end{minipage}%
-      \end{center}%
+      \begin{adjustbox}{width=0.425\linewidth}%
+        \input{Lecture/Images/HeapSort/Heapify_Fifth.tikz}%
+      \end{adjustbox}%
       \caption{Resulting heap}%
       \label{fig:heapify_upper_final}%
     \end{figure}
-  \end{center}
+  \end{centering}
 \end{frame}
 
 %-------------------------------------------------------------------------------

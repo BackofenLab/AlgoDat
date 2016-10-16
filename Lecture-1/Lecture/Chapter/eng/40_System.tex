@@ -55,61 +55,103 @@
 
 %-------------------------------------------------------------------------------
 
+\codeslide{python}{
 \subsubsection{Checkstyle}
-\begin{frame}{Checkstyle}
-  \textbf{Checkstyle (pep8):}
+\begin{frame}{Checkstyle}{flake8}
+  \textbf{Checkstyle (flake8):}
   \begin{itemize}
     \item
-      Installation: \textbf{pip}\;
-      \lstinline[
-        language=Bash,
-        style={bashbw},
-        basicstyle=\small,
-        keywords={},
-        columns=fixed
-      ]|install pep8|
+      Installation: \textbf{python} \texttt{-m pip install flake8}
     \item
-      Update: \textbf{pip}\;
-      \lstinline[
-        language=Bash,
-        style={bashbw},
-        basicstyle=\small,
-        keywords={},
-        columns=fixed
-      ]|install --upgrade pep8|
+      Check file: \textbf{flake8} \texttt{path/to/file.py}
     \item
-      Check: \textbf{pep8}\;
-      \lstinline[
-        language=Bash,
-        style={bashbw},
-        basicstyle=\small,
-        keywords={},
-        columns=fixed
-      ]|--show-source --show-pep8 <file>|
+      Check directory: \textbf{flake8} \texttt{path/to/directory}
     \item
-      Link: {\color{Mittel-Blau}\href{\LectureCheckstyleLink}{pep8}}
+      Link: {\color{Mittel-Blau}\href{\LectureCheckstyleLink}{flake8}}
   \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
+%\subsubsection{Checkstyle}
+%\begin{frame}{Checkstyle}
+%  \textbf{Checkstyle (pep8):}
+%  \begin{itemize}
+%    \item
+%      Installation: \textbf{pip} \texttt{install pep8}
+%    \item
+%      Update: \textbf{pip} \texttt{install --upgrade pep8}
+%    \item
+%      Check: \textbf{pep8} \texttt{--show-source --show-pep8 <file>}
+%    \item
+%      Link: {\color{Mittel-Blau}\href{\LectureCheckstyleLink}{pep8}}
+%  \end{itemize}
+%\end{frame}
+}
+
+%-------------------------------------------------------------------------------
+
+\codeslide{python}{
 \subsubsection{Test}
-\begin{frame}{Test}
-  \begin{itemize}
-    \item
-      ToDo
-  \end{itemize}
+\begin{frame}{Test}{doctest}
+  \textbf{Testing (doctest):}
+  \vspace{-1.0em}
+  \begin{columns}
+    \begin{column}[t]{0.5\linewidth}
+      \lstinputlisting[
+        language=Python,
+        style={python-idle-code},
+        basicstyle=\small,
+        tabsize=4,
+        breaklines=false,
+        emph={subOne},
+        emphstyle=\color{blue}
+      ]{Lecture/Code/DocTest.py}
+    \end{column}
+    \begin{column}[t]{0.5\linewidth}
+      \begin{itemize}
+        \item
+          Run: \textbf{python} \textit{<file>}
+        \item
+          Debug: \textbf{python} \textit{<file> -v}
+      \end{itemize}
+    \end{column}
+  \end{columns}
 \end{frame}
+}
 
 %-------------------------------------------------------------------------------
 
-\subsubsection{Git}
-\begin{frame}{Git}
+%\subsubsection{Version management}
+%\begin{frame}{Version management}{git}
+%  \begin{itemize}
+%    \item
+%      Initialize directory: \textbf{git} \texttt{clone <URL> .}
+%    \item
+%      Add files/folders: \textbf{git} \texttt{add <file> --all}
+%    \item
+%      Create snapshot: \textbf{git} \texttt{commit -m "<Your Message>"}
+%    \item
+%      Upload: \textbf{git} \texttt{push origin master}
+%    \item
+%      Link: {\color{Mittel-Blau}\href{\LectureGitLink}{Git}}
+%  \end{itemize}
+%\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\subsubsection{Version management}
+\begin{frame}{Version management}{Subversion}
+  \textbf{Version management (subversion):}
   \begin{itemize}
     \item
-      ToDo
+      Initialize / update directory: \textbf{svn} \texttt{checkout <URL>}
     \item
-      Link: {\color{Mittel-Blau}\href{\LectureGitLink}{Git}}
+      Add files / folders: \textbf{svn} \texttt{add <file> --all}
+    \item
+      Create snapshot: \textbf{svn} \texttt{commit -m "<Your Message>"}
+    \item
+      Link: {\color{Mittel-Blau}\href{\LectureSubversionLink}{Subversion}}
   \end{itemize}
 \end{frame}
 
@@ -117,9 +159,10 @@
 
 \subsubsection{Jenkins}
 \begin{frame}{Jenkins}
+  \textbf{Jenkins:}
   \begin{itemize}
     \item
-      ToDo
+      Provides current build status
     \item
       Link: {\color{Mittel-Blau}\href{\LectureJenkinsLink}{Jenkins}}
   \end{itemize}
