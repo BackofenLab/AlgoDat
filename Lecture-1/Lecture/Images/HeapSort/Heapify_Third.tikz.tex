@@ -1,0 +1,40 @@
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+\begin{tikzpicture}[
+  node/.style={
+    color=black
+  },
+  path/.style={
+    ->,
+    line width=0.25em,
+    color=Mittel-Blau
+  },
+  path_error/.style={
+    <-,
+    line width=0.25em,
+    color=red!70!gray
+  },
+  level/.style={
+    sibling distance = 7.0em/#1,
+    level distance = 4.0em
+  }
+]%
+\begin{pgfonlayer}{main}
+\node [node] {\textbf{11}}
+child [path_error] {
+  node [node] (left) {2}
+  child[path] {node [node] {3}}
+  child[path] {node [node] {7}}
+}
+child [path_error] {
+  node [node] (right) {4}
+  child[path] {node [node] {5}}
+  child[path] {node [node] {8}}
+};
+\end{pgfonlayer}
+
+\begin{pgfonlayer}{background}
+  \fill [color={Hell-Blau!40}] ($(left) - (1.0, 0.2) - (0.25, 0.025)$)
+    rectangle ($(right) + (1.0, 1.80) + (0.25, 0.025)$);
+\end{pgfonlayer}
+\end{tikzpicture}
