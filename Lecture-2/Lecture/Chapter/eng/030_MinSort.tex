@@ -2,8 +2,7 @@
 
 \subsection{Minsort}
 
-%__________________________________________________________________________
-%__________________________________________________________________________
+%-------------------------------------------------------------------------------
 
 \begin{frame}{Runtime analysis - Minsort 1/10}
  How long does the program run?
@@ -18,8 +17,7 @@
   \end{itemize}
 \end{frame}
 
-%__________________________________________________________________________
-%__________________________________________________________________________
+%-------------------------------------------------------------------------------
 
 \begin{frame}{Runtime analysis - Minsort 2/10}
   How can we analyse the runtime?
@@ -41,8 +39,7 @@
   \end{itemize}
 \end{frame}
 
-%__________________________________________________________________________
-%__________________________________________________________________________
+%-------------------------------------------------------------------------------
 
 \begin{frame}{Runtime analysis - Minsort 3/10}
   How many operations does \textit{Minsort} need?
@@ -62,8 +59,7 @@
   \end{itemize}
 \end{frame}
 
-%__________________________________________________________________________
-%__________________________________________________________________________
+%-------------------------------------------------------------------------------
 
 \begin{frame}{Runtime analysis - Minsort 4/10}
   \textbf{We declare:}
@@ -80,21 +76,23 @@
     \item Number of operations in round $i$: $T_i$
   \end{itemize}
   \begin{figure}[!h]
-    \begin{minipage}[!h]{0.5\linewidth}%
-      \input{Lecture/Images/MinSort_Compact.tikz.tex}%
-    \end{minipage}%
+    \begin{adjustbox}{width=0.5\linewidth}
+      \input{Lecture/Images/MinSort/MinSort_Compact.tikz}%
+    \end{adjustbox}%
     \caption{\textit{Minsort} at the fourth iteration}%
     \label{fig:minsort_def}%
   \end{figure}
 \end{frame}
 
+%-------------------------------------------------------------------------------
+
 \begin{frame}{Runtime analysis - Minsort 5/10}
   \begin{columns}
     \begin{column}{0.55\textwidth}
       \begin{figure}[!h]%
-        \begin{minipage}[!h]{\linewidth}%
-          \input{Lecture/Images/MinSort_Brace.tikz.tex}%
-        \end{minipage}%
+        \begin{adjustbox}{width=\linewidth}%
+          \input{Lecture/Images/MinSort/MinSort_Brace.tikz}%
+        \end{adjustbox}%
         \caption{\textit{Minsort} at the fourth iteration}%
         \label{fig:minsort_brace}%
       \end{figure}
@@ -117,9 +115,9 @@
   \]
 \end{frame}
 
-%__________________________________________________________________________
-%__________________________________________________________________________
+%-------------------------------------------------------------------------------
 
+\codeslide{python}{
 \begin{frame}{Runtime analysis - Minsort 6/10}
   \textbf{Alternative: Analyse the Code:}
   \lstinputlisting[
@@ -129,18 +127,20 @@
     tabsize=4,
     emph={minsort},
     emphstyle=\color{blue}
-   ]{Lecture/Code/MinSort.py}
+  ]{Lecture/Code/MinSort.py}
 \end{frame}
+}
+%TODO: MinSort Java, C++
 
-%__________________________________________________________________________
-%__________________________________________________________________________
+%-------------------------------------------------------------------------------
 
 \begin{frame}{Runtime analysis - Minsort 7/10}
-  \centering
-  $\begin{array}{l}
-    \displaystyle
-      \underbrace{
-        \sum^{n - 2}_{i = 0}
+  \begin{center}
+    \begin{math}
+      \begin{array}{l}
+        \displaystyle
+        \max T(n) = \underbrace{
+          \sum^{n - 2}_{i = 0}
           \left(
             \hspace*{1.5em}
             \overbrace{
@@ -157,53 +157,56 @@
                 \hspace*{0.5em}
               }^\text{compare}
             }_{
-              \lstinline[
-                language=Python,
-                style={python-idle-code},
-                basicstyle=\small
-              ]|range(0, len(elements)-1)|
+            \lstinline[
+              language=Python,
+              style={python-idle-code},
+              basicstyle=\small
+              ]|range(i+1, len(elements))|
             }
-          \hspace*{0.5em}
+            \hspace*{0.5em}
           \right)
         }_{
-          \lstinline[
-            language=Python,
-            style={python-idle-code},
-            basicstyle=\small
-          ]|range(i+1, len(elements))|
-        }\\[5em]
-    \displaystyle\hspace*{1.5em}
-      = \sum^{n - 2}_{i = 0} \left(C_\text{s} + (n - i) C_\text{c}\right)\\
-    \displaystyle\hspace*{1.5em}
-      = \sum^{n - 1}_{i = 1} \left(C_\text{s} + (n - i + 1) C_\text{c}\right)
-  \end{array}$
+        \lstinline[
+          language=Python,
+          style={python-idle-code},
+          basicstyle=\small
+        ]|range(0, len(elements)-1)|
+      }\\[5em]
+      \displaystyle\hspace*{2.5em}
+        = \sum^{n - 2}_{i = 0} \left(C_\text{s} + (n - i) C_\text{c}\right)\\
+      \displaystyle\hspace*{2.5em}
+        = \color{Mittel-Blau}
+        \sum^{n - 1}_{i = 1} \left(C_\text{s} + (n - i + 1) C_\text{c}\right)
+      \end{array}
+    \end{math}
+  \end{center}
 \end{frame}
 
-%__________________________________________________________________________
-%__________________________________________________________________________
+%-------------------------------------------------------------------------------
 
 \begin{frame}{Runtime analysis - Minsort 7/10}
-  \centering
-  $T(n) \leq
-  \left\lbrace
-  \begin{array}{l}
-  \displaystyle\hspace*{1.5em}
-    \sum^{n - 1}_{i = 1} \left(C_\text{s} + (n - i + 1) C_\text{c}\right)\\
-  \displaystyle\hspace*{1.5em}
-    = \sum^{n - 1}_{i = 1} \left(C_\text{s} + C_\text{c}\right)
-    + \sum^{n - 1}_{i = 1} \left(n - i\right) C_\text{c}\\
-  \displaystyle\hspace{1.5em}
-    = \left(n - 1\right) \cdot \left(C_\text{s} + C_\text{c}\right)
-    + C_\text{c} \sum_{i = 1}^{n - 1} i\\
-%  \displaystyle\hspace*{1.5em}
-%    \leq n \left(C_\text{s} + C_\text{c}\right) + C_\text{c} \sum^n_{i=1} i
-  \end{array}
-  \right.
-  $
+  \begin{center}
+    \begin{math}
+      T(n) \leq
+      \left\lbrace
+      \begin{array}{l}
+      \displaystyle\hspace*{1.5em}\color{Mittel-Blau}
+        \sum^{n - 1}_{i = 1} \left(C_\text{s} + (n - i + 1) C_\text{c}\right)\\
+      \displaystyle\hspace*{1.5em}
+        = \sum^{n - 1}_{i = 1} \left(C_\text{s} + C_\text{c}\right)
+        + \sum^{n - 1}_{i = 1} \left(n - i\right) C_\text{c}\\
+      \displaystyle\hspace{1.5em}
+        = \left(n - 1\right) \cdot \left(C_\text{s} + C_\text{c}\right)
+        + C_\text{c} \sum_{i = 1}^{n - 1} i\\
+     % \displaystyle\hspace*{1.5em}
+     %   \leq n \left(C_\text{s} + C_\text{c}\right) + C_\text{c} \sum^n_{i=1} i
+      \end{array}
+      \right.
+    \end{math}
+  \end{center}
 \end{frame}
 
-%__________________________________________________________________________
-%__________________________________________________________________________
+%-------------------------------------------------------------------------------
 
 \begin{frame}{Runtime analysis - Minsort 8/10}
   \begin{block}{Proof of the statement ({\color{Mittel-Gruen}upper bound}):}
@@ -229,31 +232,32 @@
   \end{block}
 \end{frame}
 
-%__________________________________________________________________________
-%__________________________________________________________________________
+%-------------------------------------------------------------------------------
 
 \begin{frame}{Runtime analysis - Minsort 9/10}
-  \begin{block}{Proof of $C_1 \cdot n^2 \leq T(n)$ ({\color{Mittel-Gruen}lower 
-  bound}):}
+  \begin{block}{Proof of $C_1 \cdot n^2 \leq T(n)$
+      ({\color{Mittel-Gruen}lower bound}):}
     We assume: Compare $\in \mathcal{O}(1)$\\
-    $\hspace{1.5em}\Rightarrow C_\text{c} = 1$\\
+    $\hspace{1.5em}\Rightarrow C_\text{c} = 1, \; C_\text{s} = 0$\\
     \vspace*{0.5em}
     Analogous for the {\color{Mittel-Gruen}lower bound}
     (no value is swapped), there exists a $C_1$, for that
     applys:\\[0.5em]
-    \centering
-    $\begin{array}{@{}rcl@{}}
-      T(n) & \geq &
-      \displaystyle
-      n - 1 + \sum^{n - 1}_{i=1} i
-      = \frac{n^2 - n}{2} + n - 1
-      = \frac{n^2 + n}{2} - 1
-    \end{array}$
+    \begin{centering}
+      \begin{math}
+        \begin{array}{@{}rcl@{}}
+          T(n) & \geq &
+          \displaystyle
+          n - 1 + \sum^{n - 1}_{i=1} i
+          = \frac{n^2 - n}{2} + n - 1
+          = \frac{n^2 + n}{2} - 1
+        \end{array}
+      \end{math}
+    \end{centering}
   \end{block}
 \end{frame}
 
-%__________________________________________________________________________
-%__________________________________________________________________________
+%-------------------------------------------------------------------------------
 
 \begin{frame}{Runtime analysis - Minsort 10/10}
   \begin{block}{Proof of $C_1 \cdot n^2 \leq T(n)$:}

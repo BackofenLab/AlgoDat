@@ -1,6 +1,4 @@
 \subsection{Heapsort}
-%__________________________________________________________________________
-%__________________________________________________________________________
 
 \begin{frame}{Runtime - Heapsort 1/6}
   \begin{columns}
@@ -20,7 +18,7 @@
     \begin{column}{0.5\textwidth}
       \begin{figure}
         \begin{centering}%
-          \input{Lecture/Images/BinaryTree.tikz}%
+          \input{Lecture/Images/HeapSort/BinaryTree.tikz}%
           \caption{Binary tree with 15 nodes}%
           \label{fig:binary_tree}%
         \end{centering}%
@@ -29,21 +27,20 @@
   \end{columns}
 \end{frame}
 
-%__________________________________________________________________________
-%__________________________________________________________________________
+%-------------------------------------------------------------------------------
 
 \begin{frame}{Runtime - Heapsort 2/6}
   \textbf{Intuitive:}
   \begin{itemize}
     \item
-    \textbf{Minsort:}
-    To determine the minimum value we have to iterate through all the
-    unsorted elements.
+      \textbf{Minsort:}
+      To determine the minimum value we have to iterate through all the
+      unsorted elements.
     \item
-    \textbf{Heapsort:}
-    The root-element is always the smallest (min-heap).
-    We only need to repair a small part of the full tree after an delete
-    operation.
+      \textbf{Heapsort:}
+      The root-element is always the smallest (min-heap).
+      We only need to repair a small part of the full tree after an delete
+      operation.
   \end{itemize}
   \textbf{Formal:}
   \begin{itemize}
