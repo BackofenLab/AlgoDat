@@ -2,45 +2,49 @@
 
 \begin{frame}{Limits with L'H\^{o}pital}
   \textbf{Intuitive:}\\
-  \[\lim\limits_{n \rightarrow \infty} 2 + \dfrac{1}{n} = 2\]
-  \vspace*{1.0em}\\
+  \begin{displaymath}
+    \lim\limits_{n \rightarrow \infty} 2 + \dfrac{1}{n} = 2
+  \end{displaymath}
+  \vspace{0.0em}\\
   \textbf{With L'H\^{o}pital:}
   \begin{itemize}
     \item
       Let $f, \, g : \mathbb{N} \rightarrow \mathbb{R}$
     \item
       If
-      $\lim\limits_{n \to \infty} f(n)
-        = \lim\limits_{n \to \infty} g(n)
-        = \infty / 0$
+      \begin{math}
+        \lim\limits_{n \to \infty} f(n)
+          = \lim\limits_{n \to \infty} g(n)
+          = \infty / 0
+      \end{math}
   \end{itemize}
-  \[
-    \Rightarrow \lim\limits_{n \rightarrow \infty} \dfrac{f(n)}{g(n)} = 
-    \lim\limits_{n \rightarrow \infty} \dfrac{f'(n)}{g'(n)}
-  \]
+  \begin{displaymath}
+    \Rightarrow \lim\limits_{n \rightarrow \infty} \dfrac{f(n)}{g(n)}
+      = \lim\limits_{n \rightarrow \infty} \dfrac{f'(n)}{g'(n)}
+  \end{displaymath}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Limits with L'H\^{o}pital}
-  \textbf{The Limit can not be determined in the way of an Engineer:}\\
-  \[
+  \textbf{The Limit can not be determined in the way of an Engineer:}
+  \begin{displaymath}
     \lim_{n \to \infty} \dfrac{\ln (n)}{n}
       = \dfrac{\lim_{n \to \infty}\; \ln (n)}{\lim\limits_{n \to \infty}\; n}
     \hspace{1em} \stackrel{\text{plugging in}}{\longrightarrow} \hspace{1em}
       \dfrac{\infty}{\infty}
-  \]
+  \end{displaymath}
   \begin{block}{\textbf{Using L'H\^{o}pital:}}
     $\textbf{f(n)}\!: n \mapsto \ln (n), \; \textbf{g(n)}\!: n \mapsto n$\\
     \hspace{1.5em}
     $\Rightarrow f'(n) = \dfrac{1}{n} \, , \; g'(n) = 1$
-    \[
+    \begin{displaymath}
       \lim\limits_{n \rightarrow \infty} \dfrac{f'(n)}{g'(n)}
         = \lim\limits_{n \rightarrow \infty} \dfrac{1}{n} = 0
       \hspace{0.5em} \Rightarrow \hspace{0.5em}
       \lim\limits_{n \rightarrow \infty} \dfrac{f(n)}{g(n)}
         = \lim\limits_{n \rightarrow \infty} \dfrac{\ln (n)}{n} = 0
-    \]
+    \end{displaymath}
   \end{block}
 \end{frame}
 
