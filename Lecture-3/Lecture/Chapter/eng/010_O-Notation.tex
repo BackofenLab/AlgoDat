@@ -1,6 +1,6 @@
 \section{\texorpdfstring{$\mathcal{O}$}{O}-Notation}
 
-\subsection{Motivation / Definition}
+\toclesssubsection{Motivation / Definition}
 
 \begin{frame}{$\mathcal{O}$-Notation}{Motivation}
   \textbf{We are interested in:}
@@ -73,9 +73,11 @@
       $n \geq n_0 \rightarrow f(n) \leq C \cdot g(n)$
   \end{itemize}
   \begin{block}{\textbf{Formal:} $f \in \mathcal O(g)$}
-    $\mathcal O(g) = \lbrace f: \mathbb{N} \to \mathbb{R} ~ | ~
-      \exists n_0 \in \mathbb{N}, \, \forall n > n_0, \, \exists C > 0: \,
-      f(n) \leq C \cdot g(n)\rbrace$
+    \begin{math}
+      \mathcal O(g) = \lbrace f: \mathbb{N} \to \mathbb{R} ~ | ~
+        \exists n_0 \in \mathbb{N}, \, \forall n > n_0, \, \exists C > 0: \,
+        f(n) \leq C \cdot g(n)\rbrace
+    \end{math}
   \end{block}
 \end{frame}
 
@@ -127,8 +129,10 @@
 \begin{frame}{$\mathcal{O}$-Notation}{Proof}
   \begin{proof}[
     We have to proof:
-    $\exists n_0, \, \exists C, \, \forall n \geq n_0 \! : \;
-      5 \, n + 7 \leq C \cdot n$
+    \begin{math}
+      \exists n_0, \, \exists C, \, \forall n \geq n_0 \! : \;
+        5 \, n + 7 \leq C \cdot n
+    \end{math}
   ]
     \begin{eqnarray*}
       &5 \, n + 7 &\leq \;\; 5 \, n + n \hspace{1em} (\text{for} ~ n \geq 7)\\
@@ -169,7 +173,7 @@
      7 \, n \, \log n - 20 \in & {}\\
      5 \in & {}\\
      2 \, n^2 + 7 \, n \, \log n + n^3 \in & {}\\
-     2 \sqrt{x} + 3 \ln x \in & \mathcal{O}(?)\\
+     2 \sqrt{x} + 3 \ln x \in & \mathcal{O}(?)
   \end{align*}
 \end{frame}
 
@@ -185,9 +189,11 @@
       $f \in \Omega(g)$, $f$ is growing at least as fast as $g$
   \end{itemize}
  	\begin{block}{\textbf{Formal:} $f \in \Omega(g)$}
-    $\Omega(g) = \lbrace f: \mathbb{N} \to \mathbb{R} ~ | ~
-    \exists n_0 \in \mathbb{N}, \, \forall n > n_0, \, \exists C > 0: \,
-    f(n) \geq C \cdot g(n)\rbrace$
+    \begin{math}
+      \Omega(g) = \lbrace f: \mathbb{N} \to \mathbb{R} ~ | ~
+        \exists n_0 \in \mathbb{N}, \, \forall n > n_0, \, \exists C > 0: \,
+        f(n) \geq C \cdot g(n)\rbrace
+    \end{math}
  	\end{block}
 \end{frame}
 
@@ -197,7 +203,7 @@
   \begin{proof}[Proof of $f(n) \in \Omega(g)$:]
     \begin{eqnarray*}
       &\underbrace{5 \, n + 7}_{f(n)} &\geq \;\; \underbrace{n}_{g(n)} 
-      \hspace{1em} (\text{for} ~ n \geq 1)\\
+      \hspace{1em} (\text{for} ~ n \geq 1)
     \end{eqnarray*}
     $\hspace{1.5em} \Rightarrow n_0 = 1, \, C = 1$ \qedhere
   \end{proof}
@@ -243,7 +249,7 @@
     2 \, n^2 + 7 \, n \, \log n - 20 \in & {}\\
     7 \, n \, \log n - 20 \in & {}\\
     5 \in & {}\\
-    2 \, n^2 + 7 \, n \, \log n + n^3 \in & {}\\
+    2 \, n^2 + 7 \, n \, \log n + n^3 \in & {}
   \end{align*}
 \end{frame}
 
@@ -271,19 +277,11 @@
   \end{center}
 \end{frame}
 
-%ToDo: Is this figure really needed / helpful?
-
-%\begin{frame}{O-Notation Definition}
-%	\textbf{Big Theta-Notation:}\\
-%	Include Graphics for Big Theta-Notation 
-%	(For reference see Lecture3(Power Point) Slide 15)
-%\end{frame}
-
 %-------------------------------------------------------------------------------
 
 \section{Runtime}
 
-\subsection{Summary}
+\toclesssubsection{Summary}
 
 \begin{frame}{Runtime}{Landau-Symbol Summary}
   \textbf{Big O-Notation} $\mathcal{O}(n)$\textbf{:}\\
@@ -353,10 +351,10 @@
       $\Rightarrow$ $\lim\limits_{n \rightarrow \infty}$ $f_n$ = $L$
   \end{itemize}
   \begin{block}{Convergence}
-    $
-    \forall \epsilon > 0 \; \exists n_0 \in \mathbb{N} \;\;
-    \forall n \geq n_0 \! : \; \Vert f_n - L \Vert \leq \epsilon
-    $
+    \begin{math}
+      \forall \epsilon > 0 \; \exists n_0 \in \mathbb{N} \;\;
+      \forall n \geq n_0 \! : \; \Vert f_n - L \Vert \leq \epsilon
+    \end{math}
   \end{block}
 \end{frame}
 
@@ -428,25 +426,29 @@
 
 \begin{frame}{$\mathcal{O}$-Notation}{Limit / Convergence}
   \begin{proof}[Backward proof:]
-    \vspace*{0.5em}
-    $\begin{array}{c}
-      \begin{aligned}
-        & {} & \lim_{n \to \infty} \frac{f(n)}{g(n)} &< \; \infty\\
-        & \Rightarrow & \lim_{n \to \infty} \frac{f(n)}{g(n)} &= \; L &&
-          \hspace*{1.5em}\text{For some } L \text{ (Limit)}\in \mathbb{R}
-      \end{aligned}\\
-      \\
-      \begin{aligned}
-        \stackrel{\text{def. limes}}{\Rightarrow} \hspace*{0.5em} &&
+    \begin{center}
+      \vspace{-0.5em}
+      \begin{math}
+        \begin{aligned}
+          & {} & \lim_{n \to \infty} \frac{f(n)}{g(n)} &< \; \infty\\
+          & \Rightarrow & \lim_{n \to \infty} \frac{f(n)}{g(n)} &= \; L &&
+          \hspace*{1.5em}\text{For some } L \in \mathbb{R} \text{ (Limit)}
+        \end{aligned}
+      \end{math}
+      \vspace{1.0em}\\
+      \begin{math}
+        \begin{aligned}
+          \stackrel{\text{def. limes}}{\Rightarrow} \hspace*{0.5em} &&
           \exists n_0, \, \forall n \geq n_0, \, \exists C\!: \hspace*{1.0em}&&
           \frac{f(n)}{g(n)} &\leq \; L + \varepsilon\\
-        \Rightarrow \; &&
+          \Rightarrow \; &&
           \exists n_0, \, \forall n \geq n_0, \, \exists C\!: \hspace*{1.0em}&&
           f(n) &\leq \; \underbrace{(L + \varepsilon)}_{C} \cdot g(n)\\
-        \Rightarrow \; &&
+          \Rightarrow \; &&
           f(n) \in \mathcal{O}(g)
           \qedhere
-      \end{aligned}
-    \end{array}$
+        \end{aligned}
+      \end{math}
+    \end{center}
   \end{proof}
 \end{frame}
