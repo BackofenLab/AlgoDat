@@ -2,6 +2,7 @@
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
+\usepackage{ifthen}
 
 \input{build/Config}
 
@@ -24,6 +25,14 @@
 \def\Om#1{\Omega\left(#1\right)}
 \def\Th#1{\Theta\left(#1\right)}
 \def\eps{\varepsilon}
+
+\ifthenelse{\equal{\SettingsProgLanguage}{all}}{%
+  \newcommand{\codepart}[2]{#2}%
+}{%
+  \newcommand{\codepart}[2]{%
+    \ifthenelse{\equal{#1}{\SettingsProgLanguage}}{#2}{}%
+  }%
+}%
 
 \input{Styles/Sheet/\SettingsDesign/Header}
 \input{build/Exercises_\SettingsLanguage}
