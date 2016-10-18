@@ -1,0 +1,25 @@
+\exercise{1} \points{20}\\
+During the lecture it was shown by means of a potential function that the costs 
+for $n$ \emph{insert} /
+\emph{remove} operations for a $(2,4)$ tree is $O(n)$.
+Prove in a similar fashion and with a suitable potential function that the 
+costs for $n$ arbitrary \emph{insert} /
+\emph{remove} operations for a $(4,9)$ tree is still $O(n)$.
+
+
+Pay attention to provide a complete proof. Be especially careful that you 
+consider every event that may occur. Similar cases can be proven together, 
+different cases should be considered separately.
+For example, when you add a child there is no difference whether the
+node has 6 or 7 children before (in both cases a split is not necessary, and 
+the potential function does not change, if chosen appropriately). In case of a 
+previous node with 9 children you should consider a different case, as now a 
+split has to happen and maybe the parent node changes as well as the potential 
+function.
+
+A complete proof does not imply much text. A proof may be very short, and a 
+shorter proof with the same information content is always better.
+
+Allocate enough time to write down your proof in a clean way. This is the main 
+work of this task, in addition to the understanding of the proof from the 
+lecture.

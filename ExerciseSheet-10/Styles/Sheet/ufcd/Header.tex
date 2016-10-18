@@ -1,0 +1,62 @@
+% PAGE LAYOUT
+\setlength{\textwidth}{174mm}
+\setlength{\textheight}{220mm}
+\setlength{\topmargin}{10mm}
+\setlength{\oddsidemargin}{10mm}
+\setlength{\hoffset}{0mm}
+\setlength{\voffset}{0mm}
+\setlength{\parindent}{0mm}
+\setlength{\parskip}{2mm}
+\pagestyle{empty}
+
+% EXERCISE SHEET SPECIFIC MAKROS
+\renewcommand{\title}[1]{\par\vspace{5mm}\centerline{\Large #1}}
+\newcommand{\subtitle}[1]{\par\vspace{1mm}\centerline{\footnotesize #1}\par}
+
+\newcommand{\exercise}[1]{\par\vspace{3mm}{\bf
+\ExerciseSheetExercise{\hspace{1mm}}#1}\hspace{1mm}}
+\newcommand{\extraexercise}[1]{\par\vspace{3mm}{\bf 
+\ExerciseSheetExtraExercise{\hspace{1mm}}#1}\hspace{1mm}}
+\newcommand{\examtask}[1]{\par\newpage{\bf 
+\ExerciseSheetExamExercise{\hspace{1mm}}#1}\hspace{1mm}}
+\newcommand{\examtasksolution}[1]{\par\vspace{5mm}{\bf
+\ExerciseSheetExamSolution{\hspace{1mm}}#1}\hspace{1mm}}
+\newcommand{\points}[1]{\hspace{1mm}(#1 \ExerciseSheetPoints)\hspace{1mm}}
+\newcommand{\task}[1]{\par\vspace{3mm}{\bf{#1}}\hspace{1mm}}
+
+\begin{document}
+  % HEAD OF EXERCISE SHEETS
+  \setlength{\textwidth}{16.5cm}
+  \setlength{\textheight}{22cm}
+  \setlength{\topmargin}{0cm}
+  \setlength{\oddsidemargin}{-0.3cm}
+  \setlength{\evensidemargin}{0cm}
+  \vspace*{-20mm}
+  
+  % Links der Name des Lehrstuhls.
+  \parbox{45mm}{%
+    \footnotesize
+    \ExerciseSheetInstitute\\[1.5mm]
+    \ExerciseSheetAuthors
+  }%\\[0.3mm]
+  % In der Mitte der Name der Veranstaltung.
+  \parbox{80mm}{\vspace*{1mm}%
+    \begin{center}%
+      \large\bf\ExerciseSheetTitle
+      {\footnotesize\rm\url{\HomepageLink}}%
+    \end{center}%
+  }\par\vspace{-3mm}
+  % Grauer Strich und rechts das Uni-Logo.
+  \raisebox{1.19cm}{%
+    \textcolor[rgb]{0.68,0.68,0.68}{\rule{0.885\textwidth}{1.1mm}}%
+  }
+  \par\vspace*{-37.84mm}
+  \hspace*{\fill}\includegraphics[scale=0.49]{Images/uni_logo.png}
+  \par\vspace{-5mm}
+  
+  \title{{\ExerciseSheet} {\ExerciseSheetNumber}}
+  \ExerciseSheetDeadline
+  
+  \bigskip
+  
+  \renewcommand{\baselinestretch}{1.1}\normalsize

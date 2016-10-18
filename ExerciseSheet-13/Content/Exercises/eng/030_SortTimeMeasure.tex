@@ -1,0 +1,26 @@
+\exercise{2} \points{5}\\
+Extend your class \emph{Graph} from the last exercise in the following way:
+
+The class \emph{Arc} retrieves in addition the ID of the start node 
+(\emph{tailNodeId}), the distance in meters  (\emph{distance}) and the maximal 
+speed in km/h  (\emph{maxSpeed}):
+
+{\small
+	\begin{verbatim}
+	class Arc {
+	// PUBLIC MEMBERS
+	int tailNodeId;
+	int headNodeId;
+	float cost;
+	int distance;
+	int maxSpeed;
+	}
+	\end{verbatim}
+}
+
+Adjust the method \emph{readFromFile()} accordingly.
+Furthermore, implement the method  \emph{setArcCostToDistance()} that sets the 
+\emph{cost} for all edges to \emph{distance} and an additional method 
+\emph{setArcCostToTravelTime(int maxVehicleSpeed)} that sets for all edges the 
+\emph{cost} to the expected traveling time \emph{min(maxVehicleSpeed, 
+maxSpeed)}).
