@@ -22,10 +22,12 @@
   \textbf{We know:}
   \[\mathbb{S}_i = \{x \in \mathbb{S}: h(x) = i\}\]
   We define an indicator varialble:
-  \[I_y = \begin{cases}
-    1, & \text{if } h(y) = i\\
-    0, & \text{else}
-  \end{cases} \hspace*{1.5em} y \in \mathbb{S} \setminus \{x\}\]
+  \begin{displaymath}
+    I_y = \begin{cases}
+      1, & \text{if } h(y) = i\\
+      0, & \text{else}
+    \end{cases} \hspace*{1.5em} y \in \mathbb{S} \setminus \{x\}
+  \end{displaymath}
   \begin{align*}
     \Rightarrow && \vert \mathbb{S}_i \vert
       & = 1 + \sum_{y \in \mathbb{S} \setminus x} I_y\\
@@ -48,7 +50,7 @@
     \leq \frac{c}{m}
   \end{align*}
   \textbf{Final proof:}
-  \[
+  \begin{displaymath}
     1 + \sum_{y \in \mathbb{S} \setminus x} \mathbb{E}[I_y]
     \leq
     \underbrace{
@@ -58,11 +60,12 @@
       \displaystyle \leq 1 + \vert \mathbb{S} \vert \cdot \frac{c}{m}
         = 1 + c \cdot \frac{\vert \mathbb{S} \vert}{m}
     }
-  \]
-  \[\hspace*{7.5em}
+  \end{displaymath}
+  \begin{displaymath}
+    \hspace*{7.5em}
     \mathbb{E}\left[\vert \mathbb{S}_i \vert\right]
       = 1 + \sum_{y \in \mathbb{S} \setminus \{x\}}
       \leq 1 + c \cdot \frac{\vert \mathbb{S} \vert}{m}
     \hspace*{7.5em}\square
-  \]
+  \end{displaymath}
 \end{frame}

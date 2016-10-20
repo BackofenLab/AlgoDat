@@ -1,0 +1,20 @@
+\begin{tikzpicture}[
+  bucket/.style={
+    draw={Mittel-Blau},
+    fill={white},
+    line width=0.075em
+  }, bucket_text/.style={
+    draw=none,
+    color=black
+  }
+]%
+\foreach \x/\xi in \LPEData {
+  \draw[bucket]
+    (\xi, 0.0) rectangle (\xi + 1.0, 0.5);
+  \draw (\xi + 0.5, 0.25) node[bucket_text] {\x};
+  
+  \ifnum \LPEShowIndex>0
+    \draw (\xi + 0.5, 0.5) node[bucket_text, anchor=south] {\xi};
+  \fi
+}
+\end{tikzpicture}%

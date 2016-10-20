@@ -10,15 +10,14 @@
           Each event $e$ has it's probability with
           \[\sum \mathbb{P}(e) = 1 \mid e \in \Omega\]
         \item
-          The probability for a subspace of events $E \subseteq \Omega$ 
-          is
-        \[\mathbb{P}(E) = \sum \mathbb{P}(e) \mid e \in E\]
+          The probability for a subspace of events $E \subseteq \Omega$ is
+          \[\mathbb{P}(E) = \sum \mathbb{P}(e) \mid e \in E\]
       \end{itemize}
     \end{column}
     \begin{column}{0.35\textwidth}
       \begin{table}[!h]
         \caption{Throwing a dice}
-        \label{tab:probabilities_rolling_dice}
+        \label{tab:probabilities:rolling_dice}
         \begin{tabularx}{0.5\linewidth}{c|c}
           $e$ & $\mathbb{P}(e)$\\
           \midrule
@@ -49,8 +48,10 @@
         \item
           $X = i + j$ is the eye number
         \item
-          $E = \{e_{(i,\,j)} \in \Omega
-            \mid i + j \;\mathrm{mod}\; 2 = 0\}$
+          \begin{math}
+            E = \{e_{(i,\,j)} \in \Omega
+              \mid i + j \;\mathrm{mod}\; 2 = 0\}
+          \end{math}
       \end{itemize}
     \end{column}
     \begin{column}{0.35\linewidth}
@@ -83,22 +84,20 @@
           We define: $X$ is the result variable of the experiment
         \item
           We can reduce the result set by creating preconditions for our
-          result variable $X$\\
+          result variable $X$\\[0.5em]
           Examples:
           \begin{itemize}
             \item
               $\mathbb{P}(X = 2) = $
             \item
               $\mathbb{P}(X = 4) = $
-%            \item
-%              $\mathbb{P}(X \geq 4$, $sin(\pi X) = 1) = $
           \end{itemize}
       \end{itemize}
     \end{column}
     \begin{column}{0.45\linewidth}
       \begin{table}[!h]
         \caption{Throwing a dice twice}
-        \label{tab:probabilities_rolling_dice_twice2}
+        \label{tab:probabilities:rolling_dice_twice2}
         \begin{tabularx}{0.95\linewidth}{c|cc}
           $e_{(i,\,j)}$ & $\mathbb{P}(e_{(i,\,j)})$ & $X = i + j$\\
           \midrule
@@ -123,14 +122,14 @@
       \begin{itemize}
         \item
           $E = \{e_{(i,\,j)} \in \Omega
-          \mid i + j \;\mathrm{mod}\; 2 = 0\}$\\
+          \mid X \;\mathrm{mod}\; 2 = 0\}$\\
           $\mathbb{P}(E) =$
       \end{itemize}
     \end{column}
     \begin{column}{0.45\linewidth}
       \begin{table}[!h]
         \caption{Throwing a dice twice}
-        \label{tab:probabilities_rolling_dice_twice3}
+        \label{tab:probabilities:rolling_dice_twice3}
         \begin{tabularx}{0.95\linewidth}{c|cc}
           $e_{(i,\,j)}$ & $\mathbb{P}(e_{(i,\,j)})$ & $X = i + j$\\
           \midrule
@@ -166,7 +165,7 @@
   \vspace*{-1.5em}
   \begin{table}[!h]
     \caption{Throwing a dice once}
-    \label{tab:value_rolling_dice_once}
+    \label{tab:probabilities:value_rolling_dice_once}
     \begin{tabularx}{0.25\linewidth}{c|cc}
       $X_1 = i$ & $\mathbb{P}(X_1)$\\
       \midrule
@@ -189,7 +188,7 @@
   \vspace*{-1.5em}
   \begin{table}[!h]
     \caption{Throwing a dice twice}
-    \label{tab:value_rolling_dice_twice}
+    \label{tab:probabilities:value_rolling_dice_twice}
     \begin{tabularx}{0.275\linewidth}{c|cc}
       $X_2 = i + j$ & $\mathbb{P}(X_2)$\\
       \midrule
@@ -250,10 +249,10 @@
     \begin{align*}
       X_i &=
         \left\lbrace
-        \begin{array}{ll}
-        1, & \text{if event occurs}\\
-        0, & \text{else}
-        \end{array}
+          \begin{array}{ll}
+            1, & \text{if event occurs}\\
+            0, & \text{else}
+          \end{array}
         \right. \hspace{1.5em}
         \Rightarrow \; X = \sum_{i=1}^{n} X_i
     \end{align*}
@@ -263,9 +262,9 @@
         &= \; 0 \cdot \mathbb{P}(X_i = 0) + 1 \cdot \mathbb{P}(X_i = 1)\\
       {} &= \; \mathbb{P}(X_i = 1) = p\\[0.5em]
       \mathbb{E}[X] &= \mathbb{E}\left[\sum_{i=1}^{n} X_i\right]
-      = \sum_{i=1}^{n} \mathbb{E}[X_i]
-      \stackrel{\text{def. $E$-value}}{=}
-      \sum_{i=1}^{n} p = n \cdot p
+        = \sum_{i=1}^{n} \mathbb{E}[X_i]
+        \stackrel{\text{def. $E$-value}}{=}
+        \sum_{i=1}^{n} p = n \cdot p
     \end{align*}
     \qedhere
   \end{proof}

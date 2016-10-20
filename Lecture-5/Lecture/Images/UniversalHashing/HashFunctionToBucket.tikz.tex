@@ -1,0 +1,85 @@
+\begin{tikzpicture}[
+  body/.style={
+    draw=none,
+    fill={Mittel-Blau!40!white}
+  }, arrow/.style={
+    ->,
+    draw={black!20!white},
+    line width=0.25em
+  }, arrow_selected/.style={
+    ->,
+    draw={red!10!orange},
+    line width=0.25em
+  }, bucket/.style={
+    draw=black,
+    fill={black!20!white}
+  }, bucket_selected/.style={
+    draw=black,
+    fill={Hell-Gruen}
+  }, key/.style={
+    draw=black,
+    fill={black!20!white}
+  }, key_selected/.style={
+    draw=black,
+    fill={yellow!80!white}
+  }
+]%
+\draw[body] (0, 0) -- (0, 10) -- (3, 7) -- (3, 3) -- (0, 0);
+
+\draw (-1.25, 11.0) node[align=center](U_Text) {\Huge Key set};
+\draw (-1.25, 10.0) node[align=center](U) {\Huge$\mathbb{U}$};
+
+\draw (2.0, 8.5) node[anchor=west](T_Text) {\Huge Hashtable};
+\draw (4.0, 7.5) node[align=center](T) {\Huge T};
+
+\draw (4.5, 6.0) node[anchor=west](T) {\Huge Bucket $i$};
+
+%\draw (-2.0, 5.0) node[anchor=east](x) {\Huge $\mathbb{U}$};
+%\draw (5.0, 5.0) node[anchor=west](x) {\Huge T};
+
+%\draw (1.5, 10.5) node[color={Mittel-Blau}](x) {\Huge $h_1$};
+
+\foreach \y in {8,...,-8}{
+  \draw[key]
+    (-1.0, 0.5*\y + 5.25) -- (-1.5, 0.5*\y + 5.25) --
+    (-1.5, 0.5*\y + 4.75) -- (-1.0, 0.5*\y + 4.75) --
+    (-1.0, 0.5*\y + 5.25);
+}
+
+\foreach \y [count=\yi] in {5, 1, -8}{
+  \draw[key_selected]
+    (-1.0, 0.5*\y + 5.25) -- (-1.5, 0.5*\y + 5.25) --
+    (-1.5, 0.5*\y + 4.75) -- (-1.0, 0.5*\y + 4.75) --
+    (-1.0, 0.5*\y + 5.25);
+  \draw (-1.75, 0.5*\y + 5.0) node[anchor=east]
+    {\Huge $s_\yi \in \mathbb{S}_i$};
+}
+
+\foreach \i/\o in {
+    4.0/-2.0, 3.5/1.0, 3.0/-3.0, 2.0/3.0, 1.5/3.0, 1.0/1.0,
+    0.0/-2.0, -0.5/0.0, -1.0/-1.0, -1.5/-1.0, -2.0/-2.0,
+    -2.5/-3.0, -3.0/3.0, -3.5/-1.0
+  } {
+  \draw[arrow]
+    (-0.5, \i + 5.0) -- (0.0, \i + 5.0) --
+    (3.0, 0.5*\o + 5.0) -- (3.5, 0.5*\o + 5.0);
+}
+
+\foreach \i/\o in {
+    2.5/2.0, 0.5/2.0, -4.0/2.0
+  } {
+  \draw[arrow_selected]
+    (-0.5, \i + 5.0) -- (0.0, \i + 5.0) --
+    (3.0, 0.5*\o + 5.0) -- (3.5, 0.5*\o + 5.0);
+}
+
+\foreach \y in {3.0, 1.0, 0.0, -1.0, -2.0, -3.0} {
+  \draw[bucket]
+    (3.75, 0.5*\y + 5.25) -- (4.25, 0.5*\y + 5.25) --
+    (4.25, 0.5*\y + 4.75) -- (3.75, 0.5*\y + 4.75) --
+    (3.75, 0.5*\y + 5.25);
+}
+
+\draw[bucket_selected]
+  (3.75, 6.25) -- (4.25, 6.25) -- (4.25, 5.75) -- (3.75, 5.75) -- (3.75, 6.25);
+\end{tikzpicture}%

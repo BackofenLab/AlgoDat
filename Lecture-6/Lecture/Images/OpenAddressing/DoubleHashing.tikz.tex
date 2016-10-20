@@ -1,0 +1,84 @@
+\begin{tikzpicture}[
+  bucket/.style={
+    draw={Mittel-Blau},
+    fill={white},
+    line width=0.075em
+  }, bucket_text/.style={
+    draw=none,
+    color=black
+  }, arrow_taken/.style={
+    draw={Mittel-Gruen},
+    line width=0.125em
+  }, arrow_shadow/.style={
+    draw={Mittel-Gruen!40!white},
+    line width=0.125em
+  }, arrow_double_shadow/.style={
+    draw={Mittel-Gruen!40!white},
+    densely dotted,
+    line width=0.125em
+  }, hash_text/.style={
+    draw=none,
+    color={Mittel-Blau}
+  }, hash_text_final/.style={
+    draw=none,
+    color={Mittel-Blau}
+  }
+]%
+\foreach \x/\xi in {
+  \relax/0,
+  \relax/1,
+  X/2,
+  \relax/3,
+  X/4,
+  X/5,
+  X/6,
+  \relax/7,
+  X/8,
+  X/9,
+  \relax/10,
+  {\color{Mittel-Blau}s}/11,
+  \relax/12
+}{
+  \draw[bucket] (\xi, 0.0) rectangle (\xi + 1.0, 0.5);
+  \draw (\xi + 0.5, 0.25) node[bucket_text] {\x};
+  \draw (\xi + 0.5, 0.5) node[bucket_text, anchor=south] {\xi};
+}
+
+\foreach \type/\from/\to/\spacea/\spaceb in {
+  double_shadow/1/4/0.05/-0.05,
+  taken/2/5/0.05/-0.05,
+  taken/5/8/0.05/-0.05,
+  taken/8/11/0.05/-0.05
+}{
+  \draw
+    (\from + 0.55, 1.0)
+    edge[arrow_\type, in=180, out=90]
+    (0.5*\from + 0.5*\to + 0.5, 2.0);
+  \draw
+    (0.5*\from + 0.5*\to + 0.5, 2.0)
+    edge[->, arrow_\type, in=90, out=0]
+     (\to + 0.45, 1.0);
+}
+\draw
+  (11.55, 1.0)
+  edge[arrow_shadow, in=180, out=90]
+  (13.0, 2.0);
+\draw
+  (0.0, 2.0)
+  edge[->, arrow_shadow, in=90, out=0]
+  (1.45, 1.0);
+
+\draw (11.5, -0.75) node[hash_text] {\large $h(s, 3)$};
+\draw (2.5, -0.75) node[hash_text_final] {%
+\large${\color{Mittel-Blau}h(s, 0)} = {\color{Mittel-Blau}h_1(s)}$%
+};%
+\draw (11.5, -0.5) edge[->, arrow_taken, color={Mittel-Blau}] (11.5, -0.1);
+\draw (2.5, -0.5) edge[->, arrow_taken] (2.5, -0.1);
+
+\draw[bucket, decorate, decoration={brace,amplitude=0.75em}, line width=0.125em]
+  (2.5, 2.1) -- (5.5, 2.1)
+  node [midway,yshift=1.50em] {\large ${\color{Mittel-Gruen}h_2(s)}$};
+\draw[bucket, decorate, decoration={brace,amplitude=0.75em}, line width=0.125em]
+  (5.5, 2.1) -- (8.5, 2.1)
+  node [midway,yshift=1.50em] {\large ${\color{Mittel-Gruen}h_2(s)}$};
+\end{tikzpicture}%

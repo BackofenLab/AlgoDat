@@ -1,5 +1,6 @@
 \section{Hashing}
-\subsection{Recap}
+
+\toclesssubsection{Recap}
 
 \begin{frame}{Hashing}{Recap}
   \textbf{Hashing:}
@@ -8,17 +9,13 @@
       One hash function can not be good for all key sets!\\
       The result set (amount of buckets) is mostly smaller than the input
       universe\\
-      \begin{math}
-        \Rightarrow \vert \mathbb{U} \vert > m:
-      \end{math}
+      $\Rightarrow \vert \mathbb{U} \vert > m:$
       There are always overlapping elements
     \item
-      You can use a simple hash function for random key sets. 
+      You can use a simple hash function for random key sets.
       The randomness of the keys will create a equivalent distribution onto
       the buckets
-      \begin{displaymath}
-        \Rightarrow h(x) = x \mod m
-      \end{displaymath}
+      \[\Rightarrow h(x) = x \mod m\]
   \end{itemize}
 \end{frame}
 
@@ -187,6 +184,7 @@
 
 %-------------------------------------------------------------------------------
 
+\codeslide{python}{
 \begin{frame}{Hashing}{Open Addressing - Python}
   \lstinputlisting[
     language=Python,
@@ -212,9 +210,11 @@
     emphstyle=\color{blue}
   ]{Lecture/Code/OpenHashing_Lookup.py}
 \end{frame}
+}
 
 %-------------------------------------------------------------------------------
 
+\codeslide{java}{
 \begin{frame}{Hashing}{Open Addressing - Java}
   \lstinputlisting[
     language=Java,
@@ -244,9 +244,11 @@
     emphstyle=\color{java_variable}
   ]{Lecture/Code/OpenHashing_Lookup.java}
 \end{frame}
+}
 
 %-------------------------------------------------------------------------------
 
+\codeslide{cpp}{
 \begin{frame}{Hashing}{Open Addressing - C++}
   \lstinputlisting[
     language=C++,
@@ -271,12 +273,15 @@
     escapechar={@}
   ]{Lecture/Code/OpenHashing_Lookup.cpp}
 \end{frame}
+}
 
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Hashing}{Open Addressing - Linear Probing}
   \begin{figure}[!h]
-    \input{Lecture/Images/LinearProbing.tikz}%
+    \begin{adjustbox}{width=0.75\linewidth}%
+      \input{Lecture/Images/OpenAddressing/LinearProbing.tikz}%
+    \end{adjustbox}
     \vspace{-1.0em}
     \caption{Linear probing sequence}%
     \label{fig:hashing:open_addressing:linear_probing}%
@@ -312,7 +317,9 @@
 
 \begin{frame}{Hashing}{Open Addressing - Linear Probing}
   \begin{figure}[!h]
-    \input{Lecture/Images/LinearProbing.tikz}%
+    \begin{adjustbox}{width=0.75\linewidth}%
+      \input{Lecture/Images/OpenAddressing/LinearProbing.tikz}%
+    \end{adjustbox}
     \vspace{-0.5em}
     \caption{Linear probing sequence}%
     \label{fig:hashing:open_addressing:linear_probing2}%
@@ -368,7 +375,9 @@
           \relax/6
         }%
         \def\LPEShowIndex{1}%
-        \input{Lecture/Images/LinearProbingExample.tikz}%
+        \begin{adjustbox}{width=0.75\linewidth}%
+          \input{Lecture/Images/OpenAddressing/LinearProbingExample.tikz}%
+        \end{adjustbox}
         \vspace{-0.5em}%
 %        \caption{Insertion sequence}%
         \label{fig:hashing:open_addressing:linear_probing_example}%
@@ -395,7 +404,9 @@
           \relax/6
         }%
         \def\LPEShowIndex{0}%
-        \input{Lecture/Images/LinearProbingExample.tikz}%
+        \begin{adjustbox}{width=0.75\linewidth}%
+          \input{Lecture/Images/OpenAddressing/LinearProbingExample.tikz}%
+        \end{adjustbox}
         \vspace{-0.5em}%
         \caption{Insertion sequence on a hash map}%
         \label{fig:hashing:open_addressing:linear_probing_example2}%
@@ -441,7 +452,9 @@
           \relax/6
         }%
         \def\LPEShowIndex{1}%
-        \input{Lecture/Images/LinearProbingExample.tikz}%
+        \begin{adjustbox}{width=0.75\linewidth}%
+          \input{Lecture/Images/OpenAddressing/LinearProbingExample.tikz}%
+        \end{adjustbox}
         \vspace{-0.5em}%
 %        \caption{Insertion sequence}%
         \label{fig:hashing:open_addressing:linear_probing_example3}%
@@ -468,7 +481,9 @@
           \relax/6
         }%
         \def\LPEShowIndex{0}%
-        \input{Lecture/Images/LinearProbingExample.tikz}%
+        \begin{adjustbox}{width=0.75\linewidth}%
+          \input{Lecture/Images/OpenAddressing/LinearProbingExample.tikz}%
+        \end{adjustbox}
         \vspace{-0.5em}%
         \caption{Insertion sequence on a hash map}%
         \label{fig:hashing:open_addressing:linear_probing_example4}%
@@ -512,7 +527,9 @@
           \relax/6
         }%
         \def\LPEShowIndex{1}%
-        \input{Lecture/Images/LinearProbingExample.tikz}%
+        \begin{adjustbox}{width=0.75\linewidth}%
+          \input{Lecture/Images/OpenAddressing/LinearProbingExample.tikz}%
+        \end{adjustbox}
         \vspace{-0.5em}%
 %        \caption{Insertion sequence on a hash map}%
         \label{fig:hashing:open_addressing:linear_probing_example6}%
@@ -547,7 +564,9 @@
           \relax/6
         }%
         \def\LPEShowIndex{0}%
-        \input{Lecture/Images/LinearProbingExample.tikz}%
+        \begin{adjustbox}{width=0.75\linewidth}%
+          \input{Lecture/Images/OpenAddressing/LinearProbingExample.tikz}%
+        \end{adjustbox}
         \vspace{-0.5em}%
         \caption{Insertion sequence on a hash map}%
         \label{fig:hashing:open_addressing:linear_probing_example7}%
@@ -560,7 +579,9 @@
 \begin{frame}{Hashing}{Open Addressing - Squared Probing}
   \vspace{-2.0em}
   \begin{figure}[!h]
-    \input{Lecture/Images/SquaredProbing.tikz}%
+    \begin{adjustbox}{width=0.7\linewidth}%
+      \input{Lecture/Images/OpenAddressing/SquaredProbing.tikz}%
+    \end{adjustbox}
     \vspace{-1.0em}
     \caption{Squared probing sequence}%
     \label{fig:hashing:open_addressing:squared_probing}%
@@ -657,7 +678,9 @@
 \begin{frame}{Hashing}{Open Addressing - Double Hashing}
   \vspace{-2.0em}
   \begin{figure}[!h]
-    \input{Lecture/Images/DoubleHashing.tikz}%
+    \begin{adjustbox}{width=0.9\linewidth}%
+      \input{Lecture/Images/OpenAddressing/DoubleHashing.tikz}%
+    \end{adjustbox}
     \vspace{-1.0em}
     \caption{Double hashing probing sequence}%
     \label{fig:hashing:open_addressing:double_hashing}%
@@ -750,10 +773,12 @@
 \begin{frame}{Hashing}{Open Addressing - Double Hashing - Optimization}
   \vspace{-2.0em}
   \begin{figure}[!h]
-    \input{Lecture/Images/DoubleHashingNoBent.tikz}%
+    \begin{adjustbox}{width=0.9\linewidth}%
+      \input{Lecture/Images/OpenAddressing/DoubleHashingNoBrent.tikz}%
+    \end{adjustbox}
     \vspace{-1.0em}
     \caption{Double hashing}%
-    \label{fig:hashing:open_addressing:double_hashing_no_bent}%
+    \label{fig:hashing:open_addressing:double_hashing_no_brent}%
   \end{figure}
   \textbf{Double hashing by Bent:}
   \begin{itemize}
@@ -769,10 +794,12 @@
 \begin{frame}{Hashing}{Open Addressing - Double Hashing - Optimization}
   \vspace{-2.0em}
   \begin{figure}[!h]
-    \input{Lecture/Images/DoubleHashingNoBent.tikz}%
+    \begin{adjustbox}{width=0.9\linewidth}%
+      \input{Lecture/Images/OpenAddressing/DoubleHashingNoBrent.tikz}%
+    \end{adjustbox}
     \vspace{-1.0em}
     \caption{Double hashing}%
-    \label{fig:hashing:open_addressing:double_hashing_no_bent2}%
+    \label{fig:hashing:open_addressing:double_hashing_no_brent2}%
   \end{figure}
   \vspace{-1.0em}
   \textbf{Example:}
@@ -805,10 +832,12 @@
 \begin{frame}{Hashing}{Open Addressing - Double Hashing - Optimization}
   \vspace{-2.0em}
   \begin{figure}[!h]
-    \input{Lecture/Images/DoubleHashingBent.tikz}%
+    \begin{adjustbox}{width=0.9\linewidth}%
+      \input{Lecture/Images/OpenAddressing/DoubleHashingBrent.tikz}%
+    \end{adjustbox}
     \vspace{-1.0em}
-    \caption{Double hashing by Bent}%
-    \label{fig:hashing:open_addressing:double_hashing_bent}%
+    \caption{Double hashing by Brent}%
+    \label{fig:hashing:open_addressing:double_hashing_brent}%
   \end{figure}
   \vspace{-1.0em}
   \textbf{Idea:}
