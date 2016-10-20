@@ -13,8 +13,7 @@
   \begin{table}[!h]
     \caption{Static field with size $n = 5$}
     \label{tab:static_field_introduction}
-    \begin{tabular}{|c|c|c|c|c|c|}
-      \midrule
+    \begin{tabular}{c|c|c|c|c|c}
       Index & 0 & 1 & 2 & 3 & 4\\
       \midrule
       Value & \lstinline[
@@ -41,14 +40,36 @@
         language=Python,
         style={python-idle-code},
         basicstyle=\small
-      ]|\"e\"|\\
-      \midrule
+      ]|\"e\"|
     \end{tabular}
   \end{table}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
+\codeslide{python}{
+  \begin{frame}{Static Fields}{Python}
+    \textbf{Python:}
+    \begin{itemize}
+      \item
+        We have dynamic sized lists
+      \item
+        Python does automatic resizing when needed
+    \end{itemize}
+    \lstinputlisting[
+      language=Python,
+      basicstyle=\small,
+      tabsize=4,
+      style={python-idle-code},
+      morekeywords={},
+      escapechar={@}
+    ]{Lecture/Code/Lists.py}
+  \end{frame}
+}
+
+%-------------------------------------------------------------------------------
+
+\codeslide{java}{
 \begin{frame}{Static Fields}{Java}
   \textbf{Java:}
   \lstinputlisting[
@@ -61,9 +82,11 @@
     emphstyle=\color{java_variable}
   ]{Lecture/Code/StaticField.java}
 \end{frame}
+}
 
 %-------------------------------------------------------------------------------
 
+\codeslide{cpp}{
 \begin{frame}{Static Fields}{C++}
   \textbf{C++:}
   \lstinputlisting[
@@ -75,26 +98,7 @@
     escapechar={@}
   ]{Lecture/Code/StaticField.cpp}
 \end{frame}
-
-%-------------------------------------------------------------------------------
-
-\begin{frame}{Static Fields}{Python}
-  \textbf{Python:}
-  \begin{itemize}
-    \item
-    We have dynamic sized lists
-    \item
-    Python does automatic resizing when needed
-  \end{itemize}
-  \lstinputlisting[
-    language=Python,
-    basicstyle=\small,
-    tabsize=4,
-    style={python-idle-code},
-    morekeywords={},
-    escapechar={@}
-  ]{Lecture/Code/Lists.py}
-\end{frame}
+}
 
 %-------------------------------------------------------------------------------
 

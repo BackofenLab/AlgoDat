@@ -1,8 +1,9 @@
 \section{Dynamic Fields}
 
-\subsection{Introduction}
+\toclesssubsection{Introduction}
 
 \begin{frame}{Dynamic Fields}{Introduction}
+  \textbf{Dynamic fields:}
   \begin{itemize}
     \item
       The field is created with an initial size
@@ -16,6 +17,7 @@
 
 %-------------------------------------------------------------------------------
 
+\codeslide{python}{
 \begin{frame}{Dynamic Fields}{Python}
   \textbf{Python:}
   \lstinputlisting[
@@ -26,9 +28,11 @@
     escapechar={@}
   ]{Lecture/Code/DynamicLists.py}
 \end{frame}
+}
 
 %-------------------------------------------------------------------------------
 
+\codeslide{java}{
 \begin{frame}{Dynamic Fields}{Java}
   \textbf{Java:}
   \lstinputlisting[
@@ -41,9 +45,11 @@
     emphstyle=\color{java_variable}
   ]{Lecture/Code/DynamicField.java}
 \end{frame}
+}
 
 %-------------------------------------------------------------------------------
 
+\codeslide{cpp}{
 \begin{frame}{Dynamic Fields}{C++}
   \textbf{C++:}
   \lstinputlisting[
@@ -55,6 +61,7 @@
     escapechar={@}
   ]{Lecture/Code/DynamicField.cpp}
 \end{frame}
+}
 
 %-------------------------------------------------------------------------------
 
@@ -84,39 +91,124 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Dynamic Fields}{Implementation 1}
+  \text{First implementation:}
   \begin{itemize}
     \item
       We resize the field before each append
     \item
       We choose the size exactly as needed
   \end{itemize}
-  \lstinputlisting[
-    language=Python,
-    basicstyle=\small,
-    tabsize=4,
-    style={python-idle-code},
-    escapechar={@},
-%    morekeywords={self},
-    emph={DynamicArray, capacity, __init__},
-    emphstyle=\color{blue}
-  ]{Lecture/Code/DynamicListImpl1_Part1.py}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Dynamic Fields}{Implementation 1}
+\codeslide{python}{
+\begin{frame}{Dynamic Fields}{Implementation 1 - Python}
   \lstinputlisting[
     language=Python,
     basicstyle=\small,
     tabsize=4,
     style={python-idle-code},
     escapechar={@},
-%    morekeywords={self},
+    emph={DynamicArray, capacity, __init__},
+    emphstyle=\color{blue}
+  ]{Lecture/Code/DynamicListImpl1_Part1.py}
+\end{frame}
+}
+
+%-------------------------------------------------------------------------------
+
+\codeslide{python}{
+\begin{frame}{Dynamic Fields}{Implementation 1 - Python}
+  \lstinputlisting[
+    language=Python,
+    basicstyle=\small,
+    tabsize=4,
+    style={python-idle-code},
+    escapechar={@},
     breaklines=false,
     emph={DynamicArray, append},
     emphstyle=\color{blue}
   ]{Lecture/Code/DynamicListImpl1_Part2.py}
 \end{frame}
+}
+
+%-------------------------------------------------------------------------------
+
+\codeslide{java}{
+\begin{frame}{Dynamic Fields}{Implementation 1 - Java}
+  \vspace{-0.5em}
+  \lstinputlisting[
+    language=Java,
+    basicstyle=\small,
+    tabsize=4,
+    style={java-eclipse-code},
+    emph={size,elements},
+    emphstyle=\color{java_static}
+  ]{Lecture/Code/DynamicFieldImpl1_Part1.java}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dynamic Fields}{Implementation 1 - Java}
+  \vspace{-0.5em}
+  \lstinputlisting[
+    language=Java,
+    basicstyle=\small,
+    tabsize=4,
+    style={java-eclipse-code},
+    escapechar={@},
+    emph={size,elements},
+    emphstyle=\color{java_static}
+  ]{Lecture/Code/DynamicFieldImpl1_Part2.java}
+\end{frame}
+}
+
+%-------------------------------------------------------------------------------
+
+\codeslide{cpp}{
+\begin{frame}{Dynamic Fields}{Implementation 1 - C++ - Header}
+  \vspace{-0.5em}
+  \lstinputlisting[
+    language=C++,
+    basicstyle=\small,
+    tabsize=4,
+    style={cpp-eclipse-code},
+    escapechar={@},
+    emph={size,elements},
+    emphstyle=\color{cpp_static}
+  ]{Lecture/Code/DynamicFieldImpl1.h}
+\end{frame}
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dynamic Fields}{Implementation 1 - C++}
+  \vspace{-0.5em}
+  \lstinputlisting[
+    language=C++,
+    basicstyle=\small,
+    tabsize=4,
+    style={cpp-eclipse-code},
+    escapechar={@},
+    emph={size,elements},
+    emphstyle=\color{cpp_static},
+    morekeywords={nullptr}
+  ]{Lecture/Code/DynamicFieldImpl1_Part1.cpp}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dynamic Fields}{Implementation 1 - C++}
+  \vspace{-0.5em}
+  \lstinputlisting[
+    language=C++,
+    basicstyle=\small,
+    tabsize=4,
+    style={cpp-eclipse-code},
+    emph={size,elements},
+    emphstyle=\color{cpp_static}
+  ]{Lecture/Code/DynamicFieldImpl1_Part2.cpp}
+\end{frame}
+}
 
 %-------------------------------------------------------------------------------
 
