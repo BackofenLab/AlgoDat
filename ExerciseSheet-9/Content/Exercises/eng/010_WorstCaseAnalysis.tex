@@ -1,0 +1,23 @@
+\exercise{1} \points{5}\\
+a) The accession of data structures is often directed by the following 
+recursion:
+\begin{equation}
+T(n) = \left\lbrace\begin{array}{ll}
+a & \mbox{for } n=1\\
+c + T (n/2) & \mbox{else}
+\end{array}
+\right.
+\end{equation}
+
+Proof that $T (n) = {\mathcal O}(\log n)$.
+
+b) The following recursion is given:
+\begin{equation}
+T(n) = \left\lbrace\begin{array}{ll}
+a & \mbox{for } n=1\\
+2T (n/2) + n^3 & \mbox{else}
+\end{array}
+\right.
+\end{equation}
+Provide an expression for the runtime  $T(n)$ if the recurrence can be solved 
+with the Master Theorem.

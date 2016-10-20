@@ -1,0 +1,40 @@
+\documentclass[ngerman,12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{ifthen}
+
+\input{build/Config}
+
+\input{Packages/Packages_General}
+\input{Packages/Packages_\SettingsLanguage}
+
+\input{Settings/Settings_General}
+\input{Settings/Settings_\SettingsLanguage}
+
+% GENERALLY USEFUL MATH MAKROS
+\def\ceil#1{{\left\lceil#1\right\rceil}}
+\def\floor#1{{\left\lfloor#1\right\rfloor}}
+\def\mod{\mbox{ mod }}
+\def\div{\mbox{ div }}
+\def\sm{\backslash}
+\def\IN{\mathbb{N}}
+\def\IZ{\mathbb{Z}}
+\def\IR{\mathbb{R}}
+\def\Oh#1{\mathcal{O}\left(#1\right)}
+\def\Om#1{\Omega\left(#1\right)}
+\def\Th#1{\Theta\left(#1\right)}
+\def\eps{\varepsilon}
+
+\ifthenelse{\equal{\SettingsProgLanguage}{all}}{%
+  \newcommand{\codepart}[2]{#2}%
+}{%
+  \newcommand{\codepart}[2]{%
+    \ifthenelse{\equal{#1}{\SettingsProgLanguage}}{#2}{}%
+  }%
+}%
+
+\input{Styles/Sheet/\SettingsDesign/Header}
+\input{build/Exercises_\SettingsLanguage}
+\input{Styles/Sheet/\SettingsDesign/Footer}
+\end{document}

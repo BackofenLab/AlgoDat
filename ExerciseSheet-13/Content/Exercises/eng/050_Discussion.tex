@@ -1,0 +1,42 @@
+\exercise{4} \points{5}\\
+4.1) Write a short program \textit{RoutePlannerMain}, to calculate on the Graph 
+\emph{bawue\_bayern.graph}
+\begin{enumerate} \itemsep-2pt
+	\item the shortest path
+	\item the fastest traveling time by car (max. speed 130 km/h)
+	\item the fastest traveling time by tuned motorbike (max. speed 100 km/h) 
+\end{enumerate}
+between the Faculty of Engineering (5508637 nodes) and the train main station 
+of Nürnberg (4435496 nodes). 
+Before that, set the edge-costs by using the methods 
+\emph{setArcCostToDistance()} and \emph{setArcCostToTravelTime()} from exercise 
+1. Provide the distance in km, the travel time in hours and the compute-time 
+(without reading the graph). Moreover, please provide the 3 routes in 
+\emph{MapBBCode}-format, to visualize the routes (example see below).
+
+4.2) Find the node in the graph which is most far away from the technical 
+faculty in regard of the travel time per car and motorbike. Please provide 
+again the distance in km, the travel time in hours, the compute-time and the 
+\emph{MapBBCode}.
+
+Example \emph{MapBBCode}:
+{\small
+	\begin{verbatim}
+	[map]
+	<lat11>,<lon11> <lat12>,<lon12> ... <lat1n>,<lon1n>(blue|label1);
+	<lat21>,<lon21> <lat22>,<lon22> ... <lat2n>,<lon2n>(red|label2);
+	<lat31>,<lon31> <lat32>,<lon32> ... <lat3n>,<lon3n>(green|label3);
+	[/map]
+	\end{verbatim}
+	
+	Every route exists of a pair of coordinates  \emph{<latitude>,<longitude>} 
+	separated by a comma.
+	Coordinate pairs are separated by a space character. Routes are separated by 
+	an semicolon.
+	After the last coordinate pair optional parameters can be given in the form 
+	of: \emph{(color|label)}.
+	This can be used to provide colors or labels. Mark the route 1 as blue, the 
+	route 2 as red and route 3 as green. The generated code can be visualized on 
+	\emph{http://share.mapbbcode.org/}. \\[10pt] Please edit the table, which is 
+	linked from the homepage, especially the calculated values and the URL 
+	pointing to the visualized routes on \emph{http://share.mapbbcode.org/}.

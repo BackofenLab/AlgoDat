@@ -1,0 +1,16 @@
+\exercise{4} \points{5}\\
+Write a script \emph{LargestConnectedComponentMain}, which reads the linked 
+street graph \emph{saarland.graph} on the homepage and calculates the biggest 
+connected component. All one-way streets are already saved there as two 
+directed edges. Fill in your results in the table linked on the homepage and 
+specify: number of nodes in the original graph, number of nodes in the biggest 
+connected component, and overall running time of your script.
+
+Hint:
+
+You have to enhance the stack size in Java to ensure the function of the 
+recursive calls. Therefore start your script with:
+
+\begin{verbatim}
+java -jar -Xss1024k LargestConnectedComponentMain.jar
+\end{verbatim}
