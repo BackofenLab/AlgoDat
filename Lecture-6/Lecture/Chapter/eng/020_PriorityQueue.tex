@@ -17,7 +17,6 @@
 
 %-------------------------------------------------------------------------------
 
-%TODO(Tobias): Use tabbed environment
 \begin{frame}{Priority Queue}{Introduction}
   \textbf{Definition:}
   \begin{itemize}
@@ -90,6 +89,7 @@
 
 %-------------------------------------------------------------------------------
 
+\codeslide{python}{
 \begin{frame}{Priority Queue}{Python}
   \vspace{-1.0em}
   \lstinputlisting[
@@ -100,9 +100,11 @@
     escapechar={@}
   ]{Lecture/Code/PriorityQueue.py}
 \end{frame}
+}
 
 %-------------------------------------------------------------------------------
 
+\codeslide{java}{
 \begin{frame}{Priority Queue}{Java}
   \lstinputlisting[
     language=Java,
@@ -130,9 +132,11 @@
     emphstyle=\color{java_variable}
   ]{Lecture/Code/PriorityQueuePart2.java}
 \end{frame}
+}
 
 %-------------------------------------------------------------------------------
 
+\codeslide{cpp}{
 \begin{frame}{Priority Queue}{C++}
   \lstinputlisting[
     language=C++,
@@ -159,6 +163,7 @@
     escapechar={@}
   ]{Lecture/Code/PriorityQueuePart2.cpp}
 \end{frame}
+}
 
 %-------------------------------------------------------------------------------
 
@@ -184,7 +189,7 @@
           \cline{2-6}
         \end{tabularx}
       \end{column}
-      \begin{column}[t]{0.5\textwidth}
+      \begin{column}[t]{0.5\linewidth}
         \begin{tabularx}{\linewidth}{c|X|X|X|X|X|}
           \cline{2-6}
           $L_3:$ & 1 & 10 & 11 & 24 & $\dots$\\
@@ -214,7 +219,7 @@
       (multi-way merge or ${\color{Mittel-Blau}k}$-way merge)
     \item
       Runtime:
-      ${\color{Mittel-Blau}N}$: length of resulting list
+      ${\color{Mittel-Blau}N}$ = length of resulting list
       \begin{itemize}
         \item
           Trivial:
@@ -252,8 +257,8 @@
   \end{itemize}
   \vspace{-0.5em}
   \begin{figure}[!h]
-    \begin{adjustbox}{height=0.3\textwidth}
-      \input{Lecture/Images/Heap.tikz}%
+    \begin{adjustbox}{height=0.3\linewidth}
+      \input{Lecture/Images/GenericHeap.tikz}%
     \end{adjustbox}
     \vspace{-0.75em}
     \caption{Heap with 11 nodes}%
@@ -266,8 +271,8 @@
 \begin{frame}{Priority Queue}{Implementation}
  \begin{figure}[!h]%
    \vspace{-1.5em}
-   \begin{minipage}[b]{0.4\textwidth}%
-     \input{Lecture/Images/PriorityQueueHeap.tikz}%
+   \begin{minipage}[b]{0.4\linewidth}%
+     \input{Lecture/Images/PriorityQueue/Heap.tikz}%
     \end{minipage}
     \hfill
     \begin{tabular}[b]{ccccc}
@@ -320,20 +325,22 @@
   \end{itemize}
   \begin{figure}[!h]
     \begin{adjustbox}{height=0.275\linewidth}
-      \input{Lecture/Images/PriorityQueueHeap.tikz}%
+      \input{Lecture/Images/PriorityQueue/Heap.tikz}%
     \end{adjustbox}
     \raisebox{3.0em}{
-      $\stackrel{\color{Mittel-Blau}\texttt{
-          insert(1, {\color{green2}X})
-        }}{\Rightarrow}$
-      }\hspace{-1.5em}
-      \begin{adjustbox}{height=0.275\linewidth}
-        \input{Lecture/Images/PriorityQueueHeapInsert.tikz}%
-      \end{adjustbox}
-      %    \vspace{-0.5em}
-      %    \caption{Inserting into the priority queue}%
-      \label{fig:priority_queue:impl_insert}%
-    \end{figure}%
+      \begin{math}
+        \stackrel{
+          \color{Mittel-Blau}\texttt{insert(1, {\color{green2}X})}
+        }{\Rightarrow}
+      \end{math}
+    }\hspace{-1.5em}
+    \begin{adjustbox}{height=0.275\linewidth}
+      \input{Lecture/Images/PriorityQueue/Heap_Insert.tikz}%
+    \end{adjustbox}
+    %    \vspace{-0.5em}
+    %    \caption{Inserting into the priority queue}%
+    \label{fig:priority_queue:impl_insert}%
+  \end{figure}%
 \end{frame}
 
 %-------------------------------------------------------------------------------
@@ -349,7 +356,7 @@
   \end{itemize}
   \begin{figure}[!h]
     \begin{adjustbox}{height=0.275\linewidth}
-      \input{Lecture/Images/PriorityQueueHeapPeek.tikz}%
+      \input{Lecture/Images/PriorityQueue/Heap_Peek.tikz}%
     \end{adjustbox}
     \hspace{1.75em}\raisebox{3.0em}{
       $\stackrel{\color{Mittel-Blau}\texttt{getMin}}{\Rightarrow}$
@@ -379,13 +386,13 @@
   \end{itemize}
   \begin{figure}[!h]
     \begin{adjustbox}{height=0.275\linewidth}
-      \input{Lecture/Images/PriorityQueueHeapPrePop.tikz}%
+      \input{Lecture/Images/PriorityQueue/Heap_PrePop.tikz}%
     \end{adjustbox}
     \hspace{0.5em}\raisebox{3.0em}{
       $\stackrel{\color{Mittel-Blau}\texttt{deleteMin}}{\Rightarrow}$
     }\hspace{-1.5em}
     \begin{adjustbox}{height=0.275\linewidth}
-      \input{Lecture/Images/PriorityQueueHeapPostPop.tikz}%
+      \input{Lecture/Images/PriorityQueue/Heap_PostPop.tikz}%
     \end{adjustbox}
     %    \vspace{-0.5em}
     %    \caption{Removing the smallest element of the priotity queue}%
@@ -411,13 +418,13 @@
   \end{itemize}
     \begin{figure}[!h]
       \begin{adjustbox}{height=0.275\linewidth}
-        \input{Lecture/Images/PriorityQueueHeapPreChangeKey.tikz}%
+        \input{Lecture/Images/PriorityQueue/Heap_PreChangeKey.tikz}%
       \end{adjustbox}
       \hspace{0.25em}\raisebox{3.0em}{
         $\stackrel{\color{Mittel-Blau}\texttt{changeKey}}{\Rightarrow}$
       }\hspace{-1.5em}
       \begin{adjustbox}{height=0.275\linewidth}
-        \input{Lecture/Images/PriorityQueueHeapPostChangeKey.tikz}%
+        \input{Lecture/Images/PriorityQueue/Heap_PostChangeKey.tikz}%
       \end{adjustbox}
       %    \vspace{-0.5em}
       %    \caption{Changing the key of an element}%
@@ -439,13 +446,13 @@
   \end{itemize}
     \begin{figure}[!h]
       \begin{adjustbox}{height=0.275\linewidth}
-        \input{Lecture/Images/PriorityQueueHeapPreChangeKey.tikz}%
+        \input{Lecture/Images/PriorityQueue/Heap_PreChangeKey.tikz}%
       \end{adjustbox}
       \hspace{0.25em}\raisebox{3.0em}{
         $\stackrel{\color{Mittel-Blau}\texttt{changeKey}}{\Rightarrow}$
       }\hspace{-1.5em}
       \begin{adjustbox}{height=0.275\linewidth}
-        \input{Lecture/Images/PriorityQueueHeapPostChangeKey2.tikz}%
+        \input{Lecture/Images/PriorityQueue/Heap_PostChangeKey2.tikz}%
       \end{adjustbox}
       %    \vspace{-0.5em}
       %    \caption{Changing the key of an element}%
@@ -471,13 +478,13 @@
   \end{itemize}
     \begin{figure}[!h]
       \begin{adjustbox}{height=0.275\linewidth}
-        \input{Lecture/Images/PriorityQueueHeapPreRemove.tikz}%
+        \input{Lecture/Images/PriorityQueue/Heap_PreRemove.tikz}%
       \end{adjustbox}
       \hspace{0.5em}\raisebox{3.0em}{
         $\stackrel{\color{Mittel-Blau}\texttt{remove}}{\Rightarrow}$
       }\hspace{-1.0em}
       \begin{adjustbox}{height=0.275\linewidth}
-        \input{Lecture/Images/PriorityQueueHeapPostRemove.tikz}%
+        \input{Lecture/Images/PriorityQueue/Heap_PostRemove.tikz}%
       \end{adjustbox}
       %    \vspace{-0.5em}
       %    \caption{Removing a random element from the priotity queue}%
@@ -532,28 +539,22 @@
           the child node
       \end{itemize}
   \end{itemize}
-  \begin{center}
-    \begin{figure}[!h]%
-      \begin{columns}%
-        \begin{column}{0.45\textwidth}%
-          \begin{minipage}{\textwidth}%
-            \begin{center}%
-              \input{Lecture/Images/HeapRepairDown_First.tikz}%
-            \end{center}%
-          \end{minipage}%
-        \end{column}%
-        \begin{column}{0.45\textwidth}%
-          \begin{minipage}{\textwidth}%
-            \begin{center}%
-              \input{Lecture/Images/HeapRepairDown_Second.tikz}%
-            \end{center}%
-          \end{minipage}%
-        \end{column}%
-      \end{columns}%
-      \caption{Repairing the heap downwards}%
-      \label{fig:priority_queue:impl_repair_heap_down}%
-    \end{figure}
-  \end{center}
+  \begin{figure}[!h]%
+    \begin{columns}%
+      \begin{column}{0.45\linewidth}%
+        \begin{adjustbox}{width=\linewidth}%
+          \input{Lecture/Images/PriorityQueue/HeapRepairDown_First.tikz}%
+        \end{adjustbox}%
+      \end{column}%
+      \begin{column}{0.45\linewidth}%
+        \begin{adjustbox}{width=\linewidth}%
+          \input{Lecture/Images/PriorityQueue/HeapRepairDown_Second.tikz}%
+        \end{adjustbox}%
+      \end{column}%
+    \end{columns}%
+    \caption{Repairing the heap downwards}%
+    \label{fig:priority_queue:impl_repair_heap_down}%
+  \end{figure}
 \end{frame}
 
 %-------------------------------------------------------------------------------
@@ -575,19 +576,15 @@
   \begin{center}
     \begin{figure}[!h]%
       \begin{columns}%
-        \begin{column}{0.45\textwidth}%
-          \begin{minipage}{\textwidth}%
-            \begin{center}%
-              \input{Lecture/Images/HeapRepairDown_Second.tikz}%
-            \end{center}%
-          \end{minipage}%
+        \begin{column}{0.45\linewidth}%
+          \begin{adjustbox}{width=\linewidth}%
+              \input{Lecture/Images/PriorityQueue/HeapRepairDown_Second.tikz}%
+          \end{adjustbox}%
         \end{column}%
-        \begin{column}{0.45\textwidth}%
-          \begin{minipage}{\textwidth}%
-            \begin{center}%
-              \input{Lecture/Images/HeapRepairDown_Third.tikz}%
-            \end{center}%
-          \end{minipage}%
+        \begin{column}{0.45\linewidth}%
+          \begin{adjustbox}{width=\linewidth}%
+            \input{Lecture/Images/PriorityQueue/HeapRepairDown_Third.tikz}%
+          \end{adjustbox}%
         \end{column}%
       \end{columns}%
       \caption{Repairing the heap downwards}%
@@ -610,19 +607,15 @@
   \begin{center}
     \begin{figure}[!h]%
       \begin{columns}%
-        \begin{column}{0.45\textwidth}%
-          \begin{minipage}{\textwidth}%
-            \begin{center}%
-              \input{Lecture/Images/HeapRepairUp_First.tikz}%
-            \end{center}%
-          \end{minipage}%
+        \begin{column}{0.45\linewidth}%
+          \begin{adjustbox}{width=\linewidth}%
+            \input{Lecture/Images/PriorityQueue/HeapRepairUp_First.tikz}%
+          \end{adjustbox}%
         \end{column}%
-        \begin{column}{0.45\textwidth}%
-          \begin{minipage}{\textwidth}%
-            \begin{center}%
-              \input{Lecture/Images/HeapRepairUp_Second.tikz}%
-            \end{center}%
-          \end{minipage}%
+        \begin{column}{0.45\linewidth}%
+          \begin{adjustbox}{width=\linewidth}%
+            \input{Lecture/Images/PriorityQueue/HeapRepairUp_Second.tikz}%
+          \end{adjustbox}%
         \end{column}%
       \end{columns}%
       \caption{Repairing the heap upwards}%
@@ -645,19 +638,15 @@
   \begin{center}
     \begin{figure}[!h]%
       \begin{columns}%
-        \begin{column}{0.45\textwidth}%
-          \begin{minipage}{\textwidth}%
-            \begin{center}%
-              \input{Lecture/Images/HeapRepairUp_Second.tikz}%
-            \end{center}%
-          \end{minipage}%
+        \begin{column}{0.45\linewidth}%
+          \begin{adjustbox}{width=\linewidth}%
+            \input{Lecture/Images/PriorityQueue/HeapRepairUp_Second.tikz}%
+          \end{adjustbox}%
         \end{column}%
-        \begin{column}{0.45\textwidth}%
-          \begin{minipage}{\textwidth}%
-            \begin{center}%
-              \input{Lecture/Images/HeapRepairUp_Third.tikz}%
-            \end{center}%
-          \end{minipage}%
+        \begin{column}{0.45\linewidth}%
+          \begin{adjustbox}{width=\linewidth}%
+            \input{Lecture/Images/PriorityQueue/HeapRepairUp_Third.tikz}%
+          \end{adjustbox}%
         \end{column}%
       \end{columns}%
       \caption{Repairing the heap upwards}%
@@ -668,8 +657,7 @@
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Priority Queue}{Implementation - Reaparing the Heap -
-    Priority Queue Item}
+\begin{frame}{Priority Queue}{Implementation - Priority Queue Item}
   \textbf{Index of a priority queue item:}
   \begin{itemize}
     \item
@@ -686,8 +674,8 @@
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Priority Queue}{Implementation - Reaparing the Heap -
-    Priority Queue Item - Python}
+\codeslide{python}{
+\begin{frame}{Priority Queue}{Implementation - Priority Queue Item - Python}
   \lstinputlisting[
     language=Python,
     basicstyle=\scriptesize,
@@ -698,11 +686,12 @@
     emphstyle=\color{blue}
   ]{Lecture/Code/PriorityQueueItem.py}
 \end{frame}
+}
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Priority Queue}{Implementation - Reaparing the Heap -
-    Priority Queue Item - Java}
+\codeslide{java}{
+\begin{frame}{Priority Queue}{Implementation - Priority Queue Item - Java}
   \lstinputlisting[
     language=Java,
     basicstyle=\scriptesize,
@@ -710,16 +699,16 @@
     style={java-eclipse-code},
     breaklines=false,
     mathescape=true,
-%    escapechar={@},
     emph={key, value, heapIndex},
     emphstyle=\color{java_static}
   ]{Lecture/Code/PriorityQueueItem.java}
 \end{frame}
+}
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Priority Queue}{Implementation - Reaparing the Heap -
-    Priority Queue Item - C++}
+\codeslide{cpp}{
+\begin{frame}{Priority Queue}{Implementation - Priority Queue Item - C++}
   \lstinputlisting[
     language=C++,
     basicstyle=\small,
@@ -730,6 +719,7 @@
     escapechar={@}
   ]{Lecture/Code/PriorityQueueItem.cpp}
 \end{frame}
+}
 
 %-------------------------------------------------------------------------------
 

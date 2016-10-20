@@ -1,4 +1,3 @@
-\begin{adjustbox}{width=0.9\linewidth}%
 \begin{tikzpicture}[
   bucket/.style={
     draw={Mittel-Blau},
@@ -28,9 +27,9 @@
 \foreach \x/\xi in {
   \relax/0,
   \relax/1,
-  ${\color{Mittel-Blau}s_1}$/2,
+  ${\color{Mittel-Gruen}s_2}$/2,
   \relax/3,
-  \relax/4,
+  ${\color{Mittel-Blau}s_1}$/4,
   X/5,
   \relax/6,
   \relax/7,
@@ -45,46 +44,25 @@
   \draw (\xi + 0.5, 0.5) node[bucket_text, anchor=south] {\xi};
 }
 
-\foreach \type/\from/\to/\spacea/\spaceb in {
-  taken/2/5/0.05/-0.05,
-  taken/5/8/0.05/-0.05,
-  taken/8/11/0.05/-0.05
-}{
-  \draw
-    (\from + 0.55, 1.0)
-    edge[arrow_\type, in=180, out=90]
-    (0.5*\from + 0.5*\to + 0.5, 2.0);
-  \draw
-    (0.5*\from + 0.5*\to + 0.5, 2.0)
-    edge[->, arrow_\type, in=90, out=0]
-     (\to + 0.45, 1.0);
-}
 \draw
-  (11.55, 1.0)
-  edge[->, arrow_taken, in=180, out=90]
-  (13.0, 2.0);
+  (2.55, 1.0)
+  edge[arrow_taken, in=180, out=90, color={Mittel-Blau}]
+  (3.5, 2.0);
+\draw
+  (3.5, 2.0)
+  edge[->, arrow_taken, in=90, out=0, color={Mittel-Blau}]
+  (4.45, 1.0);
 
 \draw (2.45, 2.25) node[hash_text] {\large $h(s_1, 0)$};
 \draw (2.5, -0.75) node[hash_text_final] {%
   \large%
   ${\color{Mittel-Gruen}h(s_2, 0)}$%
 };%
-\draw (5.5, -0.75) node[hash_text_final] {%
+\draw (4.5, -0.75) node[hash_text_final] {%
   \large%
-  ${\color{Mittel-Gruen}h(s_2, 1)}$%
-};%
-\draw (8.5, -0.75) node[hash_text_final] {%
-  \large%
-  ${\color{Mittel-Gruen}h(s_2, 2)}$%
-};%
-\draw (11.5, -0.75) node[hash_text_final] {%
-  \large%
-  ${\color{Mittel-Gruen}h(s_2, 2)}$%
+  $h(s_1, 1)$%
 };%
 \draw (2.45, 2.0) edge[->, arrow_taken, color={Mittel-Blau}] (2.45, 1.0);
 \draw (2.5, -0.5) edge[->, arrow_taken] (2.5, -0.1);
-\draw (5.5, -0.5) edge[->, arrow_taken] (5.5, -0.1);
-\draw (8.5, -0.5) edge[->, arrow_taken] (8.5, -0.1);
-\draw (11.5, -0.5) edge[->, arrow_taken] (11.5, -0.1);
+\draw (4.5, -0.5) edge[->, arrow_taken, color={Mittel-Blau}] (4.5, -0.1);
 \end{tikzpicture}%
-\end{adjustbox}%

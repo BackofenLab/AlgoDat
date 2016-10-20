@@ -2,7 +2,7 @@
 // of this queue
 Integer i3 = q.poll(); // i3 == i2
 
-// retrieves, but does not remove, the head
+// retrieves, but does not remove the head
 // of this queue
 Integer i4 = q.peek(); // i4 == i1
 
