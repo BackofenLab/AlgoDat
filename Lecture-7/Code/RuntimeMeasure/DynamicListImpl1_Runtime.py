@@ -23,7 +23,8 @@ def test(size):
 
 import timeit
 
-with open('runtime.csv', 'w') as f:
+with open('impl1_runtime.csv', 'w') as f:
+	f.write("x;y\n")
 	for m in range(0, 100):
 		m = m * 10
 		result = ('%d;%.6f\n' % (m, timeit.timeit('test(' + str(m) + ')', setup='from __main__ import DynamicArray, test', number=5))).replace('.', ',')

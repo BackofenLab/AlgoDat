@@ -8,9 +8,10 @@ class DynamicArray:
 
 	def append(self, item):
 		if self.size >= len(self.elements):
-			newElements = [0] * (self.size + 100)
+			newElements = [0] \
+				* max(1, 2 * self.size)
 
-			for i in range(0, self.size - 1):
+			for i in range(0, self.size):
 				newElements[i] = self.elements[i]
 
 			self.elements = newElements
@@ -25,10 +26,10 @@ def test(size):
 
 import timeit
 
-with open('impl2_runtime.csv', 'w') as f:
+with open('impl3_runtime.csv', 'w') as f:
 	f.write("x;y\n")
 	for m in range(0, 100):
-		m = m * 50
+		m = m * 500
 		result = ('%d;%.6f\n' % (m, timeit.timeit('test(' + str(m) + ')', setup='from __main__ import DynamicArray, test', number=5))).replace('.', ',')
 		print(result)
 		f.write(result)

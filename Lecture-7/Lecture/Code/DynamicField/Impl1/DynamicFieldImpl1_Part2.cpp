@@ -8,5 +8,6 @@ void DynamicArray::append(T item) {
 
   delete[] elements;
   elements = newElements;
+  elements[size] = item;
   size++;
 }

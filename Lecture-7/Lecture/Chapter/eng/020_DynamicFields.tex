@@ -112,7 +112,7 @@
     escapechar={@},
     emph={DynamicArray, capacity, __init__},
     emphstyle=\color{blue}
-  ]{Lecture/Code/DynamicListImpl1_Part1.py}
+  ]{Lecture/Code/DynamicField/Impl1/DynamicListImpl1_Part1.py}
 \end{frame}
 }
 
@@ -129,7 +129,7 @@
     breaklines=false,
     emph={DynamicArray, append},
     emphstyle=\color{blue}
-  ]{Lecture/Code/DynamicListImpl1_Part2.py}
+  ]{Lecture/Code/DynamicField/Impl1/DynamicListImpl1_Part2.py}
 \end{frame}
 }
 
@@ -145,7 +145,7 @@
     style={java-eclipse-code},
     emph={size,elements},
     emphstyle=\color{java_static}
-  ]{Lecture/Code/DynamicFieldImpl1_Part1.java}
+  ]{Lecture/Code/DynamicField/Impl1/DynamicFieldImpl1_Part1.java}
 \end{frame}
 
 %-------------------------------------------------------------------------------
@@ -160,7 +160,7 @@
     escapechar={@},
     emph={size,elements},
     emphstyle=\color{java_static}
-  ]{Lecture/Code/DynamicFieldImpl1_Part2.java}
+  ]{Lecture/Code/DynamicField/Impl1/DynamicFieldImpl1_Part2.java}
 \end{frame}
 }
 
@@ -177,7 +177,7 @@
     escapechar={@},
     emph={size,elements},
     emphstyle=\color{cpp_static}
-  ]{Lecture/Code/DynamicFieldImpl1.h}
+  ]{Lecture/Code/DynamicField/Impl1/DynamicFieldImpl1.h}
 \end{frame}
 %-------------------------------------------------------------------------------
 
@@ -192,7 +192,7 @@
     emph={size,elements},
     emphstyle=\color{cpp_static},
     morekeywords={nullptr}
-  ]{Lecture/Code/DynamicFieldImpl1_Part1.cpp}
+  ]{Lecture/Code/DynamicField/Impl1/DynamicFieldImpl1_Part1.cpp}
 \end{frame}
 
 %-------------------------------------------------------------------------------
@@ -206,22 +206,23 @@
     style={cpp-eclipse-code},
     emph={size,elements},
     emphstyle=\color{cpp_static}
-  ]{Lecture/Code/DynamicFieldImpl1_Part2.cpp}
+  ]{Lecture/Code/DynamicField/Impl1/DynamicFieldImpl1_Part2.cpp}
 \end{frame}
 }
 
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Dynamic Fields}{Implementation 1}
-  \begin{figure}
-    \caption{Runtime of \textit{DynamicArray}}
-    \label{fig:runtime_dynamic_array_impl1}
-    %TODO
-  \end{figure}
   \begin{itemize}
     \item
       Why is the runtime qubic?
   \end{itemize}
+  \begin{figure}
+    \input{Lecture/Images/DynamicArray/RuntimePlot_Impl1.tikz}
+    \vspace{-1.0em}
+    \caption{Runtime of \textit{DynamicArray}}
+    \label{fig:runtime_dynamic_array_impl1}
+  \end{figure}
 \end{frame}
 
 %-------------------------------------------------------------------------------
@@ -291,9 +292,9 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Dynamic Fields}{Implementation 2}
+  \textbf{Idea:}
   \begin{itemize}
     \item
-      \textbf{Idea:}
       Better resize stratergy
     \item
       We allocate more space than needed
@@ -308,32 +309,97 @@
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Dynamic Fields}{Implementation 2}
+\codeslide{python}{
+\begin{frame}{Dynamic Fields}{Implementation 2 - Python}
   \lstinputlisting[
     language=Python,
     basicstyle=\small,
     tabsize=4,
     style={python-idle-code},
     escapechar={@},
-    %    morekeywords={self},
     breaklines=false,
     emph={DynamicArray, append},
     emphstyle=\color{blue}
-  ]{Lecture/Code/DynamicListImpl2_Part2.py}
+  ]{Lecture/Code/DynamicField/Impl2/DynamicListImpl2.py}
+\end{frame}
+}
+
+%-------------------------------------------------------------------------------
+
+\codeslide{java}{
+\begin{frame}{Dynamic Fields}{Implementation 2 - Java}
+  \vspace{-0.5em}
+  \lstinputlisting[
+    language=Java,
+    basicstyle=\small,
+    tabsize=4,
+    style={java-eclipse-code},
+    escapechar={@},
+    emph={size,elements},
+    emphstyle=\color{java_static}
+  ]{Lecture/Code/DynamicField/Impl2/DynamicFieldImpl2.java}
+\end{frame}
+}
+
+%-------------------------------------------------------------------------------
+
+\codeslide{cpp}{
+\begin{frame}{Dynamic Fields}{Implementation 2 - C++ - Header}
+  \vspace{-0.5em}
+  \lstinputlisting[
+    language=C++,
+    basicstyle=\small,
+    tabsize=4,
+    style={cpp-eclipse-code},
+    escapechar={@},
+    emph={size,elements,memSize},
+    emphstyle=\color{cpp_static}
+  ]{Lecture/Code/DynamicField/Impl2/DynamicFieldImpl2.h}
+\end{frame}
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dynamic Fields}{Implementation 2 - C++}
+  \vspace{-0.5em}
+  \lstinputlisting[
+    language=C++,
+    basicstyle=\small,
+    tabsize=4,
+    style={cpp-eclipse-code},
+    escapechar={@},
+    emph={size,elements,memSize},
+    emphstyle=\color{cpp_static},
+    morekeywords={nullptr}
+  ]{Lecture/Code/DynamicField/Impl2/DynamicFieldImpl2_Part1.cpp}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
+\begin{frame}{Dynamic Fields}{Implementation 2 - C++}
+  \vspace{-0.5em}
+  \lstinputlisting[
+    language=C++,
+    basicstyle=\small,
+    tabsize=4,
+    style={cpp-eclipse-code},
+    emph={size,elements,memSize},
+    emphstyle=\color{cpp_static}
+  ]{Lecture/Code/DynamicField/Impl2/DynamicFieldImpl2_Part2.cpp}
+\end{frame}
+}
+
+%-------------------------------------------------------------------------------
+
 \begin{frame}{Dynamic Fields}{Implementation 2}
-  \begin{figure}
-    \caption{Runtime of \textit{DynamicArray}}
-    \label{fig:runtime_dynamic_array_impl2}
-    %TODO
-  \end{figure}
   \begin{itemize}
     \item
       Why is the runtime still qubic?
   \end{itemize}
+  \begin{figure}
+    \input{Lecture/Images/DynamicArray/RuntimePlot_Impl2.tikz}
+    \vspace{-1.0em}
+    \caption{Runtime of \textit{DynamicArray}}
+    \label{fig:runtime_dynamic_array_impl2}
+  \end{figure}
 \end{frame}
 
 %-------------------------------------------------------------------------------
@@ -439,9 +505,9 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Dynamic Fields}{Implementation 3}
+  \textbf{Idea:}
   \begin{itemize}
     \item
-      \textbf{Idea:}
       Multiply the size with a constant $C > 1$
       \begin{itemize}
         \item
@@ -461,25 +527,61 @@
     tabsize=4,
     style={python-idle-code},
     escapechar={@},
-%    morekeywords={self},
     breaklines=false,
     emph={DynamicArray, append},
     emphstyle=\color{blue}
-  ]{Lecture/Code/DynamicListImpl3_Part2.py}
+  ]{Lecture/Code/DynamicField/Impl3/DynamicListImpl3.py}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
+\codeslide{java}{
+\begin{frame}{Dynamic Fields}{Implementation 3 - Java}
+  \vspace{-0.5em}
+  \lstinputlisting[
+    language=Java,
+    basicstyle=\small,
+    tabsize=4,
+    style={java-eclipse-code},
+    escapechar={@},
+    emph={size,elements},
+    emphstyle=\color{java_static},
+    breaklines=false
+  ]{Lecture/Code/DynamicField/Impl3/DynamicFieldImpl3.java}
+\end{frame}
+}
+
+%-------------------------------------------------------------------------------
+
+\codeslide{cpp}{
+\begin{frame}{Dynamic Fields}{Implementation 3 - C++}
+  \vspace{-0.5em}
+  \lstinputlisting[
+    language=C++,
+    basicstyle=\small,
+    tabsize=4,
+    style={cpp-eclipse-code},
+    escapechar={@},
+    emph={size,elements,memSize},
+    emphstyle=\color{cpp_static},
+    morekeywords={nullptr}
+  ]{Lecture/Code/DynamicField/Impl3/DynamicFieldImpl3.cpp}
+\end{frame}
+}
+
+%-------------------------------------------------------------------------------
+
 \begin{frame}{Dynamic Fields}{Implementation 3}
-  \begin{figure}
-    \caption{Runtime of \textit{DynamicArray}}
-    \label{fig:runtime_dynamic_array_impl3}
-    %TODO
-  \end{figure}
   \begin{itemize}
     \item
       Now the runtime is linear with some bumps. Why?
   \end{itemize}
+  \begin{figure}
+    \input{Lecture/Images/DynamicArray/RuntimePlot_Impl3.tikz}
+    \vspace{-1.0em}
+    \caption{Runtime of \textit{DynamicArray}}
+    \label{fig:runtime_dynamic_array_impl3}
+  \end{figure}
 \end{frame}
 
 %-------------------------------------------------------------------------------

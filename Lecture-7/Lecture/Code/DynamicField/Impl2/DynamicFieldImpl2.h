@@ -3,10 +3,11 @@ class DynamicArray {
  private:
   T* elements;
   @{\color{cpp_typedef}uint32\_t}@ size;
+  @{\color{cpp_typedef}uint32\_t}@ memSize;
 
  public:
   DynamicArray();
 
-  uint32_t capacity();
+  @{\color{cpp_typedef}uint32\_t}@ capacity();
   void append(T item);
 }
