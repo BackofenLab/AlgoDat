@@ -8,25 +8,29 @@
 \input{Packages/LecturePackages_General}
 \input{Packages/LecturePackages_\LectureLanguage}
 
-\usepackage{ufcd}
+\input{Styles/Lecture/\LectureDesign/Packages}
+
 \input{Settings/LectureSettings_General}
 \input{Settings/LectureSettings_\LectureLanguage}
+
+\input{Styles/Lecture/\LectureDesign/Base}
+
+\usepackage[autostyle=true]{csquotes}
+\usepackage{ifthen}
 
 % We need topics for our sources for grouping
 % old: \usepackage[backend=bibtex]{biblatex}
 \usepackage[defaultbib]{bibtopic}
 \bibliographystyle{alpha}
 \renewcommand{\thebtauxfile}{\jobname.\arabic{btauxfile}.btaux}
+
 %%% Source of eatdot
 %%%http://tex.stackexchange.com/questions/152892/how-to-delete-a-full-stop-on-reference-ending
 \newcommand\eatdot[1]{}
 
-\usepackage[autostyle=true]{csquotes}
-
 %%% Source of subtoc-fix
-%%% http://stackoverflow.com/questions/2795478/latex-beamer-prevent-showing-the-toc-at-one-occation
-\usepackage{ifthen}
-
+%%% 
+%%%http://stackoverflow.com/questions/2795478/latex-beamer-prevent-showing-the-toc-at-one-occation
 \newboolean{sectiontoc}
 \setboolean{sectiontoc}{true} % default to true
 \newcommand{\toclesssection}[1]{
@@ -43,15 +47,13 @@
   \setboolean{subsectiontoc}{true}
 }
 
-\pgfdeclareimage[height=1cm]{imtek-logo}{ufcd-logo-imtek-color}
-\pgfdeclareimage[height=1.3cm]{iif-logo}{ufcd-logo-iif-color}
-\logo{\pgfuseimage{imtek-logo}}
-
-\title[beamer-ufcd]{\PresentationTitle}
-\subtitle{\PresentationDescription}
-\author[\PresentationAuthor]{\PresentationAuthorText}
-\institute[\PresentationInstitute]{\PresentationInstituteText}
-\date[\PresentationDate]{\PresentationSmallTitle, \PresentationDate}
+\ifthenelse{\equal{\LectureProgLanguage}{all}}{%
+  \newcommand{\codeslide}[2]{#2}%
+}{%
+  \newcommand{\codeslide}[2]{%
+    \ifthenelse{\equal{#1}{\LectureProgLanguage}}{#2}{}%
+  }%
+}%
 
 \AtBeginSection[]
 {
@@ -101,12 +103,8 @@
 \input{build/Chapters_\LectureLanguage}
 
 \appendix
-\section<presentation>*{\appendixname}
-\subsection<presentation>*{\LectureFurtherLiterature}
-
-\begin{frame}[allowframebreaks]%
-  \frametitle<presentation>{\LectureFurtherLiterature}
-  \input{Lecture/Literature/Literature_\LectureLanguage}
-\end{frame}
+\section*{\appendixname}
+\subsection*{\LectureFurtherLiterature}
+\input{Lecture/Literature/Literature_\LectureLanguage}
 
 \end{document}
