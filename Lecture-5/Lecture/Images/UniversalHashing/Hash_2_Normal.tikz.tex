@@ -1,14 +1,13 @@
-\begin{adjustbox}{height=0.8\linewidth}
-\tikzstyle{body}=[
-  draw=none,
-  fill={Mittel-Blau!40!white}
+\begin{tikzpicture}[
+  body/.style={
+    draw=none,
+    fill={Mittel-Blau!40!white}
+  }, arrow/.style={
+    ->,
+    draw={Mittel-Blau},
+    line width=0.5em
+  }
 ]%
-\tikzstyle{arrow}=[
-  ->,
-  draw={Mittel-Blau},
-  line width=0.5em
-]%
-\begin{tikzpicture}
 \draw[body] (0, 0) -- (0, 10) -- (3, 7) -- (3, 3) -- (0, 0);
   
 \draw (-1, 6.5) node(x) {\Huge x};
@@ -19,4 +18,3 @@
 \draw[arrow] (-0.5, 6.5) -- (0.5, 6.5) -- (2.5, 4.5) -- (3.5, 4.5);
 \draw[arrow] (-0.5, 3.5) -- (3.5, 3.5);
 \end{tikzpicture}
-\end{adjustbox}

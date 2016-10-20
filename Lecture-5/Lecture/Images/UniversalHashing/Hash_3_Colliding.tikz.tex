@@ -1,14 +1,13 @@
-\begin{adjustbox}{height=0.8\linewidth}
-\tikzstyle{body}=[
-  draw=none,
-  fill={Mittel-Blau!40!white}
-]%
-\tikzstyle{arrow_collision}=[
-  ->,
-  draw={red!10!orange},
-  line width=0.5em
-]%
-\begin{tikzpicture}
+\begin{tikzpicture}[
+  body/.style={
+    draw=none,
+    fill={Mittel-Blau!40!white}
+  }, arrow_collision/.style={
+    ->,
+    draw={red!10!orange},
+    line width=0.5em
+  }
+]
 \draw[body] (0, 0) -- (0, 10) -- (3, 7) -- (3, 3) -- (0, 0);
   
 \draw (-1, 6.5) node(x) {\Huge x};
@@ -18,4 +17,3 @@
 \draw[arrow_collision] (-0.5, 6.5) -- (0.5, 6.5) -- (2.5, 5.0) -- (3.5, 5.0);
 \draw[arrow_collision] (-0.5, 3.5) -- (0.5, 3.5) -- (2.5, 5.0) -- (3.5, 5.0);
 \end{tikzpicture}
-\end{adjustbox}

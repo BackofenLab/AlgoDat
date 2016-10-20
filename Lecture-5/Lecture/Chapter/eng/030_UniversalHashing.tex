@@ -1,6 +1,6 @@
 \section{Universal Hashing}
 
-\subsection{Introduction}
+\toclesssubsection{Introduction}
 
 \begin{frame}{Universal Hashing}{Thought Experiment}
   \begin{itemize}
@@ -26,20 +26,35 @@
     \item
       This is called {\color{Mittel-Blau}universal hashing}
   \end{itemize}
-  \begin{figure}[!b]
-    \begin{minipage}{0.333\textwidth}%
-      \centering\input{Lecture/Images/Hash_1_Crossing.tikz}%
-      \caption{Hash func. 1}
-    \end{minipage}%
-    \begin{minipage}{0.333\textwidth}%
-      \centering\input{Lecture/Images/Hash_2_Normal.tikz}%
-      \caption{Hash func. 2}
-    \end{minipage}%
-    \begin{minipage}{0.333\textwidth}%
-      \centering\input{Lecture/Images/Hash_3_Colliding.tikz}%
-      \caption{Hash func. 3}
-    \end{minipage}%
-  \end{figure}
+  \begin{columns}
+    \begin{column}{0.33\linewidth}
+      \begin{figure}[!h]
+        \begin{adjustbox}{height=0.8\linewidth}
+          \input{Lecture/Images/UniversalHashing/Hash_1_Crossing.tikz}
+        \end{adjustbox}
+        \caption{Hash func. 1}
+        \label{fig:universal_hashing:hash_function_crossing}
+      \end{figure}
+    \end{column}
+    \begin{column}{0.33\linewidth}
+      \begin{figure}[!h]
+        \begin{adjustbox}{height=0.8\linewidth}
+          \input{Lecture/Images/UniversalHashing/Hash_2_Normal.tikz}
+        \end{adjustbox}
+        \caption{Hash func. 2}
+        \label{fig:universal_hashing:hash_function_normal}
+      \end{figure}
+    \end{column}
+    \begin{column}{0.33\linewidth}
+      \begin{figure}[!h]
+        \begin{adjustbox}{height=0.8\linewidth}
+          \input{Lecture/Images/UniversalHashing/Hash_3_Colliding.tikz}
+        \end{adjustbox}
+        \caption{Hash func. 2}
+        \label{fig:universal_hashing:hash_function_colliding}
+      \end{figure}
+    \end{column}
+  \end{columns}
 \end{frame}
 
 %-------------------------------------------------------------------------------
@@ -56,10 +71,12 @@
       $h_i: \mathbb{U} \to \{0,\dots, m - 1\}$
   \end{itemize}%
   \begin{figure}[!b]%
-    \centering\input{Lecture/Images/HashFunction.tikz}%
+    \begin{adjustbox}{height=0.35\linewidth}%
+      \input{Lecture/Images/UniversalHashing/HashFunction.tikz}%
+    \end{adjustbox}
     \vspace*{-1.0em}%
     \caption{Hash function $h_1$}%
-    \label{fig:hash_function_definition}
+    \label{fig:universal_hashing:hash_function_definition}
   \end{figure}
 \end{frame}
 
@@ -78,9 +95,11 @@
     \end{column}
     \begin{column}{0.5\linewidth}
       \begin{figure}[!t]%
-        \centering\input{Lecture/Images/HashUniverse.tikz}%
+        \begin{adjustbox}{width=\linewidth}
+          \input{Lecture/Images/UniversalHashing/HashUniverse.tikz}%
+        \end{adjustbox}
         \caption{Hash universe $\mathbb{H}$}%
-        \label{fig:hash_universe}
+        \label{fig:universal_hashing:hash_universe}
       \end{figure}
     \end{column}
   \end{columns}
@@ -92,7 +111,7 @@
   \textbf{Definition:}
   $\mathbb{H}$ is {\color{Mittel-Blau}$c$-universal} if
   $\forall x, y \in \mathbb{U} \mid x \neq y:$
-  \[
+  \begin{displaymath}
     \overbrace{
       \frac{
         \vert \{h_i \in \mathbb{H}\!: h_i(x) = h_i(y)\} \vert
@@ -103,7 +122,7 @@
       Number of hash functions that create collisions
     }
     \leq \frac{c}{m}, \hspace*{1.5em} c \in \mathbb{R}
-  \]
+  \end{displaymath}
   \begin{itemize}
     \item
       If $h \in \mathbb{H}$ is chosen randomly then
@@ -135,9 +154,11 @@
     \end{column}
     \begin{column}{0.5\linewidth}
       \begin{figure}[!h]%
-        \centering\input{Lecture/Images/HashFunctionToBucket.tikz}%
+        \begin{adjustbox}{width=\linewidth}%
+          \input{Lecture/Images/UniversalHashing/HashFunctionToBucket.tikz}%
+        \end{adjustbox}
         \caption{Hash function $h \in \mathbb{H}$}%
-        \label{fig:hash_function_to_bucket}
+        \label{fig:universal_hashing:hash_function_to_bucket}
       \end{figure}
     \end{column}
   \end{columns}

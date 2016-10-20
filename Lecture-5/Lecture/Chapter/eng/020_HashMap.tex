@@ -40,52 +40,46 @@
       \lstinline[
         language=Python,
         style={python-idle-code},
-        basicstyle=\small,
-%        morekeywords={insert}
+        basicstyle=\small
       ]|insert(3904, "A")|:
       $\hspace*{0.5em} h(3904) = 4$
       $\hspace*{0.5em} \Rightarrow$
       \lstinline[
         language=Python,
         style={python-idle-code},
-        basicstyle=\small,
-%        morekeywords={append}
+        basicstyle=\small
       ]|T[4] = (3904, "A")|
     \item
       \lstinline[
         language=Python,
         style={python-idle-code},
-        basicstyle=\small,
-%        morekeywords={insert}
+        basicstyle=\small
       ]|insert(3126, "B")|:
       $\hspace*{0.5em} h(3126) = 1$
       $\hspace*{0.5em} \Rightarrow$
       \lstinline[
         language=Python,
         style={python-idle-code},
-        basicstyle=\small,
-%        morekeywords={append}
+        basicstyle=\small
       ]|T[1] = (3126, "B")|
     \item
       \lstinline[
         language=Python,
         style={python-idle-code},
-        basicstyle=\small,
-%        morekeywords={insert}
+        basicstyle=\small
       ]|insert(5148, "C")|:
       $\hspace*{0.5em} h(5148) = 3$
       $\hspace*{0.5em} \Rightarrow$
       \lstinline[
         language=Python,
         style={python-idle-code},
-        basicstyle=\small,
-%        morekeywords={append}
+        basicstyle=\small
       ]|T[3] = (5148, "C")|
   \end{itemize}
   \vspace*{-1.0em}
   \begin{table}[!b]
     \caption{Hash table T}
-    \label{tab:hash_table_example_introduction}
+    \label{tab:hash_table:example_introduction}
     \begin{tabularx}{0.875\textwidth}{l|ccccc}
       {} & 0 & 1 & 2 & 3 & 4\\
       \midrule
@@ -128,8 +122,7 @@
       \lstinline[
         language=Python,
         style={python-idle-code},
-        basicstyle=\small,
-%        morekeywords={search}
+        basicstyle=\small
       ]|search(3904)|:
       $\hspace*{0.5em} h(3904) = 4$
       $\hspace*{0.5em} \Rightarrow$
@@ -148,8 +141,7 @@
       \lstinline[
         language=Python,
         style={python-idle-code},
-        basicstyle=\small,
-%        morekeywords={search}
+        basicstyle=\small
       ]|search(4522)|:
       $\hspace*{0.5em} h(4522) = 2$
       $\hspace*{0.5em} \Rightarrow$
@@ -167,7 +159,7 @@
   \vspace*{-1.0em}
   \begin{table}[!b]
     \caption{Hash table T}
-    \label{tab:hash_table_example_introduction2}
+    \label{tab:hash_table:example_introduction2}
     \begin{tabularx}{0.875\textwidth}{l|ccccc}
       {} & 0 & 1 & 2 & 3 & 4\\
       \midrule
@@ -210,30 +202,28 @@
       \lstinline[
         language=Python,
         style={python-idle-code},
-        basicstyle=\small,
-%        morekeywords={insert}
+        basicstyle=\small
       ]|insert(8769, "D")|:
       $\hspace*{0.5em} h(8769) = 4$
       $\hspace*{0.5em} \Rightarrow$
       \lstinline[
         language=Python,
         style={python-idle-code},
-        basicstyle=\small,
-%        morekeywords={append}
+        basicstyle=\small
       ]|T[4] = (8769, "D")|
     \item
       More often than expected
       \begin{itemize}
         \item
           \textbf{Birthday problem:}
-          With 23 people we have the probability of $0.5$ that 2 of them have
-          the same birthday
+          With 23 people we have the probability of $50\;\%$ that 2 of
+          them have birthday at the same day
       \end{itemize}
   \end{itemize}
   \vspace*{-1.0em}
   \begin{table}[!b]
     \caption{Hash table T}
-    \label{tab:hash_table_example_introduction3}
+    \label{tab:hash_table:example_introduction3}
     \begin{tabularx}{0.875\textwidth}{l|ccccc}
       {} & 0 & 1 & 2 & 3 & 4\\
       \midrule
@@ -250,18 +240,20 @@
         style={python-idle-code},
         basicstyle=\small
       ]|(5148, "C")| &
-      $\begin{array}{@{}l@{}}
-        \lstinline[
-          language=Python,
-          style={python-idle-code},
-          basicstyle=\small
-        ]|(3904, "A"),|\\
-        \lstinline[
-          language=Python,
-          style={python-idle-code},
-          basicstyle=\small
-        ]|(8769, "D")|
-      \end{array}$
+      \begin{math}
+        \begin{array}{@{}l@{}}
+          \lstinline[
+            language=Python,
+            style={python-idle-code},
+            basicstyle=\small
+          ]|(3904, "A"),|\\
+          \lstinline[
+            language=Python,
+            style={python-idle-code},
+            basicstyle=\small
+          ]|(8769, "D")|
+        \end{array}
+      \end{math}
     \end{tabularx}
   \end{table}
 \end{frame}
@@ -302,44 +294,39 @@
       \lstinline[
         language=Python,
         style={python-idle-code},
-        basicstyle=\small,
-%        morekeywords={insert}
+        basicstyle=\small
       ]|insert(8769, "D")|:
       $\hspace*{0.5em} h(8769) = 4$
       $\hspace*{0.5em} \Rightarrow$
       \lstinline[
         language=Python,
         style={python-idle-code},
-        basicstyle=\small,
-%        morekeywords={append}
+        basicstyle=\small
       ]|T[4].append((8769, "D"))|
     \item
       \lstinline[
         language=Python,
         style={python-idle-code},
-        basicstyle=\small,
-%        morekeywords={search}
+        basicstyle=\small
       ]|search(8769)|:
       $\hspace*{0.5em} h(8769) = 4$\\
       $\hspace*{1.5em} \Rightarrow$
       \lstinline[
         language=Python,
         style={python-idle-code},
-        basicstyle=\small,
-      %        morekeywords={append}
+        basicstyle=\small
       ]|T[4]|
       $\Rightarrow$
       \lstinline[
         language=Python,
         style={python-idle-code},
-        basicstyle=\small,
-%        morekeywords={append}
+        basicstyle=\small
       ]|[(3904, "A"), (8769, "D")]|
   \end{itemize}
   \vspace*{-1.0em}
   \begin{table}[!b]
     \caption{Hash table T}
-    \label{tab:hash_table_example_linked}
+    \label{tab:hash_table:example_linked}
     \begin{tabularx}{\textwidth}{l|ccccc}
       {} & 0 & 1 & 2 & 3 & 4\\
       \midrule
@@ -364,18 +351,20 @@
         style={python-idle-code},
         basicstyle=\small
       ]|[(5148, "C")]| &
-      $\left[\begin{array}{@{}l@{}}
-        \lstinline[
-          language=Python,
-          style={python-idle-code},
-          basicstyle=\small
-        ]|(3904, "A"),|\\
-        \lstinline[
-          language=Python,
-          style={python-idle-code},
-          basicstyle=\small
-        ]|(8769, "D")|
-      \end{array}\right]$
+      \begin{math}
+        \left[\begin{array}{@{}l@{}}
+          \lstinline[
+            language=Python,
+            style={python-idle-code},
+            basicstyle=\small
+          ]|(3904, "A"),|\\
+          \lstinline[
+            language=Python,
+            style={python-idle-code},
+            basicstyle=\small
+          ]|(8769, "D")|
+        \end{array}\right]
+      \end{math}
     \end{tabularx}
   \end{table}
 \end{frame}
@@ -399,7 +388,7 @@
     \begin{column}{0.3\linewidth}
       \begin{table}[!h]
         \caption{Best case ($m = 5, \, n = 10$)}
-        \label{tab:hash_table_runtime_best_case}
+        \label{tab:hash_table:runtime_best_case}
         \begin{tabularx}{\textwidth}{c|c}
           {} & Bucket\\
           \midrule
@@ -455,7 +444,7 @@
     \begin{column}{0.4\linewidth}
       \begin{table}[!h]
         \caption{Worst case ($m = 5, \, n = 10$)}
-        \label{tab:hash_table_runtime_worst_case}
+        \label{tab:hash_table:runtime_worst_case}
         \begin{tabularx}{\textwidth}{c|c}
           {} & Bucket\\
           \midrule

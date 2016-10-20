@@ -8,16 +8,15 @@
       $h_a(x) = (a \cdot x) \mod m, \hspace*{1.5em} a \in \mathbb{U}$
     \item
       Is not $c$-universal. Why?
-      \[
+      \begin{displaymath}
         \forall x, y \in \mathbb{U}\!: \; \frac{
           \vert \{h \in \mathbb{H}: h(x) = h(y)\} \vert
         }{
           \vert \mathbb{H} \vert
         } \leq \frac{c}{m}, \hspace*{1.5em} x \neq y
-      \]
+      \end{displaymath}
     \item
-      Which $x, y$ lead to a relative collision count bigger
-      than $\frac{c}{m}$?
+      Which $x, y$ lead to a relative collision count bigger than $\frac{c}{m}$?
   \end{itemize}
 \end{frame}
 
@@ -39,8 +38,9 @@
       Easy to implement but hard to proof
   \end{itemize}
   \begin{example}[%
-      $\mathbb{U} = \{0, \dots, 99\}, \; p = 101, \; a = 47, \; b = 5$%
-    ]\[h(x) = ((47 \cdot x + 5) \mod 101) \mod m\]
+    $\mathbb{U} = \{0, \dots, 99\}, \; p = 101, \; a = 47, \; b = 5$
+  ]%
+    \[h(x) = ((47 \cdot x + 5) \mod 101) \mod m\]
   \end{example}
 \end{frame}
 
@@ -70,13 +70,13 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Universal Hashing}{Examples}
-  \begin{example}[
+  \begin{example}[%
     $\mathbb{U} = \{0, \dots, 999\}, \; m = 10, \; a = 348$
-    ]
+  ]%
     With $a=348$: $a_2 = 3, \; a_1 = 4, \; a_0 = 8$
     \begin{align*}
-    h_{348}(x) &= (a_2 \cdot x_2 + a_1 \cdot x_1 + a_0 \cdot x_0) \mod m\\
-    {} &= (3 \, x_2 + 4 \, x_1 + 8 \, x_0) \mod 10
+      h_{348}(x) &= (a_2 \cdot x_2 + a_1 \cdot x_1 + a_0 \cdot x_0) \mod m\\
+      {} &= (3 \, x_2 + 4 \, x_1 + 8 \, x_0) \mod 10
     \end{align*}
     With $x = 127$: $x_2 = 1, \; x_1 = 2, \; x_0 = 7$
     \begin{align*}
