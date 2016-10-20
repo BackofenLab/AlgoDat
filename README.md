@@ -36,18 +36,28 @@ It's easy, just use `make` in the root directory:
 
 ```
 Windows:
-make build
+make
 
 Linux:
 make build_server
 ```
 
+The lecture is provided in different languages / designs / programming languages. Use the respective switches to adjusted the settings.
+```
+Windows:
+make DESIGN=ufcd PROGLANG=java LANGUAGE=eng
+
+Linux:
+make build_server DESIGN=plain PROGLANG=python LANGUAGE=eng
+```
+
 Use `make help` to retrieve a usage info.
-If you want to only build one lecture / exercisesheet use ```make build``` in the desired subdirectory.
+If you want to only build one lecture / exercisesheet use ```make``` or ```make build_server``` in the desired subdirectory.
 
 To use the University of Freiburg design you have to install it manually and use the `DESIGN` switch. More information can be found here: http://www.zuv.uni-freiburg.de/service/cd
 
-## Clone repository 
+## Clone repository
+To download the lecture content into a directory named ```AlgoDat``` execute the following command:
 `$ git clone https://github.com/BackofenLab/AlgoDat.git`
 
 ## Creating your own branch
