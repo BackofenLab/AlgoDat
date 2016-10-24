@@ -28,6 +28,6 @@ child [path] {
   child {node [node] {11}}
   child {node [node] (last) {\textbf{7}}}
 };
-\draw[path, color=black, ->] (last) to [out=45, in=0, looseness=1.0] (root);
 \draw[path, color={Mittel-Gruen}, ->] (root) to ($(root) + (0, 1.0)$);
+\onslide<2->\draw[path, color=black, ->] (last) to [out=45, in=0, looseness=1.0] (root);
 \end{tikzpicture}
