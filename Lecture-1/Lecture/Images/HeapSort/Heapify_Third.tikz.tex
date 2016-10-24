@@ -19,7 +19,7 @@
     level distance = 4.0em
   }
 ]%
-\begin{pgfonlayer}{main}
+%\begin{pgfonlayer}{main}
 \node [node] {\textbf{11}}
 child [path_error] {
   node [node] (left) {2}
@@ -31,10 +31,10 @@ child [path_error] {
   child[path] {node [node] {5}}
   child[path] {node [node] {8}}
 };
-\end{pgfonlayer}
+%\end{pgfonlayer}
 
-\begin{pgfonlayer}{background}
-  \fill [color={Hell-Blau!40}] ($(left) - (1.0, 0.2) - (0.25, 0.025)$)
-    rectangle ($(right) + (1.0, 1.80) + (0.25, 0.025)$);
-\end{pgfonlayer}
+%\begin{pgfonlayer}{background}
+%  \fill [color={Hell-Blau!40}] ($(left) - (1.0, 0.2) - (0.25, 0.025)$)
+%    rectangle ($(right) + (1.0, 1.80) + (0.25, 0.025)$);
+%\end{pgfonlayer}
 \end{tikzpicture}

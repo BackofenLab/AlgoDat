@@ -27,22 +27,22 @@
     level distance = 4.0em
   }
 ]%
-\begin{pgfonlayer}{main}
-  \node [node, label={[lleft]:0}] {11}
+%\begin{pgfonlayer}{main}
+  \node [node, label={[lleft]above:0}] {11}
   child [path] {
-    node [node, label={[lleft]:1}] (left) {\textbf{7}}
-    child[path_error] {node [node, label={[lleft]:3}] {3}}
-    child[path_error] {node [node, label={[lright]:4}] {2}}
+    node [node, label={[lleft]above:1}] (left) {\textbf{7}}
+    child[path_error] {node [node, label={[lleft]above:3}] {3}}
+    child[path_error] {node [node, label={[lright]above:4}] {2}}
   }
   child [path] {
-    node [node, label={[lright]:2}] (right) {\textbf{8}}
-    child[path_error] {node [node, label={[lleft]:5}] {5}}
-    child[path_error] {node [node, label={[lright]:6}] {4}}
+    node [node, label={[lright]above:2}] (right) {\textbf{8}}
+    child[path_error] {node [node, label={[lleft]above:5}] {5}}
+    child[path_error] {node [node, label={[lright]above:6}] {4}}
   };
-\end{pgfonlayer}
+%\end{pgfonlayer}
 
-\begin{pgfonlayer}{background}
-  \fill [color={Hell-Blau!40}] ($(left) - (1.0, 1.80) - (0.25, 0.025)$)
-    rectangle ($(right) + (1.0, 0.2) + (0.25, 0.025)$);
-\end{pgfonlayer}
+% \begin{pgfonlayer}{background}
+%   \fill [color={Hell-Blau!40}] ($(left) - (1.0, 1.80) - (0.25, 0.025)$)
+%     rectangle ($(right) + (1.0, 0.2) + (0.25, 0.025)$);
+% \end{pgfonlayer}
 \end{tikzpicture}
