@@ -8,11 +8,11 @@
     color=Mittel-Blau
   },
   lleft/.style={
-    color=Mittel-Gruen,
+    color=Greenb,
     shift={(-0.5em,-0.75em)}
   },
   lright/.style={
-    color=Mittel-Gruen!80!black,
+    color=Greenb!80!black,
     shift={(0.5em,-0.75em)}
   },
   level/.style={
@@ -21,15 +21,15 @@
   }
 ]
 
-\node [node, label={[lleft]:0}] (root) {4}
+\node [node, label={[lleft]above:{\protect{\onslide<2->{0}}}}] (root) {4}
 child [path] {
-  node [node, label={[lleft]:1}] {8}
-  child {node [node, label={[lleft]:3}] {17}}
-  child {node [node, label={[lright]:4}] {9}}
+  node [node, label={[lleft]above:{\protect{\onslide<3->{1}}}}] {8}
+  child {node [node, label={[lleft]above:{\protect{\onslide<5->{3}}}}] {17}}
+  child {node [node, label={[lright]above:{\protect{\onslide<6->{4}}}}] {9}}
 }
 child [path] {
-  node [node, label={[lright]:2}] {5}
-  child {node [node, label={[lleft]:5}] {11}}
-  child {node [node, label={[lright]:6}] {7}}
+  node [node, label={[lright]above:{\protect{\onslide<4->{2}}}}] {5}
+  child {node [node, label={[lleft]above:{\protect{\onslide<7->{5}}}}] {11}}
+  child {node [node, label={[lright]above:{\protect{\onslide<8->{6}}}}] {7}}
 };
 \end{tikzpicture}
