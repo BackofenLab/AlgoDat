@@ -100,13 +100,13 @@ build_server_forced: build/$(BUILD_CHAPTER_NAME).tex
 	@echo '\def\SettingsDesign{$(DESIGN)}' >> build/Config.tex
 	@
 	@echo "Building (1st iteration)"
-	@pdflatex -interaction=batchmode -disable-installer -quiet $(NAME).tex
+	@pdflatex -interaction=batchmode $(NAME).tex
 	@
 	@echo "Building (2nd iteration)"
-	@pdflatex -interaction=batchmode -disable-installer -quiet $(NAME).tex
+	@pdflatex -interaction=batchmode $(NAME).tex
 	@
 	@echo "Building (3rd iteration)"
-	@pdflatex -interaction=batchmode -disable-installer -quiet $(NAME).tex
+	@pdflatex -interaction=batchmode $(NAME).tex
 	@
 	@echo "Moving output"
 	@mv $(NAME).pdf $(BUILD_NAME).pdf
