@@ -19,6 +19,23 @@ The official version of the course is stored in the master branch. The aim of th
 
 *Immediately correct bugs you find in the master branch*
 
+### Add a corporate design (e.g. from University of Freiburg)
+Before building the slides a corporate design has to be added.
+For example the university of Freiburg design can be selected
+by providing the 'DESIGN=ufcd' option to the make command.
+
+    #change into your home directory
+    cd
+    #create texmf and change into folder
+    mkdir texmf
+    cd texmf
+    #download University of Freiburg corporate design (access restricted to university IP range):
+    wget http://www.zuv.uni-freiburg.de/service/cd/download/latext/ufcd.tds.zip
+    wget http://www.zuv.uni-freiburg.de/service/cd/download/latext/ufcd-logo-uni.tds.zip
+    wget http://www.zuv.uni-freiburg.de/service/cd/download/latext/ufcd-logo-iif.tds.zip
+    wget http://www.zuv.uni-freiburg.de/service/cd/download/latext/ufcd-logo-imtek.tds.zip
+    #make the corporate design files available to latex
+    texhash ~/texmf
 
 ### Build slides and excercies
 
