@@ -18,17 +18,17 @@ all: clean build
 # ------------------------------------------------------------------------------
 help:
 	@echo "Language:"
-	@echo "	Use switch -DLANGUAGE=<value> to set the language"
+	@echo "	Use switch ALGO_LANGUAGE=<value> to set the language"
 	@echo "	eng: english"
 	@echo
 	@echo "Programming Language:"
-	@echo "	Use switch -DPROGLANG=<value> to set the language"
+	@echo "	Use switch ALGO_PROGLANG=<value> to set the language"
 	@echo "	java: Java"
 	@echo "	cpp: C++"
 	@echo "	python: Python"
 	@echo
 	@echo "Design:"
-	@echo "	Use switch -DDESIGN=<value> to set the lecture design"
+	@echo "	Use switch ALGO_DESIGN=<value> to set the lecture design"
 	@echo "	ufcd: Design of University of Freiburg"
 	@echo "	plain: Standard design of the beamer template"
 	@echo
