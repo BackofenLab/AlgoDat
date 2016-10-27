@@ -1,0 +1,332 @@
+\section{Divide and Conquer}
+\toclesssubsection{Introduction}
+
+%Maximum subtotal
+%\begin{itemize}
+%  \item
+%  Approach to a problem
+%  \item
+%  Divide and concur approach
+%  \item
+%  Runtime
+%\end{itemize}
+%\item
+%Recursion equation
+%\begin{itemize}
+%  \item
+%  Substitution method
+%  \item
+%  Recursion tree method
+%  \item
+%  Master theorem
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Divide and Conquer}{Introduction}
+  \textbf{Concept:}
+  \begin{itemize}
+    \item
+      {\color{Mittel-Blau}Divide} the problem into smaller subproblems
+    \item
+      {\color{Mittel-Blau}Conquer} the subproblems through recusive solving.\\
+      If subproblems are small enough solve them directly
+    \item
+      {\color{Mittel-Blau}Connect} all solutions to as total solution of the
+      problem
+  \end{itemize}
+  \vspace{1.0em}
+  \begin{itemize}
+    \item
+      {\color{Mittel-Blau}Recursive} application of the algorithm for smaller
+      subproblems
+    \item
+      {\color{Mittel-Blau}Direct} solving of small subproblems
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\codeslide{python}{
+\begin{frame}{Divide and Conquer}{Introduction - Python}
+  \vspace{-0.5em}
+  \lstinputlisting[
+    language=Python,
+    basicstyle=\small,
+    tabsize=4,
+    style={python-idle-code},
+    escapechar={@},
+    emph={solve},
+    emphstyle=\color{blue}
+  ]{Lecture/Code/DivideAndConquer/DivideAndConquer_Concept.py}
+\end{frame}
+}
+
+%TODO: Implement for Java / C++
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Divide and Conquer}{Features}
+  \begin{enumerate}
+    \item
+      Can help with conceptual hard problems
+      \begin{itemize}
+        \item
+          {\color{Mittel-Blau}Solution} of the trivial problems has to be known
+        \item
+          {\color{Mittel-Blau}Dividing} in subproblems has to be possible
+        \item
+          {\color{Mittel-Blau}Combination} of solutions has to be possible
+      \end{itemize}
+    \item
+      Suitable for parallel processing
+      \begin{itemize}
+        \item
+          Subproblems are {\color{Mittel-Blau}independent} of each other
+        \item
+          Only needed input for each subproblem has to be known
+      \end{itemize}
+  \end{enumerate}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Divide and Conquer}{Features}
+  \begin{enumerate}
+    \setcounter{enumi}{2}
+    \item
+      Realization of {\color{Mittel-Blau}efficient solutions}
+      \begin{itemize}
+        \item
+          If trivial solution is $\in \mathcal{O}(1)$
+        \item
+          And separation / combination of subproblems is $\in \mathcal{O}(n)$
+        \item
+          And the number of subproblems is limited
+        \item
+          The runtime is $\in \mathcal{O}(n \, \log n)$
+      \end{itemize}
+  \end{enumerate}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Divide and Conquer}{Implementation}
+  \textbf{Trivial solution:}
+  \begin{itemize}
+    \item
+      Small directly solvable subproblems are smart and easy
+    \item
+      Otherwise the efficiency will be improved if relative big subproblems
+      can be solved directly
+    \item
+      Recursion depth should be small (stack / memory overhead)
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Divide and Conquer}{Implementation}
+  \textbf{Division of problems:}
+  \begin{itemize}
+    \item
+      Choosing the number of subproblems and the concrete allocation can be
+      demanding
+  \end{itemize}
+  \vspace{1em}
+  \textbf{Combination of solutions:}
+  \begin{itemize}
+    \item
+      Typically conceptional demanding
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Divide and Conquer}{Example - Maximum Subtotal}
+  \textbf{Input:}
+  \begin{itemize}
+    \item
+      Progression $X \in \mathbb{G}^n$ of $n$ whole numbers
+  \end{itemize}
+  \textbf{Output:}
+  \begin{itemize}
+    \item
+      Maximum sum of related subsequence and its index boundary
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Divide and Conquer}{Example - Maximum Subtotal}
+  \begin{example}[Maximum Subtotal]
+    \vspace{-1em}
+    \begin{table}[!t]
+      \caption{Input values}
+      \begin{tabular}{c|c|c|c|c|c|c|c|c|c|c}
+        Index & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9\\
+        \midrule
+        Value & 31 & -41 & 59 & 26 & -53 & 58 & 97 & -93 & -23 & 84
+      \end{tabular}
+      \label{tab:divide_and_conquer:max_subtotal_example_values}
+    \end{table}
+    \vspace{6em}
+    %TODO: Hand-Drawings here (Free space) or no free space?
+    \textbf{Output:} Sum: 187, Start: 2, End: 6
+  \end{example}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Divide and Conquer}{Example - Maximum Subtotal}
+  \textbf{Application:}
+  \begin{itemize}
+    \item
+      Maximum profit of buying and selling shares
+  \end{itemize}
+  
+  TODO: Graphics -> look at slide 31 \vspace{2em}
+  
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Divide and Conquer}{Brute Force}
+  
+  TODO: Code -> look at slide 32 \vspace{2em}
+  
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Divide and Conquer}{Python implementation}
+  
+  TODO: Python Code -> look at slide 33 \vspace{2em}
+  
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Divide and Conquer}{Runtime upper bound}
+  
+  TODO: Code -> look at slide 34 \vspace{2em}
+  
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Divide and Conquer}{Runtime lower bound}
+
+TODO: Table -> look at slide 35 \vspace{2em}
+
+  \begin{itemize}
+    \item
+      There are a minimum of $\dfrac{n}{3}$ values for u, for $\dfrac{n}{3}$ 
+      values passed through o, for which again run through $\dfrac{n}{3}$ 
+      addition steps in the inner loop
+    \item
+      We need a minimum of $T(n) = \left(\dfrac{n}{3}\right)^3 \in \Omega 
+      (n^3)$ steps
+    \item
+      $T(n) \in \mathcal{O}(n^3)$ and $T(n) \in \Omega(n^3)$ follows $T(n) \in 
+      \Theta (n^3)$
+    \item
+      it is hard to solve the problem worse ...
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Divide and Conquer}{More efficient alternative}
+  ... but its easier to solve it better
+  \begin{itemize}
+    \item
+      Until now:\\
+      For every u and for every o we calculate $S_{u,o} = X(u) + X(u+1) + \dots 
+      + X(o)$
+    \item
+      More efficient:\\
+      incremental actualization instead of pass through loops\\
+      from $S_{u,o+1} = X(u) + X(u+1) + \dots + X(o) + X(o+1)$\\
+      and $S_{u,o} = X(u) + X(u+1) + \dots + X(o)$\\
+      follows $S_{u,o+1} = S_{u,o} + X(o+1)$ $\rightarrow$ $\mathcal{O}(1)$ 
+      instead of $\mathcal{O}(n)$
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Divide and Conquer}{Better solution}
+  
+  TODO: Code -> look at slide 37 \vspace{2em}
+  
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Divide and Conquer}{Python Code}
+  
+  TODO: Python Code -> look at slide 38 \vspace{2em}
+  
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Divide and Conquer}{Idea}
+  \begin{itemize}
+    \item
+    Solve the problem for the left and the right half of X
+    \item
+      Put the parts of the solution together to the overall solution
+  \end{itemize}
+  
+  TODO: Graphics -> look at slide 39 \vspace{2em}
+  
+  \begin{itemize}
+    \item
+      The Maximum is either in the left half (A) or in the right half (B)
+    \item
+      The Maximum can also be on the border of both half's (C) 
+    \item
+      For C we have to determine rmax and lmax
+    \item
+      The overall solution is a maximum of A, B, C
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Divide and Conquer}{Concept}
+  \begin{itemize}
+    \item
+      Small problems will be solved directly: n=1 $\Rightarrow$ Max = X(0)
+    \item
+      Big problems will be divided in two subproblems and solved recursively. 
+      Parts of the solution A and B will be delivered.
+  \end{itemize}
+  
+  TODO: Graphics -> look at slide 40 \vspace{2em}
+  
+  \begin{itemize}
+    \item
+      To determine parts of the solution C, we will determine rmax and lmax for 
+      the subproblem.
+    \item
+      The overall solution results in the maximum of A, B, C
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Divide and Conquer}{Implementation}
+  
+  TODO: Code -> look at slide 42 \vspace{2em}
+  
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Divide and Conquer}{Python Code}
+  
+  TODO: Python Code -> look at slide 43 \vspace{2em}
+  
+\end{frame}

@@ -1,24 +1,14 @@
-
-#ifndef GRAPH_H_
-#define GRAPH_H_
-
-#include <vector>
-#include <map>
-#include <string>
-
 template<typename V>
-class Graph {
+class @{\color{cpp_typedef}Graph}@ {
  private:
-  std::vector<V> _vertices;
-  std::map<V, std::vector<V>> _edges;
+  std::@{\color{cpp_typedef}vector}@<V> _vertices;
+  std::@{\color{cpp_typedef}map}@<V, std::@{\color{cpp_typedef}vector}@<V>> _edges;
 
  public:
-  Graph();
-  virtual ~Graph();
+  @\textbf{Graph}@();
+  virtual ~@\textbf{Graph}@();
 
-  void addVertex(V vertex);
-  void addEdge(V from, V to);
-  std::string toString();
+  void @\textbf{addVertex}@(V vertex);
+  void @\textbf{addEdge}@(V from, V to);
+  std::@{\color{cpp_typedef}string}@ @\textbf{toString}@();
 };
-
-#endif /* GRAPH_H_ */

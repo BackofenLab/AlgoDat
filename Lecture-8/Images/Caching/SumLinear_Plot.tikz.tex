@@ -1,0 +1,24 @@
+\begin{tikzpicture}
+\begin{axis}[
+  width=0.9\linewidth,
+  height=0.6\linewidth,
+  %  xlabel={elements / 1},
+  ylabel={runtime / s},
+  grid=major,
+  y tick label style={
+    /pgf/number format/fixed,
+    /pgf/number format/fixed zerofill,
+    /pgf/number format/precision=2
+  },
+  scaled x ticks=false,
+  scaled y ticks=false
+]
+\addplot[mark=x] table[
+  /pgf/number format/read comma as period,
+  col sep=semicolon,
+  x=x,
+  y=y,
+  only marks
+] {Code/RuntimeMeasure/cache_linear_runtime.csv};
+\end{axis}
+\end{tikzpicture}
