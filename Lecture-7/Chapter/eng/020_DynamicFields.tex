@@ -26,7 +26,7 @@
     tabsize=4,
     style={python-idle-code},
     escapechar={@}
-  ]{Lecture/Code/DynamicLists.py}
+  ]{Code/DynamicLists.py}
 \end{frame}
 }
 
@@ -43,7 +43,7 @@
     escapechar={@},
     emph={words},
     emphstyle=\color{java_variable}
-  ]{Lecture/Code/DynamicField.java}
+  ]{Code/DynamicField.java}
 \end{frame}
 }
 
@@ -59,7 +59,7 @@
     style={cpp-eclipse-code},
     morekeywords={endl},
     escapechar={@}
-  ]{Lecture/Code/DynamicField.cpp}
+  ]{Code/DynamicField.cpp}
 \end{frame}
 }
 
@@ -112,7 +112,7 @@
     escapechar={@},
     emph={DynamicArray, capacity, __init__},
     emphstyle=\color{blue}
-  ]{Lecture/Code/DynamicField/Impl1/DynamicListImpl1_Part1.py}
+  ]{Code/DynamicField/Impl1/DynamicListImpl1_Part1.py}
 \end{frame}
 }
 
@@ -129,7 +129,7 @@
     breaklines=false,
     emph={DynamicArray, append},
     emphstyle=\color{blue}
-  ]{Lecture/Code/DynamicField/Impl1/DynamicListImpl1_Part2.py}
+  ]{Code/DynamicField/Impl1/DynamicListImpl1_Part2.py}
 \end{frame}
 }
 
@@ -145,7 +145,7 @@
     style={java-eclipse-code},
     emph={size,elements},
     emphstyle=\color{java_static}
-  ]{Lecture/Code/DynamicField/Impl1/DynamicFieldImpl1_Part1.java}
+  ]{Code/DynamicField/Impl1/DynamicFieldImpl1_Part1.java}
 \end{frame}
 
 %-------------------------------------------------------------------------------
@@ -160,7 +160,7 @@
     escapechar={@},
     emph={size,elements},
     emphstyle=\color{java_static}
-  ]{Lecture/Code/DynamicField/Impl1/DynamicFieldImpl1_Part2.java}
+  ]{Code/DynamicField/Impl1/DynamicFieldImpl1_Part2.java}
 \end{frame}
 }
 
@@ -177,7 +177,7 @@
     escapechar={@},
     emph={size,elements},
     emphstyle=\color{cpp_static}
-  ]{Lecture/Code/DynamicField/Impl1/DynamicFieldImpl1.h}
+  ]{Code/DynamicField/Impl1/DynamicFieldImpl1.h}
 \end{frame}
 %-------------------------------------------------------------------------------
 
@@ -192,7 +192,7 @@
     emph={size,elements},
     emphstyle=\color{cpp_static},
     morekeywords={nullptr}
-  ]{Lecture/Code/DynamicField/Impl1/DynamicFieldImpl1_Part1.cpp}
+  ]{Code/DynamicField/Impl1/DynamicFieldImpl1_Part1.cpp}
 \end{frame}
 
 %-------------------------------------------------------------------------------
@@ -206,7 +206,7 @@
     style={cpp-eclipse-code},
     emph={size,elements},
     emphstyle=\color{cpp_static}
-  ]{Lecture/Code/DynamicField/Impl1/DynamicFieldImpl1_Part2.cpp}
+  ]{Code/DynamicField/Impl1/DynamicFieldImpl1_Part2.cpp}
 \end{frame}
 }
 
@@ -218,7 +218,7 @@
       Why is the runtime qubic?
   \end{itemize}
   \begin{figure}
-    \input{Lecture/Images/DynamicArray/RuntimePlot_Impl1.tikz}
+    \input{Images/DynamicArray/RuntimePlot_Impl1.tikz}
     \vspace{-1.0em}
     \caption{Runtime of \textit{DynamicArray}}
     \label{fig:runtime_dynamic_array_impl1}
@@ -232,32 +232,32 @@
   \begin{tabularx}{\linewidth}{@{}lcl}
     \def\FSAsize{1}\def\FSAelements{0}%
     \def\FSAcopy{0}\def\FSAdelete{0}\def\FSAinsert{1}%
-    \input{Lecture/Images/FixedSizeArray.tikz} &
+    \input{Images/FixedSizeArray.tikz} &
     $\mathcal{O}(1)$ &
     write 1 element\\
     \def\FSAsize{2}\def\FSAelements{0}%
     \def\FSAcopy{1}\def\FSAdelete{0}\def\FSAinsert{1}%
-    \input{Lecture/Images/FixedSizeArray.tikz} &
+    \input{Images/FixedSizeArray.tikz} &
     $\mathcal{O}(1 + {\color{Mittel-Blau}1})$ &
     write 1 element, {\color{Mittel-Blau}copy 1 element}\\
     \def\FSAsize{3}\def\FSAelements{0}%
     \def\FSAcopy{2}\def\FSAdelete{0}\def\FSAinsert{1}%
-    \input{Lecture/Images/FixedSizeArray.tikz} &
+    \input{Images/FixedSizeArray.tikz} &
     $\mathcal{O}(1 + {\color{Mittel-Blau}2})$ &
     write 1 element, {\color{Mittel-Blau}copy 2 elements}\\
     \def\FSAsize{4}\def\FSAelements{0}%
     \def\FSAcopy{3}\def\FSAdelete{0}\def\FSAinsert{1}%
-    \input{Lecture/Images/FixedSizeArray.tikz} &
+    \input{Images/FixedSizeArray.tikz} &
     $\mathcal{O}(1 + {\color{Mittel-Blau}3})$ &
     write 1 element, {\color{Mittel-Blau}copy 3 elements}\\
     \def\FSAsize{5}\def\FSAelements{0}%
     \def\FSAcopy{4}\def\FSAdelete{0}\def\FSAinsert{1}%
-    \input{Lecture/Images/FixedSizeArray.tikz} &
+    \input{Images/FixedSizeArray.tikz} &
     $\mathcal{O}(1 + {\color{Mittel-Blau}4})$ &
     write 1 element, {\color{Mittel-Blau}copy 4 elements}\\
     \def\FSAsize{6}\def\FSAelements{0}%
     \def\FSAcopy{5}\def\FSAdelete{0}\def\FSAinsert{1}%
-    \input{Lecture/Images/FixedSizeArray.tikz} &
+    \input{Images/FixedSizeArray.tikz} &
     $\mathcal{O}(1 + {\color{Mittel-Blau}5})$ &
     write 1 element, {\color{Mittel-Blau}copy 5 elements}\\
     \hspace*{1.5em}\dots & \dots & \hspace*{1.5em}\dots
@@ -320,7 +320,7 @@
     breaklines=false,
     emph={DynamicArray, append},
     emphstyle=\color{blue}
-  ]{Lecture/Code/DynamicField/Impl2/DynamicListImpl2.py}
+  ]{Code/DynamicField/Impl2/DynamicListImpl2.py}
 \end{frame}
 }
 
@@ -337,7 +337,7 @@
     escapechar={@},
     emph={size,elements},
     emphstyle=\color{java_static}
-  ]{Lecture/Code/DynamicField/Impl2/DynamicFieldImpl2.java}
+  ]{Code/DynamicField/Impl2/DynamicFieldImpl2.java}
 \end{frame}
 }
 
@@ -354,7 +354,7 @@
     escapechar={@},
     emph={size,elements,memSize},
     emphstyle=\color{cpp_static}
-  ]{Lecture/Code/DynamicField/Impl2/DynamicFieldImpl2.h}
+  ]{Code/DynamicField/Impl2/DynamicFieldImpl2.h}
 \end{frame}
 %-------------------------------------------------------------------------------
 
@@ -369,7 +369,7 @@
     emph={size,elements,memSize},
     emphstyle=\color{cpp_static},
     morekeywords={nullptr}
-  ]{Lecture/Code/DynamicField/Impl2/DynamicFieldImpl2_Part1.cpp}
+  ]{Code/DynamicField/Impl2/DynamicFieldImpl2_Part1.cpp}
 \end{frame}
 
 %-------------------------------------------------------------------------------
@@ -383,7 +383,7 @@
     style={cpp-eclipse-code},
     emph={size,elements,memSize},
     emphstyle=\color{cpp_static}
-  ]{Lecture/Code/DynamicField/Impl2/DynamicFieldImpl2_Part2.cpp}
+  ]{Code/DynamicField/Impl2/DynamicFieldImpl2_Part2.cpp}
 \end{frame}
 }
 
@@ -395,7 +395,7 @@
       Why is the runtime still qubic?
   \end{itemize}
   \begin{figure}
-    \input{Lecture/Images/DynamicArray/RuntimePlot_Impl2.tikz}
+    \input{Images/DynamicArray/RuntimePlot_Impl2.tikz}
     \vspace{-1.0em}
     \caption{Runtime of \textit{DynamicArray}}
     \label{fig:runtime_dynamic_array_impl2}
@@ -409,37 +409,37 @@
   \begin{tabularx}{\linewidth}{@{}lcl}
     \def\FSAsize{3}\def\FSAelements{0}%
     \def\FSAcopy{0}\def\FSAdelete{0}\def\FSAinsert{1}%
-    \input{Lecture/Images/FixedSizeArray.tikz} &
+    \input{Images/FixedSizeArray.tikz} &
     $\mathcal{O}(1)$ &
     write 1 element\\
     \def\FSAsize{3}\def\FSAelements{1}%
     \def\FSAcopy{0}\def\FSAdelete{0}\def\FSAinsert{1}%
-    \input{Lecture/Images/FixedSizeArray.tikz} &
+    \input{Images/FixedSizeArray.tikz} &
     $\mathcal{O}(1)$ &
     write 1 element\\
     \def\FSAsize{3}\def\FSAelements{2}%
     \def\FSAcopy{0}\def\FSAdelete{0}\def\FSAinsert{1}%
-    \input{Lecture/Images/FixedSizeArray.tikz} &
+    \input{Images/FixedSizeArray.tikz} &
     $\mathcal{O}(1)$ &
     write 1 element\\
     \def\FSAsize{6}\def\FSAelements{0}%
     \def\FSAcopy{3}\def\FSAdelete{0}\def\FSAinsert{1}%
-    \input{Lecture/Images/FixedSizeArray.tikz} &
+    \input{Images/FixedSizeArray.tikz} &
     $\mathcal{O}(1 + {\color{Mittel-Blau}3})$ &
     write 1 element, {\color{Mittel-Blau}copy 3 elements}\\
     \def\FSAsize{6}\def\FSAelements{4}%
     \def\FSAcopy{0}\def\FSAdelete{0}\def\FSAinsert{1}%
-    \input{Lecture/Images/FixedSizeArray.tikz} &
+    \input{Images/FixedSizeArray.tikz} &
     $\mathcal{O}(1)$ &
     write 1 element\\
     \def\FSAsize{6}\def\FSAelements{5}%
     \def\FSAcopy{0}\def\FSAdelete{0}\def\FSAinsert{1}%
-    \input{Lecture/Images/FixedSizeArray.tikz} &
+    \input{Images/FixedSizeArray.tikz} &
     $\mathcal{O}(1)$ &
     write 1 element\\
     \def\FSAsize{9}\def\FSAelements{0}%
     \def\FSAcopy{6}\def\FSAdelete{0}\def\FSAinsert{1}%
-    \input{Lecture/Images/FixedSizeArray.tikz} &
+    \input{Images/FixedSizeArray.tikz} &
     $\mathcal{O}(1 + {\color{Mittel-Blau}6})$ &
     write 1 element, {\color{Mittel-Blau}copy 6 elements}\\
     \hspace*{1.5em}\dots & \dots & \hspace*{1.5em}\dots
@@ -530,7 +530,7 @@
     breaklines=false,
     emph={DynamicArray, append},
     emphstyle=\color{blue}
-  ]{Lecture/Code/DynamicField/Impl3/DynamicListImpl3.py}
+  ]{Code/DynamicField/Impl3/DynamicListImpl3.py}
 \end{frame}
 
 %-------------------------------------------------------------------------------
@@ -547,7 +547,7 @@
     emph={size,elements},
     emphstyle=\color{java_static},
     breaklines=false
-  ]{Lecture/Code/DynamicField/Impl3/DynamicFieldImpl3.java}
+  ]{Code/DynamicField/Impl3/DynamicFieldImpl3.java}
 \end{frame}
 }
 
@@ -565,7 +565,7 @@
     emph={size,elements,memSize},
     emphstyle=\color{cpp_static},
     morekeywords={nullptr}
-  ]{Lecture/Code/DynamicField/Impl3/DynamicFieldImpl3.cpp}
+  ]{Code/DynamicField/Impl3/DynamicFieldImpl3.cpp}
 \end{frame}
 }
 
@@ -577,7 +577,7 @@
       Now the runtime is linear with some bumps. Why?
   \end{itemize}
   \begin{figure}
-    \input{Lecture/Images/DynamicArray/RuntimePlot_Impl3.tikz}
+    \input{Images/DynamicArray/RuntimePlot_Impl3.tikz}
     \vspace{-1.0em}
     \caption{Runtime of \textit{DynamicArray}}
     \label{fig:runtime_dynamic_array_impl3}
@@ -591,47 +591,47 @@
   \begin{tabularx}{\linewidth}{@{}lcl}
     \def\FSAsize{1}\def\FSAelements{0}%
     \def\FSAcopy{0}\def\FSAdelete{0}\def\FSAinsert{1}%
-    \input{Lecture/Images/FixedSizeArray.tikz} &
+    \input{Images/FixedSizeArray.tikz} &
     $\mathcal{O}(1)$ &
     write 1\\
     \def\FSAsize{2}\def\FSAelements{0}%
     \def\FSAcopy{1}\def\FSAdelete{0}\def\FSAinsert{1}%
-    \input{Lecture/Images/FixedSizeArray.tikz} &
+    \input{Images/FixedSizeArray.tikz} &
     $\mathcal{O}(1 + {\color{Mittel-Blau}1})$ &
     write 1, {\color{Mittel-Blau}copy 1 element}\\
     \def\FSAsize{4}\def\FSAelements{0}%
     \def\FSAcopy{2}\def\FSAdelete{0}\def\FSAinsert{1}%
-    \input{Lecture/Images/FixedSizeArray.tikz} &
+    \input{Images/FixedSizeArray.tikz} &
     $\mathcal{O}(1 + {\color{Mittel-Blau}2})$ &
     write 1, {\color{Mittel-Blau}copy 2 elements}\\
     \def\FSAsize{4}\def\FSAelements{3}%
     \def\FSAcopy{0}\def\FSAdelete{0}\def\FSAinsert{1}%
-    \input{Lecture/Images/FixedSizeArray.tikz} &
+    \input{Images/FixedSizeArray.tikz} &
     $\mathcal{O}(1)$ &
     write 1\\
     \def\FSAsize{8}\def\FSAelements{0}%
     \def\FSAcopy{4}\def\FSAdelete{0}\def\FSAinsert{1}%
-    \input{Lecture/Images/FixedSizeArray.tikz} &
+    \input{Images/FixedSizeArray.tikz} &
     $\mathcal{O}(1 + {\color{Mittel-Blau}4})$ &
     write 1, {\color{Mittel-Blau}copy 4 elements}\\
     \def\FSAsize{8}\def\FSAelements{5}%
     \def\FSAcopy{0}\def\FSAdelete{0}\def\FSAinsert{1}%
-    \input{Lecture/Images/FixedSizeArray.tikz} &
+    \input{Images/FixedSizeArray.tikz} &
     $\mathcal{O}(1)$ &
     write 1\\
     \def\FSAsize{8}\def\FSAelements{6}%
     \def\FSAcopy{0}\def\FSAdelete{0}\def\FSAinsert{1}%
-    \input{Lecture/Images/FixedSizeArray.tikz} &
+    \input{Images/FixedSizeArray.tikz} &
     $\mathcal{O}(1)$ &
     write 1\\
     \def\FSAsize{8}\def\FSAelements{7}%
     \def\FSAcopy{0}\def\FSAdelete{0}\def\FSAinsert{1}%
-    \input{Lecture/Images/FixedSizeArray.tikz} &
+    \input{Images/FixedSizeArray.tikz} &
     $\mathcal{O}(1)$ &
     write 1\\
     \def\FSAsize{10}\def\FSAelements{0}%
     \def\FSAcopy{8}\def\FSAdelete{0}\def\FSAinsert{1}%
-    \input{Lecture/Images/FixedSizeArray.tikz}%
+    \input{Images/FixedSizeArray.tikz}%
     \hspace*{0.25em}$\cdots$ &
     $\mathcal{O}(1 + {\color{Mittel-Blau}8})$ &
     write 1, {\color{Mittel-Blau}copy 8 elements}\\
