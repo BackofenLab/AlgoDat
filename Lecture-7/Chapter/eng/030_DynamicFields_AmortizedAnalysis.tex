@@ -8,7 +8,7 @@
     \def \FSAcopyarrow{1}%
     \def\FSAlabelsize{Size ${\color{Mittel-Blau}s_i}$}%
     \def\FSAlabelcapacity{Capacity ${\color{Mittel-Blau}c_i}$}%
-    \input{Lecture/Images/FixedSizeArray_Sizes.tikz}%
+    \input{Images/FixedSizeArray_Sizes.tikz}%
     \vspace*{-0.5em}%
     \caption{Static array with capacity $c_i$}%
     \label{fig:array_amortized analysis}%
@@ -114,7 +114,7 @@
     \def\FSAlabelcapacity{%
       ${\color{Mittel-Blau}c_{i-1}}%
         = {\color{Mittel-Blau}s_{i-1}} = 7$}%
-    \input{Lecture/Images/FixedSizeArray_Sizes.tikz}%
+    \input{Images/FixedSizeArray_Sizes.tikz}%
     %
     \hspace*{0.5em}\raisebox{2em}{$\Rightarrow$}\hspace*{0.5em}%
     %
@@ -124,7 +124,7 @@
       = {\color{Mittel-Blau}s_{i-1}} + 1$}%
     \def\FSAlabelcapacity{${\color{Mittel-Blau}c_i}
       = \frac{3}{2}{\color{Mittel-Blau}s_i}$ = 13}%
-    \input{Lecture/Images/FixedSizeArray_Sizes.tikz}%
+    \input{Images/FixedSizeArray_Sizes.tikz}%
     \caption{\textit{Append} operation with reallocation}
     \label{fig:dynamic_fields:amortized_analysis:append}
   \end{figure}
@@ -153,7 +153,7 @@
     \def\FSAlabelcapacity{%
       ${\color{Mittel-Blau}c_{i-1}} = 12%
       \geq {\color{Mittel-Blau}s_{i-1}}$}%
-    \input{Lecture/Images/FixedSizeArray_Sizes.tikz}%
+    \input{Images/FixedSizeArray_Sizes.tikz}%
     %
     \hspace*{0.5em}\raisebox{2em}{$\Rightarrow$}\hspace*{0.5em}%
     %
@@ -163,7 +163,7 @@
       = {\color{Mittel-Blau}s_{i-1}} - 1$}%
     \def\FSAlabelcapacity{${\color{Mittel-Blau}c_i}
       = \frac{3}{2}{\color{Mittel-Blau}s_i}$ = 4}%
-    \input{Lecture/Images/FixedSizeArray_Sizes.tikz}%
+    \input{Images/FixedSizeArray_Sizes.tikz}%
     \caption{\textit{Remove} operation with reallocation}
     \label{fig:dynamic_fields:amortized_analysis:remove}
   \end{figure}
@@ -289,7 +289,7 @@
       \def\FSAlabelsize{${\color{Mittel-Blau}s_i}$}%
       \def\FSAlabelcapacity{${\color{Mittel-Blau}c_i}$}%
       \raisebox{-2em}{\begin{adjustbox}{width=11.25em}%
-        \input{Lecture/Images/FixedSizeArray_Sizes.tikz}%
+        \input{Images/FixedSizeArray_Sizes.tikz}%
       \end{adjustbox}} &
       $\begin{array}{c}
         \text{{\color{Mittel-Blau}reallocation}}\\
@@ -299,7 +299,7 @@
       \def\FSAsize{9}\def\FSAelements{6}%
       \def\FSAcopy{0}\def\FSAdelete{0}\def\FSAinsert{1}%
       \begin{adjustbox}{width=11.25em}%
-        \input{Lecture/Images/FixedSizeArray.tikz}%
+        \input{Images/FixedSizeArray.tikz}%
       \end{adjustbox} &
       $C_2$ (constant) &
       \multirow{3}{*}{$\left.
@@ -313,14 +313,14 @@
       \def\FSAsize{9}\def\FSAelements{7}%
       \def\FSAcopy{0}\def\FSAdelete{0}\def\FSAinsert{1}%
       \begin{adjustbox}{width=11.25em}%
-        \input{Lecture/Images/FixedSizeArray.tikz}%
+        \input{Images/FixedSizeArray.tikz}%
       \end{adjustbox} &
       $C_2$ (constant)\\
       {\color{Mittel-Blau}$O_{i+3}$}: & {} &
       \def\FSAsize{9}\def\FSAelements{8}%
       \def\FSAcopy{0}\def\FSAdelete{0}\def\FSAinsert{1}%
       \begin{adjustbox}{width=11.25em}%
-        \input{Lecture/Images/FixedSizeArray.tikz}%
+        \input{Images/FixedSizeArray.tikz}%
       \end{adjustbox} &
       $C_2$ (constant)\\
       \cmidrule{1-4}
@@ -328,7 +328,7 @@
       \def\FSAsize{11}\def\FSAelements{0}%
       \def\FSAcopy{9}\def\FSAdelete{0}\def\FSAinsert{1}%
       \begin{adjustbox}{width=13.75em}%
-        \input{Lecture/Images/FixedSizeArray.tikz}%
+        \input{Images/FixedSizeArray.tikz}%
       \end{adjustbox}$\hspace*{0.25em}\cdots$ &
       $\begin{array}{c}
         \text{{\color{Mittel-Blau}reallocation}}\\
@@ -355,7 +355,7 @@
       \def\FSAlabelsize{${\color{Mittel-Blau}s_i}$}%
       \def\FSAlabelcapacity{${\color{Mittel-Blau}c_i}$}%
       \raisebox{-2em}{\begin{adjustbox}{width=11.25em}%
-        \input{Lecture/Images/FixedSizeArray_Sizes.tikz}%
+        \input{Images/FixedSizeArray_Sizes.tikz}%
       \end{adjustbox}} &
       $\begin{array}{c}
         \text{{\color{Mittel-Blau}reallocation}}\\
@@ -365,7 +365,7 @@
       \def\FSAsize{9}\def\FSAelements{5}%
       \def\FSAcopy{0}\def\FSAdelete{1}\def\FSAinsert{0}%
       \begin{adjustbox}{width=11.25em}%
-        \input{Lecture/Images/FixedSizeArray.tikz}%
+        \input{Images/FixedSizeArray.tikz}%
       \end{adjustbox} &
       $C_2$ (constant) &
       \multirow{3}{*}{$\left.
@@ -379,14 +379,14 @@
       \def\FSAsize{9}\def\FSAelements{4}%
       \def\FSAcopy{0}\def\FSAdelete{1}\def\FSAinsert{0}%
       \begin{adjustbox}{width=11.25em}%
-        \input{Lecture/Images/FixedSizeArray.tikz}%
+        \input{Images/FixedSizeArray.tikz}%
       \end{adjustbox} &
       $C_2$ (constant)\\
       {\color{Mittel-Blau}$O_{i+3}$}: & {} &
       \def\FSAsize{9}\def\FSAelements{3}%
       \def\FSAcopy{0}\def\FSAdelete{1}\def\FSAinsert{0}%
       \begin{adjustbox}{width=11.25em}%
-        \input{Lecture/Images/FixedSizeArray.tikz}%
+        \input{Images/FixedSizeArray.tikz}%
       \end{adjustbox} &
       $C_2$ (constant)\\
       \cmidrule{1-4}
@@ -394,7 +394,7 @@
       \def\FSAsize{3}\def\FSAelements{0}%
       \def\FSAcopy{2}\def\FSAdelete{1}\def\FSAinsert{0}%
       \begin{adjustbox}{width=3.75em}%
-        \input{Lecture/Images/FixedSizeArray.tikz}%
+        \input{Images/FixedSizeArray.tikz}%
       \end{adjustbox} &
       $\begin{array}{c}
         \text{{\color{Mittel-Blau}reallocation}}\\
@@ -593,7 +593,7 @@
       \def\FSAlabelsize{${\color{Mittel-Blau}s_i}$}%
       \def\FSAlabelcapacity{${\color{Mittel-Blau}c_i}$}%
       \raisebox{-2em}{\begin{adjustbox}{width=11.25em}%
-        \input{Lecture/Images/FixedSizeArray_Sizes.tikz}%
+        \input{Images/FixedSizeArray_Sizes.tikz}%
       \end{adjustbox}} &
       $\begin{array}{c}
         \text{{\color{Mittel-Blau}reallocation}}\\
@@ -603,7 +603,7 @@
       \def\FSAsize{9}\def\FSAelements{6}%
       \def\FSAcopy{0}\def\FSAdelete{0}\def\FSAinsert{1}%
       \begin{adjustbox}{width=11.25em}%
-        \input{Lecture/Images/FixedSizeArray.tikz}%
+        \input{Images/FixedSizeArray.tikz}%
       \end{adjustbox} &
       $C_2$ (constant) &
       \multirow{3}{*}{$\left.
@@ -617,14 +617,14 @@
       \def\FSAsize{9}\def\FSAelements{7}%
       \def\FSAcopy{0}\def\FSAdelete{0}\def\FSAinsert{1}%
       \begin{adjustbox}{width=11.25em}%
-        \input{Lecture/Images/FixedSizeArray.tikz}%
+        \input{Images/FixedSizeArray.tikz}%
       \end{adjustbox} &
       $C_2$ (constant)\\
       {\color{Mittel-Blau}$O_{i+3}$}: & {} &
       \def\FSAsize{9}\def\FSAelements{8}%
       \def\FSAcopy{0}\def\FSAdelete{0}\def\FSAinsert{1}%
       \begin{adjustbox}{width=11.25em}%
-        \input{Lecture/Images/FixedSizeArray.tikz}%
+        \input{Images/FixedSizeArray.tikz}%
       \end{adjustbox} &
       $C_2$ (constant)\\
       \cmidrule{1-4}
@@ -632,7 +632,7 @@
       \def\FSAsize{11}\def\FSAelements{0}%
       \def\FSAcopy{9}\def\FSAdelete{0}\def\FSAinsert{1}%
       \begin{adjustbox}{width=13.75em}%
-        \input{Lecture/Images/FixedSizeArray.tikz}%
+        \input{Images/FixedSizeArray.tikz}%
       \end{adjustbox}$\hspace*{0.25em}\cdots$ &
       $\begin{array}{c}
         \text{{\color{Mittel-Blau}reallocation}}\\
@@ -699,7 +699,7 @@
       \def\FSAlabelsize{${\color{Mittel-Blau}s_i}$}%
       \def\FSAlabelcapacity{${\color{Mittel-Blau}c_i}$}%
       \raisebox{-2em}{\begin{adjustbox}{width=11.25em}%
-        \input{Lecture/Images/FixedSizeArray_Sizes.tikz}%
+        \input{Images/FixedSizeArray_Sizes.tikz}%
       \end{adjustbox}} &
       $\begin{array}{c}
         \text{{\color{Mittel-Blau}reallocation}}\\
@@ -709,7 +709,7 @@
       \def\FSAsize{9}\def\FSAelements{5}%
       \def\FSAcopy{0}\def\FSAdelete{1}\def\FSAinsert{0}%
       \begin{adjustbox}{width=11.25em}%
-        \input{Lecture/Images/FixedSizeArray.tikz}%
+        \input{Images/FixedSizeArray.tikz}%
       \end{adjustbox} &
       $C_2$ (constant) &
       \multirow{3}{*}{$\left.
@@ -723,14 +723,14 @@
       \def\FSAsize{9}\def\FSAelements{4}%
       \def\FSAcopy{0}\def\FSAdelete{1}\def\FSAinsert{0}%
       \begin{adjustbox}{width=11.25em}%
-        \input{Lecture/Images/FixedSizeArray.tikz}%
+        \input{Images/FixedSizeArray.tikz}%
       \end{adjustbox} &
       $C_2$ (constant)\\
       {\color{Mittel-Blau}$O_{i+3}$}: & {} &
       \def\FSAsize{9}\def\FSAelements{3}%
       \def\FSAcopy{0}\def\FSAdelete{1}\def\FSAinsert{0}%
       \begin{adjustbox}{width=11.25em}%
-        \input{Lecture/Images/FixedSizeArray.tikz}%
+        \input{Images/FixedSizeArray.tikz}%
       \end{adjustbox} &
       $C_2$ (constant)\\
       \cmidrule{1-4}
@@ -738,7 +738,7 @@
       \def\FSAsize{3}\def\FSAelements{0}%
       \def\FSAcopy{2}\def\FSAdelete{1}\def\FSAinsert{0}%
       \begin{adjustbox}{width=3.75em}%
-        \input{Lecture/Images/FixedSizeArray.tikz}%
+        \input{Images/FixedSizeArray.tikz}%
       \end{adjustbox} &
       $\begin{array}{c}
         \text{{\color{Mittel-Blau}reallocation}}\\
@@ -824,45 +824,45 @@
      \end{array}$\\
     \def\FSAsize{1}\def\FSAelements{0}%
     \def\FSAcopy{0}\def\FSAdelete{0}\def\FSAinsert{1}%
-    \input{Lecture/Images/FixedSizeArray.tikz} &
+    \input{Images/FixedSizeArray.tikz} &
     $\mathcal{O}(1)$ & \hspace{1.5em}{\color{Mittel-Gruen}+2} & 2\\
     \def\FSAsize{2}\def\FSAelements{0}%
     \def\FSAcopy{1}\def\FSAdelete{0}\def\FSAinsert{1}%
-    \input{Lecture/Images/FixedSizeArray.tikz} &
+    \input{Images/FixedSizeArray.tikz} &
     $\mathcal{O}(1 + {\color{Mittel-Blau}1})$ &
     \hspace{1.5em}{\color{Mittel-Gruen}+2} {\color{Mittel-Blau}-1} &
     {\color{Mittel-Blau}3}\\
     \def\FSAsize{4}\def\FSAelements{0}%
     \def\FSAcopy{2}\def\FSAdelete{0}\def\FSAinsert{1}%
-    \input{Lecture/Images/FixedSizeArray.tikz} &
+    \input{Images/FixedSizeArray.tikz} &
     $\mathcal{O}(1 + {\color{Mittel-Blau}2})$ &
     \hspace{1.5em}{\color{Mittel-Gruen}+2} {\color{Mittel-Blau}-2} &
     {\color{Mittel-Blau}3}\\
     \def\FSAsize{4}\def\FSAelements{3}%
     \def\FSAcopy{0}\def\FSAdelete{0}\def\FSAinsert{1}%
-    \input{Lecture/Images/FixedSizeArray.tikz} &
+    \input{Images/FixedSizeArray.tikz} &
     $\mathcal{O}(1)$ & \hspace{1.5em}{\color{Mittel-Gruen}+2} & 5\\
     \def\FSAsize{8}\def\FSAelements{0}%
     \def\FSAcopy{4}\def\FSAdelete{0}\def\FSAinsert{1}%
-    \input{Lecture/Images/FixedSizeArray.tikz} &
+    \input{Images/FixedSizeArray.tikz} &
     $\mathcal{O}(1 + {\color{Mittel-Blau}4})$ &
     \hspace{1.5em}{\color{Mittel-Gruen}+2} {\color{Mittel-Blau}-4} &
     {\color{Mittel-Blau}3}\\
     \def\FSAsize{8}\def\FSAelements{5}%
     \def\FSAcopy{0}\def\FSAdelete{0}\def\FSAinsert{1}%
-    \input{Lecture/Images/FixedSizeArray.tikz} &
+    \input{Images/FixedSizeArray.tikz} &
     $\mathcal{O}(1)$ & \hspace{1.5em}{\color{Mittel-Gruen}+2} & 5\\
     \def\FSAsize{8}\def\FSAelements{6}%
     \def\FSAcopy{0}\def\FSAdelete{0}\def\FSAinsert{1}%
-    \input{Lecture/Images/FixedSizeArray.tikz} &
+    \input{Images/FixedSizeArray.tikz} &
     $\mathcal{O}(1)$ & \hspace{1.5em}{\color{Mittel-Gruen}+2} & 7\\
     \def\FSAsize{8}\def\FSAelements{7}%
     \def\FSAcopy{0}\def\FSAdelete{0}\def\FSAinsert{1}%
-    \input{Lecture/Images/FixedSizeArray.tikz} &
+    \input{Images/FixedSizeArray.tikz} &
     $\mathcal{O}(1)$ & \hspace{1.5em}{\color{Mittel-Gruen}+2} & 9\\
     \def\FSAsize{10}\def\FSAelements{0}%
     \def\FSAcopy{8}\def\FSAdelete{0}\def\FSAinsert{1}%
-    \input{Lecture/Images/FixedSizeArray.tikz}%
+    \input{Images/FixedSizeArray.tikz}%
     \hspace*{0.25em}$\cdots$ &
     $\mathcal{O}(1 + {\color{Mittel-Blau}8})$ &
     \hspace{1.5em}{\color{Mittel-Gruen}+2} {\color{Mittel-Blau}-8} &
@@ -888,7 +888,7 @@
     \def\FSAlabelinsertcapacity{new elements}%
     \def\FSAlabelcapacity{${\color{Mittel-Blau}c_i}
       = 2 \cdot {\color{Mittel-Blau}c_{i-1}}$}%
-    \input{Lecture/Images/FixedSizeArray_Copy.tikz}%
+    \input{Images/FixedSizeArray_Copy.tikz}%
     \vspace{-0.5em}%
     \caption{Array after realloc. (insert) operation}
     \label{fig:dynamic_fields:amortized_analysis:yapoc_array}
@@ -919,7 +919,7 @@
     \def\FSAlabelinsertcapacity{removed elements}%
     \def\FSAlabelcapacity{${\color{Mittel-Blau}c_i}
       = \frac{1}{2} \cdot {\color{Mittel-Blau}c_{i-1}}$}%
-    \input{Lecture/Images/FixedSizeArray_Copy.tikz}%
+    \input{Images/FixedSizeArray_Copy.tikz}%
     \vspace{-0.5em}%
     \caption{Array after realloc. (remove) operation}
     \label{fig:dynamic_fields:amortized_analysis:yapoc_array_shrink}
