@@ -92,12 +92,12 @@
 
 \ifthenelse{\boolean{\PresentationExerciseFeedback}}{
   \toclesssubsection{\LectureFeedbackExercisesSection}
-  \input{Lecture/FeedbackExercises_\LectureLanguage}
+  \input{Feedback/FeedbackExercises_\LectureLanguage}
 }{}
 
 \ifthenelse{\boolean{\PresentationLectureFeedback}}{
   \toclesssubsection{\LectureFeedbackLectureSection}
-  \input{Lecture/FeedbackLecture_\LectureLanguage}
+  \input{Feedback/FeedbackLecture_\LectureLanguage}
 }{}
 
 \input{build/Chapters_\LectureLanguage}
@@ -105,6 +105,6 @@
 \appendix
 \section*{\appendixname}
 \subsection*{\LectureFurtherLiterature}
-\input{Lecture/Literature/Literature_\LectureLanguage}
+\input{Literature/Literature_\LectureLanguage}
 
 \end{document}

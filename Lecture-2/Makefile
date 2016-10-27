@@ -1,17 +1,17 @@
-NAME := Lecture
-EXPORT_DIR := Lectures
-CHAPTER_NAME := Chapters
+ALGO_BUILD_PREFIX := Lecture
+ALGO_EXPORT_DIR := Lectures
+ALGO_CHAPTER_NAME := Chapters
 
-MAKEFILE_PATH := $(word $(words $(MAKEFILE_LIST)), $(MAKEFILE_LIST))
-ROOT_DIR := $(shell dirname "$(realpath $(MAKEFILE_PATH))")
-FULL_NAME := $(shell basename "$(ROOT_DIR)")
+ALGO_MAKEFILE_PATH := $(word $(words $(MAKEFILE_LIST)), $(MAKEFILE_LIST))
+ALGO_ROOT_DIR := $(shell dirname "$(realpath $(ALGO_MAKEFILE_PATH))")
+ALGO_FULL_NAME := $(shell basename "$(ALGO_ROOT_DIR)")
 
-LANGUAGE ?= eng
-PROGLANG ?= python
-DESIGN ?= plain
+ALGO_LANGUAGE ?= eng
+ALGO_PROGLANG ?= python
+ALGO_DESIGN ?= plain
 
-BUILD_NAME = $(NAME)_$(LANGUAGE)
-BUILD_CHAPTER_NAME = $(CHAPTER_NAME)_$(LANGUAGE)
+ALGO_BUILD_NAME = $(ALGO_BUILD_PREFIX)_$(ALGO_LANGUAGE)
+ALGO_BUILD_CHAPTER_NAME = $(ALGO_CHAPTER_NAME)_$(ALGO_LANGUAGE)
 
 all: clean build
 
@@ -38,8 +38,8 @@ help:
 	@echo "	export: Build and export all files into the destination folders"
 	@echo
 	@echo "TeX: (General)"
-	@echo "	build_server:"
-	@echo "		Build the lecture into the source directory"
+	@echo "	clean_server: Cleans the source directory"
+	@echo "	build_server: Build the lecture into the source directory"
 	@echo "	export_server: Build and export all files into the destination folders"
 
 # ------------------------------------------------------------------------------
@@ -47,84 +47,91 @@ clean:
 	@echo "Cleaning"
 	@rm -r -f build
 
+clean_server:
+	@echo "Cleaning (server)"
+	@rm -f *.log
+	@rm -f *.aux
+	@rm -f *.bbl
+	@rm -f *.fls
+	@rm -f *.nav
+	@rm -f *.out
+	@rm -f *.snm
+	@rm -f *.toc
+	@rm -f *.fdb_latexmk
+
 # ------------------------------------------------------------------------------
-build: directories build/$(BUILD_NAME).pdf
+build: directories build/$(ALGO_BUILD_NAME).pdf
 export: build
 	@echo "Exporting"
-	@mkdir -p ../$(EXPORT_DIR)
-	@cp build/$(BUILD_NAME).pdf ../$(EXPORT_DIR)/$(FULL_NAME)_$(LANGUAGE).pdf
+	@mkdir -p ../$(ALGO_EXPORT_DIR)
+	@cp build/$(ALGO_BUILD_NAME).pdf ../$(ALGO_EXPORT_DIR)/$(ALGO_FULL_NAME)_$(ALGO_LANGUAGE).pdf
 
 # ------------------------------------------------------------------------------
 build_server: directories_server build_server_forced
 export_server: build_server
 	@echo "Exporting (server)"
-	@cp $(BUILD_NAME).pdf ../$(FULL_NAME)_$(LANGUAGE).pdf
+	@cp $(ALGO_BUILD_NAME).pdf ../$(ALGO_FULL_NAME)_$(ALGO_LANGUAGE).pdf
 
 # ------------------------------------------------------------------------------
 directories:
 	@echo "Creating directories"
-#	@mkdir -p build/Lecture
 	@mkdir -p build/Literature/General
-	@mkdir -p build/Literature/$(LANGUAGE)
+	@mkdir -p build/Literature/$(ALGO_LANGUAGE)
 
 directories_server:
 	@echo "Creating directories (server)"
 	@mkdir -p build
-	@mkdir -p Literature/General
-	@mkdir -p Literature/$(LANGUAGE)
 
 # ------------------------------------------------------------------------------
-build/$(BUILD_CHAPTER_NAME).tex:
-	@echo "Reading chapters ($(BUILD_CHAPTER_NAME))"
-	@ls Lecture/Chapter/$(LANGUAGE)/*.tex | awk '{printf "\\input{%s}\n", $$1}' > build/$(BUILD_CHAPTER_NAME).tex
+# Create the index for all chapters
+build/$(ALGO_BUILD_CHAPTER_NAME).tex:
+	@echo "Reading chapters ($(ALGO_BUILD_CHAPTER_NAME))"
+	@ls Chapter/$(ALGO_LANGUAGE)/*.tex | awk '{printf "\\input{%s}\n", $$1}' > build/$(ALGO_BUILD_CHAPTER_NAME).tex
 
 # ------------------------------------------------------------------------------
-build/$(BUILD_NAME).pdf: build/$(BUILD_CHAPTER_NAME).tex
-	@echo "Building $(BUILD_NAME).pdf"
+# Build the pdf
+build/$(ALGO_BUILD_NAME).pdf: build/$(ALGO_BUILD_CHAPTER_NAME).tex
+	@echo "Building $(ALGO_BUILD_NAME).pdf"
 	@
-	@echo "Creating $(LANGUAGE) config"
-	@echo '\def\LectureLanguage{$(LANGUAGE)}' > build/Config.tex
-	@echo '\def\LectureProgLanguage{$(PROGLANG)}' >> build/Config.tex
-	@echo '\def\LectureDesign{$(DESIGN)}' >> build/Config.tex
+	@echo "Creating $(ALGO_LANGUAGE) config"
+	@echo '\def\LectureLanguage{$(ALGO_LANGUAGE)}' > build/Config.tex
+	@echo '\def\LectureProgLanguage{$(ALGO_PROGLANG)}' >> build/Config.tex
+	@echo '\def\LectureDesign{$(ALGO_DESIGN)}' >> build/Config.tex
 	@
 	@echo "Copying literature-database"
-	@cp -t build/Literature/General $(NAME)/Literature/General/*.bib || true
-	@cp -t build/Literature/$(LANGUAGE) $(NAME)/Literature/$(LANGUAGE)/*.bib || true
+	@cp -t build/Literature/General Literature/General/*.bib || true
+	@cp -t build/Literature/$(ALGO_LANGUAGE) Literature/$(ALGO_LANGUAGE)/*.bib || true
 	@
 	@echo "Building"
-	@latexmk -pdf -quiet -aux-directory=build -output-directory=build $(NAME).tex
+	@latexmk -pdf -quiet -aux-directory=build -output-directory=build $(ALGO_BUILD_PREFIX).tex
 	@
 	@echo "Moving output"
-	@mv build/$(NAME).pdf build/$(BUILD_NAME).pdf
+	@mv build/$(ALGO_BUILD_PREFIX).pdf build/$(ALGO_BUILD_NAME).pdf
 
 # ------------------------------------------------------------------------------
 # Server (Do everything manually)
-build_server_forced: build/$(BUILD_CHAPTER_NAME).tex
-	@echo "Building $(BUILD_NAME).pdf (server)"
+build_server_forced: build/$(ALGO_BUILD_CHAPTER_NAME).tex
+	@echo "Building $(ALGO_BUILD_NAME).pdf (server)"
 	@
-	@echo "Creating $(LANGUAGE) config"
-	@echo '\def\LectureLanguage{$(LANGUAGE)}' > build/Config.tex
-	@echo '\def\LectureProgLanguage{$(PROGLANG)}' >> build/Config.tex
-	@echo '\def\LectureDesign{$(DESIGN)}' >> build/Config.tex
-	@
-	@echo "Copying literature-database"
-	@cp -t Literature/General $(NAME)/Literature/General/*.bib || true
-	@cp -t Literature/$(LANGUAGE) $(NAME)/Literature/$(LANGUAGE)/*.bib || true
+	@echo "Creating $(ALGO_LANGUAGE) config"
+	@echo '\def\LectureLanguage{$(ALGO_LANGUAGE)}' > build/Config.tex
+	@echo '\def\LectureProgLanguage{$(ALGO_PROGLANG)}' >> build/Config.tex
+	@echo '\def\LectureDesign{$(ALGO_DESIGN)}' >> build/Config.tex
 	@
 	@echo "Building (1st iteration)"
-	@pdflatex -interaction=batchmode $(NAME).tex
+	@pdflatex -interaction=batchmode $(ALGO_BUILD_PREFIX).tex
 	@
 	@echo "Building (2nd iteration)"
-	@pdflatex -interaction=batchmode $(NAME).tex
+	@pdflatex -interaction=batchmode $(ALGO_BUILD_PREFIX).tex
 	@
 	@echo "Running bibtex"
 	@for T in $$(find *.btaux.aux -type f); do (bibtex $$T); done
 	@
 	@echo "Building (3rd iteration)"
-	@pdflatex -interaction=batchmode $(NAME).tex
+	@pdflatex -interaction=batchmode $(ALGO_BUILD_PREFIX).tex
 	@
 	@echo "Building (4th iteration)"
-	@pdflatex -interaction=batchmode $(NAME).tex
+	@pdflatex -interaction=batchmode $(ALGO_BUILD_PREFIX).tex
 	@
 	@echo "Moving output"
-	@mv $(NAME).pdf $(BUILD_NAME).pdf
+	@mv $(ALGO_BUILD_PREFIX).pdf $(ALGO_BUILD_NAME).pdf
