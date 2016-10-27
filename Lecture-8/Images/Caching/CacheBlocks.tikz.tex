@@ -1,0 +1,68 @@
+\begin{tikzpicture}[
+  cell/.style={
+  }, cell_active/.style={
+    cell,
+    fill=Hell-Gruen,
+  }, cell_text/.style={
+    color=black,
+    font=\Large
+  }, block/.style={
+    draw=black
+  }, block_active/.style={
+    block,
+    fill=Hell-Blau
+  }
+]%
+% position x / y, block active, cell data {n x [cell active]}
+\foreach \x/\y/\a/\d in {%
+  0/0/0/{0,0,0,0,0,0,0,0},%
+  5/0/0/{0,0,0,0,0,0,0,0},%
+  10/0/1/{0,0,0,0,0,1,0,0},%
+  15/0/0/{0,0,0,0,0,0,0,0},%
+  20/0/0/{0,0,0,0,0,0,0,0},%
+  0/-3/0/{0,0,0,0,0,0,0,0},%
+  5/-3/1/{0,0,0,0,0,1,0,0},%
+  10/-3/0/{0,0,0,0,0,0,0,0}%
+}{%
+  % draw block
+  \ifnum \a>0
+    \draw[block_active] (\x, \y) rectangle ++(5.0, 1.0);
+  \else
+    \draw[block] (\x, \y) rectangle ++(5.0, 1.0);
+  \fi
+  
+  % draw cells
+  \foreach \ca [count=\index] in \d {
+    \ifnum \ca>0
+      \draw[cell_active]
+        (\x + 0.625*\index - 0.625, \y) rectangle ++(0.625, 1.0);
+    \fi
+    
+    \node[cell_text] at (\x + 0.625*\index - 0.3125, \y + 0.5) {$0$};
+  }
+}
+
+% labels
+\node[font=\Huge, anchor=east] at (-0.25, 0.5) {Memory};
+\node[font=\Huge, anchor=east] at (-0.25, -2.5) {Cache};
+
+% upper brace (block)
+\draw[
+  line width=0.25em,
+  decoration={brace, raise=0.75em, amplitude=1.0em},
+  decorate
+] (0, 1) --
+    node[midway, yshift=4em, font=\Huge]
+    {{\color{Mittel-Blau}$B$} bytes}
+  (5, 1);
+
+% lower brace (cache)
+\draw[
+  line width=0.25em,
+  decoration={brace, raise=0.75em, amplitude=1.0em, mirror},
+  decorate
+] (0, -3) --
+    node[midway, yshift=-4em, color=Mittel-Blau, font=\Huge]
+    {{\color{Mittel-Blau}$M$} bytes = {\color{Mittel-Blau}$M/B$} blocks}
+  (15, -3);
+\end{tikzpicture}

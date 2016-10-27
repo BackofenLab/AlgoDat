@@ -1,0 +1,125 @@
+\subsubsection{Introduction to Induction}
+
+\begin{frame}<beamer>{Structure}
+  \tableofcontents[currentsection,currentsubsection]
+\end{frame}
+
+\begin{frame}{Induction}
+  \textbf{Basics:}
+  \begin{itemize}
+    \item 
+      You want to show assumption $A(n)$ is valid $\forall n \in \mathbb{N}$
+    \item
+      We show induction in two steps:
+      \begin{enumerate}
+        \item
+          \textbf{Induction basis:} we show that our assumption is valid 
+          at one point (for example: $n = 1$).
+        \item
+          \textbf{Induction step:} we show that the assumption is valid for 
+          all $n$ (normally one step forward: $n = n + 1$).
+      \end{enumerate}
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Induction - Example 1}
+  Number of nodes $n(d)$ in a binary tree with depth $d$:
+  \begin{itemize}
+    \item
+      \textbf{Induction assumption:}
+      $n(d) = 2^d-1$
+    \item
+      \textbf{Induction basis:}
+      $n(1) = 2^d - 1 = 2^1 - 1 = 1 ~{\color{Mittel-Blau}\checked}$
+    \item
+      \textbf{Induction step:}
+      to show for $d = d + 1$
+      \begin{columns}
+        \begin{column}{0.6\textwidth}
+          \begin{figure}%
+            \begin{centering}%
+              \input{Images/Induction/BinaryTree_SubTrees.tikz}%
+              \caption{Binary tree with subtrees}%
+              \label{fig:binary_tree_subtrees}%
+            \end{centering}%
+          \end{figure}
+        \end{column}
+        \begin{column}{0.4\linewidth}
+          \begin{align*}
+          n(d + 1) = &~ 2 \cdot n(d) + 1\\
+          {} = &~ 2 \cdot \left(2^d - 1\right) + 1\\
+          {} = &~ 2^{d + 1} - 2 + 1\\
+          {} = &~ 2^{d + 1} - 1 ~{\color{Mittel-Blau}\checked}
+          \end{align*}
+          $n(d) = 2^d - 1 ~\forall n \in \mathbb{N} ~\Square$
+        \end{column}
+      \end{columns}
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Induction - Example 2}
+  \begin{itemize}
+    \item
+      \textbf{Induction assumption:}
+      \begin{align*}
+        {\color{Hell-Gruen}A}(n) \leq &~ {\color{Hell-Gruen}B}(n)\\
+        \sum \limits^n_{i=1} \left(i \cdot 2^{n-i} \right) \leq &~ 2^{n+1}
+      \end{align*}
+    \item
+      \textbf{Induction basis:}
+      $n = 1$:
+      \begin{align*}
+        \sum \limits^n_{i=1} \left(i \cdot 2^{n-i} \right) \leq &~ 2^{n+1}\\
+        \sum \limits^1_{i=1} \left(i \cdot 2^{1-i} \right) \leq &~ 2^{1+1}\\
+        2^0 \leq &~ 2^2 ~{\color{Mittel-Blau}\checked}
+      \end{align*}
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Induction - Example 2}
+  \textbf{Induction step:}
+  $(n = n +1)$:
+  \begin{align*}
+    {\color{Hell-Gruen}A}(n+1) \leq &~ {\color{Hell-Gruen}B}(n+1)\\
+    %----------------------------------------------------------------------
+    \sum\limits^{n+1}_{i=1} \left(i \cdot 2^{n+1-i} \right)
+    \leq &~ 2^{n+1+1}\\
+    %----------------------------------------------------------------------
+    2 \cdot \sum\limits^{n+1}_{i=1} \left(i \cdot 2^{n-i} \right)
+    \leq &~ 2 \cdot 2^{n+1} & \hspace*{1.5em} \bigg\vert :2\\
+    %----------------------------------------------------------------------
+    \sum\limits^{n+1}_{i=1} \left(i \cdot 2^{n-i} \right)
+    \leq &~ 2^{n+1}\\
+  \end{align*}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Induction - Example 2}
+  \textbf{Induction step:}
+  $(n = n +1)$:
+  \begin{align*}
+    \sum\limits^{n+1}_{i=1} \left(i \cdot 2^{n-i} \right)
+    \leq &~ 2^{n+1}\\
+    %----------------------------------------------------------------------
+    \sum\limits^{n}_{i=1} \left(i \cdot 2^{n-i}\right)
+    + \left(n + 1\right) \cdot 2^{n - \left(n + 1\right)}
+    \leq &~ 2^{n+1}\\
+    %----------------------------------------------------------------------
+    \sum\limits^{n}_{i=1} \left(i \cdot 2^{n-i}\right)
+    + 2n + 2
+    \leq &~ 2^{n+1}\\
+    %----------------------------------------------------------------------
+   {\color{Hell-Gruen}A}(n) + 2n + 2
+   \leq &~ {\color{Hell-Gruen}B}(n) ~\textbf{\color{Mittel-Blau}\lightning}
+  \end{align*}
+  \begin{center}
+    \alert{Assumtion is still correct!}
+  \end{center}
+\end{frame}

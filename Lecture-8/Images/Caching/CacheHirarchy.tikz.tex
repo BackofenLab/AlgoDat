@@ -1,0 +1,61 @@
+\begin{tikzpicture}[
+  cell/.style={
+  }, cell_active/.style={
+    cell,
+    fill=Hell-Gruen,
+  }, cell_text/.style={
+    color=black,
+    font=\Large
+  }, block/.style={
+    draw=black
+  }, block_active/.style={
+    block,
+    fill=Hell-Blau
+  }
+]%
+% position x / y, block active, cell data {n x [cell active]}
+\foreach \x/\y/\a/\d in {%
+  0/0/0/{0,0,0,0,0,0,0,0},%
+  5/0/0/{0,0,0,0,0,0,0,0},%
+  10/0/1/{0,0,0,0,0,1,0,0},%
+  15/0/0/{0,0,0,0,0,0,0,0},%
+  20/0/0/{0,0,0,0,0,0,0,0},%
+  0/-3/0/{0,0,0,0,0,0,0,0},%
+  5/-3/1/{0,0,0,0,0,1,0,0},%
+  10/-3/0/{0,0,0,0,0,0,0,0},%
+  0/-6/0/{0,1,0,0,0,0,0,0}%
+}{%
+  % draw block
+  \ifnum \a>0
+    \draw[block_active] (\x, \y) rectangle ++(5.0, 1.0);
+  \else
+    \draw[block] (\x, \y) rectangle ++(5.0, 1.0);
+  \fi
+  
+  % draw cells
+  \foreach \ca [count=\index] in \d {
+    \ifnum \ca>0
+      \draw[cell_active]
+        (\x + 0.625*\index - 0.625, \y) rectangle ++(0.625, 1.0);
+    \fi
+    
+    \node[cell_text] at (\x + 0.625*\index - 0.3125, \y + 0.5) {$0$};
+  }
+}
+
+% labels
+\node[font=\Huge, anchor=east] at (-0.25, 0.5) {Memory};
+\node[font=\Huge, anchor=east] at (-0.25, -2.5) {Cache};
+\node[font=\Huge, anchor=east] at (-0.25, -5.5) {Register};
+
+% arrows
+\draw[<->, color=red, ultra thick, line width=0.25em]
+  (10 + 3.125 + 0.3125, -0.25) to
+  node[cell_text, color=red, fill=white, midway, font=\Huge, sloped] {slow}
+  (5 + 3.125 + 0.3125, -1.75);
+\draw[<->, color=Mittel-Gruen, ultra thick, line width=0.25em]
+  (5 + 3.125 + 0.3125, -3.25) to
+  node[cell_text, color=Mittel-Gruen, fill=white, midway, font=\Huge, sloped]
+    {fast}
+  (0.625 + 0.3125, -4.75);
+\end{tikzpicture}

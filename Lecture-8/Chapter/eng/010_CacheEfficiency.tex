@@ -1,0 +1,638 @@
+\section{Cache Efficiency}
+
+\toclesssubsection{Introduction}
+
+\begin{frame}{Cache Efficiency}{Introduction}
+  \textbf{Background:}
+  \begin{itemize}
+    \item
+      Normally we count the {\color{Mittel-Blau}number of operations} as a
+      estimation of the algorithm runtime
+    \item
+      This is suitable for most cases
+    \item
+      We will see that this is not always an optimal runtime indicator
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Cache Efficiency}{Introduction}
+  \textbf{Example:}
+  \begin{itemize}
+    \item
+      We sum up all elements of a field {\color{Mittel-Blau}$a$} of size
+      {\color{Mittel-Blau}$n$} in $\ldots$
+    \begin{itemize}
+      \item
+        natural order:
+        \begin{displaymath}
+          {\color{Mittel-Blau}\mathrm{sum}(a)} =
+          {\color{Mittel-Blau}a[1]} +
+          {\color{Mittel-Blau}a[2]} +
+          \dots +
+          {\color{Mittel-Blau}a[n]}
+        \end{displaymath}
+      \item
+        random order:
+        \begin{displaymath}
+          {\color{Mittel-Blau}\mathrm{sum}(a)} =
+          {\color{Mittel-Blau}a[21]} +
+          {\color{Mittel-Blau}a[5]} +
+          \dots +
+          {\color{Mittel-Blau}a[8]}
+        \end{displaymath}
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\codeslide{python}{
+\begin{frame}{Cache Efficiency}{Linear Order - Python}
+  \textbf{Python:}
+  \lstinputlisting[
+    language=Python,
+    basicstyle=\small,
+    tabsize=4,
+    style={python-idle-code},
+    escapechar={@},
+    emph={init},
+    emphstyle=\color{blue}
+  ]{Lecture/Code/Caching/CacheLinear_Part1.py}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Cache Efficiency}{Linear Order - Python}
+  \textbf{Python:}
+  \lstinputlisting[
+    language=Python,
+    basicstyle=\small,
+    tabsize=4,
+    style={python-idle-code},
+    escapechar={@},
+    emph={run},
+    emphstyle=\color{blue}
+  ]{Lecture/Code/Caching/CacheLinear_Part2.py}
+\end{frame}
+}
+
+%TODO: Implement algorithm in Java / C++
+%%-------------------------------------------------------------------------------
+%
+%\codeslide{java}{
+%\begin{frame}{Cache Efficiency}{Linear Order - Java}
+%  \textbf{Java:}
+%  \lstinputlisting[
+%    language=Java,
+%    basicstyle=\small,
+%    tabsize=4,
+%    style={java-eclipse-code},
+%    escapechar={@},
+%    emph={words},
+%    emphstyle=\color{java_variable}
+%  ]{Lecture/Code/Caching/CacheLinear.java}
+%\end{frame}
+%}
+%
+%%-------------------------------------------------------------------------------
+%
+%\codeslide{cpp}{
+%\begin{frame}{Cache Efficiency}{Linear Order - C++}
+%  \textbf{C++:}
+%  \lstinputlisting[
+%    language=C++,
+%    basicstyle=\small,
+%    tabsize=4,
+%    style={cpp-eclipse-code},
+%    morekeywords={endl},
+%    escapechar={@}
+%  ]{Lecture/Code/Caching/CacheLinear.cpp}
+%\end{frame}
+%}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Cache Efficiency}{Linear Order}
+  \begin{figure}
+    \input{Lecture/Images/Caching/SumLinear_Plot.tikz}
+    \vspace{-1.0em}
+    \caption{Summing elements in linear order}
+    \label{fig:caching:sum_linear_order}
+  \end{figure}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\codeslide{python}{
+\begin{frame}{Cache Efficiency}{Random Order - Python}
+  \textbf{Python:}
+  \lstinputlisting[
+    language=Python,
+    basicstyle=\small,
+    tabsize=4,
+    style={python-idle-code},
+    escapechar={@},
+    emph={init},
+    emphstyle=\color{blue}
+  ]{Lecture/Code/Caching/CacheRandom.py}
+\end{frame}
+}
+
+%TODO: Implement algorithm in Java / C++
+%%-------------------------------------------------------------------------------
+%
+%\codeslide{java}{
+%\begin{frame}{Cache Efficiency}{Random Order - Java}
+%  \textbf{Java:}
+%  \lstinputlisting[
+%    language=Java,
+%    basicstyle=\small,
+%    tabsize=4,
+%    style={java-eclipse-code},
+%    escapechar={@},
+%    emph={words},
+%    emphstyle=\color{java_variable}
+%  ]{Lecture/Code/Caching/CacheLinear.java}
+%\end{frame}
+%}
+%
+%%-------------------------------------------------------------------------------
+%
+%\codeslide{cpp}{
+%\begin{frame}{Cache Efficiency}{Random Order - C++}
+%  \textbf{C++:}
+%  \lstinputlisting[
+%    language=C++,
+%    basicstyle=\small,
+%    tabsize=4,
+%    style={cpp-eclipse-code},
+%    morekeywords={endl},
+%    escapechar={@}
+%  ]{Lecture/Code/Caching/CacheLinear.cpp}
+%\end{frame}
+%}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Cache Efficiency}{Random Order}
+  \begin{figure}
+    \input{Lecture/Images/Caching/SumRandom_Plot.tikz}
+    \vspace{-1.0em}
+    \caption{Summing elements in random order}
+    \label{fig:caching:sum_random_order}
+  \end{figure}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Cache Efficiency}{Algorithm Comparision}
+  \textbf{Conclusion:}
+  \begin{itemize}
+    \item
+      The number of operations are identical for both algorithms
+    \item
+      Accessing elements in random order takes a lot longer (quadrupling)
+    \item
+      The costs in terms of cache efficiency are totally different
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\subsection{Cache Organization}
+
+\begin{frame}{Cache Efficiency}{CPU Cache}
+  \vspace{-1.5em}
+  \begin{figure}
+    \begin{adjustbox}{width=\linewidth}
+      \input{Lecture/Images/Caching/CacheHirarchy.tikz}
+    \end{adjustbox}
+    \label{fig:caching:cache_hirarchy}
+  \end{figure}
+  \textbf{Cache organization:}
+  \begin{itemize}
+    \item
+      Accessing one byte of the main memory takes
+      $\approx\SI{100}{\nano\second}$
+    \item
+      Accessing one byte of (L1-)cache takes
+      $\approx\SI{1}{\nano\second}$
+    \item
+      Accessing one or more byte/s of main memory triggers a load of a whole
+      block $\approx\SI{64}{\byte}$ into the cache
+    \item
+      This omits accesses of the main memory for further requests in this block
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Cache Efficiency}{CPU Cache}
+  \vspace{-1.5em}
+  \begin{figure}
+    \begin{adjustbox}{width=\linewidth}
+      \input{Lecture/Images/Caching/CacheHirarchy.tikz}
+    \end{adjustbox}
+    \label{fig:caching:cache_hirarchy2}
+  \end{figure}
+  \textbf{Cache organization:}
+  \begin{itemize}
+    \item
+      The (L1-)cache can hold multiple memory blocks
+      ($\approx\SI{128/256}{\kilo\byte}$)
+    \item
+      If the capacity is reached unused blocks are discarded
+      \begin{itemize}
+        \item
+          {\color{Mittel-Blau}Least recently used (LRU)}
+        \item
+          {\color{Mittel-Blau}Least frequently used (LFU)}
+        \item
+          {\color{Mittel-Blau}First in first out (FIFO)}
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Cache Efficiency}{Block Operations}
+  \vspace{-2.0em}
+  \begin{figure}%
+    \begin{adjustbox}{width=\linewidth}%
+      \input{Lecture/Images/Caching/CacheBlocks.tikz}%
+    \end{adjustbox}%
+    \label{fig:caching:cache_quanting}
+  \end{figure}%
+  \textbf{Terminology:}
+  \begin{itemize}
+    \item
+      The system consists of a slow and a fast memory storage
+    \item
+      The {\color{Mittel-Blau}slow memory} is divided in
+      {\color{Mittel-Blau}blocks of size $B$}
+    \item
+      The {\color{Mittel-Blau}fast cache} has size $M$ an can store $M/B$
+      blocks
+    \item
+      If a {\color{Mittel-Blau}cache miss} (block not in cache) occurs the
+      block is loaded into the {\color{Mittel-Blau}cache}
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Cache Efficiency}{Block Operations}
+  \vspace{-2.0em}
+  \begin{figure}%
+    \begin{adjustbox}{width=\linewidth}%
+      \input{Lecture/Images/Caching/CacheBlocks.tikz}%
+    \end{adjustbox}%
+    \label{fig:caching:cache_quanting2}
+  \end{figure}%
+  \textbf{Terminology:}
+  \begin{itemize}
+    \item
+      The program defines which blocks are held in the
+      {\color{Mittel-Blau}cache}
+    \item
+      We use the number of {\color{Mittel-Blau}block operations} as runtime
+      estimation
+    \item
+      We ignore runtime costs of cache accesses / management
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Cache Efficiency}{Block Operations}
+  \vspace{-2.0em}
+  \begin{figure}%
+    \begin{adjustbox}{width=\linewidth}%
+      \input{Lecture/Images/Caching/MemoryLocality.tikz}%
+    \end{adjustbox}%
+    \caption{Comparison good / bad locality}
+    \label{fig:caching:memory_locality}
+  \end{figure}%
+  \textbf{Accessing the cache $n$ times:}
+  \begin{itemize}
+    \item
+      {\color{Mittel-Blau}Best case}:
+      1 block operation $\rightarrow$ good locality
+    \item
+      {\color{Mittel-Blau}Worst case}:
+      $n$ block operations $\rightarrow$ bad locality
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Cache Efficiency}{Block Operations}
+  \textbf{Minor performance factors:}\\
+  \begin{itemize}
+    \item
+      Memory / cache block size
+    \item
+      Number of bytes per write / read operation
+    \item
+      These variations only affect performance by a constant factor
+  \end{itemize}
+  \vspace{1.0em}
+  \textbf{Precondition:}\\
+  \begin{itemize}
+    \item
+      If the {\color{Mittel-Blau}input size} is
+      {\color{Mittel-Blau}smaller than $M$} we load the complete data chunk
+      directly into the cache
+    \item
+      Cache handling is only interesting when the
+      {\color{Mittel-Blau}input size} is
+      {\color{Mittel-Blau}greater than $M$}
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Cache Efficiency}{Block Operations}
+  \textbf{Typical values:}
+  (\texttt{Intel$\copyright$ i7-4770} Haswell,
+  \texttt{WD$\copyright$ Blue} $\SI{2}{\tera\byte}$)
+  \begin{itemize}
+    \item
+      CPU L1 Cache: $B = \SI{64}{\byte}$,
+      $M = 4 \times (\SI{32}{\kilo\byte} + \SI{32}{\kilo\byte})$
+    \item
+      CPU L2 Cache: $B = \SI{64}{\byte}$, $M = 4 \times \SI{256}{\kilo\byte}$
+    \item
+      CPU L3 Cache: $B = \SI{64}{\byte}$, $M = \SI{8}{\mega\byte}$
+    \item
+      Disk Cache: $B = \SI{64}{\kilo\byte}$, $M = \SI{64}{\mega\byte}$
+    \begin{itemize}
+      \item
+        Many operating systems use free system memory as disk cache
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Cache Efficiency}{Block Operations}
+  \textbf{Terminology:}
+  \begin{itemize}
+    \item
+      Block loads on CPU-cache are called {\color{Mittel-Blau}cache~misses}
+    \item
+      Block operations on disk-cache are called {\color{Mittel-Blau}IOs}\\
+      (input / output operations)
+    \item
+      These also fall under the term {\color{Mittel-Blau}cache~efficiency} or
+      {\color{Mittel-Blau}IO~efficiency}
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Cache Efficiency}{Block Operations - Linear Order}
+  \vspace{-1.0em}
+  \begin{figure}%
+    \begin{adjustbox}{width=\linewidth}%
+      \input{Lecture/Images/Caching/MemoryLocality_Linear.tikz}%
+    \end{adjustbox}%
+    \caption{Good locality of sum operation}
+    \label{fig:caching:memory_locality_linear}
+  \end{figure}%
+  \vspace{-1.0em}
+  \textbf{Linear order:}
+  \begin{itemize}
+    \item
+      We sum up all elements in {\color{Mittel-Blau}natural order}
+      \begin{displaymath}
+        {\color{Mittel-Blau}\mathrm{sum}(a)} =
+        {\color{Mittel-Blau}a[1]} +
+        {\color{Mittel-Blau}a[2]} +
+        \dots +
+        {\color{Mittel-Blau}a[n]}
+      \end{displaymath}
+    \item
+      The number of block operations is
+      {\color{Mittel-Blau}$\mathrm{ceil}\left(\frac{n}{B}\right)$}
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Cache Efficiency}{Block Operations - Random Order}
+  \vspace{-1.0em}
+  \begin{figure}%
+    \begin{adjustbox}{width=\linewidth}%
+      \input{Lecture/Images/Caching/MemoryLocality_Random.tikz}%
+    \end{adjustbox}%
+    \caption{Bad locality of sum operation}
+    \label{fig:caching:memory_locality_random}
+  \end{figure}%
+  \vspace{-1.0em}
+  \textbf{Random order:}
+  \begin{itemize}
+    \item
+      We sum up all elements in {\color{Mittel-Blau}random order}
+      \begin{displaymath}
+        {\color{Mittel-Blau}\mathrm{sum}(a)} =
+        {\color{Mittel-Blau}a[21]} +
+        {\color{Mittel-Blau}a[5]} +
+        \dots +
+        {\color{Mittel-Blau}a[8]}
+      \end{displaymath}
+    \item
+      The number of block operations is {\color{Mittel-Blau}$n$} in the
+      {\color{Mittel-Blau}worst case}
+    \item
+      This leads to a runtime factor difference of {\color{Mittel-Blau}$B$}
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Cache Efficiency}{Block Operations}
+  \textbf{Runtime factor:}
+  \begin{itemize}
+    \item
+      Normally the factor dufference is a lot smaller than
+      {\color{Mittel-Blau}$B$}
+    \item
+      Even with a {\color{Mittel-Blau}random order} we access 4 (\texttt{int}) /
+      8 (\texttt{long}) nearby bytes for each element
+    \item
+      If {\color{Mittel-Blau}not $n \gg M$} the next element might already
+      with a high probability loaded in cache
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Cache Efficiency}{Block Operations - QuickSort}
+  \textbf{QuickSort:}\\
+  \begin{itemize}
+    \item
+      \textbf{Strategy:} Divide and conquer
+      $\Rightarrow$ See chapter~\ref{chap:divide_and_conquer:anchor}
+      \item
+        Choose one elemet (e.g the first one) as
+        {\color{Mittel-Blau}\enquote{pivot}-element}
+      \item
+        Divide the data into two parts where the \enquote{lower} part contains
+        all values {\color{Mittel-Blau}$\leq$ \enquote{pivot}-element}
+      \item
+        Ideally both parts are the same size
+      \item
+        Both parts are sorted recursively
+  \end{itemize}
+  \vspace{-1em}
+  \begin{figure}%
+    \begin{adjustbox}{width=\linewidth}%
+      \input{Lecture/Images/Caching/QuickSort_Pivot.tikz}%
+    \end{adjustbox}%
+    \caption{\textit{QuickSort} with pivot-element}
+    \label{fig:caching:quicksort_pivot}
+  \end{figure}%
+\end{frame}
+
+%-------------------------------------------------------------------------------
+\codeslide{python}{
+\begin{frame}{Cache Efficiency}{Block Operations - QuickSort - Python}
+  \textbf{Python:}
+  \lstinputlisting[
+    language=Python,
+    basicstyle=\normalsize,
+    tabsize=2,
+    style={python-idle-code},
+    breaklines=false,
+    escapechar={@},
+    emph={quicksort},
+    emphstyle=\color{blue}
+  ]{Lecture/Code/Caching/QuickSort_Part1.py}
+\end{frame}
+
+\begin{frame}{Cache Efficiency}{Block Operations - QuickSort - Python}
+  \vspace{-1em}
+  \lstinputlisting[
+    language=Python,
+    basicstyle=\normalsize,
+    tabsize=2,
+    style={python-idle-code},
+    breaklines=false,
+    escapechar={@},
+    emph={quicksort},
+    emphstyle=\color{blue}
+  ]{Lecture/Code/Caching/QuickSort_Part2.py}
+\end{frame}
+}
+
+%TODO: Implement algorithm in Java / C++
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Cache Efficiency}{Block Operations - QuickSort}
+  \textbf{Preconditions:}
+  \begin{itemize}
+    \item
+      Let {\color{Mittel-Blau}$T(n)$} be the runtime for the
+      {\color{Mittel-Blau}input size $n$}
+    \item
+      Fields are always separated perfectly in the middle
+    \item
+      $n$ is a power of two and with that the
+      {\color{Mittel-Blau}recursion depth is $k = \log_2 n$}
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Cache Efficiency}{Block Operations - QuickSort}
+  \begin{eqnarray*}
+    {\color{Mittel-Blau}T(n)} &\leq\hspace{1.5em}&
+      \underbrace{
+        A \cdot {\color{Mittel-Blau}n}
+        \vphantom{\frac{n}{2}}
+      }_{\text{splitting in two parts}}
+      +
+      \underbrace{
+        2 \cdot {\color{Mittel-Blau}T\left(\frac{n}{2}\right)}
+      }_{\text{recursive sort}}\\
+    {} &=&
+      A \cdot {\color{Mittel-Blau}n} + 2 \left(
+        A \cdot \frac{\color{Mittel-Blau}n}{2}
+        + 2 \cdot {\color{Mittel-Blau}T\left(\frac{n}{4}\right)}
+      \right)\\
+    {} &=&
+      2\,A \cdot {\color{Mittel-Blau}n}
+      + 4 \cdot {\color{Mittel-Blau}T\left(\frac{n}{4}\right)}\\
+    {} &=&\hspace{1.5em}\cdots\\
+    {} &=&
+      A \cdot {\color{Mittel-Blau}k \cdot n}
+      + 2^{\color{Mittel-Blau}k}
+      \cdot {\color{Mittel-Blau}T(1)}\\
+    {} &=&
+      A \cdot {\color{Mittel-Blau}n \, \log_2 n}
+      + {\color{Mittel-Blau}n \cdot T(1)}\\
+    {} &=&
+      A \cdot {\color{Mittel-Blau}n \, \log_2 n}
+      + A \cdot {\color{Mittel-Blau}n}
+      \in \mathcal{O}(n \, \log_2 n)
+  \end{eqnarray*}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Cache Efficiency}{Block Operations - QuickSort}
+  \begin{figure}%
+    \begin{adjustbox}{width=\linewidth}%
+      \input{Lecture/Images/Caching/MemoryLocality_QuickSort.tikz}%
+    \end{adjustbox}%
+    \caption{Locality of quicksort}
+    \label{fig:caching:memory_locality_quicksort}
+  \end{figure}%
+  \begin{itemize}
+    \item
+      Let {\color{Mittel-Blau}$IO(n)$} be the number of
+      {\color{Mittel-Blau}block operations} for input size $n$
+    \item
+      Assumptions as before but
+      {\color{Mittel-Blau}recursion depth is $k = \log_2 \frac{n}{B}$}\\
+      {\color{gray}Why?}
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Cache Efficiency}{Block Operations - QuickSort}
+  \begin{eqnarray*}
+    {\color{Mittel-Blau}IO(n)} &\leq\hspace{1.5em}&
+      \underbrace{
+        A \cdot {\color{Mittel-Blau}\frac{n}{B}}
+      }_{\text{splitting in two parts}}
+      +
+      \underbrace{
+        2 \cdot {\color{Mittel-Blau}IO\left(\frac{n}{2\,B}\right)}
+      }_{\text{recursive sort}}\\
+    {} &=&
+      A \cdot {\color{Mittel-Blau}n} + 2 \left(
+        A \cdot {\color{Mittel-Blau}\frac{n}{2\,B}}
+        + 2 \cdot {\color{Mittel-Blau}IO\left(\frac{n}{4\,B}\right)}
+      \right)\\
+    {} &=&
+      2\,A \cdot {\color{Mittel-Blau}\frac{n}{B}}
+      + 4 \cdot {\color{Mittel-Blau}IO\left(\frac{n}{4\,B}\right)}\\
+    {} &=&\hspace{1.5em}\cdots\\
+    {} &=&
+      A \cdot {\color{Mittel-Blau}k \cdot \frac{n}{B}}
+      + 2^{\color{Mittel-Blau}k}
+      \cdot {\color{Mittel-Blau}IO(1)}\\
+    {} &=&
+      A \cdot {\color{Mittel-Blau}\frac{n}{B} \, \log_2 \frac{n}{B}}
+      + {\color{Mittel-Blau}\frac{n}{B} \cdot IO(1)}\\
+    {} &=&
+      A \cdot {\color{Mittel-Blau}\frac{n}{B} \, \log_2 \frac{n}{B}}
+      + A \cdot {\color{Mittel-Blau}\frac{n}{B}}
+      \in \mathcal{O}(\frac{n}{B} \, \log_2 \frac{n}{B})
+  \end{eqnarray*}
+\end{frame}

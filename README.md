@@ -22,7 +22,7 @@ The official version of the course is stored in the master branch. The aim of th
 ### Add a corporate design (e.g. from University of Freiburg)
 Before building the slides a corporate design has to be added.
 For example the university of Freiburg design can be selected
-by providing the 'DESIGN=ufcd' option to the make command.
+by providing the 'ALGO_DESIGN=ufcd' option to the make command.
 
     #change into your home directory
     cd
@@ -62,10 +62,10 @@ make build_server
 The lecture is provided in different languages / designs / programming languages. Use the respective switches to adjusted the settings.
 ```
 Windows:
-make DESIGN=ufcd PROGLANG=java LANGUAGE=eng
+make ALGO_DESIGN=ufcd ALGO_PROGLANG=java ALGO_LANGUAGE=eng
 
 Linux:
-make build_server DESIGN=plain PROGLANG=python LANGUAGE=eng
+make build_server ALGO_DESIGN=plain ALGO_PROGLANG=python ALGO_LANGUAGE=eng
 ```
 
 Use `make help` to retrieve a usage info.
