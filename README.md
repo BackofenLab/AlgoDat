@@ -24,6 +24,8 @@ Help to correct bugs you find by creating a merge request to update the main rep
 Before building the slides a corporate design has to be added. For example the University of Freiburg design can be selected by providing the 'ALGO_DESIGN=ufcd' option to the make command.
 
 More information can be found here: http://www.zuv.uni-freiburg.de/service/cd
+
+Either use the add_ufcd_linux.sh script provided in scripts, or the following commands:
 ```
 # Create texmf and change into folder
 mkdir ~/texmf
@@ -41,7 +43,7 @@ unzip ufcd-logo-iif.tds.zip
 unzip ufcd-logo-imtek.tds.zip
 
 # Make the corporate design files available to latex
-sudo texhash ~/texmf
+texhash ~/texmf
 ```
 
 ### Build slides and excercies
