@@ -1,13 +1,13 @@
 #!/bin/bash
 # Create texmf and change into folder
-mkdir ~/texmf
+mkdir -p ~/texmf
 cd ~/texmf
 
 # Download University of Freiburg Corporate Design (access restricted to university IP range):
-wget http://www.zuv.uni-freiburg.de/service/cd/download/latext/ufcd.tds.zip
-wget http://www.zuv.uni-freiburg.de/service/cd/download/latext/ufcd-logo-uni.tds.zip
-wget http://www.zuv.uni-freiburg.de/service/cd/download/latext/ufcd-logo-iif.tds.zip
-wget http://www.zuv.uni-freiburg.de/service/cd/download/latext/ufcd-logo-imtek.tds.zip
+curl -L http://www.zuv.uni-freiburg.de/service/cd/download/latext/ufcd.tds.zip -o ufcd.tds.zip
+curl -L http://www.zuv.uni-freiburg.de/service/cd/download/latext/ufcd-logo-uni.tds.zip -o ufcd-logo-uni.tds.zip
+curl -L http://www.zuv.uni-freiburg.de/service/cd/download/latext/ufcd-logo-iif.tds.zip -o ufcd-logo-iif.tds.zip
+curl -L http://www.zuv.uni-freiburg.de/service/cd/download/latext/ufcd-logo-imtek.tds.zip -o ufcd-logo-imtek.tds.zip
 
 unzip ufcd.tds.zip
 unzip ufcd-logo-uni.tds.zip
