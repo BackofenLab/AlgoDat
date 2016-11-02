@@ -1,5 +1,6 @@
 \section{Divide and Conquer}
 \toclesssubsection{Introduction}
+\label{chap:divide_and_conquer}
 
 %Maximum subtotal
 %\begin{itemize}
@@ -183,150 +184,210 @@
     \item
       Maximum profit of buying and selling shares
   \end{itemize}
-  
-  TODO: Graphics -> look at slide 31 \vspace{2em}
-  
+  \begin{figure}
+    \begin{adjustbox}{width=\linewidth}
+      \input{Images/DivideAndConquer/Shares_Graph.tikz}
+    \end{adjustbox}
+    \caption{Share value over time}
+    \label{fig:divide_and_conquer:shares_value}
+  \end{figure}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Divide and Conquer}{Brute Force}
-  
-  TODO: Code -> look at slide 32 \vspace{2em}
-  
+\codeslide{python}{
+\begin{frame}{Divide and Conquer}{Example - Maximum Subtotal - Python}
+  \vspace{-0.5em}
+  \lstinputlisting[
+    language=Python,
+    basicstyle=\small,
+    tabsize=4,
+    style={python-idle-code},
+    escapechar={@},
+    emph={maxSubArray},
+    emphstyle=\color{blue}
+  ]{Code/DivideAndConquer/MaxSubTotal_Naive.py}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Divide and Conquer}{Python implementation}
-  
-  TODO: Python Code -> look at slide 33 \vspace{2em}
-  
+\begin{frame}{Divide and Conquer}{Example - Maximum Subtotal - Python}
+  \vspace{-0.5em}
+  \lstinputlisting[
+    language=Python,
+    basicstyle=\small,
+    tabsize=4,
+    style={python-idle-code},
+    escapechar={@},
+    emph={maxSubArray},
+    emphstyle=\color{blue}
+  ]{Code/DivideAndConquer/MaxSubTotal_Naive_Runtime.py}
 \end{frame}
+}
+
+%TODO: Implement for Java / C++
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Divide and Conquer}{Runtime upper bound}
-  
-  TODO: Code -> look at slide 34 \vspace{2em}
-  
-\end{frame}
-
-%-------------------------------------------------------------------------------
-
-\begin{frame}{Divide and Conquer}{Runtime lower bound}
-
-TODO: Table -> look at slide 35 \vspace{2em}
-
+\begin{frame}{Divide and Conquer}{Example - Maximum Subtotal}
+  \textbf{Upper bound:}
   \begin{itemize}
     \item
-      There are a minimum of $\dfrac{n}{3}$ values for u, for $\dfrac{n}{3}$ 
-      values passed through o, for which again run through $\dfrac{n}{3}$ 
-      addition steps in the inner loop
+      Three interleaved loops
     \item
-      We need a minimum of $T(n) = \left(\dfrac{n}{3}\right)^3 \in \Omega 
-      (n^3)$ steps
+      Each loop with runtime {\color{Mittel-Blau}$\mathcal{O}(n)$}
     \item
-      $T(n) \in \mathcal{O}(n^3)$ and $T(n) \in \Omega(n^3)$ follows $T(n) \in 
-      \Theta (n^3)$
-    \item
-      it is hard to solve the problem worse ...
+      Algorithm runtime of {\color{Mittel-Blau}$\mathcal{O}(n^3)$}
   \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Divide and Conquer}{More efficient alternative}
-  ... but its easier to solve it better
+\begin{frame}{Divide and Conquer}{Example - Maximum Subtotal - Runtime}
+  \textbf{Lower bound:}
   \begin{itemize}
     \item
-      Until now:\\
-      For every u and for every o we calculate $S_{u,o} = X(u) + X(u+1) + \dots 
-      + X(o)$
+      We iterate at least $\frac{n}{3}$ values for $i$
     \item
-      More efficient:\\
-      incremental actualization instead of pass through loops\\
-      from $S_{u,o+1} = X(u) + X(u+1) + \dots + X(o) + X(o+1)$\\
-      and $S_{u,o} = X(u) + X(u+1) + \dots + X(o)$\\
-      follows $S_{u,o+1} = S_{u,o} + X(o+1)$ $\rightarrow$ $\mathcal{O}(1)$ 
-      instead of $\mathcal{O}(n)$
+      For each $i$ we iterate at least $\frac{n}{3}$ values for $j$
+    \item
+      For each $j$ we have at least $\frac{n}{3}$ additions
+    \item
+      We need at least $T(n) = (\frac{n}{3})^3 \in \Omega(n)$ steps
+  \end{itemize}
+  \begin{table}
+    \caption{Operations}
+    \label{fig:divide_and_conquer:max_sub_total_operations}
+    \begin{tabular}{c|c|c}
+      $i$ & Additions & $j$\\
+      \midrule
+      $\frac{n}{3} \in \mathcal{O}(n)$ &
+      $\frac{n}{3} \in \mathcal{O}(n)$ &
+      $\frac{n}{3} \in \mathcal{O}(n)$\\
+    \end{tabular}
+  \end{table}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Divide and Conquer}{Example - Maximum Subtotal - Runtime}
+  \textbf{Runtime:}
+  \begin{itemize}
+    \item
+      With $T(n) \in {\color{Mittel-Blau}\mathcal{O}(n^3)}$ and
+      $T(n) \in {\color{Mittel-Blau}\Omega(n^3)}$ we know:
+      \begin{displaymath}
+        \color{Mittel-Blau}
+        T(n) \in \Theta(n^3)
+      \end{displaymath}
+    \item
+      It is hard to solve the problem worse $\ldots$
   \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Divide and Conquer}{Better solution}
-  
-  TODO: Code -> look at slide 37 \vspace{2em}
-  
-\end{frame}
-
-%-------------------------------------------------------------------------------
-
-\begin{frame}{Divide and Conquer}{Python Code}
-  
-  TODO: Python Code -> look at slide 38 \vspace{2em}
-  
-\end{frame}
-
-%-------------------------------------------------------------------------------
-
-\begin{frame}{Divide and Conquer}{Idea}
+\begin{frame}{Divide and Conquer}{Example - Maximum Subtotal - Runtime}
+  \textbf{Current approach:}
   \begin{itemize}
     \item
-    Solve the problem for the left and the right half of X
+      Calculating the sum for range from $i$ to $j$ with loop
+      \begin{displaymath}
+        S_{i,\,j} = X[i] + X[i+1] + \dots + X[j]
+      \end{displaymath}
+   \end{itemize}
+   \textbf{Better approach:}
+   \begin{itemize}
     \item
-      Put the parts of the solution together to the overall solution
-  \end{itemize}
-  
-  TODO: Graphics -> look at slide 39 \vspace{2em}
-  
-  \begin{itemize}
-    \item
-      The Maximum is either in the left half (A) or in the right half (B)
-    \item
-      The Maximum can also be on the border of both half's (C) 
-    \item
-      For C we have to determine rmax and lmax
-    \item
-      The overall solution is a maximum of A, B, C
+      Incremental sum instead of loop
+      \begin{eqnarray*}
+        S_{i,\,j+1} &=& X[i] + X[i+1] + \dots + X[j] + X[j+1]\\
+        S_{i,\,j+1} &=& S_{i,\,j} + X[j+1]
+        ~{\color{Mittel-Blau}\in \mathcal{O}(1)}
+      \end{eqnarray*}
   \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Divide and Conquer}{Concept}
+\codeslide{python}{
+\begin{frame}{Divide and Conquer}{Example - Maximum Subtotal - Python}
+  \vspace{-0.5em}
+  \lstinputlisting[
+    language=Python,
+    basicstyle=\small,
+    tabsize=4,
+    style={python-idle-code},
+    escapechar={@},
+    emph={maxSubArray},
+    emphstyle=\color{blue}
+  ]{Code/DivideAndConquer/MaxSubTotal.py}
+\end{frame}
+}
+
+%TODO: Implement for Java / C++
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Divide and Conquer}{Example - Maximum Subtotal}
+  \textbf{Divide and Conquer:}
   \begin{itemize}
     \item
-      Small problems will be solved directly: n=1 $\Rightarrow$ Max = X(0)
+      Solve the left / right half of the problem {\color{Mittel-Blau}recursive}
     \item
-      Big problems will be divided in two subproblems and solved recursively. 
-      Parts of the solution A and B will be delivered.
+      Small problems are solved directly: $n = 1 \Rightarrow \max = X[0]$
+    \item
+      Combine both solutions into a total solution
   \end{itemize}
-  
-  TODO: Graphics -> look at slide 40 \vspace{2em}
-  
-  \begin{itemize}
-    \item
-      To determine parts of the solution C, we will determine rmax and lmax for 
-      the subproblem.
-    \item
-      The overall solution results in the maximum of A, B, C
-  \end{itemize}
+  \begin{figure}
+    \begin{adjustbox}{width=\linewidth}
+      \input{Images/DivideAndConquer/MaxSubTotal_Divide.tikz}
+    \end{adjustbox}
+    \caption{Dividing the problem into two sub-problems}
+    \label{fig:divide_and_conquer:max_sub_total_divide}
+  \end{figure}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Divide and Conquer}{Implementation}
-  
-  TODO: Code -> look at slide 42 \vspace{2em}
-  
+\begin{frame}{Divide and Conquer}{Example - Maximum Subtotal}
+  \textbf{Divide and Conquer:}
+  \begin{itemize}
+    \item
+      The maximum is located in the {\color{Mittel-Blau}left~half~($A$)}
+      or the {\color{Mittel-Blau}right~half~($B$)}
+    \item
+      The maximum can {\color{Mittel-Blau}extend into the second half ($C$)}
+    \item
+      To solve $C$ we have to calculate $rmax$ and $lmax$
+    \item
+      The total solution is the {\color{Mittel-Blau}maximum of $A$, $B$ and $C$}
+  \end{itemize}
+  \begin{figure}
+    \begin{adjustbox}{width=\linewidth}
+      \input{Images/DivideAndConquer/MaxSubTotal_Divide.tikz}
+    \end{adjustbox}
+    \caption{Dividing the problem into two sub-problems}
+    \label{fig:divide_and_conquer:max_sub_total_divide2}
+  \end{figure}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Divide and Conquer}{Python Code}
-  
-  TODO: Python Code -> look at slide 43 \vspace{2em}
-  
+
+\codeslide{python}{
+\begin{frame}{Divide and Conquer}{Example - Maximum Subtotal - Python}
+  \vspace{-0.5em}
+  \lstinputlisting[
+    language=Python,
+    basicstyle=\small,
+    tabsize=4,
+    style={python-idle-code},
+    escapechar={@},
+    emph={maxSubArray},
+    emphstyle=\color{blue}
+  ]{Code/DivideAndConquer/MaxSubTotal_DivideAndConquer.py}
 \end{frame}
+}
+
+%TODO: Implement for Java / C++
