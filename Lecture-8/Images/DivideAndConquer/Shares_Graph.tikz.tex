@@ -1,0 +1,45 @@
+\begin{tikzpicture}[
+  graph/.style={
+    ultra thick,
+    color=Mittel-Gruen
+  },
+  graph_fill/.style={
+    fill=Hell-Gruen,
+    fill opacity=0.20
+  }
+]
+\begin{axis}[
+  width=\linewidth,
+  height=0.5\linewidth,
+%  xlabel={time},
+  ylabel={value},
+  grid=major,
+  y tick label style={
+    /pgf/number format/fixed,
+    /pgf/number format/fixed zerofill,
+    /pgf/number format/precision=1
+  },
+  scaled y ticks=false,
+  restrict y to domain*=5:20,
+  xmin=0,
+  xmax=100,
+  ymin=5,
+  ymax=20
+]
+\path[name path=axis] (axis cs:0,5) -- (axis cs:100,5);
+\addplot[name path=f, graph, domain=0:100, samples=175, smooth]
+  (\x, {
+    % Offset
+    10
+    % Pull the left edge up
+    + 5.0 / ln(0.01*\x*\x + 2.0)
+    % Some fluctuations
+    + 5.0 * sin(5.0*\x) * sin(4.0*\x + 0.2) * sin(4.0*\x)
+    % Gauss noise generation (via Box-Muller)
+    + 0.5
+      * sqrt(-2 * ln(0.5 * rand + 0.5)) * cos(rand)
+      * (sin(51.0*\x + 1.0) + cos(29.0*\x + 2.0))
+  });
+\addplot[graph_fill] fill between[of=f and axis, soft clip={domain=0:100}];
+\end{axis}
+\end{tikzpicture}

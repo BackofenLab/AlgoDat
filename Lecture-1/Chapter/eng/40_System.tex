@@ -1,0 +1,169 @@
+\begin{frame}<beamer>{\LectureToC}
+  \tableofcontents[currentsection, currentsubsection,
+    subsubsectionstyle=show/show/shaded
+  ]
+\end{frame}
+
+\subsubsection{Daphne}
+
+\begin{frame}{Daphne}
+  \textbf{Daphne:}
+  \begin{itemize}
+    \item
+      Provides the following information:
+      \begin{itemize}
+        \item
+          Name / contact information of your tutor
+        \item
+          Download of / info needed for exercise sheets
+        \item
+          Collected points of all exercise sheets
+        \item
+          Links to:
+          \begin{enumerate}
+            \item
+              Coding standards
+            \item
+              Build system
+            \item
+              The other systems
+          \end{enumerate}
+      \end{itemize}
+    \item
+      Link: {\color{Mittel-Blau}\href{\LectureDaphneLink}{Daphne}}
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\subsubsection{Forum}
+\begin{frame}{Forum}
+  \textbf{Forum:}
+  \begin{itemize}
+    \item
+      Please don't hesitate to ask if something is unclear
+    \item
+      Ask in the forum and not separate.
+      Others might also be interested in the answer
+    \item
+      {\color{Mittel-Blau}I}, {\color{Mittel-Blau}Claudis Korzen} or one of the
+      {\color{Mittel-Blau}tutors} will reply as fast as possible
+    \item
+      Link: {\color{Mittel-Blau}\href{\LectureForumLink}{Forum}}
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\codeslide{python}{
+\subsubsection{Checkstyle}
+\begin{frame}{Checkstyle}{flake8}
+  \textbf{Checkstyle (flake8):}
+  \begin{itemize}
+    \item
+      Installation: \textbf{python} \texttt{-m pip install flake8}
+    \item
+      Check file: \textbf{flake8} \texttt{path/to/file.py}
+    \item
+      Check directory: \textbf{flake8} \texttt{path/to/directory}
+    \item
+      Link: {\color{Mittel-Blau}\href{\LectureCheckstyleLink}{flake8}}
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+%\subsubsection{Checkstyle}
+%\begin{frame}{Checkstyle}
+%  \textbf{Checkstyle (pep8):}
+%  \begin{itemize}
+%    \item
+%      Installation: \textbf{pip} \texttt{install pep8}
+%    \item
+%      Update: \textbf{pip} \texttt{install --upgrade pep8}
+%    \item
+%      Check: \textbf{pep8} \texttt{--show-source --show-pep8 <file>}
+%    \item
+%      Link: {\color{Mittel-Blau}\href{\LectureCheckstyleLink}{pep8}}
+%  \end{itemize}
+%\end{frame}
+}
+
+%-------------------------------------------------------------------------------
+
+\codeslide{python}{
+\subsubsection{Test}
+\begin{frame}{Test}{doctest}
+  \textbf{Testing (doctest):}
+  \vspace{-1.0em}
+  \begin{columns}
+    \begin{column}[t]{0.5\linewidth}
+      \lstinputlisting[
+        language=Python,
+        style={python-idle-code},
+        basicstyle=\small,
+        tabsize=4,
+        breaklines=false,
+        emph={subOne},
+        emphstyle=\color{blue}
+      ]{Code/DocTest.py}
+    \end{column}
+    \begin{column}[t]{0.5\linewidth}
+      \begin{itemize}
+        \item
+          Run: \textbf{python} \textit{<file>}
+        \item
+          Debug: \textbf{python} \textit{<file> -v}
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+}
+
+%-------------------------------------------------------------------------------
+
+%\subsubsection{Version management}
+%\begin{frame}{Version management}{git}
+%  \begin{itemize}
+%    \item
+%      Initialize directory: \textbf{git} \texttt{clone <URL> .}
+%    \item
+%      Add files/folders: \textbf{git} \texttt{add <file> --all}
+%    \item
+%      Create snapshot: \textbf{git} \texttt{commit -m "<Your Message>"}
+%    \item
+%      Upload: \textbf{git} \texttt{push origin master}
+%    \item
+%      Link: {\color{Mittel-Blau}\href{\LectureGitLink}{Git}}
+%  \end{itemize}
+%\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\subsubsection{Version management}
+\begin{frame}{Version management}{Subversion}
+  \textbf{Version management (subversion):}
+  \begin{itemize}
+    \item
+      Initialize / update directory: \textbf{svn} \texttt{checkout <URL>}
+    \item
+      Add files / folders: \textbf{svn} \texttt{add <file> --all}
+    \item
+      Create snapshot: \textbf{svn} \texttt{commit -m "<Your Message>"}
+    \item
+      Link: {\color{Mittel-Blau}\href{\LectureSubversionLink}{Subversion}}
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\subsubsection{Jenkins}
+\begin{frame}{Jenkins}
+  \textbf{Jenkins:}
+  \begin{itemize}
+    \item
+      Provides current build status
+    \item
+      Link: {\color{Mittel-Blau}\href{\LectureJenkinsLink}{Jenkins}}
+  \end{itemize}
+\end{frame}

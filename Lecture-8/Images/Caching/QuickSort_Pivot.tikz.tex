@@ -1,0 +1,29 @@
+\begin{tikzpicture}[
+  list/.style={
+    draw=black
+  }, pivot/.style={
+    list,
+    fill=Hell-Gruen
+  }, label/.style={
+    color=Mittel-Blau,
+    font=\huge
+  }, label_pivot/.style={
+    color=black,
+    font=\huge
+  }
+]%
+% upper list
+\draw[list] (0, 0) rectangle ++(16, 1);
+\draw[pivot] (0, 0) rectangle ++(1, 1);
+
+\node[label_pivot] at (0.5, 0.5) {p};
+\node[label] at (8.5, 0.5) {list};
+
+% lower list
+\draw[list] (0, -2) rectangle ++(16, 1);
+\draw[pivot] (4, -2) rectangle ++(1, 1);
+
+\node[label] at (2, -1.5) {lower list};
+\node[label_pivot] at (4.5, -1.5) {p};
+\node[label] at (10.5, -1.5) {upper list};
+\end{tikzpicture}

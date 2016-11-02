@@ -1,0 +1,123 @@
+\section{Static Fields}
+
+\begin{frame}{Static Fields}
+  \begin{itemize}
+    \item
+      Static fields exist in nearly every compiled language
+    \item
+      They are initialized with a fixed size $n$
+    \item
+      \textbf{Problem:}
+      The needed size is not always clear at compile time
+  \end{itemize}
+  \begin{table}[!h]
+    \caption{Static field with size $n = 5$}
+    \label{tab:static_field_introduction}
+    \begin{tabular}{c|c|c|c|c|c}
+      Index & 0 & 1 & 2 & 3 & 4\\
+      \midrule
+      Value & \lstinline[
+        language=Python,
+        style={python-idle-code},
+        basicstyle=\small
+      ]|\"a\"| &
+      \lstinline[
+        language=Python,
+        style={python-idle-code},
+        basicstyle=\small
+      ]|\"b\"| &
+      \lstinline[
+        language=Python,
+        style={python-idle-code},
+        basicstyle=\small
+      ]|\"c\"| &
+      \lstinline[
+        language=Python,
+        style={python-idle-code},
+        basicstyle=\small
+      ]|\"d\"| &
+      \lstinline[
+        language=Python,
+        style={python-idle-code},
+        basicstyle=\small
+      ]|\"e\"|
+    \end{tabular}
+  \end{table}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\codeslide{python}{
+  \begin{frame}{Static Fields}{Python}
+    \textbf{Python:}
+    \begin{itemize}
+      \item
+        We have dynamic sized lists
+      \item
+        Python does automatic resizing when needed
+    \end{itemize}
+    \lstinputlisting[
+      language=Python,
+      basicstyle=\small,
+      tabsize=4,
+      style={python-idle-code},
+      morekeywords={},
+      escapechar={@}
+    ]{Code/Lists.py}
+  \end{frame}
+}
+
+%-------------------------------------------------------------------------------
+
+\codeslide{java}{
+\begin{frame}{Static Fields}{Java}
+  \textbf{Java:}
+  \lstinputlisting[
+    language=Java,
+    basicstyle=\small,
+    tabsize=4,
+    style={java-eclipse-code},
+    escapechar={@},
+    emph={numbers},
+    emphstyle=\color{java_variable}
+  ]{Code/StaticField.java}
+\end{frame}
+}
+
+%-------------------------------------------------------------------------------
+
+\codeslide{cpp}{
+\begin{frame}{Static Fields}{C++}
+  \textbf{C++:}
+  \lstinputlisting[
+    language=C++,
+    basicstyle=\small,
+    tabsize=4,
+    style={cpp-eclipse-code},
+    morekeywords={endl},
+    escapechar={@}
+  ]{Code/StaticField.cpp}
+\end{frame}
+}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Static Fields}
+  \begin{itemize}
+    \item
+      The name \enquote{static field} has nothing to do with the keyword
+      \lstinline[
+        language=Java,
+        style={java-eclipse-code},
+        basicstyle=\small
+      ]|static| from Java / C++
+    \item
+      Nor is the field allocated before the program starts
+    \item
+      The {\color{Mittel-Blau}size} of the field is static and can not be
+      changed after creation
+    \item
+      The name \enquote{fixed size field} or \enquote{fixed size array} would be
+      better
+  \end{itemize}
+\end{frame}

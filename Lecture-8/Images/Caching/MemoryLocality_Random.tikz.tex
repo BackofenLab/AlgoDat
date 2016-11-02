@@ -1,0 +1,56 @@
+\begin{tikzpicture}[
+  cell_active/.style={
+    fill=Hell-Gruen,
+  }, cell_text/.style={
+    color=black,
+    font=\Large
+  }, cell_arrow/.style={
+    line width=0.25em,
+    color=Mittel-Gruen
+  }, block/.style={
+    draw=black
+  }, block_active/.style={
+    block,
+    fill=Hell-Blau
+  }, block_arrow/.style={
+    line width=0.5em,
+    color=Mittel-Blau
+  }
+]%
+% position x / y, block active, cell data {n x [cell active]}
+\foreach \x/\y/\a/\d in {%
+  0/0/1/{1,0,0,1,0,0,1,0},%
+  5/0/1/{1,0,0,0,0,0,1,1},%
+  10/0/1/{0,1,0,0,0,0,0,1},%
+  15/0/1/{0,0,0,1,0,1,0,0},%
+  20/0/1/{0,0,1,0,0,1,0,0}%
+}{%
+  % draw block
+  \ifnum \a>0
+    \fill[block_active] (\x, \y) rectangle ++(5.0, 1.0);
+    \draw[->, block_arrow] (\x + 2.5, \y - 0.15) -- ++(0, -0.75);
+  \fi
+  
+  % draw cells
+  \foreach \ca [count=\index] in \d {
+    \ifnum \ca>0
+      \fill[cell_active]
+        (\x + 0.625*\index - 0.625, \y) rectangle ++(0.625, 1.0);
+      
+      \draw[<-, cell_arrow]
+        (\x + 0.625*\index - 0.3125, \y + 1.15) -- ++(0, 0.75);
+    \fi
+    
+    \node[cell_text] at (\x + 0.625*\index - 0.3125, \y + 0.5) {$0$};
+  }
+  
+  \draw[block] (\x, \y) rectangle ++(5.0, 1.0);
+}
+
+% labels
+\node[font=\Huge, anchor=east] at (-0.25, 0.5) {Cache};
+\node[font=\Huge, anchor=south, color=Mittel-Gruen] at (12.5, 2.15)
+  {Cache Read / Write};
+\node[font=\Huge, anchor=north, color=Mittel-Blau] at (12.5, -1.15)
+  {Block Read / Write};
+\end{tikzpicture}

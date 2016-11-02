@@ -1,0 +1,188 @@
+\section{Universal Hashing}
+
+\toclesssubsection{Introduction}
+
+\begin{frame}{Universal Hashing}{Thought Experiment}
+  \begin{itemize}
+    \item
+      I create a hash function
+    \item
+      Find a set of keys so that it results in a degenrated hash table
+    \item
+      Find a solution to avoid that problem
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Universal Hashing}{Idea}
+  \textbf{Solution:}
+  \begin{itemize}
+    \item
+      We use a set of hash functions
+    \item
+      We choose a random hash function so that the expected result is an equal
+      distribution
+    \item
+      This is called {\color{Mittel-Blau}universal hashing}
+  \end{itemize}
+  \begin{columns}
+    \begin{column}{0.33\linewidth}
+      \begin{figure}[!h]
+        \begin{adjustbox}{height=0.8\linewidth}
+          \input{Images/UniversalHashing/Hash_1_Crossing.tikz}
+        \end{adjustbox}
+        \caption{Hash func. 1}
+        \label{fig:universal_hashing:hash_function_crossing}
+      \end{figure}
+    \end{column}
+    \begin{column}{0.33\linewidth}
+      \begin{figure}[!h]
+        \begin{adjustbox}{height=0.8\linewidth}
+          \input{Images/UniversalHashing/Hash_2_Normal.tikz}
+        \end{adjustbox}
+        \caption{Hash func. 2}
+        \label{fig:universal_hashing:hash_function_normal}
+      \end{figure}
+    \end{column}
+    \begin{column}{0.33\linewidth}
+      \begin{figure}[!h]
+        \begin{adjustbox}{height=0.8\linewidth}
+          \input{Images/UniversalHashing/Hash_3_Colliding.tikz}
+        \end{adjustbox}
+        \caption{Hash func. 2}
+        \label{fig:universal_hashing:hash_function_colliding}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Universal Hashing}{Definition}
+  \textbf{Definition:}
+  \begin{itemize}
+    \item
+      We call $\mathbb{U}$ the set (universum) of possible keys
+    \item
+      The size of the hash table $m$
+    \item
+      Set of hash functions $\mathbb{H} = \{h_1, h_2,\dots, h_n\}$ with
+      $h_i: \mathbb{U} \to \{0,\dots, m - 1\}$
+  \end{itemize}%
+  \begin{figure}[!b]%
+    \begin{adjustbox}{height=0.35\linewidth}%
+      \input{Images/UniversalHashing/HashFunction.tikz}%
+    \end{adjustbox}
+    \vspace*{-1.0em}%
+    \caption{Hash function $h_1$}%
+    \label{fig:universal_hashing:hash_function_definition}
+  \end{figure}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Universal Hashing}{Definition}
+  \begin{columns}
+    \begin{column}{0.5\linewidth}
+      \begin{itemize}
+        \item
+          We choose two random keys $x, y \in \mathbb{U} \mid x \neq 
+          y$
+        \item
+          An average of 3 out of 15 functions produce collisions
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.5\linewidth}
+      \begin{figure}[!t]%
+        \begin{adjustbox}{width=\linewidth}
+          \input{Images/UniversalHashing/HashUniverse.tikz}%
+        \end{adjustbox}
+        \caption{Hash universe $\mathbb{H}$}%
+        \label{fig:universal_hashing:hash_universe}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Universal Hashing}{Definition}
+  \textbf{Definition:}
+  $\mathbb{H}$ is {\color{Mittel-Blau}$c$-universal} if
+  $\forall x, y \in \mathbb{U} \mid x \neq y:$
+  \begin{displaymath}
+    \overbrace{
+      \frac{
+        \vert \{h_i \in \mathbb{H}\!: h_i(x) = h_i(y)\} \vert
+      }{
+      \underbrace{\vert \mathbb{H} \vert}_\text{Number of hash functions}
+      }
+    }^\text{
+      Number of hash functions that create collisions
+    }
+    \leq \frac{c}{m}, \hspace*{1.5em} c \in \mathbb{R}
+  \end{displaymath}
+  \begin{itemize}
+    \item
+      If $h \in \mathbb{H}$ is chosen randomly then
+      $\mathbb{P}(h(x) = h(y)) \leq \frac{c}{m}$
+  \end{itemize}
+  \begin{block}{Note: Best $c$ but not useful}
+    If the hash function chooses the {\color{Mittel-Blau}bucket} 
+    randomly then
+    $\mathbb{P}(h(x) = h(y)) = \frac{1}{m} \Leftrightarrow c = 1$
+  \end{block}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Universal Hashing}{Definition}
+  \begin{columns}
+    \begin{column}{0.5\linewidth}
+      \begin{itemize}
+        \item
+          $\mathbb{S}$:
+          Key universe
+        \item
+          $\mathbb{S}_i \subseteq \mathbb{S}$:
+          Keys mapping to Bucket $i$ (\enquote{synonyms})
+       \item
+         Ideal would be
+         $\vert \mathbb{S}_i \vert =\dfrac{\vert \mathbb{S} \vert}{m}$
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.5\linewidth}
+      \begin{figure}[!h]%
+        \begin{adjustbox}{width=\linewidth}%
+          \input{Images/UniversalHashing/HashFunctionToBucket.tikz}%
+        \end{adjustbox}
+        \caption{Hash function $h \in \mathbb{H}$}%
+        \label{fig:universal_hashing:hash_function_to_bucket}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Universal Hashing}{Definition}
+  \begin{itemize}
+    \item
+      We choose the keys $\mathbb{S} \subset \mathbb{U}$ and the
+      hash function $h \in \mathbb{H}$ randomly
+    \item
+      Let $\mathbb{S}_i = \{x \in \mathbb{S} | \; h(x) = i\}$ be the 
+      keys which
+      map to bucket $i$
+    \item
+      The expected average number of elements to search through per 
+      bucket is
+      \[\mathbb{E}\left[\vert \mathbb{S}_i \vert\right]
+        \leq 1 + c \cdot \frac{\vert \mathbb{S} \vert}{m}\]
+    \item
+      If the number of buckets $\ll$ number of keys
+      ($m \in \Omega(\vert \mathbb{S} \vert)$) then
+      $\mathbb{E}\left[\vert \mathbb{S}_i \vert\right] = \mathcal{O}(n)$
+  \end{itemize}
+\end{frame}
