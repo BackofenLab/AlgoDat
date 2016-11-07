@@ -932,6 +932,28 @@ we denote the left side with $A$, the right side with $B$
   \end{itemize}
 \end{frame}
 
+\begin{frame}{Runtime proportional to $n\cdot \log n$ in practice}
+let's look at some examples  \begin{itemize}
+  \item assume that we have constants $C_1$ and $C_2$ with
+    \begin{displaymath}
+	C_1 \cdot{} n \cdot{} \log_2 n \leq T(n) \leq C2 \cdot{} n \cdot{} \log_2 n\quad\text{  for $ n \geq 2$}      
+    \end{displaymath}
+  \item then: if we double the input, the runtime is only slightly
+    larger then doubled.
+  \item $C = 1 ns$   (1 simple instruction $\approx$ 1 nanosecond)
+  \item $n = 2^{20}$   ($\approx$ 1 million numbers = 4 MB)  \rlap{\small [with 4 bytes/number]}
+    \begin{itemize}
+     \item $C \cdot{} n \cdot{} \log_2 n = 10^{-9} \cdot{} 2^{20}
+      \cdot{} 20 s = 21$ milliseconds
+    \end{itemize}
+  \item $n = 2^{30}$   ($\approx$ 1 billion numbers = 4 GB)
+    \begin{itemize}
+     \item $C \cdot{} n \cdot{} \log_2 n = 10^{-9} \cdot{} 2^{30}
+      \cdot{} 30 s = 32$ seconds
+    \end{itemize}
+  \end{itemize}
+\color{red}\bf{}Runtime $n\cdot \log n$ nearly as good as linear!
+\end{frame}
 \appendix
 \section*{\appendixname}
 \subsection*{\LectureFurtherLiterature}
