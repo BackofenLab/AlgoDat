@@ -670,69 +670,6 @@ has \Mittelblau{$n(d)=2^d-1$} many nodes \end{minipage}
 \end{frame}
 
 %-------------------------------------------------------------------------------
-
-\begin{frame}{Induction Proof}
-  \begin{itemize}
-    \item
-      \textbf{We want to proof:}
-      \begin{align*}
-        \sum \limits^n_{i=1} \left(i \cdot 2^{n-i} \right) \leq &~ 2^{n+1}\\
-        {\color{Hell-Gruen}A}(n) \leq &~ {\color{Hell-Gruen}B}(n)
-      \end{align*}
-    \item
-      \textbf{Induction basis:}
-      $n = 1$:
-      \begin{align*}
-        \sum \limits^n_{i=1} \left(i \cdot 2^{n-i} \right) \leq &~ 2^{n+1}\\
-        \sum \limits^1_{i=1} \left(i \cdot 2^{1-i} \right) \leq &~ 2^{1+1}\\
-        2^0 \leq &~ 2^2 ~{\color{Mittel-Blau}\checked}
-      \end{align*}
-  \end{itemize}
-\end{frame}
-
-%-------------------------------------------------------------------------------
-
-\begin{frame}{Induction - Example 2}
-  \textbf{Induction step:}
-  $(n = n +1)$:
-  \begin{align*}
-    {\color{Hell-Gruen}A}(n+1) \leq &~ {\color{Hell-Gruen}B}(n+1)\\
-    %----------------------------------------------------------------------
-    \sum\limits^{n+1}_{i=1} \left(i \cdot 2^{n+1-i} \right)
-    \leq &~ 2^{n+1+1}\\
-    %----------------------------------------------------------------------
-    2 \cdot \sum\limits^{n+1}_{i=1} \left(i \cdot 2^{n-i} \right)
-    \leq &~ 2 \cdot 2^{n+1} & \hspace*{1.5em} \bigg\vert :2\\
-    %----------------------------------------------------------------------
-    \sum\limits^{n+1}_{i=1} \left(i \cdot 2^{n-i} \right)
-    \leq &~ 2^{n+1}\\
-  \end{align*}
-\end{frame}
-
-%-------------------------------------------------------------------------------
-
-\begin{frame}{Induction - Example 2}
-  \textbf{Induction step:}
-  $(n = n +1)$:
-  \begin{align*}
-    \sum\limits^{n+1}_{i=1} \left(i \cdot 2^{n-i} \right)
-    \leq &~ 2^{n+1}\\
-    %----------------------------------------------------------------------
-    \sum\limits^{n}_{i=1} \left(i \cdot 2^{n-i}\right)
-    + \left(n + 1\right) \cdot 2^{n - \left(n + 1\right)}
-    \leq &~ 2^{n+1}\\
-    %----------------------------------------------------------------------
-    \sum\limits^{n}_{i=1} \left(i \cdot 2^{n-i}\right)
-    + 2n + 2
-    \leq &~ 2^{n+1}\\
-    %----------------------------------------------------------------------
-   {\color{Hell-Gruen}A}(n) + 2n + 2
-   \leq &~ {\color{Hell-Gruen}B}(n) ~\textbf{\color{Mittel-Blau}\lightning}
-  \end{align*}
-  \begin{center}
-    \alert{Assumtion is still correct!}
-  \end{center}
-\end{frame}% Reset to Heapsort
 \setcounter{subsubsection}{2}
 
 \begin{frame}<beamer>{Structure}
@@ -756,6 +693,8 @@ has \Mittelblau{$n(d)=2^d-1$} many nodes \end{minipage}
   \end{itemize}%
 
 \end{frame}
+
+
 
 \begin{frame}{Runtime - Heapsort 3/6}
   \begin{tabl}
@@ -782,30 +721,158 @@ has \Mittelblau{$n(d)=2^d-1$} many nodes \end{minipage}
 \begin{frame}{Runtime - Heapsort 4/6}
   \begin{itemize}
     \item
-      Runtime for heapify:
+      Runtime for heapify: 
       \[\displaystyle
-      T(d) \leq C \cdot \sum \limits^d_{i=2} \left(i \cdot 2^{d-i} \right)
-      \leq C \cdot 2^{d + 1}\]
+\color{Mittel-Blau}
+      T(d) \leq\underbrace{  C \cdot \sum \limits^d_{i=2} \left(i \cdot 2^{d-i} \right)
+     \leq C \cdot 2^{d + 1}}_{\text{see next slides}}
+\]\vspace*{-1em}
+    \item<2-> Hence: cost for heapify: \Mittelblau{$T(d) \leq C\cdot 2^{d+1}$}
+    \item<3-> \textbf{But:} we want cost in relation to \Mittelblau{$n$}
+    \item<4->  a binary tree of depth \Mittelblau{$d$} has \Mittelblau{$2^{d-1}\leq n$}\quad{}\textcolor{Mittel-Gruen}{\textbf{Why?}}
+      \begin{center}
+        \onslide<5-> \includegraphics[width=0.8\textwidth]{Rolfs-Images/binary-tree-less-than-n.pdf} 
+      \end{center}
+    \item (Equation times \Mittelblau{$2^2$})  $\Rightarrow$ \Mittelblau{$2^{d-1}\cdot2^2 \leq 2^2\cdot n$}, so cost for heapify: 
+      \begin{center}
+$\color{Mittel-Blau}        T(n) \leq C\cdot4 \cdot n$
+      \end{center}
+  \end{itemize}
+\end{frame}
+
+
+
+\begin{frame}{Induction Proof}
+  \begin{itemize}
     \item
-      Runtime for the other operations:
+      \textbf{We want to proof:} \vspace*{-1em}
+      \begin{align*}
+        \sum \limits^d_{i=1} \left(i \cdot 2^{d-i} \right) \leq &~ 2^{d+1}\\
+        {\color{Hell-Gruen}A}(d) \leq &~ {\color{Hell-Gruen}B}(d)
+      \end{align*}
+we denote the left side with $A$, the right side with $B$    
+\item<2->
+      \textbf{Induction basis:}
+      $d = 1$: \quad{} $A(1) \leq B(1)$
+       \begin{align*}
+        \sum \limits^d_{i=1} \left(i \cdot 2^{d-i} \right) \leq &~ 2^{d+1}\\
+        \sum \limits^1_{i=1} \left(i \cdot 2^{1-i} \right) \leq &~ 2^{1+1}\\
+        2^0 \leq &~ 2^2 ~{\color{Mittel-Blau}\checked}
+      \end{align*}
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Induction Proof for $ \sum^d_{i=1} \left(i \cdot 2^{d-i} \right) \leq ~ 2^{d+1}$}
+  \textbf{Induction step:}
+  $(d = d +1)$: \vspace*{-1em}
+  \begin{displaymath}
+   {\color{Hell-Gruen}A}(d) \leq ~ {\color{Hell-Gruen}B}(d) \hspace*{1.5cm}\Rightarrow \hspace*{1.5cm}
+   {\color{Hell-Gruen}A}(d+1) \leq ~ {\color{Hell-Gruen}B}(d+1)    
+  \end{displaymath}\vspace*{-2em}
+    \begin{columns}
+      \begin{column}{0.4\linewidth}
+        \fbox{\begin{minipage}{0.95\linewidth}
+        \textbf{Idea} write down right formula, and try to get \Mittelblau{$A(d)$} and \Mittelblau{$B(d)$} out of it.         
+        \end{minipage}}
+      \end{column}
+        \begin{column}{0.5\linewidth}
+            \onslide<2->          \begin{align*}
+            % ----------------------------------------------------------------------
+            \sum\limits^{d+1}_{i=1} \left(i \cdot 2^{d+1-i} \right)
+           & \leq &~ 2^{d+1+1}\\
+            % ----------------------------------------------------------------------
+            2 \cdot \sum\limits^{d+1}_{i=1} \left(i \cdot 2^{d-i}
+            \right)
+            &\leq &~ 2 \cdot 2^{d+1}  \\
+            % ----------------------------------------------------------------------
+            2 \cdot \sum\limits^{d+1}_{i=1} \left(i \cdot 2^{d-i}
+            \right)
+            &\leq &~  2\cdot {\color{Hell-Gruen}B}(d) 
+          \end{align*}
+        \end{column}
+            \end{columns}\vspace*{-1.5em}
+\hspace*{1.7cm}            \onslide<3->\begin{minipage}{0.6\linewidth}
+          \begin{align*}
+            2 \cdot \sum\limits^{d}_{i=1} i \cdot 2^{d-i} \  \ +\ \ 2\cdot (d+1)\cdot 2^{d-(d+1)}     & \leq &~ 2 \cdot {\color{Hell-Gruen}B}(d)           \\
+                        2 \cdot {\color{Hell-Gruen}A}(d) + (d+1) & 
+            \leq &~ 2 \cdot {\color{Hell-Gruen}B}(d)           
+          \end{align*}
+        \end{minipage}
+        \begin{itemize}
+        \item<4-> \textcolor{red}{\textbf{Problem: doesn't work}} \textbf{but claim still holds}
+        \end{itemize}
+
+\end{frame}
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Induction Proof for $ \sum^d_{i=1} \left(i \cdot 2^{d-i} \right) \leq ~ 2^{d+1}$}
+  \textbf{working proof:} show a \textcolor{Mittel-Gruen}{little bit stronger} claim
+  \begin{displaymath}
+\textcolor{Mittel-Blau} \sum^d_{i=1} \left(i \cdot 2^{d-i} \right) \leq \textcolor{Mittel-Gruen}  2^{d+1} -d -2~ \textcolor{Mittel-Blau} \leq ~ 2^{d+1}
+  \end{displaymath}
+  \begin{itemize}
+  \item<2-> \textbf{Advantage:} gives a stronger induction assumption
+    \begin{center}
+      \textcolor{Mittel-Gruen} \Rightarrow{} exercise
+    \end{center}
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+%  \begin{frame}{Induction - Example 2}
+%   \textbf{Induction step:}
+%   $(d = d +1)$:
+%   \begin{align*}
+%     \sum\limits^{d+1}_{i=1} \left(i \cdot 2^{d-i} \right)
+%     \leq &~ 2^{d+1}\\
+%     %----------------------------------------------------------------------
+%     \sum\limits^{d}_{i=1} \left(i \cdot 2^{d-i}\right)
+%     + \left(d + 1\right) \cdot 2^{d - \left(d + 1\right)}
+%     \leq &~ 2^{d+1}\\
+%     %----------------------------------------------------------------------
+%     \sum\limits^{d}_{i=1} \left(i \cdot 2^{d-i}\right)
+%     + 2d + 2
+%     \leq &~ 2^{d+1}\\
+%     %----------------------------------------------------------------------
+%    {\color{Hell-Gruen}A}(d) + 2d + 2
+%    \leq &~ {\color{Hell-Gruen}B}(d) ~\textbf{\color{Mittel-Blau}\lightning}
+%   \end{align*}
+%   \begin{center}
+%     \alert{Assumtion is still correct!}
+%   \end{center}
+% \end{frame}% Reset to Heapsort
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Runtime - Heapsort 5/6}
+  \begin{itemize}
+    \item 
+      Runtime for the other operations: \quad{} \raisebox{0.5\height}{\rlap{\begin{minipage}{0.4\linewidth}
+  \input{Images/HeapSort/BinaryTree.tikz}
+\end{minipage}}}\vspace*{-1em}
       \begin{itemize}
-        \item
+        \item<2->
           Constant costs for taking out $n \, \times$ maximum.
-        \item
-          Maximum of $d$ steps repairing the heap $n$ times.
-        \item
-          Depth of heap at the start is $d \leq 1 + \log_2 n$
-        \item
-          Remove costs:
-          \begin{itemize}
-            \item
-              Constant size:
+        \item<3->
+          Maximum of $d$ steps repairing the heap $n$ times
+        \item <4->
+          Depth of heap at the start is $d \leq 1 + \log_2 n$ . \textcolor{Mittel-Gruen}{\textbf{why?}}
+          \begin{center}
+\onslide<5->            \color{Mittel-Gruen} $2^{d-1} \leq n \Rightarrow d-1 \leq \log_2 n \Rightarrow d \leq 1 + \log_2 n$
+          \end{center}
+            \item<6->
+              Recall: the number of elements is decreasing
+        \item<7->
+              Hence: 
               $T(n) \leq n \cdot (1 +\log_2 n) \cdot C$
-            \item
-              But the number of elements is decreasing:\\
-              $T(n) \leq 2 \cdot n  \, \log_2 n \cdot C$ (for $n > 2$).
+            \item<8-> the plus is ugly, but we can get:
+              \begin{center}
+                $T(n) \leq 2 \cdot n \, \log_2 n \cdot C$ \qquad (holds for $n > 2$).
+              \end{center}
           \end{itemize}
-      \end{itemize}
   \end{itemize}
 \end{frame}
 

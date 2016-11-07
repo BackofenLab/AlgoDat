@@ -9,12 +9,12 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="751.18811"
-   height="139.16151"
+   width="647.94897"
+   height="139.42276"
    id="svg4126"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="Neues Dokument 3">
+   sodipodi:docname="binary-tree-less-than-n.svg">
   <defs
      id="defs4128">
     <clipPath
@@ -33,9 +33,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.35"
-     inkscape:cx="454.16548"
-     inkscape:cy="-176.13352"
+     inkscape:zoom="1.4"
+     inkscape:cx="489.81965"
+     inkscape:cy="-90.15799"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -56,7 +56,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -79,7 +79,7 @@
          id="tspan62"
          y="258.40314"
          x="144.40352"
-         style="font-size:25px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#333399;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Tahoma;-inkscape-font-specification:Tahoma">2</tspan>
+         style="font-size:25px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#333399;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Arial;-inkscape-font-specification:Arial">2</tspan>
     </text>
     <text
        style="font-size:15px"
@@ -91,7 +91,7 @@
          sodipodi:role="line"
          y="250.90312"
          x="158.05098 167.26262 173.3243"
-         style="font-size:16.66666222px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#4349aa;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Tahoma;-inkscape-font-specification:Tahoma">d-1</tspan>
+         style="font-size:16.66666222px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#4349aa;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Arial;-inkscape-font-specification:Arial">d-1</tspan>
     </text>
     <text
        style="font-size:15px"
@@ -102,8 +102,8 @@
          id="tspan74"
          sodipodi:role="line"
          y="258.40314"
-         x="190.22868 203.86617 211.67867 225.31618"
-         style="font-size:25px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#333399;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Tahoma;-inkscape-font-specification:Tahoma">– 1</tspan>
+         x="190.22868 203.86617 211.67867 211.67867 225.31618"
+         style="font-size:25px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#333399;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Arial;-inkscape-font-specification:Arial">– 1</tspan>
     </text>
     <text
        style="font-size:15px"
@@ -113,33 +113,8 @@
       <tspan
          id="tspan80"
          sodipodi:role="line"
-         y="258.40314"
-         x="233.14861 247.84608 261.78607 275.36105 283.72357 296.88358 310.82358 318.63608 324.34857 345.3436"
-         style="font-size:25px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Tahoma;-inkscape-font-specification:Tahoma">Knoten im</tspan>
-    </text>
-    <text
-       style="font-size:15px"
-       id="text84"
-       x="353.15585"
-       y="258.40314">
-      <tspan
-         id="tspan86"
-         sodipodi:role="line"
-         y="258.40314"
-         x="353.15585 365.41089 378.98587 384.7709 390.48337 401.64084"
-         style="font-size:25px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Tahoma;-inkscape-font-specification:Tahoma">vollst</tspan>
-    </text>
-    <text
-       style="font-size:15px"
-       id="text90"
-       x="410.00394"
-       y="258.40314">
-      <tspan
-         id="tspan92"
-         sodipodi:role="line"
-         y="258.40314"
-         x="410.00394 417.5715 425.384 440.23904 453.36148 467.30148 488.29654 496.10904 509.92654 515.6391 526.79651 534.60901 548.63409 562.45148 575.61151 589.55151 602.71149 610.52399 624.34155 633.42401 644.39905"
-         style="font-size:25px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Tahoma;-inkscape-font-specification:Tahoma">. Baum bis Ebene d-1</tspan>
+         x="310.82358 345.3436"
+         style="font-size:25px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Tahoma;-inkscape-font-specification:Tahoma" />
     </text>
     <path
        inkscape:connector-curvature="0"
@@ -394,19 +369,41 @@
            id="path586" />
         <g
            id="g588"
-           transform="translate(227.6301,111.156)">
-          <text
-             transform="matrix(1,0,0,-1,0,-20)"
-             id="text590">
-            <tspan
-               style="font-size:20px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Tahoma;-inkscape-font-specification:Tahoma"
-               x="0 16.796 21.365999 32.518002 43.571999 54.099998 63.026001 69.716003 80.244003 91.396004 100.322 106.572 117.49 123.74 135.498 146.64999 157.50999 164.2 174.728 185.88 192.13 196.7 207.85201 214.10201 225.32201 236.37601 246.90401 258.056 268.58401 274.83401 285.888"
-               y="0"
-               sodipodi:role="line"
-               id="tspan592">mindestens 1 Knoten in Ebene d</tspan>
-          </text>
-        </g>
+           transform="translate(227.6301,111.156)" />
       </g>
     </g>
+    <text
+       style="font-size:15px"
+       id="text72-4"
+       x="270.2287"
+       y="258.40314">
+      <tspan
+         id="tspan74-7"
+         sodipodi:role="line"
+         x="283.86615 291.67865 305.31616"
+         style="font-size:25px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#333399;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Arial;-inkscape-font-specification:Arial" />
+    </text>
+    <text
+       xml:space="preserve"
+       style="font-size:25px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Sans"
+       x="229.97737"
+       y="256.22867"
+       id="text3076"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3078"
+         x="229.97737"
+         y="256.22867">nodes in full tree till layer d-1</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:25px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Sans"
+       x="42.834515"
+       y="351.22867"
+       id="text3076-1"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3078-8"
+         x="42.834515"
+         y="351.22867">at least 1 node in layer d</tspan></text>
   </g>
 </svg>
