@@ -5,6 +5,7 @@
 \setbeamercolor{postitlightlightgreen}{fg=Mittel-Blau,bg=green!30}
 
 \usepackage{tabitem-beamer}
+\usepackage{align-objs}
 \newcommand{\Mittelblau}[1]{\textcolor{Mittel-Blau}{#1}}
 %\input{build/Config}
 \def\LectureLanguage{eng}
@@ -22,8 +23,7 @@
 
 \input{Styles/Lecture/\LectureDesign/Base}
 
-\usepackage[autostyle=true]{csquotes}
-\usepackage{ifthen}
+\usepackage[autostyle=true]{csquotes}\usepackage{ifthen}
 
 % We need topics for our sources for grouping
 % old: \usepackage[backend=bibtex]{biblatex}
@@ -91,6 +91,8 @@
   % Die Option [pausesections] k"onnte n"utzlich sein.
 \end{frame}
 
+\section{Feedback}
+
 \begin{frame}{\LectureFeedbackExercisesTitle}
   \begin{itemize}
   \item Implementation manageable
@@ -103,6 +105,8 @@
 
 
 %%%%\input{build/Chapters_\LectureLanguage}
+\section{Runtime Example}
+
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Runtime analysis - Minsort 1/10}
@@ -127,7 +131,7 @@
   \begin{itemize}
     \item Ideally we have a formula which provides the runtime of the
       program for an specific input
-    \item
+    \item<2->
       \textbf{Problem:} The runtime is also depending on many other
         influences, especially:
       \begin{itemize}
@@ -136,7 +140,7 @@
         \item What is running in the background.
         \item Which compiler is used to compile the code.
       \end{itemize}
-    \item
+    \item<3->
       \textbf{Abstraction 1:} Analyse the number of basic operations,
         rather than analysing the runtime.
   \end{itemize}
@@ -175,7 +179,8 @@
     The actual runtime has to be roughly proportional
     to the number of operations.
   \end{alertblock}
-\end{frame}\section{Runtime Example}
+\end{frame}
+
 
 \begin{frame}{Runtime analysis - Minsort 3/10}
   How many operations does \textit{Minsort} need?
@@ -209,12 +214,12 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Runtime Example}
-  \begin{figure}[!h]
-    \includegraphics[width=\linewidth]
-      {Images/Runtime/SquaredRuntime.png}%
-    \caption{Different functions with quadratic runtime}%
-    \label{fig:squared_runtime}%
-  \end{figure}
+  \begin{tabl}
+  \eitem 
+\onslide<1>{\rlap{\includegraphics[width=\linewidth]{Rolfs-Images/lower-upper-Tn-o1.pdf}}}%
+\onslide<2>{\rlap{\includegraphics[width=\linewidth]{Rolfs-Images/lower-upper-Tn-o2.pdf}}}%
+\onslide<3->{\rlap{\includegraphics[width=\linewidth]{Rolfs-Images/lower-upper-Tn-o3.pdf}}}%
+  \end{tabl}
 \end{frame}
 
 %-------------------------------------------------------------------------------
@@ -240,7 +245,8 @@
     \begin{adjustbox}{width=0.5\linewidth}
       \input{Images/MinSort/MinSort_Compact.tikz}%
     \end{adjustbox}%
-    \caption{\textit{Minsort} at the fourth iteration}%
+    \caption{\textit{Minsort} at iteration $i=4$. We have to check
+      $n-3$ elements}%
     \label{fig:minsort_def}%
   \end{figure}
 \end{frame}
@@ -253,25 +259,28 @@
         \begin{adjustbox}{width=\linewidth}%
           \input{Images/MinSort/MinSort_Brace.tikz}%
         \end{adjustbox}%
-        \caption{\textit{Minsort} at the fourth iteration}%
+        \caption{\textit{Minsort} at  iteration $i=4$}%
         \label{fig:minsort_brace}%
       \end{figure}
     \end{column}
     \begin{column}{0.40\textwidth}
       Compares at each iteration:
       \begin{align*}
-        T_1  \leq &~ n\\
-        T_2  \leq &~ (n-1)\\
-        {}  \vdots~ &~ {} \\
-        T_{n-1}  \leq &~ 2\\
-        T_n  \leq &~ 1
+\onslide<3->{T_1  \leq &~ C'_2\cdot (n-0)}\\
+\onslide<3->{        T_2  \leq &~ C'_2\cdot (n-1)}\\
+\onslide<3->{        T_3  \leq &~ C'_2\cdot (n-2)}\\
+\onslide<2->{T_4  \leq &~ C'_2\cdot (n-3)}\\
+\onslide<4->{        {}  \vdots~ &~ {} }\\
+\onslide<4->{        T_{n-1}  \leq &~C'_2\cdot  2}\\
+\onslide<4->{        T_n  \leq &~C'_2\cdot  1}
       \end{align*}
     \end{column}
   \end{columns}
+      \onslide<5->
   \[
     T(n)
-      = C \cdot \left(T_1 + \cdots + T_n\right)
-      \leq C \cdot \sum \limits^n_{i=1} i
+      = C'_2 \cdot \left(T_1 + \cdots + T_n\right)
+      \leq C'_2 \cdot \sum \limits^n_{i=1} i
   \]
 \end{frame}
 
@@ -343,13 +352,13 @@
 \begin{displaymath}
 \color{Mittel-Blau}
 \onslide<5-> T(n)  \leq \sum^{n-2}_{i=0}
-\sum^{n-1}_{j=i+1} C'_2 
-\onslide<6-> = \sum^{n-2}_{i=0} (n-i-1)\cdot C'_2
-\onslide<7-> = \sum^{n-1}_{i=1} (n-i)\cdot C'_2 
-\onslide<8-> \leq \sum^{n-1}_{i=1} i\cdot C'_2 
+\sum\limits^{\textcolor{red}{n-1}}_{\textcolor{red}{j=i+1}} C'_2 
+\onslide<6-> = \sum^{\textcolor{Mittel-Gruen}{n-2}}_{\textcolor{Mittel-Gruen}{i=0}} \textcolor{red}{(n-i-1)}\cdot C'_2
+\onslide<7-> = \sum^{\textcolor{Mittel-Gruen}{n-1}}_{\textcolor{Mittel-Gruen}{i=1}} (n-i)\cdot C'_2 
+\onslide<8->\ \textcolor{red}{\leq}\  \sum^{\textcolor{red}{n}}_{i=1} i\cdot C'_2 
 \end{displaymath}
-\vspace*{-2em}\onslide<9-> \textbf{Remark} $C'_2:$ cost of swap
-operation $\Rightarrow$ assumed constant\vspace*{2em}
+\vspace*{-2em}\onslide<9-> \textbf{Remark} $C'_2:$ cost of comparison
+$\Rightarrow$ assumed constant\vspace*{2em}
 \end{frame}
 
 
@@ -435,9 +444,9 @@ operation $\Rightarrow$ assumed constant\vspace*{2em}
     \end{tabl}
 \color{Mittel-Blau}
     \begin{eqnarray*}
-        T(n) & \leq &           \sum \limits^{n - 1}_{i = 1} C'_2\cdot i \\
+        T(n) & \leq &           \sum \limits^{n} _{i = 1} C'_2\cdot i \\
         \onslide<2->
-& = &           C'_2 \cdot \sum \limits^{n - 1}_{i = 1} i\\
+& = &           C'_2 \cdot \sum \limits^{n }_{i = 1} i\\
         \onslide<3-> & & { \color{black}\hspace*{1cm} \Downarrow \hspace*{0.5cm} \rlap{\text{Small Gauss sum}}}\\
 & = &           C'_2 \cdot \frac{n(n + 1)}{2} \\
         \onslide<4-> & & { \color{black}\hspace*{1cm} \Downarrow
@@ -456,29 +465,30 @@ operation $\Rightarrow$ assumed constant\vspace*{2em}
 %-------------------------------------------------------------------------------
 
  \begin{frame}{Runtime analysis - Minsort 9/10}
-   \begin{itemize}
-   \item Proof of claim \color{Mittel-Blau} $C_1 \cdot n^2 \leq T(n) \color{black}$
+Proof of claim \color{Mittel-Blau} $C_1 \cdot n^2 \leq T(n) \color{black}$
      \begin{itemize}
-     \item Corresponding to the upper boundry, there exists a\\
-       a $C_1$ for that holds:\\
+     \item As for the upper boundry, there exists a
+       a $C_1$. Summation analysis is the same\onslide<3->{,  \textcolor{red}{only final
+       approximation differs}}
        \color{Mittel-Blau}
-    \vspace{-0.5cm}
+    \vspace{-0.4cm}
     \begin{eqnarray*}
-        & T(n) \geq \sum \limits^{n - 1}_{i = 1} (n - i) \cdot C'_1 =  \sum \limits^{n - 1}_{i = 1} C'_1 \cdot i &\\
-        \onslide<2-> & T (n) \geq C'_1 \cdot \frac{(n -1) \cdot n}{2} &\\
-        \onslide<3-> &  \color{black} \text{How did we get to } \color{Mittel-Blau} n^2 \text{?} &\\
+        T(n) & \geq & \sum \limits^{n - 1}_{i = 1} (n - i) \cdot C'_1 =  \sum \limits^{n - 1}_{i = 1} C'_1 \cdot i \\
+        \onslide<2->  T (n) & \geq & C'_1 \cdot \frac{(n -1) \cdot n}{2}
+        \qquad         \qquad 
+        \onslide<3->   \rlap{$\color{red} \text{How do we get to } \color{Mittel-Blau} n^2 \text{?}$}\\
         %\onslide<4-> & \color{black}\hspace*{1cm} \Downarrow \hspace*{0.5cm} & \rlap{n - 1 \gt \frac{n}{2} given n \gt 2  \\
-        \onslide<4-> &  { \color{black} \hspace*{1cm} \Downarrow
-          \hspace*{0.5cm} \color{Mittel-Blau} n - 1 > \frac{n}{2} \color{black} \text{ for } \color{Mittel-Blau} n > 2} & \\
-        \onslide<5-> & C'_1 \cdot \frac{n \cdot n}{2 \cdot 2} &\\
-        \onslide<6-> & \frac{C'_1}{4} \cdot n^2  & \\
-        \onslide<7-> & \color{black} \text{Summarized } \color{Mittel-Blau} \frac{C'_1}{4} \cdot n^2 \leq T(n) \leq C'_2 \cdot n^2 & \\
-        %\vspace{-0.5.cm}
-        \onslide<8-> & \color{black} \text{Quadratic runtime proven: } \color{Mittel-Blau} C_1 \cdot n^2 \leq T(n) \leq C_2 \cdot n^2 & \color{black}\\
+        \onslide<4-> &  & { \color{black} \hspace*{1cm} \Downarrow 
+          \hspace*{0.5cm} \color{Mittel-Blau} n - 1 > \frac{n}{2} \color{black} \text{ for } \color{Mittel-Blau} n > 2} \\
+        \onslide<5-> & >& C'_1 \cdot \frac{n \cdot n}{2 \cdot 2} \ \
+        \onslide<6->= \ \  \frac{C'_1}{4} \cdot n^2   \\
     \end{eqnarray*}
-
-     \end{itemize}
-   \end{itemize}
+     \end{itemize}    \vspace{-0.5cm}
+   \begin{tabular}{rl}
+   \onslide<7-> \textbf{Summarized:} & \Mittelblau{$\frac{C'_1}{4} \cdot n^2
+       \leq T(n) \leq C'_2 \cdot n^2$}\\
+     \onslide<8->  \textbf{Quadratic runtime proven: }&  \Mittelblau{$ C_1 \cdot n^2 \leq T(n) \leq C_2 \cdot n^2$}\\
+   \end{tabular}
  \end{frame}
  
 %-------------------------------------------------------------------------------
@@ -583,6 +593,7 @@ operation $\Rightarrow$ assumed constant\vspace*{2em}
   \end{itemize}
 \end{frame}
 
+\subsubsection{Depth of a Tree}
 
 \begin{frame}{Runtime - Heapsort 2/6}
   \begin{columns}
@@ -593,7 +604,7 @@ operation $\Rightarrow$ assumed constant\vspace*{2em}
           \textbf{Depth \textit{d}:}
           longest path through the tree
         \item
-          Complete binary tree has $n = 2 \cdot d - 1$ nodes
+          Complete binary tree has $n = 2^d - 1$ nodes
         \item
           Example: $d = 4$\\
           $\Rightarrow n = 2^4 - 1 = 15$
@@ -609,7 +620,7 @@ operation $\Rightarrow$ assumed constant\vspace*{2em}
       \end{figure}
     \end{column}
   \end{columns}
-\end{frame}\subsubsection{Depth of a Tree}
+\end{frame}
 
 
 \subsubsection{Introduction to Induction}
@@ -658,38 +669,32 @@ has \Mittelblau{$n(d)=2^d-1$} many nodes \end{minipage}
 \end{tabl}
 \end{frame}
 
-\subsubsection{Depth of a Tree}
 
 \begin{frame}{Induction - Example 1}
   Number of nodes $n(d)$ in a binary tree with depth $d$:
   \begin{itemize}
     \item
       \textbf{Induction assumption:}
-      $n(d) = 2^d-1$
-    \item
+      \Mittelblau{$n(d) = 2^d-1$}
+    \item<2->
       \textbf{Induction basis:}
       $n(1) = 2^d - 1 = 2^1 - 1 = 1 ~{\color{Mittel-Blau}\checked}$
-    \item
+    \item<3->
       \textbf{Induction step:}
       to show for $d = d + 1$
       \begin{columns}
         \begin{column}{0.6\textwidth}
-          \begin{figure}%
-            \begin{centering}%
-              \input{Images/Induction/BinaryTree_SubTrees.tikz}%
-              \caption{Binary tree with subtrees}%
-              \label{fig:binary_tree_subtrees}%
-            \end{centering}%
-          \end{figure}
+          \raisebox{0.3\height}{\input{Images/Induction/BinaryTree_SubTrees.tikz}}%
         \end{column}
         \begin{column}{0.4\linewidth}
           \begin{align*}
-          n(d + 1) = &~ 2 \cdot n(d) + 1\\
-          {} = &~ 2 \cdot \left(2^d - 1\right) + 1\\
-          {} = &~ 2^{d + 1} - 2 + 1\\
-          {} = &~ 2^{d + 1} - 1 ~{\color{Mittel-Blau}\checked}
+\onslide<4->{          n(d + 1) = &~ 2 \cdot n(d) + 1}\\
+\onslide<5->{          {} = &~ 2 \cdot {\color{Mittel-Blau}\left(2^d - 1\right)} + 1}\\
+\onslide<6->{          {} = &~ 2^{d + 1} - 2 + 1}\\
+\onslide<7->{          {} = &~ 2^{d + 1} - 1
+  ~{\color{Mittel-Blau}\checked}}
           \end{align*}
-          $n(d) = 2^d - 1 ~\forall n \in \mathbb{N} ~\Square$
+\onslide<8->{\llap{\textbf{so by induction:}}   $n(d) = 2^d - 1 ~\forall n \in \mathbb{N} ~\Square$}
         \end{column}
       \end{columns}
   \end{itemize}
@@ -702,43 +707,73 @@ has \Mittelblau{$n(d)=2^d-1$} many nodes \end{minipage}
   \tableofcontents[currentsection,currentsubsection]
 \end{frame}
 
-\begin{frame}{Runtime - Heapsort 3/6}
+\begin{frame}{Runtime Heapsort -- Parts}
   \begin{tabl}
-  \iitem{4em}\includegraphics[width=0.7\textwidth]{Rolfs-Images/depth-nodes.pdf}
-  \end{tabl}\\
-  Runtime of \textit{heapify} with depth of $d$:
-  \begin{itemize}
-    \item
-      No costs at depth $d$ with $2^{d - 1}$ (or less) nodes.
-    \item<2->
-      In a full heap with depth $d$ are $2 \, d - 1$ non-root nodes.\\
-      The cost for \textbf{sifting} with depth $1$ are $1 \, C$
-      ({\color{Mittel-Blau}compare})\\
-      or $2 \, C$ ({\color{Mittel-Blau}compare} and
-      {\color{Mittel-Blau}swap}) $\Rightarrow$ we use \Mittelblau{$2\cdot C$} to simplify
-  \end{itemize}%
+  \iitem{-1em}
+  Heapsort has the following steps
+  \sitem 
+  \item initially: \textit{heapify} array of $n$ elements
+  \eitem 
+  \item<2-> then until all $n$ elements are sorted
+  \citem
+  \begin{tabl}
+  \item<3-> remove root as minimal element
+  \item<4-> put last leave as root
+  \item<5-> repair heap by sifting.
+    
+  \end{tabl}
 
+    
+  \end{tabl}
+\end{frame}
+
+\begin{frame}{Runtime - Heapsort 3/6}
+  Runtime of \textit{heapify} depends on depth $d$
+  \begin{tabl}
+  \iitem{4em}%
+\onslide<1>{\rlap{\includegraphics[width=0.7\textwidth]{Rolfs-Images/depth-nodes-o1.pdf}}}%
+\onslide<2>{{\includegraphics[width=0.7\textwidth]{Rolfs-Images/depth-nodes-o2.pdf}}}%
+\onslide<3->{{\includegraphics[width=0.7\textwidth]{Rolfs-Images/depth-nodes-o3.pdf}}}%
+  \end{tabl}\\
+\onslide<2->  Runtime of \textit{heapify} with depth of $d$:
+  \begin{itemize}
+    \item<2->
+      No costs at depth $d$ with $2^{d - 1}$ (or less) nodes.
+    \item<3->
+      The cost for \textbf{sifting} with depth $1$ are at most $1 \, C$ per node
+    \item<5->  in general: sifting costs are linear with path length
+      \emph{and} number of nodes   \onslide<1->{ }
+  \end{itemize}%
 \end{frame}
 
 
 
 \begin{frame}{Runtime - Heapsort 3/6}
   \begin{tabl}
-  \item Overall:
-  \end{tabl}
+  \item Overall: 
+  \iitem{4em}%
+\onslide<1>{\rlap{\includegraphicstop[width=0.6\textwidth]{Rolfs-Images/depth-nodes-o2.pdf}}}%
+\onslide<2>{\rlap{\includegraphicstop[width=0.6\textwidth]{Rolfs-Images/depth-nodes-o3.pdf}}}%
+\onslide<3>{\rlap{\includegraphicstop[width=0.6\textwidth]{Rolfs-Images/depth-nodes-o4.pdf}}}%
+\onslide<4>{\rlap{\includegraphicstop[width=0.6\textwidth]{Rolfs-Images/depth-nodes-o5.pdf}}}%
+\onslide<5->{{\includegraphicstop[width=0.6\textwidth]{Rolfs-Images/depth-nodes-o6.pdf}}}%
+  \end{tabl}\vspace*{-0.3em}
       \begin{center}%
-        \begin{tabular}{c|c|c|c}
-          Depth:     & Nodes:    & Path length: & Costs per node:\\
+        \begin{tabular}{c|c|c|c|c}
+          Depth:     & Nodes:    & Path length: & Costs per node: & \onslide<7->{\color{Mittel-Gruen}upper bound} \\
           \hline
-          $d - 1$    & $2^{d-2}$     & 1            & $\leq 2 \cdot C$\\
-          $d - 2$    & $2^{d-3}$ & 2            & $\leq 3 \cdot C$\\
-          $d - 3$    & $2^{d-4}$ & 2            & $\leq 4 \cdot C$\\
-          $\vdots$   & $\vdots$  & $\vdots$     & $\vdots$ 
-        \end{tabular}\\[3em]
-\onslide<2->
-       \quad \Mittelblau{$\displaystyle  T(d) \leq \sum^d_{i=2} C\cdot i \cdot 2^{d-i} $}
-
+   \onslide<2->{        $d - 1$    & $2^{d-2}$     & 1           & $\leq C \cdot 1$&} \onslide<7->{\color{Mittel-Gruen} $\leq C \cdot 2$}\\
+   \onslide<3->{           $d - 2$    & $2^{d-3}$ & 2            & $\leq C \cdot 2$&} \onslide<7->{\color{Mittel-Gruen} $\leq C \cdot 3$}\\
+   \onslide<4->{           $d - 3$    & $2^{d-4}$ & 3            & $\leq C \cdot 3$&} \onslide<7->{\color{Mittel-Gruen} $\leq C \cdot 4$}\\
+   \onslide<5->{           $d - 4$    & $2^{d-4}$ & 4            & $\leq C \cdot 4$&} \onslide<7->{\color{Mittel-Gruen} $\leq C \cdot 5$}\\
+        \end{tabular}\\[-0em]
     \end{center}%
+    \begin{tabl}
+    \eitem \onslide<6-> in total:
+       \quad \Mittelblau{$\displaystyle  T(d) \leq \sum^d_{i=2} C\cdot (i-1) \cdot 2^{d-i} \onslide<7-> \color{Mittel-Gruen}\leq  \sum^d_{i=2} C\cdot i \cdot 2^{d-i}$}
+     \citem \onslide<7->  \sum^d_{i=2} C\cdot (i-1) \cdot 2^{d-i} to get a nicer formula
+      
+    \end{tabl}
 %\onslide<4->
 
 \end{frame}
@@ -757,9 +792,12 @@ has \Mittelblau{$n(d)=2^d-1$} many nodes \end{minipage}
     \item<3-> \textbf{But:} we want cost in relation to \Mittelblau{$n$}
     \item<4->  a binary tree of depth \Mittelblau{$d$} has \Mittelblau{$2^{d-1}\leq n$}\quad{}\textcolor{Mittel-Gruen}{\textbf{Why?}}
       \begin{center}
-        \onslide<5-> \includegraphics[width=0.8\textwidth]{Rolfs-Images/binary-tree-less-than-n.pdf} 
+        \begin{tabl}
+        \eitem \rlap{\onslide<5>\includegraphics[width=0.8\textwidth]{Rolfs-Images/binary-tree-less-than-n-o1.pdf}}%
+{\onslide<6->\includegraphics[width=0.8\textwidth]{Rolfs-Images/binary-tree-less-than-n-o2.pdf}} 
+        \end{tabl}
       \end{center}
-    \item (Equation times \Mittelblau{$2^2$})  $\Rightarrow$ \Mittelblau{$2^{d-1}\cdot2^2 \leq 2^2\cdot n$}, so cost for heapify: 
+    \item<7-> (Equation times \Mittelblau{$2^2$})  $\Rightarrow$ \Mittelblau{$2^{d-1}\cdot2^2 \leq 2^2\cdot n$}, so cost for heapify: 
       \begin{center}
 $\color{Mittel-Blau}        T(n) \leq C\cdot4 \cdot n$
       \end{center}
@@ -813,7 +851,7 @@ we denote the left side with $A$, the right side with $B$
             \right)
             &\leq &~ 2 \cdot 2^{d+1}  \\
             % ----------------------------------------------------------------------
-            2 \cdot \sum\limits^{d+1}_{i=1} \left(i \cdot 2^{d-i}
+            2 \cdot \sum\limits^{d\protect\textcolor{red}{ + 1}}_{i=1} \left(i \cdot 2^{d-i}
             \right)
             &\leq &~  2\cdot {\color{Hell-Gruen}B}(d) 
           \end{align*}
@@ -821,13 +859,13 @@ we denote the left side with $A$, the right side with $B$
             \end{columns}\vspace*{-1.5em}
 \hspace*{1.7cm}            \onslide<3->\begin{minipage}{0.6\linewidth}
           \begin{align*}
-            2 \cdot \sum\limits^{d}_{i=1} i \cdot 2^{d-i} \  \ +\ \ 2\cdot (d+1)\cdot 2^{d-(d+1)}     & \leq &~ 2 \cdot {\color{Hell-Gruen}B}(d)           \\
+            2 \cdot \sum\limits^{d}_{i=1} i \cdot 2^{d-i}\color{red} \  \ +\ \ 2\cdot (d+1)\cdot 2^{d-(d+1)}  \color{black}   & \leq &~ 2 \cdot {\color{Hell-Gruen}B}(d)           \\
                         2 \cdot {\color{Hell-Gruen}A}(d) + (d+1) & 
             \leq &~ 2 \cdot {\color{Hell-Gruen}B}(d)           
           \end{align*}
         \end{minipage}
         \begin{itemize}
-        \item<4-> \textcolor{red}{\textbf{Problem: doesn't work}} \textbf{but claim still holds}
+        \item<4-> {\textbf{Problem: doesn't work}} \textbf{but claim still holds}
         \end{itemize}
 
 \end{frame}
@@ -987,8 +1025,23 @@ let's look at some examples  \begin{itemize}
 \begin{frame}{\LectureFurtherLiterature}
   \small
   \begin{itemize}
-    \item
-      \textbf{General for this Lecture}
+    \item Analyse von HeapSort
+      \begin{itemize}
+      \item In Mehlhorn/Sanders: 5. Sorting and Selection
+      \item In Cormen/Leiserson/Rivest: II.7.1 HeapSort
+      \item Wikipedia Artikel zu MinSort und HeapSort
+      \end{itemize}
+    \item      Mathematical induction
+      \begin{center}
+        \url{https://en.wikipedia.org/wiki/Mathematical_induction}\eatdot.
+      \end{center}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{\LectureFurtherLiterature}
+  \small
+  \begin{itemize}
+  \item       \textbf{General for this Lecture}
       \begin{btSect}{Literature/General/General}
        \bibitem[1]{cormen2001introduction}
          Thomas~H. Cormen, Ronald~L. Rivest, and Charles~E. Leiserson.
