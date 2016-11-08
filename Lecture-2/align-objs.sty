@@ -1,0 +1,171 @@
+%%% some macros to align objects (especially images)
+
+%%%%%%%%% Identification Part %%%%%%%%%%%%%%%%%%
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{align-objs}
+\RequirePackage{graphicx}
+\RequirePackage[percent]{overpic}            
+\RequirePackage{multido}
+\RequirePackage{ifthen}
+%%%%%%%%% Identification Part End %%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%% Option Part %%%%%%%%%%%%%%%%%%%%
+%\newboolean{llncs-opt}
+%\setboolean{llncs-opt}{false}
+%\DeclareOption{llncs}{\setboolean{llncs-opt}{true}}
+%\ProcessOptions
+%%%%%%%%%%%%%%% Option Part End %%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% includegraphics
+\newsavebox{\@alignepsbox}
+\newsavebox{\@overpicbox}
+\newlength{\@aligneps}
+\newlength{\@overpiclen}
+
+%%%%% center
+\newcommand{\includegraphicscenter}[2][]{%
+\raisebox{-0.5\height}{\includegraphics[#1]{#2}}}
+
+\newenvironment{overpiccenter}[2][]%
+{\begin{lrbox}{\@overpicbox}\begin{overpic}[#1]{#2}}%
+{\end{overpic}\end{lrbox}%
+\setlength{\@overpiclen}{\ht\@overpicbox}%
+\raisebox{-0.5\@overpiclen}{\usebox{\@overpicbox}}}
+
+%%% bot
+\newcommand{\includegraphicsbot}[2][]{%
+{\includegraphics[#1]{#2}}}
+
+%%% top
+\newcommand{\includegraphicstop}[2][]{%
+\sbox{\@alignepsbox}{\includegraphics[#1]{#2}}%
+\setlength{\@aligneps}{-\ht\@alignepsbox}%
+\addtolength{\@aligneps}{2ex}%
+\raisebox{\@aligneps}{\usebox{\@alignepsbox}}}
+
+
+
+%%% ------------------------------------------------------------
+%%% shortcuts
+\newcommand{\graw}[3][]{\includegraphicscenter[width=#2\linewidth #1]{#3}}
+\newcommand{\grah}[3][]{\includegraphicscenter[height=#2\textheight #1]{#3}}
+\newcommand{\gratw}[3][]{\includegraphicstop[width=#2\linewidth #1]{#3}}
+\newcommand{\grath}[3][]{\includegraphicstop[height=#2\textheight #1]{#3}}
+\newcommand{\grabw}[3][]{\includegraphicsbot[width=#2\linewidth #1]{#3}}
+\newcommand{\grabh}[3][]{\includegraphicsbot[height=#2\textheight #1]{#3}}
+
+\newcommand{\grawcite}[4][]{%
+\raisebox{-0.5\height}{%
+\raisebox{-0.8em}{\raisebox{0.8em}{%
+\includegraphics[width=#2\linewidth #1]{#3}}%
+\llap{#4}}}}
+\newcommand{\grahcite}[4][]{%
+\raisebox{-0.5\height}{%
+\raisebox{-0.8em}{\raisebox{0.8em}{%
+\includegraphics[height=#2\textheight #1]{#3}}%
+\llap{#4}}}}
+\newcommand{\gratwcite}[4][]{%
+\sbox{\@alignepsbox}{\includegraphics[width=#2\linewidth #1]{#3}}%
+\setlength{\@aligneps}{-\ht\@alignepsbox}%
+\addtolength{\@aligneps}{2ex}%
+\raisebox{\@aligneps}{%
+\raisebox{-0.8em}{\raisebox{0.8em}{%
+\includegraphics[width=#2\linewidth #1]{#3}}%
+\llap{#4}}}}
+\newcommand{\grathcite}[4][]{%
+\sbox{\@alignepsbox}{\includegraphics[height=#2\textheight #1]{#3}}%
+\setlength{\@aligneps}{-\ht\@alignepsbox}%
+\addtolength{\@aligneps}{2ex}%
+\raisebox{\@aligneps}{%
+\raisebox{-0.8em}{\raisebox{0.8em}{%
+\includegraphics[height=#2\textheight #1]{#3}}%
+\llap{#4}}}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% includegraphics end
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% zcbox
+%% a box which is aligned [c], but has zero height (but width of content
+%%
+\newsavebox{\@zsavebox}
+\newlength{\@zboxlen}
+\newlength{\@zboxraise}
+\newenvironment{zcbox}
+{\begin{lrbox}{\@zsavebox}}
+{\end{lrbox}%
+\setlength{\@zboxlen}{0pt}%
+\advance\@zboxlen by \wd\@zsavebox%
+\parbox[c][0pt]{\@zboxlen}{\usebox{\@zsavebox}}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% zcbox end
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% zbox
+%% more general form
+%%
+\newenvironment{zbox}[1][c]
+{\begin{lrbox}{\@zsavebox}\gdef\zboxalign{#1}}
+{\end{lrbox}%
+\setlength{\@zboxlen}{0pt}%
+\advance\@zboxlen by \wd\@zsavebox%
+\parbox[\zboxalign][0pt]{\@zboxlen}{\usebox{\@zsavebox}}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% zbox end
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% zbox
+%% zero length instead of zero height
+%%
+\newenvironment{zcboxlen}
+{\begin{lrbox}{\@zsavebox}}
+{\end{lrbox}%
+\setlength{\@zboxlen}{0pt}%
+\advance\@zboxlen by \wd\@zsavebox%
+\hbox to 0pt{\hspace*{-0.5\@zboxlen}\usebox{\@zsavebox}}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% zbox with raise
+%% overlayed-pictures
+%%
+\newenvironment{ztboxraise}[1]
+{\setlength{\@zboxraise}{#1}
+\begin{lrbox}{\@zsavebox}}
+{\end{lrbox}%
+\setlength{\@zboxlen}{0pt}%
+\advance\@zboxlen by \wd\@zsavebox%
+\parbox[c][0pt]{\@zboxlen}{\parbox[t][0pt]{\@zboxlen}{\raisebox{\@zboxraise}{\usebox{\@zsavebox}}}}}
+
+\newenvironment{ztb}[1]
+{\setlength{\@zboxraise}{#1}
+\begin{lrbox}{\@zsavebox}}
+{\end{lrbox}%
+\setlength{\@zboxlen}{0pt}%
+\advance\@zboxlen by \wd\@zsavebox%
+\parbox[c][0pt]{\@zboxlen}{\parbox[t][0pt]{\@zboxlen}{\raisebox{\@zboxraise}{\usebox{\@zsavebox}}}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ztbox end
+
+\newcounter{overlaygrf}
+\newcounter{overlaygrffile}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%% overlaygraphics[start-frame]{last-file-num}{file}{includeoptions}
+%%
+\newcommand{\overlaygraphics}[4][0]{
+\setcounter{overlaygrf}{#1}%
+\multido{\i=#1+1}{#2}{%
+\stepcounter{overlaygrf}%
+\rlap{\onslide<\value{overlaygrf}->{\includegraphics[#3]{#4-\i}}}}%
+\stepcounter{overlaygrf}%
+\onslide<\value{overlaygrf}->{\includegraphics[#3]{#4-#2}}%
+}
+\newcommand{\overlaygraphicscenter}[4][0]{
+\setcounter{overlaygrf}{#1}%
+\multido{\i=#1+1}{#2}{%
+\stepcounter{overlaygrf}%
+\rlap{\onslide<\value{overlaygrf}->{\includegraphicscenter[#3]{#4-\i}}}}%
+\stepcounter{overlaygrf}%
+\onslide<\value{overlaygrf}->{\includegraphicscenter[#3]{#4-#2}}%
+}
+%%% multido: first variable + increment, second number of iterations
+
+
