@@ -91,21 +91,16 @@
   % Die Option [pausesections] k"onnte n"utzlich sein.
 \end{frame}
 
-\ifthenelse{\boolean{\PresentationLectureFeedback}}{
-  \ifthenelse{\boolean{\PresentationExerciseFeedback}}{
-    \section{\LectureFeedbackSection}
-  }{}
-}{}
+\begin{frame}{\LectureFeedbackExercisesTitle}
+  \begin{itemize}
+  \item Implementation manageable
+  \item Getting to know Python, SVN, Daphne, Jenkins took most of the time
+  \item Time mostly between 2-4 hours
+  \end{itemize}
 
-\ifthenelse{\boolean{\PresentationExerciseFeedback}}{
-  \toclesssubsection{\LectureFeedbackExercisesSection}
-  \input{Feedback/FeedbackExercises_\LectureLanguage}
-}{}
+  $\rightarrow$ If you have ANY problems, please do not hesitate to use our course forum!
+\end{frame}
 
-\ifthenelse{\boolean{\PresentationLectureFeedback}}{
-  \toclesssubsection{\LectureFeedbackLectureSection}
-  \input{Feedback/FeedbackLecture_\LectureLanguage}
-}{}
 
 %%%%\input{build/Chapters_\LectureLanguage}
 %-------------------------------------------------------------------------------
@@ -282,37 +277,37 @@
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Runtime Example}
-  \begin{itemize}
-    \item
-      The runtime is growing quadratic with the number of elements
-      ${\color{Mittel-Blau}n}$ in the list.\\
-    \item
-      $2\, \times$ elements $\Rightarrow$ $4\, \times$ runtime\\
-      \begin{itemize}
-        \item 
-          $C = \SI{1}{\nano\second}$
-          (1 simple instruction $\approx \SI{1}{\nano\second}$)
-        \item 
-          $n = 10^6$ (1 million numbers = $\SI{4}{\mega\byte}$
-          with $\SI{4}{\byte\per number}$)
-          \begin{itemize}
-            \item 
-              $C \cdot n^2 = \SI{e-9}{\second} \cdot 10^{12}
-               = \SI{e3}{\second} = \SI{16.7}{\minute}$
-          \end{itemize}
-        \item 
-          $n = 10^9$ (1 billion numbers = $\SI{4}{\giga\byte}$)
-          \begin{itemize}
-            \item 
-              $C \cdot n^2 = \SI{e-9}{\second} \cdot 10^{18}
-               = \SI{e9}{\second} = 31.7$~years
-          \end{itemize}
-      \end{itemize}
-    \item
-      \textbf{Quadratic runtime = \enquote{big} problems unsolvable}
-  \end{itemize}
-\end{frame}\toclesssection{Runtime analysis}
+%% \begin{frame}{Runtime Example}
+%%   \begin{itemize}
+%%     \item
+%%       The runtime is growing quadratic with the number of elements
+%%       ${\color{Mittel-Blau}n}$ in the list.\\
+%%     \item
+%%       $2\, \times$ elements $\Rightarrow$ $4\, \times$ runtime\\
+%%       \begin{itemize}
+%%         \item 
+%%           $C = \SI{1}{\nano\second}$
+%%           (1 simple instruction $\approx \SI{1}{\nano\second}$)
+%%         \item 
+%%           $n = 10^6$ (1 million numbers = $\SI{4}{\mega\byte}$
+%%           with $\SI{4}{\byte\per number}$)
+%%           \begin{itemize}
+%%             \item 
+%%               $C \cdot n^2 = \SI{e-9}{\second} \cdot 10^{12}
+%%                = \SI{e3}{\second} = \SI{16.7}{\minute}$
+%%           \end{itemize}
+%%         \item 
+%%           $n = 10^9$ (1 billion numbers = $\SI{4}{\giga\byte}$)
+%%           \begin{itemize}
+%%             \item 
+%%               $C \cdot n^2 = \SI{e-9}{\second} \cdot 10^{18}
+%%                = \SI{e9}{\second} = 31.7$~years
+%%           \end{itemize}
+%%       \end{itemize}
+%%     \item
+%%       \textbf{Quadratic runtime = \enquote{big} problems unsolvable}
+%%   \end{itemize}
+%% \end{frame}\toclesssection{Runtime analysis}
 
 
 
@@ -462,24 +457,24 @@ operation $\Rightarrow$ assumed constant\vspace*{2em}
 
  \begin{frame}{Runtime analysis - Minsort 9/10}
    \begin{itemize}
-   \item Proof of claim $C_1 \cdot n^2 \leq T(n)$
+   \item Proof of claim \color{Mittel-Blau} $C_1 \cdot n^2 \leq T(n) \color{black}$
      \begin{itemize}
      \item Corresponding to the upper boundry, there exists a\\
        a $C_1$ for that holds:\\
        \color{Mittel-Blau}
     \vspace{-0.5cm}
     \begin{eqnarray*}
-        T(n) & \leq & \sum \limits^{n - 1}_{i = 1} (n - i) \cdot C'_1 =  \sum \limits^{n - 1}_{i = 1} C'_1 \cdot i\\
-        \onslide<2->
-        & = &           T (n) \leq C'_1 \cdot \frac{(n -1) \cdot n}{2}\\
-        \onslide<3-> & & \color{black} \text{How did we get to } \color{Mittel-Blau} n^2 \text{?}\\
+        & T(n) \geq \sum \limits^{n - 1}_{i = 1} (n - i) \cdot C'_1 =  \sum \limits^{n - 1}_{i = 1} C'_1 \cdot i &\\
+        \onslide<2-> & T (n) \geq C'_1 \cdot \frac{(n -1) \cdot n}{2} &\\
+        \onslide<3-> &  \color{black} \text{How did we get to } \color{Mittel-Blau} n^2 \text{?} &\\
         %\onslide<4-> & \color{black}\hspace*{1cm} \Downarrow \hspace*{0.5cm} & \rlap{n - 1 \gt \frac{n}{2} given n \gt 2  \\
-        \onslide<4-> & & { \color{black}\hspace*{1cm} \Downarrow
-          \hspace*{0.5cm} n - 1 > \frac{n}{2} \text{given } n > 2}\\
-        \onslide<5-> C'_1 \cdot \frac{n \cdot n}{2 \cdot 2}& &\\
-        \onslide<6-> \frac{C'_1}{4} \cdot n^2 & &\\
-        \onslide<7-> & & \text{Summarized } \frac{C'_1}{4} \cdot n^2 \leq T(n) \leq C'2 \cdot n^2 \\
-        \onslide<8-> & & \text{Quadratic runtime proven: } C_1 \cdot n^2 \leq T(n) \leq C_2 \cdot n^2 \\
+        \onslide<4-> &  { \color{black} \hspace*{1cm} \Downarrow
+          \hspace*{0.5cm} \color{Mittel-Blau} n - 1 > \frac{n}{2} \color{black} \text{ for } \color{Mittel-Blau} n > 2} & \\
+        \onslide<5-> & C'_1 \cdot \frac{n \cdot n}{2 \cdot 2} &\\
+        \onslide<6-> & \frac{C'_1}{4} \cdot n^2  & \\
+        \onslide<7-> & \color{black} \text{Summarized } \color{Mittel-Blau} \frac{C'_1}{4} \cdot n^2 \leq T(n) \leq C'_2 \cdot n^2 & \\
+        %\vspace{-0.5.cm}
+        \onslide<8-> & \color{black} \text{Quadratic runtime proven: } \color{Mittel-Blau} C_1 \cdot n^2 \leq T(n) \leq C_2 \cdot n^2 & \color{black}\\
     \end{eqnarray*}
 
      \end{itemize}
@@ -488,9 +483,40 @@ operation $\Rightarrow$ assumed constant\vspace*{2em}
  
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Runtime analysis - Minsort 10/10}
-  
-\end{frame}
+\begin{frame}{Runtime Example}
+  \begin{itemize}
+    \item
+      The runtime is growing quadratic with the number of elements
+      ${\color{Mittel-Blau}n}$ in the list.\\
+     \item
+      Let constants $\color{Mittel-Blau}C_1$ and $\color{Mittel-Blau}C_2$ for which $\color{Mittel-Blau}C_1 \cdot n^2 \leq T(n) \leq C_2 \cdot n^2$ \\  
+    \item
+      $2\, \times$ elements $\Rightarrow$ $4\, \times$ runtime\\
+      \begin{itemize}
+        \item 
+          $C = \SI{1}{\nano\second}$
+          (1 simple instruction $\approx \SI{1}{\nano\second}$)
+        \item 
+          $n = 10^6$ (1 million numbers = $\SI{4}{\mega\byte}$
+          with $\SI{4}{\byte\per number}$)
+          \begin{itemize}
+            \item 
+              $C \cdot n^2 = \SI{e-9}{\second} \cdot 10^{12}
+               = \SI{e3}{\second} = \SI{16.7}{\minute}$
+          \end{itemize}
+        \item 
+          $n = 10^9$ (1 billion numbers = $\SI{4}{\giga\byte}$)
+          \begin{itemize}
+            \item 
+              $C \cdot n^2 = \SI{e-9}{\second} \cdot 10^{18}
+               = \SI{e9}{\second} = 31.7$~years
+          \end{itemize}
+      \end{itemize}
+    \item
+      \textbf{\color{red}Quadratic runtime = \enquote{big} problems unsolvable}
+  \end{itemize}
+
+\end{frame}\toclesssection{Runtime analysis}
 %% \begin{frame}{Runtime analysis - Minsort 9/10}
 %%   \begin{block}{Proof of $C_1 \cdot n^2 \leq T(n)$
 %%       ({\color{Mittel-Gruen}lower bound}):}
@@ -957,6 +983,32 @@ let's look at some examples  \begin{itemize}
 \appendix
 \section*{\appendixname}
 \subsection*{\LectureFurtherLiterature}
-\input{Literature/Literature_\LectureLanguage}
+%\input{Literature/Literature_\LectureLanguage}
+\begin{frame}{\LectureFurtherLiterature}
+  \small
+  \begin{itemize}
+    \item
+      \textbf{General for this Lecture}
+      \begin{btSect}{Literature/General/General}
+       \bibitem[1]{cormen2001introduction}
+         Thomas~H. Cormen, Ronald~L. Rivest, and Charles~E. Leiserson.
+         \newblock {\em Introduction to Algorithms}.
+         \newblock MIT Press, Cambridge, Mass, 2001.
+         
+       \bibitem[2]{kmeh2007}
+         Kurt Mehlhorn and Peter Sanders.
+         \newblock Algorithms and data structures, 2008.
+         \newblock
+         \url{https://people.mpi-inf.mpg.de/~mehlhorn/ftp/Mehlhorn-Sanders-Toolbox.pdf}.
+       \bibitem[3]{wikipedia_mathematical_induction}
+         Mathematical induction\eatdot.
+         \newblock \url{https://en.wikipedia.org/wiki/Mathematical_induction}\eatdot.
 
+      \end{btSect}
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
 \end{document}
+
+
