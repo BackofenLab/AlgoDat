@@ -19,7 +19,9 @@ SUBCLIPSDIM=
 LINKS=
 
 #SVGEXPORTRES=
-SPLITSVG=
+SPLITSVG=binary-tree-less-than-n.svg minsort-code-analysis.svg\
+	lower-upper-Tn.svg depth-nodes.svg
+
 SPLITSVGZ=
 
 ALLCONVERT=no
@@ -33,7 +35,6 @@ ALLTEXPDF=yes
 VERSION_FOR_FILES=
 VERSION_SEP=+++
 VERSIONLINKS=yes
-SPLITSVG=minsort-code-analysis.svg
 
 include $(RULES)
 include $(GLOBALDEPS)
