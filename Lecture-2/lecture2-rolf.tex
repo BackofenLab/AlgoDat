@@ -624,7 +624,6 @@ Proof of claim \color{Mittel-Blau} $C_1 \cdot n^2 \leq T(n) \color{black}$
 
 
 \subsubsection{Introduction to Induction}
-
 \begin{frame}<beamer>{Structure}
   \tableofcontents[currentsection,currentsubsection]
 \end{frame}
@@ -732,7 +731,7 @@ has \Mittelblau{$n(d)=2^d-1$} many nodes \end{minipage}
   \begin{tabl}
   \iitem{4em}%
 \onslide<1>{\rlap{\includegraphics[width=0.7\textwidth]{Rolfs-Images/depth-nodes-o1.pdf}}}%
-\onslide<2>{{\includegraphics[width=0.7\textwidth]{Rolfs-Images/depth-nodes-o2.pdf}}}%
+\onslide<2>{\rlap{\includegraphics[width=0.7\textwidth]{Rolfs-Images/depth-nodes-o2.pdf}}}%
 \onslide<3->{{\includegraphics[width=0.7\textwidth]{Rolfs-Images/depth-nodes-o3.pdf}}}%
   \end{tabl}\\
 \onslide<2->  Runtime of \textit{heapify} with depth of $d$:
@@ -760,7 +759,7 @@ has \Mittelblau{$n(d)=2^d-1$} many nodes \end{minipage}
   \end{tabl}\vspace*{-0.3em}
       \begin{center}%
         \begin{tabular}{c|c|c|c|c}
-          Depth:     & Nodes:    & Path length: & Costs per node: & \onslide<7->{\color{Mittel-Gruen}upper bound} \\
+          Depth     & Nodes    & Path length & Costs per node & \onslide<7->{\color{Mittel-Gruen}Upper bound} \\
           \hline
    \onslide<2->{        $d - 1$    & $2^{d-2}$     & 1           & $\leq C \cdot 1$&} \onslide<7->{\color{Mittel-Gruen} $\leq C \cdot 2$}\\
    \onslide<3->{           $d - 2$    & $2^{d-3}$ & 2            & $\leq C \cdot 2$&} \onslide<7->{\color{Mittel-Gruen} $\leq C \cdot 3$}\\
@@ -769,9 +768,10 @@ has \Mittelblau{$n(d)=2^d-1$} many nodes \end{minipage}
         \end{tabular}\\[-0em]
     \end{center}%
     \begin{tabl}
-    \eitem \onslide<6-> in total:
+    \eitem \onslide<6-> \textbf{in total:}
        \quad \Mittelblau{$\displaystyle  T(d) \leq \sum^d_{i=2} C\cdot (i-1) \cdot 2^{d-i} \onslide<7-> \color{Mittel-Gruen}\leq  \sum^d_{i=2} C\cdot i \cdot 2^{d-i}$}
-     \citem \onslide<7->  \sum^d_{i=2} C\cdot (i-1) \cdot 2^{d-i} to get a nicer formula
+     \citem \onslide<7->  \color{Mittel-Gruen}
+ to get a nicer formula
       
     \end{tabl}
 %\onslide<4->
@@ -913,7 +913,6 @@ we denote the left side with $A$, the right side with $B$
 % \end{frame}% Reset to Heapsort
 
 %-------------------------------------------------------------------------------
-
 \begin{frame}{Runtime - Heapsort 5/6}
   \begin{itemize}
     \item 
@@ -970,6 +969,7 @@ we denote the left side with $A$, the right side with $B$
 \end{frame}
 
 \setcounter{subsubsection}{0}\section{Logaritms}
+
 
 \begin{frame}{Base of Logaritms}
   \begin{block}{Logarithm to different bases:}
