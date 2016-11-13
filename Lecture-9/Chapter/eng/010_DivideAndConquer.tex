@@ -29,7 +29,7 @@
 
 \subsection{Maximum Subtotal}
 
-\begin{frame}{Divide and Conquer}{Example - Maximum Subtotal}
+\begin{frame}{Divide and Conquer}{Maximum Subtotal}
   \textbf{Input:}
   \begin{itemize}
     \item
@@ -44,7 +44,7 @@
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Divide and Conquer}{Example - Maximum Subtotal}
+\begin{frame}{Divide and Conquer}{Maximum Subtotal}
   \begin{example}[Maximum Subtotal]
     \vspace{-1em}
     \begin{table}[!t]
@@ -64,7 +64,7 @@
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Divide and Conquer}{Example - Maximum Subtotal}
+\begin{frame}{Divide and Conquer}{Maximum Subtotal}
   \textbf{Divide and Conquer:}
   \begin{itemize}
     \item
@@ -85,7 +85,7 @@
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Divide and Conquer}{Example - Maximum Subtotal}
+\begin{frame}{Divide and Conquer}{Maximum Subtotal}
   \textbf{Divide and Conquer:}
   \begin{itemize}
     \item
@@ -110,7 +110,7 @@
 %-------------------------------------------------------------------------------
 
 \codeslide{python}{
-\begin{frame}{Divide and Conquer}{Example - Maximum Subtotal - Python}
+\begin{frame}{Divide and Conquer}{Maximum Subtotal - Python}
   \vspace{-0.5em}
   \lstinputlisting[
     language=Python,
@@ -125,7 +125,7 @@
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Divide and Conquer}{Example - Maximum Subtotal - Python}
+\begin{frame}{Divide and Conquer}{Maximum Subtotal - Python}
   \vspace{-0.5em}
   \lstinputlisting[
     language=Python,
@@ -140,7 +140,7 @@
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Divide and Conquer}{Example - Maximum Subtotal - Python}
+\begin{frame}{Divide and Conquer}{Maximum Subtotal - Python}
   \vspace{-0.5em}
   \lstinputlisting[
     language=Python,
@@ -155,7 +155,7 @@
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Divide and Conquer}{Example - Maximum Subtotal - Python}
+\begin{frame}{Divide and Conquer}{Maximum Subtotal - Python}
   \vspace{-0.5em}
   \lstinputlisting[
     language=Python,
@@ -173,7 +173,7 @@
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Divide and Conquer}{Example - Maximum Subtotal}
+\begin{frame}{Divide and Conquer}{Maximum Subtotal}
   \begin{table}
     \caption{\textit{lmax} example}
     \label{fig:divide_and_conquer:lmax_example}
@@ -202,7 +202,7 @@
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Divide and Conquer}{Example - Maximum Subtotal}
+\begin{frame}{Divide and Conquer}{Maximum Subtotal}
   \begin{figure}
     \begin{adjustbox}{width=\linewidth}
       \input{Images/DivideAndConquer/MaxSubTotal_Example.tikz}
@@ -215,7 +215,7 @@
 %-------------------------------------------------------------------------------
 
 \codeslide{python}{
-\begin{frame}{Divide and Conquer}{Example - Maximum Subtotal - Python}
+\begin{frame}{Divide and Conquer}{Maximum Subtotal - Python}
   \vspace{-0.5em}
   \lstinputlisting[
     language=Python,
@@ -234,8 +234,7 @@
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Divide and Conquer}{Example - Maximum Subtotal
-    - Number of steps $T(n)$}
+\begin{frame}{Divide and Conquer}{Maximum Subtotal - Number of steps $T(n)$}
   \textbf{Recursion equation:}
   \begin{displaymath}
     T(n) = \begin{cases}
@@ -252,8 +251,7 @@
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Divide and Conquer}{Example - Maximum Subtotal
-    - Number of steps $T(n)$}
+\begin{frame}{Divide and Conquer}{Maximum Subtotal - Number of steps $T(n)$}
   \begin{itemize}
     \item
       There exist two constants $a$ and $b$ with:
@@ -276,54 +274,71 @@
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Maximum Subtotal}{Illustration of T(n)}
-  
-  TODO: Graphics -> look at slide 26 \vspace{2em}
-  
+\begin{frame}{Divide and Conquer}{Maximum Subtotal - Illustration of $T(n)$}
+  \begin{figure}
+    \begin{adjustbox}{width=\linewidth}
+      \input{Images/DivideAndConquer/MaxSubTotal_Runtime.tikz}
+    \end{adjustbox}
+    \caption{Illustration of the runtime}
+    \label{fig:divide_and_conquer:max_sub_array_runtime}
+  \end{figure}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Maximum Subtotal}{Illustration of T(n)}
-  
-  TODO: Graphics -> look at slide 27 \vspace{2em}
-  
+\begin{frame}{Divide and Conquer}{Maximum Subtotal - Illustration of $T(n)$}
+  \begin{figure}
+    \begin{adjustbox}{width=\linewidth}
+      \input{Images/DivideAndConquer/MaxSubTotal_Runtime_Tree.tikz}
+    \end{adjustbox}
+    \caption{Recursion tree method}
+    \label{fig:divide_and_conquer:max_sub_array_runtime_tree}
+  \end{figure}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Maximum Subtotal}{Illustration of T(n)}
+\begin{frame}{Divide and Conquer}{Maximum Subtotal - Illustration of $T(n)$}
+  \textbf{Depth:}
   \begin{itemize}
     \item
-    Upper level i = 0, lower level at 2i = n $\rightarrow$ i = $\log_2 n$, so 
-    overall $\log_2 n + 1$ levels
+      Top level with depth {\color{Mittel-Blau}$i = 0$}
     \item
-    In each level has cost of $c \cdot n$ (the costs for merging of 
-    subproblems and the solving of trivial problems are here the same)
+      Lowest level with {\color{Mittel-Blau}$2^i = n$} elements
+      \begin{displaymath}
+        {\color{Mittel-Blau}\Rightarrow i = \log_2 n}
+      \end{displaymath}
   \end{itemize}
-\end{frame}
-
-%-------------------------------------------------------------------------------
-
-\begin{frame}{Maximum Subtotal}{Maximum subarray in $\mathcal{O}(n)$}
-  
-  TODO: Code and Graphics -> look at slide 29 \vspace{2em}
-  
-\end{frame}
-
-%-------------------------------------------------------------------------------
-
-\begin{frame}{Maximum Subtotal}{Summaray Maximum subtotal}
+  \textbf{Runtime:}
   \begin{itemize}
     \item
-    Direct solution is $\mathcal{O}(n^3)$
+      A total of {\color{Mittel-Blau}$\log_2 n + 1$} levels with each cost of
+      {\color{Mittel-Blau}$c \cdot n$}\\
+      \color{gray}
+      The costs of merging the solutions and solving of the trivial
+      problems are the same here
+  \end{itemize}
+  \begin{displaymath}
+    {\color{Mittel-Blau}
+    T(n) = c \cdot n \log_2 n + c \cdot n \in \Theta(n\,\log_n)}
+  \end{displaymath}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Divide and Conquer}{Maximum Subtotal - Summary}
+  \textbf{Summary:}
+  \begin{itemize}
     \item
-    A better solution with incremental refreshment of the subtotals was 
-    $\mathcal{O}(n^2)$
+      Direct solution is slow with {\color{Mittel-Blau}$\mathcal{O}(n^3)$}
     \item
-    Divide and concur approach results in $\mathcal{O}(n \cdot \log n)$
+      Better solution with incremental update of sum was
+      {\color{Mittel-Blau}$\mathcal{O}(n^2)$}
     \item
-    There is an approach in $\mathcal{O}(n)$, if you assume that all 
-    subtotals are positive
+      Divide and conquer approach results in
+      {\color{Mittel-Blau}$\mathcal{O}(n\,\log n)$}
+    \item
+      There is an approach running in {\color{Mittel-Blau}$\mathcal{O}(n)$}
+      if you assume that all subtotals are positive
   \end{itemize}
 \end{frame}
