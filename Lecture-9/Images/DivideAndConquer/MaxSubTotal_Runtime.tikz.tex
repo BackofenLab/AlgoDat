@@ -1,0 +1,97 @@
+\begin{tikzpicture}[
+  op/.style={
+    draw=black,
+    fill=white,
+    font=\Large,
+    ellipse,
+    minimum height=3em
+  }, sum/.style={
+    font=\Large,
+    text=Mittel-Blau
+  }, connection/.style={
+    ultra thick,
+    color=Mittel-Gruen
+  }, arrow/.style={
+    ultra thick,
+    color=Mittel-Blau
+  }, arrow_alt/.style={
+    ultra thick,
+    color=Hell-Blau
+  }, label/.style={
+    font=\Large,
+    text=Mittel-Blau
+  }, label_alt/.style={
+    font=\Large,
+    text=Hell-Blau
+  }
+]%
+% Bounding boxes
+\only<1>{\draw[white] (-8, -4) rectangle (8, 4);}
+\only<2>{\draw[white] (-8, -5) rectangle (8, 3);}
+\only<3->{\draw[white] (-8, -6) rectangle (8, 2);}
+
+% Main Problem with first-level subproblems
+\node[op] (root) at (0, 0) {%
+  \only<1>{$T(n)$}%
+  \only<2->{$c \cdot n$}%
+};
+
+\only<2-5>{
+  \node[op] (left) at (-1.5, -2) {%
+    \only<2>{$T\left(\frac{n}{2}\right)$}%
+    \only<3->{$c \cdot \frac{n}{2}$}%
+  };
+  \node[op] (right) at (1.5, -2) {%
+    \only<2>{$T\left(\frac{n}{2}\right)$}%
+    \only<3->{$c \cdot \frac{n}{2}$}%
+  };
+  
+  \draw[-, connection] (root) -- (left);
+  \draw[-, connection] (root) -- (right);
+}
+\only<2>{
+  \node[sum] at (0, -3.5) {%
+    $T(n) = 2 \cdot T\left(\frac{n}{2}\right) + c \cdot n$%
+  };
+}
+
+\only<3-5>{
+  \node[op] (left_left) at (-4.0, -4) {$T\left(\frac{n}{4}\right)$};
+  \node[op] (left_right) at (-1.5, -4) {$T\left(\frac{n}{4}\right)$};
+  \node[op] (right_left) at (1.5, -4) {$T\left(\frac{n}{4}\right)$};
+  \node[op] (right_right) at (4.0, -4) {$T\left(\frac{n}{4}\right)$};
+  
+  \draw[-, connection] (left) -- (left_left);
+  \draw[-, connection] (left) -- (left_right);
+  \draw[-, connection] (right) -- (right_left);
+  \draw[-, connection] (right) -- (right_right);
+  
+  \node[sum] at (-2.75, -5.5) {%
+    \begin{math}%
+      T\left(\frac{n}{2}\right)
+      = 2 \cdot T\left(\frac{n}{4}\right) + c \cdot \frac{n}{2}
+%      \Rightarrow
+%      T(n) = 4 \cdot T\left(\frac{n}{4}\right)
+%        + c \cdot \left(n + \frac{n}{2}\right)
+    \end{math}%
+  };
+}
+
+\begin{pgfonlayer}{background}
+\only<4>{
+  \node[label, anchor=north west] (comb) at (-7, 1) {combining solutions};
+  
+  \draw[->, arrow] (comb.south) -- (root);
+  \draw[->, arrow] (comb.south) -- (left);
+  \draw[->, arrow] (comb.south) -- (right);
+}
+\only<5>{
+  \node[label, anchor=north east] (solv) at (7, 1) {solving subproblems};
+  
+  \draw[->, arrow] (solv.south) -- (left_left);
+  \draw[->, arrow] (solv.south) -- (left_right);
+  \draw[->, arrow] (solv.south) -- (right_left);
+  \draw[->, arrow] (solv.south) -- (right_right);
+}
+\end{pgfonlayer}
+\end{tikzpicture}

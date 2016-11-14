@@ -1,0 +1,344 @@
+\section{Divide and Conquer}
+\toclesssubsection{Concept}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Divide and Conquer}{Introduction}
+  \textbf{Concept:}
+  \begin{itemize}
+    \item
+      {\color{Mittel-Blau}Divide} the problem into smaller subproblems
+    \item
+      {\color{Mittel-Blau}Conquer} the subproblems through recusive solving.\\
+      If subproblems are small enough solve them directly
+    \item
+      {\color{Mittel-Blau}Connect} all solutions to as total solution of the
+      problem
+  \end{itemize}
+  \vspace{1.0em}
+  \begin{itemize}
+    \item
+      {\color{Mittel-Blau}Recursive} application of the algorithm for smaller
+      subproblems
+    \item
+      {\color{Mittel-Blau}Direct} solving of small subproblems
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\subsection{Maximum Subtotal}
+
+\begin{frame}{Divide and Conquer}{Maximum Subtotal}
+  \textbf{Input:}
+  \begin{itemize}
+    \item
+      Progression $X \in \mathbb{G}^n$ of $n$ whole numbers
+  \end{itemize}
+  \textbf{Output:}
+  \begin{itemize}
+    \item
+      Maximum sum of related subsequence and its index boundary
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Divide and Conquer}{Maximum Subtotal}
+  \begin{example}[Maximum Subtotal]
+    \vspace{-1em}
+    \begin{table}[!t]
+      \caption{Input values}
+      \begin{tabular}{c|c|c|c|c|c|c|c|c|c|c}
+        Index & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9\\
+        \midrule
+        Value & 31 & -41 & 59 & 26 & -53 & 58 & 97 & -93 & -23 & 84
+      \end{tabular}
+      \label{tab:divide_and_conquer:max_subtotal_example_values}
+    \end{table}
+    \vspace{6em}
+    %TODO: Hand-Drawings here (Free space) or no free space?
+    \textbf{Output:} Sum: 187, Start: 2, End: 6
+  \end{example}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Divide and Conquer}{Maximum Subtotal}
+  \textbf{Divide and Conquer:}
+  \begin{itemize}
+    \item
+      Solve the left / right half of the problem {\color{Mittel-Blau}recursive}
+    \item
+      Small problems are solved directly: $n = 1 \Rightarrow \max = X[0]$
+    \item
+      Combine both solutions into a total solution
+  \end{itemize}
+  \begin{figure}
+    \begin{adjustbox}{width=\linewidth}
+      \input{Images/DivideAndConquer/MaxSubTotal_Divide.tikz}
+    \end{adjustbox}
+    \caption{Dividing the problem into two sub-problems}
+    \label{fig:divide_and_conquer:max_sub_total_divide}
+  \end{figure}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Divide and Conquer}{Maximum Subtotal}
+  \textbf{Divide and Conquer:}
+  \begin{itemize}
+    \item
+      The maximum is located in the {\color{Mittel-Blau}left~half~($A$)}
+      or the {\color{Mittel-Blau}right~half~($B$)}
+    \item
+      The maximum can {\color{Mittel-Blau}extend into the second half ($C$)}
+    \item
+      To solve $C$ we have to calculate $rmax$ and $lmax$
+    \item
+      The total solution is the {\color{Mittel-Blau}maximum of $A$, $B$ and $C$}
+  \end{itemize}
+  \begin{figure}
+    \begin{adjustbox}{width=\linewidth}
+      \input{Images/DivideAndConquer/MaxSubTotal_Divide.tikz}
+    \end{adjustbox}
+    \caption{Dividing the problem into two sub-problems}
+    \label{fig:divide_and_conquer:max_sub_total_divide2}
+  \end{figure}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\codeslide{python}{
+\begin{frame}{Divide and Conquer}{Maximum Subtotal - Python}
+  \vspace{-0.5em}
+  \lstinputlisting[
+    language=Python,
+    basicstyle=\small,
+    tabsize=4,
+    style={python-idle-code},
+    escapechar={@},
+    emph={maxSubArray,lmax,rmax},
+    emphstyle=\color{blue}
+  ]{Code/DivideAndConquer/MaxSubTotal_DivideAndConquer.py}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Divide and Conquer}{Maximum Subtotal - Python}
+  \vspace{-0.5em}
+  \lstinputlisting[
+    language=Python,
+    basicstyle=\small,
+    tabsize=4,
+    style={python-idle-code},
+    escapechar={@},
+    emph={maxSubArray},
+    emphstyle=\color{blue}
+  ]{Code/DivideAndConquer/MaxSubTotal_SecondTrivialCase.py}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Divide and Conquer}{Maximum Subtotal - Python}
+  \vspace{-0.5em}
+  \lstinputlisting[
+    language=Python,
+    basicstyle=\small,
+    tabsize=4,
+    style={python-idle-code},
+    escapechar={@},
+    emph={lmax},
+    emphstyle=\color{blue}
+  ]{Code/DivideAndConquer/MaxSubTotal_LMax.py}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Divide and Conquer}{Maximum Subtotal - Python}
+  \vspace{-0.5em}
+  \lstinputlisting[
+    language=Python,
+    basicstyle=\small,
+    tabsize=4,
+    style={python-idle-code},
+    escapechar={@},
+    emph={rmax},
+    emphstyle=\color{blue}
+  ]{Code/DivideAndConquer/MaxSubTotal_RMax.py}
+\end{frame}
+}
+
+%TODO: Implement for Java / C++
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Divide and Conquer}{Maximum Subtotal}
+  \begin{table}
+    \caption{\textit{lmax} example}
+    \label{fig:divide_and_conquer:lmax_example}
+    \begin{tabular}{c|ccccc}
+      {} & $i$ & $i+1$ & $\cdots$ & $j-1$ & $j$\\
+      \midrule
+      $X$ & 58 & -53 & 58 & -41 & 31\\
+      \midrule
+       {\color{Mittel-Blau}$s$} & 58 & 5 & 63 & 22 & 51\\
+      {\color{Mittel-Blau}$maxSum$} &
+      $(58, i)$ & $(58, i)$ & $(63, j-2)$ & $(63, j-2)$ & $(63, j-2)$
+    \end{tabular}
+  \end{table}
+  \begin{itemize}
+    \item
+      The temporary sum {\color{Mittel-Blau}$s$} and
+      {\color{Mittel-Blau}$maxSum$} are initialized with $X[i]$ and index $j$
+    \item
+      We {\color{Mittel-Blau}iterate over $X$ from $i+1$ to $j$} and
+      {\color{Mittel-Blau}update $s$}
+    \item
+      If {\color{Mittel-Blau}$s > maxSum$} then {\color{Mittel-Blau}$maxSum$}
+      gets updated
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Divide and Conquer}{Maximum Subtotal}
+  \begin{figure}
+    \begin{adjustbox}{width=\linewidth}
+      \input{Images/DivideAndConquer/MaxSubTotal_Example.tikz}
+    \end{adjustbox}
+    \caption{\textit{maxSubArray} with $X = [-3, 9, -4, 7]$}
+    \label{fig:divide_and_conquer:max_sub_array_example}
+  \end{figure}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\codeslide{python}{
+\begin{frame}{Divide and Conquer}{Maximum Subtotal - Python}
+  \vspace{-0.5em}
+  \lstinputlisting[
+    language=Python,
+    basicstyle=\small,
+    tabsize=4,
+    style={python-idle-code},
+    breaklines=false,
+    escapechar={@},
+    emph={maxSubArray,lmax,rmax},
+    emphstyle=\color{blue}
+  ]{Code/DivideAndConquer/MaxSubTotal_Runtime.py}
+\end{frame}
+}
+
+%TODO: Implement for Java / C++
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Divide and Conquer}{Maximum Subtotal - Number of steps $T(n)$}
+  \textbf{Recursion equation:}
+  \begin{displaymath}
+    T(n) = \begin{cases}
+      \hfill \underbrace{\Theta(1)}_\text{trivial case} & n = 1\\
+      \underbrace{2 \cdot T\left(\frac{n}{2}\right)}_\text{
+        solving of subproblems
+      } + \underbrace{
+        \Theta(n)
+        \vphantom{\left(\frac{n}{2}\right)}
+      }_\text{cobination of solutions} & n > 1
+    \end{cases}
+  \end{displaymath}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Divide and Conquer}{Maximum Subtotal - Number of steps $T(n)$}
+  \begin{itemize}
+    \item
+      There exist two constants $a$ and $b$ with:
+      \begin{displaymath}
+        T(n) \leq \begin{cases}
+          \hfill a & n = 1\\
+          2 \cdot T\left(\frac{n}{2}\right) + b \cdot n & n > 1
+        \end{cases}
+      \end{displaymath}
+    \item
+      We define $c := \max(a,b)$:
+      \begin{displaymath}
+        T(n) \leq \begin{cases}
+          \hfill c & n = 1\\
+          2 \cdot T\left(\frac{n}{2}\right) + c \cdot n & n > 1
+        \end{cases}
+      \end{displaymath}
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Divide and Conquer}{Maximum Subtotal - Illustration of $T(n)$}
+  \begin{figure}
+    \begin{adjustbox}{width=\linewidth}
+      \input{Images/DivideAndConquer/MaxSubTotal_Runtime.tikz}
+    \end{adjustbox}
+    \caption{Illustration of the runtime}
+    \label{fig:divide_and_conquer:max_sub_array_runtime}
+  \end{figure}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Divide and Conquer}{Maximum Subtotal - Illustration of $T(n)$}
+  \begin{figure}
+    \begin{adjustbox}{width=\linewidth}
+      \input{Images/DivideAndConquer/MaxSubTotal_Runtime_Tree.tikz}
+    \end{adjustbox}
+    \caption{Recursion tree method}
+    \label{fig:divide_and_conquer:max_sub_array_runtime_tree}
+  \end{figure}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Divide and Conquer}{Maximum Subtotal - Illustration of $T(n)$}
+  \textbf{Depth:}
+  \begin{itemize}
+    \item
+      Top level with depth {\color{Mittel-Blau}$i = 0$}
+    \item
+      Lowest level with {\color{Mittel-Blau}$2^i = n$} elements
+      \begin{displaymath}
+        {\color{Mittel-Blau}\Rightarrow i = \log_2 n}
+      \end{displaymath}
+  \end{itemize}
+  \textbf{Runtime:}
+  \begin{itemize}
+    \item
+      A total of {\color{Mittel-Blau}$\log_2 n + 1$} levels with each cost of
+      {\color{Mittel-Blau}$c \cdot n$}\\
+      \color{gray}
+      The costs of merging the solutions and solving of the trivial
+      problems are the same here
+  \end{itemize}
+  \begin{displaymath}
+    {\color{Mittel-Blau}
+    T(n) = c \cdot n \log_2 n + c \cdot n \in \Theta(n\,\log_n)}
+  \end{displaymath}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Divide and Conquer}{Maximum Subtotal - Summary}
+  \textbf{Summary:}
+  \begin{itemize}
+    \item
+      Direct solution is slow with {\color{Mittel-Blau}$\mathcal{O}(n^3)$}
+    \item
+      Better solution with incremental update of sum was
+      {\color{Mittel-Blau}$\mathcal{O}(n^2)$}
+    \item
+      Divide and conquer approach results in
+      {\color{Mittel-Blau}$\mathcal{O}(n\,\log n)$}
+    \item
+      There is an approach running in {\color{Mittel-Blau}$\mathcal{O}(n)$}
+      if you assume that all subtotals are positive
+  \end{itemize}
+\end{frame}

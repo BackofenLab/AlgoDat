@@ -1,0 +1,130 @@
+\begin{tikzpicture}[
+  op/.style={
+    draw,
+    ellipse
+  }, sum/.style={
+    draw,
+    rectangle,
+    text=Mittel-Gruen
+  }, max/.style={
+    text=Mittel-Gruen
+  }, array_label/.style={
+    color=Mittel-Blau,
+    fill=white
+  }, arrow/.style={
+    ultra thick,
+    color=Mittel-Gruen
+  }
+]%
+% Main Problem with first-level subproblems
+\only<1-2>{
+  \node[op, label={[array_label]below:$X[0:4]=[-3,9,-4,7]$}]
+    (root) at (0, 0) {\textit{maxSubArray}(X, 0, 3)};
+
+  \node[op, anchor=east, label={[array_label]below:$X[0:2]=[-3,9]$}]
+    (left) at (-0.25, -2) {\textit{maxSubArray}(X, 0, 1)};
+  \node[op, anchor=west, label={[array_label]below:$X[2:4]=[-4,7]$}]
+    (right) at (0.25, -2) {\textit{maxSubArray}(X, 2, 3)};
+}
+
+% Second-level subproblems
+\only<2->{
+  \node[op, anchor=east, label={[array_label]below:$X[0:1]=[-3]$}]
+    (left_triv_left) at (-4.5, -4) {\textit{maxSA}(X, 0, 0)};
+  \node[op, anchor=east, label={[array_label]below:$X[1:2]=[9]$}]
+    (left_triv_right) at (-0.25, -4) {\textit{maxSA}(X, 1, 1)};
+
+  \node[op, anchor=west, label={[array_label]below:$X[2:3]=[-4]$}]
+    (right_triv_left) at (0.25, -4) {\textit{maxSA}(X, 2, 2)};
+  \node[op, anchor=west, label={[array_label]below:$X[3:4]=[7]$}]
+    (right_triv_right) at (4.5, -4) {\textit{maxSA}(X, 3, 3)};
+}
+
+% Combination of second-level solutions
+\only<4->{
+  \node[max] at (-8, -7.0) {$max$};
+}
+% Dummy nodes for slides < display
+\only<3>{ % Dummy node
+  \node[color=white] (sum_left) at (-4, -7.0) {$A=-3, B=9, C=lmax+rmax=6$};
+}
+\only<3-4>{ % Dummy node
+  \node[color=white] (sum_right) at (4, -7.0) {$A=-4, B=7, C=lmax+rmax=3$};
+}
+
+\only<4->{
+  \node[sum] (sum_left) at (-4, -7.0) {$A=-3, B=9, C=lmax+rmax=6$};
+}
+\only<5->{
+  \node[sum] (sum_right) at (4, -7.0) {$A=-4, B=7, C=lmax+rmax=3$};
+}
+
+\only<4->{
+  \node[max] at (-8, -7.0) {$max$};
+}
+% Dummy nodes for slides < display
+\only<3>{ % Dummy node
+  \node[color=white] (sum_left) at (-4, -7.0) {$A=-3, B=9, C=lmax+rmax=6$};
+}
+
+% Combination of second-level solutions
+\only<7->{
+  \node[max] at (-8, -9) {$max$};
+}
+% Dummy nodes for slides < display
+\only<3-6>{ % Dummy node
+  \node[color=white] (sum) at (0, -9) {$A=9, B=7, C=lmax+rmax=12$};
+}
+\only<7->{
+  \node[sum] (sum) at (0, -9) {$A=9, B=7, C=lmax+rmax=12$};
+  \node[max] (sum_total) at (0, -10) {$12$};
+}
+
+\only<3->{ % Results of second-level problems
+  \node[array_label, anchor=east, xshift=1.5em]
+    at ($(sum_left)!0.35!(left_triv_left)$) {$A=-3, rmax=-3$};
+  \node[array_label, anchor=west, xshift=-1.5em]
+    at ($(sum_left)!0.35!(left_triv_right)$) {$B=9, lmax=9$};
+
+  \node[array_label, anchor=east, xshift=1.5em]
+    at ($(sum_right)!0.35!(right_triv_left)$) {$A=-4, rmax=-4$};
+  \node[array_label, anchor=west, xshift=-1.5em]
+    at ($(sum_right)!0.35!(right_triv_right)$) {$B=7, lmax=7$};
+}
+\only<6->{ % Results of first-level problems
+  \node[array_label]
+    at ($(sum.north west)!0.4!(sum_left)$) {$A=9, rmax=9$};
+  \node[array_label]
+    at ($(sum.north east)!0.4!(sum_right)$) {$B=7, lmax=3$};
+}
+
+\begin{pgfonlayer}{background}
+  % Draw the arrows for the first split
+  \only<1-2>{
+    \draw[->, arrow] (root) -- (left);
+    \draw[->, arrow] (root) -- (right);
+  }
+  % Draw the arrows for the second split
+  \only<2>{
+    \draw[->, arrow] (left) -- (left_triv_left);
+    \draw[->, arrow] (left) -- (left_triv_right);
+    \draw[->, arrow] (right) -- (right_triv_left);
+    \draw[->, arrow] (right) -- (right_triv_right);
+  }
+  % Draw the arrows for the second-level solutions
+  \only<3->{
+    \draw[->, arrow] (left_triv_left) -- (sum_left);
+    \draw[->, arrow] (left_triv_right) -- (sum_left);
+    \draw[->, arrow] (right_triv_left) -- (sum_right);
+    \draw[->, arrow] (right_triv_right) -- (sum_right);
+  }
+  % Draw the arrows for the first-level solutions
+  \only<6->{
+    \draw[->, arrow] (sum_left) -- (sum.north west);
+    \draw[->, arrow] (sum_right) -- (sum.north east);
+  }
+  \only<7>{
+    \draw[->, arrow] (sum) -- (sum_total);
+  }
+\end{pgfonlayer}
+\end{tikzpicture}

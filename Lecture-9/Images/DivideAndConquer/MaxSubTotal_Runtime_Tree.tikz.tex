@@ -1,0 +1,144 @@
+\begin{tikzpicture}[
+  op/.style={
+    draw=black,
+    fill=white,
+    font=\Large,
+    ellipse,
+    minimum size=3em
+  }, sum/.style={
+    font=\Large,
+    text=Mittel-Blau
+  }, connection/.style={
+    ultra thick,
+    color=Mittel-Gruen
+  }, arrow/.style={
+    ultra thick,
+    color=Mittel-Blau
+  }, label/.style={
+    fill=white,
+    font=\Large,
+    text=black
+  }
+]%
+% Bounding boxes
+\draw[white] (-10, -9) rectangle (9.5, 1);
+
+% Main Problem with first-level subproblems
+\node[op] (root) at (-4, 0) {$c \cdot n$};
+\node[sum, anchor=west, align=left] at (2, 0) {%
+  {\color{Mittel-Blau}1} node processing
+  {\color{Mittel-Blau}$n$} elements\\
+  \hspace{1.5em}{\color{Mittel-Blau}%
+    \begin{math}
+      \Rightarrow c \cdot n
+    \end{math}%
+  }
+};
+
+\only<2->{
+  \node[op] (left) at (-5.5, -2) {$c \cdot \frac{n}{2}$};
+  \node[op] (right) at (-2.5, -2) {$c \cdot \frac{n}{2}$};
+  
+  \draw[-, connection] (root) -- (left);
+  \draw[-, connection] (root) -- (right);
+  
+  \node[sum, anchor=west, align=left] at (2, -2) {%
+    {\color{Mittel-Blau}2} nodes processing
+    {\color{Mittel-Blau}$\frac{n}{2}$} elements\\
+    \hspace{1.5em}{\color{Mittel-Blau}%
+      \begin{math}
+        \Rightarrow 2 \, c \cdot \frac{n}{2}
+          = c \cdot n
+      \end{math}%
+    }
+  };
+}
+
+\only<3->{
+  \node[op] (left_left) at (-7.0, -4) {$c \cdot \frac{n}{4}$};
+  \node[op] (left_right) at (-5.0, -4) {$c \cdot \frac{n}{4}$};
+  \node[op] (right_left) at (-3.0, -4) {$c \cdot \frac{n}{4}$};
+  \node[op] (right_right) at (-1.0, -4) {$c \cdot \frac{n}{4}$};
+  
+  \draw[-, connection] (left) -- (left_left);
+  \draw[-, connection] (left) -- (left_right);
+  \draw[-, connection] (right) -- (right_left);
+  \draw[-, connection] (right) -- (right_right);
+  
+  \node[sum, anchor=west, align=left] at (2, -4) {%
+    {\color{Mittel-Blau}4} nodes processing
+    {\color{Mittel-Blau}$\frac{n}{4}$} elements\\
+    \hspace{1.5em}{\color{Mittel-Blau}%
+      \begin{math}
+        \Rightarrow 4 \, c \cdot \frac{n}{4}
+          = c \cdot n
+      \end{math}%
+    }
+  };
+}
+
+\only<4->{
+  \node[op] (left_left_left) at (-8.25, -6) {$\cdots$};
+  \node[op] (left_left_right) at (-7.0, -6) {$\cdots$};
+  \node[op] (left_right_left) at (-5.75, -6) {$\cdots$};
+  \node[op] (left_right_right) at (-4.5, -6) {$\cdots$};
+  \node[op] (right_left_left) at (-3.25, -6) {$\cdots$};
+  \node[op] (right_left_right) at (-2.0, -6) {$\cdots$};
+  \node[op] (right_right_left) at (-0.75, -6) {$\cdots$};
+  \node[op] (right_right_right) at (0.5, -6) {$\cdots$};
+  
+  \draw[-, connection] (left_left) -- (left_left_left);
+  \draw[-, connection] (left_left) -- (left_left_right);
+  \draw[-, connection] (left_right) -- (left_right_left);
+  \draw[-, connection] (left_right) -- (left_right_right);
+  \draw[-, connection] (right_left) -- (right_left_left);
+  \draw[-, connection] (right_left) -- (right_left_right);
+  \draw[-, connection] (right_right) -- (right_right_left);
+  \draw[-, connection] (right_right) -- (right_right_right);
+  
+  \node[sum, anchor=west, align=left] at (2, -6) {%
+    {\color{Mittel-Blau}$2^i$} nodes processing
+    {\color{Mittel-Blau}$\frac{n}{2^i}$} elements\\
+    \hspace{1.5em}{\color{Mittel-Blau}%
+      \begin{math}
+      \Rightarrow 2^i \, c \cdot \frac{n}{2^i}
+      = c \cdot n
+      \end{math}%
+    }
+  };
+}
+
+\only<5->{
+  \node[op] (left_left_left_c) at (-8.25, -8) {$c$};
+  \node[op] (left_left_right_c) at (-7.0, -8) {$c$};
+  \node[op] (left_right_left_c) at (-5.75, -8) {$c$};
+  \node[op] (left_right_right_c) at (-4.5, -8) {$c$};
+  
+  \node[op] (right_left_left_c) at (-3.25, -8) {$c$};
+  \node[op] (right_left_right_c) at (-2.0, -8) {$c$};
+  \node[op] (right_right_left_c) at (-0.75, -8) {$c$};
+  \node[op] (right_right_right_c) at (0.5, -8) {$c$};
+  
+  \draw[-, connection] (left_left_left) -- (left_left_left_c);
+  \draw[-, connection] (left_left_right) -- (left_left_right_c);
+  \draw[-, connection] (left_right_left) -- (left_right_left_c);
+  \draw[-, connection] (left_right_right) -- (left_right_right_c);
+  
+  \draw[-, connection] (right_left_left) -- (right_left_left_c);
+  \draw[-, connection] (right_left_right) -- (right_left_right_c);
+  \draw[-, connection] (right_right_left) -- (right_right_left_c);
+  \draw[-, connection] (right_right_right) -- (right_right_right_c);
+  
+  \node[sum, anchor=west, align=left] at (2, -8) {%
+    {\color{Mittel-Blau}$n$} nodes processing
+    {\color{Mittel-Blau}$1$} element\\
+    \hspace{1.5em}{\color{Mittel-Blau}$\Rightarrow c \cdot n$}
+  };
+  
+  \draw[<->, arrow] (-9.5, 0.5)
+    to node[label, pos=0.25, anchor=west, align=left, xshift=-1.25em] {%
+      {\color{Mittel-Blau}$\log_2n + 1$}\\%
+      layers%
+    } (-9.5, -8.5);
+}
+\end{tikzpicture}
