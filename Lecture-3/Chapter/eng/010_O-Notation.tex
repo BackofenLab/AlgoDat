@@ -65,12 +65,13 @@
       $f,g\!: \mathbb{N} \to \mathbb{R}$
     \item
       \textbf{Intuitive:}\\
-      $f$ is $\mathcal{O}(g)$ if $f$ relative to $g$ does not grow faster than 
-      $g$
+      $f$ is $\mathcal{O}(g)$ if $f$ relative to $g$ does not grow faster than
+      $g$\\
+      {\color{gray}We compare the relative growth rate}
     \item 
-      \textbf{Informal:}\\ 
-      $f \in \mathcal O(g)$: From a value $n_0$ for all
-      $n \geq n_0 \rightarrow f(n) \leq C \cdot g(n)$
+      \textbf{Informal:}\\
+      $f \in \mathcal O(g)$: From a value $n_0$ for all $n \geq n_0$
+      yields $f(n) \leq C \cdot g(n), ~ C \in \mathbb{R}$
   \end{itemize}
   \begin{block}{\textbf{Formal:} $f \in \mathcal O(g)$}
     \begin{math}
@@ -137,7 +138,7 @@
       &5 \, n + 7 &\leq \;\; 5 \, n + n \hspace{1em} (\text{for} ~ n \geq 7)\\
       && \leq \;\; 6 \, n
     \end{eqnarray*}
-    $\hspace{1.5em} \Rightarrow n_0 = 7, \, C = 7$ \qedhere
+    $\hspace{1.5em} \Rightarrow n_0 = 7, \, C = 6$ \qedhere
   \end{proof}
 \end{frame}
 
@@ -199,9 +200,9 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{$\Omega$-Notation}{Proof}
-  \begin{proof}[Proof of $f(n) \in \Omega(g)$:]
+  \begin{proof}[Proof of $f(n) = 5n + 7 \in \Omega(n)$:]
     \begin{eqnarray*}
-      &\underbrace{5 \, n + 7}_{f(n)} &\geq \;\; \underbrace{n}_{g(n)} 
+      &\underbrace{5 \, n + 7}_{f(n)} &\geq \;\; \underbrace{1 \cdot n}_{g(n)}
       \hspace{1em} (\text{for} ~ n \geq 1)
     \end{eqnarray*}
     $\hspace{1.5em} \Rightarrow n_0 = 1, \, C = 1$ \qedhere
