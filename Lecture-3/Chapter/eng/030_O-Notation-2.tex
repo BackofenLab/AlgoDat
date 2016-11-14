@@ -116,13 +116,13 @@
     \hhline{~*{3}{-}}
     $\hspace*{1.5em}$ a1[i] = 0 & $\mathcal{O}(1)$ & {} & {} & {} & {}\\
     $\hspace*{1.5em} \cdots$ & $\cdots$ & {} & {} & {} & {}\\
-    $\hspace*{1.5em}$ a37[i] = 0 & $\mathcal{O}(1)$ &
+    $\hspace*{1.5em}$ a137[i] = 0 & $\mathcal{O}(1)$ &
     \multirow{-3}{*}{$\left.
         \begin{array}{@{}c@{}}\\[2em]\end{array}
       \right\rbrace$} &
     \multirow{-3}{*}{
       $\begin{array}{@{}c@{}}
-        37 \cdot \mathcal{O}(1)\\
+        137 \cdot \mathcal{O}(1)\\
         = \mathcal{O}(1)
       \end{array}$
     } &
@@ -167,7 +167,7 @@
       \right\rbrace$} &
     \multirow{-3}{*}{
       $\begin{array}{@{}c@{}}
-      37 \cdot \mathcal{O}(1)\\
+      137 \cdot \mathcal{O}(1)\\
       = \mathcal{O}(1)
       \end{array}$
     } &%
@@ -312,7 +312,7 @@
   \begin{alertblock}{\textbf{Attention:}}
     \begin{itemize}
       \item
-        If your using \textbf{asymptotic analysis}, you can not make any
+        If you are using \textbf{asymptotic analysis}, you can not make any
         predictions about the runtime of smaller input sizes ($n < n_0$)
       \item
         For small input sizes (mostly $n < 10$),
@@ -362,5 +362,6 @@
       {} & \approx \; (10^3)^4 = 10^{12}\\
       {} & \approx \; \SI{1}{trillion}
     \end{align*}
+    A ist faster than B if $n_0$ has more than 1 Trillion elements.
   \end{block}
 \end{frame}

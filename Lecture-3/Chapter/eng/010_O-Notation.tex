@@ -213,7 +213,14 @@
   \begin{itemize}
     \item
       \textbf{Intuitive}:\\
-      $f \in \Omega(g)$, $f$ is growing at least as fast as $g$
+
+          \begin{itemize}
+            \item
+              $f \in \Omega(g)$, $f$ is growing at least as fast as $g$
+            \item
+              So the same as Big-O but with \textit{at-least} and not \textit{at-most}.
+          \end{itemize}
+
   \end{itemize}
  	\begin{block}{\textbf{Formal:} $f \in \Omega(g)$}
     \begin{math}
@@ -263,8 +270,8 @@
   \textbf{Big Omega-Notation:}
   \begin{itemize}
     \item
-      We are only interested in the terms which are growing the fastest, the
-      others will be ignored
+      We are only interested in the term with the Highest-order, the fasted growing Summand,
+      the others will be ignored.
     \item
       $f(n)$ is limited {\color{Mittel-Blau}from underneath} by
       $c \cdot g(n)$.\\
@@ -287,8 +294,13 @@
   \textbf{Theta-Notation:}
   \begin{itemize}
     \item
-      \textbf{Intuitive}:\\
-      $f \in \Theta(g)$, $f$ is growing at the same speed as $g$
+      \textbf{Intuitive}: $f$ is Theta from $g$ ...\\
+        \begin{itemize}
+            \item
+              ... if $f$ is growing as much as $g$
+            \item
+              $f \in \Theta(g)$, $f$ is growing at the same speed as $g$
+       \end{itemize}
   \end{itemize}
  	\begin{block}{\textbf{Formal:} $f \in \Theta(g)$}
  		$\Theta(g) = \underbrace{\mathcal O(g) \cap \Omega(g)}_{Intersection}$
@@ -299,7 +311,7 @@
     f(n) \in \Omega(n)$\\
   \hspace*{3.0em}$\Rightarrow f(n) \in \Theta(n)$\\[0.5em]
   \begin{center}
-   \textit{Proof for $\mathcal{O}(g)$ and $\Omega(g)$ look at slides 12 and 15}
+   \textit{Proof for $\mathcal{O}(g)$ and $\Omega(g)$ look at slides 14 and 19}
   \end{center}
 \end{frame}
 
@@ -370,10 +382,12 @@
   \textbf{Definition of \enquote{Limit}}
   \begin{itemize}
     \item
-      The limit of an indefinite progression $f$ is $L$
+      The limit of an indefinite sequence $f_1, f_2, f_3$... is $L$\\
+      if for all $\epsilon > 0$ one $n_0 \in \mathbb{N}$ exists, such that for all \\
+      $n \geq n_0$ the following holds true: $\Vert f_n - L \Vert \leq \epsilon$
     \item
       A function $f\!: \mathbb{N} \rightarrow \mathbb{R}$ can be written as a
-      progression\\
+      sequence\\
       $\Rightarrow$ $\lim\limits_{n \rightarrow \infty}$ $f_n$ = $L$
   \end{itemize}
   \begin{block}{Convergence}
@@ -434,13 +448,12 @@
     \; \Leftrightarrow \;
     \lim\limits_{n \rightarrow \infty} \frac{f(n)}{g(n)} < \infty
   \]
-  \begin{proof}[Forward proof:]
+  \begin{proof}[Forward proof ($\Rightarrow$):]
      $f \in \mathcal{O}(g) \stackrel{\text{def. of }\mathcal{O}(n)}{\Rightarrow}
-     \exists n_0, \, \forall n \geq n_0, \, \exists C\!:
+     \exists n_0, \, C\; \forall n \geq n_0:
      \; f(n) \leq C \cdot g(n)$
      \begin{alignat*}{2}
-       {} && f(n) &\leq \; C \cdot g(n)\\
-       \Rightarrow && \dfrac{f(n)}{g(n)} &\leq \; C\\
+       \Rightarrow && \exists n_0, \, C\; \forall n \geq n_0: \dfrac{f(n)}{g(n)} &\leq \; C\\
        \Rightarrow && \displaystyle
        \lim_{n \to \infty}\dfrac{f(n)}{g(n)} &\leq \; C
        \qedhere
@@ -451,27 +464,27 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{$\mathcal{O}$-Notation}{Limit / Convergence}
-  \begin{proof}[Backward proof:]
+  \begin{proof}[Backward proof ($\Leftarrow$):]
     \begin{center}
       \vspace{-0.5em}
       \begin{math}
         \begin{aligned}
           & {} & \lim_{n \to \infty} \frac{f(n)}{g(n)} &< \; \infty\\
-          & \Rightarrow & \lim_{n \to \infty} \frac{f(n)}{g(n)} &= \; L &&
-          \hspace*{1.5em}\text{For some } L \in \mathbb{R} \text{ (Limit)}
+          & \Rightarrow & \lim_{n \to \infty} \frac{f(n)}{g(n)} &= \; C &&
+          \hspace*{1.5em}\text{For some } C \in \mathbb{R} \text{ (Limit)}
         \end{aligned}
       \end{math}
       \vspace{1.0em}\\
       \begin{math}
         \begin{aligned}
           \stackrel{\text{def. limes}}{\Rightarrow} \hspace*{0.5em} &&
-          \exists n_0, \, \forall n \geq n_0, \, \exists C\!: \hspace*{1.0em}&&
-          \frac{f(n)}{g(n)} &\leq \; L + \varepsilon\\
+          \exists n_0, \, \forall n \geq n_0: \hspace*{1.0em}&&
+          \frac{f(n)}{g(n)} &\leq \; C + \varepsilon \;\;\; (e.g.\;\varepsilon = 1)\\
           \Rightarrow \; &&
-          \exists n_0, \, \forall n \geq n_0, \, \exists C\!: \hspace*{1.0em}&&
-          f(n) &\leq \; \underbrace{(L + \varepsilon)}_{C} \cdot g(n)\\
+          \exists n_0, \, \forall n \geq n_0: \hspace*{1.0em}&&
+          f(n) &\leq \; \underbrace{(C + 1)}_{O-notation\;constant} \cdot g(n)\\
           \Rightarrow \; &&
-          f(n) \in \mathcal{O}(g)
+          f \in \mathcal{O}(g)
           \qedhere
         \end{aligned}
       \end{math}
