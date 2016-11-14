@@ -1,3 +1,12 @@
+%%% ===================================================================
+%%% RCS Header:
+%%% $RCSfile: local.el,v $
+%%% $Revision: 1.27 $
+%%% $Date: 2014/11/07 15:36:00 $
+%%% $Author: backofen $
+%%% $Locker:  $
+%%% ===================================================================
+
 \section{\texorpdfstring{$\mathcal{O}$}{O}-Notation}
 
 \toclesssubsection{Motivation / Definition}
@@ -5,18 +14,21 @@
 \begin{frame}{$\mathcal{O}$-Notation}{Motivation}
   \textbf{We are interested in:}
   \begin{itemize}
-    \item
-      Growth of a function in runtime $T(n)$
+  \item example sorting:
     \begin{itemize}
       \item
-        Runtime of \textit{Minsort} qubic with $n^2$
+        Runtime of \textit{Minsort} ``is growing as" $\quad{}\quad{}n^2$
       \item
-         Runtime of \textit{HeapSort} nearly linear with $n \, \log n$
+         Runtime of \textit{HeapSort} ``is growing as'' $\quad{}n \, \log n$
     \end{itemize}
-    \item
-      The role of constants (e.g. $1ns$)
-    \item
-      Describe the growth of the function
+    \item<2->
+      Growth of a function in runtime $T(n)$
+      \begin{itemize}
+      \item The role of constants (e.g. $1ns$) is minor
+      \item it is enough if relation holds for some $n\geq \ldots$
+      \end{itemize}
+    \item<3->
+      Describe the growth of the function \textbf{more formally}
     \begin{itemize}
       \item
         By the means of Landau-Symbols \cite{wikipedia_big_o_notation}):
@@ -48,7 +60,7 @@
       \end{itemize}
    \item
      \textbf{Example:}
-   \begin{itemize}
+   \begin{itemize}[<+->]
      \item
        $f(n) = 3 \, n$
      \item
@@ -82,9 +94,20 @@
 
 
 %-------------------------------------------------------------------------------
+\usetikzlibrary{arrows,shapes}
+% For every picture that defines or uses external nodes, you'll have to
+% apply the 'remember picture' style. To avoid some typing, we'll apply
+% the style to all pictures.
+\tikzstyle{every picture}+=[remember picture]
+
+% By default all math in TikZ nodes are set in inline mode. Change this to
+% displaystyle so that we don't get small fractions.
+%\everymath{\displaystyle}
+
+\tikzstyle{na} = [baseline=-.5ex]
 
 \begin{frame}{$\mathcal{O}$-Notation}{Definition}
-  \textbf{Big $\mathcal{O}$-Notation:}
+  \textbf{Big $\mathcal{O}$-Notation:}%
   \begin{itemize}
     \item
       \textbf{Informal:} $f = \mathcal O(g)$\\
@@ -102,11 +125,40 @@
   \end{itemize}
   \begin{block}{\textbf{Formal:} $f \in \mathcal O(g)$}
     \begin{math}
-      \mathcal O(g) = \lbrace f: \mathbb{N} \to \mathbb{R} ~ | ~
-        \exists n_0 \in \mathbb{N}, \, \forall n > n_0, \, \exists C > 0: \,
-        f(n) \leq C \cdot g(n)\rbrace
+      \mathcal O(g) = \lbrace \tikz[baseline] {\node (fun) [anchor=base] {f};}: \mathbb{N} \to \mathbb{R} ~ \tikz[baseline] {\node (for) [anchor=base] {|};}\tikz[baseline] {\node (exone) [anchor=base] {$\exists$};}\!\!n_0 \in \mathbb{N},\tikz[baseline] {\node (extwo) [anchor=base] {$\exists$};}\!\!C > 0,\tikz[baseline] {\node (forall) [anchor=base] {$\forall$};}\!\!n > n_0\!\!\tikz[baseline] {\node (such) [anchor=base] {:};}        f(n) \leq C \cdot g(n)\rbrace
     \end{math}
   \end{block}
+\tikz[baseline] {\node (funtext) [anchor=base] {
+{\footnotesize\onslide<2->{\begin{tabular}[c]{@{}c@{}}
+      ``set of\\
+      all functions''
+    \end{tabular}}
+}};}\quad{} \tikz[baseline] {\node (fortext) [anchor=base] {
+{\footnotesize\onslide<3->{\begin{tabular}[c]{@{}c@{}}
+    ``for which''
+    \end{tabular}}
+}};}\quad{} \tikz[baseline] {\node (extext) [anchor=base] {
+{\footnotesize\onslide<4->{\begin{tabular}[c]{@{}c@{}}
+    ``it exists''
+    \end{tabular}}
+}};}\quad{} \tikz[baseline] {\node (foralltext) [anchor=base] {
+{\footnotesize\onslide<5->{\begin{tabular}[c]{@{}c@{}}
+    ``for all''
+    \end{tabular}}
+}};}\quad{} \tikz[baseline] {\node (suchtext) [anchor=base] {
+{\footnotesize\onslide<6->{\begin{tabular}[c]{@{}c@{}}
+    ``such that''
+    \end{tabular}}
+}};}
+\begin{tikzpicture}[>=stealth,overlay,thick]
+        \path[->,color=red]<2-> (funtext) edge [bend left]  (fun);
+        \path[->,color=red]<3-> (fortext) edge [bend left]  (for);
+        \path[->,color=red]<4-> (extext) edge [bend left]  (exone);
+        \path[->,color=red]<4-> (extext) edge [bend right]  (extwo);
+        \path[->,color=red]<5-> (foralltext) edge [bend left]  (forall);
+        \path[->,color=red]<6-> (suchtext) edge [bend left]  (such);
+\end{tikzpicture}
+
 \end{frame}
 
 %-------------------------------------------------------------------------------
@@ -162,10 +214,10 @@
     \end{math}
   ]
     \begin{eqnarray*}
-      &5 \, n + 7 &\leq \;\; 5 \, n + n \hspace{1em} (\text{for} ~ n \geq 7)\\
-      && \leq \;\; 6 \, n
+\onslide<2->{      &5 \, n + 7 &\leq \;\; 5 \, n + n \hspace{1em} (\text{for} ~ n \geq 7)}\\
+\onslide<3->{          && \leq \;\; 6 \, n}
     \end{eqnarray*}
-    $\hspace{1.5em} \Rightarrow n_0 = 7, \, C = 6$ \qedhere
+\onslide<4->{    $\hspace{1.5em} \Rightarrow n_0 = 7, \, C = 6$ \qedhere}
   \end{proof}
 \end{frame}
 
@@ -174,11 +226,10 @@
 \begin{frame}{$\mathcal{O}$-Notation}{Proof}
   \begin{proof}[Alternate proof:]
     \begin{eqnarray*}
-      &5 \, n + 7 &\leq \;\; 5 \, n + 7 \, n \hspace{1em}
-      (\text{for} ~ n \geq 1)\\
-      && \leq \;\; 12 \, n
+\onslide<2->{       &5 \, n + 7 &\leq \;\; 5 \, n + 7 \, n \hspace{1em} (\text{for} ~ n \geq 1)}\\
+\onslide<3->{       && \leq \;\; 12 \, n }
     \end{eqnarray*}
-    $\hspace{1.5em} \Rightarrow n_0 = 1, \, C = 12$ \qedhere
+    \onslide<4->{$\hspace{1.5em} \Rightarrow n_0 = 1, \, C = 12$ \qedhere}
   \end{proof}
 \end{frame}
 
@@ -200,10 +251,18 @@
      7 \, n \, \log n - 20 \in & {}\\
      5 \in & {}\\
      2 \, n^2 + 7 \, n \, \log n + n^3 \in & {}\\
-     2 \sqrt{x} + 3 \ln x \in & \mathcal{O} (??)
   \end{align*}
 \end{frame}
 
+\begin{frame}{Harder Example}
+  \begin{itemize}
+  \item polynomes are simple
+  \item more problematic: combination of complex functions
+    \begin{displaymath}
+           2 \sqrt{x} + 3 \ln x \in \mathcal{O} (??)
+    \end{displaymath}
+  \end{itemize}
+\end{frame}
 %-------------------------------------------------------------------------------
 
 \section{\texorpdfstring{$\Omega$}{Omega}-Notation}
@@ -226,9 +285,20 @@
     \begin{math}
       \Omega(g) = \lbrace f: \mathbb{N} \to \mathbb{R} ~ | ~
         \exists n_0 \in \mathbb{N}, \, \forall n > n_0, \, \exists C > 0: \,
-        f(n) \geq C \cdot g(n)\rbrace
+        f(n) \tikz[baseline] {\node (geq) [anchor=base] {$\geq$};} C \cdot g(n)\rbrace
     \end{math}
  	\end{block}
+        \begin{center}
+          \tikz[baseline] {\node (geqtext) [anchor=base] {
+{\footnotesize\onslide<1->{\begin{tabular}[c]{@{}c@{}}
+      ``in $O(n)$\\
+      we had $\leq$''
+    \end{tabular}}
+}};}
+ \end{center}
+\begin{tikzpicture}[>=stealth,overlay,thick]
+  \path[->,color=red] (geqtext) edge [bend right]  (geq);
+\end{tikzpicture}
 \end{frame}
 
 %-------------------------------------------------------------------------------
@@ -315,6 +385,14 @@
   \end{center}
 \end{frame}
 
+\begin{frame}{$\Theta$-Notation}{Graphs}
+     \begin{center}
+       \includegraphics[width=0.8\textwidth]{Images/runtime-theta.pdf}
+  \end{center}
+  \begin{itemize}
+  \item $f$ and $g$ have the same ``growth''
+  \end{itemize}
+\end{frame}
 %-------------------------------------------------------------------------------
 
 \section{Runtime}
@@ -378,6 +456,19 @@
 
 \subsection{Limit / Convergence}
 
+\begin{frame}
+  \begin{itemize}
+  \item so far: 
+    \begin{itemize}
+    \item membership in $O(\ldots)$ proofed \textbf{manually}
+      \begin{center}
+        explicit calculation of $n_0$ and $C$
+      \end{center}
+    \item \textbf{however:} both reminds of \textbf{limits} in calculus
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
 \begin{frame}{$\mathcal{O}$-Notation}{Limit / Convergence}
   \textbf{Definition of \enquote{Limit}}
   \begin{itemize}
@@ -390,7 +481,7 @@
       sequence\\
       $\Rightarrow$ $\lim\limits_{n \rightarrow \infty}$ $f_n$ = $L$
   \end{itemize}
-  \begin{block}{Convergence}
+  \begin{block}<2->{Convergence}
     \begin{math}
       \forall \epsilon > 0 \; \exists n_0 \in \mathbb{N} \;\;
       \forall n \geq n_0 \! : \; \Vert f_n - L \Vert \leq \epsilon
@@ -401,27 +492,46 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{$\mathcal{O}$-Notation}{Limit / Convergence}
-  \begin{proof}[Proof for $f(n) = 2 + \frac{1}{n}$:]
-    $f\!: \mathbb{N} \to \mathbb{R}, \; n \mapsto 2 + \frac{1}{n}$
-    \begin{eqnarray*}
-      \lim_{n \to \infty} f(n)
+  \begin{itemize}
+  \item Example for a limit proof
+  \item function $f(n) = 2 + \frac{1}{n}$ with limes $2$
+  \item ``engineering'' solution: use $n=\infty{}$
+    \begin{displaymath}
+      \frac{1}{\infty}=0 \Rightarrow       \lim_{n \to \infty} f(n)
         = \lim_{n \to \infty} 2 + \dfrac{1}{n}
         = 2
-      & \Rightarrow \left\Vert 2 + \dfrac{1}{n} - 2 \right\Vert \leq \epsilon\\
-      \Rightarrow n_0 = \left\lceil \dfrac{1}{\epsilon} \right\rceil
-      \; \Rightarrow \; n \geq n_0
-    \end{eqnarray*}
+    \end{displaymath}
+  \end{itemize}
+\end{frame}
+\begin{frame}{$\mathcal{O}$-Notation}{Limit / Convergence}
+  \begin{itemize}
+  \item Now a more formal proof for $\displaystyle\lim_{n \to \infty} 2 +
+    \dfrac{1}{n}  = 2$
+  \item we need to show: for all given $\epsilon$ there is an $n_0$ such
+    that for all $n \geq n_0$
+    \begin{displaymath}
+      \left| 2 + \dfrac{1}{n} - 2 \right| =  \left| \dfrac{1}{n}  \right| \leq \epsilon
+    \end{displaymath}
+  \item<2-> e.g.: for $\epsilon=0.01$ we get $\frac{1}{n} \leq \epsilon$
+    for $n\geq 100$
+  \item<3-> in general
+    \begin{displaymath}
+      n_0 = \left\lceil \dfrac{1}{\epsilon} \right\rceil
+    \end{displaymath}
+  \item<4-> then we get:
     \begin{eqnarray*}
-      \left\lceil
+      \left|
         \frac{1}{n} \vphantom{\dfrac{1}{\frac{1}{\epsilon}}}
-      \right\rceil
+      \right|
         = \dfrac{1}{n}
       \; \leq \;
-      \dfrac{1}{n_0} = \left\lceil \dfrac{1}{\frac{1}{\epsilon}} \right\rceil
+      \dfrac{1}{n_0} =  \dfrac{1}{\left\lceil\frac{1}{\epsilon}
+        \right\rceil}
+\leq   \dfrac{1}{\frac{1}{\epsilon}}
         = \epsilon
-      \qedhere
+      \qed
     \end{eqnarray*}
-  \end{proof}
+  \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------------------------------
@@ -491,3 +601,12 @@
     \end{center}
   \end{proof}
 \end{frame}
+
+%%% ==========================================
+%%% This should be at the END of the file !!!!!!
+%%%
+%%% Local Variables: 
+%%% mode: latex 
+%%% TeX-master: "~/TeX/TeXinput/Scripts/Algo-Data-EMS/Rolf-2016/AlgoDat/Lecture-3/Lecture.tex" 
+%%% End: 
+%%% ==========================================
