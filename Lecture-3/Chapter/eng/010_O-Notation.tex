@@ -14,15 +14,20 @@
          Runtime of \textit{HeapSort} nearly linear with $n \, \log n$
     \end{itemize}
     \item
+      The role of constants (e.g. $1ns$)
+    \item
       Describe the growth of the function
     \begin{itemize}
       \item
-        We use
-        {\color{Mittel-Blau}$\mathcal{O}(n)$},
-        {\color{Mittel-Blau}$\Omega (n)$},
-        {\color{Mittel-Blau}$\Theta (n)$}
-        (Big O / Omega / Theta of $n$)\\
-        (Landau-Symbols \cite{wikipedia_big_o_notation})
+        By the means of Landau-Symbols \cite{wikipedia_big_o_notation}):
+            \begin{itemize}
+                \item
+                    {\color{Mittel-Blau}$\mathcal{O}(n)$} (Big O of $n$),
+                \item
+                    {\color{Mittel-Blau}$\Omega (n)$} (Omega of $n$),
+                \item
+                    {\color{Mittel-Blau}$\Theta (n)$} (Theta of $n$)
+            \end{itemize}
     \end{itemize}
   \end{itemize}
 \end{frame}
@@ -33,7 +38,7 @@
   \textbf{Big $\mathcal{O}$-Notation:}
   \begin{itemize}
     \item
-      We look at the function:
+     Consider the function:
       $f\!: \mathbb{N} \to \mathbb{R}, \; n \mapsto f(n)$
       \begin{itemize}
         \item
@@ -62,16 +67,38 @@
   \textbf{Big $\mathcal{O}$-Notation:}
   \begin{itemize}
     \item
+      Given two functions $f$ and $g$: \\
       $f,g\!: \mathbb{N} \to \mathbb{R}$
     \item
-      \textbf{Intuitive:}\\
-      $f$ is $\mathcal{O}(g)$ if $f$ relative to $g$ does not grow faster than
-      $g$\\
-      {\color{gray}We compare the relative growth rate}
-    \item 
-      \textbf{Informal:}\\
-      $f \in \mathcal O(g)$: From a value $n_0$ for all $n \geq n_0$
-      yields $f(n) \leq C \cdot g(n), ~ C \in \mathbb{R}$
+      \textbf{Intuitive:} $f$ is Big-O from $g$ ($f$ is $\mathcal{O}(g)$)\\
+         \begin{itemize}
+            \item
+            ... if $f$ relative to $g$ does not grow faster than $g$
+            \item
+                the growth rate matters, not the absolute values
+        \end{itemize}
+  \end{itemize}
+\end{frame}
+
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{$\mathcal{O}$-Notation}{Definition}
+  \textbf{Big $\mathcal{O}$-Notation:}
+  \begin{itemize}
+    \item
+      \textbf{Informal:} $f = \mathcal O(g)$\\
+      
+        \begin{itemize}
+            \item
+               $=$ corresponds to $is$ not $is equal$
+            \item
+               ... if for some value $n_0$ for all $n \geq n_0$
+            \item
+               $f(n) \leq C \cdot g(n)$ for a constant C
+            \item 
+                ($f = \mathcal O(g)$: From a value $n_0$ for all $n \geq n_0 \rightarrow f(n) \leq C \cdot g(n)$)
+        \end{itemize}
   \end{itemize}
   \begin{block}{\textbf{Formal:} $f \in \mathcal O(g)$}
     \begin{math}
@@ -116,7 +143,7 @@
       $\Rightarrow f \in \mathcal{O}(g)$
      \item
       \textbf{Intuitive:}\\
-      $f(n) = 5 \, n + 7$ $\rightarrow$ linear
+      $f(n) = 5 \, n + 7$ $\rightarrow$ linear growth
   \end{itemize}
   \begin{alertblock}{Attention}
     $f(n) \leq g(n)$ is not correct, better is
@@ -161,19 +188,19 @@
   \textbf{Big O-Notation:}
   \begin{itemize}
     \item
-      We are only interested in the terms which are growing the fastest,
+      We are only interested in the term with the Highest-order, the fasted growing Summand,
       the others will be ignored
     \item
       $f(n)$ is limited {\color{Mittel-Blau}from above} by $c \cdot g(n)$
   \end{itemize}
   \textbf{Examples:}
   \begin{align*}
-     2 \, n^2 + 7 \, n - 20 \in & \,\mathcal{O}(n^2)\\
+     2 \, n^2 + 7 \, n - 20 \in & \,\mathcal{O}(n^2) \\
      2 \, n^2 + 7 \, n \, \log n - 20 \in & {}\\
      7 \, n \, \log n - 20 \in & {}\\
      5 \in & {}\\
      2 \, n^2 + 7 \, n \, \log n + n^3 \in & {}\\
-     2 \sqrt{x} + 3 \ln x \in & \mathcal{O}(?)
+     2 \sqrt{x} + 3 \ln x \in & \mathcal{O} (??)
   \end{align*}
 \end{frame}
 
