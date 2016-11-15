@@ -22,19 +22,19 @@
       Transitivity:
       \begin{eqnarray*}
         f \in \Theta(g) \; \wedge \; g \in \Theta(h)
-        & \rightarrow & f \in \Theta(h)\\
+       \onslide<2->{ & \rightarrow & f \in \Theta(h)}\\
         f \in \mathcal{O}(g) \; \wedge \; g \in \mathcal{O}(h)
-        & \rightarrow & f \in \mathcal{O}(h)\\
+        \onslide<3->{ & \rightarrow & f \in \mathcal{O}(h)}\\
         f \in \Omega(g) \; \wedge  \; g \in \Omega(h)
-        & \rightarrow & f \in \Omega(h)
+ \onslide<4->{        & \rightarrow & f \in \Omega(h)}
       \end{eqnarray*}
-    \item
+    \item<5->
       Symmetry:
       \begin{eqnarray*}
         f \in \Theta(g) & \leftrightarrow & g \in \Theta(f)\\
-        f \in \mathcal{O}(g)  & \leftrightarrow & g \in \Omega(f)
+\onslide<6->{        f \in \mathcal{O}(g)} \onslide<7->{ & \leftrightarrow & g \in \Omega(f)}
       \end{eqnarray*}
-    \item
+    \item<8->
       Reflexivity:
       \begin{eqnarray*}
         f \in \Theta(f) & f \in \Omega(f) & f \in \mathcal{O}(f)
@@ -365,3 +365,12 @@
     A ist faster than B if $n_0$ has more than 1 Trillion elements.
   \end{block}
 \end{frame}
+
+%%% ==========================================
+%%% This should be at the END of the file !!!!!!
+%%%
+%%% Local Variables: 
+%%% mode: latex 
+%%% TeX-master: "~/TeX/TeXinput/Scripts/Algo-Data-EMS/Rolf-2016/AlgoDat/Lecture-3/Lecture.tex" 
+%%% End: 
+%%% ==========================================
