@@ -366,6 +366,38 @@
   \end{block}
 \end{frame}
 
+\begin{frame}{Runtime Examples}{Continued}
+  \begin{itemize}
+  \item logarithm of different bases differ only by a constant
+    \begin{displaymath}
+          \log_a n = \dfrac{\log_b n}{\log_b a} = \dfrac{1}{\log_b a}\cdot \log_b n 
+    \end{displaymath}
+  \item Hence: $\log_a n \in \Theta(\log_b n)$
+  \item For exponent this does not hold
+    \begin{displaymath}
+     3^n \not\in\Theta(2^n)
+    \end{displaymath}
+  \item Proof: Use equation~$(\ref{eq:big-O})$ from
+    Slide~\ref{slide:fraction}
+    \begin{displaymath}
+    3^n \in \mathcal{O}(2^n) & \Leftrightarrow & \lim_{n \to \infty} \dfrac{3^n}{2^n} < \infty
+    \end{displaymath}
+  \item however:
+\begin{displaymath}
+    \lim_{n \to \infty} \dfrac{3^n}{2^n} =  \lim_{n \to \infty}
+    \left(\dfrac{3}{2}\right)^n = \infty
+    \end{displaymath}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Additional Figure}
+  \begin{itemize}
+  \item Figure for Slide~\ref{slide:limit}
+    \begin{center}
+\includegraphics[width=0.9\textwidth]{Images/limits-epsilon.pdf}
+    \end{center}
+  \end{itemize}
+\end{frame}
 %%% ==========================================
 %%% This should be at the END of the file !!!!!!
 %%%

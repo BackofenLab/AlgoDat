@@ -128,24 +128,24 @@
       \mathcal O(g) = \lbrace \tikz[baseline] {\node (fun) [anchor=base] {f};}: \mathbb{N} \to \mathbb{R} ~ \tikz[baseline] {\node (for) [anchor=base] {|};}\tikz[baseline] {\node (exone) [anchor=base] {$\exists$};}\!\!n_0 \in \mathbb{N},\tikz[baseline] {\node (extwo) [anchor=base] {$\exists$};}\!\!C > 0,\tikz[baseline] {\node (forall) [anchor=base] {$\forall$};}\!\!n > n_0\!\!\tikz[baseline] {\node (such) [anchor=base] {:};}        f(n) \leq C \cdot g(n)\rbrace
     \end{math}
   \end{block}
-\tikz[baseline] {\node (funtext) [anchor=base] {
+\tikz[baseline] {\node (funtext) [anchor=north] {
 {\footnotesize\onslide<2->{\begin{tabular}[c]{@{}c@{}}
       ``set of\\
       all functions''
     \end{tabular}}
-}};}\quad{} \tikz[baseline] {\node (fortext) [anchor=base] {
+}};}\quad{} \tikz[baseline] {\node (fortext) [anchor=north] {
 {\footnotesize\onslide<3->{\begin{tabular}[c]{@{}c@{}}
     ``for which''
     \end{tabular}}
-}};}\quad{} \tikz[baseline] {\node (extext) [anchor=base] {
+}};}\quad{} \tikz[baseline] {\node (extext) [anchor=north] {
 {\footnotesize\onslide<4->{\begin{tabular}[c]{@{}c@{}}
     ``it exists''
     \end{tabular}}
-}};}\quad{} \tikz[baseline] {\node (foralltext) [anchor=base] {
+}};}\quad{} \tikz[baseline] {\node (foralltext) [anchor=north] {
 {\footnotesize\onslide<5->{\begin{tabular}[c]{@{}c@{}}
     ``for all''
     \end{tabular}}
-}};}\quad{} \tikz[baseline] {\node (suchtext) [anchor=base] {
+}};}\quad{} \tikz[baseline] {\node (suchtext) [anchor=north] {
 {\footnotesize\onslide<6->{\begin{tabular}[c]{@{}c@{}}
     ``such that''
     \end{tabular}}
@@ -206,6 +206,7 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{$\mathcal{O}$-Notation}{Proof}
+  \label{slide:proofone}
   \begin{proof}[
     We have to proof:
     \begin{math}
@@ -215,7 +216,7 @@
   ]
     \begin{eqnarray*}
 \onslide<2->{      &5 \, n + 7 &\leq \;\; 5 \, n + n \hspace{1em} (\text{for} ~ n \geq 7)}\\
-\onslide<3->{          && \leq \;\; 6 \, n}
+\onslide<3->{          && = \;\; 6 \, n}
     \end{eqnarray*}
 \onslide<4->{    $\hspace{1.5em} \Rightarrow n_0 = 7, \, C = 6$ \qedhere}
   \end{proof}
@@ -227,7 +228,7 @@
   \begin{proof}[Alternate proof:]
     \begin{eqnarray*}
 \onslide<2->{       &5 \, n + 7 &\leq \;\; 5 \, n + 7 \, n \hspace{1em} (\text{for} ~ n \geq 1)}\\
-\onslide<3->{       && \leq \;\; 12 \, n }
+\onslide<3->{       && = \;\; 12 \, n }
     \end{eqnarray*}
     \onslide<4->{$\hspace{1.5em} \Rightarrow n_0 = 1, \, C = 12$ \qedhere}
   \end{proof}
@@ -284,7 +285,7 @@
  	\begin{block}{\textbf{Formal:} $f \in \Omega(g)$}
     \begin{math}
       \Omega(g) = \lbrace f: \mathbb{N} \to \mathbb{R} ~ | ~
-        \exists n_0 \in \mathbb{N}, \, \forall n > n_0, \, \exists C > 0: \,
+        \exists n_0 \in \mathbb{N}, \, \exists C > 0, \,  \forall n > n_0:\,
         f(n) \tikz[baseline] {\node (geq) [anchor=base] {$\geq$};} C \cdot g(n)\rbrace
     \end{math}
  	\end{block}
@@ -304,6 +305,7 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{$\Omega$-Notation}{Proof}
+  \label{slide:prooftwo}
   \begin{proof}[Proof of $f(n) = 5n + 7 \in \Omega(n)$:]
     \begin{eqnarray*}
       &\underbrace{5 \, n + 7}_{f(n)} &\geq \;\; \underbrace{1 \cdot n}_{g(n)}
@@ -381,13 +383,13 @@
     f(n) \in \Omega(n)$\\
   \hspace*{3.0em}$\Rightarrow f(n) \in \Theta(n)$\\[0.5em]
   \begin{center}
-   \textit{Proof for $\mathcal{O}(g)$ and $\Omega(g)$ look at slides 14 and 19}
+   \textit{Proof for $\mathcal{O}(g)$ and $\Omega(g)$ look at slides~\ref{slide:proofone} and~\ref{slide:prooftwo}}
   \end{center}
 \end{frame}
 
 \begin{frame}{$\Theta$-Notation}{Graphs}
      \begin{center}
-       \includegraphics[width=0.8\textwidth]{Images/runtime-theta.pdf}
+       \includegraphics[width=0.8\textwidth]{Images/lower-upper-bound.pdf}
   \end{center}
   \begin{itemize}
   \item $f$ and $g$ have the same ``growth''
@@ -430,6 +432,7 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Runtime}{Common Runtimes}
+\label{slide:theta-examples}
   \begin{table}[!h]
     \begin{center}
       \caption{Common runtime types}
@@ -470,12 +473,13 @@
 \end{frame}
 
 \begin{frame}{$\mathcal{O}$-Notation}{Limit / Convergence}
+\label{slide:limit}
   \textbf{Definition of \enquote{Limit}}
   \begin{itemize}
     \item
       The limit of an indefinite sequence $f_1, f_2, f_3$... is $L$\\
       if for all $\epsilon > 0$ one $n_0 \in \mathbb{N}$ exists, such that for all \\
-      $n \geq n_0$ the following holds true: $\Vert f_n - L \Vert \leq \epsilon$
+      $n \geq n_0$ the following holds true: $\left| f_n - L \right| \leq \epsilon$
     \item
       A function $f\!: \mathbb{N} \rightarrow \mathbb{R}$ can be written as a
       sequence\\
@@ -484,7 +488,7 @@
   \begin{block}<2->{Convergence}
     \begin{math}
       \forall \epsilon > 0 \; \exists n_0 \in \mathbb{N} \;\;
-      \forall n \geq n_0 \! : \; \Vert f_n - L \Vert \leq \epsilon
+      \forall n \geq n_0 \! : \; \left| f_n - L \right| \leq \epsilon
     \end{math}
   \end{block}
 \end{frame}
@@ -537,11 +541,12 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{$\mathcal{O}$-Notation}{Limit / Convergence}
+\label{slide:fraction}
   Let $f,g \! : \; \mathbb{N} \to \mathbb{R}$ with an existing limit
   \[\lim_{n \to \infty} \dfrac{f(n)}{g(n)} = L\]
-  So we can say:
+  Hence the following holds
   \begin{align}
-    & f \in \mathcal{O}(g) & \Leftrightarrow
+\label{eq:big-O}    & f \in \mathcal{O}(g) & \Leftrightarrow
     && \lim_{n \to \infty} \dfrac{f(n)}{g(n)} < \infty\\
     & f \in \Omega(g) & \Leftrightarrow
     && \lim_{n \to \infty} \dfrac{f(n)}{g(n)} > 0\\
