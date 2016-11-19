@@ -59,7 +59,8 @@
 {
   \ifthenelse{\boolean{sectiontoc}}{
     \begin{frame}<beamer>{\LectureToC}
-      \tableofcontents[currentsection]
+      \tableofcontents[currentsection,
+        subsubsectionstyle=show/show/show/shaded]
     \end{frame}
   }
 }
@@ -68,7 +69,9 @@
 {
   \ifthenelse{\boolean{subsectiontoc}}{
     \begin{frame}<beamer>{\LectureToC}
-      \tableofcontents[currentsection,currentsubsection]
+      \tableofcontents[currentsection,
+        currentsubsection,
+        subsubsectionstyle=show/show/shaded/shaded]
     \end{frame}
   }
 }

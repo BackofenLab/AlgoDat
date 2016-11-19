@@ -420,10 +420,10 @@
 
 %-------------------------------------------------------------------------------
 
-\subsection{Mastertheorem}
+\subsection{Master theorem}
 
-\begin{frame}{Recursion Equations}{Mastertheorem}
-  \textbf{Mastertheorem:}
+\begin{frame}{Recursion Equations}{Master theorem}
+  \textbf{Master theorem:}
   \begin{itemize}
     \item
       Approach to solve for a recursion equation of the form:
@@ -452,8 +452,10 @@
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Recursion Equations}{Mastertheorem (Simple Form)}
-  \textbf{Mastertheorem:}
+\subsubsection{Master theorem (Simple Form)}
+
+\begin{frame}{Recursion Equations}{Master theorem (Simple Form)}
+  \textbf{Master theorem:}
   \begin{itemize}
     \item
       We have seen that $\ldots$
@@ -479,7 +481,7 @@
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Recursion Equations}{Mastertheorem (Simple Form)}
+\begin{frame}{Recursion Equations}{Master theorem (Simple Form)}
   \textbf{Simple form:}
   \begin{displaymath}
     \mathcolor{Mittel-Blau}{
@@ -498,7 +500,7 @@
       \hspace{1.5em}a \geq 1, b > 1, c > 0
     }
   \end{displaymath}
-   \begin{itemize}
+  \begin{itemize}
      \item
        This yields a runtime of:
   \end{itemize}
@@ -518,7 +520,7 @@
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Recursion Equations}{Mastertheorem (Simple Form)}
+\begin{frame}{Recursion Equations}{Master theorem (Simple Form)}
   \begin{figure}[!h]
     \begin{adjustbox}{width=\linewidth}
       \def\AlgoREDivide{3}% 3
@@ -527,20 +529,22 @@
       \input{Images/RecursionEquations/ProblemSizeTree.tikz}
     \end{adjustbox}
     \caption{Simple recursion equation with {\color{Mittel-Blau}$a = 3, b = 2$}}
-    \label{fig:recursion_equations:mastertheorem_tree_3_2}
+    \label{fig:recursion_equations:master_theorem_tree_3_2}
   \end{figure}
-  \textbf{Case 1:}
+  \textbf{Case 1:} {\color{Mittel-Blau}$a > b$}
   \begin{itemize}
     \item
       Three partial problems with $\frac{1}{2}$ the size
     \item
       Solving the partial problems dominates (last layer, leaves)
+    \item
+      Runtime of {\color{Mittel-Blau}$\Theta(n^{\log_b a})$}
   \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Recursion Equations}{Mastertheorem (Simple Form)}
+\begin{frame}{Recursion Equations}{Master theorem (Simple Form)}
   \begin{figure}[!h]
     \begin{adjustbox}{width=\linewidth}
       \def\AlgoREDivide{2}% 2
@@ -549,20 +553,22 @@
       \input{Images/RecursionEquations/ProblemSizeTree.tikz}
     \end{adjustbox}
     \caption{Simple recursion equation with {\color{Mittel-Blau}$a = 2, b = 2$}}
-    \label{fig:recursion_equations:mastertheorem_tree_2_2}
+    \label{fig:recursion_equations:master_theorem_tree_2_2}
   \end{figure}
-  \textbf{Case 2:}
+  \textbf{Case 2:} {\color{Mittel-Blau}$a = b$}
   \begin{itemize}
     \item
       Two partial problems with $\frac{1}{2}$ the size
     \item
-      Each layer has equal costs
+      Each layer has equal costs, $\log n$ layers
+    \item
+      Runtime of {\color{Mittel-Blau}$\Theta(n \, \log n)$}
   \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
-%\begin{frame}{Recursion Equations}{Mastertheorem (Simple Form)}
+%\begin{frame}{Recursion Equations}{Master theorem (Simple Form)}
 %  \begin{figure}[!h]
 %    \begin{adjustbox}{width=\linewidth}
 %      \def\AlgoREDivide{2}% 2
@@ -572,20 +578,22 @@
 %    \end{adjustbox}
 %    \caption{Simple recursion equation with
 %      {\color{Mittel-Blau}$a = 2, b = 4$}}
-%    \label{fig:recursion_equations:mastertheorem_tree_2_4}
+%    \label{fig:recursion_equations:master_theorem_tree_2_4}
 %  \end{figure}
-%  \textbf{Case 3:}
+%  \textbf{Case 3:} {\color{Mittel-Blau}$a < b$}
 %  \begin{itemize}
 %    \item
 %      Two partial problems with $\frac{1}{4}$ the size
 %    \item
 %      Connecting all partial solutions dominates (first layer, root)
+%    \item
+%      Runtime of {\color{Mittel-Blau}$\Theta(n)$}
 %  \end{itemize}
 %\end{frame}
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Recursion Equations}{Mastertheorem (Simple Form)}
+\begin{frame}{Recursion Equations}{Master theorem (Simple Form)}
   \begin{figure}[!h]
     \begin{adjustbox}{width=\linewidth}
       \def\AlgoREDivide{2}% 2
@@ -594,117 +602,296 @@
       \input{Images/RecursionEquations/ProblemSizeTree.tikz}
     \end{adjustbox}
     \caption{Simple recursion equation with {\color{Mittel-Blau}$a = 2, b = 3$}}
-    \label{fig:recursion_equations:mastertheorem_tree_2_3}
+    \label{fig:recursion_equations:master_theorem_tree_2_3}
   \end{figure}
-  \textbf{Case 3:}
+  \textbf{Case 3:} {\color{Mittel-Blau}$a < b$}
   \begin{itemize}
     \item
       Two partial problems with $\frac{1}{3}$ the size
     \item
       Connecting all partial solutions dominates (first layer, root)
+    \item
+      Runtime of {\color{Mittel-Blau}$\Theta(n)$}
   \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Recursion Equation}{Illustration lmax}
-    
-    TODO: Table -> look at slide 21 \vspace{2em}
-    
+\begin{frame}{Recursion Equations}{Master theorem (Simple Form)}
+  \textbf{A simple recursion equation like $\ldots$}
+  \begin{displaymath}
+    \mathcolor{Mittel-Blau}{%
+      T(n) = a \cdot T\left(\frac{n}{b}\right) + c \cdot n,%
+      \hspace{1.5em}a \geq 1, b > 1, c > 0%
+    }%
+  \end{displaymath}
+  \vspace{-1.0em}
   \begin{itemize}
     \item
-      lmax and sum will be initialized with X(u)
+      $\ldots$ yields to a runtime of:
+  \end{itemize}
+  \begin{displaymath}
+    T(n) = \begin{cases}
+      \Theta(n^{\log_b a}) & \text{if } a > b\\
+      \Theta(n \, \log n) & \text{if } a = b\\
+      \Theta(n) & \text{if } a < b
+    \end{cases}
+  \end{displaymath}
+  \begin{itemize}
     \item
-      we go through X from u to o
-    \item
-      Sum refreshes
-    \item
-      lmax refreshes , if sum > lmax
+      Proof with \textit{geometric series}:
+      Number of operations per layer grows / shrinks by constant factor
+      $\tfrac{a}{b}$
   \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Recursion Equation}{Illustraiting maxSubArray}
-  
-  TODO: Graphics -> look at slide 21 \vspace{2em}
-  
+\subsubsection{Master theorem (General Form)}
+
+\begin{frame}<beamer>{\LectureToC}
+  \tableofcontents[currentsection,
+    currentsubsection,
+    subsubsectionstyle=show/shaded/shaded/shaded]
 \end{frame}
 
-%-------------------------------------------------------------------------------
-
-\begin{frame}{Recursion Equation}{Runtime}
-  
-  \textbf{maxSubArray(X, u, o)} \vspace{2em}
-  
-  if (u = o) then return X(u);\hspace{4em} $\mathcal{O}(1)$\\\vspace{0.5em}
-  m = $\dfrac{u+o}{2}$;\hspace{10.7em} $\mathcal{O}(1)$\\\vspace{0.5em}
-  A = maxSubArray (X, u, m);\hspace{3.1em} T($\dfrac{n}{2})$\\\vspace{0.5em}
-  B = maxSubArray (X, m+1, o);\hspace{1.9em} T($\dfrac{n}{2})$\\\vspace{0.5em}
-  $C_1$ = rmax (X, u, m);\hspace{6.2em} $\mathcal{O}(n)$\\\vspace{0.5em}
-  $C_2$ = lmax (X, m+1, o);\hspace{5.2em} $\mathcal{O}(n)$\\\vspace{0.5em}
-  return max (A, B, $C_1$ + $C_2$);\hspace{3.3em} $\mathcal{O}(1)$
-\end{frame}
-
-%-------------------------------------------------------------------------------
-
-\begin{frame}{Recursion Equation}{Number of steps T(n)}
-  
-  TODO: Grapic -> look at slide 24 \vspace{2em}
-  
-  so it existing constants a and b with\\\vspace{2em}
-  
-  TODO: Grapic -> look at slide 24 \vspace{2em}
-  
-  We define c:= max(a,b), then\\\vspace{2em}
-  
-  TODO: Grapic -> look at slide 24
-  
-\end{frame}
-
-%-------------------------------------------------------------------------------
-
-\begin{frame}{Recursion Equation}{Illustration of T(n)}
-
-TODO: Graphics -> look at slide 25 \vspace{2em}
-
-\end{frame}
-
-%-------------------------------------------------------------------------------
-
-\begin{frame}{Recursion Equation}{Illustration of T(n)}
-
-TODO: Graphics -> look at slide 26 \vspace{2em}
-
-\end{frame}
-
-%-------------------------------------------------------------------------------
-
-\begin{frame}{Recursion Equation}{Illustration of T(n)}
+\begin{frame}{Recursion Equations}{Master theorem (General Form)}
+  \textbf{Master theorem (general form):}
+  \begin{displaymath}
+  \mathcolor{Mittel-Blau}{%
+    T(n) = a \cdot T\left(\frac{n}{b}\right) + f(n),%
+    \hspace{1.5em}a \geq 1, b > 1%
+  }%
+  \end{displaymath}
+  \vspace{-1.0em}
   \begin{itemize}
     \item
-      Upper level i = 0, lower level at 2i = n $\rightarrow$ i = $\log_2 
-      n$, so 
-      overall $\log_2 n + 1$ levels
+      \textbf{Case 1:}
+      {\color{Mittel-Gruen}$T(n) \in \Theta(n^{\log_b a})$}
+      \hfill if {\color{Mittel-Blau}
+        $f(n) \in \mathcal{O}(n^{\log_b a-\varepsilon}), ~ \varepsilon > 0$
+      }\\
+      {\color{gray}Solving the partial problems dominates\\
+        (last layer, leaves)}
+      \vspace{1.5em}
     \item
-      In each level has cost of $c \cdot n$ (the costs for merging of 
-      subproblems and the solving of trivial problems are here the same)
+      \textbf{Case 2:}
+      {\color{Mittel-Gruen}$T(n) \in \Theta(n^{\log_b a} \log n)$}
+      \hspace{1.5em} if {\color{Mittel-Blau}
+        $f(n) \in \Theta(n^{\log_b a})$
+      }\\
+      {\color{gray}Each layer has equal costs, $\log n$ layers}
   \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Recursion Equation}{Summaray Maximum subtotal}
+\begin{frame}{Recursion Equations}{Master theorem (General Form)}
+  \textbf{Master theorem (general form):}
+  \begin{displaymath}
+  \mathcolor{Mittel-Blau}{%
+    T(n) = a \cdot T\left(\frac{n}{b}\right) + f(n),%
+    \hspace{1.5em}a \geq 1, b > 1%
+  }%
+  \end{displaymath}
+  \vspace{-1.0em}
   \begin{itemize}
     \item
-      Direct solution is $\mathcal{O}(n^3)$
+      \textbf{Case 3:}
+      {\color{Mittel-Gruen}$T(n) \in \Theta(f(n))$}
+      \hfill if {\color{Mittel-Blau}
+        $f(n) \in \Omega(n^{\log_b a+\varepsilon}), ~ \varepsilon > 0$
+      }\\
+      {\color{gray}Connecting all partial solutions dominates\\
+        (first layer, root)}\\[1.0em]
+      {\color{Mittel-Blau}Regularity condition:}
+      \begin{align*}
+        a \cdot f\left(\frac{n}{b}\right) \leq c \cdot f(n), \hspace{1.5em} &
+        0 \leq c \leq 1,\\
+        {} & n > n_0
+      \end{align*}
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Recursion Equations}{Master theorem (General Form) - Case 1}
+  \textbf{Case 1:}
+  {\color{Mittel-Gruen}$T(n) \in \Theta(n^{\log_b a})$}
+  \hfill if {\color{Mittel-Blau}
+    $f(n) \in \mathcal{O}(n^{\log_b a-\varepsilon}), ~ \varepsilon > 0$
+   }\\
+   {\color{gray}Solving the partial problems dominates (last layer, leaves)}
+   \vspace{1.0em}
+   \begin{itemize}
+     \item
+       $T(n) = 8 \cdot T(\tfrac{n}{2}) + 1000 \cdot n^2$
+       \vspace{-0.5em}
+       \begin{displaymath}
+         a = 8, ~ b = 2, ~ f(n) = 1000 \cdot n^2, ~
+         \smash{\underbrace{
+           \log_b a = \log_2 8 = 3
+         }_{\text{$n^3$ leaves}}}
+       \end{displaymath}
+       {\color{Mittel-Blau}\begin{math}
+          f(n) \in \mathcal{O}(n^{3-\varepsilon})$
+          $\Rightarrow$
+          $T(n) \in \Theta(n^3)
+       \end{math}}
+      \vspace{1.5em}
     \item
-      A better solution with incremental refreshment of the subtotals was 
-      $\mathcal{O}(n^2)$
+      $T(n) = 9 \cdot T(\tfrac{n}{3}) + 17 \cdot n$
+      \vspace{-0.5em}
+      \begin{displaymath}
+        a = 9, ~ b = 3, ~ f(n) = 17 \cdot n, ~
+        \smash{\underbrace{
+          \log_b a = \log_3 9 = 2
+        }_{\text{$n^2$ leaves}}}
+      \end{displaymath}
+      {\color{Mittel-Blau}\begin{math}
+        f(n) \in \mathcal{O}(n^{2-\varepsilon})$
+        $\Rightarrow$
+        $T(n) \in \Theta(n^2)
+      \end{math}}
+   \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Recursion Equations}{Master theorem (General Form) - Case 2}
+  \textbf{Case 2:}
+  {\color{Mittel-Gruen}$T(n) \in \Theta(n^{\log_b a} \log n)$}
+  \hspace{1.5em} if {\color{Mittel-Blau}
+    $f(n) \in \Theta(n^{\log_b a})$
+  }\\
+  {\color{gray}Each layer has equal costs, $\log n$ layers}
+  \vspace{1.0em}
+  \begin{itemize}
     \item
-      Divide and concur approach results in $\mathcal{O}(n \cdot \log n)$
+      $T(n) = 2 \cdot T(\tfrac{n}{2}) + 10 \cdot n$
+      \vspace{-0.5em}
+      \begin{displaymath}
+        a = 2, ~ b = 2, ~ f(n) = 10 \cdot n, ~
+        \smash{\underbrace{
+          \log_b a = \log_2 2 = 1
+        }_{\text{$n^1$ leaves}}}
+      \end{displaymath}
+      {\color{Mittel-Blau}\begin{math}
+        f(n) \in \Theta(n^{\log_2 2})$
+        $\Rightarrow$
+        $T(n) \in \Theta(n \, \log n)
+      \end{math}}
+      \vspace{1.0em}
     \item
-      There is an approach in $\mathcal{O}(n)$, if you assume that all 
-      subtotals are positive
+      $T(n) = T(\tfrac{2\,n}{3}) + 1$
+      \vspace{-0.5em}
+      \begin{displaymath}
+        a = 1, ~ b = \tfrac{2}{3}, ~ f(n) = 1, ~
+        \smash{\underbrace{
+          \log_b a = \log_{\nicefrac{3}{2}} 1 = 0
+        }_{\text{$n^0$ leaves $=$ 1 leaf}}}
+      \end{displaymath}
+      \hfill\\[1.0em]
+      {\color{Mittel-Blau}\begin{math}
+        f(n) \in \Theta(n^{\log_{\nicefrac{3}{2}} 1})$
+        $\Rightarrow$
+        $T(n) \in \Theta(n^0 \log n) = \Theta(\log n)
+      \end{math}}
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Recursion Equations}{Master theorem (General Form) - Case 3}
+  \textbf{Case 3:}
+  {\color{Mittel-Gruen}$T(n) \in \Theta(f(n))$}
+  \hfill if {\color{Mittel-Blau}
+    $f(n) \in \Omega(n^{\log_b a+\varepsilon}), ~ \varepsilon > 0$
+  }\\
+  {\color{gray}Connecting all partial solutions dominates (first layer, root)}
+  \vspace{1.0em}
+  \begin{itemize}
+    \item
+      $T(n) = 2 \cdot T(\tfrac{n}{2}) + n^2$
+      \vspace{-0.5em}
+      \begin{displaymath}
+        a = 2, ~ b = 2, ~ f(n) = n^2, ~
+        \smash{\underbrace{
+          \log_b a = \log_2 2 = 1
+        }_{\text{$n^1$ leaves}}}
+      \end{displaymath}
+      {\color{Mittel-Blau}$f(n) \in \Omega(n^{1+\varepsilon})$}\\[1.0em]
+      Check if {\color{Mittel-Blau}regularity condition} also holds:\\
+      \begin{displaymath}
+        2 \cdot \left(\frac{n}{2}\right)^2 \leq c \cdot n^2
+        \hspace{1.5em} \Rightarrow \frac{1}{2} \cdot n^2 \leq c \cdot n^2
+        \hspace{1.5em} \Rightarrow c \geq \frac{1}{2}
+      \end{displaymath}
+      {\color{Mittel-Blau}$\Rightarrow T(n) \in \Theta(n^2)$}
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Recursion Equations}{Master theorem (General Form)}
+  \textbf{Master theorem:}
+  \begin{itemize}
+    \item
+      Not always applicable:
+      {\color{Mittel-Blau}$T(n) = 2 \cdot T(\frac{n}{2}) + n \, \log n$}
+  \end{itemize}
+  \vspace{1.0em}
+  \begin{displaymath}
+    a = 2, ~ b = 2, ~ f(n) = n \, \log n, ~
+    \underbrace{\log_b a = \log_2 2 = 1}_{\text{$n^1$ leaves}}
+  \end{displaymath}
+  \begin{itemize}
+    \item
+      \textbf{Case 1:}
+      $f(n) \notin \mathcal{O}(n^{1-\varepsilon})$
+    \item
+      \textbf{Case 2:}
+      $f(n) \notin \Theta(n^1)$
+    \item
+      \textbf{Case 3:}
+      $f(n) \notin \Omega(n^{1+\varepsilon})$
+  \end{itemize}
+  \begin{center}
+    {\color{Mittel-Blau}$n \, \log n$} is \textit{asymptotically} larger than
+    {\color{Mittel-Blau}$n$},\\ but not \textit{polynominal} larger
+  \end{center}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Recursion Equations}{Master theorem - Summary}
+  \textbf{Master theorem:}
+  \begin{displaymath}
+    \mathcolor{Mittel-Blau}{
+      T(n) = a \cdot T(\frac{n}{b}) + f(n)
+    }
+  \end{displaymath}
+  \vspace{-1.0em}
+  \begin{itemize}
+    \item
+      Three cases depending on the dominance of the terms
+    \item
+      \textbf{Case 1:}
+      Solving the partial problems is \textit{polynominal} bigger than merging
+      all solutions\\
+      {\color{Mittel-Blau}$T(n) \in \Theta(n^{\log_b a})$}, \hspace{3.5em}
+      {\color{gray}$T(n) \in \Theta(\text{number of leaves})$}
+      \vspace{0.5em}
+   \item
+     \textbf{Case 2:}
+     Each layer has equal costs\\
+     {\color{Mittel-Blau}$T(n) \in \Theta(n^{\log_b a} \log n)$}, \hspace{1.5em}
+     {\color{gray}$\log n$ layers}
+     \vspace{0.5em}
+   \item
+     \textbf{Case 3:}
+     Connecting all partial solutions is \textit{polynominal} bigger than
+     solving all partial porblems\\
+     {\color{Mittel-Blau}$T(n) \in \Theta(f(n))$}
   \end{itemize}
 \end{frame}
