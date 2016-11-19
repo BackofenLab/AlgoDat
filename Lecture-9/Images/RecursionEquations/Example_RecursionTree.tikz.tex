@@ -1,0 +1,110 @@
+\begin{tikzpicture}[
+  op/.style={
+    draw=black,
+    color=black,
+    fill=white,
+    font=\Large,
+    thick,
+    ellipse,
+    minimum size=3em
+  }, sum/.style={
+    font=\Large,
+    text=Mittel-Blau
+  }, connection/.style={
+    ultra thick,
+    color=Mittel-Gruen
+  }, arrow/.style={
+    ultra thick,
+    color=Mittel-Blau
+  }, arrow_alt/.style={
+    ultra thick,
+    color=Hell-Blau
+  }, label/.style={
+    font=\Large,
+    text=Mittel-Blau
+  }, label_alt/.style={
+    font=\Large,
+    text=Hell-Blau
+  }
+]%
+% Bounding boxes
+\only<1>{
+  \draw[white] (-10, -4) rectangle (10, 4);
+  \node[sum, anchor=north west] at (-9.5, 3.5) {%
+    $T\left(n\right) = 3 \cdot T\left(\frac{n}{4}\right) + c \cdot n^2$
+  };
+}
+\only<2>{
+  \draw[white] (-10, -5) rectangle (10, 3);
+  \node[sum, anchor=north west] at (-9.5, 2.5) {%
+    $T\left(n\right) = 3 \cdot T\left(\frac{n}{4}\right) + c \cdot n^2$
+  };
+}
+\only<3>{
+  \draw[white] (-10, -6) rectangle (10, 2);
+  \node[sum, anchor=north west] at (-9.5, 1.5) {%
+    $T\left(n\right) = 3 \cdot T\left(\frac{n}{4}\right) + c \cdot n^2$
+  };
+}
+
+% Main Problem with first-level subproblems
+\node[op] (root) at (0, 0) {%
+  \only<1>{$T(n)$}%
+  \only<2->{$c \cdot n^2$}%
+};
+
+\only<2->{
+  \node[op] (left) at (-6.75, -2) {%
+    \only<2>{$T\left(\frac{n}{4}\right)$}%
+    \only<3->{$c \cdot \left(\frac{n}{4}\right)^2$}%
+  };
+  \node[op] (center) at (0, -2) {%
+    \only<2>{$T\left(\frac{n}{4}\right)$}%
+    \only<3->{$c \cdot \left(\frac{n}{4}\right)^2$}%
+  };
+  \node[op] (right) at (6.75, -2) {%
+    \only<2>{$T\left(\frac{n}{4}\right)$}%
+    \only<3->{$c \cdot \left(\frac{n}{4}\right)^2$}%
+  };
+
+  \draw[-, connection] (root) -- (left);
+  \draw[-, connection] (root) -- (center);
+  \draw[-, connection] (root) -- (right);
+}
+\only<2>{
+  \node[sum] at (0, -3.5) {%
+    $T(n) = 3 \cdot T\left(\frac{n}{4}\right) + c \cdot n^2$%
+  };
+}
+
+\only<3->{
+  \node[op] (left_left) at (-9, -4) {$T\left(\frac{n}{4}\right)$};
+  \node[op] (left_center) at (-6.75, -4) {$T\left(\frac{n}{4}\right)$};
+  \node[op] (left_right) at (-4.5, -4) {$T\left(\frac{n}{4}\right)$};
+  \node[op] (center_left) at (-2.25, -4) {$T\left(\frac{n}{4}\right)$};
+  \node[op] (center_center) at (0, -4) {$T\left(\frac{n}{4}\right)$};
+  \node[op] (center_right) at (2.25, -4) {$T\left(\frac{n}{4}\right)$};
+  \node[op] (right_left) at (4.5, -4) {$T\left(\frac{n}{4}\right)$};
+  \node[op] (right_center) at (6.75, -4) {$T\left(\frac{n}{4}\right)$};
+  \node[op] (right_right) at (9, -4) {$T\left(\frac{n}{4}\right)$};
+
+  \draw[-, connection] (left) -- (left_left);
+  \draw[-, connection] (left) -- (left_center);
+  \draw[-, connection] (left) -- (left_right);
+  \draw[-, connection] (center) -- (center_left);
+  \draw[-, connection] (center) -- (center_center);
+  \draw[-, connection] (center) -- (center_right);
+  \draw[-, connection] (right) -- (right_left);
+  \draw[-, connection] (right) -- (right_center);
+  \draw[-, connection] (right) -- (right_right);
+
+  \only<3>{
+    \node[sum] at (0, -5.5) {%
+      \begin{math}%
+      T\left(n\right) = 12 \cdot T\left(\frac{n}{16}\right)
+        + 3 c \cdot \left(\frac{n}{4}\right)^2 + c \cdot n^2
+      \end{math}%
+    };
+  }
+}
+\end{tikzpicture}

@@ -1,3 +1,5 @@
+\usepackage{mathtools, amsmath}
+
 \usepackage[binary-units=true]{siunitx}
 
 \usepackage{adjustbox}
@@ -13,3 +15,8 @@ backgrounds, calc}
 
 \usepackage{listings} % Code
 \input{Styles/Code/listings-python.prf} % Python style
+
+%See:
+%http://tex.stackexchange.com/questions/280598/simpler-way-to-add-color-to-equations-in-math-mode
+\def\mathcolor#1#{\@mathcolor{#1}}
+\def\@mathcolor#1#2#3{\protect\leavevmode\begingroup\color#1{#2}#3\endgroup}
