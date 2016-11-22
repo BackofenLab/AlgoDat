@@ -90,14 +90,14 @@
             language=Python,
             style={python-idle-code},
             basicstyle=\small
-            ]|a[0] == 1|
+            ]|a[i] == 1|
           in $n^{n-1}$ instances
         \item
           \lstinline[
             language=Python,
             style={python-idle-code},
             basicstyle=\small
-          ]|a[0] != 1|
+          ]|a[i] != 1|
           in $n^n - n^{n-1} = n^{n-1} \cdot (n-1)$ instances
       \end{itemize}
     \item
@@ -108,13 +108,13 @@
             language=Python,
             style={python-idle-code},
             basicstyle=\small
-          ]|a[0] == 1|
+          ]|a[i] == 1|
         } + \underbrace{n^{n-1} \cdot (n-1) \cdot \mathcal{O}(n)}_{
           \lstinline[
             language=Python,
             style={python-idle-code},
             basicstyle=\small
-          ]|a[0] != 1|
+          ]|a[i] != 1|
         }
       \end{displaymath}
     \item
