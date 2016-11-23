@@ -1,0 +1,60 @@
+\begin{tikzpicture}[
+  vertex/.style={
+    circle,
+    draw=Mittel-Blau,
+    color=Mittel-Blau,
+    fill=Hell-Blau,
+    inner sep=0em,
+    minimum size=1.75em,
+    line width=0.1em,
+    font=\large,
+    solid
+  }, vertex_shadow/.style={
+    vertex,
+    draw=black,
+    color=black,
+    fill=white,
+    dotted
+  }, edge/.style={
+    draw=Mittel-Gruen,
+    line width=0.2em
+  }, edge_arrow/.style={
+    edge,
+    ->
+  }, edge_label/.style={
+    sloped,
+    midway,
+    color=Mittel-Gruen
+  }
+]%
+% Draw vertices
+\draw (-2.0, 0.0) node[vertex] (start) {$s$};
+\draw (10.0, 0.0) node[vertex] (end) {$t$};
+
+\draw[edge_arrow] (7.5, 1.5) node[vertex] (v1) {$v_1$} to
+  node[edge_label, above] {16} (end);
+\draw[edge_arrow] (7.5, 0.0) node[vertex] (v2) {$v_2$} to
+  node[edge_label, above] {3} (end);
+\draw[edge_arrow] (7.5, -1.5) node[vertex] (v3) {$v_3$} to
+  node[edge_label, above] {2} (end);
+
+\draw[edge_arrow, dashdotted]
+  (start) .. controls (3.0, 2.5) and (6.0, 1.0) .. (v1.west)
+  node[vertex_shadow, pos=0.2] {}
+  node[vertex_shadow, pos=0.4] {}
+  node[vertex_shadow, pos=0.6] {}
+  node[vertex_shadow, pos=0.8] {}
+  node[edge_label, pos=0.5, above] {22};
+\draw[edge_arrow, dashdotted]
+  (start) .. controls (3.0, -1.0) and (6.0, 0.0) .. (v2.west)
+  node[vertex_shadow, pos=0.25] {}
+  node[vertex_shadow, pos=0.4] {}
+  node[vertex_shadow, pos=0.6] {}
+  node[edge_label, pos=0.5, above] {34};
+\draw[edge_arrow, dashdotted]
+  (start) .. controls (3.0, -3.0) and (6.0, -1.5) .. (v3.west)
+  node[vertex_shadow, pos=0.1] {}
+  node[vertex_shadow, pos=0.3] {}
+  node[vertex_shadow, pos=0.8] {}
+  node[edge_label, pos=0.5, above] {42};
+\end{tikzpicture}%
