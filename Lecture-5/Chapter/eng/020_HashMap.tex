@@ -11,29 +11,27 @@
   \textbf{Example:}
   \begin{itemize}
     \item
-      Key set: $k = \{3904, 3126, 5148, 4522, 8769\}$
-    \item
+      Key set: $x = \{3904433, 312692, 5148949\}$
+    \onslide <2-> \item
       Hash function:
-      $h(k) = k \;\mathrm{mod}\; 5 \hspace*{1.0em} \in \{0, \ldots, 4\}$
-    \item
-      The resulting indices are ranging from $0$ to $4$\\
-      $\Rightarrow$ We need an array T with $m = 5$ elements
-    \item
-      The array elements are called {\color{Mittel-Blau}buckets}
+      {\color{Mittel-Blau}$h(x) = x \;\mathrm{mod}\; 5$}, in the range {\color{Mittel-Blau} $[0, \ldots, 4]$ }
+    \onslide <3-> \item We need an array {\color{Mittel-Blau}T} with {\color{Mittel-Blau}5} elements.\\
+          A "hashtable" with 5 "buckets"
+    \onslide <4-> \item The element with the key {\color{Mittel-Blau}x} is stored in {\color{Mittel-Blau}$T[h(x)]$} 
   \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Associative Arrays}{The Hash Map}
-  \textbf{Example:}
-  \begin{itemize}
-    \item
-      Key set: $k = \{3904, 3126, 5148, 4522, 8769\}$
-    \item
-      Hash function:
-      $h(k) = k \;\mathrm{mod}\; 5 \hspace*{1.0em} \in \{0, \ldots, 4\}$
-  \end{itemize}
+  %\textbf{Example:}
+  %\begin{itemize}
+  %  \item
+  %    Key set: $k = \{3904433, 312692, 5148949\}$
+  %  \item
+  %    Hash function:
+  %    $h(k) = k \;\mathrm{mod}\; 5 \hspace*{1.0em} \in \{0, \ldots, 4\}$
+  %\end{itemize}
   \textbf{Storage:}
   \begin{itemize}
     \item
@@ -108,14 +106,14 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Associative Arrays}{The Hash Map}
-  \textbf{Example:}
-  \begin{itemize}
-    \item
-    Key set: $k = \{3904, 3126, 5148, 4522, 8769\}$
-    \item
-    Hash function:
-    $h(k) = k \;\mathrm{mod}\; 5 \hspace*{1.0em} \in \{0, \ldots, 4\}$
-  \end{itemize}
+  %\textbf{Example:}
+  %\begin{itemize}
+  %  \item
+  %  Key set: $k = \{3904, 3126, 5148, 4522, 8769\}$
+  %  \item
+  %  Hash function:
+  %  $h(k) = k \;\mathrm{mod}\; 5 \hspace*{1.0em} \in \{0, \ldots, 4\}$
+  %\end{itemize}
   \textbf{Searching:}
   \begin{itemize}
     \item
@@ -189,13 +187,13 @@
 
 \begin{frame}{Associative Arrays}{Hash Collisions}
   \textbf{Example:}
-  \begin{itemize}
-    \item
-    Key set: $k = \{3904, 3126, 5148, 4522, 8769\}$
-    \item
-    Hash function:
-    $h(k) = k \;\mathrm{mod}\; 5 \hspace*{1.0em} \in \{0, \ldots, 4\}$
-  \end{itemize}
+  %\begin{itemize}
+  %  \item
+  %  Key set: $k = \{3904, 3126, 5148, 4522, 8769\}$
+  %  \item
+  %  Hash function:
+  %  $h(k) = k \;\mathrm{mod}\; 5 \hspace*{1.0em} \in \{0, \ldots, 4\}$
+  %\end{itemize}
   \textbf{Further inserting:}
   \begin{itemize}
     \item

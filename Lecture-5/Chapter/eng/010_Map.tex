@@ -3,182 +3,201 @@
 \toclesssubsection{Introduction}
 
 \begin{frame}{Associative Arrays}{How do we build a Map?}
-  \textbf{Structure:}
+  \textbf{Reminder:}
   \begin{itemize}
-      \item
-        Mapping {\color{Mittel-Blau}keys to values}
-      \begin{itemize}
-        \item
-          Key universe: $\mathbb{U}$
-        \item
-          Used keys: $\mathbb{S} \subseteq \mathbb{U}$
-        \item
-         The keys / values can have any data type\\
-      \end{itemize}
-      \lstinline[
-        language=Python,
-        style={python-idle-code},
-        basicstyle=\small,
-        mathescape
-      ]|[key${}_1$: value${}_1$, key${}_2$: value${}_2$, $\dotsc$]|
-    \item
-      We are interested in the following operations:\\[0.5em]
-      \begin{tabularx}{\textwidth}{ll}%
-        \lstinline[
-          language=Python,
-          style={python-idle-code},
-          basicstyle=\small,
-          emph={insert},
-          emphstyle=\color{Mittel-Blau}
-        ]|insert(key, value)| & Insert an element with a key and value\\
-        \lstinline[
-          language=Python,
-          style={python-idle-code},
-          basicstyle=\small,
-          emph={lookup},
-          emphstyle=\color{Mittel-Blau}
-        ]|lookup(key)| & Retireve the mapped element with a key\\
-        \lstinline[
-          language=Python,
-          style={python-idle-code},
-          basicstyle=\small,
-          emph={erase},
-          emphstyle=\color{Mittel-Blau}
-        ]|erase(key)| & Delete the mapping from key to value
-      \end{tabularx}
-      \hfill\\
+  \item An associative array is like a normal array, only that
+    the indices are not {\color{Mittel-Blau}~ 0, 1, 2, ...}, but
+    different, e.g. telephone numbers
   \end{itemize}
-  \textbf{Task:}
+  \onslide<2->\textbf{Problem:}
   \begin{itemize}
-    \item
-      Searching / storing an elemenent the fastest way
+  \onslide<2->\item Quickly find a element with a specific key
+  \onslide<3->\item Naive solution: Store pairs of key and value
+    in a normal field
+  \onslide<4->\item For {\color{Mittel-Blau} n } keys searching requires {\color{Mittel-Blau} $\Theta(n)$} time
+  \onslide<5->\item With a {\color{Mittel-Blau} Hash Map } this just requires {\color{Mittel-Blau} $\Theta(1)$}
+    in the best case, ... regardless how many elements are in the map!
   \end{itemize}
 \end{frame}
+
+
+%% \begin{frame}{Associative Arrays}{How do we build a Map?}
+%%   \textbf{Structure:}
+%%   \begin{itemize}
+%%       \item
+%%         Mapping {\color{Mittel-Blau}keys to values}
+%%       \begin{itemize}
+%%         \item
+%%           Key universe: $\mathbb{U}$
+%%         \item
+%%           Used keys: $\mathbb{S} \subseteq \mathbb{U}$
+%%         \item
+%%          The keys / values can have any data type\\
+%%       \end{itemize}
+%%       \lstinline[
+%%         language=Python,
+%%         style={python-idle-code},
+%%         basicstyle=\small,
+%%         mathescape
+%%       ]|[key${}_1$: value${}_1$, key${}_2$: value${}_2$, $\dotsc$]|
+%%     \item
+%%       We are interested in the following operations:\\[0.5em]
+%%       \begin{tabularx}{\textwidth}{ll}%
+%%         \lstinline[
+%%           language=Python,
+%%           style={python-idle-code},
+%%           basicstyle=\small,
+%%           emph={insert},
+%%           emphstyle=\color{Mittel-Blau}
+%%         ]|insert(key, value)| & Insert an element with a key and value\\
+%%         \lstinline[
+%%           language=Python,
+%%           style={python-idle-code},
+%%           basicstyle=\small,
+%%           emph={lookup},
+%%           emphstyle=\color{Mittel-Blau}
+%%         ]|lookup(key)| & Retireve the mapped element with a key\\
+%%         \lstinline[
+%%           language=Python,
+%%           style={python-idle-code},
+%%           basicstyle=\small,
+%%           emph={erase},
+%%           emphstyle=\color{Mittel-Blau}
+%%         ]|erase(key)| & Delete the mapping from key to value
+%%       \end{tabularx}
+%%       \hfill\\
+%%   \end{itemize}
+%%   \textbf{Task:}
+%%   \begin{itemize}
+%%     \item
+%%       Searching / storing an elemenent the fastest way
+%%   \end{itemize}
+%% \end{frame}
 
 %--------------------------------------------------------------------------------
 
-\begin{frame}{Associative Arrays}{How do we build a Map?}
-  \textbf{Special case:}
-  \begin{itemize}
-    \item
-      Keys $\mathbb{U}$ are natural numbers from $0$ to 
-      $n - 1$
-    \item
-      Runtime:\\[0.5em]
-      \begin{tabularx}{\textwidth}{lp{1em}l}%
-        \lstinline[
-          language=Python,
-          style={python-idle-code},
-          basicstyle=\small,
-          emph={insert},
-          emphstyle=\color{Mittel-Blau}
-        ]|insert(key, value)| & {} & $\mathcal{O}(1)$\\
-        \lstinline[
-          language=Python,
-          style={python-idle-code},
-          basicstyle=\small,
-          emph={lookup},
-          emphstyle=\color{Mittel-Blau}
-        ]|lookup(key)| & {} & $\mathcal{O}(1)$\\
-        \lstinline[
-          language=Python,
-          style={python-idle-code},
-          basicstyle=\small,
-          emph={erase},
-          emphstyle=\color{Mittel-Blau}
-        ]|erase(key)| & {} & $\mathcal{O}(1)$
-      \end{tabularx}
-    \item
-      Memory usage: $\mathcal{O}(n)$
-\end{itemize}
-  \begin{table}[!b]
-    \caption{Integer map with $n = 10$}
-    \label{tab:maps:map_example_introduction_integer}
-    \begin{tabularx}{\textwidth}{l|cccccccccc}
-      A & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9\\
-      \midrule
-      Value &
-      {} &
-      value${}_1$ &
-      {} &
-      value${}_3$ &
-      {} &
-      {} &
-      {} &
-      value${}_7$ &
-      {} &
-      {}
-    \end{tabularx}
-  \end{table}
-\end{frame}
+%% \begin{frame}{Associative Arrays}{How do we build a Map?}
+%%   \textbf{Special case:}
+%%   \begin{itemize}
+%%     \item
+%%       Keys $\mathbb{U}$ are natural numbers from $0$ to 
+%%       $n - 1$
+%%     \item
+%%       Runtime:\\[0.5em]
+%%       \begin{tabularx}{\textwidth}{lp{1em}l}%
+%%         \lstinline[
+%%           language=Python,
+%%           style={python-idle-code},
+%%           basicstyle=\small,
+%%           emph={insert},
+%%           emphstyle=\color{Mittel-Blau}
+%%         ]|insert(key, value)| & {} & $\mathcal{O}(1)$\\
+%%         \lstinline[
+%%           language=Python,
+%%           style={python-idle-code},
+%%           basicstyle=\small,
+%%           emph={lookup},
+%%           emphstyle=\color{Mittel-Blau}
+%%         ]|lookup(key)| & {} & $\mathcal{O}(1)$\\
+%%         \lstinline[
+%%           language=Python,
+%%           style={python-idle-code},
+%%           basicstyle=\small,
+%%           emph={erase},
+%%           emphstyle=\color{Mittel-Blau}
+%%         ]|erase(key)| & {} & $\mathcal{O}(1)$
+%%       \end{tabularx}
+%%     \item
+%%       Memory usage: $\mathcal{O}(n)$
+%% \end{itemize}
+%%   \begin{table}[!b]
+%%     \caption{Integer map with $n = 10$}
+%%     \label{tab:maps:map_example_introduction_integer}
+%%     \begin{tabularx}{\textwidth}{l|cccccccccc}
+%%       A & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9\\
+%%       \midrule
+%%       Value &
+%%       {} &
+%%       value${}_1$ &
+%%       {} &
+%%       value${}_3$ &
+%%       {} &
+%%       {} &
+%%       {} &
+%%       value${}_7$ &
+%%       {} &
+%%       {}
+%%     \end{tabularx}
+%%   \end{table}
+%% \end{frame}
 
-%--------------------------------------------------------------------------------
+%% %--------------------------------------------------------------------------------
 
-\begin{frame}{Associative Arrays}{How do we build a Map?}
-  \textbf{Normal case:}
-  \begin{itemize}
-    \item
-      We have a lot less assigned keys $\mathbb{S}$ than possible
-      ($\mathbb{S} \subset \mathbb{U}$)
-    \item
-      We don't have numbers as keys e.g. names / words
-  \end{itemize}
-  \textbf{Naive way:}
-  \begin{itemize}
-    \item
-      Store all key value pairs in a normal field (array)
-    \item
-      Runtime:\\[0.5em]
-      \begin{tabularx}{\textwidth}{lp{1em}l}%
-        \lstinline[
-          language=Python,
-          style={python-idle-code},
-          basicstyle=\small,
-          emph={insert},
-          emphstyle=\color{Mittel-Blau}
-        ]|insert(key, value)| & {} & $\mathcal{O}(1)$\\
-        \lstinline[
-          language=Python,
-          style={python-idle-code},
-          basicstyle=\small,
-          emph={lookup},
-          emphstyle=\color{Mittel-Blau}
-        ]|lookup(key)| & {} & $\mathcal{O}(n)$\\
-        \lstinline[
-          language=Python,
-          style={python-idle-code},
-          basicstyle=\small,
-          emph={erase},
-          emphstyle=\color{Mittel-Blau}
-        ]|erase(key)| & {} & $\mathcal{O}(n)$
-      \end{tabularx}
-    \item
-      Memory usage: $\mathcal{O}(n)$
-  \end{itemize}
-  \vspace*{-1.0em}
-  \begin{table}[!b]
-    \caption{Map T: names mapped to age}%
-    \label{tab:maps:map_example_introduction}%
-    \vspace*{-0.5em}%
-    \begin{tabularx}{0.775\textwidth}{l|cccc}
-      T & 0 & 1 & 2\\
-      \midrule
-      Value &
-      \lstinline[
-        language=Python,
-        style={python-idle-code},
-        basicstyle=\small
-      ]|("Karl", 20)| &
-      \lstinline[
-        language=Python,
-        style={python-idle-code},
-        basicstyle=\small
-      ]|("Bob", 15)| &
-      \lstinline[
-        language=Python,
-        style={python-idle-code},
-        basicstyle=\small
-      ]|("Peter", 18)|
-    \end{tabularx}
-  \end{table}
-\end{frame}
+%% \begin{frame}{Associative Arrays}{How do we build a Map?}
+%%   \textbf{Normal case:}
+%%   \begin{itemize}
+%%     \item
+%%       We have a lot less assigned keys $\mathbb{S}$ than possible
+%%       ($\mathbb{S} \subset \mathbb{U}$)
+%%     \item
+%%       We don't have numbers as keys e.g. names / words
+%%   \end{itemize}
+%%   \textbf{Naive way:}
+%%   \begin{itemize}
+%%     \item
+%%       Store all key value pairs in a normal field (array)
+%%     \item
+%%       Runtime:\\[0.5em]
+%%       \begin{tabularx}{\textwidth}{lp{1em}l}%
+%%         \lstinline[
+%%           language=Python,
+%%           style={python-idle-code},
+%%           basicstyle=\small,
+%%           emph={insert},
+%%           emphstyle=\color{Mittel-Blau}
+%%         ]|insert(key, value)| & {} & $\mathcal{O}(1)$\\
+%%         \lstinline[
+%%           language=Python,
+%%           style={python-idle-code},
+%%           basicstyle=\small,
+%%           emph={lookup},
+%%           emphstyle=\color{Mittel-Blau}
+%%         ]|lookup(key)| & {} & $\mathcal{O}(n)$\\
+%%         \lstinline[
+%%           language=Python,
+%%           style={python-idle-code},
+%%           basicstyle=\small,
+%%           emph={erase},
+%%           emphstyle=\color{Mittel-Blau}
+%%         ]|erase(key)| & {} & $\mathcal{O}(n)$
+%%       \end{tabularx}
+%%     \item
+%%       Memory usage: $\mathcal{O}(n)$
+%%   \end{itemize}
+%%   \vspace*{-1.0em}
+%%   \begin{table}[!b]
+%%     \caption{Map T: names mapped to age}%
+%%     \label{tab:maps:map_example_introduction}%
+%%     \vspace*{-0.5em}%
+%%     \begin{tabularx}{0.775\textwidth}{l|cccc}
+%%       T & 0 & 1 & 2\\
+%%       \midrule
+%%       Value &
+%%       \lstinline[
+%%         language=Python,
+%%         style={python-idle-code},
+%%         basicstyle=\small
+%%       ]|("Karl", 20)| &
+%%       \lstinline[
+%%         language=Python,
+%%         style={python-idle-code},
+%%         basicstyle=\small
+%%       ]|("Bob", 15)| &
+%%       \lstinline[
+%%         language=Python,
+%%         style={python-idle-code},
+%%         basicstyle=\small
+%%       ]|("Peter", 18)|
+%%     \end{tabularx}
+%%   \end{table}
+%% \end{frame}
