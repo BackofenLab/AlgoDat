@@ -4,11 +4,12 @@
 
 \begin{frame}{Universal Hashing}{Thought Experiment}
   \begin{itemize}
-    \item
+    \setlength\itemsep{1.5em}
+    \item <1->
       I create a hash function
-    \item
-      Find a set of keys so that it results in a degenrated hash table
-    \item
+    \item <2->
+      Find a set of keys so that it results in a degenerated hash table
+    \item <3->
       Find a solution to avoid that problem
   \end{itemize}
 \end{frame}
@@ -18,14 +19,16 @@
 \begin{frame}{Universal Hashing}{Idea}
   \textbf{Solution:}
   \begin{itemize}
-    \item
+    \setlength\itemsep{1.5em}
+    \item <1->
       We use a set of hash functions
-    \item
-      We choose a random hash function so that the expected result is an equal
-      distribution
-    \item
+    \item <2->
+      We choose a random hash function so that the {\color{Mittel-Blau}expected result} is an equal
+      distribution over the buckets
+    \item <3->
       This is called {\color{Mittel-Blau}universal hashing}
   \end{itemize}
+  \onslide <1->
   \begin{columns}
     \begin{column}{0.33\linewidth}
       \begin{figure}[!h]
@@ -86,10 +89,10 @@
   \begin{columns}
     \begin{column}{0.5\linewidth}
       \begin{itemize}
-        \item
+        \item <1->
           We choose two random keys $x, y \in \mathbb{U} \mid x \neq 
           y$
-        \item
+        \item <2->
           An average of 3 out of 15 functions produce collisions
       \end{itemize}
     \end{column}
@@ -98,7 +101,7 @@
         \begin{adjustbox}{width=\linewidth}
           \input{Images/UniversalHashing/HashUniverse.tikz}%
         \end{adjustbox}
-        \caption{Hash universe $\mathbb{H}$}%
+        \caption{Set of hash functions $\mathbb{H}$}%
         \label{fig:universal_hashing:hash_universe}
       \end{figure}
     \end{column}
@@ -114,24 +117,26 @@
   \begin{displaymath}
     \overbrace{
       \frac{
-        \vert \{h_i \in \mathbb{H}\!: h_i(x) = h_i(y)\} \vert
+        \vert \{h \in \mathbb{H}\!: h(x) = h(y)\} \vert
       }{
       \underbrace{\vert \mathbb{H} \vert}_\text{Number of hash functions}
       }
     }^\text{
       Number of hash functions that create collisions
     }
-    \leq \frac{c}{m}, \hspace*{1.5em} c \in \mathbb{R}
+    \leq c \cdot \frac{1}{m}, \hspace*{1.5em} c \in \mathbb{R}
   \end{displaymath}
+  \vspace{-1em}
   \begin{itemize}
-    \item
+  \item <2->
+      With other words, given a arbitrary but fixed pair x,y.\\
       If $h \in \mathbb{H}$ is chosen randomly then
-      $\mathbb{P}(h(x) = h(y)) \leq \frac{c}{m}$
+      $Prob ( h(x) = h(y) ) \leq c \cdot \frac{1}{m}$
   \end{itemize}
-  \begin{block}{Note: Best $c$ but not useful}
-    If the hash function chooses the {\color{Mittel-Blau}bucket} 
-    randomly then
-    $\mathbb{P}(h(x) = h(y)) = \frac{1}{m} \Leftrightarrow c = 1$
+  \onslide <3->
+  \begin{block}{Note: If the hash function assigns each key x and y
+    randomly to buckets then:}
+    $Prob( Collision ) = \frac{1}{m} \Leftrightarrow c = 1$
   \end{block}
 \end{frame}
 
