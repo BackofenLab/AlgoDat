@@ -12,12 +12,14 @@
   }, key/.style={
     draw=black,
     fill={yellow!80!white}
-  }
+  }, background rectangle/.style={
+    fill=white}
 ]%
-\draw[body] (0, 0) -- (0, 10) -- (3, 7) -- (3, 3) -- (0, 0);
+\fill<1->[white] (-8, 0) rectangle (15, 10);
+\draw<3->[body] (0, 0) -- (0, 10) -- (3, 7) -- (3, 3) -- (0, 0);
 
-\draw (-2.0, 5.0) node[anchor=east](x) {\Huge Key set $\mathbb{U}$};
-\draw (5.0, 5.0) node[anchor=west](x) {\Huge T (Hashtable)};
+\draw<1-> (-2.0, 5.0) node[anchor=east](x) {\Huge Key set {\color{Mittel-Blau}$\mathbb{U}$}};
+\draw<2-> (5.0, 5.0) node[anchor=west](x) {\Huge {\color{Mittel-Blau}T} (Hashtable)};
 
 %\draw (-2.0, 5.0) node[anchor=east](x) {\Huge $\mathbb{U}$};
 %\draw (5.0, 5.0) node[anchor=west](x) {\Huge T};
@@ -25,7 +27,7 @@
 %\draw (1.5, 10.5) node[color={Mittel-Blau}](x) {\Huge $h_1$};
 
 \foreach \y in {8,...,-8}{
-  \draw[key]
+  \draw<1->[key] 
     (-1.0, 0.5*\y + 5.25) -- (-1.5, 0.5*\y + 5.25) --
     (-1.5, 0.5*\y + 4.75) -- (-1.0, 0.5*\y + 4.75) --
     (-1.0, 0.5*\y + 5.25);
@@ -36,13 +38,13 @@
     0.5/2.0, 0.0/-2.0, -0.5/0.0, -1.0/-1.0, -1.5/-1.0, -2.0/-2.0,
     -2.5/-3.0, -3.0/3.0, -3.5/-1.0, -4.0/2.0
   } {
-  \draw[arrow]
+  \draw<3->[arrow]
     (-0.5, \i + 5.0) -- (0.0, \i + 5.0) --
     (3.0, 0.5*\o + 5.0) -- (3.5, 0.5*\o + 5.0);
 }
 
 \foreach \y in {3.0, 2.0, 1.0, 0.0, -1.0, -2.0, -3.0} {
-  \draw[bucket]
+  \draw<2->[bucket]
     (3.75, 0.5*\y + 5.25) -- (4.25, 0.5*\y + 5.25) --
     (4.25, 0.5*\y + 4.75) -- (3.75, 0.5*\y + 4.75) --
     (3.75, 0.5*\y + 5.25);
