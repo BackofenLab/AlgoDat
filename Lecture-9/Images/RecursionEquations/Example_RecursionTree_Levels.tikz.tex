@@ -1,0 +1,114 @@
+\begin{tikzpicture}[
+  op/.style={
+    draw=black,
+    color=black,
+    fill=white,
+    font=\Large,
+    thick,
+    ellipse,
+    minimum size=3em
+  }, dots/.style={
+    font=\Large,
+    minimum height=3em
+  }, sum/.style={
+    font=\Large,
+    text=Mittel-Blau
+  }, connection/.style={
+    ultra thick,
+    color=Mittel-Gruen,
+    draw=Mittel-Gruen
+  }, arrow/.style={
+    ultra thick,
+    color=Mittel-Blau
+  }, arrow_alt/.style={
+    ultra thick,
+    color=Hell-Blau
+  }, label/.style={
+    font=\Large,
+    text=Mittel-Blau
+  }, label_alt/.style={
+    font=\Large,
+    text=Hell-Blau
+  }
+]%
+% Bounding box
+\draw[white] (-2.25, -9) rectangle (19, 1);
+
+% Main Problem with first-level subproblems
+\node[op] (root) at (0, 0) {$c \cdot n^2$};
+
+\node[dots] (left) at (-2, -2) {...};
+\node[op] (center) at (0, -2) {$c \cdot \left(\frac{n}{4}\right)^2$};
+\node[op] (right) at (11.25, -2) {$c \cdot \left(\frac{n}{4}\right)^2$};
+
+\draw[-, connection] (root) -- (left);
+\draw[-, connection] (root) -- (center);
+\draw[-, connection] (root) -- (right);
+
+\node[dots] (center_left) at (-2, -4) {...};
+\node[op] (center_center) at (0, -4) {$c \cdot \left(\frac{n}{16}\right)^2$};
+\node[op] (center_right) at (3.75, -4) {$c \cdot \left(\frac{n}{16}\right)^2$};
+\node[op] (right_left) at (7.5, -4) {$c \cdot \left(\frac{n}{16}\right)^2$};
+\node[op] (right_center) at (11.25, -4) {$c \cdot \left(\frac{n}{16}\right)^2$};
+\node[op] (right_right) at (15, -4) {$c \cdot \left(\frac{n}{16}\right)^2$};
+
+\draw[-, connection] (center) -- (center_left);
+\draw[-, connection] (center) -- (center_center);
+\draw[-, connection] (center) -- (center_right);
+\draw[-, connection] (right) -- (right_left);
+\draw[-, connection] (right) -- (right_center);
+\draw[-, connection] (right) -- (right_right);
+
+\draw[connection] (-1.25, -6) node[op] (center_center_l) {$\cdots$} to
+  ++(0, -2) node[op] {$d$};
+\draw[connection] (0, -6) node[op] (center_center_c) {$\cdots$} to
+  ++(0, -2) node[op] {$d$};
+\draw[connection] (1.25, -6) node[op] (center_center_r) {$\cdots$} to
+  ++(0, -2) node[op] {$d$};
+\draw[connection] (2.5, -6) node[op] (center_right_l) {$\cdots$} to
+  ++(0, -2) node[op] {$d$};
+\draw[connection] (3.75, -6) node[op] (center_right_c) {$\cdots$} to
+  ++(0, -2) node[op] {$d$};
+\draw[connection] (5, -6) node[op] (center_right_r) {$\cdots$} to
+  ++(0, -2) node[op] {$d$};
+\draw[connection] (6.25, -6) node[op] (right_left_l) {$\cdots$} to
+  ++(0, -2) node[op] {$d$};
+\draw[connection] (7.5, -6) node[op] (right_left_c) {$\cdots$} to
+  ++(0, -2) node[op] {$d$};
+\draw[connection] (8.75, -6) node[op] (right_left_r) {$\cdots$} to
+  ++(0, -2) node[op] {$d$};
+\draw[connection] (10, -6) node[op] (right_center_l) {$\cdots$} to
+  ++(0, -2) node[op] {$d$};
+\draw[connection] (11.25, -6) node[op] (right_center_c) {$\cdots$} to
+  ++(0, -2) node[op] {$d$};
+\draw[connection] (12.5, -6) node[op] (right_center_r) {$\cdots$} to
+  ++(0, -2) node[op] {$d$};
+\draw[connection] (13.75, -6) node[op] (right_right_l) {$\cdots$} to
+  ++(0, -2) node[op] {$d$};
+\draw[connection] (15, -6) node[op] (right_right_c) {$\cdots$} to
+  ++(0, -2) node[op] {$d$};
+\draw[connection] (16.25, -6) node[op] (right_right_r) {$\cdots$} to
+  ++(0, -2) node[op] {$d$};
+
+\draw[-, connection] (center_center) -- (center_center_l);
+\draw[-, connection] (center_center) -- (center_center_c);
+\draw[-, connection] (center_center) -- (center_center_r);
+\draw[-, connection] (center_right) -- (center_right_l);
+\draw[-, connection] (center_right) -- (center_right_c);
+\draw[-, connection] (center_right) -- (center_right_r);
+\draw[-, connection] (right_left) -- (right_left_l);
+\draw[-, connection] (right_left) -- (right_left_c);
+\draw[-, connection] (right_left) -- (right_left_r);
+\draw[-, connection] (right_center) -- (right_center_l);
+\draw[-, connection] (right_center) -- (right_center_c);
+\draw[-, connection] (right_center) -- (right_center_r);
+\draw[-, connection] (right_right) -- (right_right_l);
+\draw[-, connection] (right_right) -- (right_right_c);
+\draw[-, connection] (right_right) -- (right_right_r);
+
+\node[sum, anchor=east] at (19, 0) {level 0};
+\node[sum, anchor=east] at (19, -2) {level 1};
+\node[sum, anchor=east] at (19, -4) {level 2};
+\node[sum, anchor=east] at (19, -6) {level $i$};
+\node[sum, anchor=east, align=center] at (19, -8) {last\\level};
+\end{tikzpicture}

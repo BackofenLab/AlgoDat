@@ -342,3 +342,35 @@
       if you assume that all subtotals are positive
   \end{itemize}
 \end{frame}
+
+%-------------------------------------------------------------------------------
+
+\codeslide{python}{
+\begin{frame}{Divide and Conquer}{Maximum Subtotal - Python}
+  \vspace{-0.5em}
+  \lstinputlisting[
+    language=Python,
+    basicstyle=\small,
+    tabsize=4,
+    style={python-idle-code},
+    breaklines=false,
+    escapechar={@},
+    emph={maxSubArray},
+    emphstyle=\color{blue}
+  ]{Code/DivideAndConquer/MaxSubTotal_LinearRuntime.py}
+\end{frame}
+}
+
+%TODO: Implement for Java / C++
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Divide and Conquer}{Maximum Subtotal}
+  \begin{figure}
+    \begin{adjustbox}{width=\linewidth}
+      \input{Images/DivideAndConquer/MaxSubTotal_LinearRuntime.tikz}
+    \end{adjustbox}
+    \caption{Scanning the array in linear time}
+    \label{fig:divide_and_conquer:max_sub_total_linear}
+  \end{figure}
+\end{frame}

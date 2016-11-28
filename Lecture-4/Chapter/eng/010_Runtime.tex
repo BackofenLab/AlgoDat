@@ -99,14 +99,14 @@
             language=Python,
             style={python-idle-code},
             basicstyle=\small
-            ]|a[0] == 1|
+            ]|a[i] == 1|
           in $n^{n-1}$ instances
         \item
           \lstinline[
             language=Python,
             style={python-idle-code},
             basicstyle=\small
-          ]|a[0] != 1|
+          ]|a[i] != 1|
           in $n^n - n^{n-1} = n^{n-1} \cdot (n-1)$ instances
       \end{itemize}
     \item
@@ -117,13 +117,13 @@
             language=Python,
             style={python-idle-code},
             basicstyle=\small
-          ]|a[0] == 1|
+          ]|a[i] == 1|
         } + \underbrace{n^{n-1} \cdot (n-1) \cdot \mathcal{O}(n)}_{
           \lstinline[
             language=Python,
             style={python-idle-code},
             basicstyle=\small
-          ]|a[0] != 1|
+          ]|a[i] != 1|
         }
       \end{displaymath}
     \item
@@ -320,7 +320,7 @@
     & \hspace*{1.5em} = 1 \cdot 2^n + 2 \cdot 2^{n-1} + 3 \cdot n^{n-2} + \dots
         + (n-1) \cdot 2^2 + n \cdot 2^1\\
     & \hspace{4.5em}- 1 \cdot 2^{n-1} - 2 \cdot 2^{n-2} - \dots
-        - (n-2) \cdot 2^2 - (n-1) \cdot 2^1 - \underbrace{n \cdot 2^0 + n}_0\\
+        - (n-2) \cdot 2^2 - (n-1) \cdot 2^1 - n \cdot 2^0 + n\\
     & \hspace*{1.5em} = \underbrace{2^n + 2^{n-1} + \dots
         +2^1 + 2^0}_{2^{n+1}-1} - 1
       = 2^{n+1} - 2
@@ -344,6 +344,7 @@
     \in \mathcal{O}(1)
   \end{displaymath}
 \end{frame}
+<<<<<<< HEAD
 %%% ===================================================================
 %%% This should be at the END of the file !!!!!!
 %%%
@@ -352,3 +353,5 @@
 %%% TeX-master: "~/TeX/TeXinput/Scripts/Algo-Data-EMS/Rolf-2016/AlgoDat/Lecture-4/Lecture.tex" 
 %%% End: 
 %%% ===================================================================
+=======
+>>>>>>> 6e8bc94a34e9ade9277389a55d60932246d4b1da

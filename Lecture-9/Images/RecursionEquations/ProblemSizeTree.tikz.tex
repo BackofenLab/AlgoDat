@@ -1,0 +1,49 @@
+\begin{tikzpicture}[
+  arrow/.style={
+    >=stealth,
+    ultra thick,
+    color=black
+  }, connection/.style={
+    thick,
+    color=black
+  }
+]%
+\coordinate (root) at (0, 0);
+
+\foreach \n in {1,...,\AlgoREDivide} {
+  %Second layer
+  \coordinate (node\n) at
+    ({((\n-0.5)-0.5*\AlgoREDivide)*\AlgoRESize*\AlgoREScale}, -0.75);
+
+  \foreach \m in {1,...,\AlgoREDivide} {
+    % Third layer
+    \coordinate (node\n_\m) at
+      ({((((\n-1)*\AlgoREDivide+\m)-0.5)-0.5*pow(\AlgoREDivide, 2))
+      *\AlgoREScale*pow(\AlgoRESize, 2)}, -1.5);
+    
+    \foreach \l in {1,...,\AlgoREDivide} {
+      % Fourth layer
+      \coordinate (node\n_\m_\l) at
+        ({((((\m-1 + (\n-1)*\AlgoREDivide)*\AlgoREDivide+\l)-0.5)
+        -0.5*pow(\AlgoREDivide, 3))*\AlgoREScale*pow(\AlgoRESize, 3)}, -2.25);
+      
+      \draw[-, connection] (node\n_\m_\l) -- (node\n_\m);
+      \draw[<->, arrow]
+        ($(node\n_\m_\l) + ({-0.5*\AlgoREScale*pow(\AlgoRESize, 3)}, 0)$)
+        -- ++({\AlgoREScale*pow(\AlgoRESize, 3)}, 0);
+    }
+
+    \draw[-, connection] (node\n_\m) -- (node\n);
+    \draw[<->, arrow]
+      ($(node\n_\m) + ({-0.5*\AlgoREScale*pow(\AlgoRESize, 2)}, 0)$)
+      -- ++({\AlgoREScale*pow(\AlgoRESize, 2)}, 0);
+  }
+
+  \draw[-, connection] (node\n) -- (root);
+  \draw[<->, arrow]
+  ($(node\n) + (-0.5*\AlgoREScale*\AlgoRESize, 0)$)
+    -- ++(\AlgoREScale*\AlgoRESize, 0);
+}
+
+\draw[<->, arrow] ($(root) + (-0.5*\AlgoREScale, 0)$) -- ++(\AlgoREScale, 0);
+\end{tikzpicture}

@@ -1,0 +1,28 @@
+\begin{tikzpicture}[
+  list/.style={
+    draw=black
+  }, sum/.style={
+    list,
+    fill=Hell-Gruen
+  }, label_sum/.style={
+    color=black,
+    font=\huge
+  }
+]%
+% upper list
+\draw[list] (0, 0) rectangle ++(18, 1);
+
+\draw[sum] (1.5, 0) rectangle ++(3, 1);
+\draw[sum] (7, 0) rectangle ++(5, 1);
+
+\node[label_sum, anchor=south] at (3, 0) {\texttt{tMax}};
+\node[label_sum, anchor=south] at (9.5, 0) {\texttt{rMax}};
+
+\node[label_sum, anchor=south] at (12, 1.5) {\texttt{i}};
+\node[label_sum, anchor=south, align=center] (text)
+  at (7, 2) {point of last\\negative subtotal};
+
+\draw[->, color=Mittel-Blau, line width=0.25em] (text.south) -- (7, 1.0);
+
+\draw[list, dashed] (12, 1.5) -- (12, -0.5);
+\end{tikzpicture}

@@ -7,10 +7,10 @@
     \item
       Place pearls on crossings and clamp strings between them
   \end{itemize}
-  \begin{figure}
-    \includegraphics[width=0.75\linewidth]{Images/Dijkstra/DijkstraMap}
-    \caption{Map $\copyright\,$ Mehlhorn / Sanders}
-  \end{figure}
+%  \begin{figure}
+%    \includegraphics[width=0.75\linewidth]{Images/Dijkstra/DijkstraMap}
+%    \caption{Map $\copyright\,$ Mehlhorn / Sanders}
+%  \end{figure}
 \end{frame}
 
 %-------------------------------------------------------------------------------
@@ -19,12 +19,12 @@
   \vspace{-1.5em}
   \begin{columns}
     \begin{column}{0.55\linewidth}
-      \begin{figure}[!t]
-        \includegraphics[width=0.8\linewidth]
-          {Images/Dijkstra/DijkstraMap}
-        \caption{Map $\copyright\,$ Mehlhorn / Sanders}
-      \end{figure}
-      \vspace{-1.5em}
+%      \begin{figure}[!t]
+%        \includegraphics[width=0.8\linewidth]
+%          {Images/Dijkstra/DijkstraMap}
+%        \caption{Map $\copyright\,$ Mehlhorn / Sanders}
+%      \end{figure}
+%      \vspace{-1.5em}
       \begin{itemize}
         \item
           Take the net and pull it slowly upwards until fully lifted
@@ -35,19 +35,150 @@
       \end{itemize}
     \end{column}
     \begin{column}{0.45\linewidth}
-      \begin{figure}[!t]
-        \includegraphics[width=\linewidth]
-          {Images/Dijkstra/DijkstraTree_WithOverlay}
-        \vspace{-0.5em}
-        \caption{Map $\copyright\,$ Mehlhorn / Sanders}
-      \end{figure}
+%      \begin{figure}[!t]
+%        \includegraphics[width=\linewidth]
+%          {Images/Dijkstra/DijkstraTree_WithOverlay}
+%        \vspace{-0.5em}
+%        \caption{Map $\copyright\,$ Mehlhorn / Sanders}
+%      \end{figure}
     \end{column}
   \end{columns}
 \end{frame}
 
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dijkstra Algorithm}{Shortest Path}
+  \vspace{-1.5em}
+  \begin{figure}
+    \begin{adjustbox}{width=0.75\linewidth}
+      \input{Images/Dijkstra/ShortestPath.tikz}
+    \end{adjustbox}
+    \label{fig:dijkstra:shortest_path_introduction}
+    \caption{Shortest path from {\color{Mittel-Blau}$s$} to
+    {\color{Mittel-Blau}$t$}}
+  \end{figure}
+  \vspace{-1.5em}
+  \begin{itemize}
+    \item
+      Let {\color{Mittel-Gruen}$r$} be the shortest path from
+      {\color{Mittel-Blau}$s$} to {\color{Mittel-Blau}$t$}
+    \item
+      For each node {\color{Mittel-Blau}$u$} on path {\color{Mittel-Gruen}$r$}
+      the path from {\color{Mittel-Blau}$u$} to {\color{Mittel-Blau}$t$} is
+      the shortest path
+  \end{itemize}
+  \textbf{Proof:}
+  \begin{itemize}
+    \item
+      If there was a shorter path from {\color{Mittel-Blau}$s$} to
+      {\color{Mittel-Blau}$u$} then we could choose this path to get faster to
+      {\color{Mittel-Blau}$t$}
+    \item
+      Then {\color{Mittel-Gruen}$r$} would not be the shortest path
+  \end{itemize}
+\end{frame}
 
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Dijkstra Algorithm}{Shortest Path}
-  
+  \vspace{-1.5em}
+  \begin{figure}
+    \begin{adjustbox}{width=0.75\linewidth}
+      \input{Images/Dijkstra/ShortestPath.tikz}
+    \end{adjustbox}
+    \label{fig:dijkstra:shortest_path_introduction_re}
+    \caption{Shortest path from {\color{Mittel-Blau}$s$} to
+      {\color{Mittel-Blau}$t$}}
+  \end{figure}
+  \vspace{-1.5em}
+  \begin{itemize}
+    \item
+      Let {\color{Mittel-Gruen}$r$} be the shortest path from
+      {\color{Mittel-Blau}$s$} to {\color{Mittel-Blau}$t$}
+    \item
+      For each node {\color{Mittel-Blau}$u$} on path {\color{Mittel-Gruen}$r$}
+      the path from {\color{Mittel-Blau}$u$} to {\color{Mittel-Blau}$t$} is
+      the shortest path
+    \item
+      This is also correct for all sub paths on {\color{Mittel-Gruen}$r$}
+    \item
+      If the shortest path from {\color{Mittel-Blau}$s$} to
+      {\color{Mittel-Blau}$t$} passes {\color{Mittel-Blau}$u_1$} and
+      {\color{Mittel-Blau}$u_2$} then the sub path
+      $({\color{Mittel-Blau}u_1}, {\color{Mittel-Blau}u_2})$
+      is the shortest path from {\color{Mittel-Blau}$u_1$} to
+      {\color{Mittel-Blau}$u_2$}
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dijkstra Algorithm}{Shortest Path}
+  \begin{figure}%
+    \begin{adjustbox}{width=0.75\linewidth}%
+      \input{Images/Dijkstra/ShortestPaths.tikz}%
+    \end{adjustbox}%
+    \vspace{-1.0em}
+    \label{fig:dijkstra:shortest_paths_introduction}%
+    \caption{Shortest paths from {\color{Mittel-Blau}$s$} to
+      {\color{Mittel-Blau}$t$}}
+  \end{figure}
+  \vspace{-1.0em}
+  \begin{itemize}
+    \item
+      If we know the shortest path form {\color{Mittel-Blau}$s$}
+      to the preceding nodes of {\color{Mittel-Blau}$t$}
+      \begin{math}
+        (
+          {\color{Mittel-Blau}v_1},
+          {\color{Mittel-Blau}v_2},
+          {\color{Mittel-Blau}v_3}
+        )
+       \end{math}
+       we can determine the shortest path to {\color{Mittel-Blau}$t$}
+   \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dijkstra Algorithm}{Shortest Path}
+  \textbf{Idea:}
+  \begin{itemize}
+    \item
+      Attach the cost of the shortest path to each node
+    \item
+      Let the information travel over the edges (message passing)
+    \item
+      In which order should we process the nodes?
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dijkstra Algorithm}
+  \begin{columns}
+    \begin{column}{0.6\linewidth}
+      \textbf{Inventor:}
+      \begin{itemize}
+        \item
+          Edsger Dijkstra (1930 - 2002)
+        \item
+          Computer scientist from Netherlands
+        \item
+          Won Turing-Award as one of few Europeans for his studies of 
+          structured programming
+        \item
+          Invented the Dijkstra-Algorithm in 1959
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.4\linewidth}
+      \begin{figure}
+        \includegraphics[width=0.75\linewidth]
+          {Images/Dijkstra/Edsger_Wybe_Dijkstra.jpg}
+        \caption{Portrait \copyright\; Hamilton Richards - manuscripts of
+          Edsger W. Dijkstra, University Texas at Austin}
+        \label{fig:dijkstra:portrait}
+      \end{figure}
+    \end{column}
+  \end{columns}
 \end{frame}

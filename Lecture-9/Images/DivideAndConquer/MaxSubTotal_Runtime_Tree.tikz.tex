@@ -3,6 +3,7 @@
     draw=black,
     fill=white,
     font=\Large,
+    thick,
     ellipse,
     minimum size=3em
   }, sum/.style={
@@ -78,14 +79,14 @@
 }
 
 \only<4->{
-  \node[op] (left_left_left) at (-8.25, -6) {$\cdots$};
-  \node[op] (left_left_right) at (-7.0, -6) {$\cdots$};
-  \node[op] (left_right_left) at (-5.75, -6) {$\cdots$};
-  \node[op] (left_right_right) at (-4.5, -6) {$\cdots$};
-  \node[op] (right_left_left) at (-3.25, -6) {$\cdots$};
-  \node[op] (right_left_right) at (-2.0, -6) {$\cdots$};
-  \node[op] (right_right_left) at (-0.75, -6) {$\cdots$};
-  \node[op] (right_right_right) at (0.5, -6) {$\cdots$};
+  \node[op] (left_left_left) at (-8.375, -6) {$\cdots$};
+  \node[op] (left_left_right) at (-7.125, -6) {$\cdots$};
+  \node[op] (left_right_left) at (-5.875, -6) {$\cdots$};
+  \node[op] (left_right_right) at (-4.625, -6) {$\cdots$};
+  \node[op] (right_left_left) at (-3.375, -6) {$\cdots$};
+  \node[op] (right_left_right) at (-2.125, -6) {$\cdots$};
+  \node[op] (right_right_left) at (-0.875, -6) {$\cdots$};
+  \node[op] (right_right_right) at (0.375, -6) {$\cdots$};
   
   \draw[-, connection] (left_left) -- (left_left_left);
   \draw[-, connection] (left_left) -- (left_left_right);
@@ -109,15 +110,15 @@
 }
 
 \only<5->{
-  \node[op] (left_left_left_c) at (-8.25, -8) {$c$};
-  \node[op] (left_left_right_c) at (-7.0, -8) {$c$};
-  \node[op] (left_right_left_c) at (-5.75, -8) {$c$};
-  \node[op] (left_right_right_c) at (-4.5, -8) {$c$};
+  \node[op] (left_left_left_c) at (-8.375, -8) {$c$};
+  \node[op] (left_left_right_c) at (-7.125, -8) {$c$};
+  \node[op] (left_right_left_c) at (-5.875, -8) {$c$};
+  \node[op] (left_right_right_c) at (-4.625, -8) {$c$};
   
-  \node[op] (right_left_left_c) at (-3.25, -8) {$c$};
-  \node[op] (right_left_right_c) at (-2.0, -8) {$c$};
-  \node[op] (right_right_left_c) at (-0.75, -8) {$c$};
-  \node[op] (right_right_right_c) at (0.5, -8) {$c$};
+  \node[op] (right_left_left_c) at (-3.375, -8) {$c$};
+  \node[op] (right_left_right_c) at (-2.125, -8) {$c$};
+  \node[op] (right_right_left_c) at (-0.875, -8) {$c$};
+  \node[op] (right_right_right_c) at (0.375, -8) {$c$};
   
   \draw[-, connection] (left_left_left) -- (left_left_left_c);
   \draw[-, connection] (left_left_right) -- (left_left_right_c);

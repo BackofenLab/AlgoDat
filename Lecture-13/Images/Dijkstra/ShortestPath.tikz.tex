@@ -1,0 +1,40 @@
+\begin{tikzpicture}[
+  vertex/.style={
+    circle,
+    draw=Mittel-Blau,
+    color=Mittel-Blau,
+    fill=Hell-Blau,
+    inner sep=0em,
+    minimum size=1.75em,
+    line width=0.1em,
+    font=\large,
+    solid
+  }, vertex_shadow/.style={
+    vertex,
+    draw=black,
+    color=black,
+    fill=white,
+    dotted
+  }, edge/.style={
+    draw=Mittel-Gruen,
+    line width=0.2em
+  }, edge_arrow/.style={
+    edge,
+    ->
+  }, edge_label/.style={
+    sloped,
+    anchor=south,
+    auto=false
+  }
+]%
+% Draw vertices
+\draw (9.0, 0.0) node[vertex] (end) {$t$};
+\draw[edge_arrow, dashdotted]
+  (0.0, 0.0) .. controls (3.0, 1.5) and (6.0, 0.0) .. (end.west)
+  node[vertex, pos=0.0] {$s$}
+  node[vertex, pos=0.2] {$u_1$}
+  node[vertex_shadow, pos=0.4] {}
+  node[vertex, pos=0.6] {$u_2$}
+  node[vertex_shadow, pos=0.8] {}
+  node[pos=0.5, above] {\color{Mittel-Gruen}$r$};
+\end{tikzpicture}%
