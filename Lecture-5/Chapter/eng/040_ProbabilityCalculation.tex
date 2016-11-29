@@ -265,38 +265,40 @@
 %%   Throwing the dice twice:
 %%   {\color{Mittel-Blau}\[E(X) = 2 \cdot \frac{1}{36} + 3 \cdot \frac{2}{36}
 %%     + \dots + 12 \cdot \frac{1}{36} = 7\]}
-%% \end{frame}
-
-%% %-------------------------------------------------------------------------------
-
-%% \begin{frame}{Universal Hashing}{Probability Calculation}
-%%   \textbf{Sum of expected values:}
-%%   For independent (discrete) result variables {\color{Mittel-Blau}$X_1,\dots,X_n$} we can write:
-%%     {\color{Mittel-Blau}\[E\left[X_1+\dots+X_n\right]
-%%       = E[X_1] + \dots + E[X_n]\]}
-%%   \textbf{Example:} Throwing two dice
-%%   \begin{itemize}
-%%     \item
-%%       {\color{Mittel-Blau}$X_a$}: Expected number of eyes dice {\color{Mittel-Blau}$a$}: {\color{Mittel-Blau}$E[X_a] = 3.5$}
-%%     \item
-%%       {\color{Mittel-Blau}$X_b$}: Expected number of eyes dice {\color{Mittel-Blau}$b$}: {\color{Mittel-Blau}$E[X_b] = 3.5$}
-%%     \item
-%%       {\color{Mittel-Blau}$X = X_a + X_b$}: Expected total number of eyes:
-%%       {\color{Mittel-Blau}\[E[X]
-%%         = E[X_a + X_b]
-%%         = E[X_a] + E[X_b] = 3.5 + 3.5 = 7\]}
-%%   \end{itemize}
-%% \end{frame}
+9%% \end{frame}
 
 %% %-------------------------------------------------------------------------------
 
 \begin{frame}{Universal Hashing}{Probability Calculation}
+   \textbf{Sum of expected values:}
+   For independent (discrete) result variables {\color{Mittel-Blau}$X_1,\dots,X_n$} we can write:
+     {\color{Mittel-Blau}\[E\left(X_1+\dots+X_n\right)
+       = E(X_1) + \dots + E(X_n)\]}
+   \onslide<2->
+   \textbf{Example:} Throwing two dice
+   \begin{itemize}
+     \item<3->
+       {\color{Mittel-Blau}$X_1$}: Expected number of eyes dice {\color{Mittel-Blau}$1$}: {\color{Mittel-Blau}$E(X_1) = 3.5$}
+     \item<4->
+       {\color{Mittel-Blau}$X_2$}: Expected number of eyes dice {\color{Mittel-Blau}$2$}: {\color{Mittel-Blau}$E(X_2) = 3.5$}
+     \item<5->
+       {\color{Mittel-Blau}$X = X_1 + X_2$}: Expected total number of eyes:
+       {\color{Mittel-Blau}\[E(X)
+         = E(X_1 + X_2)
+         = E(X_1) + E(X_2) = 3.5 + 3.5 = 7\]}
+   \end{itemize}
+\end{frame}
+
+%% %-------------------------------------------------------------------------------
+
+\begin{frame}{Universal Hashing}{Probability Calculation}
+  \onslide<1->
   \begin{block}{Corollary:}
     The probability of the event $E$ is $p = P(E)$.
     Let $X$ be the occurences of the event $E$ and $n$ be the number
-    of executions.
-    {\color{Mittel-Blau}\[E[X] = n \cdot P(E) = n \cdot p\]}
+    of executions of the experiment. Then {\color{Mittel-Blau}$E(X) = n \cdot P(E) = n \cdot p$}
   \end{block}
+  \onslide<2->
   \begin{example}[Rolling the dice 60 times:]
     \[E\left[\text{number of 6}\right] = \frac{1}{6} \cdot 60 = 10\]
   \end{example}
