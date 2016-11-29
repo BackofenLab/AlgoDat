@@ -300,7 +300,7 @@
   \end{block}
   \onslide<2->
   \begin{example}[Rolling the dice 60 times:]
-    \[E\left[\text{number of 6}\right] = \frac{1}{6} \cdot 60 = 10\]
+    \[E\left(\text{occurences of 6}\right) = \frac{1}{6} \cdot 60 = 10\]
   \end{example}
 \end{frame}
 
@@ -310,7 +310,8 @@
   \begin{proof}[Proof Corollary:]
     Indicator variable: {\color{Mittel-Blau}$X_i$}\\
     \vspace*{-1.5em}
-    {\color{Mittel-Blau}
+            {\color{Mittel-Blau}
+    \onslide<2->
     \begin{align*}
       X_i &=
         \left\lbrace
@@ -318,20 +319,23 @@
             1, & \text{if event occurs}\\
             0, & \text{else}
           \end{array}
-        \right. \hspace{1.5em}
+          \right. \hspace{1.5em}\\
         \Rightarrow \; X = \sum_{i=1}^{n} X_i
     \end{align*}}
     \vspace*{-1.0em}
-    {\color{Mittel-Blau}
+            {\color{Mittel-Blau}
+    \onslide<3->          
     \begin{align*}
-      E[X_i]
-        &= \; 0 \cdot P(X_i = 0) + 1 \cdot P(X_i = 1)\\
-      {} &= \; P(X_i = 1) = p\\[0.5em]
-      E[X] &= E\left[\sum_{i=1}^{n} X_i\right]
-        = \sum_{i=1}^{n} E[X_i]
+      E(X) &= E\left(\sum_{i=1}^{n} X_i\right)
+        = \sum_{i=1}^{n} E(X_i)
         \stackrel{\text{def. $E$-value}}{=}
         \sum_{i=1}^{n} p = n \cdot p
-    \end{align*}}
+    \end{align*}
     \qedhere
+    \onslide<4->
+    \vspace*{-1.0em}
+    \begin{align*}
+        \text{Def. $E$-value: }  E(X_i) &= \; 0 \cdot P(X_i = 0) + 1 \cdot P(X_i = 1) &= \; P(X_i = 1) \\[0.5em]   
+    \end{align*}}
   \end{proof}
 \end{frame}
