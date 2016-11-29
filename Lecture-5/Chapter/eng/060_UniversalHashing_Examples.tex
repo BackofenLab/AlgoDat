@@ -3,20 +3,22 @@
 \begin{frame}{Universal Hashing}{Examples}
   \textbf{Negative example:}
   \begin{itemize}
-    \item
-      The set of hash functions is
-      {\color{Mittel-Blau}$h_a(x) = (a \cdot x) \mod m, \hspace*{1.5em} a \in \mathbb{U}$}
-    \item
+    \item<2->
+      The set of all {\color{Mittel-Blau}$h$} for which {\color{Mittel-Blau}$h_a(x) = (a \cdot x) \mod m$, for a $a \in \mathbb{U}$}
+    \item<3->
       Is not {\color{Mittel-Blau}$c$}-universal. Why?
-      {\color{Mittel-Blau}
+    \item<4->
+      If universal:
+       {\color{Mittel-Blau}
       \begin{displaymath}
-        \forall x, y \in \mathbb{U}\!: \; \frac{
+        \forall x, y \hspace{1em} x \neq y\!: \; \frac{
           \vert \{h \in \mathbb{H}: h(x) = h(y)\} \vert
         }{
           \vert \mathbb{H} \vert
-        } \leq \frac{c}{m}, \hspace*{1.5em} x \neq y
-      \end{displaymath}}
-    \item
+        } \leq c \cdot \frac{1}{m}
+       \end{displaymath}}
+    \vspace{-1em}
+    \item<5->
       Which {\color{Mittel-Blau}$x, y$} lead to a relative collision count bigger than {\color{Mittel-Blau}$\frac{c}{m}$}?
   \end{itemize}
 \end{frame}
@@ -26,25 +28,21 @@
 \begin{frame}{Universal Hashing}{Examples}
   \textbf{Positive example:}
   \begin{itemize}
-    \item
-      Let {\color{Mittel-Blau}$p \in \mathbb{N}, \; p > m, \; p \geq \vert \mathbb{U} \vert$}
-      be a prime number
-    \item
-      The set of hash functions is {\color{Mittel-Blau}$c$}-universal:
+    \item<1->
+      Let {\color{Mittel-Blau}$p$} be a big prime number, {\color{Mittel-Blau}$p > m$}, and {\color{Mittel-Blau}$p \geq \vert \mathbb{U} \vert$}
+    \item<2->
+      Let {\color{Mittel-Blau}$\mathbb{H}$} be the set of all {\color{Mittel-Blau}$h$} for which:
       {\color{Mittel-Blau}
       \begin{align*}
         h_{a, b}(x) = ((a \cdot x + b) \mod p) \mod m,\\
-        \hspace*{1.5em} a,b \in \mathbb{N}, \; 1 \leq a < p, \; 0 \leq b < p
+        \hspace*{1.5em} \text{{\color{black}where }} 1 \leq a < p, \; 0 \leq b < p
       \end{align*}}
-    \item
-      Easy to implement but hard to proof
+    \item<3-> This is {\color{Mittel-Blau}$\approx1$-universal}, see {\color{teal}Exercise 4.11} in Mehlhorn/Sanders
+    \item<4-> E.g.: {\color{Mittel-Blau}$U=\{0,...,99\},$ \hspace{0.5em} $p=101,$ \hspace{0.5em} $a=47,$ $b5$}
+   \item<5-> Then {\color{Mittel-Blau}$h(x) = ((47 \cdot x + 5) \mod 101) \mod m$}
+   \item<6-> Easy to implement but hard to proof
+   \item<7-> Exercise: show empirically that it is {\color{Mittel-Blau}$2$}-universal
   \end{itemize}
-  {\color{Mittel-Blau}
-  \begin{example}[%
-    $\mathbb{U} = \{0, \dots, 99\}, \; p = 101, \; a = 47, \; b = 5$
-  ]%
-    \[h(x) = ((47 \cdot x + 5) \mod 101) \mod m\]
-  \end{example}}
 \end{frame}
 
 %-------------------------------------------------------------------------------
@@ -52,11 +50,11 @@
 \begin{frame}{Universal Hashing}{Examples}
   \textbf{Positive example:}
   \begin{itemize}
-    \item
+    \item<1->
       The set of hash functions is {\color{Mittel-Blau}$c$}-universal:
       {\color{Mittel-Blau}
       \[h_{a}(x) = a \bullet x \mod m, \hspace*{1.5em} a \in \mathbb{U}\]}
-    \item
+    \item<2->
       \textbf{We define:}
       {\color{Mittel-Blau}
       \begin{align*}
@@ -64,7 +62,7 @@
         \hspace*{1.5em} k = \mathrm{ceil}(\log_m \vert \mathbb{U} \vert)\\
         x &= \sum_{0, \ldots, k-1} x_i \cdot m^i
       \end{align*}}
-    \item
+    \item<3->
       \textbf{Intuitive}: Scalar product with base {\color{Mittel-Blau}$m$}
       {\color{Mittel-Blau}
       \begin{align*}
