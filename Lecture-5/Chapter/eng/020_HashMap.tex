@@ -51,10 +51,10 @@
   \begin{figure}
   \caption{Hashtable T}
   \centering
-    \only<1-1>{\includegraphics[width=0.6\textwidth]{Images/Bucket1.eps}}
-    \only<2-2>{\includegraphics[width=0.6\textwidth]{Images/Bucket2.eps}}
-    \only<3-3>{\includegraphics[width=0.6\textwidth]{Images/Bucket3.eps}}
-    \only<4->{\includegraphics[width=0.6\textwidth]{Images/Bucket4.eps}}
+\only<1-1>{\includegraphics[width=0.6\textwidth]{Images/Bucket1.eps}}%
+\only<2-2>{\includegraphics[width=0.6\textwidth]{Images/Bucket2.eps}}%
+\only<3-3>{\includegraphics[width=0.6\textwidth]{Images/Bucket3.eps}}%
+\only<4->{\includegraphics[width=0.6\textwidth]{Images/Bucket4.eps}}
   \end{figure}
 \end{frame}
 
@@ -240,7 +240,7 @@
 
 \begin{frame}{Associative Arrays}{Expected Runtime}
   \begin{columns}
-    \begin{column}{0.6\linewidth}
+    \begin{column}{0.4\linewidth}
       {\color{Mittel-Blau}Best case}:
       \begin{itemize}
         \item
@@ -252,45 +252,48 @@
           %{\color{Mittel-Blau}$n \gg m$}
       \end{itemize}
     \end{column}
-    \begin{column}{0.3\linewidth}
-      \begin{table}[!h]
-        \caption{Best case ($m = 5, \, n = 10$)}
-        \label{tab:hash_table:runtime_best_case}
-        \begin{tabularx}{\textwidth}{c|c}
-          {} & Bucket\\
-          \midrule
-          0 & \lstinline[
-            language=Python,
-            style={python-idle-code},
-            basicstyle=\small,
-            mathescape
-          ]|[($\ldots$), ($\ldots$)]|\\
-          1 & \lstinline[
-            language=Python,
-            style={python-idle-code},
-            basicstyle=\small,
-            mathescape
-          ]|[($\ldots$), ($\ldots$)]|\\
-          2 & \lstinline[
-            language=Python,
-            style={python-idle-code},
-            basicstyle=\small,
-            mathescape
-          ]|[($\ldots$), ($\ldots$)]|\\
-          3 & \lstinline[
-            language=Python,
-            style={python-idle-code},
-            basicstyle=\small,
-            mathescape
-          ]|[($\ldots$), ($\ldots$)]|\\
-          4 & \lstinline[
-            language=Python,
-            style={python-idle-code},
-            basicstyle=\small,
-            mathescape
-          ]|[($\ldots$), ($\ldots$)]|
-        \end{tabularx}
-      \end{table}
+    \begin{column}{0.5\linewidth}
+      \begin{center}
+        \textbf{Best case}\\
+       \textbf{($m = 5, \, n = 10$)}\\
+\ \\
+        \includegraphics[height=0.4\textheight]{Images/hash-uniform.pdf}
+%        \label{tab:hash_table:runtime_best_case}
+        %  \begin{tabularx}{\textwidth}{c|c}
+        %   {} & Bucket\\
+        %   \midrule
+        %   0 & \lstinline[
+        %     language=Python,
+        %     style={python-idle-code},
+        %     basicstyle=\small,
+        %     mathescape
+        %   ]|[($\ldots$), ($\ldots$)]|\\
+        %   1 & \lstinline[
+        %     language=Python,
+        %     style={python-idle-code},
+        %     basicstyle=\small,
+        %     mathescape
+        %   ]|[($\ldots$), ($\ldots$)]|\\
+        %   2 & \lstinline[
+        %     language=Python,
+        %     style={python-idle-code},
+        %     basicstyle=\small,
+        %     mathescape
+        %   ]|[($\ldots$), ($\ldots$)]|\\
+        %   3 & \lstinline[
+        %     language=Python,
+        %     style={python-idle-code},
+        %     basicstyle=\small,
+        %     mathescape
+        %   ]|[($\ldots$), ($\ldots$)]|\\
+        %   4 & \lstinline[
+        %     language=Python,
+        %     style={python-idle-code},
+        %     basicstyle=\small,
+        %     mathescape
+        %   ]|[($\ldots$), ($\ldots$)]|
+        % \end{tabularx}
+      \end{center}
     \end{column}
   \end{columns}
 \end{frame}
@@ -299,7 +302,7 @@
 
 \begin{frame}{Associative Arrays}{Expected Runtime}
   \begin{columns}
-    \begin{column}{0.5\linewidth}
+    \begin{column}{0.4\linewidth}
       {\color{Mittel-Blau}Worst case}:
       \begin{itemize}
         \item
@@ -308,41 +311,44 @@
           The runtime is {\color{Mittel-Blau}$\Theta(n)$} for searching
       \end{itemize}
     \end{column}
-    \begin{column}{0.4\linewidth}
-      \begin{table}[!h]
-        \caption{Worst case ($m = 5, \, n = 10$)}
+    \begin{column}{0.5\linewidth}
+      \begin{center}
+        \textbf{Worst case}\\
+       \textbf{($m = 5, \, n = 10$)}\\
+\ \\
+        \includegraphics[height=0.4\textheight]{Images/hash-extreme.pdf}
         \label{tab:hash_table:runtime_worst_case}
-        \begin{tabularx}{\textwidth}{c|c}
-          {} & Bucket\\
-          \midrule
-          0 & \lstinline[
-            language=Python,
-            style={python-idle-code},
-            basicstyle=\small
-          ]|[]|\\
-          1 & \lstinline[
-            language=Python,
-            style={python-idle-code},
-            basicstyle=\small
-          ]|[]|\\
-          2 & \lstinline[
-            language=Python,
-            style={python-idle-code},
-            basicstyle=\small,
-            mathescape
-          ]|[($\ldots$), ($\ldots$), $\;\ldots\;$, ($\ldots$)]|\\
-          3 & \lstinline[
-            language=Python,
-            style={python-idle-code},
-            basicstyle=\small
-          ]|[]|\\
-          4 & \lstinline[
-            language=Python,
-            style={python-idle-code},
-            basicstyle=\small
-          ]|[]|
-        \end{tabularx}
-      \end{table}
+        % \begin{tabularx}{\textwidth}{c|c}
+        %   {} & Bucket\\
+        %   \midrule
+        %   0 & \lstinline[
+        %     language=Python,
+        %     style={python-idle-code},
+        %     basicstyle=\small
+        %   ]|[]|\\
+        %   1 & \lstinline[
+        %     language=Python,
+        %     style={python-idle-code},
+        %     basicstyle=\small
+        %   ]|[]|\\
+        %   2 & \lstinline[
+        %     language=Python,
+        %     style={python-idle-code},
+        %     basicstyle=\small,
+        %     mathescape
+        %   ]|[($\ldots$), ($\ldots$), $\;\ldots\;$, ($\ldots$)]|\\
+        %   3 & \lstinline[
+        %     language=Python,
+        %     style={python-idle-code},
+        %     basicstyle=\small
+        %   ]|[]|\\
+        %   4 & \lstinline[
+        %     language=Python,
+        %     style={python-idle-code},
+        %     basicstyle=\small
+        %   ]|[]|
+        % \end{tabularx}
+      \end{center}
     \end{column}
   \end{columns}
 \end{frame}
