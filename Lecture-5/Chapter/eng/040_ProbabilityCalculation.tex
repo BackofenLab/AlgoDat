@@ -4,22 +4,24 @@
   \begin{columns}
     \begin{column}{0.65\textwidth}
       \begin{itemize}
-        \item
-          Theorethical space $\Omega$ with basic events $e \in \Omega$
-        \item
-          Each event $e$ has it's probability with
-          \[\sum \mathbb{P}(e) = 1 \mid e \in \Omega\]
-        \item
-          The probability for a subspace of events $E \subseteq \Omega$ is
-          \[\mathbb{P}(E) = \sum \mathbb{P}(e) \mid e \in E\]
+        \item<2->
+          We just discuss the discrete case.
+        \item<3->
+          Probability space {\color{Mittel-Blau}$\Omega$} with {\color{Mittel-Blau}elementary (simple) events}
+        \item<4->
+          Events have probabilities .. Condition  {\color{Mittel-Blau}\[\sum_{e \in \Omega} P(e) = 1\]}
+        \item<5->
+          The probability for a subset of events {\color{Mittel-Blau}$E \subseteq \Omega$} is
+          {\color{Mittel-Blau}\[P(E) = \sum_{e \in E} P(e) \mid e \in E\]}
       \end{itemize}
     \end{column}
     \begin{column}{0.35\textwidth}
+      \onslide <6->
       \begin{table}[!h]
         \caption{Throwing a dice}
         \label{tab:probabilities:rolling_dice}
         \begin{tabularx}{0.5\linewidth}{c|c}
-          $e$ & $\mathbb{P}(e)$\\
+          {\color{Mittel-Blau}$e$} & {\color{Mittel-Blau}$P(e)$}\\
           \midrule
           1 & $\sfrac{1}{6}$\\
           2 & $\sfrac{1}{6}$\\
@@ -40,26 +42,22 @@
     \begin{column}{0.65\linewidth}
       \textbf{Example:}
       \begin{itemize}
-        \item
-          Rolling a dice twice ($\Omega = \{1,\dots,6\}^2$)
-        \item
-          Each event $e_{(i,\,j)} \in \Omega$ has the probability
-          $\mathbb{P}(e) = \sfrac{1}{36}$
-        \item
-          $X = i + j$ is the eye number
-        \item
-          \begin{math}
-            E = \{e_{(i,\,j)} \in \Omega
-              \mid i + j \;\mathrm{mod}\; 2 = 0\}
-          \end{math}
+        \item<2->
+          Rolling a dice twice ({\color{Mittel-Blau}$\Omega = \{1,\dots,6\}^2$})
+        \item<3->
+          Each event {\color{Mittel-Blau}$e_{(i,\,j)} \in \Omega$} has the probability
+          {\color{Mittel-Blau}$P(e) = \sfrac{1}{36}$}
+        \item<4->
+          {\color{Mittel-Blau}$E =$} if both eye numbers even, then {\color{Mittel-Blau}$P(E)=$}
       \end{itemize}
     \end{column}
+    \onslide<3->
     \begin{column}{0.35\linewidth}
       \begin{table}[!h]
         \caption{Throwing a dice twice}
         \label{tab:probabilities_rolling_dice_twice}
         \begin{tabularx}{0.8\linewidth}{c|c}
-          $e_{(i,\,j)}$ & $\mathbb{P}(e_{(i,\,j)})$\\
+          {\color{Mittel-Blau}$e_{(i,\,j)}$} &{\color{Mittel-Blau} $P(e_{(i,\,j)})$}\\
           \midrule
           $(1, 1)$ & $\sfrac{1}{36}$\\
           $(1, 2)$ & $\sfrac{1}{36}$\\
@@ -81,16 +79,16 @@
       \textbf{Example:}
       \begin{itemize}
         \item
-          We define: $X$ is the result variable of the experiment
+          We define: {\color{Mittel-Blau}$X$} is the result variable of the experiment
         \item
           We can reduce the result set by creating preconditions for our
-          result variable $X$\\[0.5em]
+          result variable {\color{Mittel-Blau}$X$}\\[0.5em]
           Examples:
           \begin{itemize}
             \item
-              $\mathbb{P}(X = 2) = $
+              {\color{Mittel-Blau}$P(X = 2) = $}
             \item
-              $\mathbb{P}(X = 4) = $
+              {\color{Mittel-Blau}$P(X = 4) = $}
           \end{itemize}
       \end{itemize}
     \end{column}
@@ -99,7 +97,7 @@
         \caption{Throwing a dice twice}
         \label{tab:probabilities:rolling_dice_twice2}
         \begin{tabularx}{0.95\linewidth}{c|cc}
-          $e_{(i,\,j)}$ & $\mathbb{P}(e_{(i,\,j)})$ & $X = i + j$\\
+          {\color{Mittel-Blau}$e_{(i,\,j)}$} & {\color{Mittel-Blau}$P(e_{(i,\,j)})$} & {\color{Mittel-Blau}$X = i + j$}\\
           \midrule
           $(1, 1)$ & $\sfrac{1}{36}$ & 2\\
           $(1, 2)$ & $\sfrac{1}{36}$ & 3\\
@@ -121,9 +119,9 @@
       \textbf{Example:}
       \begin{itemize}
         \item
-          $E = \{e_{(i,\,j)} \in \Omega
-          \mid X \;\mathrm{mod}\; 2 = 0\}$\\
-          $\mathbb{P}(E) =$
+          {\color{Mittel-Blau}$E = \{e_{(i,\,j)} \in \Omega
+          \mid X \;\mathrm{mod}\; 2 = 0\}$}\\
+          {\color{Mittel-Blau}$P(E) =$}
       \end{itemize}
     \end{column}
     \begin{column}{0.45\linewidth}
@@ -131,7 +129,7 @@
         \caption{Throwing a dice twice}
         \label{tab:probabilities:rolling_dice_twice3}
         \begin{tabularx}{0.95\linewidth}{c|cc}
-          $e_{(i,\,j)}$ & $\mathbb{P}(e_{(i,\,j)})$ & $X = i + j$\\
+          {\color{Mittel-Blau}$e_{(i,\,j)}$} & {\color{Mittel-Blau}$P(e_{(i,\,j)})$} &{\color{Mittel-Blau} $X = i + j$}\\
           \midrule
           $(1, 1)$ & $\sfrac{1}{36}$ & 2\\
           $(1, 2)$ & $\sfrac{1}{36}$ & 3\\
@@ -149,13 +147,13 @@
 
 \begin{frame}{Universal Hashing}{Probability Calculation}
   \textbf{Expected value:}
-  \[\mathbb{E}[X]
-    = \sum_{X \in \mathbb{X}} \left(k \cdot \mathbb{P}(X = k)\right)\]
+  {\color{Mittel-Blau}\[E[X]
+    = \sum_{X \in X} \left(k \cdot P(X = k)\right)\]}
   \begin{itemize}
     \item
-      The weighted average of all possible resulting values $\mathbb{X}$
+      The weighted average of all possible resulting values {\color{Mittel-Blau}$X$}
     \item
-      The weight factor is the result value $X$ itself
+      The weight factor is the result value {\color{Mittel-Blau}$X$} itself
   \end{itemize}
 \end{frame}
 
@@ -167,7 +165,7 @@
     \caption{Throwing a dice once}
     \label{tab:probabilities:value_rolling_dice_once}
     \begin{tabularx}{0.25\linewidth}{c|cc}
-      $X_1 = i$ & $\mathbb{P}(X_1)$\\
+      {\color{Mittel-Blau}$X_1 = i$} & {\color{Mittel-Blau}$P(X_1)$}\\
       \midrule
       1 & $\sfrac{1}{6}$\\
       2 & $\sfrac{1}{6}$\\
@@ -178,8 +176,8 @@
     \end{tabularx}
   \end{table}
   Throwing the dice once:
-  \[\mathbb{E}[X_1] = 1 \cdot \frac{1}{6} + 2 \cdot \frac{1}{6}
-    + \dots + 6 \cdot \frac{1}{6} = 3.5\]
+  {\color{Mittel-Blau}\[E[X_1] = 1 \cdot \frac{1}{6} + 2 \cdot \frac{1}{6}
+    + \dots + 6 \cdot \frac{1}{6} = 3.5\]}
 \end{frame}
 
 %-------------------------------------------------------------------------------
@@ -190,7 +188,7 @@
     \caption{Throwing a dice twice}
     \label{tab:probabilities:value_rolling_dice_twice}
     \begin{tabularx}{0.275\linewidth}{c|cc}
-      $X_2 = i + j$ & $\mathbb{P}(X_2)$\\
+      {\color{Mittel-Blau}$X_2 = i + j$ }&{\color{Mittel-Blau} $P(X_2)$}\\
       \midrule
       2 & $\sfrac{1}{36}$\\
       3 & $\sfrac{2}{36}$\\
@@ -201,28 +199,28 @@
     \end{tabularx}
   \end{table}
   Throwing the dice twice:
-  \[\mathbb{E}[X_2] = 2 \cdot \frac{1}{36} + 3 \cdot \frac{2}{36}
-    + \dots + 12 \cdot \frac{1}{36} = 7\]
+  {\color{Mittel-Blau}\[E[X_2] = 2 \cdot \frac{1}{36} + 3 \cdot \frac{2}{36}
+    + \dots + 12 \cdot \frac{1}{36} = 7\]}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Universal Hashing}{Probability Calculation}
   \textbf{Sum of expected values:}
-  For independent (discrete) result variables $X_1,\dots,X_n$ we can write:
-    \[\mathbb{E}\left[X_1+\dots+X_n\right]
-      = \mathbb{E}[X_1] + \dots + \mathbb{E}[X_n]\]
+  For independent (discrete) result variables {\color{Mittel-Blau}$X_1,\dots,X_n$} we can write:
+    {\color{Mittel-Blau}\[E\left[X_1+\dots+X_n\right]
+      = E[X_1] + \dots + E[X_n]\]}
   \textbf{Example:} Throwing two dice
   \begin{itemize}
     \item
-      $X_a$: Expected number of eyes dice $a$: $\mathbb{E}[X_a] = 3.5$
+      {\color{Mittel-Blau}$X_a$}: Expected number of eyes dice {\color{Mittel-Blau}$a$}: {\color{Mittel-Blau}$E[X_a] = 3.5$}
     \item
-      $X_b$: Expected number of eyes dice $b$: $\mathbb{E}[X_b] = 3.5$
+      {\color{Mittel-Blau}$X_b$}: Expected number of eyes dice {\color{Mittel-Blau}$b$}: {\color{Mittel-Blau}$E[X_b] = 3.5$}
     \item
-      $X = X_a + X_b$: Expected total number of eyes:
-      \[\mathbb{E}[X]
-        = \mathbb{E}[X_a + X_b]
-        = \mathbb{E}[X_a] + \mathbb{E}[X_b] = 3.5 + 3.5 = 7\]
+      {\color{Mittel-Blau}$X = X_a + X_b$}: Expected total number of eyes:
+      {\color{Mittel-Blau}\[E[X]
+        = E[X_a + X_b]
+        = E[X_a] + E[X_b] = 3.5 + 3.5 = 7\]}
   \end{itemize}
 \end{frame}
 
@@ -230,13 +228,13 @@
 
 \begin{frame}{Universal Hashing}{Probability Calculation}
   \begin{block}{Corollary:}
-    The probability of the event $E$ is $p = \mathbb{P}(E)$.
+    The probability of the event $E$ is $p = P(E)$.
     Let $X$ be the occurences of the event $E$ and $n$ be the number
     of executions.
-    \[\mathbb{E}[X] = n \cdot \mathbb{P}(E) = n \cdot p\]
+    {\color{Mittel-Blau}\[E[X] = n \cdot P(E) = n \cdot p\]}
   \end{block}
   \begin{example}[Rolling the dice 60 times:]
-    \[\mathbb{E}\left[\text{number of 6}\right] = \frac{1}{6} \cdot 60 = 10\]
+    \[E\left[\text{number of 6}\right] = \frac{1}{6} \cdot 60 = 10\]
   \end{example}
 \end{frame}
 
@@ -244,8 +242,9 @@
 
 \begin{frame}{Universal Hashing}{Probability Calculation}
   \begin{proof}[Proof Corollary:]
-    Indicator variable: $X_i$\\
+    Indicator variable: {\color{Mittel-Blau}$X_i$}\\
     \vspace*{-1.5em}
+    {\color{Mittel-Blau}
     \begin{align*}
       X_i &=
         \left\lbrace
@@ -255,17 +254,18 @@
           \end{array}
         \right. \hspace{1.5em}
         \Rightarrow \; X = \sum_{i=1}^{n} X_i
-    \end{align*}
+    \end{align*}}
     \vspace*{-1.0em}
+    {\color{Mittel-Blau}
     \begin{align*}
-      \mathbb{E}[X_i]
-        &= \; 0 \cdot \mathbb{P}(X_i = 0) + 1 \cdot \mathbb{P}(X_i = 1)\\
-      {} &= \; \mathbb{P}(X_i = 1) = p\\[0.5em]
-      \mathbb{E}[X] &= \mathbb{E}\left[\sum_{i=1}^{n} X_i\right]
-        = \sum_{i=1}^{n} \mathbb{E}[X_i]
+      E[X_i]
+        &= \; 0 \cdot P(X_i = 0) + 1 \cdot P(X_i = 1)\\
+      {} &= \; P(X_i = 1) = p\\[0.5em]
+      E[X] &= E\left[\sum_{i=1}^{n} X_i\right]
+        = \sum_{i=1}^{n} E[X_i]
         \stackrel{\text{def. $E$-value}}{=}
         \sum_{i=1}^{n} p = n \cdot p
-    \end{align*}
+    \end{align*}}
     \qedhere
   \end{proof}
 \end{frame}

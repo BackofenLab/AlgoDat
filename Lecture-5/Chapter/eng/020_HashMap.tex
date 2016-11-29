@@ -1,4 +1,7 @@
 \subsection{Hash Map}
+%\definecolor{inkscapeNavy}{HTML}{000080}
+%\definecolor{inkscapeGreen}{HTML}{008000}
+%\definecolor{inkscapeMaroon}{HMTL}{800000}
 
 \begin{frame}{Associative Arrays}{The Hash Map}
   \textbf{Idea:}
@@ -11,208 +14,93 @@
   \textbf{Example:}
   \begin{itemize}
     \item
-      Key set: $k = \{3904, 3126, 5148, 4522, 8769\}$
-    \item
+      Key set: $x = \{3904433, 312692, 5148949\}$
+    \onslide <2-> \item
       Hash function:
-      $h(k) = k \;\mathrm{mod}\; 5 \hspace*{1.0em} \in \{0, \ldots, 4\}$
-    \item
-      The resulting indices are ranging from $0$ to $4$\\
-      $\Rightarrow$ We need an array T with $m = 5$ elements
-    \item
-      The array elements are called {\color{Mittel-Blau}buckets}
+      {\color{Mittel-Blau}$h(x) = x \;\mathrm{mod}\; 5$}, in the range {\color{Mittel-Blau} $[0, \ldots, 4]$ }
+    \onslide <3-> \item We need an array {\color{Mittel-Blau}T} with {\color{Mittel-Blau}5} elements.\\
+          A "hashtable" with 5 "buckets"
+    \onslide <4-> \item The element with the key {\color{Mittel-Blau}x} is stored in {\color{Mittel-Blau}$T[h(x)]$} 
   \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Associative Arrays}{The Hash Map}
-  \textbf{Example:}
-  \begin{itemize}
-    \item
-      Key set: $k = \{3904, 3126, 5148, 4522, 8769\}$
-    \item
-      Hash function:
-      $h(k) = k \;\mathrm{mod}\; 5 \hspace*{1.0em} \in \{0, \ldots, 4\}$
-  \end{itemize}
   \textbf{Storage:}
+  \vspace{0.1em}
   \begin{itemize}
-    \item
-      \lstinline[
-        language=Python,
-        style={python-idle-code},
-        basicstyle=\small
-      ]|insert(3904, "A")|:
-      $\hspace*{0.5em} h(3904) = 4$
-      $\hspace*{0.5em} \Rightarrow$
-      \lstinline[
-        language=Python,
-        style={python-idle-code},
-        basicstyle=\small
-      ]|T[4] = (3904, "A")|
-    \item
-      \lstinline[
-        language=Python,
-        style={python-idle-code},
-        basicstyle=\small
-      ]|insert(3126, "B")|:
-      $\hspace*{0.5em} h(3126) = 1$
-      $\hspace*{0.5em} \Rightarrow$
-      \lstinline[
-        language=Python,
-        style={python-idle-code},
-        basicstyle=\small
-      ]|T[1] = (3126, "B")|
-    \item
-      \lstinline[
-        language=Python,
-        style={python-idle-code},
-        basicstyle=\small
-      ]|insert(5148, "C")|:
-      $\hspace*{0.5em} h(5148) = 3$
-      $\hspace*{0.5em} \Rightarrow$
-      \lstinline[
-        language=Python,
-        style={python-idle-code},
-        basicstyle=\small
-      ]|T[3] = (5148, "C")|
+    \setlength\itemsep{0.75em}
+    \item<2->
+    \small insert(3904433,"A"):
+    $\hspace*{0.0em} h(3904433) = 3$
+    $\hspace*{-0.1em} \Rightarrow$
+    T[3] = {\color{inkscapeGreen}(3904433, "A")}
+    \item<3->
+    \small insert(312692, "B"):
+    $\hspace*{0.0em} h(312692) = 2$
+    $\hspace*{-0.1em} \Rightarrow$
+    T[2] = {\color{inkscapeMaroon}(312692, "B")}
+    \item<4->
+    \small insert(5148949, "C"):
+    $\hspace*{0.0em} h(5148949) = 4$
+    $\hspace*{-0.1em} \Rightarrow$
+    T[4] = {\color{inkscapeNavy}(5148949, "C")}
   \end{itemize}
-  \vspace*{-1.0em}
-  \begin{table}[!b]
-    \caption{Hash table T}
-    \label{tab:hash_table:example_introduction}
-    \begin{tabularx}{0.875\textwidth}{l|ccccc}
-      {} & 0 & 1 & 2 & 3 & 4\\
-      \midrule
-      Bucket &
-      {} &
-      \lstinline[
-        language=Python,
-        style={python-idle-code},
-        basicstyle=\small
-      ]|(3126, "B")| &
-      {} &
-      \lstinline[
-        language=Python,
-        style={python-idle-code},
-        basicstyle=\small
-      ]|(5148, "C")| &
-      \lstinline[
-        language=Python,
-        style={python-idle-code},
-        basicstyle=\small
-      ]|(3904, "A")|
-    \end{tabularx}
-  \end{table}
+  \vspace{0.1em}
+  \begin{figure}
+  \caption{Hashtable T}
+  \centering
+    \only<1-1>{\includegraphics[width=0.6\textwidth]{Images/Bucket1.eps}}
+    \only<2-2>{\includegraphics[width=0.6\textwidth]{Images/Bucket2.eps}}
+    \only<3-3>{\includegraphics[width=0.6\textwidth]{Images/Bucket3.eps}}
+    \only<4->{\includegraphics[width=0.6\textwidth]{Images/Bucket4.eps}}
+  \end{figure}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Associative Arrays}{The Hash Map}
-  \textbf{Example:}
-  \begin{itemize}
-    \item
-    Key set: $k = \{3904, 3126, 5148, 4522, 8769\}$
-    \item
-    Hash function:
-    $h(k) = k \;\mathrm{mod}\; 5 \hspace*{1.0em} \in \{0, \ldots, 4\}$
-  \end{itemize}
   \textbf{Searching:}
+  \small
   \begin{itemize}
-    \item
-      \lstinline[
-        language=Python,
-        style={python-idle-code},
-        basicstyle=\small
-      ]|search(3904)|:
-      $\hspace*{0.5em} h(3904) = 4$
+     \setlength\itemsep{0.75em}
+    \item<1->
+    search(3904433):
+      $\hspace*{0.5em} h(3904433) = 4$
       $\hspace*{0.5em} \Rightarrow$
-      \lstinline[
-        language=Python,
-        style={python-idle-code},
-        basicstyle=\small
-      ]|T[4]|
-      $\rightarrow$
-      \lstinline[
-        language=Python,
-        style={python-idle-code},
-        basicstyle=\small
-      ]|(3904, "A")|
-    \item
-      \lstinline[
-        language=Python,
-        style={python-idle-code},
-        basicstyle=\small
-      ]|search(4522)|:
-      $\hspace*{0.5em} h(4522) = 2$
+      T[3] $\rightarrow$ {\color{inkscapeGreen}(3904433, "A")}
+    \item<2->
+      search(123459):
+      $\hspace*{0.5em} h(123459) = 4$
       $\hspace*{0.5em} \Rightarrow$
-      \lstinline[
-        language=Python,
-        style={python-idle-code},
-        basicstyle=\small
-      ]|T[2]|
-      $\rightarrow$
-      {}\\
-      $\Rightarrow$ Value with key 4522 does not exist
-    \item
-      Search time: $\mathcal{O}(1)$
+      T[4] {}\\
+      \vspace{0.75em}
+      $\Rightarrow$ {\color{red}Value with key 123459 does not exist}
+    \item<3->
+      Search time for this example: {\color{Mittel-Blau}$\mathcal{O}(1)$}
   \end{itemize}
   \vspace*{-1.0em}
-  \begin{table}[!b]
-    \caption{Hash table T}
-    \label{tab:hash_table:example_introduction2}
-    \begin{tabularx}{0.875\textwidth}{l|ccccc}
-      {} & 0 & 1 & 2 & 3 & 4\\
-      \midrule
-      Bucket &
-      {} &
-      \lstinline[
-        language=Python,
-        style={python-idle-code},
-        basicstyle=\small
-      ]|(3126, "B")| &
-      {} &
-      \lstinline[
-        language=Python,
-        style={python-idle-code},
-        basicstyle=\small
-      ]|(5148, "C")| &
-      \lstinline[
-        language=Python,
-        style={python-idle-code},
-        basicstyle=\small
-      ]|(3904, "A")|
-    \end{tabularx}
-  \end{table}
+  \begin{figure}
+    \caption{Hashtable T}
+    \centering
+    \includegraphics[width=0.6\textwidth]{Images/Bucket4.eps}
+  \end{figure}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Associative Arrays}{Hash Collisions}
-  \textbf{Example:}
-  \begin{itemize}
-    \item
-    Key set: $k = \{3904, 3126, 5148, 4522, 8769\}$
-    \item
-    Hash function:
-    $h(k) = k \;\mathrm{mod}\; 5 \hspace*{1.0em} \in \{0, \ldots, 4\}$
-  \end{itemize}
   \textbf{Further inserting:}
   \begin{itemize}
-    \item
-      \lstinline[
-        language=Python,
-        style={python-idle-code},
-        basicstyle=\small
-      ]|insert(8769, "D")|:
-      $\hspace*{0.5em} h(8769) = 4$
+    \item<1->
+      insert(876543, "D"):
+      $\hspace*{0.5em} h(876543) = 3$\\
+      \onslide <2->
       $\hspace*{0.5em} \Rightarrow$
-      \lstinline[
-        language=Python,
-        style={python-idle-code},
-        basicstyle=\small
-      ]|T[4] = (8769, "D")|
-    \item
-      More often than expected
+      T[3] = (876543, "D") {\color{red}{COLLISION!}}
+    \item<3->
+      This happens more often than expected
       \begin{itemize}
         \item
           \textbf{Birthday problem:}
@@ -221,41 +109,12 @@
       \end{itemize}
   \end{itemize}
   \vspace*{-1.0em}
-  \begin{table}[!b]
-    \caption{Hash table T}
-    \label{tab:hash_table:example_introduction3}
-    \begin{tabularx}{0.875\textwidth}{l|ccccc}
-      {} & 0 & 1 & 2 & 3 & 4\\
-      \midrule
-      Bucket &
-      {} &
-      \lstinline[
-        language=Python,
-        style={python-idle-code},
-        basicstyle=\small
-      ]|(3126, "B")| &
-      {} &
-      \lstinline[
-        language=Python,
-        style={python-idle-code},
-        basicstyle=\small
-      ]|(5148, "C")| &
-      \begin{math}
-        \begin{array}{@{}l@{}}
-          \lstinline[
-            language=Python,
-            style={python-idle-code},
-            basicstyle=\small
-          ]|(3904, "A"),|\\
-          \lstinline[
-            language=Python,
-            style={python-idle-code},
-            basicstyle=\small
-          ]|(8769, "D")|
-        \end{array}
-      \end{math}
-    \end{tabularx}
-  \end{table}
+  \onslide <1->
+  \begin{figure}
+    \caption{Hashtable T}
+    \centering
+       \includegraphics[width=0.6\textwidth]{Images/Bucket4.eps}
+  \end{figure}
 \end{frame}
 
 %-------------------------------------------------------------------------------
@@ -264,110 +123,118 @@
   \textbf{Problem:}
   \begin{itemize}
     \item
-      Two keys are equal $h(x) = h(y)$ but not the values $x \neq y$
+      Two keys are equal {\color{Mittel-Blau} $h(x) = h(y)$} but not the values {\color{Mittel-Blau} $x \neq y$}
   \end{itemize}
-  \textbf{Easiest Solution:}
+  \onslide <2-> \textbf{Easiest Solution:}
   \begin{itemize}
-    \item
+    \item<3->
       Represent each bucket as list of key value pairs
-    \item
+    \item<4->
       Append new values to the end of the list
   \end{itemize}
+    \vspace*{-1.0em}
+    \begin{figure}
+    \onslide <3->\caption{Hashtable T}
+    \centering
+    \only<1-3>{\includegraphics[width=0.6\textwidth]{Images/Bucket4.eps}}
+    \only<4-4>{\includegraphics[width=0.6\textwidth]{Images/Bucket5.eps}}
+  \end{figure}
 \end{frame}
+
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Associative Arrays}{Hash Collisions}
-  \textbf{Example:}
-  \begin{itemize}
-    \item
-    Key set: $k = \{3904, 3126, 5148, 4522\}$
-    \item
-    Hash function:
-    $h(k) = k \;\mathrm{mod}\; 5 \hspace*{1.0em} \in \{0, \ldots, 4\}$
-  \end{itemize}
-  \textbf{Inserting:}
-  \begin{itemize}
-    \item
-      \dots
-    \item
-      \lstinline[
-        language=Python,
-        style={python-idle-code},
-        basicstyle=\small
-      ]|insert(8769, "D")|:
-      $\hspace*{0.5em} h(8769) = 4$
-      $\hspace*{0.5em} \Rightarrow$
-      \lstinline[
-        language=Python,
-        style={python-idle-code},
-        basicstyle=\small
-      ]|T[4].append((8769, "D"))|
-    \item
-      \lstinline[
-        language=Python,
-        style={python-idle-code},
-        basicstyle=\small
-      ]|search(8769)|:
-      $\hspace*{0.5em} h(8769) = 4$\\
-      $\hspace*{1.5em} \Rightarrow$
-      \lstinline[
-        language=Python,
-        style={python-idle-code},
-        basicstyle=\small
-      ]|T[4]|
-      $\Rightarrow$
-      \lstinline[
-        language=Python,
-        style={python-idle-code},
-        basicstyle=\small
-      ]|[(3904, "A"), (8769, "D")]|
-  \end{itemize}
-  \vspace*{-1.0em}
-  \begin{table}[!b]
-    \caption{Hash table T}
-    \label{tab:hash_table:example_linked}
-    \begin{tabularx}{\textwidth}{l|ccccc}
-      {} & 0 & 1 & 2 & 3 & 4\\
-      \midrule
-      Bucket &
-      \lstinline[
-        language=Python,
-        style={python-idle-code},
-        basicstyle=\small
-      ]|[]| &
-      \lstinline[
-        language=Python,
-        style={python-idle-code},
-        basicstyle=\small
-      ]|[(3126, "B")]| &
-      \lstinline[
-        language=Python,
-        style={python-idle-code},
-        basicstyle=\small
-      ]|[]| &
-      \lstinline[
-        language=Python,
-        style={python-idle-code},
-        basicstyle=\small
-      ]|[(5148, "C")]| &
-      \begin{math}
-        \left[\begin{array}{@{}l@{}}
-          \lstinline[
-            language=Python,
-            style={python-idle-code},
-            basicstyle=\small
-          ]|(3904, "A"),|\\
-          \lstinline[
-            language=Python,
-            style={python-idle-code},
-            basicstyle=\small
-          ]|(8769, "D")|
-        \end{array}\right]
-      \end{math}
-    \end{tabularx}
-  \end{table}
-\end{frame}
+%% \begin{frame}{Associative Arrays}{Hash Collisions}
+%%   \textbf{Example:}
+%%   \begin{itemize}
+%%     \item
+%%     Key set: $k = \{3904, 3126, 5148, 4522\}$
+%%     \item
+%%     Hash function:
+%%     $h(k) = k \;\mathrm{mod}\; 5 \hspace*{1.0em} \in \{0, \ldots, 4\}$
+%%   \end{itemize}
+%%   \textbf{Inserting:}
+%%   \begin{itemize}
+%%     \item
+%%       \dots
+%%     \item
+%%       \lstinline[
+%%         language=Python,
+%%         style={python-idle-code},
+%%         basicstyle=\small
+%%       ]|insert(8769, "D")|:
+%%       $\hspace*{0.5em} h(8769) = 4$
+%%       $\hspace*{0.5em} \Rightarrow$
+%%       \lstinline[
+%%         language=Python,
+%%         style={python-idle-code},
+%%         basicstyle=\small
+%%       ]|T[4].append((8769, "D"))|
+%%     \item
+%%       \lstinline[
+%%         language=Python,
+%%         style={python-idle-code},
+%%         basicstyle=\small
+%%       ]|search(8769)|:
+%%       $\hspace*{0.5em} h(8769) = 4$\\
+%%       $\hspace*{1.5em} \Rightarrow$
+%%       \lstinline[
+%%         language=Python,
+%%         style={python-idle-code},
+%%         basicstyle=\small
+%%       ]|T[4]|
+%%       $\Rightarrow$
+%%       \lstinline[
+%%         language=Python,
+%%         style={python-idle-code},
+%%         basicstyle=\small
+%%       ]|[(3904, "A"), (8769, "D")]|
+%%   \end{itemize}
+%%   \vspace*{-1.0em}
+%%   \begin{table}[!b]
+%%     \caption{Hash table T}
+%%     \label{tab:hash_table:example_linked}
+%%     \begin{tabularx}{\textwidth}{l|ccccc}
+%%       {} & 0 & 1 & 2 & 3 & 4\\
+%%       \midrule
+%%       Bucket &
+%%       \lstinline[
+%%         language=Python,
+%%         style={python-idle-code},
+%%         basicstyle=\small
+%%       ]|[]| &
+%%       \lstinline[
+%%         language=Python,
+%%         style={python-idle-code},
+%%         basicstyle=\small
+%%       ]|[(3126, "B")]| &
+%%       \lstinline[
+%%         language=Python,
+%%         style={python-idle-code},
+%%         basicstyle=\small
+%%       ]|[]| &
+%%       \lstinline[
+%%         language=Python,
+%%         style={python-idle-code},
+%%         basicstyle=\small
+%%       ]|[(5148, "C")]| &
+%%       \begin{math}
+%%         \left[\begin{array}{@{}l@{}}
+%%           \lstinline[
+%%             language=Python,
+%%             style={python-idle-code},
+%%             basicstyle=\small
+%%           ]|(3904, "A"),|\\
+%%           \lstinline[
+%%             language=Python,
+%%             style={python-idle-code},
+%%             basicstyle=\small
+%%           ]|(8769, "D")|
+%%         \end{array}\right]
+%%       \end{math}
+%%     \end{tabularx}
+%%   \end{table}
+%% \end{frame}
 
 %-------------------------------------------------------------------------------
 
@@ -377,12 +244,12 @@
       {\color{Mittel-Blau}Best case}:
       \begin{itemize}
         \item
-          We have $n$ keys which are equally distributed over $m$ buckets
+          We have {\color{Mittel-Blau}$n$} keys which are equally distributed over {\color{Mittel-Blau}$m$} buckets
         \item
-          We have $\approx \frac{n}{m}$ pairs per bucket
-        \item
-          The runtime is nearly $\mathcal{O}(1)$ for searching when \textbf{not}
-          $n \gg m$
+          We have {\color{Mittel-Blau}$\approx \frac{n}{m}$} pairs per bucket
+        %\item
+          %The runtime is nearly {\color{Mittel-Blau}$\mathcal{O}(1)$} for searching when \textbf{not}
+          %{\color{Mittel-Blau}$n \gg m$}
       \end{itemize}
     \end{column}
     \begin{column}{0.3\linewidth}
@@ -436,9 +303,9 @@
       {\color{Mittel-Blau}Worst case}:
       \begin{itemize}
         \item
-          All $n$ keys are mapped onto the same bucket
+          All {\color{Mittel-Blau}$n$} keys are mapped onto the same bucket
         \item
-          The runtime is $\mathcal{O}(n)$ for searching
+          The runtime is {\color{Mittel-Blau}$\Theta(n)$} for searching
       \end{itemize}
     \end{column}
     \begin{column}{0.4\linewidth}
@@ -479,3 +346,4 @@
     \end{column}
   \end{columns}
 \end{frame}
+

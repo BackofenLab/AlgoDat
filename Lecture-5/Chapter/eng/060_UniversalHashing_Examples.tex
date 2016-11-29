@@ -5,18 +5,19 @@
   \begin{itemize}
     \item
       The set of hash functions is
-      $h_a(x) = (a \cdot x) \mod m, \hspace*{1.5em} a \in \mathbb{U}$
+      {\color{Mittel-Blau}$h_a(x) = (a \cdot x) \mod m, \hspace*{1.5em} a \in \mathbb{U}$}
     \item
-      Is not $c$-universal. Why?
+      Is not {\color{Mittel-Blau}$c$}-universal. Why?
+      {\color{Mittel-Blau}
       \begin{displaymath}
         \forall x, y \in \mathbb{U}\!: \; \frac{
           \vert \{h \in \mathbb{H}: h(x) = h(y)\} \vert
         }{
           \vert \mathbb{H} \vert
         } \leq \frac{c}{m}, \hspace*{1.5em} x \neq y
-      \end{displaymath}
+      \end{displaymath}}
     \item
-      Which $x, y$ lead to a relative collision count bigger than $\frac{c}{m}$?
+      Which {\color{Mittel-Blau}$x, y$} lead to a relative collision count bigger than {\color{Mittel-Blau}$\frac{c}{m}$}?
   \end{itemize}
 \end{frame}
 
@@ -26,22 +27,24 @@
   \textbf{Positive example:}
   \begin{itemize}
     \item
-      Let $p \in \mathbb{N}, \; p > m, \; p \geq \vert \mathbb{U} \vert$
+      Let {\color{Mittel-Blau}$p \in \mathbb{N}, \; p > m, \; p \geq \vert \mathbb{U} \vert$}
       be a prime number
     \item
-      The set of hash functions is $c$-universal:
+      The set of hash functions is {\color{Mittel-Blau}$c$}-universal:
+      {\color{Mittel-Blau}
       \begin{align*}
         h_{a, b}(x) = ((a \cdot x + b) \mod p) \mod m,\\
         \hspace*{1.5em} a,b \in \mathbb{N}, \; 1 \leq a < p, \; 0 \leq b < p
-      \end{align*}
+      \end{align*}}
     \item
       Easy to implement but hard to proof
   \end{itemize}
+  {\color{Mittel-Blau}
   \begin{example}[%
     $\mathbb{U} = \{0, \dots, 99\}, \; p = 101, \; a = 47, \; b = 5$
   ]%
     \[h(x) = ((47 \cdot x + 5) \mod 101) \mod m\]
-  \end{example}
+  \end{example}}
 \end{frame}
 
 %-------------------------------------------------------------------------------
@@ -50,39 +53,44 @@
   \textbf{Positive example:}
   \begin{itemize}
     \item
-      The set of hash functions is $c$-universal:
-      \[h_{a}(x) = a \bullet x \mod m, \hspace*{1.5em} a \in \mathbb{U}\]
+      The set of hash functions is {\color{Mittel-Blau}$c$}-universal:
+      {\color{Mittel-Blau}
+      \[h_{a}(x) = a \bullet x \mod m, \hspace*{1.5em} a \in \mathbb{U}\]}
     \item
       \textbf{We define:}
+      {\color{Mittel-Blau}
       \begin{align*}
         a &= \sum_{0, \ldots, k-1} a_i \cdot m^i,
         \hspace*{1.5em} k = \mathrm{ceil}(\log_m \vert \mathbb{U} \vert)\\
         x &= \sum_{0, \ldots, k-1} x_i \cdot m^i
-      \end{align*}
+      \end{align*}}
     \item
-      \textbf{Intuitive}: Scalar product with base $m$
+      \textbf{Intuitive}: Scalar product with base {\color{Mittel-Blau}$m$}
+      {\color{Mittel-Blau}
       \begin{align*}
         a \bullet x &= \sum_{0, \ldots, k-1} a_i \cdot x_i
-      \end{align*}
+      \end{align*}}
   \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Universal Hashing}{Examples}
-  \begin{example}[%
-    $\mathbb{U} = \{0, \dots, 999\}, \; m = 10, \; a = 348$
-  ]%
-    With $a=348$: $a_2 = 3, \; a_1 = 4, \; a_0 = 8$
+  \begin{example}[{\color{Mittel-Blau}%
+    $\mathbb{U} = \{0, \dots, 999\}, \; m = 10, \; a = 348$}
+  ]% 
+    With {\color{Mittel-Blau}$a=348$: $a_2 = 3, \; a_1 = 4, \; a_0 = 8$}
+    {\color{Mittel-Blau}
     \begin{align*}
       h_{348}(x) &= (a_2 \cdot x_2 + a_1 \cdot x_1 + a_0 \cdot x_0) \mod m\\
       {} &= (3 \, x_2 + 4 \, x_1 + 8 \, x_0) \mod 10
-    \end{align*}
-    With $x = 127$: $x_2 = 1, \; x_1 = 2, \; x_0 = 7$
+    \end{align*}}
+    With {\color{Mittel-Blau}$x = 127$: $x_2 = 1, \; x_1 = 2, \; x_0 = 7$}
+    {\color{Mittel-Blau}
     \begin{align*}
       h_{348}(127) &= (3 \cdot x_2 + 4 \cdot x_1 + 8 \cdot x_0) \mod 10\\
       {} &= (3 \cdot 1 + 4 \cdot 2 + 8 \cdot 7) \mod 10\\
       {} &= 7
-    \end{align*}
+    \end{align*}}
   \end{example}
 \end{frame}

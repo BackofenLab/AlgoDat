@@ -4,24 +4,25 @@
   \textbf{Given:}
   \begin{itemize}
     \item
-      We pick two random keys $x, y \in \mathbb{U} \mid x \neq y$ and
-      a random hash function $h \in \mathbb{H}$
+      We pick two random keys {\color{Mittel-Blau}$x, y \in \mathbb{U} \mid x \neq y$} and
+      a random hash function {\color{Mittel-Blau}$h \in \mathbb{H}$}
     \item
       We know the probability of a collision:
-      \[\mathbb{P}(h(x) = h(y)) \leq \frac{c}{m}\]
+      {\color{Mittel-Blau}\[P(h(x) = h(y)) \leq \frac{c}{m}\]}
   \end{itemize}
   \textbf{To proof:}
-  \[\mathbb{E}\left[\vert \mathbb{S}_i \vert\right]
+  {\color{Mittel-Blau}\[E\left[\vert \mathbb{S}_i \vert\right]
      \leq 1 + c \cdot \frac{\vert \mathbb{S} \vert}{m}
-     \hspace*{1.5em} \forall \, i\]
+     \hspace*{1.5em} \forall \, i\]}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Universal Hashing}{Proof}
   \textbf{We know:}
-  \[\mathbb{S}_i = \{x \in \mathbb{S}: h(x) = i\}\]
-  We define an indicator varialble:
+  {\color{Mittel-Blau}\[\mathbb{S}_i = \{x \in \mathbb{S}: h(x) = i\}\]}
+  We define an indicator variable:
+  {\color{Mittel-Blau}
   \begin{displaymath}
     I_y = \begin{cases}
       1, & \text{if } h(y) = i\\
@@ -31,27 +32,29 @@
   \begin{align*}
     \Rightarrow && \vert \mathbb{S}_i \vert
       & = 1 + \sum_{y \in \mathbb{S} \setminus x} I_y\\
-    \Rightarrow && \mathbb{E}\left[\vert \mathbb{S}_i \vert\right]
-      & = \mathbb{E}\left[1 + \sum_{y \in \mathbb{S} \setminus x} I_y\right]
-        = 1 + \sum_{y \in \mathbb{S} \setminus x} \mathbb{E}[I_y]
-  \end{align*}
+    \Rightarrow && E\left[\vert \mathbb{S}_i \vert\right]
+      & = E\left[1 + \sum_{y \in \mathbb{S} \setminus x} I_y\right]
+        = 1 + \sum_{y \in \mathbb{S} \setminus x} E[I_y]
+  \end{align*}}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Universal Hashing}{Proof}
   \textbf{Expected value for same bucket:}
+  {\color{Mittel-Blau}
   \begin{align*}
     \left.\begin{array}{rl}
-      \mathbb{E}[I_y] & = \mathbb{P}(I_y = 1)\\
-      {} & = \mathbb{P}(h(y) = i)\\
-      {} & = \mathbb{P}(h(y) = h(x))\\
+      E[I_y] & = P(I_y = 1)\\
+      {} & = P(h(y) = i)\\
+      {} & = P(h(y) = h(x))\\
     \end{array}\right\rbrace
     \leq \frac{c}{m}
-  \end{align*}
+  \end{align*}}
   \textbf{Final proof:}
+  {\color{Mittel-Blau}
   \begin{displaymath}
-    1 + \sum_{y \in \mathbb{S} \setminus x} \mathbb{E}[I_y]
+    1 + \sum_{y \in \mathbb{S} \setminus x} E[I_y]
     \leq
     \underbrace{
       1 + \sum_{y \in \mathbb{S} \setminus x} \frac{c}{m}
@@ -63,9 +66,9 @@
   \end{displaymath}
   \begin{displaymath}
     \hspace*{7.5em}
-    \mathbb{E}\left[\vert \mathbb{S}_i \vert\right]
+    E\left[\vert \mathbb{S}_i \vert\right]
       = 1 + \sum_{y \in \mathbb{S} \setminus \{x\}}
       \leq 1 + c \cdot \frac{\vert \mathbb{S} \vert}{m}
     \hspace*{7.5em}\square
-  \end{displaymath}
+  \end{displaymath}}
 \end{frame}

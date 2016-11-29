@@ -23,13 +23,14 @@
 %    draw={Mittel-Gruen!70!Mittel-Blau!80!black!70!white},
 %    fill={Hell-Gruen!70!Mittel-Blau!40!white},
     line width=0.125em
-  }
+  }, background rectangle/.style={
+    fill=white}
 ]%
 \draw (-2.75, 11.0) node[align=center](U_Text) {\Huge Key set};
-\draw (-2.75, 10.0) node[align=center](U) {\Huge$\mathbb{U}$};
+\draw[text=Mittel-Blau] (-2.75, 10.0) node[align=center](U) {\Huge$\mathbb{U}$};
 
 \draw (5.0, 8.5) node[anchor=west](T_Text) {\Huge Hashtable};
-\draw (5.5, 7.5) node[align=center](T) {\Huge T};
+\draw[text=Mittel-Blau] (5.5, 7.5) node[align=center](T) {\Huge T};
 
 
 %\draw (-2.0, 5.0) node[anchor=east](x) {\Huge $\mathbb{U}$};
@@ -42,8 +43,8 @@
     (-2.5, 0.5*\y + 5.25);
 }
 
-\draw (-3.0, 6.5) node[anchor=east](x) {\Huge x};
-\draw (-3.0, 3.5) node[anchor=east](y) {\Huge y};
+\draw[text=Mittel-Blau] (-3.0, 6.5) node[anchor=east](x) {\Huge x};
+\draw[text=Mittel-Blau] (-3.0, 3.5) node[anchor=east](y) {\Huge y};
 \foreach \y in {3, -3}{
   \draw[key_n]
   (-2.5, 0.5*\y + 5.25) -- (-3.0, 0.5*\y + 5.25) --

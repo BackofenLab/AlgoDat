@@ -4,11 +4,12 @@
 
 \begin{frame}{Universal Hashing}{Thought Experiment}
   \begin{itemize}
-    \item
+    \setlength\itemsep{1.5em}
+    \item <1->
       I create a hash function
-    \item
-      Find a set of keys so that it results in a degenrated hash table
-    \item
+    \item <2->
+      Find a set of keys so that it results in a degenerated hash table
+    \item <3->
       Find a solution to avoid that problem
   \end{itemize}
 \end{frame}
@@ -18,14 +19,16 @@
 \begin{frame}{Universal Hashing}{Idea}
   \textbf{Solution:}
   \begin{itemize}
-    \item
+    \setlength\itemsep{1.5em}
+    \item <1->
       We use a set of hash functions
-    \item
-      We choose a random hash function so that the expected result is an equal
-      distribution
-    \item
+    \item <2->
+      We choose a random hash function so that the {\color{Mittel-Blau}expected result} is an equal
+      distribution over the buckets
+    \item <3->
       This is called {\color{Mittel-Blau}universal hashing}
   \end{itemize}
+  \onslide <1->
   \begin{columns}
     \begin{column}{0.33\linewidth}
       \begin{figure}[!h]
@@ -62,20 +65,20 @@
 \begin{frame}{Universal Hashing}{Definition}
   \textbf{Definition:}
   \begin{itemize}
-    \item
-      We call $\mathbb{U}$ the set (universum) of possible keys
-    \item
-      The size of the hash table $m$
-    \item
-      Set of hash functions $\mathbb{H} = \{h_1, h_2,\dots, h_n\}$ with
-      $h_i: \mathbb{U} \to \{0,\dots, m - 1\}$
+    \item<1->
+      We call {\color{Mittel-Blau}$\mathbb{U}$} the set (universum) of possible keys
+    \item<2->
+      The size {\color{Mittel-Blau}$m$} of the hash table {\color{Mittel-Blau}$T$}
+    \item<3->
+      Set of hash functions {\color{Mittel-Blau}$\mathbb{H} = \{h_1, h_2,\dots, h_n\}$} with
+      {\color{Mittel-Blau}$h_i: \mathbb{U} \to \{0,\dots, m - 1\}$}
   \end{itemize}%
   \begin{figure}[!b]%
     \begin{adjustbox}{height=0.35\linewidth}%
       \input{Images/UniversalHashing/HashFunction.tikz}%
     \end{adjustbox}
     \vspace*{-1.0em}%
-    \caption{Hash function $h_1$}%
+    \caption{onslide<3->Hash function $h_1$}%
     \label{fig:universal_hashing:hash_function_definition}
   \end{figure}
 \end{frame}
@@ -86,10 +89,9 @@
   \begin{columns}
     \begin{column}{0.5\linewidth}
       \begin{itemize}
-        \item
-          We choose two random keys $x, y \in \mathbb{U} \mid x \neq 
-          y$
-        \item
+        \item <1->
+          We choose two random keys {\color{Mittel-Blau}$x, y \in \mathbb{U} \mid x \neq y$}
+        \item <2->
           An average of 3 out of 15 functions produce collisions
       \end{itemize}
     \end{column}
@@ -98,7 +100,7 @@
         \begin{adjustbox}{width=\linewidth}
           \input{Images/UniversalHashing/HashUniverse.tikz}%
         \end{adjustbox}
-        \caption{Hash universe $\mathbb{H}$}%
+        \caption{Set of hash functions $\mathbb{H}$}%
         \label{fig:universal_hashing:hash_universe}
       \end{figure}
     \end{column}
@@ -109,29 +111,31 @@
 
 \begin{frame}{Universal Hashing}{Definition}
   \textbf{Definition:}
-  $\mathbb{H}$ is {\color{Mittel-Blau}$c$-universal} if
-  $\forall x, y \in \mathbb{U} \mid x \neq y:$
+  {\color{Mittel-Blau}$\mathbb{H}$} is {\color{Mittel-Blau}$c$-universal} if
+  {\color{Mittel-Blau}$\forall x, y \in \mathbb{U} \mid x \neq y:$
   \begin{displaymath}
     \overbrace{
       \frac{
-        \vert \{h_i \in \mathbb{H}\!: h_i(x) = h_i(y)\} \vert
+        \vert \{h \in \mathbb{H}\!: h(x) = h(y)\} \vert
       }{
-      \underbrace{\vert \mathbb{H} \vert}_\text{Number of hash functions}
+      \underbrace{\vert \mathbb{H} \vert}_\text{{\color{black}Number of hash functions}}
       }
     }^\text{
-      Number of hash functions that create collisions
+      {\color{black}Number of hash functions that create collisions}
     }
-    \leq \frac{c}{m}, \hspace*{1.5em} c \in \mathbb{R}
-  \end{displaymath}
+    \leq c \cdot \frac{1}{m}, \hspace*{1.5em} c \in \mathbb{R}
+  \end{displaymath}}
+  \vspace{-1em}
   \begin{itemize}
-    \item
-      If $h \in \mathbb{H}$ is chosen randomly then
-      $\mathbb{P}(h(x) = h(y)) \leq \frac{c}{m}$
+  \item <2->
+      With other words, given a arbitrary but fixed pair x{\color{Mittel-Blau},y}.\\
+      If {\color{Mittel-Blau}$h \in \mathbb{H}$} is chosen randomly then\\
+      \onslide<3->\begin{centering}{\color{Mittel-Blau}$Prob ( h(x) = h(y) ) \leq c \cdot \frac{1}{m}$}\end{centering}
   \end{itemize}
-  \begin{block}{Note: Best $c$ but not useful}
-    If the hash function chooses the {\color{Mittel-Blau}bucket} 
-    randomly then
-    $\mathbb{P}(h(x) = h(y)) = \frac{1}{m} \Leftrightarrow c = 1$
+  \onslide <4->
+  \begin{block}{Note: If the hash function assigns each key x and y
+      randomly to buckets then:}
+    {\onslide<5->\color{Mittel-Blau}$Prob( Collision ) = \frac{1}{m} \Leftrightarrow c = 1$}
   \end{block}
 \end{frame}
 
@@ -142,14 +146,14 @@
     \begin{column}{0.5\linewidth}
       \begin{itemize}
         \item
-          $\mathbb{S}$:
+          {\color{Mittel-Blau}$\mathbb{S}$}:
           Key universe
         \item
-          $\mathbb{S}_i \subseteq \mathbb{S}$:
-          Keys mapping to Bucket $i$ (\enquote{synonyms})
+          {\color{Mittel-Blau}$\mathbb{S}_i \subseteq \mathbb{S}$}:
+          Keys mapping to Bucket {\color{Mittel-Blau}$i$} (\enquote{synonyms})
        \item
          Ideal would be
-         $\vert \mathbb{S}_i \vert =\dfrac{\vert \mathbb{S} \vert}{m}$
+         {\color{Mittel-Blau}$\vert \mathbb{S}_i \vert =\dfrac{\vert \mathbb{S} \vert}{m}$}
       \end{itemize}
     \end{column}
     \begin{column}{0.5\linewidth}
@@ -157,7 +161,7 @@
         \begin{adjustbox}{width=\linewidth}%
           \input{Images/UniversalHashing/HashFunctionToBucket.tikz}%
         \end{adjustbox}
-        \caption{Hash function $h \in \mathbb{H}$}%
+        \caption{Hash function {\color{Mittel-Blau}$h \in \mathbb{H}$}}%
         \label{fig:universal_hashing:hash_function_to_bucket}
       \end{figure}
     \end{column}
@@ -168,21 +172,18 @@
 
 \begin{frame}{Universal Hashing}{Definition}
   \begin{itemize}
-    \item
-      We choose the keys $\mathbb{S} \subset \mathbb{U}$ and the
-      hash function $h \in \mathbb{H}$ randomly
-    \item
-      Let $\mathbb{S}_i = \{x \in \mathbb{S} | \; h(x) = i\}$ be the 
-      keys which
-      map to bucket $i$
-    \item
+    \item<1->
+      Let {\color{Mittel-Blau}$\mathbb{H}$} be a {\color{Mittel-Blau}$c$}-universal class of hash functions
+    \item<2->
+      Let {\color{Mittel-Blau}$\mathbb{S}$} be a set of keys and {\color{Mittel-Blau}$h \in \mathbb{H}$} selected randomly
+    \item<3->
+      Let {\color{Mittel-Blau}$\mathbb{S}_i$} be the key {\color{Mittel-Blau}$x$} for which {\color{Mittel-Blau}$h(x) = i$}
+    \item<4->
       The expected average number of elements to search through per 
-      bucket is
-      \[\mathbb{E}\left[\vert \mathbb{S}_i \vert\right]
-        \leq 1 + c \cdot \frac{\vert \mathbb{S} \vert}{m}\]
-    \item
-      If the number of buckets $\ll$ number of keys
-      ($m \in \Omega(\vert \mathbb{S} \vert)$) then
-      $\mathbb{E}\left[\vert \mathbb{S}_i \vert\right] = \mathcal{O}(n)$
+      bucket is {\color{Mittel-Blau}\[\mathbb{E}\left[\vert \mathbb{S}_i \vert\right]
+        \leq 1 + c \cdot \frac{\vert \mathbb{S} \vert}{m}\]}
+    \item<5->
+      Particulary: If  {\color{Mittel-Blau}($m = \Omega(\vert \mathbb{S} \vert)$)} then
+      {\color{Mittel-Blau}$\mathbb{E}\left[\vert \mathbb{S}_i \vert\right] = \mathcal{O}(n)$}
   \end{itemize}
 \end{frame}
