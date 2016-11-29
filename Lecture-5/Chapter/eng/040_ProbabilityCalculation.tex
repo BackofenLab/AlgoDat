@@ -8,14 +8,15 @@
           We just discuss the discrete case.
         \item<3->
           Probability space {\color{Mittel-Blau}$\Omega$} with {\color{Mittel-Blau}elementary (simple) events}
-        \item
-          They have probabilities .. Condition  {\color{Mittel-Blau}\[\sum_{e \in \Omega} P(e) = 1\]}
-        \item
-          The probability for a subspace of events {\color{Mittel-Blau}$E \subseteq \Omega$} is
-          {\color{Mittel-Blau}\[P(E) = \sum P(e) \mid e \in E\]}
+        \item<4->
+          Events have probabilities .. Condition  {\color{Mittel-Blau}\[\sum_{e \in \Omega} P(e) = 1\]}
+        \item<5->
+          The probability for a subset of events {\color{Mittel-Blau}$E \subseteq \Omega$} is
+          {\color{Mittel-Blau}\[P(E) = \sum_{e \in E} P(e) \mid e \in E\]}
       \end{itemize}
     \end{column}
     \begin{column}{0.35\textwidth}
+      \onslide <6->
       \begin{table}[!h]
         \caption{Throwing a dice}
         \label{tab:probabilities:rolling_dice}
@@ -41,21 +42,16 @@
     \begin{column}{0.65\linewidth}
       \textbf{Example:}
       \begin{itemize}
-        \item
+        \item<2->
           Rolling a dice twice ({\color{Mittel-Blau}$\Omega = \{1,\dots,6\}^2$})
-        \item
+        \item<3->
           Each event {\color{Mittel-Blau}$e_{(i,\,j)} \in \Omega$} has the probability
           {\color{Mittel-Blau}$P(e) = \sfrac{1}{36}$}
-        \item
-          {\color{Mittel-Blau}$X = i + j$} is the eye number
-        \item
-          {\color{Mittel-Blau}
-          \begin{math}
-            E = \{e_{(i,\,j)} \in \Omega
-              \mid i + j \;\mathrm{mod}\; 2 = 0\}
-          \end{math}}
+        \item<4->
+          {\color{Mittel-Blau}$E =$} if both eye numbers even, then {\color{Mittel-Blau}$P(E)=$}
       \end{itemize}
     \end{column}
+    \onslide<3->
     \begin{column}{0.35\linewidth}
       \begin{table}[!h]
         \caption{Throwing a dice twice}
