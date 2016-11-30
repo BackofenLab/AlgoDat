@@ -4,7 +4,7 @@
   \textbf{Given:}
   \begin{itemize}
     \item<1->
-      We pick two random keys {\color{Mittel-Blau}$x, y \in \mathbb{U} \mid x \neq y$} and
+      We pick two random keys {\color{Mittel-Blau}$x, y \in \mathbb{S} \mid x \neq y$} and
       a random hash function {\color{Mittel-Blau}$h \in \mathbb{H}$}
     \item<2->
       We know the probability of a collision:
@@ -23,7 +23,7 @@
   \textbf{We know:}
          {\color{Mittel-Blau}\[\mathbb{S}_i = \{x \in \mathbb{S}: h(x) = i\}\]}
          \onslide<2->
-         if {\color{Mittel-Blau}$S_i = \emptyset \Rightarrow  \vert \mathbb{S}_i \vert = 0$}\\
+         if {\color{Mittel-Blau}$\mathbb{S}_i = \emptyset \Rightarrow  \vert \mathbb{S}_i \vert = 0$}\\
          \onslide<3->
          otherwise, let {\color{Mittel-Blau}$x \in \mathbb{S}_i$ be any key}\\
   \onslide<4->
@@ -77,7 +77,7 @@
            \vspace{-0.6em}
            \begin{displaymath}
              \hspace*{-3em}
-             = 1 + \left(\vert \mathbb{S} - 1 \vert \right) \cdot c \cdot \frac{1}{m}
+             = 1 + \left(\vert \mathbb{S}  \vert - 1\right) \cdot c \cdot \frac{1}{m}
            \end{displaymath}
            \onslide<5->
            \vspace{-0.6em}

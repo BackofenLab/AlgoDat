@@ -9,8 +9,15 @@
       I create a hash function
     \item <2->
       Find a set of keys so that it results in a degenerated hash table
-    \item <3->
-      Find a solution to avoid that problem
+      \begin{itemize}
+        \item<3->{\it you may use the hash function}\\
+        \item<4->{\it for table size 100: try $100\times 99 +1$ different numbers }\\
+       \item<5->{\it worst case:  still 100 must have same hash
+          bucket }
+      \end{itemize}
+    \item <5->
+      \textbf{Now:} Find a solution to avoid that problem
+      
   \end{itemize}
 \end{frame}
 
@@ -19,12 +26,16 @@
 \begin{frame}{Universal Hashing}{Idea}
   \textbf{Solution:}
   \begin{itemize}
-    \setlength\itemsep{1.5em}
+    \setlength\itemsep{0.75em}
     \item <1->
       We use a set of hash functions
     \item <2->
       We choose a random hash function so that the {\color{Mittel-Blau}expected result} is an equal
       distribution over the buckets
+      \begin{center}
+        \it{} this is fixed for the lifetime of table\\
+        \it{}  optional: copy table with new hash when degenerated
+      \end{center}
     \item <3->
       This is called {\color{Mittel-Blau}universal hashing}
   \end{itemize}
@@ -66,19 +77,23 @@
   \textbf{Definition:}
   \begin{itemize}
     \item<1->
-      We call {\color{Mittel-Blau}$\mathbb{U}$} the set (universum) of possible keys
+      We call {\color{Mittel-Blau}$\mathbb{U}$} the set (universum) of
+      possible keys, and $\color{Mittel-Blau}\mathbb{S}\subseteq \mathbb{U}$ the set of used keys
     \item<2->
       The size {\color{Mittel-Blau}$m$} of the hash table {\color{Mittel-Blau}$T$}
     \item<3->
       Set of hash functions {\color{Mittel-Blau}$\mathbb{H} = \{h_1, h_2,\dots, h_n\}$} with
       {\color{Mittel-Blau}$h_i: \mathbb{U} \to \{0,\dots, m - 1\}$}
-  \end{itemize}%
+    \item<5-> Idea: runtime should be $\color{Mittel-Blau} O(1+\frac{\vert \mathbb{S}
+        \vert}{m})$, \rlap{where $\color{Mittel-Blau}\frac{\vert \mathbb{S} \vert}{m}$ is the
+      table load }
+  \end{itemize}%\vspace*{-2em}
   \begin{figure}[!b]%
-    \begin{adjustbox}{height=0.35\linewidth}%
+    \begin{adjustbox}{height=0.325\linewidth}%
       \input{Images/UniversalHashing/HashFunction.tikz}%
     \end{adjustbox}
     \vspace*{-1.0em}%
-    \caption{onslide<3->Hash function $h_1$}%
+    \caption{\onslide<3->Hash function $h_1$}%
     \label{fig:universal_hashing:hash_function_definition}
   \end{figure}
 \end{frame}
@@ -146,8 +161,11 @@
     \begin{column}{0.5\linewidth}
       \begin{itemize}
         \item
-          {\color{Mittel-Blau}$\mathbb{S}$}:
+          {\color{Mittel-Blau}$\mathbb{U}$}:
           Key universe
+        \item
+          {\color{Mittel-Blau}$\mathbb{S}$}:
+          Used Keys
         \item
           {\color{Mittel-Blau}$\mathbb{S}_i \subseteq \mathbb{S}$}:
           Keys mapping to Bucket {\color{Mittel-Blau}$i$} (\enquote{synonyms})
@@ -160,7 +178,7 @@
       \begin{figure}[!h]%
         \begin{adjustbox}{width=\linewidth}%
           \input{Images/UniversalHashing/HashFunctionToBucket.tikz}%
-        \end{adjustbox}
+        \end{adjustbox}\vspace*{-2em}
         \caption{Hash function {\color{Mittel-Blau}$h \in \mathbb{H}$}}%
         \label{fig:universal_hashing:hash_function_to_bucket}
       \end{figure}
