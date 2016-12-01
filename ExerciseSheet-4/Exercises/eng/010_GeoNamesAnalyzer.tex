@@ -1,27 +1,32 @@
 \exercise{1} \points{15}\\
-Write a class \textit{GeoNamesAnalyzer} with the following methods:
+Implement a \textit{geo\_names\_analyzer.py} file with the following functionalities:
 \begin{enumerate}
   \item
-    A method \textit{readInfoFromFile} to get the described information from
+    A function \textit{read\_info\_from\_file} to get the described information from
     the \textit{GeoNames.org} tab-separated table file \textit{allCountries.txt}
     which you can find on our website.
-    All lines in the file with a P in column 7 are localities.
+    All lines in the file with a $P$ in column 7 are localities (cities, villages .. ).
     You can find the locality names in column 2.
-    Only consider localities with inhabitants (column 15).
+    Only consider localities with > 0 inhabitants (column 15).
     You can find the country code in column 9.
   \item
-    A method \textit{computeMostFrequentCityNamesUsingSorting} which
+    A function \textit{compute\_most\_frequent\_city\_names\_by\_sorting} which
     calculates the most-frequent world-wide locality names via sorting.
   \item
-    A method \textit{computeMostFrequentCityNamesUsingMap} which does the
-    same, but instead of sorting via the usage of associative arrays.
-    Write one unit test for each of the two compute\ldots methods.
+    A function \textit{compute\_most\_frequent\_city\_names\_by\_map} which does the
+    same, but instead of sorting via the usage of an associative array (use Python's \textit{dictionary} class).
+    Write some unit tests for both functions.
     Do not use the \textit{allCountries.txt} file for testing,
-    but instead generate a small table with your program
-    (or simply use the Linux command line for generating a test table).
+    but instead generate a small table yourself (see lecture) or use the table for Austria (\textit{AT.zip}) 
+    from the website.
     
     \textbf{ATTENTION}: Do not upload the \textit{allCountries.txt} file into
-    the SVN directory!
+    the SVN directory! (instant exmatriculation guaranteed)
 \end{enumerate}
 
-Hints: TODO
+Hints:
+\begin{itemize}
+\item Read in the file and process it line by line, do not attempt store the file in a data structure
+\item Ideally, you would want to read the file line by line without unpacking it (you can do this too inside Python)
+\end{itemize}
+

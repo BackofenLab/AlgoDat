@@ -1,11 +1,16 @@
 \exercise{1} \points{5}\\
-Write a method \textit{meanBucketSize} which,
+Write a function \textit{mean\_bucket\_size} which,
 given a set of keys $S$ and a hash function $h$,
 calculates the \textit{mean bucket size} of $h$ applied on $S$.
 The mean bucket size is the mean number of elements that you have to look at
 in the bucket in order to find the wanted key.
 Attention: For this you only have to average over the buckets with at least
-one key.
+one key (i.e. $\|S\|$ divided by the number of non-empty buckets).
 Why?
 
-Hints: TODO
+\textbf{Hints:}
+\begin{itemize}
+\item Implement the hash function as a class (\emph{class HashFunction}) with the member variables $a$, $b$, $p$ (the prime number), $u$ (universe size), $m$ (hash table size). Also implement a method $apply(x)$ (apply hash function specified above to a given key value and return hash table index) and a void method \emph{set\_random\_parameters()} (set random parameters for $a$ and $b$, no return value)
+\item \emph{mean\_bucket\_size} gets a list of keys and a hash function object and returns the calculated mean bucket size
+\end{itemize}
+
