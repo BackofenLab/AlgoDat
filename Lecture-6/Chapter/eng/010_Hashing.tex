@@ -3,19 +3,22 @@
 \toclesssubsection{Recap}
 
 \begin{frame}{Hashing}{Recap}
+  \onslide<1->
   \textbf{Hashing:}
-  \begin{itemize}
-    \item
-      One hash function can not be good for all key sets!\\
-      The result set (amount of buckets) is mostly smaller than the input
-      universe\\
-      $\Rightarrow \vert \mathbb{U} \vert > m:$
-      There are always overlapping elements
-    \item
-      You can use a simple hash function for random key sets.
-      The randomness of the keys will create a equivalent distribution onto
-      the buckets
-      \[\Rightarrow h(x) = x \mod m\]
+  \begin{itemize}   
+  \item<2->
+    No hash function is good for all key sets!\\
+    \begin{itemize}
+    \item<3->
+      This can cannot work, because a big universe
+      is mapped onto a smal number (amount of buckets)
+      %$\Rightarrow \vert \mathbb{U} \vert > m:$
+    \end{itemize}
+  \item<3->
+    You can use a simple hash function for random key sets.
+    The randomness of the keys will create a equivalent distribution onto
+    the buckets
+    \[\Rightarrow h(x) = x \mod m\]
   \end{itemize}
 \end{frame}
 
