@@ -1,8 +1,8 @@
 \section{Hashing}
 
-\toclesssubsection{Recap}
+\toclesssubsection{Recapitulation}
 
-\begin{frame}{Hashing}{Recap}
+\begin{frame}{Hashing}{Recapitulation}
   \onslide<1->
   \textbf{Hashing:}
   \begin{itemize}   
@@ -11,79 +11,71 @@
     \begin{itemize}
     \item<3->
       This can cannot work, because a big universe
-      is mapped onto a smal number (amount of buckets)
+      is mapped onto a small set 
       %$\Rightarrow \vert \mathbb{U} \vert > m:$
     \end{itemize}
-  \item<3->
-    You can use a simple hash function for random key sets.
-    The randomness of the keys will create a equivalent distribution onto
-    the buckets
-    \[\Rightarrow h(x) = x \mod m\]
+  \item<4->
+    For random key sets also simple hash function work, e.g.
+     {\color{Mittel-Blau}\[\Rightarrow h(x) = x \mod m\]}
+     \begin{itemize}
+    \item<5->
+      Then the random keys make sure that it is distributed evenly
+     \end{itemize}
+  \item<6->
+   To find a good hash function for every key set universal hashing is needed
+     \begin{itemize}
+    \item<7->
+      Then however, for a fixed set of keys not every hash function is suitable,
+      but only some
+    \end{itemize}   
   \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Hashing}{Recap}
-  \textbf{Hashing:}
-  \begin{itemize}
-    \item
-      For a fixed key set the most hash functions are sufficient but not all of
-      them
-    \item
-      Universal hashing is needed to find a good hash function for each key set
-    \item
-      Not every hash function will produce good results but the most of the
-      functions in the universe
-  \end{itemize}
-\end{frame}
-
-%-------------------------------------------------------------------------------
-
-\begin{frame}{Hashing}{Recap}
+\begin{frame}{Hashing}{Recapitulation}
   \textbf{Rehashing:}
   \begin{itemize}
-    \item
+    \item<2->
       It is possible to get bad hash functions with universal hashing, but it
       is unlikely
-    \item
-      This is determinable by monitoring the bucket size and start a rehash
-      if a specific level is reached
+    \item<3->
+      This is determinable by monitoring the maximum bucket size
+
+    \item<4-> If a pre-defined level is exceeded, then a {\color{Mittel-Blau}rehash} is performed
   \end{itemize}
+  \onslide<5->
   \textbf{How to rehash?}
   \begin{itemize}
-    \item
+    \item<5->
       New hash table with a new random hash function
-    \item
+    \item<6->
       Copy elements into the new table
       \begin{itemize}
-        \item
+        \item<7->
           Expensive but happens not often
-        \item
-          Average cost is low
-        \item
-          Look at amortized analysis in the next lecture
+        \item<8->
+          Therefore the average cost is low
+        \item<9->
+          Look at {\color{Mittel-Blau}amortized analysis} in the next lecture
       \end{itemize}
   \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
-\subsection{Linked List}
+\subsection{Treatment of hash collisions}
 
 \begin{frame}{Hashing}{Linked List}
   \textbf{Buckets as linked list:}
   \begin{itemize}
-    \item
-      Each bucket is represented as a linked list
-    \item
-      Colliding keys are appended to the matching bucket
-    \item
-      A dynamic number of elements is possible
-  \end{itemize}
+    \item<2->
+      Each bucket is a linked list
+    \item<3->
+      Colliding keys are inserted into the linked list of a bucket, either sorted or appended at the end
+  \onslide<4->
   \vspace*{-1.0em}
   \begin{table}[!b]
-    \caption{Hash table}
     \label{tab:hashing:linked_list:hash_table}
     \begin{tabularx}{0.875\textwidth}{c|l}
       Bucket & Value\\
@@ -123,20 +115,13 @@
       ]|None|\\
     \end{tabularx}
   \end{table}
-\end{frame}
-
-%-------------------------------------------------------------------------------
-
-\begin{frame}{Hashing}{Linked Lists}
-  \textbf{Buckets as linked list:}
-  \begin{itemize}
-    \item
-      {\color{Mittel-Blau}Best case}: $\mathcal{O}(1)$\\
-      If table size and hash function chosen properly
-    \item
-      {\color{Mittel-Blau}Worst case}: $\mathcal{O}(n)$\\
-      The table size is too small for the chosen key set\\
-      (eg. 1 bucket)
+   \item<5->
+     Operations in {\color{Mittel-Blau}$O(1)$} are possible if a suitable tablesize and hashfunction is
+     selected
+   \item<6->
+     Worst case {\color{Mittel-Blau}$O(n)$}, e.g. tablesize of 1
+   \item<7->
+     Dynamic number of elements is possible 
   \end{itemize}
 \end{frame}
 
@@ -146,23 +131,33 @@
 
 \begin{frame}{Hashing}{Open Addressing}
   \begin{itemize}
-    \item
+    \item<2->
       For colliding keys we choose a new free entry
-    \item
+    \item<3->
       Static, fixed number of elements
-    \item
-      An algorithm determines the new position of the entry
-    \begin{itemize}
-      \item
-        \textbf{Insert:}
-        We have to generate a sequence of new locations until a free spot is
-        found
-      \item
-        \textbf{Lookup:}
-        We have to iterate over all possible locations until the searched
-        element or an empty spot is found
+    \item<4->
+      The sequence of probing determines for each key, in which sequence
+      all hash table entries are searched for a free bucket
+      \begin{itemize}
+      \item<5->
+        If a Entry is already occupied, then iterativly the {\color{Mittel-Blau}following entry} can
+        be checked. If a free entry is found the element is inserted.
+      \item<6->
+        If element is not found at the corresponding table entry, even if
+        the entry is occupied, then probing has to be performed until
+        the element or a free entry have been found.
     \end{itemize}
-  \end{itemize}
+  \end{itemize}  
+    %% \begin{itemize}
+    %%   \item
+    %%     \textbf{Insert:}
+    %%     We have to generate a sequence of new locations until a free spot is
+    %%     found
+    %%   \item
+    %%     \textbf{Lookup:}
+    %%     We have to iterate over all possible locations until the searched
+    %%     element or an empty spot is found
+    %% \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------------------------------
@@ -170,12 +165,13 @@
 \begin{frame}{Hashing}{Open Addressing}
   \textbf{Definitions:}
   \begin{itemize}
-    \item[\color{Mittel-Blau}$h(s)$]
+    \item<2->[\color{Mittel-Blau}$h(s)$]
       Hash function for key {\color{Mittel-Blau}$s$}
-    \item[\color{Mittel-Blau}$g(s,j)$]
-      Sequence generator choosing a location for key {\color{Mittel-Blau}$s$}
-      and the current try ${\color{Mittel-Blau}j} \in \{0,\dots,m-1\}$
-    \item
+    \item<3->[\color{Mittel-Blau}$g(s,j)$]
+      Probing function for key {\color{Mittel-Blau}$s$}
+      with overflow positions {\color{Mittel-Blau}$j \in \{0,\dots,m-1\}$}
+      e.g. {\color{Mittel-Blau}g(s,j)=j}
+    \item<4->
       The sequence of probing is calculated by
       \begin{displaymath}
         {\color{Mittel-Blau}h(s,j)}
@@ -291,7 +287,7 @@
   \end{figure}
   \vspace{-1.0em}
   \begin{itemize}
-    \item
+    \item<2->
       Check the element with lower index:
       \begin{math}
         {\color{Mittel-Blau}g(s,j)} := {\color{Mittel-Blau}j}
@@ -301,7 +297,7 @@
         {\color{Mittel-Blau}h(s,j)}
         = ({\color{Mittel-Blau}h(s)} - {\color{Mittel-Blau}j}) \mod m
       \end{math}
-    \item
+    \item<3->
       This leads to the following sequence
       \begin{displaymath}
         {\color{Mittel-Blau}h(s)},
@@ -329,9 +325,9 @@
   \end{figure}
   \vspace{-1.5em}
   \begin{itemize}
-    \item
+    \item<2->
       Can result in primary clustering
-    \item
+    \item<3->
       Dealing with a hash collision will result in a higher probability of hash
       collisions in close entries
   \end{itemize}
@@ -342,22 +338,22 @@
 \begin{frame}{Hashing}{Open Addressing - Linear Probing}
   \textbf{Example:}
   \begin{itemize}
-    \item
-      Key universe:
-      \begin{math}
-        \mathbb{U} = \{12, 53, 5, 15, 2, 19\}
+    \item<2->
+      Keys:
+        \begin{math}
+          {\color{Mittel-Blau}
+         \{12, 53, 5, 15, 2, 19\}}
       \end{math}
-    \item
+    \item<3->
       Hash function:
       \begin{math}
-        {\color{Mittel-Blau}h(s,j)}
-        = ({\color{Mittel-Blau}s} \mod 7 - {\color{Mittel-Blau}j}) \mod 7
+        {\color{Mittel-Blau}h(s,j)
+        = (s \mod 7 - j) \mod 7}
       \end{math}
   \end{itemize}
   \hfill\\[0.5em]
-  \textbf{Insertion sequence:}
-  \begin{itemize}
-    \item
+   \begin{itemize}
+    \item<4->
       \lstinline[
         language=Python,
         style={python-idle-code},
@@ -386,7 +382,7 @@
         \label{fig:hashing:open_addressing:linear_probing_example}%
       \end{figure}
       \hfill\\[1.0em]
-    \item
+    \item<5->
       \lstinline[
         language=Python,
         style={python-idle-code},
@@ -430,9 +426,8 @@
       \end{math}
   \end{itemize}
   \hfill\\[0.5em]
-  \textbf{Insertion sequence:}
   \begin{itemize}
-    \item
+    \item<2->
       \lstinline[
         language=Python,
         style={python-idle-code},
@@ -463,7 +458,7 @@
         \label{fig:hashing:open_addressing:linear_probing_example3}%
       \end{figure}
       \hfill\\[1.0em]
-    \item
+    \item<3->
       \lstinline[
         language=Python,
         style={python-idle-code},
@@ -507,9 +502,8 @@
       \end{math}
   \end{itemize}
   \hfill\\[0.5em]
-  \textbf{Insertion sequence:}
   \begin{itemize}
-    \item
+    \item<2->
       \lstinline[
         language=Python,
         style={python-idle-code},
@@ -538,7 +532,7 @@
         \label{fig:hashing:open_addressing:linear_probing_example6}%
       \end{figure}
       \hfill\\[1.0em]
-    \item
+    \item<3->
       \lstinline[
         language=Python,
         style={python-idle-code},
@@ -580,7 +574,17 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Hashing}{Open Addressing - Squared Probing}
-  \vspace{-2.0em}
+  \textbf{Squared probing:}
+  \begin{itemize}
+    \item<2->
+      Motivation: Avoid local clustering
+      \begin{displaymath}
+        {\color{Mittel-Blau}g(s,j)}
+        := (-1)^{\color{Mittel-Blau}j}
+        \left\lceil \frac{{\color{Mittel-Blau}j}}{2} \right\rceil^2
+      \end{displaymath}
+    \onslide<3->
+    \vspace{-2.0em}
   \begin{figure}[!h]
     \begin{adjustbox}{width=0.7\linewidth}%
       \input{Images/OpenAddressing/SquaredProbing.tikz}%
@@ -589,26 +593,16 @@
     \caption{Squared probing sequence}%
     \label{fig:hashing:open_addressing:squared_probing}%
   \end{figure}
-  \vspace{-1.0em}
-  \textbf{Squared probing:}
-  \begin{itemize}
-    \item
-      Motivation: Avoid local clustering
-      \begin{displaymath}
-        {\color{Mittel-Blau}g(s,j)}
-        := (-1)^{\color{Mittel-Blau}j}
-        \left\lceil \frac{{\color{Mittel-Blau}j}}{2} \right\rceil^2
-      \end{displaymath}
-    \item
+    \item<4->
       This leads to the following sequence
       \begin{displaymath}
-        {\color{Mittel-Blau}h(s)} ,\;
-        {\color{Mittel-Blau}h(s)}+1 ,\;
-        {\color{Mittel-Blau}h(s)}-1 ,\;
-        {\color{Mittel-Blau}h(s)}+4 ,\;
-        {\color{Mittel-Blau}h(s)}-4 ,\;
-        {\color{Mittel-Blau}h(s)}+9 ,\;
-        {\color{Mittel-Blau}h(s)}-9 ,\;
+        {\color{Mittel-Blau}h(s) ,\;
+        h(s)+1 ,\;
+        h(s)-1 ,\;
+        h(s)+4 ,\;
+        h(s)-4 ,\;
+        h(s)+9 ,\;
+        h(s)-9 ,\;}
         \dotsc
       \end{displaymath}
   \end{itemize}
@@ -620,37 +614,29 @@
 \begin{frame}{Hashing}{Open Addressing - Squared Probing}
   \textbf{Squared probing:}
   \begin{displaymath}
-    {\color{Mittel-Blau}g(s,j)}
-    := (-1)^{\color{Mittel-Blau}j}
-    \left\lceil \frac{{\color{Mittel-Blau}j}}{2} \right\rceil^2
+    {\color{Mittel-Blau}g(s,j)
+    := (-1)^j
+    \left\lceil \frac{j}{2} \right\rceil^2}
   \end{displaymath}
   \vspace{-1.0em}
   \begin{itemize}
-    \item
+    \item<2->
+      If ${\color{Mittel-Blau}m}$ is a prime number for which
+      \begin{math}
+        {\color{Mittel-Blau}m = 4 \cdot k + 3}
+      \end{math}
+      then the probing sequence is a permutation of the indices of
+      the hash tables.
+   \item<3->
       Alternatively:
       \begin{math}
-        {\color{Mittel-Blau}g(s,j)}
-        := c_1 \cdot {\color{Mittel-Blau}j}
-        + c_2 \cdot {\color{Mittel-Blau}j}^2,
-        \hspace{1.5em} c_1, c_2 \in \mathbb{N}
+        {\color{Mittel-Blau}h(s,j) := (h(s) - c_1 \cdot j + c_2 \cdot j^2) \mod m}
       \end{math}
-    \item
-      If ${\color{Mittel-Blau}m}$ is a prime number with the form
-      \begin{math}
-        {\color{Mittel-Blau}m} = 4 \cdot k + 3,
-        \hspace{1.5em} k \in \mathbb{N}
-      \end{math}
-      \begin{itemize}
-        \item
-          The generated sequence is a permutation of all indices
-        \item[$\Rightarrow$]
-          All indices are visited but in a different order
-      \end{itemize}
-    \item
-      No more primary clustering
-    \item
-      \textbf{Secondary clustering:}
-      All keys with the same hash value produce the same permutation sequence
+    \item<4->
+      Problem of secondary clustering\\
+      No local clustering anymore, but keys with same hash value
+      have similar sequence
+      
   \end{itemize}
 \end{frame}
 
@@ -659,18 +645,17 @@
 \begin{frame}{Hashing}{Open Addressing - Uniform Probing}
   \textbf{Uniform Probing:}
   \begin{itemize}
-    \item
+    \item<2->
       Motivation: The function ${\color{Mittel-Blau}g(s,j)}$ uses only the step
       counter ${\color{Mittel-Blau}j}$ for linear and squared probing\\
-      $\Rightarrow$ The sequence is independent of the {\color{Mittel-Blau}key}
-    \item
-      We use the key ${\color{Mittel-Blau}s}$ as factor for the generated
-      sequence
-    \item
+      {\color{red}$\Rightarrow$ The sequence is independent of the key}
+    \item<3->
+      Uniform probing computes the sequence ${\color{Mittel-Blau}g(s,j)}$ of permutations of all possible indices in dependency on key ${\color{Mittel-Blau}s}$ 
+    \item<4->
       \textbf{Advantage:}
       Prevents clustering because keys with the same hash value do not produce
       the same diversion sequence
-    \item
+    \item<5->
       \textbf{Disadvantage:}
       Hard to implement
   \end{itemize}
@@ -679,6 +664,7 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Hashing}{Open Addressing - Double Hashing}
+  \textbf{Double Hashing:}
   \vspace{-2.0em}
   \begin{figure}[!h]
     \begin{adjustbox}{width=0.9\linewidth}%
@@ -688,26 +674,25 @@
     \caption{Double hashing probing sequence}%
     \label{fig:hashing:open_addressing:double_hashing}%
   \end{figure}
-  \vspace{-1.0em}
-  \textbf{Double Hashing:}
   \begin{itemize}
-    \item
-      Motivation: Use the keys as influence for the diversion sequence
-    \item
+    \item<2->
+      Motivation: Consider key {\color{Mittel-Blau}$s$} in probing sequence
+    \item<3->
       Use two independent hash functions
       \begin{math}
         {\color{Mittel-Blau}h_1(s)},
         {\color{Mittel-Gruen}h_2(s)}
       \end{math}
-    \item
+    \item<4->
       Hash function:
       \begin{math}
-        {\color{Mittel-Blau}h(s,j)}
+        {\color{Mittel-Blau}h(s,j)
         = ({\color{Mittel-Blau}h_1(s)}
-        + {\color{Mittel-Blau}j} \cdot {\color{Mittel-Gruen}h_2(s)})
+        + {\color{Mittel-Blau}j} \cdot {\color{Mittel-Gruen}h_2(s)})}
         \mod m
       \end{math}
   \end{itemize}
+
 \end{frame}
 
 %-------------------------------------------------------------------------------
@@ -718,12 +703,12 @@
     \item
       Hash function:
       \begin{math}
-        {\color{Mittel-Blau}h(s,j)}
+        {\color{Mittel-Blau}h(s,j)
         = ({\color{Mittel-Blau}h_1(s)}
-        + {\color{Mittel-Blau}j} \cdot {\color{Mittel-Gruen}h_2(s)})
+        + {\color{Mittel-Blau}j} \cdot {\color{Mittel-Gruen}h_2(s)})}
         \mod m
       \end{math}
-    \item
+    \item<2->
       Diversion sequence:
       \begin{displaymath}
         {\color{Mittel-Blau}h_1(s)} ,\;
@@ -732,9 +717,10 @@
         {\color{Mittel-Blau}h_1(s)} + 3 \cdot {\color{Mittel-Gruen}h_2(s)} ,\;
         \dotsc
       \end{displaymath}
-    \item
-      This method is only an approximation of uniform probing,
-      but works well in practical use
+    \item<3->
+      Works well in practical use
+    \item<4->
+      This method is an approximation of uniform probing
   \end{itemize}
 \end{frame}
 
@@ -742,24 +728,28 @@
 
 \begin{frame}{Hashing}{Open Addressing - Double Hashing - Example}
   \textbf{Example:}
-  \begin{itemize}
-    \item
-      The efficiency of double hashing is dependent on
-      \begin{math}
-        {\color{Mittel-Blau}h_1(s)} \neq {\color{Mittel-Gruen}h_2(s)}
-      \end{math}
-    \item
-      The diversion sequence is dependent on the key ${\color{Mittel-Blau}s}$
-  \end{itemize}
+  %\begin{itemize}
+  %  \item
+  %    The efficiency of double hashing is dependent on
+  %    \begin{math}
+  %      {\color{Mittel-Blau}h_1(s)} \neq {\color{Mittel-Gruen}h_2(s)}
+  %    \end{math}
+  %  \item
+  %    The diversion sequence is dependent on the key ${\color{Mittel-Blau}s}$
+  %\end{itemize}
+  \onslide<2->
+  {\color{Mittel-Blau}
   \begin{align*}
-    {\color{Mittel-Blau}h_1(s)} &= {\color{Mittel-Blau}s} \mod 7\\
+    {\color{Mittel-Blau}h_1(s)} &= {\color{Mittel-Blau}s \mod 7}\\
     {\color{Mittel-Gruen}h_2(s)}
       &= \left({\color{Mittel-Blau}s} \mod 5\right) + 1\\
     {\color{Mittel-Blau}h(s,j)}
       &= {\color{Mittel-Blau}h_1(s)}
       + {\color{Mittel-Blau}j} \cdot {\color{Mittel-Gruen}h_2(s)}
       \mod 7
-  \end{align*}
+  \end{align*}}
+  \vspace{-1.0em}
+  \onslide<3->
   \begin{table}[!h]
     \caption{Comparing both hash functions}
     \begin{tabular}{c|cccccc}
@@ -769,6 +759,13 @@
       ${\color{Mittel-Gruen}h_2(s)}$ & 1 & 5 & 2 & 3 & 5 & 2
     \end{tabular}
   \end{table}
+  \begin{itemize}
+    \item
+      The efficiency of double hashing is dependent on
+      \begin{math}
+       {\color{Mittel-Blau}h_1(s)} \neq {\color{Mittel-Gruen}h_2(s)}
+      \end{math}
+ \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------------------------------
@@ -785,10 +782,9 @@
   \end{figure}
   \textbf{Double hashing by Brent:}
   \begin{itemize}
-    \item
-      The order of the insertions has impact on efficiency of a lookup
-    \item
-      Different keys have different probing orders
+    \item<2-> Motivation:\\
+      Because different keys have different probing sequences,
+      the sequence of the insertions has impact on efficiency of a sucessful search
   \end{itemize}
 \end{frame}
 
@@ -807,24 +803,24 @@
   \vspace{-1.0em}
   \textbf{Example:}
   \begin{itemize}
-    \item
+    \item<2->
       The key ${\color{Mittel-Blau}s_1}$ is inserted at position
       \begin{math}
         p_1 = {\color{Mittel-Blau}h(s_1, 0)}
       \end{math}
-    \item
+    \item<3->
       The hash function for ${\color{Mittel-Gruen}s_2}$ also results in
       \begin{math}
         p_2 = {\color{Mittel-Gruen}h(s_2, 0)} = p_1
       \end{math}
-    \item
+    \item<4->
       The locations
       \begin{math}
         {\color{Mittel-Gruen}h(s_2, j)}, \;
         {\color{Mittel-Blau}j} \in \{1,\dots,n\}
       \end{math}
       are also occupied
-    \item
+    \item<5->
       If we insert ${\color{Mittel-Gruen}s_2}$ at position
       ${\color{Mittel-Gruen}h(s_2, n + 1)}$ the search will be inefficient
   \end{itemize}
@@ -843,38 +839,35 @@
     \label{fig:hashing:open_addressing:double_hashing_brent}%
   \end{figure}
   \vspace{-1.0em}
-  \textbf{Idea:}
   \begin{itemize}
-    \item
-      The key ${\color{Mittel-Blau}s_1}$ is inserted at position
-      \begin{math}
-        p_1 = {\color{Mittel-Blau}h(s_1, 0)}
-      \end{math}
-    \item
-      The hash function for ${\color{Mittel-Gruen}s_2}$ also results in
-      \begin{math}
-        p_2 = {\color{Mittel-Gruen}h(s_2, 0)} = p_1
-      \end{math}
-    \item
+  \item<2->
+    Reversed sequence of keys would have been better
+  \item<3->
+    \textbf{Brents Idea:}
+    \begin{itemize}
+    \item<4->
       Test if location ${\color{Mittel-Blau}h(s_1, 1)}$ is free
-    \item
+    \item<5->
       If yes, move ${\color{Mittel-Blau}s_1}$ from
       ${\color{Mittel-Blau}h(s_1, 0)}$ to ${\color{Mittel-Blau}h(s_1, 1)}$
       and insert ${\color{Mittel-Gruen}s_2}$ at
       ${\color{Mittel-Gruen}h(s_2, 0)}$
-  \end{itemize}
+    \end{itemize}
+  \end{itemize}  
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Hashing}{Open Addressing - Ordered Hashing}
-  \textbf{Idea:}
+  \textbf{Brents Idea:}
   \begin{itemize}
+    \item Motivation:
+      Colliding elements are inserted in the hashtable sorted. 
     \item
-      Insert colliding elements with a sorted order
-    \item
-      We can cancel a unsuccessful search for elements when using
-      linear probing or double hashing
+      Therefore, in case of an unsucessful search of elements
+      in combination with linear probing or double hashing,
+      aborting is earlier possible because single probing steps
+      have a fixed length
   \end{itemize}
   \hfill\\[0.5em]
   \textbf{Implementation:}
@@ -904,8 +897,7 @@
       Because ${\color{Mittel-Blau}5} < {\color{Mittel-Blau}12}$ we insert
       the key ${\color{Mittel-Blau}5}$ at position $p_1$
     \item
-      For the key ${\color{Mittel-Blau}12}$ we iterate through the deviation
-      sequence
+      For the key ${\color{Mittel-Blau}12}$ we iterate through the sequence
       \begin{displaymath}
         {\color{Mittel-Blau}h(12, 1)} ,\;
         {\color{Mittel-Blau}h(12, 2)} ,\;
@@ -920,30 +912,28 @@
 \begin{frame}{Hashing}{Open Addressing - Robin-Hood Hashing}
   \textbf{Idea:}
   \begin{itemize}
-    \item
-      We want an equal distibution of search lengths
-    \item
-      Fitting the length of the probing order for all elements
-    \item
-      The sum of all search costs will stay the same
+    \item <2->Motivation: 
+      Having similiar length of probing sequences for all elements.
+      Total costs stay the same, but they are distributed evenly.
+      Results in approximatly similar search times for all elements.
   \end{itemize}
   \hfill\\[0.5em]
+  \onslide<3->
   \textbf{Implementation:}
   \begin{itemize}
-    \item
+    \item<4->
       If two keys ${\color{Mittel-Blau}s_1}, {\color{Mittel-Blau}s_2}$ collide
       (\begin{math}
         p_1 = {\color{Mittel-Blau}h(s_1, j_1)}
             = {\color{Mittel-Blau}h(s_2, j_2)}
       \end{math})
-      we compare the length of the deviation sequence
+      we compare the length of the sequence
       (\begin{math}
         {\color{Mittel-Blau}j_1} \;\text{or}\; {\color{Mittel-Blau}j_2}
       \end{math})
-    \item
+    \item<5->
       The key with the bigger search sequence is inserted at $p_1$
-    \item
-      The other key is assigned a new location based on the deviation sequence
+      The other key is assigned a new location based on the sequence
   \end{itemize}
 \end{frame}
 
@@ -967,7 +957,7 @@
       \end{math}
       the key ${\color{Mittel-Blau}12}$ stays at position $p_1$
     \item
-      For the key ${\color{Mittel-Blau}5}$ we iterate through the deviation
+      For the key ${\color{Mittel-Blau}5}$ we iterate through the 
       sequence
       \begin{displaymath}
         {\color{Mittel-Blau}h(5, 1)} ,\;
@@ -993,12 +983,13 @@
       ${\color{Mittel-Blau}s_2}$
   \end{itemize}
   \vspace{1.0em}
+  \onslide<2->
   \textbf{Solution:}
   \begin{itemize}
-    \item
+    \item<3->
       \textbf{Remove:}
       Elements are marked as removed, but not deleted
-    \item
+    \item<4->
       \textbf{Inserting:}
       Elements marked as removed will we overwritten
   \end{itemize}
@@ -1020,7 +1011,7 @@
   {\color{Mittel-Blau}(static, number of elements fixed)}
   \begin{itemize}
     \item
-      Determine a probing order, permutation of all hash values
+      Determine a probing sequence, permutation of all hash values
     \item
       Linear, quadratic probing:
       \begin{itemize}
@@ -1037,7 +1028,8 @@
 
 \begin{frame}{Hashing}{Open Addressing - Summary Collision Handling}
   \textbf{Open hashing:}
-  {\color{Mittel-Blau}(static, number of elements fixed)}
+         {\color{Mittel-Blau}(static, number of elements fixed)}
+  \onslide<2->
   \begin{itemize}
     \item
       Uniform probing, double hashing:
@@ -1049,6 +1041,7 @@
       \end{itemize}
   \end{itemize}
   \vspace{1.0em}
+  \onslide<3->
   \textbf{Improving efficiency:}
   {\color{Mittel-Blau}(Brent, Ordered Hashing)}
   \begin{itemize}
@@ -1068,34 +1061,18 @@
 \begin{frame}{Hashing}{Open Addressing - Summary Hashing}
   \textbf{Hashing:}
   \begin{itemize}
-    \item
+    \item<-2>
       Efficient fo dictionary operations:\\
-      \hspace{1.5em}\texttt{Insert:} $\mathcal{O}(1) \dots \mathcal{O}(n)$\\
-      \hspace{1.5em}\texttt{Search:} $\mathcal{O}(1) \dots \mathcal{O}(n)$\\
-      \hspace{1.5em}\texttt{Remove:} $\mathcal{O}(1) \dots \mathcal{O}(n)$
-    \item
-      Direct access of all elements in a hash table $(\mathcal{O}(1))$
-    \item
+      \hspace{1.5em}\texttt{Insert:} $O(1) \dots O(n)$\\
+      \hspace{1.5em}\texttt{Search:} $O(1) \dots O(n)$\\
+      \hspace{1.5em}\texttt{Remove:} $O(1) \dots O(n)$
+    \item<3->
+      Direct access of all elements in a hash table 
+    \item<4->
       Using a hash function to find the position (hash value) in the hash table
-  \end{itemize}
-\end{frame}
-
-%-------------------------------------------------------------------------------
-
-\begin{frame}{Hashing}{Open Addressing - Summary Hashing}
-  \textbf{Hashing:}
-  \begin{itemize}
-    \item
-      Same hash values for different keys results in hash collisions
-    \item
-      Efficiency is affected by:
-      \begin{itemize}
-        \item
-          Hash function(s)
-        \item
-          Size of hash table
-        \item
-          Strategy to prevent hash collision
-      \end{itemize}
+    \item<5->
+      Hash function, size of the hash table and strategy to
+      avoid hash collisions influence the efficiency of the
+      datastructure
   \end{itemize}
 \end{frame}
