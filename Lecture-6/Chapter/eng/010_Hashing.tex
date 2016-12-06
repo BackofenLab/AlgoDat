@@ -146,7 +146,7 @@
     \item<3->
       Static, fixed number of elements
     \item<4->
-      The sequence of probing determines for each key, in which sequence
+      The \textbf{probe sequence} determines for each key, in which sequence
       all hash table entries are searched for a free bucket
       \begin{itemize}
       \item<5->
@@ -182,7 +182,7 @@
       with overflow positions {\color{Mittel-Blau}$j \in \{0,\dots,m-1\}$}
       e.g. {\color{Mittel-Blau}g(s,j)=j}
     \item<4->
-      The sequence of probing is calculated by
+      The \textbf{probe sequence } is calculated by
       \begin{displaymath}
         {\color{Mittel-Blau}h(s,j)}
         = ({\color{Mittel-Blau}h(s)} - {\color{Mittel-Blau}g(s,j)})
@@ -295,7 +295,7 @@
       \input{Images/OpenAddressing/LinearProbing.tikz}%
     \end{adjustbox}
     \vspace{-1.0em}
-    \caption{Linear probing sequence}%
+    \caption{Linear probe sequence}%
     \label{fig:hashing:open_addressing:linear_probing}%
   \end{figure}
   \vspace{-1.0em}
@@ -311,7 +311,7 @@
         = ({\color{Mittel-Blau}h(s)} - {\color{Mittel-Blau}j}) \mod m
       \end{math}
     \item<3->
-      This leads to the following sequence
+      This leads to the following probe sequence
       \begin{displaymath}
         {\color{Mittel-Blau}h(s)},
         {\color{Mittel-Blau}h(s)}-1,
@@ -333,7 +333,7 @@
       \input{Images/OpenAddressing/LinearProbing.tikz}%
     \end{adjustbox}
     \vspace{-0.5em}
-    \caption{Linear probing sequence}%
+    \caption{Linear probe sequence}%
     \label{fig:hashing:open_addressing:linear_probing2}%
   \end{figure}
   \vspace{-1.5em}
@@ -391,7 +391,7 @@
           \input{Images/OpenAddressing/LinearProbingExample.tikz}%
         \end{adjustbox}
         \vspace{-0.5em}%
-%        \caption{Insertion sequence}%
+%        \caption{Probe sequence}%
         \label{fig:hashing:open_addressing:linear_probing_example}%
       \end{figure}
       \hfill\\[1.0em]
@@ -420,7 +420,7 @@
           \input{Images/OpenAddressing/LinearProbingExample.tikz}%
         \end{adjustbox}
         \vspace{-0.5em}%
-        \caption{Insertion sequence on a hash map}%
+        \caption{Probe/Insertion sequence on a hash map}%
         \label{fig:hashing:open_addressing:linear_probing_example2}%
       \end{figure}
   \end{itemize}
@@ -496,7 +496,7 @@
           \input{Images/OpenAddressing/LinearProbingExample.tikz}%
         \end{adjustbox}
         \vspace{-0.5em}%
-        \caption{Insertion sequence on a hash map}%
+        \caption{Probe/Insertion sequence on a hash map}%
         \label{fig:hashing:open_addressing:linear_probing_example4}%
       \end{figure}
   \end{itemize}
@@ -578,7 +578,7 @@
           \input{Images/OpenAddressing/LinearProbingExample.tikz}%
         \end{adjustbox}
         \vspace{-0.5em}%
-        \caption{Insertion sequence on a hash map}%
+        \caption{Probe/Insertion sequence on a hash map}%
         \label{fig:hashing:open_addressing:linear_probing_example7}%
       \end{figure}
   \end{itemize}
@@ -603,11 +603,11 @@
       \input{Images/OpenAddressing/SquaredProbing.tikz}%
     \end{adjustbox}
     \vspace{-1.0em}
-    \caption{Squared probing sequence}%
+    \caption{Squared probe sequence}%
     \label{fig:hashing:open_addressing:squared_probing}%
   \end{figure}
     \item<4->
-      This leads to the following sequence
+      This leads to the following probe sequence
       \begin{displaymath}
         {\color{Mittel-Blau}h(s) ,\;
         h(s)+1 ,\;
@@ -638,7 +638,7 @@
       \begin{math}
         {\color{Mittel-Blau}m = 4 \cdot k + 3}
       \end{math}
-      then the probing sequence is a permutation of the indices of
+      then the probe sequence is a permutation of the indices of
       the hash tables.
    \item<3->
       Alternatively:
@@ -648,7 +648,7 @@
     \item<4->
       Problem of secondary clustering\\
       No local clustering anymore, but keys with same hash value
-      have similar sequence
+      have similar probe sequence
       
   \end{itemize}
 \end{frame}
@@ -661,7 +661,7 @@
     \item<2->
       Motivation: So far uses function ${\color{Mittel-Blau}g(s,j)}$ only the step
       counter ${\color{Mittel-Blau}j}$ for linear and squared probing\\
-      {\color{red}$\Rightarrow$ The sequence is independent of the key
+      {\color{red}$\Rightarrow$ The probe sequence is independent of the key
         $s$ }
     \item<3->
       Uniform probing computes the sequence ${\color{Mittel-Blau}g(s,j)}$ of permutations of all possible indices in dependency on key ${\color{Mittel-Blau}s}$ 
@@ -669,7 +669,7 @@
       \textbf{Advantage:}
       Prevents clustering because different keys with the same hash
       value do not produce 
-      the same diversion sequence
+      the same probe sequence
     \item<5->
       \textbf{Disadvantage:}
       Hard to implement
@@ -686,12 +686,12 @@
       \input{Images/OpenAddressing/DoubleHashing.tikz}%
     \end{adjustbox}
     \vspace{-1.0em}
-    \caption{Double hashing probing sequence}%
+    \caption{Double hashing probe sequence}%
     \label{fig:hashing:open_addressing:double_hashing}%
   \end{figure}
   \begin{itemize}
     \item<2->
-      Motivation: Consider key {\color{Mittel-Blau}$s$} in probing sequence
+      Motivation: Consider key {\color{Mittel-Blau}$s$} in probe sequence
     \item<3->
       Use two independent hash functions
       \begin{math}
@@ -724,7 +724,7 @@
         \mod m
       \end{math}
     \item<2->
-      Diversion sequence:
+      probe sequence:
       \begin{displaymath}
         {\color{Mittel-Blau}h_1(s)} ,\;
         {\color{Mittel-Blau}h_1(s)} + {\color{Mittel-Gruen}h_2(s)} ,\;
@@ -798,7 +798,7 @@
   \textbf{Double hashing by Brent:}
   \begin{itemize}
     \item<2-> Motivation:\\
-      Because different keys have different probing sequences,
+      Because different keys have different probe sequences,
       the sequence of the insertions has impact on efficiency of a sucessful search
   \end{itemize}
 \end{frame}
@@ -818,24 +818,24 @@
   \vspace{-1.0em}
   \textbf{Example:}
   \begin{itemize}
-    \item<2->
+    \item<1->
       The key ${\color{Mittel-Blau}s_1}$ is inserted at position
       \begin{math}
         p_1 = {\color{Mittel-Blau}h(s_1, 0)}
       \end{math}
-    \item<3->
+    \item<2->
       The hash function for ${\color{Mittel-Gruen}s_2}$ also results in
       \begin{math}
         p_2 = {\color{Mittel-Gruen}h(s_2, 0)} = p_1
       \end{math}
-    \item<4->
+    \item<3->
       The locations
       \begin{math}
         {\color{Mittel-Gruen}h(s_2, j)}, \;
         {\color{Mittel-Blau}j} \in \{1,\dots,n\}
       \end{math}
       are also occupied
-    \item<5->
+    \item<6->
       If we insert ${\color{Mittel-Gruen}s_2}$ at position
       ${\color{Mittel-Gruen}h(s_2, n + 1)}$ the search will be inefficient
   \end{itemize}
@@ -855,14 +855,14 @@
   \end{figure}
   \vspace{-1.0em}
   \begin{itemize}
-  \item<2->
+  \item<4->
     Reversed sequence of keys would have been better
-  \item<3->
+  \item<5->
     \textbf{Brents Idea:}
     \begin{itemize}
-    \item<4->
+    \item<6->
       Test if location ${\color{Mittel-Blau}h(s_1, 1)}$ is free
-    \item<5->
+    \item<7->
       If yes, move ${\color{Mittel-Blau}s_1}$ from
       ${\color{Mittel-Blau}h(s_1, 0)}$ to ${\color{Mittel-Blau}h(s_1, 1)}$
       and insert ${\color{Mittel-Gruen}s_2}$ at
@@ -874,7 +874,7 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Hashing}{Open Addressing - Ordered Hashing}
-  \textbf{Brents Idea:}
+  \textbf{ Idea:}
   \begin{itemize}
     \item Motivation:
       Colliding elements are inserted in the hashtable sorted. 
@@ -928,7 +928,7 @@
   \textbf{Motivation:}
   \begin{itemize}
     \item <2-> 
-      Having similiar length of probing sequences for all elements.
+      Having similiar length of probe sequences for all elements.
       Total costs stay the same, but they are distributed evenly.
       Results in approximately similar search times for all elements.
   \end{itemize}
@@ -1026,7 +1026,7 @@
   {\color{Mittel-Blau}(static, number of elements fixed)}
   \begin{itemize}
     \item
-      Determine a probing sequence, permutation of all hash values
+      Determine a probe sequence, permutation of all hash values
     \item
       Linear, quadratic probing:
       \begin{itemize}
