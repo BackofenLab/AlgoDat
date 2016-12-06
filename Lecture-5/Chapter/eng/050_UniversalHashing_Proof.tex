@@ -1,17 +1,18 @@
 \subsection{Proof}
-
+\def\E{\mathbb{E}}
 \begin{frame}{Universal Hashing}{Proof}
   \textbf{Given:}
   \begin{itemize}
-    \item
-      We pick two random keys {\color{Mittel-Blau}$x, y \in \mathbb{U} \mid x \neq y$} and
+    \item<1->
+      We pick two random keys {\color{Mittel-Blau}$x, y \in \mathbb{S} \mid x \neq y$} and
       a random hash function {\color{Mittel-Blau}$h \in \mathbb{H}$}
-    \item
+    \item<2->
       We know the probability of a collision:
-      {\color{Mittel-Blau}\[P(h(x) = h(y)) \leq \frac{c}{m}\]}
+      {\color{Mittel-Blau}\[P(h(x) = h(y)) \leq c \cdot \frac{1}{m}\]}
   \end{itemize}
+  \onslide<3->
   \textbf{To proof:}
-  {\color{Mittel-Blau}\[E\left[\vert \mathbb{S}_i \vert\right]
+  {\color{Mittel-Blau}\[\E\left[\vert \mathbb{S}_i \vert\right]
      \leq 1 + c \cdot \frac{\vert \mathbb{S} \vert}{m}
      \hspace*{1.5em} \forall \, i\]}
 \end{frame}
@@ -20,7 +21,12 @@
 
 \begin{frame}{Universal Hashing}{Proof}
   \textbf{We know:}
-  {\color{Mittel-Blau}\[\mathbb{S}_i = \{x \in \mathbb{S}: h(x) = i\}\]}
+         {\color{Mittel-Blau}\[\mathbb{S}_i = \{x \in \mathbb{S}: h(x) = i\}\]}
+         \onslide<2->
+         if {\color{Mittel-Blau}$\mathbb{S}_i = \emptyset \Rightarrow  \vert \mathbb{S}_i \vert = 0$}\\
+         \onslide<3->
+         otherwise, let {\color{Mittel-Blau}$x \in \mathbb{S}_i$ be any key}\\
+  \onslide<4->
   We define an indicator variable:
   {\color{Mittel-Blau}
   \begin{displaymath}
@@ -29,46 +35,64 @@
       0, & \text{else}
     \end{cases} \hspace*{1.5em} y \in \mathbb{S} \setminus \{x\}
   \end{displaymath}
+  \onslide<5->
   \begin{align*}
     \Rightarrow && \vert \mathbb{S}_i \vert
-      & = 1 + \sum_{y \in \mathbb{S} \setminus x} I_y\\
-    \Rightarrow && E\left[\vert \mathbb{S}_i \vert\right]
-      & = E\left[1 + \sum_{y \in \mathbb{S} \setminus x} I_y\right]
-        = 1 + \sum_{y \in \mathbb{S} \setminus x} E[I_y]
+    & = 1 + \sum_{y \in \mathbb{S} \setminus x} I_y
+  \end{align*}
+  \onslide<6->
+  \begin{align*}
+    \Rightarrow && \E\left(\vert \mathbb{S}_i \vert\right)
+      & = \E\left(1 + \sum_{y \in \mathbb{S} \setminus x} I_y\right)
+        = 1 + \sum_{y \in \mathbb{S} \setminus x} \E(I_y)
   \end{align*}}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Universal Hashing}{Proof}
-  \textbf{Expected value for same bucket:}
-  {\color{Mittel-Blau}
-  \begin{align*}
-    \left.\begin{array}{rl}
-      E[I_y] & = P(I_y = 1)\\
-      {} & = P(h(y) = i)\\
-      {} & = P(h(y) = h(x))\\
-    \end{array}\right\rbrace
-    \leq \frac{c}{m}
-  \end{align*}}
-  \textbf{Final proof:}
-  {\color{Mittel-Blau}
-  \begin{displaymath}
-    1 + \sum_{y \in \mathbb{S} \setminus x} E[I_y]
-    \leq
-    \underbrace{
-      1 + \sum_{y \in \mathbb{S} \setminus x} \frac{c}{m}
-        = 1 + \left(\vert \mathbb{S} - 1 \vert \right) \cdot \frac{c}{m}
-    }_{
-      \displaystyle \leq 1 + \vert \mathbb{S} \vert \cdot \frac{c}{m}
-        = 1 + c \cdot \frac{\vert \mathbb{S} \vert}{m}
-    }
-  \end{displaymath}
-  \begin{displaymath}
-    \hspace*{7.5em}
-    E\left[\vert \mathbb{S}_i \vert\right]
-      = 1 + \sum_{y \in \mathbb{S} \setminus \{x\}}
-      \leq 1 + c \cdot \frac{\vert \mathbb{S} \vert}{m}
-    \hspace*{7.5em}\square
-  \end{displaymath}}
+  \textbf{Auxiliary calculation:}
+  %\textbf{Expected value for same bucket:}
+         {\color{Mittel-Blau}
+           \onslide<1->
+           \vspace*{-2em}
+           \begin{align*}
+             \hspace{6em}           
+             \begin{array}{rl}
+               \E[I_y] & = P(I_y = 1)\\
+               {} & = P(h(y) = i)\\
+               {} & = P(h(y) = h(x))\\
+               {} & \leq c \cdot \frac{1}{m}
+             \end{array}
+         \end{align*}}
+         {\color{Mittel-Blau}
+           \onslide<3->
+           \vspace{-0.6em}
+           \begin{displaymath}
+             \hspace*{-3em}
+             \Rightarrow 1 + \sum_{y \in \mathbb{S} \setminus x} \E(I_y)
+             \leq 1 + \sum_{y \in \mathbb{S} \setminus x} c \cdot \frac{1}{m}
+           \end{displaymath}
+           \onslide<4->
+           \vspace{-0.6em}
+           \begin{displaymath}
+             \hspace*{-3em}
+             = 1 + \left(\vert \mathbb{S}  \vert - 1\right) \cdot c \cdot \frac{1}{m}
+           \end{displaymath}
+           \onslide<5->
+           \vspace{-0.6em}
+           \begin{displaymath}
+             \hspace*{-3em}
+             \displaystyle \leq 1 + \vert \mathbb{S} \vert \cdot c \cdot \frac{1}{m}
+             = 1 + c \cdot \frac{\vert \mathbb{S} \vert}{m}
+           \end{displaymath}
+           \onslide<6->
+           \vspace{-0.6em}
+           \begin{displaymath}
+             \hspace*{5em}
+             \E\left[\vert \mathbb{S}_i \vert\right]
+             = 1 + \sum_{y \in \mathbb{S} \setminus \{x\}}
+             \leq 1 + c \cdot \frac{\vert \mathbb{S} \vert}{m}
+             \hspace*{7.5em}\square
+         \end{displaymath}}
 \end{frame}

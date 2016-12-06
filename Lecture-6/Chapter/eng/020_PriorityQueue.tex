@@ -1,3 +1,12 @@
+%%% ===================================================================
+%%% RCS Header:
+%%% $RCSfile: local.el,v $
+%%% $Revision: 1.27 $
+%%% $Date: 2014/11/07 15:36:00 $
+%%% $Author: backofen $
+%%% $Locker:  $
+%%% ===================================================================
+
 \section{Priority Queue}
 
 \toclesssubsection{Introduction}
@@ -5,11 +14,11 @@
 \begin{frame}{Priority Queue}{Introduction}
   \textbf{Definition:}
   \begin{itemize}
-    \item
+    \item<2->
       A priority queue saves a set of elements
-    \item
+    \item<3->
       Each element contains a key and a value like a map
-    \item
+    \item<4->
       There is a total order (like ${\color{Mittel-Blau}\leq}$) defined on the
       keys
   \end{itemize}
@@ -20,13 +29,15 @@
 \begin{frame}{Priority Queue}{Introduction}
   \textbf{Definition:}
   \begin{itemize}
-    \item
+    \item<2->
       The priority queue supports the following operations:
   \end{itemize}
+  \onslide<3->
   \begin{tabular}{ll}
     {\color{Mittel-Blau}\texttt{insert(key, value):}} &
     Inserts a new element into the queue
   \end{tabular}
+  \onslide<4->
   \begin{tabular}{ll}
     {\color{Mittel-Blau}\texttt{getMin():}} &
     Returns the element with the smallest key\\
@@ -35,13 +46,15 @@
   \end{tabular}
   \vspace{1.0em}
   \begin{itemize}
-    \item
+    \item<5->
       Sometimes additional operations are defined:
   \end{itemize}
+  \onslide<6->
   \begin{tabular}{ll}
     {\color{Mittel-Blau}\texttt{changeKey(item, key):}} &
     Changes the key of the element
   \end{tabular}
+  \onslide<7->
   \begin{tabular}{ll}
     {\color{Mittel-Blau}\texttt{remove(item):}} &
     Removes the element from the queue
@@ -53,12 +66,12 @@
 \begin{frame}{Priority Queue}{Introduction}
   \textbf{Special features:}
   \begin{itemize}
-    \item
+    \item<2->
       Multiple elements with the same key
       \begin{itemize}
-        \item
+        \item<3->
           No problem and for many applications necessary
-        \item
+        \item<3->
           If there is more than one element with the smallest key
           \begin{tabular}{ll}
             {\color{Mittel-Blau}\texttt{getMin():}} &
@@ -69,20 +82,20 @@
           \end{tabular}
       \end{itemize}
       \vspace{0.5em}
-    \item
-      \enquote{Handle} to queue element (only some implementations)
+    \item<4->
+      Argument of {\color{Mittel-Blau}\texttt{changeKey}} and
+          {\color{Mittel-Blau}\texttt{remove}} operations
       \begin{itemize}
-        \item
-          There is no quick-access to a element in the queue
-        \item
+        \item<5->
+          There is no \textbf{quick-access} to a element in the queue
+        \item<5->
           Thats why {\color{Mittel-Blau}\texttt{insert}} and
-          {\color{Mittel-Blau}\texttt{getMin}} return an \enquote{handle}
-          or accessor object
-        \item
+          {\color{Mittel-Blau}\texttt{getMin}} return a reference (handle,accessor object)
+        \item<5->
           {\color{Mittel-Blau}\texttt{changeKey}} and
-          {\color{Mittel-Blau}\texttt{remove}} take this handle as argument
-        \item
-          The handle is used to locate the element in the heap
+          {\color{Mittel-Blau}\texttt{remove}} take this reference as argument
+        \item<5->
+          Therefore each element has to store its current position in the heap.
       \end{itemize}
   \end{itemize}
 \end{frame}
@@ -214,27 +227,35 @@
 \begin{frame}{Priority Queue}{Application Example}
   \textbf{Example 1:}
   \begin{itemize}
-    \item
+    \item<2->
       Calculation of the sorted union of ${\color{Mittel-Blau}k}$ sorted lists\\
       (multi-way merge or ${\color{Mittel-Blau}k}$-way merge)
-    \item
+    \item<3->
       Runtime:
       ${\color{Mittel-Blau}N}$ = length of resulting list
       \begin{itemize}
-        \item
+        \item<4->
           Trivial:
           \begin{math}
             \Theta({\color{Mittel-Blau}N} \cdot {\color{Mittel-Blau}k})
           \end{math},
           minimum calculation $\Theta({\color{Mittel-Blau}k})$
-        \item
+        \item<5->
           Priority queue:
           \begin{math}
             \Theta({\color{Mittel-Blau}N} \cdot \log {\color{Mittel-Blau}k})
           \end{math},
           minimum calculation  $\Theta(\log {\color{Mittel-Blau}k})$
       \end{itemize}
-    \end{itemize}
+  \end{itemize}
+  \onslide<6->
+  \textbf{Example 2:}
+  \begin{itemize}
+    \item<7->
+      For example Dijkstra's algorithm for compution the shortest path ($\leftarrow$ following lecture)
+    \item<8->
+      Among other applications it can be used for sorting
+  \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------------------------------
@@ -242,20 +263,21 @@
 \begin{frame}{Priority Queue}{Implementation}
   \textbf{Idea:}
   \begin{itemize}
-    \item
+    \item<2->
       Save elements as tuples in a binary heap
-    \item
+    \item<3->
       Summary from lecture 1 (\textit{HeapSort}):
     \begin{itemize}
-      \item
+      \item<3->
         Nearly complete binary tree
-      \item
+      \item<3->
         {\color{Mittel-Blau}Heap condition}:\\
         The key of each node ${\color{Mittel-Blau}\leq}$ the keys of the
         children\\
     \end{itemize}
   \end{itemize}
   \vspace{-0.5em}
+  \onslide<2->
   \begin{figure}[!h]
     \begin{adjustbox}{height=0.3\linewidth}
       \input{Images/GenericHeap.tikz}%
@@ -269,6 +291,7 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Priority Queue}{Implementation}
+ \onslide<2->
  \begin{figure}[!h]%
    \vspace{-1.5em}
    \begin{minipage}[b]{0.4\linewidth}%
@@ -293,16 +316,17 @@
     \caption{Min heap stored in array}%
     \label{fig:priority_queue:impl_min_heap}%
   \end{figure}%
-  \vspace{-1.0em}
+ \vspace{-1.0em}
+ \onslide<3->
   \textbf{Storing a binary heap:}
   \begin{itemize}
-    \item
+    \item<4->
       Number nodes from top to bottom and left to right starting with 0
       and store entries in array
-    \item
+    \item<4->
       Children of node ${\color{Mittel-Blau}i}$ are the nodes
       ${\color{Mittel-Blau}2\,i+1}$ and ${\color{Mittel-Blau}2\,i+2}$
-    \item
+    \item<4->
       Parent node of node ${\color{Mittel-Blau}i}$ is
       $\displaystyle {\color{Mittel-Blau}\mathrm{floor}((i-1)/2)}$
   \end{itemize}
@@ -312,18 +336,8 @@
 
 \begin{frame}{Priority Queue}{Implementation - Insertion}
   \textbf{Inserting an element:}
-  {\color{Mittel-Blau}\texttt{insert(key, itgem)}}
-  \begin{itemize}
-    \item
-      Append the element at the end of the array
-    \item
-      The {\color{Mittel-Blau}heap condition} may be violated, but only at the
-      last index
-    \item
-      Repair {\color{Mittel-Blau}heap condition}
-      $\Rightarrow$ We will see later how to do this
-  \end{itemize}
-  \begin{figure}[!h]
+         {\color{Mittel-Blau}\texttt{insert(key, itgem)}}
+           \begin{figure}[!h]
     \begin{adjustbox}{height=0.275\linewidth}
       \input{Images/PriorityQueue/Heap.tikz}%
     \end{adjustbox}
@@ -341,20 +355,24 @@
     %    \caption{Inserting into the priority queue}%
     \label{fig:priority_queue:impl_insert}%
   \end{figure}%
+  \begin{itemize}
+    \item<2->
+      Append the element at the end of the array
+    \item<3->
+      The {\color{Mittel-Blau}heap condition} may be violated, but only at the
+      last index
+    \item<4->
+      Repair {\color{Mittel-Blau}heap condition}
+      $\Rightarrow$ We will see later how to do this
+  \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Priority Queue}{Implementation}
   \textbf{Returning the minimum:}
-  {\color{Mittel-Blau}\texttt{getMin()}}
-  \begin{itemize}
-    \item
-      If the heap is empty return {\color{Mittel-Blau}None}
-    \item
-      Else return the first element
-  \end{itemize}
-  \begin{figure}[!h]
+         {\color{Mittel-Blau}\texttt{getMin()}}
+          \begin{figure}[!h]
     \begin{adjustbox}{height=0.275\linewidth}
       \input{Images/PriorityQueue/Heap_Peek.tikz}%
     \end{adjustbox}
@@ -368,23 +386,20 @@
     %    \caption{Returning the smallest element of the priotity queue}%
     \label{fig:priority_queue:impl_peek}%
   \end{figure}%
+  \begin{itemize}
+    \item<2->
+      Else return the first element
+    \item<3->
+      If the heap is empty return {\color{Mittel-Blau}None}
+  \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Priority Queue}{Implementation}
   \textbf{Removing the minimum:}
-  {\color{Mittel-Blau}\texttt{deleteMin()}}
-  \begin{itemize}
-    \item
-      Swap the last element with the first element and shrink the heap by one
-    \item
-      The {\color{Mittel-Blau}heap condition} may be violated, but only at the
-      first index
-    \item
-      Repair {\color{Mittel-Blau}heap condition}
-  \end{itemize}
-  \begin{figure}[!h]
+         {\color{Mittel-Blau}\texttt{deleteMin()}}
+           \begin{figure}[!h]
     \begin{adjustbox}{height=0.275\linewidth}
       \input{Images/PriorityQueue/Heap_PrePop.tikz}%
     \end{adjustbox}
@@ -398,6 +413,17 @@
     %    \caption{Removing the smallest element of the priotity queue}%
     \label{fig:priority_queue:impl_pop}%
   \end{figure}%
+   \begin{itemize}
+    \item<2->
+     Deleting the element with the lowest key
+    \item<3->
+      Swap the last element with the first element and shrink the heap by one
+    \item<4->
+      The {\color{Mittel-Blau}heap condition} may be violated, but only at the
+      first index
+    \item<5->
+      Repair {\color{Mittel-Blau}heap condition}
+  \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------------------------------
@@ -436,15 +462,8 @@
 
 \begin{frame}{Priority Queue}{Implementation}
   \textbf{Changing the key (priority):}
-  {\color{Mittel-Blau}\texttt{changeKey(item, key)}}
-  \begin{itemize}
-    \item
-      The {\color{Mittel-Blau}heap condition} may be violated, but only at the
-      element index and only in one direction (up / down)
-    \item
-      Repair {\color{Mittel-Blau}heap condition}
-  \end{itemize}
-    \begin{figure}[!h]
+   {\color{Mittel-Blau}\texttt{changeKey(item, key)}}
+     \begin{figure}[!h]
       \begin{adjustbox}{height=0.275\linewidth}
         \input{Images/PriorityQueue/Heap_PreChangeKey.tikz}%
       \end{adjustbox}
@@ -458,25 +477,21 @@
       %    \caption{Changing the key of an element}%
       \label{fig:priority_queue:impl_change_key2}%
     \end{figure}%
+  \begin{itemize}
+    \item<2->
+      The {\color{Mittel-Blau}heap condition} may be violated, but only at the
+      element index and only in one direction (up / down)
+    \item<3->
+      Repair {\color{Mittel-Blau}heap condition}
+  \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Priority Queue}{Implementation}
   \textbf{Removing an element:}
-  {\color{Mittel-Blau}\texttt{remove(item)}}
-  \begin{itemize}
-    \item
-      The element (queue item) is given as argument
-    \item
-      Replace the element with the last element and shrink the heap by one
-    \item
-      The {\color{Mittel-Blau}heap condition} may be violated, but only at the
-      element index and only in one direction (up / down)
-    \item
-      Repair {\color{Mittel-Blau}heap condition}
-  \end{itemize}
-    \begin{figure}[!h]
+   {\color{Mittel-Blau}\texttt{remove(item)}}
+     \begin{figure}[!h]
       \begin{adjustbox}{height=0.275\linewidth}
         \input{Images/PriorityQueue/Heap_PreRemove.tikz}%
       \end{adjustbox}
@@ -490,33 +505,44 @@
       %    \caption{Removing a random element from the priotity queue}%
       \label{fig:priority_queue:impl_remove}%
     \end{figure}%
+  \begin{itemize}
+    \item<2->
+      The element (queue item) is given as argument
+    \item<3->
+      Replace the element with the last element and shrink the heap by one
+    \item<4->
+      The {\color{Mittel-Blau}heap condition} may be violated, but only at the
+      element index and only in one direction (up / down)
+    \item<5->
+      Repair {\color{Mittel-Blau}heap condition}
+  \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Priority Queue}{Implementation - Reaparing the Heap}
+\begin{frame}{Priority Queue}{Implementation - Reparing the Heap}
   \textbf{Repairing after modifying operations:}
   \begin{itemize}
-    \item
+    \item<2->
       The heap condition can be violated after using
       {\color{Mittel-Blau}\texttt{insert}},
       {\color{Mittel-Blau}\texttt{deleteMin}},
       {\color{Mittel-Blau}\texttt{changeKey}},
       {\color{Mittel-Blau}\texttt{remove}},
       but only at one known position with index ${\color{Mittel-Blau}i}$
-    \item
+    \item<3->
       Heap conditions can be violated in two directions:
       \begin{itemize}
-        \item
+        \item<4->
           Downwards:
           The key at index ${\color{Mittel-Blau}i}$ is not
           ${\color{Mittel-Blau}\leq}$ than the value of its children
-        \item
+        \item<5->
           Upwards:
           The key at index ${\color{Mittel-Blau}i}$ is not
           ${\color{Mittel-Blau}\geq}$ than the value of its parent
       \end{itemize}
-    \item
+    \item<6->
       We need two repair methods:
       {\color{Mittel-Blau}\texttt{repairHeapUp}},
       {\color{Mittel-Blau}\texttt{repairHeapDown}}
@@ -525,21 +551,21 @@
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Priority Queue}{Implementation - Reaparing the Heap}
+\begin{frame}{Priority Queue}{Implementation - Reparing the Heap}
   {\color{Mittel-Blau}\texttt{\textbf{repairHeapDown:}}}
   \begin{itemize}
-    \item
+    \item<2->
       {\color{Mittel-Blau}Sift} the element until the
       {\color{Mittel-Blau}heap condition} is valid
       \begin{itemize}
-        \item
+        \item<3->
           Change node with child, which has the lower key of both children
-        \item
+        \item<4->
           If the {\color{Mittel-Blau}heap condition} is violated repeat for
           the child node
       \end{itemize}
   \end{itemize}
-  \begin{figure}[!h]%
+   \begin{figure}[!h]%
     \begin{columns}%
       \begin{column}{0.45\linewidth}%
         \begin{adjustbox}{width=\linewidth}%
@@ -559,7 +585,7 @@
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Priority Queue}{Implementation - Reaparing the Heap}
+\begin{frame}{Priority Queue}{Implementation - Reparing the Heap}
   {\color{Mittel-Blau}\texttt{\textbf{repairHeapDown:}}}
   \begin{itemize}
     \item
@@ -595,12 +621,12 @@
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Priority Queue}{Implementation - Reaparing the Heap}
+\begin{frame}{Priority Queue}{Implementation - Reparing the Heap}
   {\color{Mittel-Blau}\texttt{\textbf{repairHeapUp:}}}
   \begin{itemize}
-    \item
+    \item<2->
       Change node with parent
-    \item
+    \item<3->
       If the {\color{Mittel-Blau}heap condition} is violated repeat for parent
       node
   \end{itemize}
@@ -626,7 +652,7 @@
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Priority Queue}{Implementation - Reaparing the Heap}
+\begin{frame}{Priority Queue}{Implementation - Reparing the Heap}
   {\color{Mittel-Blau}\texttt{\textbf{repairHeapUp:}}}
   \begin{itemize}
     \item
@@ -660,12 +686,12 @@
 \begin{frame}{Priority Queue}{Implementation - Priority Queue Item}
   \textbf{Index of a priority queue item:}
   \begin{itemize}
-    \item
-      Attention:
+    \item<2->
+      {\color{red}Attention:}
       For {\color{Mittel-Blau}\texttt{changeKey}} and
       {\color{Mittel-Blau}\texttt{remove}} the item has to \enquote{know} where
       it is located in the heap
-    \item
+    \item<3->
       Remember for {\color{Mittel-Blau}\texttt{repairHeapUp}} and
       {\color{Mittel-Blau}\texttt{repairHeapDown}}:\\
       Update the index if moving an heap element
@@ -726,32 +752,28 @@
 \begin{frame}{Priority Queue}{Complexity}
   \textbf{Summary lecture 1:}
   \begin{itemize}
-    \item
-      A full binary tree with $n$ elements, has a {\color{Mittel-Blau}depth} of
-      $\mathcal{O}(\log n)$
-    \item
+    \item<2->
+      A full binary tree with {\color{Mittel-Blau}$n$} elements, has a {\color{Mittel-Blau}depth} of
+      {\color{Mittel-Blau}$O(\log n)$}
+    \item<3->
       The maximum distance from the root to a leaf can be
-      $\mathcal{O}(\log n)$ elements
-  \end{itemize}
-\end{frame}
-
-%-------------------------------------------------------------------------------
-
-\begin{frame}{Priority Queue}{Complexity}
-  \textbf{Costs / runtime:}
-  \begin{itemize}
-    \item
+      $O(\log n)$ elements
+    \item<4->
       Repairing the heap upwards and downwards:\\
-      We have only one path to traverse: $\mathcal{O}(\log n)$
-    \item
+      We have only one path to traverse: {\color{Mittel-Blau}$O(\log n)$}
+  \end{itemize}
+  \onslide<5->
+  \textbf{Runtime for methods}
+  \begin{itemize}
+    \item<6->
       {\color{Mittel-Blau}\texttt{insert}},
       {\color{Mittel-Blau}\texttt{deleteMin}},
       {\color{Mittel-Blau}\texttt{changeKey}},
       {\color{Mittel-Blau}\texttt{remove}}:\\
-      We have to repair the heap: $\mathcal{O}(\log n)$
-    \item
+      We have to repair the heap: {\color{Mittel-Blau}$O(\log n)$}
+    \item<7->
       {\color{Mittel-Blau}\texttt{getMin}}:
-      Return the element at index 0: $\mathcal{O}(1)$
+      Return the element at index 0: {\color{Mittel-Blau}$O(1)$}
   \end{itemize}
 \end{frame}
 
@@ -760,24 +782,25 @@
 \begin{frame}{Priority Queue}{Complexity}
   \textbf{Improvements (Fibonacci heaps):}
   \begin{itemize}
-    \item
+    \item<2->
       {\color{Mittel-Blau}\texttt{getMin}},
       {\color{Mittel-Blau}\texttt{insert}} and
       {\color{Mittel-Blau}\texttt{decreaseKey}}
-      in amortized time of $\mathcal{O}(1)$
-    \item
+      in amortized time of {\color{Mittel-Blau}$O(1)$}
+    \item<3->
       {\color{Mittel-Blau}\texttt{deleteMin}}
-      in amortized time $\mathcal{O}(\log n)$
+      in amortized time {\color{Mittel-Blau}$O(\log n)$}
   \end{itemize}
   \hfill\\[0.5em]
+  \onslide<4->
   \textbf{Practical experience:}
   \begin{itemize}
-    \item
+    \item<5->
       The binary heap is simpler: Costs for managing the structure are low
-    \item
+    \item<6->
       If the number of elemenents is relatively small so the difference is
       negligible
-    \item
+    \item<7->
       Example:
     \begin{itemize}
       \item
@@ -791,3 +814,12 @@
     \end{itemize}
   \end{itemize}
 \end{frame}
+
+%%% ===================================================================
+%%% This should be at the END of the file !!!!!!
+%%%
+%%% Local Variables: 
+%%% mode: latex 
+%%% TeX-master: "~/TeX/TeXinput/Scripts/Algo-Data-EMS/Rolf-2016/AlgoDat/Lecture-6/Lecture.tex" 
+%%% End: 
+%%% ===================================================================
