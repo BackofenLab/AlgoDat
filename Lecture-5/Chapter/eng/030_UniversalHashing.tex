@@ -1,5 +1,6 @@
 \section{Universal Hashing}
 
+\def\E{\mathbb{E}}
 \toclesssubsection{Introduction}
 
 \begin{frame}{Universal Hashing}{Thought Experiment}
@@ -198,10 +199,10 @@
       Let {\color{Mittel-Blau}$\mathbb{S}_i$} be the key {\color{Mittel-Blau}$x$} for which {\color{Mittel-Blau}$h(x) = i$}
     \item<4->
       The expected average number of elements to search through per 
-      bucket is {\color{Mittel-Blau}\[\mathbb{E}\left[\vert \mathbb{S}_i \vert\right]
+      bucket is {\color{Mittel-Blau}\[\E{}\left[\vert \mathbb{S}_i \vert\right]
         \leq 1 + c \cdot \frac{\vert \mathbb{S} \vert}{m}\]}
     \item<5->
       Particulary: If  {\color{Mittel-Blau}($m = \Omega(\vert \mathbb{S} \vert)$)} then
-      {\color{Mittel-Blau}$\mathbb{E}\left[\vert \mathbb{S}_i \vert\right] = \mathcal{O}(n)$}
+      {\color{Mittel-Blau}$\E{}\left[\vert \mathbb{S}_i \vert\right] = \mathcal{O}(n)$}
   \end{itemize}
 \end{frame}
