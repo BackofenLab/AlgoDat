@@ -93,3 +93,13 @@ export:
 	@echo "Exporting generated files"
 	@mv $(ALGO_NAME_LECTURES)/*.pdf .
 	@mv $(ALGO_NAME_EXERCISESHEETS)/*.pdf .
+
+TEXLOGEXT=log toc nav bbl blg out snm aux vrb
+.PHONY: realclean
+realclean: 
+	$(foreach ext,$(TEXLOGEXT),\
+	      $(RM) $(shell find . -name '*.$(ext)'); )
+	$(RM) $(wildcard Lecture-*/Lecture.pdf)
+	$(RM) $(wildcard Lecture-*/Lecture_eng.pdf)
+	$(RM) $(wildcard Lecture*.pdf)
+	$(RM) $(shell find . -name '_region_.*')
