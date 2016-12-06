@@ -1,3 +1,12 @@
+%%% ===================================================================
+%%% RCS Header:
+%%% $RCSfile: local.el,v $
+%%% $Revision: 1.27 $
+%%% $Date: 2014/11/07 15:36:00 $
+%%% $Author: backofen $
+%%% $Locker:  $
+%%% ===================================================================
+
 \section{Hashing}
 
 \toclesssubsection{Recapitulation}
@@ -16,7 +25,7 @@
     \end{itemize}
   \item<4->
     For random key sets also simple hash function work, e.g.
-     {\color{Mittel-Blau}\[\Rightarrow h(x) = x \mod m\]}
+     {\color{Mittel-Blau}\[\Rightarrow h(x) = x \mod m\]}\vspace*{-2em}
      \begin{itemize}
     \item<5->
       Then the random keys make sure that it is distributed evenly
@@ -74,47 +83,48 @@
     \item<3->
       Colliding keys are inserted into the linked list of a bucket, either sorted or appended at the end
   \onslide<4->
-  \vspace*{-1.0em}
-  \begin{table}[!b]
-    \label{tab:hashing:linked_list:hash_table}
-    \begin{tabularx}{0.875\textwidth}{c|l}
-      Bucket & Value\\
-      \midrule
-      0 & \lstinline[
-        language=Python,
-        style={python-idle-code},
-        basicstyle=\small
-      ]|None|\\
-      1 &
-      \lstinline[
-        language=Python,
-        style={python-idle-code},
-        mathescape=true,
-        basicstyle=\small
-      ]|(3126, "B") $\rightarrow$ (4561, "D") $\rightarrow$ None|\\
-      2 &
-      \lstinline[
-        language=Python,
-        style={python-idle-code},
-        mathescape=true,
-        basicstyle=\small
-      ]|(5147, "C") $\rightarrow$ None|\\
-      3 &
-      \lstinline[
-        language=Python,
-        style={python-idle-code},
-        mathescape=true,
-        basicstyle=\small
-      ]|(3903, "A") $\rightarrow$ (1683, "D")
-        $\rightarrow$ (4818, "E")
-        $\rightarrow$ None|\\
-      4 & \lstinline[
-        language=Python,
-        style={python-idle-code},
-        basicstyle=\small
-      ]|None|\\
-    \end{tabularx}
-  \end{table}
+%  \vspace*{-1.0em}
+\includegraphics[height=0.35\textheight]{Images/hashtable-buckets.pdf}
+  % \begin{table}[!b]
+  %   \label{tab:hashing:linked_list:hash_table}
+  %   \begin{tabularx}{0.875\textwidth}{c|l}
+  %     Bucket & Value\\
+  %     \midrule
+  %     0 & \lstinline[
+  %       language=Python,
+  %       style={python-idle-code},
+  %       basicstyle=\small
+  %     ]|None|\\
+  %     1 &
+  %     \lstinline[
+  %       language=Python,
+  %       style={python-idle-code},
+  %       mathescape=true,
+  %       basicstyle=\small
+  %     ]|(3126, "B") $\rightarrow$ (4561, "D") $\rightarrow$ None|\\
+  %     2 &
+  %     \lstinline[
+  %       language=Python,
+  %       style={python-idle-code},
+  %       mathescape=true,
+  %       basicstyle=\small
+  %     ]|(5147, "C") $\rightarrow$ None|\\
+  %     3 &
+  %     \lstinline[
+  %       language=Python,
+  %       style={python-idle-code},
+  %       mathescape=true,
+  %       basicstyle=\small
+  %     ]|(3903, "A") $\rightarrow$ (1683, "D")
+  %       $\rightarrow$ (4818, "E")
+  %       $\rightarrow$ None|\\
+  %     4 & \lstinline[
+  %       language=Python,
+  %       style={python-idle-code},
+  %       basicstyle=\small
+  %     ]|None|\\
+  %   \end{tabularx}
+  % \end{table}
    \item<5->
      Operations in {\color{Mittel-Blau}$O(1)$} are possible if a suitable tablesize and hashfunction is
      selected
@@ -179,6 +189,9 @@
         \mod m \in \{0,\dots,m-1\}
       \end{displaymath}
   \end{itemize}
+\begin{adjustbox}{width=0.75\linewidth}%
+\onslide<4->       \input{Images/OpenAddressing/LinearProbing-definition.tikz}%
+     \end{adjustbox}
 \end{frame}
 
 %-------------------------------------------------------------------------------
@@ -646,14 +659,16 @@
   \textbf{Uniform Probing:}
   \begin{itemize}
     \item<2->
-      Motivation: The function ${\color{Mittel-Blau}g(s,j)}$ uses only the step
+      Motivation: So far uses function ${\color{Mittel-Blau}g(s,j)}$ only the step
       counter ${\color{Mittel-Blau}j}$ for linear and squared probing\\
-      {\color{red}$\Rightarrow$ The sequence is independent of the key}
+      {\color{red}$\Rightarrow$ The sequence is independent of the key
+        $s$ }
     \item<3->
       Uniform probing computes the sequence ${\color{Mittel-Blau}g(s,j)}$ of permutations of all possible indices in dependency on key ${\color{Mittel-Blau}s}$ 
     \item<4->
       \textbf{Advantage:}
-      Prevents clustering because keys with the same hash value do not produce
+      Prevents clustering because different keys with the same hash
+      value do not produce 
       the same diversion sequence
     \item<5->
       \textbf{Disadvantage:}
@@ -1076,3 +1091,12 @@
       datastructure
   \end{itemize}
 \end{frame}
+
+%%% ===================================================================
+%%% This should be at the END of the file !!!!!!
+%%%
+%%% Local Variables: 
+%%% mode: latex 
+%%% TeX-master: "~/TeX/TeXinput/Scripts/Algo-Data-EMS/Rolf-2016/AlgoDat/Lecture-6/Lecture.tex" 
+%%% End: 
+%%% ===================================================================
