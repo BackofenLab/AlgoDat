@@ -1,5 +1,14 @@
-\subsection{Probability Calculation}
+%%% ===================================================================
+%%% RCS Header:
+%%% $RCSfile: local.el,v $
+%%% $Revision: 1.27 $
+%%% $Date: 2014/11/07 15:36:00 $
+%%% $Author: backofen $
+%%% $Locker:  $
+%%% ===================================================================
 
+\subsection{Probability Calculation}
+\def\E{\mathbb{E}}
 \begin{frame}{Universal Hashing}{Probability Calculation}
   \begin{columns}
     \begin{column}{0.65\textwidth}
@@ -152,7 +161,7 @@
 
 \begin{frame}{Universal Hashing}{Probability Calculation}
   \onslide<1->
-  \textbf{Expected value} is defined as  {\color{Mittel-Blau}$E(X)  = \sum \left(k \cdot P(X = k)\right)$}
+  \textbf{Expected value} is defined as  {\color{Mittel-Blau}$\E(X)  = \sum \left(k \cdot P(X = k)\right)$}
   \vspace*{0em}
   \begin{itemize}
     \item <2->
@@ -200,9 +209,9 @@
  \begin{itemize}
  \vspace*{-1.0em}
  \item<4-> Example rolling once: \onslide<5->
-  {\color{Mittel-Blau}$E(X) = 1 \cdot \frac{1}{6} + 2 \cdot \frac{1}{6}
+  {\color{Mittel-Blau}$\E(X) = 1 \cdot \frac{1}{6} + 2 \cdot \frac{1}{6}
     + \dots + 6 \cdot \frac{1}{6} = 3.5$}
- \item<6-> Example rolling twice: \rlap{\onslide<7->{\color{Mittel-Blau}$E(X) = 2 \cdot \frac{1}{36} + 3 \cdot \frac{2}{36}    + \dots + 12 \cdot \frac{1}{36} = 7$}}
+ \item<6-> Example rolling twice: \rlap{\onslide<7->{\color{Mittel-Blau}$\E(X) = 2 \cdot \frac{1}{36} + 3 \cdot \frac{2}{36}    + \dots + 12 \cdot \frac{1}{36} = 7$}}
    \end{itemize}
 \end{frame}
 
@@ -271,20 +280,20 @@
 \begin{frame}{Universal Hashing}{Probability Calculation}
    \textbf{Sum of expected values:}
    For independent (discrete) result variables {\color{Mittel-Blau}$X_1,\dots,X_n$} we can write:
-     {\color{Mittel-Blau}\[E\left(X_1+\dots+X_n\right)
-       = E(X_1) + \dots + E(X_n)\]}
+     {\color{Mittel-Blau}\[\E\left(X_1+\dots+X_n\right)
+       = \E(X_1) + \dots + \E(X_n)\]}
    \onslide<2->
    \textbf{Example:} Throwing two dice
    \begin{itemize}
      \item<3->
-       {\color{Mittel-Blau}$X_1$}: Expected number of eyes dice {\color{Mittel-Blau}$1$}: {\color{Mittel-Blau}$E(X_1) = 3.5$}
+       {\color{Mittel-Blau}$X_1$}: Expected number of eyes dice {\color{Mittel-Blau}$1$}: {\color{Mittel-Blau}$\E(X_1) = 3.5$}
      \item<4->
-       {\color{Mittel-Blau}$X_2$}: Expected number of eyes dice {\color{Mittel-Blau}$2$}: {\color{Mittel-Blau}$E(X_2) = 3.5$}
+       {\color{Mittel-Blau}$X_2$}: Expected number of eyes dice {\color{Mittel-Blau}$2$}: {\color{Mittel-Blau}$\E(X_2) = 3.5$}
      \item<5->
        {\color{Mittel-Blau}$X = X_1 + X_2$}: Expected total number of eyes:
-       {\color{Mittel-Blau}\[E(X)
-         = E(X_1 + X_2)
-         = E(X_1) + E(X_2) = 3.5 + 3.5 = 7\]}
+       {\color{Mittel-Blau}\[\E(X)
+         = \E(X_1 + X_2)
+         = \E(X_1) + \E(X_2) = 3.5 + 3.5 = 7\]}
    \end{itemize}
 \end{frame}
 
@@ -295,11 +304,11 @@
   \begin{block}{Corollary:}
     The probability of the event $E$ is $p = P(E)$.
     Let $X$ be the occurences of the event $E$ and $n$ be the number
-    of executions of the experiment. Then {\color{Mittel-Blau}$E(X) = n \cdot P(E) = n \cdot p$}
+    of executions of the experiment. Then {\color{Mittel-Blau}$\E(X) = n \cdot P(E) = n \cdot p$}
   \end{block}
   \onslide<2->
   \begin{example}[Rolling the dice 60 times:]
-    \[E\left(\text{occurences of 6}\right) = \frac{1}{6} \cdot 60 = 10\]
+    \[\E\left(\text{occurences of 6}\right) = \frac{1}{6} \cdot 60 = 10\]
   \end{example}
 \end{frame}
 
@@ -325,16 +334,25 @@
             {\color{Mittel-Blau}
     \onslide<3->          
     \begin{align*}
-      E(X) &= E\left(\sum_{i=1}^{n} X_i\right)
-        = \sum_{i=1}^{n} E(X_i)
-        \stackrel{\text{def. $E$-value}}{=}
+      \E(X) &= \E\left(\sum_{i=1}^{n} X_i\right)
+        = \sum_{i=1}^{n} \E(X_i)
+        \stackrel{\text{def. $\E$-value}}{=}
         \sum_{i=1}^{n} p = n \cdot p
     \end{align*}
     \qedhere
     \onslide<4->
     \vspace*{-1.0em}
     \begin{align*}
-        \text{Def. $E$-value: }  E(X_i) &= \; 0 \cdot P(X_i = 0) + 1 \cdot P(X_i = 1) &= \; P(X_i = 1) \\[0.5em]   
+        \text{Def. $\E$-value: }  \E(X_i) &= \; 0 \cdot P(X_i = 0) + 1 \cdot P(X_i = 1) &= \; P(X_i = 1) \\[0.5em]   
     \end{align*}}
   \end{proof}
 \end{frame}
+
+%%% ===================================================================
+%%% This should be at the END of the file !!!!!!
+%%%
+%%% Local Variables: 
+%%% mode: latex 
+%%% TeX-master: "~/TeX/TeXinput/Scripts/Algo-Data-EMS/Rolf-2016/AlgoDat/Lecture-5/Lecture.tex" 
+%%% End: 
+%%% ===================================================================
