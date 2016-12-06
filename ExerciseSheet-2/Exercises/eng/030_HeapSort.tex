@@ -6,13 +6,29 @@ In order to make the algorithm work \enquote{in-place}
 you have to implement a max heap where you can
 swap the largest element to the end of the unsorted array part
 (as seen in the YouTube video from lecture 1).
-Write a unit test for each method.  Each test should check at least one
-non-trivial input example.  Also test if your algorithm e.g. works with an
-even or uneven number of elements. If critical boundary cases
-can be checked easily (e.g. empty input case) please check those too.
-Generate a \textit{Heapsort} runtime plot T(n) with different input sizes n
-as shown in the lecture for\textit{MinSort}.
-Choose appropriate sizes to get a meaningful plot with enough data points and
-reasonable runtime (at most 1 min).\\\vspace{3em}
 
-Hints: TODO
+Write a unit test for each method.  Each test should check at least one
+non-trivial input example.  Also test if your algorithm e.g. works with an even or uneven number of elements. If critical boundary cases
+can be checked easily (e.g. empty input case) please check those too.
+
+Generate a \textit{Heapsort} runtime plot $T(n)$ with different input sizes n as shown in the lecture for \textit{MinSort}.
+Choose appropriate sizes to get a meaningful plot with enough data points and reasonable runtime (at most 1 min).%\\\vspace{3em}
+
+
+\newpage
+Hints:
+\begin{itemize}
+\item In Python, the list data type is the usual way to represent arrays. A list is a mutable sequence of arbitrarily typed objects. Mutable means that you can e.g. change the objects stored in the list after instantiation or change its size. The list itself actually only stores the references to these objects. Arbitrary means that objects of different data types can be stored in the list (e.g. of integer, string, float or more complex data types).
+\item Python uses call-by-reference when passing parameters to functions. This means that a reference to the object is passed instead of the object itself. If the reference is changed inside the function, the content of the object outside the function will also be changed. Call-by-reference is especially helpful if you are passing huge amounts of data, such that the data itself does not need to be copied, resulting in less memory usage and better runtime. In our example, this could be a potentially very long list which is given to the sorting function. By using call-by-reference we make sure to avoid performance issues in such a case.
+\item When implementing the \emph{Heapsort} algorithm, you could e.g. use the following functions:
+  \begin{itemize}
+  \item heap\_sort(array)
+  \item heapify(array)
+  \item repair\_heap(array, start\_index, heap\_size)
+  \end{itemize}
+\end{itemize}
+
+\vspace{1cm}
+
+
+
