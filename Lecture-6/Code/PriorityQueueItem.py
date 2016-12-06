@@ -7,6 +7,6 @@ class PriorityQueueItem:
     """
     
     def __init__(self, key, value, index):
-        self.key = key;
-        self.value = value;
-        self.index = index;
+        self.key = key
+        self.value = value
+        self.index = index
