@@ -3,7 +3,7 @@
 \begin{frame}{Static Arrays}
   \begin{itemize}
     \item
-      Static fields exist in nearly every compiled language
+      Static arrays exist in nearly every programming language
     \item
       They are initialized with a fixed size $n$
     \item
@@ -11,7 +11,7 @@
       The needed size is not always clear at compile time
   \end{itemize}
   \begin{table}[!h]
-    \caption{Static field with size $n = 5$}
+    \caption{Static array with size $n = 5$}
     \label{tab:static_field_introduction}
     \begin{tabular}{c|c|c|c|c|c}
       Index & 0 & 1 & 2 & 3 & 4\\
@@ -105,19 +105,18 @@
 \begin{frame}{Static Arrays}
   \begin{itemize}
     \item
-      The name \enquote{static field} has nothing to do with the keyword
+      The name \enquote{static array} has nothing to do with the keyword
       \lstinline[
         language=Java,
         style={java-eclipse-code},
         basicstyle=\small
       ]|static| from Java / C++
     \item
-      Nor is the field allocated before the program starts
+      Nor is the array allocated before the program starts
     \item
-      The {\color{Mittel-Blau}size} of the field is static and can not be
+      The {\color{Mittel-Blau}size} of the array is static and can not be
       changed after creation
     \item
-      The name \enquote{fixed size field} or \enquote{fixed size array} would be
-      better
+      The name \enquote{fixed size array} would be more appropiate
   \end{itemize}
 \end{frame}

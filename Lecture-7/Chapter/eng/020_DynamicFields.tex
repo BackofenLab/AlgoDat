@@ -233,32 +233,32 @@
     \def\FSAsize{1}\def\FSAelements{0}%
     \def\FSAcopy{0}\def\FSAdelete{0}\def\FSAinsert{1}%
     \input{Images/FixedSizeArray.tikz} &
-    $\mathcal{O}(1)$ &
+    $O(1)$ &
     write 1 element\\
     \def\FSAsize{2}\def\FSAelements{0}%
     \def\FSAcopy{1}\def\FSAdelete{0}\def\FSAinsert{1}%
     \input{Images/FixedSizeArray.tikz} &
-    $\mathcal{O}(1 + {\color{Mittel-Blau}1})$ &
+    $O(1 + {\color{Mittel-Blau}1})$ &
     write 1 element, {\color{Mittel-Blau}copy 1 element}\\
     \def\FSAsize{3}\def\FSAelements{0}%
     \def\FSAcopy{2}\def\FSAdelete{0}\def\FSAinsert{1}%
     \input{Images/FixedSizeArray.tikz} &
-    $\mathcal{O}(1 + {\color{Mittel-Blau}2})$ &
+    $O(1 + {\color{Mittel-Blau}2})$ &
     write 1 element, {\color{Mittel-Blau}copy 2 elements}\\
     \def\FSAsize{4}\def\FSAelements{0}%
     \def\FSAcopy{3}\def\FSAdelete{0}\def\FSAinsert{1}%
     \input{Images/FixedSizeArray.tikz} &
-    $\mathcal{O}(1 + {\color{Mittel-Blau}3})$ &
+    $O(1 + {\color{Mittel-Blau}3})$ &
     write 1 element, {\color{Mittel-Blau}copy 3 elements}\\
     \def\FSAsize{5}\def\FSAelements{0}%
     \def\FSAcopy{4}\def\FSAdelete{0}\def\FSAinsert{1}%
     \input{Images/FixedSizeArray.tikz} &
-    $\mathcal{O}(1 + {\color{Mittel-Blau}4})$ &
+    $O(1 + {\color{Mittel-Blau}4})$ &
     write 1 element, {\color{Mittel-Blau}copy 4 elements}\\
     \def\FSAsize{6}\def\FSAelements{0}%
     \def\FSAcopy{5}\def\FSAdelete{0}\def\FSAinsert{1}%
     \input{Images/FixedSizeArray.tikz} &
-    $\mathcal{O}(1 + {\color{Mittel-Blau}5})$ &
+    $O(1 + {\color{Mittel-Blau}5})$ &
     write 1 element, {\color{Mittel-Blau}copy 5 elements}\\
     \hspace*{1.5em}\dots & \dots & \hspace*{1.5em}\dots
   \end{tabularx}
@@ -275,17 +275,16 @@
       Let $T_i$ be the runtime of each $i$-th operation
       \begin{itemize}
         \item
-          We have to copy $i-1$ elements
+          Then $T_i = A \cdot i $ for a constant $A$
         \item
-          The runtime of each copy operation
-          $T_i = C_1 \cdot (i - 1) \in \mathcal{O}(i)$ is linear
+           We have to copy $i-1$ element    
       \end{itemize}
   \end{itemize}
   \begin{align*}
     T(n) &= \sum_{i=1}^n T_i
-      = \sum_{i=1}^n \left(C_1 \cdot (i-1) \right)
-      = C_1 \cdot \sum_{i=1}^n (i-1)\\
-      &= C_1 \cdot \dfrac{n^2-n}{2} \in \mathcal{O}(n^2)
+      = \sum_{i=1}^n \left(A \cdot i \right)
+      = A \cdot \sum_{i=1}^n i = A \cdot \frac{n^2 + n}{2}\\
+      &= O(n^2)
   \end{align*}
 \end{frame}
 
@@ -410,37 +409,37 @@
     \def\FSAsize{3}\def\FSAelements{0}%
     \def\FSAcopy{0}\def\FSAdelete{0}\def\FSAinsert{1}%
     \input{Images/FixedSizeArray.tikz} &
-    $\mathcal{O}(1)$ &
+    $O(1)$ &
     write 1 element\\
     \def\FSAsize{3}\def\FSAelements{1}%
     \def\FSAcopy{0}\def\FSAdelete{0}\def\FSAinsert{1}%
     \input{Images/FixedSizeArray.tikz} &
-    $\mathcal{O}(1)$ &
+    $O(1)$ &
     write 1 element\\
     \def\FSAsize{3}\def\FSAelements{2}%
     \def\FSAcopy{0}\def\FSAdelete{0}\def\FSAinsert{1}%
     \input{Images/FixedSizeArray.tikz} &
-    $\mathcal{O}(1)$ &
+    $O(1)$ &
     write 1 element\\
     \def\FSAsize{6}\def\FSAelements{0}%
     \def\FSAcopy{3}\def\FSAdelete{0}\def\FSAinsert{1}%
     \input{Images/FixedSizeArray.tikz} &
-    $\mathcal{O}(1 + {\color{Mittel-Blau}3})$ &
+    $O(1 + {\color{Mittel-Blau}3})$ &
     write 1 element, {\color{Mittel-Blau}copy 3 elements}\\
     \def\FSAsize{6}\def\FSAelements{4}%
     \def\FSAcopy{0}\def\FSAdelete{0}\def\FSAinsert{1}%
     \input{Images/FixedSizeArray.tikz} &
-    $\mathcal{O}(1)$ &
+    $O(1)$ &
     write 1 element\\
     \def\FSAsize{6}\def\FSAelements{5}%
     \def\FSAcopy{0}\def\FSAdelete{0}\def\FSAinsert{1}%
     \input{Images/FixedSizeArray.tikz} &
-    $\mathcal{O}(1)$ &
+    $O(1)$ &
     write 1 element\\
     \def\FSAsize{9}\def\FSAelements{0}%
     \def\FSAcopy{6}\def\FSAdelete{0}\def\FSAinsert{1}%
     \input{Images/FixedSizeArray.tikz} &
-    $\mathcal{O}(1 + {\color{Mittel-Blau}6})$ &
+    $O(1 + {\color{Mittel-Blau}6})$ &
     write 1 element, {\color{Mittel-Blau}copy 6 elements}\\
     \hspace*{1.5em}\dots & \dots & \hspace*{1.5em}\dots
   \end{tabularx}
@@ -452,33 +451,41 @@
   \textbf{Analysis:}
   \begin{itemize}
     \item
-      $\frac{C - 1}{C} = \frac{2}{3}$ of all operations are $\in \mathcal{O}(1)$
+     Most of the append operations now just cost $O(1)$
     \item
-      Every $C$ steps we have a copy operation
-    \begin{itemize}
-      \item
-        We have to copy $\frac{i- 1}{C}$ elements
-      \item
-        The runtime of each copy operation is linear\\
-        $\Rightarrow T_i =
-          \underbrace{
-            C_2\vphantom{\begin{cases}C_1\\0\end{cases}}
-          }_\text{insert}
-          + \underbrace{\begin{cases}
-            C_1 \cdot \frac{i - 1}{C} & \text{if } i \mod C = 1\\
-            0 & \text{else}
-            \end{cases}}_\text{copy}
-          \in \mathcal{O}(i)$
-    \end{itemize}
+      Every $C$ steps the costs for copying are added:\\
+      $C, 2 \cdot C,3 \cdot C, ...$ this means:
   \end{itemize}
   \begin{align*}
-    T(n)
-      &= \sum_{i=1}^{n} T_i
-      = \sum_{i=1}^{n/C} \left(C_1 \cdot C \cdot (i-1) \right)
-        + \sum_{i=1}^n C_2\\
-      &= \sum_{i=1}^{n/C} \left(C_1 \cdot C \cdot (i-1) \right)
-        + \underbrace{\dots}_{\mathcal{O}(n)}
-  \end{align*}
+    T(n) &= \sum_{i=1}^n A \cdot 1 + \sum_{i=1}^{n/C} A \cdot i \cdot C\\
+    &= A \cdot n + A \cdot C \cdot \sum_{i=1}^{n/C} i\\
+    &= A \cdot n + A \cdot C \cdot \frac{\frac{n^2}{C^2} + \frac{n}{C}}{2}\\
+    &= A \cdot n + \frac{A}{2 \cdot C} \cdot n^{2} + \frac{A}{2} \cdot n = O(n^2)
+  \end{align*}  
+  %%   \begin{itemize}
+  %%     \item
+  %%       We have to copy $\frac{i- 1}{C}$ elements
+  %%     \item
+  %%       The runtime of each copy operation is linear\\
+  %%       $\Rightarrow T_i =
+  %%         \underbrace{
+  %%           C_2\vphantom{\begin{cases}C_1\\0\end{cases}}
+  %%         }_\text{insert}
+  %%         + \underbrace{\begin{cases}
+  %%           C_1 \cdot \frac{i - 1}{C} & \text{if } i \mod C = 1\\
+  %%           0 & \text{else}
+  %%           \end{cases}}_\text{copy}
+  %%         \in \mathcal{O}(i)$
+  %%   \end{itemize}
+  %% \end{itemize}
+  %% \begin{align*}
+  %%   T(n)
+  %%     &= \sum_{i=1}^{n} T_i
+  %%     = \sum_{i=1}^{n/C} \left(C_1 \cdot C \cdot (i-1) \right)
+  %%       + \sum_{i=1}^n C_2\\
+  %%     &= \sum_{i=1}^{n/C} \left(C_1 \cdot C \cdot (i-1) \right)
+  %%       + \underbrace{\dots}_{\mathcal{O}(n)}
+  %% \end{align*}
 \end{frame}
 
 %-------------------------------------------------------------------------------
@@ -489,7 +496,7 @@
     \item
       The factor of $n^2$ is getting smaller
     \item
-      The runtime still remains $T(n) \in \mathcal{O}(n^2)$
+      The runtime still remains $T(n) \in O(n^2)$
   \end{itemize}
   \begin{align*}%
     T(n)
@@ -645,7 +652,7 @@
   \textbf{Analysis:}
   \begin{itemize}
     \item
-      The number of $\mathcal{O}(1)$ operations is increasing
+      The number of $O(1)$ operations is increasing
     \item
       We need to copy the array every $C^i$ steps $(1, 2, 4, 8,\dots)$\\[0.5em]
       $\Rightarrow T_\text{copy} = C_1 \cdot C^{(i-1)}$\\

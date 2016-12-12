@@ -175,14 +175,14 @@
   \textbf{Idea:}
   \begin{itemize}
     \item
-      Only \textit{reallocation} ($\in \mathcal{O}(n)$) of the array is
+      Only \textit{reallocation} ($\in O(n)$) of the array is
       expensive
     \item
       Between \textit{reallocations} we have only basic operations of runtime 
       $\in O(1)$
     \item
       After a costly \textit{reallocation} of size $X$ we have at least $X$
-      operations of rutime $\in \mathcal{O}(1)$
+      operations of rutime $\in O(1)$
     \item
       With $C_1 = C_2 = C \in \mathbb{R}$ the costs can be estimated to:
   \end{itemize}
@@ -825,46 +825,46 @@
     \def\FSAsize{1}\def\FSAelements{0}%
     \def\FSAcopy{0}\def\FSAdelete{0}\def\FSAinsert{1}%
     \input{Images/FixedSizeArray.tikz} &
-    $\mathcal{O}(1)$ & \hspace{1.5em}{\color{Mittel-Gruen}+2} & 2\\
+    $O(1)$ & \hspace{1.5em}{\color{Mittel-Gruen}+2} & 2\\
     \def\FSAsize{2}\def\FSAelements{0}%
     \def\FSAcopy{1}\def\FSAdelete{0}\def\FSAinsert{1}%
     \input{Images/FixedSizeArray.tikz} &
-    $\mathcal{O}(1 + {\color{Mittel-Blau}1})$ &
+    $O(1 + {\color{Mittel-Blau}1})$ &
     \hspace{1.5em}{\color{Mittel-Gruen}+2} {\color{Mittel-Blau}-1} &
     {\color{Mittel-Blau}3}\\
     \def\FSAsize{4}\def\FSAelements{0}%
     \def\FSAcopy{2}\def\FSAdelete{0}\def\FSAinsert{1}%
     \input{Images/FixedSizeArray.tikz} &
-    $\mathcal{O}(1 + {\color{Mittel-Blau}2})$ &
+    $O(1 + {\color{Mittel-Blau}2})$ &
     \hspace{1.5em}{\color{Mittel-Gruen}+2} {\color{Mittel-Blau}-2} &
     {\color{Mittel-Blau}3}\\
     \def\FSAsize{4}\def\FSAelements{3}%
     \def\FSAcopy{0}\def\FSAdelete{0}\def\FSAinsert{1}%
     \input{Images/FixedSizeArray.tikz} &
-    $\mathcal{O}(1)$ & \hspace{1.5em}{\color{Mittel-Gruen}+2} & 5\\
+    $O(1)$ & \hspace{1.5em}{\color{Mittel-Gruen}+2} & 5\\
     \def\FSAsize{8}\def\FSAelements{0}%
     \def\FSAcopy{4}\def\FSAdelete{0}\def\FSAinsert{1}%
     \input{Images/FixedSizeArray.tikz} &
-    $\mathcal{O}(1 + {\color{Mittel-Blau}4})$ &
+    $O(1 + {\color{Mittel-Blau}4})$ &
     \hspace{1.5em}{\color{Mittel-Gruen}+2} {\color{Mittel-Blau}-4} &
     {\color{Mittel-Blau}3}\\
     \def\FSAsize{8}\def\FSAelements{5}%
     \def\FSAcopy{0}\def\FSAdelete{0}\def\FSAinsert{1}%
     \input{Images/FixedSizeArray.tikz} &
-    $\mathcal{O}(1)$ & \hspace{1.5em}{\color{Mittel-Gruen}+2} & 5\\
+    $O(1)$ & \hspace{1.5em}{\color{Mittel-Gruen}+2} & 5\\
     \def\FSAsize{8}\def\FSAelements{6}%
     \def\FSAcopy{0}\def\FSAdelete{0}\def\FSAinsert{1}%
     \input{Images/FixedSizeArray.tikz} &
-    $\mathcal{O}(1)$ & \hspace{1.5em}{\color{Mittel-Gruen}+2} & 7\\
+    $O(1)$ & \hspace{1.5em}{\color{Mittel-Gruen}+2} & 7\\
     \def\FSAsize{8}\def\FSAelements{7}%
     \def\FSAcopy{0}\def\FSAdelete{0}\def\FSAinsert{1}%
     \input{Images/FixedSizeArray.tikz} &
-    $\mathcal{O}(1)$ & \hspace{1.5em}{\color{Mittel-Gruen}+2} & 9\\
+    $\O(1)$ & \hspace{1.5em}{\color{Mittel-Gruen}+2} & 9\\
     \def\FSAsize{10}\def\FSAelements{0}%
     \def\FSAcopy{8}\def\FSAdelete{0}\def\FSAinsert{1}%
     \input{Images/FixedSizeArray.tikz}%
     \hspace*{0.25em}$\cdots$ &
-    $\mathcal{O}(1 + {\color{Mittel-Blau}8})$ &
+    $O(1 + {\color{Mittel-Blau}8})$ &
     \hspace{1.5em}{\color{Mittel-Gruen}+2} {\color{Mittel-Blau}-8} &
     {\color{Mittel-Blau}3}\\
     \hspace*{1.5em}\dots & \dots & \hspace{1.5em}\dots & \dots
