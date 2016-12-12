@@ -1,14 +1,14 @@
-\section{Dynamic Fields}
+\section{Dynamic Arrays}
 
 \toclesssubsection{Introduction}
 
-\begin{frame}{Dynamic Fields}{Introduction}
+\begin{frame}{Dynamic Arrays}{Introduction}
   \textbf{Dynamic fields:}
   \begin{itemize}
     \item
       The field is created with an initial size
     \item
-      The size can be dynamicly modified
+      The size can be dynamically modified
     \item
       \textbf{Problem:}
       We need a dynamic structure to store the data
@@ -18,7 +18,7 @@
 %-------------------------------------------------------------------------------
 
 \codeslide{python}{
-\begin{frame}{Dynamic Fields}{Python}
+\begin{frame}{Dynamic Arrays}{Python}
   \textbf{Python:}
   \lstinputlisting[
     language=Python,
@@ -33,7 +33,7 @@
 %-------------------------------------------------------------------------------
 
 \codeslide{java}{
-\begin{frame}{Dynamic Fields}{Java}
+\begin{frame}{Dynamic Arrays}{Java}
   \textbf{Java:}
   \lstinputlisting[
     language=Java,
@@ -50,7 +50,7 @@
 %-------------------------------------------------------------------------------
 
 \codeslide{cpp}{
-\begin{frame}{Dynamic Fields}{C++}
+\begin{frame}{Dynamic Arrays}{C++}
   \textbf{C++:}
   \lstinputlisting[
     language=C++,
@@ -65,7 +65,7 @@
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Dynamic Fields}{Implementation 1}
+\begin{frame}{Dynamic Arrays}{Implementation 1}
   \begin{itemize}
     \item
       We store the data in a fixed-size array with the needed size
@@ -90,7 +90,7 @@
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Dynamic Fields}{Implementation 1}
+\begin{frame}{Dynamic Arrays}{Implementation 1}
   \text{First implementation:}
   \begin{itemize}
     \item
@@ -103,7 +103,7 @@
 %-------------------------------------------------------------------------------
 
 \codeslide{python}{
-\begin{frame}{Dynamic Fields}{Implementation 1 - Python}
+\begin{frame}{Dynamic Arrays}{Implementation 1 - Python}
   \lstinputlisting[
     language=Python,
     basicstyle=\small,
@@ -119,7 +119,7 @@
 %-------------------------------------------------------------------------------
 
 \codeslide{python}{
-\begin{frame}{Dynamic Fields}{Implementation 1 - Python}
+\begin{frame}{Dynamic Arrays}{Implementation 1 - Python}
   \lstinputlisting[
     language=Python,
     basicstyle=\small,
@@ -136,7 +136,7 @@
 %-------------------------------------------------------------------------------
 
 \codeslide{java}{
-\begin{frame}{Dynamic Fields}{Implementation 1 - Java}
+\begin{frame}{Dynamic Arrays}{Implementation 1 - Java}
   \vspace{-0.5em}
   \lstinputlisting[
     language=Java,
@@ -150,7 +150,7 @@
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Dynamic Fields}{Implementation 1 - Java}
+\begin{frame}{Dynamic Arrays}{Implementation 1 - Java}
   \vspace{-0.5em}
   \lstinputlisting[
     language=Java,
@@ -167,7 +167,7 @@
 %-------------------------------------------------------------------------------
 
 \codeslide{cpp}{
-\begin{frame}{Dynamic Fields}{Implementation 1 - C++ - Header}
+\begin{frame}{Dynamic Arrays}{Implementation 1 - C++ - Header}
   \vspace{-0.5em}
   \lstinputlisting[
     language=C++,
@@ -181,7 +181,7 @@
 \end{frame}
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Dynamic Fields}{Implementation 1 - C++}
+\begin{frame}{Dynamic Arrays}{Implementation 1 - C++}
   \vspace{-0.5em}
   \lstinputlisting[
     language=C++,
@@ -197,7 +197,7 @@
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Dynamic Fields}{Implementation 1 - C++}
+\begin{frame}{Dynamic Arrays}{Implementation 1 - C++}
   \vspace{-0.5em}
   \lstinputlisting[
     language=C++,
@@ -212,7 +212,7 @@
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Dynamic Fields}{Implementation 1}
+\begin{frame}{Dynamic Arrays}{Implementation 1}
   \begin{itemize}
     \item
       Why is the runtime qubic?
@@ -227,7 +227,7 @@
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Dynamic Fields}{Implementation 1}
+\begin{frame}{Dynamic Arrays}{Implementation 1}
   \textbf{Runtime:}\\[0.5em]
   \begin{tabularx}{\linewidth}{@{}lcl}
     \def\FSAsize{1}\def\FSAelements{0}%
@@ -266,7 +266,7 @@
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Dynamic Fields}{Implementation 1}
+\begin{frame}{Dynamic Arrays}{Implementation 1}
   \textbf{Analysis:}
   \begin{itemize}
     \item
@@ -291,11 +291,11 @@
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Dynamic Fields}{Implementation 2}
+\begin{frame}{Dynamic Arrays}{Implementation 2}
   \textbf{Idea:}
   \begin{itemize}
     \item
-      Better resize stratergy
+      Better resize strategy
     \item
       We allocate more space than needed
     \item
@@ -310,7 +310,7 @@
 %-------------------------------------------------------------------------------
 
 \codeslide{python}{
-\begin{frame}{Dynamic Fields}{Implementation 2 - Python}
+\begin{frame}{Dynamic Arrays}{Implementation 2 - Python}
   \lstinputlisting[
     language=Python,
     basicstyle=\small,
@@ -327,7 +327,7 @@
 %-------------------------------------------------------------------------------
 
 \codeslide{java}{
-\begin{frame}{Dynamic Fields}{Implementation 2 - Java}
+\begin{frame}{Dynamic Arrays}{Implementation 2 - Java}
   \vspace{-0.5em}
   \lstinputlisting[
     language=Java,
@@ -344,7 +344,7 @@
 %-------------------------------------------------------------------------------
 
 \codeslide{cpp}{
-\begin{frame}{Dynamic Fields}{Implementation 2 - C++ - Header}
+\begin{frame}{Dynamic Arrays}{Implementation 2 - C++ - Header}
   \vspace{-0.5em}
   \lstinputlisting[
     language=C++,
@@ -358,7 +358,7 @@
 \end{frame}
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Dynamic Fields}{Implementation 2 - C++}
+\begin{frame}{Dynamic Arrays}{Implementation 2 - C++}
   \vspace{-0.5em}
   \lstinputlisting[
     language=C++,
@@ -374,7 +374,7 @@
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Dynamic Fields}{Implementation 2 - C++}
+\begin{frame}{Dynamic Arrays}{Implementation 2 - C++}
   \vspace{-0.5em}
   \lstinputlisting[
     language=C++,
@@ -389,7 +389,7 @@
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Dynamic Fields}{Implementation 2}
+\begin{frame}{Dynamic Arrays}{Implementation 2}
   \begin{itemize}
     \item
       Why is the runtime still qubic?
@@ -404,7 +404,7 @@
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Dynamic Fields}{Implementation 2}
+\begin{frame}{Dynamic Arrays}{Implementation 2}
   \textbf{Runtime for $C = 3$:}\\[0.5em]
   \begin{tabularx}{\linewidth}{@{}lcl}
     \def\FSAsize{3}\def\FSAelements{0}%
@@ -448,7 +448,7 @@
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Dynamic Fields}{Implementation 2}
+\begin{frame}{Dynamic Arrays}{Implementation 2}
   \textbf{Analysis:}
   \begin{itemize}
     \item
@@ -483,7 +483,7 @@
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Dynamic Fields}{Implementation 2}
+\begin{frame}{Dynamic Arrays}{Implementation 2}
   \textbf{Analysis:}
   \begin{itemize}
     \item
@@ -504,7 +504,7 @@
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Dynamic Fields}{Implementation 3}
+\begin{frame}{Dynamic Arrays}{Implementation 3}
   \textbf{Idea:}
   \begin{itemize}
     \item
@@ -520,7 +520,7 @@
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Dynamic Fields}{Implementation 3}
+\begin{frame}{Dynamic Arrays}{Implementation 3}
   \lstinputlisting[
     language=Python,
     basicstyle=\small,
@@ -536,7 +536,7 @@
 %-------------------------------------------------------------------------------
 
 \codeslide{java}{
-\begin{frame}{Dynamic Fields}{Implementation 3 - Java}
+\begin{frame}{Dynamic Arrays}{Implementation 3 - Java}
   \vspace{-0.5em}
   \lstinputlisting[
     language=Java,
@@ -554,7 +554,7 @@
 %-------------------------------------------------------------------------------
 
 \codeslide{cpp}{
-\begin{frame}{Dynamic Fields}{Implementation 3 - C++}
+\begin{frame}{Dynamic Arrays}{Implementation 3 - C++}
   \vspace{-0.5em}
   \lstinputlisting[
     language=C++,
@@ -571,7 +571,7 @@
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Dynamic Fields}{Implementation 3}
+\begin{frame}{Dynamic Arrays}{Implementation 3}
   \begin{itemize}
     \item
       Now the runtime is linear with some bumps. Why?
@@ -586,7 +586,7 @@
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Dynamic Fields}{Implementation 2}
+\begin{frame}{Dynamic Arrays}{Implementation 2}
   \textbf{Runtime for $C = 2$ (Double the size):}\\[0.5em]
   \begin{tabularx}{\linewidth}{@{}lcl}
     \def\FSAsize{1}\def\FSAelements{0}%
@@ -641,7 +641,7 @@
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Dynamic Fields}{Implementation 3}
+\begin{frame}{Dynamic Arrays}{Implementation 3}
   \textbf{Analysis:}
   \begin{itemize}
     \item
@@ -662,7 +662,7 @@
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Dynamic Fields}{Implementation 3}
+\begin{frame}{Dynamic Arrays}{Implementation 3}
   \textbf{Analysis:}
   Assuming $C = 2$
   \begin{align*}
@@ -684,7 +684,7 @@
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Dynamic Fields}{Implementation 3}
+\begin{frame}{Dynamic Arrays}{Implementation 3}
   \textbf{Analysis:}
   Assuming $C = 2, \, k = \left\lfloor\log_2(n-1)\right\rfloor$
   \begin{align*}
@@ -700,7 +700,7 @@
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Dynamic Fields}{Shrinking}
+\begin{frame}{Dynamic Arrays}{Shrinking}
   \textbf{How do we shrink the array?}
   \begin{itemize}
     \item
@@ -721,7 +721,7 @@
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Dynamic Fields}{Shrinking}
+\begin{frame}{Dynamic Arrays}{Shrinking}
   \textbf{Analysis:}
   \begin{itemize}
     \item
