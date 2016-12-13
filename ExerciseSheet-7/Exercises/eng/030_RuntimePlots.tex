@@ -1,6 +1,7 @@
-\exercise{2} \points{5}\\
-Expand the class \textit{DynamicArrayMain} such that different tests can be
-selected (ideally by using a command line argument to set the test).
+\exercise{2} \points{7}\\
+Expand your implementation such that different tests can be selected by 
+using a command line argument to set which test to execute. 
+You can e.g. use Python's \textit{argparse} module for that.
 Make the program produce an output which represents the accumulated runtime
 for a sequence of $n$ operations.
 You can plot your results e.g. with \textit{gnuplot} (see description below).
@@ -27,7 +28,7 @@ You can e.g. use \textit{gnuplot} for plotting the runtime.
 Make your program generate a text file (e.g. "runtime.txt") or just redirect
 the standard output of your program into the text file on the command line:
 
-\texttt{./DynamicArrayMain > runtime.txt}
+\texttt{python3 dynamic\_int\_array.py -{}-test 1 > runtime.txt}
 
 The text file should have the following format:\\
 \textit{<input size 1> <TAB> <runtime 1>}\\
@@ -43,3 +44,4 @@ You can then store the plot e.g. in JPEG format.
 For details on the used parameters please check gnuplot’s man pages by
 executing \enquote{\texttt{man gnuplot}} or have a look here:
 \url{http://www.gnuplot.info/docs\_4.6/gnuplot.pdf}
+
