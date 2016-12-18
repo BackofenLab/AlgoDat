@@ -189,12 +189,13 @@
 \begin{frame}{Cache Efficiency}{Algorithm Comparision}
   \textbf{Conclusion:}
   \begin{itemize}
-    \item
+    \item<2->
       The number of operations are identical for both algorithms
-    \item
-      Accessing elements in random order takes a lot longer (quadrupling)
-    \item
-      The costs in terms of cache efficiency are totally different
+    \item<3->
+      Accessing elements in random order takes a lot longer (Factor 10)\\
+      {\color{cyan}Why?}
+    \item<3->
+      The costs in terms of memory access are very different
   \end{itemize}
 \end{frame}
 
@@ -210,19 +211,21 @@
     \end{adjustbox}
     \label{fig:caching:cache_hirarchy}
   \end{figure}
-  \textbf{Cache organization:}
+  \onslide<2->
+  \textbf{Principle / organization:}
   \begin{itemize}
-    \item
+    \item<3->
       Accessing one byte of the main memory takes
       $\approx\SI{100}{\nano\second}$
-    \item
+    \item<4->
       Accessing one byte of (L1-)cache takes
       $\approx\SI{1}{\nano\second}$
-    \item
-      Accessing one or more byte/s of main memory triggers a load of a whole
-      block $\approx\SI{64}{\byte}$ into the cache
-    \item
-      This omits accesses of the main memory for further requests in this block
+    \item<5->
+      Accessing one or more byte/s of main memory loads a whole
+      block $\approx\SI{100}{\byte}$ into the cache
+    \item<6->
+      As long as this block is in the cache, it is not neccessary to
+      access the memory for bytes of this block
   \end{itemize}
 \end{frame}
 
@@ -236,21 +239,27 @@
     \end{adjustbox}
     \label{fig:caching:cache_hirarchy2}
   \end{figure}
+  \vspace{-0.3cm}
+  \onslide<2->
   \textbf{Cache organization:}
   \begin{itemize}
-    \item
-      The (L1-)cache can hold multiple memory blocks
-      ($\approx\SI{128/256}{\kilo\byte}$)
-    \item
+    \item<3->
+      The (L1-)cache can hold multiple memory blocks (cache lines)
+      \begin{itemize}
+        \item<4->
+          $\approx\SI{100}{\kilo\byte}$
+        \end{itemize}  
+    \item<5->
       If the capacity is reached unused blocks are discarded
       \begin{itemize}
-        \item
+        \item<6->
           {\color{Mittel-Blau}Least recently used (LRU)}
-        \item
+        \item<7->
           {\color{Mittel-Blau}Least frequently used (LFU)}
-        \item
+        \item<8->
           {\color{Mittel-Blau}First in first out (FIFO)}
       \end{itemize}
+      \item<9-> Details of discarding are not the topic for today
   \end{itemize}
 \end{frame}
 
@@ -266,17 +275,16 @@
   \end{figure}%
   \textbf{Terminology:}
   \begin{itemize}
-    \item
-      The system consists of a slow and a fast memory storage
-    \item
+    \item<2->
+      The system consists of slow and fast memory 
+    \item<3->
       The {\color{Mittel-Blau}slow memory} is divided in
       {\color{Mittel-Blau}blocks of size $B$}
-    \item
+    \item<4->
       The {\color{Mittel-Blau}fast cache} has size $M$ an can store $M/B$
       blocks
-    \item
-      If a {\color{Mittel-Blau}cache miss} (block not in cache) occurs the
-      block is loaded into the {\color{Mittel-Blau}cache}
+    \item<5->
+      If data is not in fast memory, the corresponding block is loaded into the {\color{Mittel-Blau}cache}
   \end{itemize}
 \end{frame}
 
@@ -292,13 +300,13 @@
   \end{figure}%
   \textbf{Terminology:}
   \begin{itemize}
-    \item
+    \item<2->
       The program defines which blocks are held in the
       {\color{Mittel-Blau}cache}
-    \item
+    \item<3->
       We use the number of {\color{Mittel-Blau}block operations} as runtime
       estimation
-    \item
+    \item<4->
       We ignore runtime costs of cache accesses / management
   \end{itemize}
 \end{frame}
@@ -314,37 +322,38 @@
     \caption{Comparison good / bad locality}
     \label{fig:caching:memory_locality}
   \end{figure}%
-  \textbf{Accessing the cache $n$ times:}
+  \textbf{Accessing the cache {\color{Mittel-Blau}$B$} times:}
   \begin{itemize}
     \item
       {\color{Mittel-Blau}Best case}:
       1 block operation $\rightarrow$ good locality
     \item
       {\color{Mittel-Blau}Worst case}:
-      $n$ block operations $\rightarrow$ bad locality
+      {\color{Mittel-Blau}$B$} block operations $\rightarrow$ bad locality
   \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Cache Efficiency}{Block Operations}
-  \textbf{Minor performance factors:}\\
+  \textbf{Follwing minor performance factors:}\\
   \begin{itemize}
-    \item
-      Memory / cache block size
-    \item
-      Number of bytes per write / read operation
-    \item
-      These variations only affect performance by a constant factor
+    \item<2->
+    Change only a small constant factor in number of block operations
+    \item<3->
+      The  partionining of the slow memory into blocks
+    \item<4->
+      If the block is {\color{Mittel-Blau}1 Bytes} or {\color{Mittel-Blau}4 Bytes} or {\color{Mittel-Blau}8 Bytes}
   \end{itemize}
   \vspace{1.0em}
-  \textbf{Precondition:}\\
+  \onslide<5->
+  \textbf{Note:}\\
   \begin{itemize}
-    \item
+    \item<6->
       If the {\color{Mittel-Blau}input size} is
       {\color{Mittel-Blau}smaller than $M$} we load the complete data chunk
       directly into the cache
-    \item
+    \item<7->
       Cache handling is only interesting when the
       {\color{Mittel-Blau}input size} is
       {\color{Mittel-Blau}greater than $M$}
@@ -358,17 +367,17 @@
   (\texttt{Intel$\copyright$ i7-4770} Haswell,
   \texttt{WD$\copyright$ Blue} $\SI{2}{\tera\byte}$)
   \begin{itemize}
-    \item
-      CPU L1 Cache: $B = \SI{64}{\byte}$,
-      $M = 4 \times (\SI{32}{\kilo\byte} + \SI{32}{\kilo\byte})$
-    \item
-      CPU L2 Cache: $B = \SI{64}{\byte}$, $M = 4 \times \SI{256}{\kilo\byte}$
-    \item
-      CPU L3 Cache: $B = \SI{64}{\byte}$, $M = \SI{8}{\mega\byte}$
-    \item
-      Disk Cache: $B = \SI{64}{\kilo\byte}$, $M = \SI{64}{\mega\byte}$
+    \item<2->
+      CPU L1 Cache: {\color{Mittel-Blau}$B = \SI{64}{\byte}$},
+      {\color{Mittel-Blau}$M = 4 \times (\SI{32}{\kilo\byte} + \SI{32}{\kilo\byte})$}
+    \item<3->
+      CPU L2 Cache: {\color{Mittel-Blau}$B = \SI{64}{\byte}$}, {\color{Mittel-Blau}$M = 4 \times \SI{256}{\kilo\byte}$}
+    \item<4->
+      CPU L3 Cache: {\color{Mittel-Blau}$B = \SI{64}{\byte}$}, {\color{Mittel-Blau}$M = \SI{8}{\mega\byte}$}
+    \item<4->
+      Disk Cache: {\color{Mittel-Blau}$B = \SI{64}{\kilo\byte}$}, {\color{Mittel-Blau}$M = \SI{64}{\mega\byte}$}
     \begin{itemize}
-      \item
+      \item<5->
         Many operating systems use free system memory as disk cache
     \end{itemize}
   \end{itemize}
@@ -379,12 +388,12 @@
 \begin{frame}{Cache Efficiency}{Block Operations}
   \textbf{Terminology:}
   \begin{itemize}
-    \item
+    \item<2->
       Block loads on CPU-cache are called {\color{Mittel-Blau}cache~misses}
-    \item
+    \item<3->
       Block operations on disk-cache are called {\color{Mittel-Blau}IOs}\\
       (input / output operations)
-    \item
+    \item<4->
       These also fall under the term {\color{Mittel-Blau}cache~efficiency} or
       {\color{Mittel-Blau}IO~efficiency}
   \end{itemize}
@@ -394,17 +403,9 @@
 
 \begin{frame}{Cache Efficiency}{Block Operations - Linear Order}
   \vspace{-1.0em}
-  \begin{figure}%
-    \begin{adjustbox}{width=\linewidth}%
-      \input{Images/Caching/MemoryLocality_Linear.tikz}%
-    \end{adjustbox}%
-    \caption{Good locality of sum operation}
-    \label{fig:caching:memory_locality_linear}
-  \end{figure}%
-  \vspace{-1.0em}
-  \textbf{Linear order:}
+  \textbf{Example 1 - Linear order:}
   \begin{itemize}
-    \item
+    \item<2->
       We sum up all elements in {\color{Mittel-Blau}natural order}
       \begin{displaymath}
         {\color{Mittel-Blau}\mathrm{sum}(a)} =
@@ -413,27 +414,27 @@
         \dots +
         {\color{Mittel-Blau}a[n]}
       \end{displaymath}
-    \item
+    \item<3->
       The number of block operations is
       {\color{Mittel-Blau}$\mathrm{ceil}\left(\frac{n}{B}\right)$}
   \end{itemize}
+  \vspace{-1.0em}
+  \onslide<4->
+  \begin{figure}%
+    \begin{adjustbox}{width=\linewidth}%
+      \input{Images/Caching/MemoryLocality_Linear.tikz}%
+    \end{adjustbox}%
+    \caption{Good locality of sum operation}
+    \label{fig:caching:memory_locality_linear}
+  \end{figure}%
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Cache Efficiency}{Block Operations - Random Order}
-  \vspace{-1.0em}
-  \begin{figure}%
-    \begin{adjustbox}{width=\linewidth}%
-      \input{Images/Caching/MemoryLocality_Random.tikz}%
-    \end{adjustbox}%
-    \caption{Bad locality of sum operation}
-    \label{fig:caching:memory_locality_random}
-  \end{figure}%
-  \vspace{-1.0em}
-  \textbf{Random order:}
+  \textbf{Example 2 - Random order:}
   \begin{itemize}
-    \item
+    \item<2->
       We sum up all elements in {\color{Mittel-Blau}random order}
       \begin{displaymath}
         {\color{Mittel-Blau}\mathrm{sum}(a)} =
@@ -442,26 +443,33 @@
         \dots +
         {\color{Mittel-Blau}a[8]}
       \end{displaymath}
-    \item
+    \item<3->
       The number of block operations is {\color{Mittel-Blau}$n$} in the
       {\color{Mittel-Blau}worst case}
-    \item
+    \item<4->
       This leads to a runtime factor difference of {\color{Mittel-Blau}$B$}
   \end{itemize}
+  \onslide<5->
+   \vspace{-1.0em}
+  \begin{figure}%
+    \begin{adjustbox}{width=\linewidth}%
+      \input{Images/Caching/MemoryLocality_Random.tikz}%
+    \end{adjustbox}%
+    \caption{Bad locality of sum operation}
+    \label{fig:caching:memory_locality_random}
+  \end{figure}%
+  \vspace{-1.0em}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Cache Efficiency}{Block Operations}
-  \textbf{Runtime factor:}
+  \textbf{Generally the factor is substantially {\color{Mittel-Blau}$< B$}}
   \begin{itemize}
-    \item
-      Normally the factor dufference is a lot smaller than
-      {\color{Mittel-Blau}$B$}
-    \item
-      Even with a {\color{Mittel-Blau}random order} we access 4 (\texttt{int}) /
-      8 (\texttt{long}) nearby bytes for each element
-    \item
+    \item<2->
+      Even with a {\color{Mittel-Blau}random order} we access per element 4 (\texttt{int}) /
+      neighboring bytes at once
+    \item<3->
       If {\color{Mittel-Blau}not $n \gg M$} the next element might already
       with a high probability loaded in cache
   \end{itemize}
@@ -472,20 +480,21 @@
 \begin{frame}{Cache Efficiency}{Block Operations - QuickSort}
   \textbf{QuickSort:}\\
   \begin{itemize}
-    \item
+    \item<2->
       \textbf{Strategy:} Divide and conquer
       $\Rightarrow$ See chapter~\ref{chap:divide_and_conquer:anchor}
-      \item
-        Choose one elemet (e.g the first one) as
+      \item<3->
+        Divide the data into two parts where the \enquote{left} part contains
+        all values {\color{Mittel-Blau}$\leq$} those in the right part
+        \item<4->
+        Choose one element (e.g the first one) as
         {\color{Mittel-Blau}\enquote{pivot}-element}
-      \item
-        Divide the data into two parts where the \enquote{lower} part contains
-        all values {\color{Mittel-Blau}$\leq$ \enquote{pivot}-element}
-      \item
+      \item<5->
         Ideally both parts are the same size
-      \item
+      \item<6->
         Both parts are sorted recursively
   \end{itemize}
+  \onslide<7->
   \vspace{-1em}
   \begin{figure}%
     \begin{adjustbox}{width=\linewidth}%
@@ -534,22 +543,28 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Cache Efficiency}{Block Operations - QuickSort}
-  \textbf{Preconditions:}
+  \textbf{Number of operations for Quicksort:}
+   \vspace{1em}
   \begin{itemize}
-    \item
-      Let {\color{Mittel-Blau}$T(n)$} be the runtime for the
-      {\color{Mittel-Blau}input size $n$}
-    \item
+  \item<2->Let {\color{Mittel-Blau}$T(n)$} be the runtime for the
+    {\color{Mittel-Blau}input size $n$}
+     \vspace{1em}
+  \item<3->Assumptions:
+     \vspace{1em}
+    \begin{itemize}
+    \item<4->
       Fields are always separated perfectly in the middle
-    \item
-      $n$ is a power of two and with that the
-      {\color{Mittel-Blau}recursion depth is $k = \log_2 n$}
+      \vspace{1em}
+    \item<5->
+      {\color{Mittel-Blau}$n$} is a power of two and recursion depth is {\color{Mittel-Blau}$k = \log_2 n$}
+    \end{itemize}
   \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Cache Efficiency}{Block Operations - QuickSort}
+  {\color{Mittel-Blau}
   \begin{eqnarray*}
     {\color{Mittel-Blau}T(n)} &\leq\hspace{1.5em}&
       \underbrace{
@@ -560,7 +575,7 @@
       \underbrace{
         2 \cdot {\color{Mittel-Blau}T\left(\frac{n}{2}\right)}
       }_{\text{recursive sort}}\\
-    {} &=&
+    {} &\leq&
       A \cdot {\color{Mittel-Blau}n} + 2 \left(
         A \cdot \frac{\color{Mittel-Blau}n}{2}
         + 2 \cdot {\color{Mittel-Blau}T\left(\frac{n}{4}\right)}
@@ -568,19 +583,22 @@
     {} &=&
       2\,A \cdot {\color{Mittel-Blau}n}
       + 4 \cdot {\color{Mittel-Blau}T\left(\frac{n}{4}\right)}\\
-    {} &=&\hspace{1.5em}\cdots\\
-    {} &=&
-      A \cdot {\color{Mittel-Blau}k \cdot n}
+    {} &\leq&
+      3\,A \cdot {\color{Mittel-Blau}n}
+      + 8 \cdot {\color{Mittel-Blau}T\left(\frac{n}{8}\right)}\\
+    {} &\leq&\hspace{1.5em}\cdots\\
+    {} &\leq&
+      k \cdot {\color{Mittel-Blau}A \cdot n}
       + 2^{\color{Mittel-Blau}k}
       \cdot {\color{Mittel-Blau}T(1)}\\
     {} &=&
-      A \cdot {\color{Mittel-Blau}n \, \log_2 n}
+      \log_2 n \cdot {\color{Mittel-Blau}A \cdot n}
       + {\color{Mittel-Blau}n \cdot T(1)}\\
-    {} &=&
-      A \cdot {\color{Mittel-Blau}n \, \log_2 n}
-      + A \cdot {\color{Mittel-Blau}n}
+    {} &\leq&
+      \log_2 n \cdot {\color{Mittel-Blau}A \cdot n}
+      + n \cdot {\color{Mittel-Blau}A}
       \in \mathcal{O}(n \, \log_2 n)
-  \end{eqnarray*}
+  \end{eqnarray*}}
 \end{frame}
 
 %-------------------------------------------------------------------------------
@@ -594,47 +612,50 @@
     \label{fig:caching:memory_locality_quicksort}
   \end{figure}%
   \begin{itemize}
-    \item
+    \item<2->
       Let {\color{Mittel-Blau}$IO(n)$} be the number of
-      {\color{Mittel-Blau}block operations} for input size $n$
-    \item
-      Assumptions as before but
-      {\color{Mittel-Blau}recursion depth is $k = \log_2 \frac{n}{B}$}\\
-      {\color{gray}Why?}
+      {\color{Mittel-Blau}block operations} for input size {\color{Mittel-Blau}$n$}
+    \item<3->
+      Assumptions as before but recursion depth is {\color{Mittel-Blau}$k = \log_2 \frac{n}{B}$}\\
+      {\color{cyan}Why?}
   \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Cache Efficiency}{Block Operations - QuickSort}
+{\color{Mittel-Blau}
   \begin{eqnarray*}
-    {\color{Mittel-Blau}IO(n)} &\leq\hspace{1.5em}&
+    {\color{Mittel-Blau}IO(n)} &\leq\hspace{1em}&
       \underbrace{
-        A \cdot {\color{Mittel-Blau}\frac{n}{B}}
+        A \cdot {\color{Mittel-Blau}n / B}
       }_{\text{splitting in two parts}}
       +
       \underbrace{
-        2 \cdot {\color{Mittel-Blau}IO\left(\frac{n}{2\,B}\right)}
+        2 \cdot {\color{Mittel-Blau}IO\left(n / 2 \right)}
       }_{\text{recursive sort}}\\
-    {} &=&
-      A \cdot {\color{Mittel-Blau}n} + 2 \left(
-        A \cdot {\color{Mittel-Blau}\frac{n}{2\,B}}
-        + 2 \cdot {\color{Mittel-Blau}IO\left(\frac{n}{4\,B}\right)}
+    {} &\leq&
+      A \cdot {\color{Mittel-Blau} n / B} \hspace{1em}+ \hspace{1em}2 \left(
+        A \cdot {\color{Mittel-Blau} n /2 B}
+        + 2 \cdot {\color{Mittel-Blau}IO\left( n / 4 \right)}
       \right)\\
+    {} &\leq&
+      2 \cdot A \cdot {\color{Mittel-Blau} n / B}
+      \hspace{1em}+ \hspace{1em}4 \cdot {\color{Mittel-Blau}IO\left( n / 4 \right)}\\
+    {} &\leq&
+      3 \cdot A \cdot {\color{Mittel-Blau} n / B}
+      \hspace{1em}+ \hspace{1em}8 \cdot {\color{Mittel-Blau}IO\left( n / 8 \right)}\\  
+    {} &\leq&\hspace{1.5em}\cdots\\
+    {} &\leq&
+      k \cdot {\color{Mittel-Blau}A \cdot n /B }
+      \hspace{1em}+\hspace{1em} 2^{\color{Mittel-Blau}k}
+      \cdot {\color{Mittel-Blau}IO(n / 2^k)}\\
     {} &=&
-      2\,A \cdot {\color{Mittel-Blau}\frac{n}{B}}
-      + 4 \cdot {\color{Mittel-Blau}IO\left(\frac{n}{4\,B}\right)}\\
-    {} &=&\hspace{1.5em}\cdots\\
-    {} &=&
-      A \cdot {\color{Mittel-Blau}k \cdot \frac{n}{B}}
-      + 2^{\color{Mittel-Blau}k}
-      \cdot {\color{Mittel-Blau}IO(1)}\\
-    {} &=&
-      A \cdot {\color{Mittel-Blau}\frac{n}{B} \, \log_2 \frac{n}{B}}
-      + {\color{Mittel-Blau}\frac{n}{B} \cdot IO(1)}\\
-    {} &=&
-      A \cdot {\color{Mittel-Blau}\frac{n}{B} \, \log_2 \frac{n}{B}}
-      + A \cdot {\color{Mittel-Blau}\frac{n}{B}}
-      \in \mathcal{O}(\frac{n}{B} \, \log_2 \frac{n}{B})
-  \end{eqnarray*}
+      \log_2 {\color{Mittel-Blau} (n / B) \cdot A \cdot (n / B)}
+      \hspace{1em}+\hspace{1em} {\color{Mittel-Blau} n /B \cdot IO(B)}\\
+    {} &\leq&
+      \log_2 {\color{Mittel-Blau} (n /B) \cdot A \cdot (n / B)}
+      \hspace{1em}+\hspace{1em} A \cdot {\color{Mittel-Blau} n/ B }
+      \hspace{1em} \in \hspace{1em} \mathcal{O}(\frac{n}{B}  \cdot \log_2 (\frac{n}{B}) )
+  \end{eqnarray*}}
 \end{frame}
