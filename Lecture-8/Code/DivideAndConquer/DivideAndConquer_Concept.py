@@ -1,5 +1,5 @@
 def solve(problem):
-	if problem.size < threshold:
+	if n < threshold:
 		# solve directly
 		return solution
 	else:

@@ -7,29 +7,33 @@
 \begin{frame}{Divide and Conquer}{Introduction}
   \textbf{Concept:}
   \begin{itemize}
-    \item
+    \item<2->
       {\color{Mittel-Blau}Divide} the problem into smaller subproblems
-    \item
-      {\color{Mittel-Blau}Conquer} the subproblems through recusive solving.\\
+    \item<3->
+      {\color{Mittel-Blau}Conquer} the subproblems through recursive solving.\\
       If subproblems are small enough solve them directly
-    \item
-      {\color{Mittel-Blau}Connect} all solutions to as total solution of the
-      problem
+    \item<4->
+      {\color{Mittel-Blau}Connect} all solutions of the subproblems to a solution of the
+      full problem
   \end{itemize}
   \vspace{1.0em}
   \begin{itemize}
-    \item
-      {\color{Mittel-Blau}Recursive} application of the algorithm for smaller
+    \item<5->
+      {\color{Mittel-Blau}Recursive} application of the algorithm to ever smaller
       subproblems
-    \item
-      {\color{Mittel-Blau}Direct} solving of small subproblems
+    \item<6->
+      {\color{Mittel-Blau}Direct} solving of sufficently small subproblems
   \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
 \codeslide{python}{
-\begin{frame}{Divide and Conquer}{Introduction - Python}
+  \begin{frame}{Divide and Conquer}{Introduction - Python}
+    \begin{itemize}
+      \item<2->Function {\color{Mittel-Blau}solve} for solving a {\color{Mittel-Blau}problem} of size {\color{Mittel-Blau}$n$}
+    \end{itemize}
+  \onslide<3->
   \vspace{-0.5em}
   \lstinputlisting[
     language=Python,
