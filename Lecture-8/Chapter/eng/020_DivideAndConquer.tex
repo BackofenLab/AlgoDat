@@ -15,9 +15,6 @@
     \item<4->
       {\color{Mittel-Blau}Connect} all solutions of the subproblems to a solution of the
       full problem
-  \end{itemize}
-  \vspace{1.0em}
-  \begin{itemize}
     \item<5->
       {\color{Mittel-Blau}Recursive} application of the algorithm to ever smaller
       subproblems
@@ -52,76 +49,69 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Divide and Conquer}{Features}
-  \begin{enumerate}
-    \item
+  \begin{itemize}
+    \item<2->
       Can help with conceptual hard problems
       \begin{itemize}
-        \item
+        \item<3->
           {\color{Mittel-Blau}Solution} of the trivial problems has to be known
-        \item
+        \item<4->
           {\color{Mittel-Blau}Dividing} in subproblems has to be possible
-        \item
+        \item<5->
           {\color{Mittel-Blau}Combination} of solutions has to be possible
       \end{itemize}
-    \item
-      Suitable for parallel processing
-      \begin{itemize}
-        \item
-          Subproblems are {\color{Mittel-Blau}independent} of each other
-        \item
-          Only needed input for each subproblem has to be known
-      \end{itemize}
-  \end{enumerate}
-\end{frame}
-
-%-------------------------------------------------------------------------------
-
-\begin{frame}{Divide and Conquer}{Features}
-  \begin{enumerate}
-    \setcounter{enumi}{2}
-    \item
+    \item<6->
       Realization of {\color{Mittel-Blau}efficient solutions}
       \begin{itemize}
-        \item
-          If trivial solution is $\in \mathcal{O}(1)$
-        \item
-          And separation / combination of subproblems is $\in \mathcal{O}(n)$
-        \item
+        \item<7->
+          If trivial solution is {\color{Mittel-Blau}$\in O(1)$}
+        \item<8->
+          And separation / combination of subproblems is {\color{Mittel-Blau}$\in O(n)$}
+        \item<9->
           And the number of subproblems is limited
-        \item
-          The runtime is $\in \mathcal{O}(n \, \log n)$
+        \item<10->
+          The runtime is {\color{Mittel-Blau}$\in O(n \cdot \log n)$}
       \end{itemize}
-  \end{enumerate}
-\end{frame}
-
-%-------------------------------------------------------------------------------
-
-\begin{frame}{Divide and Conquer}{Implementation}
-  \textbf{Trivial solution:}
-  \begin{itemize}
-    \item
-      Small directly solvable subproblems are smart and easy
-    \item
-      Otherwise the efficiency will be improved if relative big subproblems
-      can be solved directly
-    \item
-      Recursion depth should be small (stack / memory overhead)
+       \item<11->
+      Suitable for parallel processing
+      \begin{itemize}
+        \item<12->
+          Subproblems are {\color{Mittel-Blau}independent} of each other
+        \item<13->
+          Only needed input for each subproblem has to be known
+      \end{itemize}
   \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Divide and Conquer}{Implementation}
-  \textbf{Division of problems:}
+  \textbf{Definition of the trivial case:}
   \begin{itemize}
-    \item
+    \item<2->
+      Smaller subproblems are elegant and simple
+    \item<3->
+      Otherwise the efficiency will be improved if relative big subproblems
+      can be solved directly
+    \item<4->
+      Recursion depth should not get too big (stack / memory overhead)
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Divide and Conquer}{Implementation}
+  \textbf{Division in subproblems:}
+  \begin{itemize}
+    \item<2->
       Choosing the number of subproblems and the concrete allocation can be
       demanding
   \end{itemize}
+  \onslide<3->
   \vspace{1em}
   \textbf{Combination of solutions:}
   \begin{itemize}
-    \item
+    \item<4->
       Typically conceptional demanding
   \end{itemize}
 \end{frame}
@@ -129,37 +119,53 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Divide and Conquer}{Example - Maximum Subtotal}
-  \textbf{Input:}
+  \textbf{Example - Maximum Subtotal}
+   \onslide<2->
+   \textbf{Input:}
+    \onslide<3->
   \begin{itemize}
-    \item
-      Progression $X \in \mathbb{G}^n$ of $n$ whole numbers
+    \item<4->
+      Progression {\color{Mittel-Blau}$X$} of {\color{Mittel-Blau}$n$} integers
   \end{itemize}
+   \onslide<5->
   \textbf{Output:}
   \begin{itemize}
-    \item
+    \item<6->
       Maximum sum of related subsequence and its index boundary
   \end{itemize}
-\end{frame}
-
-%-------------------------------------------------------------------------------
-
-\begin{frame}{Divide and Conquer}{Example - Maximum Subtotal}
-  \begin{example}[Maximum Subtotal]
-    \vspace{-1em}
+   \onslide<7->
+    \vspace{1em}
     \begin{table}[!t]
-      \caption{Input values}
       \begin{tabular}{c|c|c|c|c|c|c|c|c|c|c}
         Index & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9\\
         \midrule
         Value & 31 & -41 & 59 & 26 & -53 & 58 & 97 & -93 & -23 & 84
       \end{tabular}
-      \label{tab:divide_and_conquer:max_subtotal_example_values}
-    \end{table}
-    \vspace{6em}
-    %TODO: Hand-Drawings here (Free space) or no free space?
-    \textbf{Output:} Sum: 187, Start: 2, End: 6
-  \end{example}
+      \end{table}
+    \onslide<8-> 
+  \textbf{Output:} Sum: 187, Start: 2, End: 6
 \end{frame}
+
+%-------------------------------------------------------------------------------
+
+%% \begin{frame}{Divide and Conquer}{Example - Maximum Subtotal}
+%%   \begin{example}[Maximum Subtotal]
+%%     \vspace{-1em}
+%%     \begin{table}[!t]
+%%       \caption{Input values}
+%%       \begin{tabular}{c|c|c|c|c|c|c|c|c|c|c}
+%%         Index & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9\\
+%%         \midrule
+%%         Value & 31 & -41 & 59 & 26 & -53 & 58 & 97 & -93 & -23 & 84
+%%       \end{tabular}
+%%       \label{tab:divide_and_conquer:max_subtotal_example_values}
+%%     \end{table}
+%%     \vspace{6em}
+%%     %TODO: Hand-Drawings here (Free space) or no free space?
+    
+%%     \textbf{Output:} Sum: 187, Start: 2, End: 6
+%%   \end{example}
+%% \end{frame}
 
 %-------------------------------------------------------------------------------
 
@@ -173,7 +179,7 @@
     \begin{adjustbox}{width=\linewidth}
       \input{Images/DivideAndConquer/Shares_Graph.tikz}
     \end{adjustbox}
-    \caption{Share value over time}
+    \caption{Stock value over time}
     \label{fig:divide_and_conquer:shares_value}
   \end{figure}
 \end{frame}
@@ -181,33 +187,37 @@
 %-------------------------------------------------------------------------------
 
 \codeslide{python}{
-\begin{frame}{Divide and Conquer}{Example - Maximum Subtotal - Python}
-  \vspace{-0.5em}
-  \lstinputlisting[
-    language=Python,
-    basicstyle=\small,
-    tabsize=4,
-    style={python-idle-code},
-    escapechar={@},
-    emph={maxSubArray},
-    emphstyle=\color{blue}
-  ]{Code/DivideAndConquer/MaxSubTotal_Naive.py}
-\end{frame}
+  \begin{frame}{Divide and Conquer}{Example - Maximum Subtotal - Python}
+    \textbf{Naive solution (brute force)}
+    \onslide<2->
+      \vspace{-0.5em}
+      \lstinputlisting[
+        language=Python,
+        basicstyle=\small,
+        tabsize=4,
+        style={python-idle-code},
+        escapechar={@},
+        emph={maxSubArray},
+        emphstyle=\color{blue}
+      ]{Code/DivideAndConquer/MaxSubTotal_Naive.py}
+    \end{frame}
 
-%-------------------------------------------------------------------------------
+    %-------------------------------------------------------------------------------
 
-\begin{frame}{Divide and Conquer}{Example - Maximum Subtotal - Python}
-  \vspace{-0.5em}
-  \lstinputlisting[
-    language=Python,
-    basicstyle=\small,
-    tabsize=4,
-    style={python-idle-code},
-    escapechar={@},
-    emph={maxSubArray},
-    emphstyle=\color{blue}
-  ]{Code/DivideAndConquer/MaxSubTotal_Naive_Runtime.py}
-\end{frame}
+    \begin{frame}{Divide and Conquer}{Example - Maximum Subtotal - Python}
+      \textbf{Runtime - Upper bound}
+      \onslide<2->
+      \vspace{-0.5em}
+      \lstinputlisting[
+        language=Python,
+        basicstyle=\small,
+        tabsize=4,
+        style={python-idle-code},
+        escapechar={@},
+        emph={maxSubArray},
+        emphstyle=\color{blue}
+      ]{Code/DivideAndConquer/MaxSubTotal_Naive_Runtime.py}
+    \end{frame}
 }
 
 %TODO: Implement for Java / C++
@@ -217,12 +227,12 @@
 \begin{frame}{Divide and Conquer}{Example - Maximum Subtotal}
   \textbf{Upper bound:}
   \begin{itemize}
-    \item
+    \item<2->
       Three interleaved loops
-    \item
-      Each loop with runtime {\color{Mittel-Blau}$\mathcal{O}(n)$}
-    \item
-      Algorithm runtime of {\color{Mittel-Blau}$\mathcal{O}(n^3)$}
+    \item<3->
+      Each loop with runtime {\color{Mittel-Blau}$O(n)$}
+    \item<4->
+      Algorithm runtime of {\color{Mittel-Blau}$O(n^3)$}
   \end{itemize}
 \end{frame}
 
@@ -230,27 +240,28 @@
 
 \begin{frame}{Divide and Conquer}{Example - Maximum Subtotal - Runtime}
   \textbf{Lower bound:}
-  \begin{itemize}
-    \item
-      We iterate at least $\frac{n}{3}$ values for $i$
-    \item
-      For each $i$ we iterate at least $\frac{n}{3}$ values for $j$
-    \item
-      For each $j$ we have at least $\frac{n}{3}$ additions
-    \item
-      We need at least $T(n) = (\frac{n}{3})^3 \in \Omega(n)$ steps
-  \end{itemize}
   \begin{table}
     \caption{Operations}
     \label{fig:divide_and_conquer:max_sub_total_operations}
     \begin{tabular}{c|c|c}
       $i$ & Additions & $j$\\
       \midrule
-      $\frac{n}{3} \in \mathcal{O}(n)$ &
-      $\frac{n}{3} \in \mathcal{O}(n)$ &
-      $\frac{n}{3} \in \mathcal{O}(n)$\\
+      $\frac{n}{3} \in O(n)$ &
+      $\frac{n}{3} \in O(n)$ &
+      $\frac{n}{3} \in O(n)$\\
     \end{tabular}
   \end{table}
+  \begin{itemize}
+    \item<2->
+      We iterate at least {\color{Mittel-Blau}$\frac{n}{3}$} values for {\color{Mittel-Blau}$i$}
+    \item<3->
+      For each {\color{Mittel-Blau}$i$} we iterate at least {\color{Mittel-Blau}$\frac{n}{3}$} values for {\color{Mittel-Blau}$j$}
+    \item<4->
+      For each {\color{Mittel-Blau}$j$} we have at least {\color{Mittel-Blau}$\frac{n}{3}$} additions
+    \item<5->
+      We need at least {\color{Mittel-Blau}$T(n) = (\frac{n}{3})^3 \in \Omega(n^3)$} steps
+  \end{itemize}
+  
 \end{frame}
 
 %-------------------------------------------------------------------------------
@@ -258,15 +269,15 @@
 \begin{frame}{Divide and Conquer}{Example - Maximum Subtotal - Runtime}
   \textbf{Runtime:}
   \begin{itemize}
-    \item
-      With $T(n) \in {\color{Mittel-Blau}\mathcal{O}(n^3)}$ and
+    \item<2->
+      With {\color{Mittel-Blau}$T(n) \in O(n^3)$} and
       $T(n) \in {\color{Mittel-Blau}\Omega(n^3)}$ we know:
       \begin{displaymath}
         \color{Mittel-Blau}
         T(n) \in \Theta(n^3)
       \end{displaymath}
-    \item
-      It is hard to solve the problem worse $\ldots$
+    \item<3->
+      It is hard to solve the problem in a worse way $\ldots$
   \end{itemize}
 \end{frame}
 
@@ -275,20 +286,21 @@
 \begin{frame}{Divide and Conquer}{Example - Maximum Subtotal - Runtime}
   \textbf{Current approach:}
   \begin{itemize}
-    \item
+    \item<2->
       Calculating the sum for range from $i$ to $j$ with loop
       \begin{displaymath}
         S_{i,\,j} = X[i] + X[i+1] + \dots + X[j]
       \end{displaymath}
-   \end{itemize}
+  \end{itemize}
+  \onslide<3->
    \textbf{Better approach:}
    \begin{itemize}
-    \item
+    \item<4->
       Incremental sum instead of loop
       \begin{eqnarray*}
         S_{i,\,j+1} &=& X[i] + X[i+1] + \dots + X[j] + X[j+1]\\
         S_{i,\,j+1} &=& S_{i,\,j} + X[j+1]
-        ~{\color{Mittel-Blau}\in \mathcal{O}(1)}
+        ~{\color{Mittel-Blau}\in O(1)}\hspace{1em} \text{instead of}\hspace{1em} {\color{Mittel-Blau}\in O(n)}
       \end{eqnarray*}
   \end{itemize}
 \end{frame}
@@ -296,7 +308,9 @@
 %-------------------------------------------------------------------------------
 
 \codeslide{python}{
-\begin{frame}{Divide and Conquer}{Example - Maximum Subtotal - Python}
+  \begin{frame}{Divide and Conquer}{Example - Maximum Subtotal - Python}
+     \textbf{Better solution:}
+     \onslide<2->
   \vspace{-0.5em}
   \lstinputlisting[
     language=Python,
@@ -307,6 +321,9 @@
     emph={maxSubArray},
     emphstyle=\color{blue}
   ]{Code/DivideAndConquer/MaxSubTotal.py}
+   \begin{itemize}
+   \item<3->Runtime {\color{Mittel-Blau}$\in O(n^2)$}
+   \end{itemize}  
 \end{frame}
 }
 
@@ -316,52 +333,54 @@
 
 \begin{frame}{Divide and Conquer}{Example - Maximum Subtotal}
   \textbf{Divide and Conquer:}
-  \begin{itemize}
-    \item
-      Solve the left / right half of the problem {\color{Mittel-Blau}recursive}
-    \item
-      Small problems are solved directly: $n = 1 \Rightarrow \max = X[0]$
-    \item
-      Combine both solutions into a total solution
-  \end{itemize}
+  \vspace{-0.5em}
   \begin{figure}
     \begin{adjustbox}{width=\linewidth}
       \input{Images/DivideAndConquer/MaxSubTotal_Divide.tikz}
     \end{adjustbox}
-    \caption{Dividing the problem into two sub-problems}
     \label{fig:divide_and_conquer:max_sub_total_divide}
   \end{figure}
+   \vspace{-0.5em}
+  \begin{itemize}
+  \item<2->
+    Solve the left / right half of the problem
+  \item<3->
+    Combine both solutions into a total solution
+  \item<4->
+    The maximum is located in the {\color{Mittel-Blau}left~half~($A$)}
+    or the {\color{Mittel-Blau}right~half~($B$)}
+  \item<5->
+    The maximum can {\color{Mittel-Blau}extend into the second half ($C$)}
+  \item<6->
+    To solve $C$ we have to calculate $rmax$ and $lmax$
+  \item<7->
+    The overall solution is the {\color{Mittel-Blau}maximum of $A$, $B$ and $C$}
+  \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Divide and Conquer}{Example - Maximum Subtotal}
-  \textbf{Divide and Conquer:}
+  \textbf{Principle - Divide and Conquer:}
   \begin{itemize}
-    \item
-      The maximum is located in the {\color{Mittel-Blau}left~half~($A$)}
-      or the {\color{Mittel-Blau}right~half~($B$)}
-    \item
-      The maximum can {\color{Mittel-Blau}extend into the second half ($C$)}
-    \item
-      To solve $C$ we have to calculate $rmax$ and $lmax$
-    \item
-      The total solution is the {\color{Mittel-Blau}maximum of $A$, $B$ and $C$}
+    \item<2->
+      Small problems are solved directly: {\color{Mittel-Blau}$n = 1 \Rightarrow \max = X[0]$}
+    \item<3->
+      Bigger problems are partitioned into two subproblems and recursivly solved. Subsolutions A and B
+      are returned.
+    \item<4>
+      To determine subsolution C, rmax and lmax for the subproblems are computed.
+    \item<5>
+      The overall solution is the {\color{Mittel-Blau}maximum of $A$, $B$ and $C$}
   \end{itemize}
-  \begin{figure}
-    \begin{adjustbox}{width=\linewidth}
-      \input{Images/DivideAndConquer/MaxSubTotal_Divide.tikz}
-    \end{adjustbox}
-    \caption{Dividing the problem into two sub-problems}
-    \label{fig:divide_and_conquer:max_sub_total_divide2}
-  \end{figure}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
 
 \codeslide{python}{
-\begin{frame}{Divide and Conquer}{Example - Maximum Subtotal - Python}
+  \begin{frame}{Divide and Conquer}{Example - Maximum Subtotal - Python}
+  \textbf{Divide and conquer solution} 
   \vspace{-0.5em}
   \lstinputlisting[
     language=Python,
