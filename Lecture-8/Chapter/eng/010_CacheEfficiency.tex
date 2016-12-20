@@ -338,14 +338,15 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Cache Efficiency}{Block Operations}
-  \textbf{Follwing minor performance factors:}\\
+  \textbf{Additional factors:}\\
   \begin{itemize}
     \item<2->
-    Change only a small constant factor in number of block operations
-    \item<3->
-      The  partionining of the slow memory into blocks
-    \item<4->
-      If the block is {\color{Mittel-Blau}1 Bytes} or {\color{Mittel-Blau}4 Bytes} or {\color{Mittel-Blau}8 Bytes}
+    The following settings change only a small constant factor in number of block operations
+    \begin{itemize}
+    \item<3-> The partionining of the slow memory into blocks
+    \item<4-> If the block is {\color{Mittel-Blau}1 Bytes} or
+      {\color{Mittel-Blau}4 Bytes} or {\color{Mittel-Blau}8 Bytes}
+    \end{itemize}
   \end{itemize}
   \vspace{1.0em}
   \onslide<5->
@@ -469,7 +470,7 @@
   \textbf{Generally the factor is substantially {\color{Mittel-Blau}$< B$}}
   \begin{itemize}
     \item<2->
-      Even with a {\color{Mittel-Blau}random order} we access per element 4 (\texttt{int}) /
+      Even with a {\color{Mittel-Blau}random or5bder} we access per element 4 (\texttt{int}) /
       neighboring bytes at once
     \item<3->
       If {\color{Mittel-Blau}not $n \gg M$} the next element might already
@@ -504,6 +505,33 @@
     \caption{\textit{QuickSort} with pivot-element}
     \label{fig:caching:quicksort_pivot}
   \end{figure}%
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}
+  \frametitle{Idea of Quicksort}
+  \begin{itemize}
+  \item \textbf{at start:} pivot in first position, first re-arrange list such
+    that left part contains small, right part larger elements
+  \item do required changes \emph{in place}
+  \end{itemize}
+\hspace*{1cm}\onslide<1>{\rlap{\includegraphics[width=0.55\textwidth]{Images/Caching/quicksort-idea-o1.pdf}}}%
+\onslide<2>{\rlap{\includegraphics[width=0.55\textwidth]{Images/Caching/quicksort-idea-o2.pdf}}}%
+\onslide<3>{\rlap{\includegraphics[width=0.55\textwidth]{Images/Caching/quicksort-idea-o3.pdf}}}%
+\onslide<4>{\rlap{\includegraphics[width=0.55\textwidth]{Images/Caching/quicksort-idea-o4.pdf}}}%
+\onslide<5>{\rlap{\includegraphics[width=0.55\textwidth]{Images/Caching/quicksort-idea-o5.pdf}}}%
+\onslide<6>{\rlap{\includegraphics[width=0.55\textwidth]{Images/Caching/quicksort-idea-o6.pdf}}}%
+\onslide<7->{\rlap{\includegraphics[width=0.55\textwidth]{Images/Caching/quicksort-idea-o7.pdf}}}%
+\begin{itemize}
+\item \textbf{end point:} k is left to left-most element greater than pivot
+  \begin{center}
+\it
+    swap position 0 (pivot) with k (smaller than pivot)
+  \end{center}
+
+
+\end{itemize}
 \end{frame}
 
 %-------------------------------------------------------------------------------

@@ -334,26 +334,28 @@
 
 \begin{frame}{Divide and Conquer}{Example - Maximum Subtotal}
   \textbf{Divide and Conquer:}
-  \vspace{-0.5em}
+  \vspace{-1.5em}
   \begin{figure}
     \begin{adjustbox}{width=\linewidth}
       \input{Images/DivideAndConquer/MaxSubTotal_Divide.tikz}
     \end{adjustbox}
     \label{fig:divide_and_conquer:max_sub_total_divide}
   \end{figure}
-   \vspace{-0.5em}
+   \vspace{-1.5em}
+\textbf{Divide and Conquer Idea to solve:}
   \begin{itemize}
+  \item split the sequence in the middle 
   \item<2->
-    Solve the left / right half of the problem
+    Solve the left half of the problem
   \item<3->
-    Combine both solutions into a total solution
+    Solve right half and combine both solutions into a total solution
   \item<4->
-    The maximum is located in the {\color{Mittel-Blau}left~half~($A$)}
-    or the {\color{Mittel-Blau}right~half~($B$)}
+    OK if maximum is located in {\color{Mittel-Blau}left~half~($A$)}
+    or {\color{Mittel-Blau}right~half~($B$)}
   \item<5->
-    The maximum can {\color{Mittel-Blau}extend into the second half ($C$)}
+    Problem: Maximum can {\color{Mittel-Blau} overlap split }
   \item<6->
-    To solve $C$ we have to calculate $rmax$ and $lmax$
+    To solve this case we have to calculate $rmax$ and $lmax$
   \item<7->
     The overall solution is the {\color{Mittel-Blau}maximum of $A$, $B$ and $C$}
   \end{itemize}
