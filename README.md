@@ -25,7 +25,7 @@ Before building the slides a corporate design has to be added. For example the U
 
 More information can be found here: http://www.zuv.uni-freiburg.de/service/cd
 
-Either use the add_ufcd_linux.sh script provided in scripts, or the following commands:
+Either use the add_ufcd_linux.sh script provided in scripts, or the following commands. If wget failed, download the ip files through your browser to the directory and skip wget commands:
 ```
 # Create texmf and change into folder
 mkdir ~/texmf
