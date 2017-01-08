@@ -6,21 +6,20 @@
 \begin{frame}{Divide and Conquer}{Introduction}
   \textbf{Concept:}
   \begin{itemize}
-    \item
+    \item<2->
       {\color{Mittel-Blau}Divide} the problem into smaller subproblems
-    \item
-      {\color{Mittel-Blau}Conquer} the subproblems through recusive solving.\\
+    \item<3->
+      {\color{Mittel-Blau}Conquer} the subproblems through recursive solving.\\
       If subproblems are small enough solve them directly
-    \item
-      {\color{Mittel-Blau}Connect} all solutions to as total solution of the
-      problem
+    \item<4->
+      {\color{Mittel-Blau}Connect} all subsolutions to solve the overall problem
   \end{itemize}
   \vspace{1.0em}
   \begin{itemize}
-    \item
-      {\color{Mittel-Blau}Recursive} application of the algorithm for smaller
+    \item<5->
+      {\color{Mittel-Blau}Recursive} application of the algorithm on smaller
       subproblems
-    \item
+    \item<6->
       {\color{Mittel-Blau}Direct} solving of small subproblems
   \end{itemize}
 \end{frame}
@@ -33,20 +32,14 @@
   \textbf{Input:}
   \begin{itemize}
     \item
-      Progression $X \in \mathbb{G}^n$ of $n$ whole numbers
+      Progression {\color{Mittel-Blau}$X$} of {\color{Mittel-Blau}$n$} integers
   \end{itemize}
   \textbf{Output:}
   \begin{itemize}
     \item
-      Maximum sum of related subsequence and its index boundary
+      Maximum sum of an uninterrupted subsequence of {\color{Mittel-Blau}$X$} and its index boundary
   \end{itemize}
-\end{frame}
-
-%-------------------------------------------------------------------------------
-
-\begin{frame}{Divide and Conquer}{Maximum Subtotal}
-  \begin{example}[Maximum Subtotal]
-    \vspace{-1em}
+     \vspace{-1em}
     \begin{table}[!t]
       \caption{Input values}
       \begin{tabular}{c|c|c|c|c|c|c|c|c|c|c}
@@ -56,24 +49,35 @@
       \end{tabular}
       \label{tab:divide_and_conquer:max_subtotal_example_values}
     \end{table}
-    \vspace{6em}
+    \vspace{1em}
     %TODO: Hand-Drawings here (Free space) or no free space?
     \textbf{Output:} Sum: 187, Start: 2, End: 6
-  \end{example}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
+%% \begin{frame}{Divide and Conquer}{Maximum Subtotal}
+%%   \begin{example}[Maximum Subtotal]
+%%     \vspace{-1em}
+%%     \begin{table}[!t]
+%%       \caption{Input values}
+%%       \begin{tabular}{c|c|c|c|c|c|c|c|c|c|c}
+%%         Index & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9\\
+%%         \midrule
+%%         Value & 31 & -41 & 59 & 26 & -53 & 58 & 97 & -93 & -23 & 84
+%%       \end{tabular}
+%%       \label{tab:divide_and_conquer:max_subtotal_example_values}
+%%     \end{table}
+%%     \vspace{6em}
+%%     %TODO: Hand-Drawings here (Free space) or no free space?
+%%     \textbf{Output:} Sum: 187, Start: 2, End: 6
+%%   \end{example}
+%% \end{frame}
+
+%-------------------------------------------------------------------------------
+
 \begin{frame}{Divide and Conquer}{Maximum Subtotal}
-  \textbf{Divide and Conquer:}
-  \begin{itemize}
-    \item
-      Solve the left / right half of the problem {\color{Mittel-Blau}recursive}
-    \item
-      Small problems are solved directly: $n = 1 \Rightarrow \max = X[0]$
-    \item
-      Combine both solutions into a total solution
-  \end{itemize}
+  \textbf{Idea:}
   \begin{figure}
     \begin{adjustbox}{width=\linewidth}
       \input{Images/DivideAndConquer/MaxSubTotal_Divide.tikz}
@@ -81,6 +85,14 @@
     \caption{Dividing the problem into two sub-problems}
     \label{fig:divide_and_conquer:max_sub_total_divide}
   \end{figure}
+  \begin{itemize}
+    \item<2->
+      Solve the left / right half of the problem {\color{Mittel-Blau}recursive}
+    \item<3->
+      Small problems are solved directly: $n = 1 \Rightarrow \max = X[0]$
+    \item<4->
+      Combine both solutions into a total solution
+  \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------------------------------
