@@ -58,7 +58,7 @@
 \begin{frame}{Recursion Equations}{Recursion Equation}
   \textbf{Recursion equation:}
   \begin{itemize}
-    \item
+    \item<2->
     Describes the runtime for recursive functions:
     \begin{displaymath}
     {\color{Mittel-Blau}T(n)} = \begin{cases}
@@ -66,15 +66,15 @@
       a \cdot {\color{Mittel-Blau}T\left(\frac{n}{b}\right)} + f(n) & n > n_0
     \end{cases}
     \end{displaymath}
-    \item
-      $n_0$ is normally small, $f_0(n_0) \; \in \; \Theta(1)$
-    \item
-      Normally $a > 1$ and $b > 1$
-    \item
+    \item<3->
+      {\color{Mittel-Blau}$n_0$} is normally small, {\color{Mittel-Blau}$f_0(n_0) \; \in \; \Theta(1)$}
+    \item<4->
+      Normally {\color{Mittel-Blau}$a > 1$} and {\color{Mittel-Blau}$b > 1$}
+    \item<5->
       Dependent on the strategy of solving {\color{Mittel-Blau}$T(n)$}
-      $f_0$ is ignored
-    \item
-      {\color{Mittel-Blau}$T(n)$} is only defined for whole numbers of
+      {\color{Mittel-Blau}$f_0$} is ignored
+    \item<6->
+      {\color{Mittel-Blau}$T(n)$} is only defined for integers of
       {\color{Mittel-Blau}$\frac{n}{b}$} which is often ignored in benefit of
       a simpler solution
   \end{itemize}
@@ -87,9 +87,9 @@
 \begin{frame}{Recursion Equations}{Substitution Method}
   \textbf{Substitution Method:}
   \begin{itemize}
-    \item
+    \item<2->
       Guess the solution and prove it with induction
-    \item
+    \item<3->
       Example:
       \begin{displaymath}
         \color{Mittel-Blau}
@@ -98,7 +98,7 @@
           2 \cdot T\left(\frac{n}{2}\right) + n & n > 1
         \end{cases}
       \end{displaymath}
-    \item
+    \item<4->
       Assumption:  {\color{Mittel-Blau}$T(n) = n + n \cdot \log_2 n$}
   \end{itemize}
 \end{frame}
@@ -108,10 +108,10 @@
 \begin{frame}{Recursion Equations}{Substitution Method}
   \textbf{Induction:}
   \begin{itemize}
-    \item
+    \item<2->
       Induction basis (for {\color{Mittel-Blau}$n = 1$}):
       ${\color{Mittel-Blau}T(1)} = 1 + 1 \cdot \log_2 1 = 1$
-    \item
+    \item<3->
       Induction step (from {\color{Mittel-Blau}$\frac{n}{2}$}
       to {\color{Mittel-Blau}$n$}):
       \begin{align*}
@@ -134,7 +134,9 @@
 \begin{frame}{Recursion Equations}{Substitution Method}
   \textbf{Substitution Method:}
   \begin{itemize}
-    \item
+    \item<2->
+      Alternative assumption
+    \item<3->
       Example:
       \begin{displaymath}
         \color{Mittel-Blau}
@@ -143,10 +145,10 @@
           2 \cdot T\left(\frac{n}{2}\right) + n & n > 0
         \end{cases}
       \end{displaymath}
-    \item
-      Alternative assumption:
-      {\color{Mittel-Blau}$T(n) \, \in \, \mathcal{O}(n \, \log n)$}
-    \item
+    \item<4->
+      Assumption:
+      {\color{Mittel-Blau}$T(n) \, \in \, O(n \, \log n)$}
+    \item<5->
       Solution: Find {\color{Mittel-Blau}$c > 0$} with
       {\color{Mittel-Blau}$T(n) \leq c \cdot n \, \log_2 n$}
   \end{itemize}
@@ -183,9 +185,9 @@
 \begin{frame}{Recursion Equations}{Recursion Tree Method}
   \textbf{Recursion tree method:}
   \begin{itemize}
-    \item
+    \item<2->
       Can be used to make assumptions about the runtime
-    \item
+    \item<3->
       Example:\\
       \begin{displaymath}
         {\color{Mittel-Blau}T(n)}
@@ -225,14 +227,14 @@
   \textbf{Costs of connecting the partial solutions:}\\
   \hspace{1.5em}(excludes the last layer)
   \begin{itemize}
-    \item
+    \item<2->
       Size of partial problems on {\color{Mittel-Blau}level $i$}:
       \begin{math}
         \mathcolor{Mittel-Blau}{
           \mathrm{s}_i(n) = \left(\frac{1}{4}\right)^i \cdot n
         }
       \end{math}
-    \item
+    \item<3->
       Costs of partial problem on {\color{Mittel-Blau}level $i$}:
       \begin{displaymath}
         \mathcolor{Mittel-Blau}{
@@ -240,10 +242,10 @@
           c \cdot \left(\left(\tfrac{1}{4}\right)^i \cdot n\right)^2
         }
       \end{displaymath}
-    \item
+    \item<4->
       Number of partial problems on {\color{Mittel-Blau}level $i$}:
       {\color{Mittel-Blau}$n_{i} = 3^{i}$}
-    \item
+    \item<5->
       Costs on {\color{Mittel-Blau}level $i$}:
       \begin{displaymath}
         \color{Mittel-Blau}
@@ -260,13 +262,13 @@
 \begin{frame}{Recursion Equations}{Recursion Tree Method Costs}
   \textbf{Costs of solving partial solutions:} (only the last layer)
   \begin{itemize}
-    \item
+    \item<2->
       Size of partial problems on the {\color{Mittel-Blau}last level}:
       {\color{Mittel-Blau}$\mathrm{s}_{i+1}(n) = 1$}
-    \item
+    \item<3->
       Costs of partial problem on the {\color{Mittel-Blau}last level}:
       {\color{Mittel-Blau}$T_{i+1_p}(n) = d$}
-    \item
+    \item<4->
       With this the depth of the tree is:
       \begin{displaymath}
         \left(\tfrac{1}{4}\right)^i \cdot n = 1
@@ -274,12 +276,12 @@
         \hspace{1.5em}\Rightarrow\color{Mittel-Blau} i = \log_4 n
       \end{displaymath}
       \vspace{-1em}
-    \item
+    \item<5->
       Number of partial problems on the {\color{Mittel-Blau}last level}:
       \begin{displaymath}
         \mathcolor{Mittel-Blau}{n_{i+1} = 3^{\log_4 n} = n^{\log_4 3}}
       \end{displaymath}
-    \item
+    \item<6->
       Costs on the {\color{Mittel-Blau}last level}:
       {\color{Mittel-Blau}$T_{i+1}(n) = d \cdot n^{\log_4 3}$}
   \end{itemize}
@@ -306,14 +308,15 @@
 \begin{frame}{Recursion Equations}{Total costs}
   \textbf{Total costs:}
   \begin{itemize}
-    \item
+    \item<2->
       Costs of {\color{Mittel-Blau}level i}:
       $T_i(n) = \left(\frac{3}{16}\right)^i \cdot c \cdot n^2$
-    \item
+    \item<3->
       Costs of {\color{Mittel-Blau}last level}:
       $T_{i+1}(n) = d \cdot n^{\log_4 3}$
   \end{itemize}
   \vspace{0.5em}
+  \onslide<4->
   \begin{displaymath}
     \mathclap{T(n) =}\underbrace{
       \sum\limits_{i = 0}^{(\log_4 n) - 1} \left(\tfrac{3}{16}\right)^i
@@ -345,10 +348,10 @@
           \end{tabular}
         }
       }
-    } ~ \in \mathcal{O}(n^2)
+    } ~ \in O(n^2)
   \end{displaymath}
   \begin{itemize}
-    \item
+    \item<5->
       Here: The costs of connecting the partial problems dominate
   \end{itemize}
 \end{frame}
@@ -357,33 +360,36 @@
 
 \begin{frame}{Recursion Equations}{Geometric Series}
   \begin{itemize}
-    \item
+    \item<2->
       \textbf{Geometric progression:}\\
       Quotient of two neighbored progression parts is constant
       %TODO: Progression example
-    \item
+    \item<3->
       \textbf{Geometric series:}\\
       The series (cumulative sum) of a geometric progression\\
+    \item<4->  
       For $\mid q \mid < 1$:
       \begin{displaymath}
         \sum\limits^{\infty}_{k=0} a_0 \cdot q^k = \dfrac{a_0}{1 - q}
         \hspace{1.5em}\Rightarrow\text{constant}
       \end{displaymath}
+    \item<5->
+      Therefore constant
   \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Recursion Equations}{Proof of $\mathcal{O}(n^2)$}
-  \textbf{Proof of $\mathcal{O}(n^2)$:}
+\begin{frame}{Recursion Equations}{Proof of $O(n^2)$}
+  \textbf{Proof of $O(n^2)$:}
   \begin{itemize}
-    \item
+    \item<2->
       We know:
       \begin{align*}
         T(n) &= 3T\left(\frac{n}{4}\right) + \Theta(n^2)\\
         {} &\leq 3T \left(\frac{n}{4}\right) + c \cdot n^2
       \end{align*}
-    \item
+    \item<3->
       Presumption:
       {\color{Mittel-Blau}$T(n) \, \in \, O(n^2)$},
       so there exists a {\color{Mittel-Blau}$k > 0$} with
@@ -397,16 +403,16 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Recursion Equations}{Proof of $\mathcal{O}(n^2)$}
-  \textbf{Proof of $\mathcal{O}(n^2)$:}
+  \textbf{Proof of $O(n^2)$:}
   \begin{itemize}
-    \item
+    \item<2->
       Presumption:
       {\color{Mittel-Blau}$T(n) \, \in \, O(n^2)$},
       so there exists a {\color{Mittel-Blau}$k > 0$} with
       \begin{displaymath}
         \mathcolor{Mittel-Blau}{T(n) < k \cdot n^2}
       \end{displaymath}
-    \item
+    \item<3->
       Substitution method:
       \begin{align*}
         T(n) & \leq 3 \cdot T \left( \frac{n}{4}\right)  + c \cdot n^2\\
@@ -425,7 +431,7 @@
 \begin{frame}{Recursion Equations}{Master theorem}
   \textbf{Master theorem:}
   \begin{itemize}
-    \item
+    \item<2->
       Approach to solve for a recursion equation of the form:
       \begin{displaymath}
         \mathcolor{Mittel-Blau}{
@@ -433,17 +439,17 @@
           \hspace{1.5em}a \geq 1, b > 1
         }
       \end{displaymath}
-    \item
+    \item<3->
       {\color{Mittel-Blau}$T(n)$} is the runtime of an algorithm $\ldots$
       \begin{itemize}
-        \item
+        \item<4->
           $\ldots$ which divides a {\color{Mittel-Blau}problem of size $n$}
           in {\color{Mittel-Blau}$a$ partial problems}
-        \item
+        \item<5->
           $\ldots$ which solves each partial problem recursively\newline
           \hphantom{$\ldots$} with a
           {\color{Mittel-Blau}runtime of $T\left(\tfrac{n}{b}\right)$}
-        \item
+        \item<6->
           $\ldots$ which takes {\color{Mittel-Blau}$f(n)$} steps to
           merge all partial solutions
       \end{itemize} 
@@ -457,21 +463,21 @@
 \begin{frame}{Recursion Equations}{Master theorem (Simple Form)}
   \textbf{Master theorem:}
   \begin{itemize}
-    \item
-      We have seen that $\ldots$
+    \item<2->
+      In the examples we have seen that $\ldots$
       \begin{itemize}
-        \item
-          $\ldots$ the runtime of {\color{Mittel-Blau}connecting the solutions}
+        \item<3->
+          Either the runtime of {\color{Mittel-Blau}connecting the solutions}
           dominates
-        \item
+        \item<4->
           Or the runtime of {\color{Mittel-Blau}solving the problems} dominates
-        \item
-          Or both have {\color{Mittel-Blau}equal scaling runtime}
+        \item<5->
+          Or both have {\color{Mittel-Blau}equal influence on runtime}
       \end{itemize}
-    \item
+    \item<6->
       \textbf{Simple form:}
       Special case with runtime of connecting the solutions
-      {\color{Mittel-Blau}$f(n) \in \mathcal{O}(n)$}
+      {\color{Mittel-Blau}$f(n) \in O(n)$}
 %TODO
 %    \item
 %      This can be shown quite easily.
@@ -483,6 +489,7 @@
 
 \begin{frame}{Recursion Equations}{Master theorem (Simple Form)}
   \textbf{Simple form:}
+  \onslide<2->
   \begin{displaymath}
     \mathcolor{Mittel-Blau}{
       T(n) = a \cdot T\left(\frac{n}{b}\right) +
@@ -501,9 +508,10 @@
     }
   \end{displaymath}
   \begin{itemize}
-     \item
+     \item<3->
        This yields a runtime of:
   \end{itemize}
+  \onslide<4->
   \vspace{2em}
   \begin{displaymath}
     T(n) = \begin{cases}
@@ -531,13 +539,14 @@
     \caption{Simple recursion equation with {\color{Mittel-Blau}$a = 3, b = 2$}}
     \label{fig:recursion_equations:master_theorem_tree_3_2}
   \end{figure}
+  \onslide<2->
   \textbf{Case 1:} {\color{Mittel-Blau}$a > b$}
   \begin{itemize}
-    \item
+    \item<3->
       Three partial problems with $\frac{1}{2}$ the size
-    \item
+    \item<4->
       Solving the partial problems dominates (last layer, leaves)
-    \item
+    \item<5->
       Runtime of {\color{Mittel-Blau}$\Theta(n^{\log_b a})$}
   \end{itemize}
 \end{frame}
@@ -555,13 +564,14 @@
     \caption{Simple recursion equation with {\color{Mittel-Blau}$a = 2, b = 2$}}
     \label{fig:recursion_equations:master_theorem_tree_2_2}
   \end{figure}
+  \onslide<2->
   \textbf{Case 2:} {\color{Mittel-Blau}$a = b$}
   \begin{itemize}
-    \item
+    \item<3->
       Two partial problems with $\frac{1}{2}$ the size
-    \item
+    \item<4->
       Each layer has equal costs, $\log n$ layers
-    \item
+    \item<5->
       Runtime of {\color{Mittel-Blau}$\Theta(n \, \log n)$}
   \end{itemize}
 \end{frame}
@@ -604,13 +614,14 @@
     \caption{Simple recursion equation with {\color{Mittel-Blau}$a = 2, b = 3$}}
     \label{fig:recursion_equations:master_theorem_tree_2_3}
   \end{figure}
+  \onslide<2->
   \textbf{Case 3:} {\color{Mittel-Blau}$a < b$}
   \begin{itemize}
-    \item
+    \item<3->
       Two partial problems with $\frac{1}{3}$ the size
-    \item
+    \item<4->
       Connecting all partial solutions dominates (first layer, root)
-    \item
+    \item<5->
       Runtime of {\color{Mittel-Blau}$\Theta(n)$}
   \end{itemize}
 \end{frame}
@@ -618,7 +629,7 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Recursion Equations}{Master theorem (Simple Form)}
-  \textbf{A simple recursion equation like $\ldots$}
+  \textbf{For a recursion equation like}
   \begin{displaymath}
     \mathcolor{Mittel-Blau}{%
       T(n) = a \cdot T\left(\frac{n}{b}\right) + c \cdot n,%
@@ -627,9 +638,10 @@
   \end{displaymath}
   \vspace{-1.0em}
   \begin{itemize}
-    \item
+    \item<2->
       $\ldots$ yields to a runtime of:
   \end{itemize}
+  \onslide<3->
   \begin{displaymath}
     T(n) = \begin{cases}
       \Theta(n^{\log_b a}) & \text{if } a > b\\
@@ -638,7 +650,7 @@
     \end{cases}
   \end{displaymath}
   \begin{itemize}
-    \item
+    \item<4->
       Proof with \textit{geometric series}:
       Number of operations per layer grows / shrinks by constant factor
       $\tfrac{a}{b}$
@@ -657,6 +669,7 @@
 
 \begin{frame}{Recursion Equations}{Master theorem (General Form)}
   \textbf{Master theorem (general form):}
+  \onslide<2->
   \begin{displaymath}
   \mathcolor{Mittel-Blau}{%
     T(n) = a \cdot T\left(\frac{n}{b}\right) + f(n),%
@@ -665,7 +678,7 @@
   \end{displaymath}
   \vspace{-1.0em}
   \begin{itemize}
-    \item
+    \item<3->
       \textbf{Case 1:}
       {\color{Mittel-Gruen}$T(n) \in \Theta(n^{\log_b a})$}
       \hfill if {\color{Mittel-Blau}
@@ -674,7 +687,7 @@
       {\color{gray}Solving the partial problems dominates\\
         (last layer, leaves)}
       \vspace{1.5em}
-    \item
+    \item<4->
       \textbf{Case 2:}
       {\color{Mittel-Gruen}$T(n) \in \Theta(n^{\log_b a} \log n)$}
       \hspace{1.5em} if {\color{Mittel-Blau}
@@ -688,15 +701,8 @@
 
 \begin{frame}{Recursion Equations}{Master theorem (General Form)}
   \textbf{Master theorem (general form):}
-  \begin{displaymath}
-  \mathcolor{Mittel-Blau}{%
-    T(n) = a \cdot T\left(\frac{n}{b}\right) + f(n),%
-    \hspace{1.5em}a \geq 1, b > 1%
-  }%
-  \end{displaymath}
-  \vspace{-1.0em}
   \begin{itemize}
-    \item
+    \item<2->
       \textbf{Case 3:}
       {\color{Mittel-Gruen}$T(n) \in \Theta(f(n))$}
       \hfill if {\color{Mittel-Blau}
@@ -716,15 +722,16 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Recursion Equations}{Master theorem (General Form) - Case 1}
-  \textbf{Case 1:}
+  \textbf{Case 1 - Example:}
+  \onslide<2->
   {\color{Mittel-Gruen}$T(n) \in \Theta(n^{\log_b a})$}
   \hfill if {\color{Mittel-Blau}
-    $f(n) \in \mathcal{O}(n^{\log_b a-\varepsilon}), ~ \varepsilon > 0$
+    $f(n) \in O(n^{\log_b a-\varepsilon}), ~ \varepsilon > 0$
    }\\
    {\color{gray}Solving the partial problems dominates (last layer, leaves)}
    \vspace{1.0em}
    \begin{itemize}
-     \item
+     \item<3->
        $T(n) = 8 \cdot T(\tfrac{n}{2}) + 1000 \cdot n^2$
        \vspace{-0.5em}
        \begin{displaymath}
@@ -739,7 +746,7 @@
           $T(n) \in \Theta(n^3)
        \end{math}}
       \vspace{1.5em}
-    \item
+    \item<4->
       $T(n) = 9 \cdot T(\tfrac{n}{3}) + 17 \cdot n$
       \vspace{-0.5em}
       \begin{displaymath}
@@ -760,6 +767,7 @@
 
 \begin{frame}{Recursion Equations}{Master theorem (General Form) - Case 2}
   \textbf{Case 2:}
+  \onslide<2->
   {\color{Mittel-Gruen}$T(n) \in \Theta(n^{\log_b a} \log n)$}
   \hspace{1.5em} if {\color{Mittel-Blau}
     $f(n) \in \Theta(n^{\log_b a})$
@@ -767,7 +775,7 @@
   {\color{gray}Each layer has equal costs, $\log n$ layers}
   \vspace{1.0em}
   \begin{itemize}
-    \item
+    \item<3->
       $T(n) = 2 \cdot T(\tfrac{n}{2}) + 10 \cdot n$
       \vspace{-0.5em}
       \begin{displaymath}
@@ -782,7 +790,7 @@
         $T(n) \in \Theta(n \, \log n)
       \end{math}}
       \vspace{1.0em}
-    \item
+    \item<4->
       $T(n) = T(\tfrac{2\,n}{3}) + 1$
       \vspace{-0.5em}
       \begin{displaymath}
@@ -804,6 +812,7 @@
 
 \begin{frame}{Recursion Equations}{Master theorem (General Form) - Case 3}
   \textbf{Case 3:}
+  \onslide<2->
   {\color{Mittel-Gruen}$T(n) \in \Theta(f(n))$}
   \hfill if {\color{Mittel-Blau}
     $f(n) \in \Omega(n^{\log_b a+\varepsilon}), ~ \varepsilon > 0$
@@ -811,7 +820,7 @@
   {\color{gray}Connecting all partial solutions dominates (first layer, root)}
   \vspace{1.0em}
   \begin{itemize}
-    \item
+    \item<3->
       $T(n) = 2 \cdot T(\tfrac{n}{2}) + n^2$
       \vspace{-0.5em}
       \begin{displaymath}
@@ -836,26 +845,28 @@
 \begin{frame}{Recursion Equations}{Master theorem (General Form)}
   \textbf{Master theorem:}
   \begin{itemize}
-    \item
+    \item<2->
       Not always applicable:
       {\color{Mittel-Blau}$T(n) = 2 \cdot T(\frac{n}{2}) + n \, \log n$}
   \end{itemize}
+  \onslide<3->
   \vspace{1.0em}
   \begin{displaymath}
     a = 2, ~ b = 2, ~ f(n) = n \, \log n, ~
     \underbrace{\log_b a = \log_2 2 = 1}_{\text{$n^1$ leaves}}
   \end{displaymath}
   \begin{itemize}
-    \item
+    \item<4->
       \textbf{Case 1:}
-      $f(n) \notin \mathcal{O}(n^{1-\varepsilon})$
-    \item
+      $f(n) \notin O(n^{1-\varepsilon})$
+    \item<5->
       \textbf{Case 2:}
       $f(n) \notin \Theta(n^1)$
-    \item
+    \item<6->
       \textbf{Case 3:}
       $f(n) \notin \Omega(n^{1+\varepsilon})$
   \end{itemize}
+  \onslide<7->
   \begin{center}
     {\color{Mittel-Blau}$n \, \log n$} is \textit{asymptotically} larger than
     {\color{Mittel-Blau}$n$},\\ but not \textit{polynominal} larger
@@ -866,6 +877,7 @@
 
 \begin{frame}{Recursion Equations}{Master theorem - Summary}
   \textbf{Master theorem:}
+  \onslide<2->
   \begin{displaymath}
     \mathcolor{Mittel-Blau}{
       T(n) = a \cdot T(\frac{n}{b}) + f(n)
@@ -873,22 +885,22 @@
   \end{displaymath}
   \vspace{-1.0em}
   \begin{itemize}
-    \item
+    \item<3->
       Three cases depending on the dominance of the terms
-    \item
+    \item<4->
       \textbf{Case 1:}
       Solving the partial problems is \textit{polynominal} bigger than merging
       all solutions\\
       {\color{Mittel-Blau}$T(n) \in \Theta(n^{\log_b a})$}, \hspace{3.5em}
       {\color{gray}$T(n) \in \Theta(\text{number of leaves})$}
       \vspace{0.5em}
-   \item
+   \item<5->
      \textbf{Case 2:}
      Each layer has equal costs\\
      {\color{Mittel-Blau}$T(n) \in \Theta(n^{\log_b a} \log n)$}, \hspace{1.5em}
      {\color{gray}$\log n$ layers}
      \vspace{0.5em}
-   \item
+   \item<6->
      \textbf{Case 3:}
      Connecting all partial solutions is \textit{polynominal} bigger than
      solving all partial porblems\\
