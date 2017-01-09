@@ -371,23 +371,25 @@
 \begin{frame}{Divide and Conquer}{Maximum Subtotal - Illustration of $T(n)$}
   \textbf{Depth:}
   \begin{itemize}
-    \item
+    \item<2->
       Top level with depth {\color{Mittel-Blau}$i = 0$}
-    \item
+    \item<3->
       Lowest level with {\color{Mittel-Blau}$2^i = n$} elements
       \begin{displaymath}
         {\color{Mittel-Blau}\Rightarrow i = \log_2 n}
       \end{displaymath}
   \end{itemize}
+  \onslide<4->
   \textbf{Runtime:}
   \begin{itemize}
-    \item
+    \item<5->
       A total of {\color{Mittel-Blau}$\log_2 n + 1$} levels with each cost of
       {\color{Mittel-Blau}$c \cdot n$}\\
       \color{gray}
       The costs of merging the solutions and solving of the trivial
       problems are the same here
   \end{itemize}
+  \onslide<6->
   \begin{displaymath}
     {\color{Mittel-Blau}
     T(n) = c \cdot n \log_2 n + c \cdot n \in \Theta(n\,\log_n)}
@@ -399,21 +401,31 @@
 \begin{frame}{Divide and Conquer}{Maximum Subtotal - Summary}
   \textbf{Summary:}
   \begin{itemize}
-    \item
-      Direct solution is slow with {\color{Mittel-Blau}$\mathcal{O}(n^3)$}
-    \item
+    \item<2->
+      Direct solution is slow with {\color{Mittel-Blau}$O(n^3)$}
+    \item<3->
       Better solution with incremental update of sum was
-      {\color{Mittel-Blau}$\mathcal{O}(n^2)$}
-    \item
+      {\color{Mittel-Blau}$O(n^2)$}
+    \item<4->
       Divide and conquer approach results in
-      {\color{Mittel-Blau}$\mathcal{O}(n\,\log n)$}
-    \item
-      There is an approach running in {\color{Mittel-Blau}$\mathcal{O}(n)$}
+      {\color{Mittel-Blau}$O(n\,\log n)$}
+    \item<5->
+      There is an approach running in {\color{Mittel-Blau}$O(n)$}
       if you assume that all subtotals are positive
   \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------------------------------
+
+\begin{frame}{Divide and Conquer}{Maximum Subtotal}
+  \begin{figure}
+    \begin{adjustbox}{width=\linewidth}
+      \input{Images/DivideAndConquer/MaxSubTotal_LinearRuntime.tikz}
+    \end{adjustbox}
+    \caption{Scanning the array in linear time}
+    \label{fig:divide_and_conquer:max_sub_total_linear}
+  \end{figure}
+\end{frame}
 
 \codeslide{python}{
 \begin{frame}{Divide and Conquer}{Maximum Subtotal - Python}
@@ -435,12 +447,4 @@
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Divide and Conquer}{Maximum Subtotal}
-  \begin{figure}
-    \begin{adjustbox}{width=\linewidth}
-      \input{Images/DivideAndConquer/MaxSubTotal_LinearRuntime.tikz}
-    \end{adjustbox}
-    \caption{Scanning the array in linear time}
-    \label{fig:divide_and_conquer:max_sub_total_linear}
-  \end{figure}
-\end{frame}
+
