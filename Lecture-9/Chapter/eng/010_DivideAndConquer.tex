@@ -223,25 +223,22 @@
   \begin{table}
     \caption{\textit{lmax} example}
     \label{fig:divide_and_conquer:lmax_example}
-    \begin{tabular}{c|ccccc}
-      {} & $i$ & $i+1$ & $\cdots$ & $j-1$ & $j$\\
-      \midrule
-      $X$ & 58 & -53 & 58 & -41 & 31\\
-      \midrule
-       {\color{Mittel-Blau}$s$} & 58 & 5 & 63 & 22 & 51\\
-      {\color{Mittel-Blau}$maxSum$} &
-      $(58, i)$ & $(58, i)$ & $(63, j-2)$ & $(63, j-2)$ & $(63, j-2)$
+    \begin{tabular}{c|cccccc}
+      index & $i$ & $i+1$ & $\cdots$ & $\cdots$ & $j-1$ & $j$\\
+      %\midrule
+      $X$ & 58 & -53 & 26 & 59 & -41 & 31\\
+      %\midrule
+       {\color{Mittel-Blau}$sum$} & 58 & 5 & 31 & 90 & 49 & 80\\
+      {\color{Mittel-Blau}$lmax$} & 58 & 58 & 58 & 90 & 90 & 90\\
     \end{tabular}
   \end{table}
   \begin{itemize}
-    \item
-      The temporary sum {\color{Mittel-Blau}$s$} and
-      {\color{Mittel-Blau}$maxSum$} are initialized with $X[i]$ and index $j$
-    \item
-      We {\color{Mittel-Blau}iterate over $X$ from $i+1$ to $j$} and
-      {\color{Mittel-Blau}update $s$}
-    \item
-      If {\color{Mittel-Blau}$s > maxSum$} then {\color{Mittel-Blau}$maxSum$}
+    \item<2->
+      The {\color{Mittel-Blau}$sum$} and {\color{Mittel-Blau}$lmax$} are initialized with $X[i]$
+    \item<3->
+      We iterate over {\color{Mittel-Blau}$X$} from {\color{Mittel-Blau}$i+1$} to {\color{Mittel-Blau}$j$} and update {\color{Mittel-Blau}$sum$}
+    \item<4->
+      If {\color{Mittel-Blau}$s > lmax$} then {\color{Mittel-Blau}$lmax$}
       gets updated
   \end{itemize}
 \end{frame}
@@ -250,13 +247,22 @@
 
 \begin{frame}{Divide and Conquer}{Maximum Subtotal}
   \begin{figure}
-    \begin{adjustbox}{width=\linewidth}
-      \input{Images/DivideAndConquer/MaxSubTotal_Example.tikz}
-    \end{adjustbox}
-    \caption{\textit{maxSubArray} with $X = [-3, 9, -4, 7]$}
+    \includegraphics[width=0.8\textwidth]{Images/DivideAndConquer/maxsubarray.pdf}
     \label{fig:divide_and_conquer:max_sub_array_example}
   \end{figure}
 \end{frame}
+
+%-------------------------------------------------------------------------------
+
+%% \begin{frame}{Divide and Conquer}{Maximum Subtotal}
+%%   \begin{figure}
+%%     \begin{adjustbox}{width=\linewidth}
+%%       \input{Images/DivideAndConquer/MaxSubTotal_Example.tikz}
+%%     \end{adjustbox}
+%%     \caption{\textit{maxSubArray} with $X = [-3, 9, -4, 7]$}
+%%     \label{fig:divide_and_conquer:max_sub_array_example}
+%%   \end{figure}
+%% \end{frame}
 
 %-------------------------------------------------------------------------------
 
@@ -281,7 +287,7 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Divide and Conquer}{Maximum Subtotal - Number of steps $T(n)$}
-  \textbf{Recursion equation:}
+  \textbf{Recursion equation:} 
   \begin{displaymath}
     T(n) = \begin{cases}
       \hfill \underbrace{\Theta(1)}_\text{trivial case} & n = 1\\
@@ -293,13 +299,8 @@
       }_\text{cobination of solutions} & n > 1
     \end{cases}
   \end{displaymath}
-\end{frame}
-
-%-------------------------------------------------------------------------------
-
-\begin{frame}{Divide and Conquer}{Maximum Subtotal - Number of steps $T(n)$}
-  \begin{itemize}
-    \item
+    \begin{itemize}
+    \item<2->
       There exist two constants $a$ and $b$ with:
       \begin{displaymath}
         T(n) \leq \begin{cases}
@@ -307,7 +308,7 @@
           2 \cdot T\left(\frac{n}{2}\right) + b \cdot n & n > 1
         \end{cases}
       \end{displaymath}
-    \item
+    \item<3->
       We define $c := \max(a,b)$:
       \begin{displaymath}
         T(n) \leq \begin{cases}
@@ -317,6 +318,29 @@
       \end{displaymath}
   \end{itemize}
 \end{frame}
+
+%-------------------------------------------------------------------------------
+
+%% \begin{frame}{Divide and Conquer}{Maximum Subtotal - Number of steps $T(n)$}
+%%   \begin{itemize}
+%%     \item
+%%       There exist two constants $a$ and $b$ with:
+%%       \begin{displaymath}
+%%         T(n) \leq \begin{cases}
+%%           \hfill a & n = 1\\
+%%           2 \cdot T\left(\frac{n}{2}\right) + b \cdot n & n > 1
+%%         \end{cases}
+%%       \end{displaymath}
+%%     \item
+%%       We define $c := \max(a,b)$:
+%%       \begin{displaymath}
+%%         T(n) \leq \begin{cases}
+%%           \hfill c & n = 1\\
+%%           2 \cdot T\left(\frac{n}{2}\right) + c \cdot n & n > 1
+%%         \end{cases}
+%%       \end{displaymath}
+%%   \end{itemize}
+%% \end{frame}
 
 %-------------------------------------------------------------------------------
 
