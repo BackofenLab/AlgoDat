@@ -29,17 +29,20 @@
 \subsection{Maximum Subtotal}
 
 \begin{frame}{Divide and Conquer}{Maximum Subtotal}
+  \onslide<2->
   \textbf{Input:}
   \begin{itemize}
     \item
       Progression {\color{Mittel-Blau}$X$} of {\color{Mittel-Blau}$n$} integers
   \end{itemize}
+   \onslide<3->
   \textbf{Output:}
   \begin{itemize}
     \item
       Maximum sum of an uninterrupted subsequence of {\color{Mittel-Blau}$X$} and its index boundary
   \end{itemize}
-     \vspace{-1em}
+  \vspace{-1em}
+     \onslide<4->
     \begin{table}[!t]
       \caption{Input values}
       \begin{tabular}{c|c|c|c|c|c|c|c|c|c|c}
@@ -80,43 +83,46 @@
   \textbf{Idea:}
   \begin{figure}
     \begin{adjustbox}{width=\linewidth}
-      \input{Images/DivideAndConquer/MaxSubTotal_Divide.tikz}
+      \input{Images/DivideAndConquer/MaxSubTotal_idea.tikz}
     \end{adjustbox}
-    \caption{Dividing the problem into two sub-problems}
     \label{fig:divide_and_conquer:max_sub_total_divide}
   \end{figure}
+  \vspace{-1.5em}
   \begin{itemize}
     \item<2->
       Solve the left / right half of the problem {\color{Mittel-Blau}recursive}
     \item<3->
-      Small problems are solved directly: $n = 1 \Rightarrow \max = X[0]$
+      Combine both solutions into a overall solution
     \item<4->
-      Combine both solutions into a total solution
+      The maximum is located in the {\color{Mittel-Blau}left~half~($A$)}
+      or the {\color{Mittel-Blau}right~half~($B$)}
+    \item<5->
+      The maximum interval can {\color{Mittel-Blau} overlap with the border ($C$)}
   \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Divide and Conquer}{Maximum Subtotal}
-  \textbf{Divide and Conquer:}
-  \begin{itemize}
-    \item
-      The maximum is located in the {\color{Mittel-Blau}left~half~($A$)}
-      or the {\color{Mittel-Blau}right~half~($B$)}
-    \item
-      The maximum can {\color{Mittel-Blau}extend into the second half ($C$)}
-    \item
-      To solve $C$ we have to calculate $rmax$ and $lmax$
-    \item
-      The total solution is the {\color{Mittel-Blau}maximum of $A$, $B$ and $C$}
-  \end{itemize}
-  \begin{figure}
+  \textbf{Principle:}
+    \begin{figure}
     \begin{adjustbox}{width=\linewidth}
       \input{Images/DivideAndConquer/MaxSubTotal_Divide.tikz}
     \end{adjustbox}
-    \caption{Dividing the problem into two sub-problems}
     \label{fig:divide_and_conquer:max_sub_total_divide2}
-  \end{figure}
+    \end{figure}
+    \vspace{-1.5em}
+    \begin{itemize}
+    \item<2->
+    Small problems are solved directly: {\color{Mittel-Blau}$n = 1 \Rightarrow \max = X[0]$}
+  \item<3->  
+    Big problems are decomposed into two subproblems and solved recursivly.
+    Subsolutions {\color{Mittel-Blau}$A$} and  {\color{Mittel-Blau}$B$} are returned.
+  \item<4->
+    To solve $C$ we have to calculate $rmax$ and $lmax$
+  \item<5->
+    Overall solution is maximum of {\color{Mittel-Blau}$A$}  {\color{Mittel-Blau}$B$}  {\color{Mittel-Blau}$C$}
+  \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------------------------------
@@ -149,7 +155,35 @@
     emphstyle=\color{blue}
   ]{Code/DivideAndConquer/MaxSubTotal_SecondTrivialCase.py}
 \end{frame}
+%-------------------------------------------------------------------------------
 
+\begin{frame}{Divide and Conquer}{Maximum Subtotal - Python}
+  \vspace{-0.5em}
+  \lstinputlisting[
+    language=Python,
+    basicstyle=\small,
+    tabsize=4,
+    style={python-idle-code},
+    escapechar={@},
+    emph={maxSubArray},
+    emphstyle=\color{blue}
+  ]{Code/DivideAndConquer/MaxSubTotal_Max.py}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Divide and Conquer}{Maximum Subtotal - Python}
+  \vspace{-0.5em}
+  \lstinputlisting[
+    language=Python,
+    basicstyle=\small,
+    tabsize=4,
+    style={python-idle-code},
+    escapechar={@},
+    emph={maxSubArray},
+    emphstyle=\color{blue}
+  ]{Code/DivideAndConquer/MaxSubTotal_Max2.py}
+\end{frame}
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Divide and Conquer}{Maximum Subtotal - Python}

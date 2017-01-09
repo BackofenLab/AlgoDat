@@ -1,3 +1,4 @@
+#Implementation left maximum
 def lmax(X, i, j):
 	maxSum = (X[i], i)
 	s = X[i]

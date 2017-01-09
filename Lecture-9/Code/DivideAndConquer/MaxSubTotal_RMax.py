@@ -1,3 +1,4 @@
+#Implementation right maximum
 def rmax(X, i, j):
 	maxSum = (X[j], j)
 	s = X[i]
