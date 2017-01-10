@@ -1,3 +1,12 @@
+%%% ===================================================================
+%%% RCS Header:
+%%% $RCSfile: local.el,v $
+%%% $Revision: 1.27 $
+%%% $Date: 2014/11/07 15:36:00 $
+%%% $Author: backofen $
+%%% $Locker:  $
+%%% ===================================================================
+
 \section{Recursion Equations}
 
 \begin{frame}{Recursion Equations}{Recursion Equation}
@@ -90,14 +99,13 @@
     \item<2->
       Guess the solution and prove it with induction
     \item<3->
-      Example:
+      Example:        \color{Mittel-Blau}
       \begin{displaymath}
-        \color{Mittel-Blau}
         T(n) = \begin{cases}
           \hfill 1 & n = 1\\
           2 \cdot T\left(\frac{n}{2}\right) + n & n > 1
         \end{cases}
-      \end{displaymath}
+      \end{displaymath}        \color{black}
     \item<4->
       Assumption:  {\color{Mittel-Blau}$T(n) = n + n \cdot \log_2 n$}
   \end{itemize}
@@ -230,14 +238,14 @@
     \item<2->
       Size of partial problems on {\color{Mittel-Blau}level $i$}:
       \begin{math}
-        \mathcolor{Mittel-Blau}{
+        \color{Mittel-Blau}{
           \mathrm{s}_i(n) = \left(\frac{1}{4}\right)^i \cdot n
         }
       \end{math}
     \item<3->
       Costs of partial problem on {\color{Mittel-Blau}level $i$}:
       \begin{displaymath}
-        \mathcolor{Mittel-Blau}{
+        \color{Mittel-Blau}{
           T_{i_p}(n) =
           c \cdot \left(\left(\tfrac{1}{4}\right)^i \cdot n\right)^2
         }
@@ -247,13 +255,14 @@
       {\color{Mittel-Blau}$n_{i} = 3^{i}$}
     \item<5->
       Costs on {\color{Mittel-Blau}level $i$}:
-      \begin{displaymath}
         \color{Mittel-Blau}
+      \begin{displaymath}
         T_i(n) = 3^{i} \cdot c \cdot \left(
           \left(\tfrac{1}{4}\right)^{i} \cdot n
         \right)^2
         = \left(\tfrac{3}{16}\right)^{i} \cdot c \cdot n^2
       \end{displaymath}
+        \color{black}
   \end{itemize}
 \end{frame}
 
@@ -279,9 +288,10 @@
     \item<5->
       Number of partial problems on the {\color{Mittel-Blau}last level}:
       \begin{displaymath}
-        \mathcolor{Mittel-Blau}{n_{i+1} = 3^{\log_4 n} = n^{\log_4 3}}
+        \color{Mittel-Blau}{n_{i+1} = 3^{\log_4 n}    \onslide<6-> \quad=
+          n^{\log_4 3}}  \quad \leftarrow \text{next slide}
       \end{displaymath}
-    \item<6->
+    \item<7->
       Costs on the {\color{Mittel-Blau}last level}:
       {\color{Mittel-Blau}$T_{i+1}(n) = d \cdot n^{\log_4 3}$}
   \end{itemize}
@@ -289,18 +299,30 @@
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Recursion Equations}{Logarithm}
-  Number of partial problems in the {\color{Mittel-Blau}last level}
-  (leaves in the tree):
-  \begin{align*}
-    3^{\log_4 n} & = 3^{\log_4 (\log_3 n)} &&
-      \text{use } \log a^b = b \cdot \log a\\
-    {} & = 3^{(\log_3 n) \cdot \log_4 3} &&
-      \text{use }x^{a \cdot b} = (x^a)^b\\
-    {} & = 3^{(\log_3 n)^{\log_4 3}}\\
-    {} & = n^{\log_4 3}
-  \end{align*}
-  {\color{gray}(This term will recur in the master theorem)}
+\begin{frame}{Fun with logarithm}{Logarithm}
+  \begin{itemize}
+  \item transforming $\color{Mittel-Blau}3^{\log_4 n}$ uses general log rules
+\color{Mittel-Blau}
+    \begin{align*}
+      \log_4 n & =  \log_4 \left(3^{\log_3 n} \right) && \qquad  \text{\color{black}uses } n= 3^{\log_3 n}\\
+\onslide<2->{      & = {\log_3 n \cdot \log_4 3} &&\qquad \text{\color{black}uses } \log a^b =
+      b \cdot \log a }
+    \end{align*}
+  \item<3-> \color{black}
+ this proves the general log rule $\color{Mittel-Blau}\log_b c = \log_a c \cdot
+    \log_b a$
+  \item<4->\color{black}
+ now the whole expression:
+\color{Mittel-Blau}
+    \begin{align*}
+      3^{\log_4 n}
+      & = 3^{\log_3 n \cdot \log_4 3}       &&\qquad  \text{\color{black}uses reformulation above} \\ 
+\onslide<5->{      & = {\left(3^{\log_3 n}\right)}^{\log_4 3}      &&\qquad  \text{\color{black}uses }x^{a \cdot b} = (x^a)^b}\\
+\onslide<6->{      & = n^{\log_4 3}}
+    \end{align*}
+  \item<7-> 
+    {\color{gray}(This term will recur in the master theorem)}
+  \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------------------------------
@@ -410,7 +432,7 @@
       {\color{Mittel-Blau}$T(n) \, \in \, O(n^2)$},
       so there exists a {\color{Mittel-Blau}$k > 0$} with
       \begin{displaymath}
-        \mathcolor{Mittel-Blau}{T(n) < k \cdot n^2}
+        \color{Mittel-Blau}{T(n) < k \cdot n^2}
       \end{displaymath}
     \item<3->
       Substitution method:
@@ -434,7 +456,7 @@
     \item<2->
       Approach to solve for a recursion equation of the form:
       \begin{displaymath}
-        \mathcolor{Mittel-Blau}{
+        \color{Mittel-Blau}{
           T(n) = a \cdot T\left(\frac{n}{b}\right) + f(n),%
           \hspace{1.5em}a \geq 1, b > 1
         }
@@ -491,7 +513,7 @@
   \textbf{Simple form:}
   \onslide<2->
   \begin{displaymath}
-    \mathcolor{Mittel-Blau}{
+    \color{Mittel-Blau}{
       T(n) = a \cdot T\left(\frac{n}{b}\right) +
       \underbrace{c \cdot n}_{
         \text{
@@ -515,7 +537,7 @@
   \vspace{2em}
   \begin{displaymath}
     T(n) = \begin{cases}
-      \Theta(\mathcolor{Mittel-Blau}{
+      \Theta(\color{Mittel-Blau}{
         \smash{\overbrace{n^{\log_b a}}^{
           \text{\clap{Number of leaves}}
         }}
@@ -631,7 +653,7 @@
 \begin{frame}{Recursion Equations}{Master theorem (Simple Form)}
   \textbf{For a recursion equation like}
   \begin{displaymath}
-    \mathcolor{Mittel-Blau}{%
+    \color{Mittel-Blau}{%
       T(n) = a \cdot T\left(\frac{n}{b}\right) + c \cdot n,%
       \hspace{1.5em}a \geq 1, b > 1, c > 0%
     }%
@@ -671,7 +693,7 @@
   \textbf{Master theorem (general form):}
   \onslide<2->
   \begin{displaymath}
-  \mathcolor{Mittel-Blau}{%
+  \color{Mittel-Blau}{%
     T(n) = a \cdot T\left(\frac{n}{b}\right) + f(n),%
     \hspace{1.5em}a \geq 1, b > 1%
   }%
@@ -879,7 +901,7 @@
   \textbf{Master theorem:}
   \onslide<2->
   \begin{displaymath}
-    \mathcolor{Mittel-Blau}{
+    \color{Mittel-Blau}{
       T(n) = a \cdot T(\frac{n}{b}) + f(n)
     }
   \end{displaymath}
@@ -907,3 +929,12 @@
      {\color{Mittel-Blau}$T(n) \in \Theta(f(n))$}
   \end{itemize}
 \end{frame}
+
+%%% ===================================================================
+%%% This should be at the END of the file !!!!!!
+%%%
+%%% Local Variables: 
+%%% mode: latex 
+%%% TeX-master: "~/TeX/TeXinput/Scripts/Algo-Data-EMS/Rolf-2016/AlgoDat/Lecture-9/Lecture.tex" 
+%%% End: 
+%%% ===================================================================
