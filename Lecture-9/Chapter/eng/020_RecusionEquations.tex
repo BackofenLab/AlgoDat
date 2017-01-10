@@ -115,16 +115,16 @@
       Induction step (from {\color{Mittel-Blau}$\frac{n}{2}$}
       to {\color{Mittel-Blau}$n$}):
       \begin{align*}
-        {\color{Mittel-Blau}T(n)} & =
-          2 \cdot {\color{Mittel-Blau}T\left(\dfrac{n}{2}\right)} + n\\
-          {} & \stackrel{IA}{=} 2 \cdot \left(
+        \onslide<4->{{\color{Mittel-Blau}T(n)} & =
+          2 \cdot {\color{Mittel-Blau}T\left(\dfrac{n}{2}\right)} + n\\}
+        \onslide<5->{{} & \stackrel{IA}{=} 2 \cdot \left(
             \dfrac{n}{2} + \dfrac{n}{2} \cdot \log_2 \dfrac{n}{2}
-          \right) + n \\
-          {} & = 2 \cdot \left(
+          \right) + n \\}
+        \onslide<6->{{} & = 2 \cdot \left(
             \dfrac{n}{2} + \dfrac{n}{2} \cdot \left(\log_2 n - 1\right)
-          \right) + n\\
-          {} & = n + n \, \log_2 n - n + n\\
-          {} & = n + n \, \log_2 n
+          \right) + n}\\
+        \onslide<7->{{} & = n + n \, \log_2 n - n + n\\}
+        \onslide<8->{{} & = n + n \, \log_2 n}
       \end{align*}
   \end{itemize}
 \end{frame}
@@ -159,21 +159,21 @@
 \begin{frame}{Recursion Equations}{Substitution Method}
   \textbf{Induction:}
   \begin{itemize}
-    \item
+    \item<2->
       Solution: Find {\color{Mittel-Blau}$c > 0$} with
       {\color{Mittel-Blau}$T(n) \leq c \cdot n \, \log_2 n$}
-    \item
+    \item<3->
       Induction step (from {\color{Mittel-Blau}$\frac{n}{2}$} to
       {\color{Mittel-Blau}$n$}):
       \begin{align*}
-        {\color{Mittel-Blau}T(n)} & =
-          2 \cdot {\color{Mittel-Blau}T\left(\dfrac{n}{2}\right)} + n\\
-        {} & \leq 2 \cdot \left(
-          c \cdot \dfrac{n}{2} \, \log_2 \dfrac{n}{2}\right) + n\\
-        {} & = c \cdot n \, \log_2 n - c \cdot n \, \log_2 2 + n\\
-        {} & = c \cdot n \, \log_2 n - c \cdot n + n\\
-        {} & \leq c \cdot n \, \log_2 n,
-          \hspace{0.5em} {\color{Mittel-Blau}c \geq 1}
+        \onslide<4->{{\color{Mittel-Blau}T(n)} & =
+          2 \cdot {\color{Mittel-Blau}T\left(\dfrac{n}{2}\right)} + n\\}
+        \onslide<5->{{} & \leq 2 \cdot \left(
+          c \cdot \dfrac{n}{2} \, \log_2 \dfrac{n}{2}\right) + n\\}
+        \onslide<6->{{} & = c \cdot n \, \log_2 n - c \cdot n \, \log_2 2 + n\\}
+        \onslide<7->{{} & = c \cdot n \, \log_2 n - c \cdot n + n\\}
+        \onslide<8->{{} & \leq c \cdot n \, \log_2 n,
+          \hspace{0.5em} {\color{Mittel-Blau}c \geq 1}}
       \end{align*}
   \end{itemize}
 \end{frame}
@@ -402,7 +402,7 @@
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Recursion Equations}{Proof of $\mathcal{O}(n^2)$}
+\begin{frame}{Recursion Equations}{Proof of $O(n^2)$}
   \textbf{Proof of $O(n^2)$:}
   \begin{itemize}
     \item<2->
@@ -415,11 +415,11 @@
     \item<3->
       Substitution method:
       \begin{align*}
-        T(n) & \leq 3 \cdot T \left( \frac{n}{4}\right)  + c \cdot n^2\\
-        {} & \leq 3 \, k \cdot \left( \frac{n}{4}\right)^2  + c \cdot n^2\\
-        {} & = \frac{3}{16} \, k \cdot n^2  + c \cdot n^2\\
-        {} & \leq k \cdot n^2
-        \hspace{6em}\text{for } k \geq \frac{16}{13} \, c
+        \onslide<4->{T(n) & \leq 3 \cdot T \left( \frac{n}{4}\right)  + c \cdot n^2\\}
+        \onslide<5->{{} & \leq 3 \, k \cdot \left( \frac{n}{4}\right)^2  + c \cdot n^2\\}
+        \onslide<6->{{} & = \frac{3}{16} \, k \cdot n^2  + c \cdot n^2\\}
+        \onslide<7->{{} & \leq k \cdot n^2
+        \hspace{6em}\text{for } k \geq \frac{16}{13} \, c}
       \end{align*}
   \end{itemize}
 \end{frame}
