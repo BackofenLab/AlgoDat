@@ -1,0 +1,23 @@
+\begin{tikzpicture}[
+  list/.style={
+    draw=black
+  }, sum/.style={
+    list,
+    fill=Hell-Gruen
+  }, label_sum/.style={
+    color=black,
+    font=\huge
+  }
+]%
+% upper list
+\draw[list] (0, 0) rectangle ++(16, 1);
+
+\draw[sum] (1.5, 0) rectangle ++(2, 1);
+\draw[sum] (13, 0) rectangle ++(2.5, 1);
+
+\node[label_sum, anchor=south] at (2.5, 0) {A};
+\node[label_sum, anchor=south] at (14.25, 0) {B};
+
+
+\draw[list] (8, 1.5) -- (8, -0.5);
+\end{tikzpicture}
