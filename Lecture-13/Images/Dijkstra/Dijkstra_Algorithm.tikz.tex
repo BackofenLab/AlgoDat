@@ -1,0 +1,225 @@
+\begin{tikzpicture}[
+  vertex_base/.style={
+   circle,
+   inner sep=0em,
+   minimum size=1.75em,
+   line width=0.1em,
+   font=\large,
+   solid
+  }, vertex_active/.style={
+    vertex_base,
+    draw=Mittel-Blau,
+    color=Mittel-Blau,
+    fill=orange!50!yellow
+  }, vertex_settled/.style={
+    vertex_base,
+    draw=Mittel-Blau,
+    color=Mittel-Blau,
+    fill=Hell-Blau
+  }, vertex_unreached/.style={
+    vertex_base,
+    draw=Mittel-Blau,
+    color=Mittel-Blau,
+    fill=white
+  }, vertex_label/.style={
+    font=\large,
+    color=Mittel-Blau
+  }, vertex_old/.style={
+    draw,
+    color=gray,
+    strike out,
+    line width=0.1em
+  }, edge/.style={
+    draw=Mittel-Gruen,
+    line width=0.2em
+  }, edge_arrow/.style={
+    edge,
+    ->
+  }, edge_cost/.style={
+    midway,
+    color=Hell-Gruen,
+    font=\Large
+  }, edge_highlight/.style={
+    edge_arrow,
+    preaction={
+      draw,yellow,-,% Draw yellow without any arrow head
+      double=yellow,
+      double distance=2\pgflinewidth,
+    }
+  }
+]%
+% Vertex 3 old values
+\only<3>{ % Value 1
+  \draw ($(4, 0) + (-1em, -1em)$) node[vertex_old] {5};
+}
+\only<4>{ % Value 2
+  \draw ($(4, 0) + (-1em, -1em)$) node[vertex_old] {4};
+}
+
+% Vertex 4 old values
+\only<5>{ % Value 1
+  \draw ($(4, -2.5) + (-1em, -1em)$) node[vertex_old] {10};
+}
+
+% Vertex 0
+\only<1>{
+  \draw (-1.0, 0.0) node[
+    vertex_active,
+    label={[vertex_label, shift={(-1em, -0.5em)}]above:$u_0$}
+  ] (vert0) {0};
+}
+\only<2->{
+  \draw (-1.0, 0.0) node[
+    vertex_settled,
+    label={[vertex_label, shift={(-1em, -0.5em)}]above:$u_0$}
+  ] (vert0) {0};
+}
+
+% Vertex 1
+\only<1>{
+  \draw (2.5, 2.5) node[vertex_unreached] (vert1) {$u_1$};
+}
+\only<2>{
+  \draw (2.5, 2.5) node[
+    vertex_active,
+    label={[vertex_label, shift={(-1em, -0.5em)}]above:$u_1$}
+  ] (vert1) {1};
+}
+\only<3->{
+  \draw (2.5, 2.5) node[
+    vertex_settled,
+    label={[vertex_label, shift={(-1em, -0.5em)}]above:$u_1$}
+  ] (vert1) {1};
+}
+
+% Vertex 2
+\only<1>{
+  \draw (4.0, -2.5) node[vertex_unreached] (vert2) {$u_2$};
+}
+\only<2-5>{
+  \draw (4.0, -2.5) node[
+    vertex_active,
+    label={[vertex_label, shift={(-1.5em, 0em)}]above:$u_2$}
+  ] (vert2) {%
+    \only<2-4>{10}%
+    \only<5->{6}%
+  };
+}
+\only<6->{
+  \draw (4.0, -2.5) node[
+    vertex_settled,
+    label={[vertex_label, shift={(-1.5em, 0em)}]above:$u_2$}
+  ] (vert2) {6};
+};
+
+% Vertex 3
+\only<1>{
+  \draw (4.0, 0.0) node[vertex_unreached] (vert3) {$u_3$};
+}
+\only<2-4>{
+  \draw (4.0, 0.0) node[
+    vertex_active,
+    label={[vertex_label, shift={(-2em, -0.5em)}]$u_3$}
+  ] (vert3) {%
+    \only<2>{5}%
+    \only<3>{4}%
+    \only<4>{3}%
+  };
+}
+\only<5->{
+  \draw (4.0, 0.0) node[
+    vertex_settled,
+    label={[vertex_label, shift={(-2em, -0.5em)}]$u_3$}
+  ] (vert3) {3};
+}
+
+% Vertex 4
+\only<1-2>{
+  \draw (5.5, 2.5) node[vertex_unreached] (vert4) {$u_4$};
+}
+\only<3>{
+  \draw (5.5, 2.5) node[
+    vertex_active,
+    label={[vertex_label, shift={(1em, -0.5em)}]$u_4$}
+  ] (vert4) {2};
+}
+\only<4->{
+  \draw (5.5, 2.5) node[
+    vertex_settled,
+    label={[vertex_label, shift={(1em, -0.5em)}]$u_4$}
+  ] (vert4) {2};
+}
+
+% Vertex 5
+\only<1-3>{
+  \draw (9.0, 0.0) node[vertex_unreached] (vert5) {$u_5$};
+}
+\only<4-6>{
+  \draw (9.0, 0.0) node[
+    vertex_active,
+    label={[vertex_label, shift={(1em, -0.5em)}]$u_4$}
+  ] (vert5) {6};
+}
+\only<7>{
+  \draw (9.0, 0.0) node[
+    vertex_settled,
+    label={[vertex_label, shift={(1em, -0.5em)}]$u_4$}
+  ] (vert5) {6};
+}
+
+% Edges from vertex 0
+\only<1,3->{\draw[edge_arrow] (vert0) to node[edge_cost, above] {1} (vert1);}
+\only<2>{\draw[edge_highlight] (vert0) to node[edge_cost, above] {1} (vert1);}
+
+\only<1,3->{\draw[edge_arrow] (vert0) to node[edge_cost, above] {10} (vert2);}
+\only<2>{\draw[edge_highlight] (vert0) to node[edge_cost, above] {10} (vert2);}
+
+\only<1,3->{\draw[edge_arrow] (vert0) to node[edge_cost, above] {5} (vert3);}
+\only<2>{\draw[edge_highlight] (vert0) to node[edge_cost, above] {5} (vert3);}
+
+% Edges from vertex 1
+\only<1-2,4->{\draw[edge_arrow] (vert1) to node[edge_cost, above] {3} (vert3);}
+\only<3>{\draw[edge_highlight] (vert1) to node[edge_cost, above] {3} (vert3);}
+
+\only<1-2,4->{\draw[edge_arrow] (vert1) to node[edge_cost, above] {1} (vert4);}
+\only<3>{\draw[edge_highlight] (vert1) to node[edge_cost, above] {1} (vert4);}
+
+% Edges from vertex 2
+\only<1-5,7>{\draw[edge_arrow] (vert2) to node[edge_cost, above] {7} (vert5);}
+\only<6>{\draw[edge_highlight] (vert2) to node[edge_cost, above] {7} (vert5);}
+
+\only<6>{
+  \draw[
+  edge_highlight,
+  bend right=15
+  ] (vert2) to node[edge_cost, right] {3} (vert3);
+}
+
+% Edges from vertex 3
+\only<5>{
+  \draw[
+    edge_highlight, bend right=15
+  ] (vert3) to node[edge_cost, left] {3} (vert2);
+}
+
+% Edges from vertex 4
+\only<1-3,4->{\draw[edge_arrow] (vert4) to node[edge_cost, above] {1} (vert3);}
+\only<4>{\draw[edge_highlight] (vert4) to node[edge_cost, above] {1} (vert3);}
+
+\only<1-3,4->{\draw[edge_arrow] (vert4) to node[edge_cost, above] {4} (vert5);}
+\only<4>{\draw[edge_highlight] (vert4) to node[edge_cost, above] {4} (vert5);}
+
+% Edges from vertex 5
+\draw[edge_arrow] (vert5) to node[edge_cost, above] {2} (vert3);
+
+% Overlay
+\only<1-5,7>{
+  \draw[
+    edge_arrow,
+    bend right=15
+  ] (vert2) to node[edge_cost, right] {3} (vert3);
+}
+\only<1-4,6->{
+  \draw[edge_arrow, bend right=15] (vert3) to node[edge_cost, left] {3} (vert2);
+}
+\end{tikzpicture}%

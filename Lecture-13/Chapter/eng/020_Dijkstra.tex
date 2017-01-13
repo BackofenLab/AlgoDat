@@ -7,10 +7,10 @@
     \item
       Place pearls on crossings and clamp strings between them
   \end{itemize}
-%  \begin{figure}
-%    \includegraphics[width=0.75\linewidth]{Images/Dijkstra/DijkstraMap}
-%    \caption{Map $\copyright\,$ Mehlhorn / Sanders}
-%  \end{figure}
+  \begin{figure}
+    \includegraphics[width=0.75\linewidth]{Images/Dijkstra/DijkstraMap}
+    \caption{Map $\copyright\,$ Mehlhorn / Sanders}
+  \end{figure}
 \end{frame}
 
 %-------------------------------------------------------------------------------
@@ -19,12 +19,12 @@
   \vspace{-1.5em}
   \begin{columns}
     \begin{column}{0.55\linewidth}
-%      \begin{figure}[!t]
-%        \includegraphics[width=0.8\linewidth]
-%          {Images/Dijkstra/DijkstraMap}
-%        \caption{Map $\copyright\,$ Mehlhorn / Sanders}
-%      \end{figure}
-%      \vspace{-1.5em}
+      \begin{figure}[!t]
+        \includegraphics[width=0.8\linewidth]
+          {Images/Dijkstra/DijkstraMap}
+        \caption{Map $\copyright\,$ Mehlhorn / Sanders}
+      \end{figure}
+      \vspace{-1.5em}
       \begin{itemize}
         \item
           Take the net and pull it slowly upwards until fully lifted
@@ -35,12 +35,12 @@
       \end{itemize}
     \end{column}
     \begin{column}{0.45\linewidth}
-%      \begin{figure}[!t]
-%        \includegraphics[width=\linewidth]
-%          {Images/Dijkstra/DijkstraTree_WithOverlay}
-%        \vspace{-0.5em}
-%        \caption{Map $\copyright\,$ Mehlhorn / Sanders}
-%      \end{figure}
+      \begin{figure}[!t]
+        \includegraphics[width=\linewidth]
+          {Images/Dijkstra/DijkstraTree_WithOverlay}
+        \vspace{-0.5em}
+        \caption{Map $\copyright\,$ Mehlhorn / Sanders}
+      \end{figure}
     \end{column}
   \end{columns}
 \end{frame}
@@ -181,4 +181,172 @@
       \end{figure}
     \end{column}
   \end{columns}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dijkstra Algorithm}
+  \vspace{-1.5em}
+  \begin{columns}
+    \begin{column}{0.55\linewidth}
+      \textbf{Example:}
+      \begin{itemize}
+        \item
+          Lift pearl {\color{Mittel-Blau}$M$} a little bit
+        \item
+          Connections to pearls {\color{Mittel-Blau}$R$},
+          {\color{Mittel-Blau}$L$} and {\color{Mittel-Blau}$G$} are hanging in
+          the air
+        \item
+          Lift further until pearl {\color{Mittel-Blau}$R$} starts to lift at
+          $\SI{5}{m}$
+        \item
+          The shortest path to {\color{Mittel-Blau}$R$} is now known
+        \item
+          Lift further: The wires from {\color{Mittel-Blau}$R$},
+          {\color{Mittel-Blau}$O$} and {\color{Mittel-Blau}$Q$} are now in the
+          air
+        \item
+          One of the pearls {\color{Mittel-Blau}$G$}, {\color{Mittel-Blau}$L$},
+          {\color{Mittel-Blau}$Q$} or {\color{Mittel-Blau}$O$} is the next one\\
+          {\color{gray}Which one?}
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.45\linewidth}
+      \begin{figure}[!t]
+        \includegraphics[width=\linewidth]
+          {Images/Dijkstra/DijkstraTree_WithOverlay}
+        \vspace{-0.5em}
+        \caption{Map $\copyright\,$ Mehlhorn / Sanders}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dijkstra Algorithm}
+  \vspace{-1.5em}
+  \begin{columns}
+    \begin{column}{0.55\linewidth}
+      \textbf{Example:}
+      \begin{itemize}
+        \item
+          At $\SI{11}{m}$ pearl {\color{Mittel-Blau}$L$} gets lifted
+        \item
+          The wires to {\color{Mittel-Blau}$N$} and {\color{Mittel-Blau}$K$}
+          are now in the air
+        \item
+          One of the pearls {\color{Mittel-Blau}$G$}, {\color{Mittel-Blau}$K$},
+          {\color{Mittel-Blau}$N$}, {\color{Mittel-Blau}$Q$} or
+          {\color{Mittel-Blau}$O$} is the next one\\
+          {\color{gray}Which one?}
+        \item
+          At $\SI{13}{m}$ pearl {\color{Mittel-Blau}$O$} gets lifted\\
+          $\cdots$
+        \item
+          {\color{gray}How to translate this into an computer algorithm?}
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.45\linewidth}
+      \begin{figure}[!t]
+        \includegraphics[width=\linewidth]
+        {Images/Dijkstra/DijkstraTree_WithOverlay}
+        \vspace{-0.5em}
+        \caption{Map $\copyright\,$ Mehlhorn / Sanders}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dijkstra Algorithm}
+  \textbf{High level description:}
+  Three types of nodes
+  \begin{itemize}
+    \item
+      {\color{Mittel-Blau}Settled:}
+      For node {\color{Mittel-Blau}$u$} we know
+      {\color{Mittel-Blau}$\mathrm{dist}(s, u)$}
+      \hfill
+      \raisebox{-0.5em}{\begin{adjustbox}{height=1.5em}%
+        \input{Images/Dijkstra/Vertex/Vertex_Settled.tikz}%
+      \end{adjustbox}}\\
+      {\color{gray}(Pearl example: This preal is hanging in the air)}
+      \vspace{0.5em}
+    \item
+      {\color{Mittel-Blau}Active:}
+      For node {\color{Mittel-Blau}$u$} we know a tentative distance
+      {\color{Mittel-Blau}$\mathrm{td}(u) \geq \mathrm{dist}(s, u)$}
+      (Can be optimal but doesn't have to)
+      \hfill
+      \raisebox{-0.5em}{\begin{adjustbox}{height=1.5em}%
+        \input{Images/Dijkstra/Vertex/Vertex_Active.tikz}%
+      \end{adjustbox}}\\
+      {\color{gray}(Pearl example: This pearl is laying on the table but\\
+        one connected wire is already in the air)}
+        \vspace{0.5em}
+    \item
+      {\color{Mittel-Blau}Unreached:}
+      We have not reached the node yet
+      \hfill
+      \raisebox{-0.5em}{\begin{adjustbox}{height=1.5em}%
+          \input{Images/Dijkstra/Vertex/Vertex_Unreached.tikz}%
+        \end{adjustbox}}\\
+        {\color{gray}(Pearl example: This preal is hanging in the air)}
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dijkstra Algorithm}
+  \textbf{High level description:}
+  \begin{itemize}
+    \item
+      Each iteration take the {\color{Mittel-Blau}active} node
+      {\color{Mittel-Blau}$u$} with the
+      {\color{Mittel-Blau}smallest $\mathrm{td}(u)$}\\
+      {\color{gray}(The pearl getting lifted next)}
+    \item
+      We update the state of the node {\color{Mittel-Blau}$u$} to
+      {\color{Mittel-Blau}settled}\\
+      {\color{gray}(The pearl gets lifted)}
+    \item
+      We check for each {\color{Mittel-Blau}neighbor $v$} of node
+      {\color{Mittel-Blau}$u$} if we can reach {\color{Mittel-Blau}$v$} faster
+      than currently possible\\
+      {\color{gray}(Check all outgoing wires from this pearl:
+        Activate all connected pearls, update
+        tentative distance if smaller)}
+    \item
+      Iterate until no active nodes exist anymore
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dijkstra Algorithm}
+  \vspace{-1em}
+  \begin{figure}[!h]
+    \begin{adjustbox}{width=\linewidth}
+      \input{Images/Dijkstra/Dijkstra_Algorithm.tikz}
+    \end{adjustbox}
+    \vspace{-2em}
+    \caption{%
+      \only<1>{Start at {\color{Mittel-Blau}$u_0$}}%
+      \only<2>{Iteration 1}%
+      \only<3>{Iteration 2}%
+      \only<4>{Iteration 3}%
+      \only<5>{Iteration 4}%
+      \only<6>{Iteration 5}%
+      \only<7>{Iteration 6}%
+    }
+  \end{figure}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dijkstra Algorithm}{Proof}
+  %TODO
 \end{frame}
