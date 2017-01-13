@@ -1,0 +1,34 @@
+\begin{tikzpicture}[
+  zoom_line/.style={
+    Mittel-Gruen,
+    line width=0.3em
+  },
+  image/.style={
+    inner sep=0
+  }
+]%
+  \node[image, anchor=south west] (small_image) at (0,0) {%
+      \includegraphics[width=\textwidth]%
+        {Images/ImageProcessing/particles_source.png}%
+    };
+  \node[image, anchor=west, xshift=5em] (big_image) at (small_image.east) {%
+      \includegraphics[width=2.5\textwidth, clip, trim=0 100 100 0]%
+        {Images/ImageProcessing/particles_excel_data.png}%
+    };
+  \begin{scope}[x={(small_image.south east)}, y={(small_image.north west)}]
+    \node (rect) at (0.0375, 0.825) [
+      draw,
+      rectangle,
+      minimum size=30,
+      zoom_line
+    ] {};
+    %\draw[red,ultra thick,rounded corners]
+    %  (-0.025, 0.7625) rectangle (0.1, 0.88125);
+    %\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
+    %\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+    %\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+  \end{scope}
+
+  \draw[zoom_line] (rect.north west) to (big_image.north west);
+  \draw[zoom_line] (rect.south west) to (big_image.south west);
+\end{tikzpicture}

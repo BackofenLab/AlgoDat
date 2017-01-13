@@ -1,0 +1,394 @@
+\subsection{Application example}
+
+\begin{frame}{Application example}{Image processing}
+  \begin{itemize}
+    \item
+      Connected component labeling
+    \item
+      Counting of objects in an image
+  \end{itemize}
+  \begin{figure}[!h]
+    \begin{columns}
+      \begin{column}{0.45\linewidth}
+        \includegraphics[width=\linewidth]%
+          {Images/ImageProcessing/particles_source.png}
+      \end{column}
+      \begin{column}{0.05\linewidth}
+        \begin{centering}
+          \color{Mittel-Blau}$\Rightarrow$
+        \end{centering}
+      \end{column}
+      \begin{column}{0.45\linewidth}
+        \includegraphics[width=\linewidth]%
+          {Images/ImageProcessing/particles_labeled.png}
+      \end{column}
+    \end{columns}
+  \end{figure}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Application example}{Image processing}
+  \textbf{What's object, what's background?}\\
+  \begin{center}
+    \begin{adjustbox}{width=0.8\linewidth}
+      \input{Images/ImageProcessing/magnifying_glass.tikz}
+    \end{adjustbox}
+  \end{center}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Application example}{Image processing}
+  \textbf{Convert to black white using threshold:}\\
+  \codeslide{python}{%
+    \lstinline[language=Python, style={python-idle-code}]%
+      {value = 255 if value > 100 else 0}%
+  }%
+  \codeslide{java}{%
+    \lstinline[language=Java, style={java-eclipse-code}]%
+      {value = value > 100 ? 255 : 0}%
+  }%
+  \codeslide{cpp}{%
+    \lstinline[language=C++, style={cpp-eclipse-code}]%
+      {value = value > 100 ? 255 : 0}%
+  }%
+  \begin{center}
+    \begin{adjustbox}{width=0.8\linewidth}
+      \input{Images/ImageProcessing/magnifying_glass_bw.tikz}
+    \end{adjustbox}
+  \end{center}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Application example}{Image processing}
+  \textbf{Interpret image as graph:}
+  \begin{itemize}
+    \item
+      Each white pixel is a node
+    \item
+      Edges between adjacent pixels (normally 4 or 8 neighbors)
+    \item
+      Edges are not saved externally,
+      algorithm works directly on array
+    \item
+      Breadth- / depth-first search find all connected components (particles)
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Application example}{Image processing}
+  \textbf{Find connected components:}\\
+  \vspace{0.5em}
+  \begin{columns}[T]
+    \begin{column}{0.6\linewidth}
+      \includegraphics[width=\linewidth]%
+        {Images/ImageProcessing/particles_excel_search.png}
+    \end{column}
+    \begin{column}{0.4\linewidth}
+      \begin{itemize}
+        \item
+          Search pixel-by-pixel for non-zero intensity
+        \item
+          Label found pixel as component~1
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Application example}{Image processing}
+  \textbf{Find connected components:}\\
+  \vspace{0.5em}
+  \begin{columns}[T]
+    \begin{column}{0.6\linewidth}
+      \includegraphics[width=\linewidth]%
+        {Images/ImageProcessing/particles_excel_search2.png}
+    \end{column}
+    \begin{column}{0.4\linewidth}
+      \begin{itemize}
+        \item
+          {\color{gray}Search pixel-by-pixel for non-zero intensity}
+        \item
+          {\color{gray}Label found pixel as component~1}
+        \item
+          Check neighbors of all new labeled pixels
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Application example}{Image processing}
+  \textbf{Find connected components:}\\
+  \vspace{0.5em}
+  \begin{columns}[T]
+    \begin{column}{0.6\linewidth}
+      \includegraphics[width=\linewidth]%
+        {Images/ImageProcessing/particles_excel_search3.png}
+    \end{column}
+    \begin{column}{0.4\linewidth}
+      \begin{itemize}
+        \item
+          {\color{gray}Search pixel-by-pixel for non-zero intensity}
+        \item
+          {\color{gray}Label found pixel as component~1}
+        \item
+          {\color{gray}Check neighbors of all new labeled pixels}
+        \item
+          Label non-zero pixels as component~1
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Application example}{Image processing}
+  \textbf{Find connected components:}\\
+  \vspace{0.5em}
+  \begin{columns}[T]
+    \begin{column}{0.6\linewidth}
+      \includegraphics[width=\linewidth]%
+        {Images/ImageProcessing/particles_excel_search4.png}
+    \end{column}
+    \begin{column}{0.4\linewidth}
+      \begin{itemize}
+        \item
+          {\color{gray}Search pixel-by-pixel for non-zero intensity}
+        \item
+          {\color{gray}Label found pixel as component~1}
+        \item
+          Check neighbors of all new labeled pixels
+        \item
+          {\color{gray}Label non-zero pixels as component~1}
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Application example}{Image processing}
+  \textbf{Find connected components:}\\
+  \vspace{0.5em}
+  \begin{columns}[T]
+    \begin{column}{0.6\linewidth}
+      \includegraphics[width=\linewidth]%
+        {Images/ImageProcessing/particles_excel_search5.png}
+    \end{column}
+    \begin{column}{0.4\linewidth}
+      \begin{itemize}
+        \item
+          {\color{gray}Search pixel-by-pixel for non-zero intensity}
+        \item
+          {\color{gray}Label found pixel as component~1}
+        \item
+          {\color{gray}Check neighbors of all new labeled pixels}
+        \item
+          Label non-zero pixels as component~1
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Application example}{Image processing}
+  \textbf{Find connected components:}\\
+  \vspace{0.5em}
+  \begin{columns}[T]
+    \begin{column}{0.6\linewidth}
+      \includegraphics[width=\linewidth]%
+        {Images/ImageProcessing/particles_excel_search6.png}
+    \end{column}
+    \begin{column}{0.4\linewidth}
+      \begin{itemize}
+        \item
+          {\color{gray}Search pixel-by-pixel for non-zero intensity}
+        \item
+          {\color{gray}Label found pixel as component~1}
+        \item
+          Check neighbors of all new labeled pixels
+        \item
+          {\color{gray}Label non-zero pixels as component~1}
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Application example}{Image processing}
+  \textbf{Find connected components:}\\
+  \vspace{0.5em}
+  \begin{columns}[T]
+    \begin{column}{0.6\linewidth}
+      \includegraphics[width=\linewidth]%
+        {Images/ImageProcessing/particles_excel_search7.png}
+    \end{column}
+    \begin{column}{0.4\linewidth}
+      \begin{itemize}
+        \item
+          {\color{gray}Search pixel-by-pixel for non-zero intensity}
+        \item
+          {\color{gray}Label found pixel as component~1}
+        \item
+          {\color{gray}Check neighbors of all new labeled pixels}
+        \item
+          Label non-zero pixels as component~1
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Application example}{Image processing}
+  \textbf{Find connected components:}\\
+  \vspace{0.5em}
+  \begin{columns}[T]
+    \begin{column}{0.6\linewidth}
+      \includegraphics[width=\linewidth]%
+        {Images/ImageProcessing/particles_excel_search8.png}
+    \end{column}
+    \begin{column}{0.4\linewidth}
+      \begin{itemize}
+        \item
+          {\color{gray}Search pixel-by-pixel for non-zero intensity}
+        \item
+          {\color{gray}Label found pixel as component~1}
+        \item
+          Check neighbors of all new labeled pixels
+        \item
+          {\color{gray}Label non-zero pixels as component~1}
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Application example}{Image processing}
+  \textbf{Find connected components:}\\
+  \vspace{0.5em}
+  \begin{columns}[T]
+    \begin{column}{0.6\linewidth}
+      \includegraphics[width=\linewidth]%
+        {Images/ImageProcessing/particles_excel_search9.png}
+    \end{column}
+    \begin{column}{0.4\linewidth}
+      \begin{itemize}
+        \item
+          {\color{gray}Search pixel-by-pixel for non-zero intensity}
+        \item
+          {\color{gray}Label found pixel as component~1}
+        \item
+          {\color{gray}Check neighbors of all new labeled pixels}
+        \item
+          Label non-zero pixels as component~1
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Application example}{Image processing}
+  \textbf{Find connected components:}\\
+  \vspace{0.5em}
+  \begin{columns}[T]
+    \begin{column}{0.6\linewidth}
+      \includegraphics[width=\linewidth]%
+        {Images/ImageProcessing/particles_excel_search10.png}
+    \end{column}
+    \begin{column}{0.4\linewidth}
+      \begin{itemize}
+        \item
+          {\color{gray}Search pixel-by-pixel for non-zero intensity}
+        \item
+          {\color{gray}Label found pixel as component~1}
+        \item
+          Check neighbors of all new labeled pixels
+        \item
+          {\color{gray}Label non-zero pixels as component~1}
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Application example}{Image processing}
+  \textbf{Find connected components:}\\
+  \vspace{0.5em}
+  \begin{columns}[T]
+    \begin{column}{0.6\linewidth}
+      \includegraphics[width=\linewidth]%
+        {Images/ImageProcessing/particles_excel_search11.png}
+    \end{column}
+    \begin{column}{0.4\linewidth}
+      \begin{itemize}
+        \item
+          {\color{gray}Search pixel-by-pixel for non-zero intensity}
+        \item
+          {\color{gray}Label found pixel as component~1}
+        \item
+          {\color{gray}Check neighbors of all new labeled pixels}
+        \item
+          Label non-zero pixels as component~1
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Application example}{Image processing}
+  \textbf{Find connected components:}\\
+  \vspace{0.5em}
+  \begin{columns}[T]
+    \begin{column}{0.6\linewidth}
+      \includegraphics[width=\linewidth]%
+        {Images/ImageProcessing/particles_excel_search12.png}
+    \end{column}
+    \begin{column}{0.4\linewidth}
+      \begin{itemize}
+        \item
+          Search pixel-by-pixel for non-zero intensity
+        \item
+          Label found pixel as {\color{Mittel-Blau}component~2}
+        \item
+          $\cdots$
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Application example}{Image processing}
+  \textbf{Result of connected component labeling:}
+  \begin{figure}
+    \begin{columns}
+      \begin{column}{0.45\linewidth}
+        \includegraphics[width=\linewidth, clip, trim=0 75 50 0]%
+          {Images/ImageProcessing/particles_final_source.png}
+      \end{column}
+      \begin{column}{0.05\linewidth}
+        \begin{centering}
+          \color{Mittel-Blau}$\Rightarrow$
+        \end{centering}
+      \end{column}
+      \begin{column}{0.45\linewidth}
+        \includegraphics[width=\linewidth, clip, trim=0 75 50 0]%
+          {Images/ImageProcessing/particles_final.png}
+      \end{column}
+    \end{columns}
+    \caption{Result: particle indices instead of intensities}
+  \end{figure}
+\end{frame}
