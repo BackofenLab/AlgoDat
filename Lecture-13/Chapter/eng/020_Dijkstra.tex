@@ -330,6 +330,7 @@
   \vspace{-1em}
   \begin{figure}[!h]
     \begin{adjustbox}{width=\linewidth}
+      \def\DijkstraReverse{0}%
       \input{Images/Dijkstra/Dijkstra_Algorithm.tikz}
     \end{adjustbox}
     \vspace{-2em}
@@ -348,5 +349,148 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Dijkstra Algorithm}{Proof}
-  %TODO
+  \textbf{Proof:}
+  \begin{itemize}
+    \item
+      \textbf{Assumption 1:}
+      All edges have a positive length
+    \item
+      \textbf{Assumption 2:}
+      Each node has a unique distance
+      {\color{Mittel-Blau}$\mathrm{dist}(s, u)$}\\
+      {\color{gray}(This was not the case on the previous slides)}\\[0.5em]
+      This results in an easy and intuitive proof.\\
+      {\color{gray}
+        It is prossible to show this without assumption 2.
+        See references if interested}
+      \vspace{1.0em}
+    \item
+      With assumption 2 there exists a sorting {\color{Mittel-Blau}$u_0$},
+      {\color{Mittel-Blau}$u_1$}, $\ldots$ with that:
+      \begin{displaymath}
+        {\color{Mittel-Blau}\mathrm{dist}(s, u_0)} <
+        {\color{Mittel-Blau}\mathrm{dist}(s, u_1)} <
+        {\color{Mittel-Blau}\mathrm{dist}(s, u_2)} <
+        \ldots
+      \end{displaymath}
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dijkstra Algorithm}{Proof}
+  \textbf{Proof:}
+  \begin{itemize}
+    \item
+      With \textbf{assumption 2} there exists a sorting {\color{Mittel-Blau}$u_0$},
+      {\color{Mittel-Blau}$u_1$}, $\ldots$ with that:
+      \begin{displaymath}
+        {\color{Mittel-Blau}\mathrm{dist}(s, u_0)} <
+        {\color{Mittel-Blau}\mathrm{dist}(s, u_1)} <
+        {\color{Mittel-Blau}\mathrm{dist}(s, u_2)} <
+        \ldots
+      \end{displaymath}
+    \item
+      We want to show that the \textit{Dijkstra} algorithm finds the shortest
+      path for each node {\color{Mittel-Blau}$u_i$} so that
+      {\color{Mittel-Blau}$\mathrm{td}(u_i) = \mathrm{dist}(s, u_i)$} holds
+    \item
+      Additionally we show that each node gets solved in order of the distance:
+      Node {\color{Mittel-Blau}$u_i$} gets solved in iteration
+      {\color{Mittel-Blau}$i$}
+      \begin{displaymath}
+        {\color{Mittel-Blau}u_1},
+        {\color{Mittel-Blau}u_2},
+        {\color{Mittel-Blau}u_3},
+        \ldots
+      \end{displaymath}
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dijkstra Algorithm}{Proof}
+  \textbf{To show:} Node {\color{Mittel-Blau}$u_i$} gets solved in round
+  {\color{Mittel-Blau}$i$}
+  \begin{enumerate}
+    \item
+      Node {\color{Mittel-Blau}$u_i$} contains the correct distance
+      ({\color{Mittel-Blau}$\mathrm{td}(u_i) = \mathrm{dist}(s, u_i)$})
+      and is active
+    \item
+      Node {\color{Mittel-Blau}$u_i$} has the smallest value for
+      {\color{Mittel-Blau}$\mathrm{td}(u_i)$} and gets selected by the algorithm
+  \end{enumerate}
+  \vspace{1.0em}
+  \textbf{Induction start:}
+  \begin{enumerate}
+    \item
+      \begin{itemize}
+        \item
+          Only the start node {\color{Mittel-Blau}$s = u_0$} is active and
+          {\color{Mittel-Blau}$\mathrm{td}(s) = 0$}
+        \item
+          Node {\color{Mittel-Blau}$u_0$} gets solved and
+          {\color{Mittel-Blau}$\mathrm{td}(u_0) = \mathrm{dist}(s, u_0) = 0$})
+      \end{itemize}
+    \item
+      Only the start node {\color{Mittel-Blau}$u_0$} is active
+  \end{enumerate}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dijkstra Algorithm}{Proof}
+  \textbf{Induction step:} {\color{Mittel-Blau}$i = i+1$}
+  \begin{enumerate}
+    \item
+      \textbf{To show:} Node {\color{Mittel-Blau}$u_i$} contains the correct
+      distance ({\color{Mittel-Blau}$\mathrm{td}(u_i) = \mathrm{dist}(s, u_i)$})
+      and is active
+      \begin{itemize}
+        \item
+          On the shortest path from {\color{Mittel-Blau}$s$} to
+          {\color{Mittel-Blau}$u_{i+1}$} is a preceding node that:
+          \begin{displaymath}
+            \color{Mittel-Blau}\mathrm{dist}(s, u_{i+1})
+            = \mathrm{dist}(s, v) + \mathrm{c}(v, u_{i+1})
+          \end{displaymath}
+          ({\color{Mittel-Blau}$c$} are the costs of the edge)
+          \begin{figure}[!h]
+            \begin{adjustbox}{width=0.9\linewidth}
+              \input{Images/Dijkstra/Solving_Induction.tikz}
+            \end{adjustbox}
+          \end{figure}
+        \item
+          With that results
+          {\color{Mittel-Blau}$\mathrm{dist}(s, v) < \mathrm{dist}(s, u_{i+1})$}
+          because {\color{Mittel-Blau}$c > 0$}
+        \item
+          Because {\color{Mittel-Blau}$u_{i+1}$} is currently solved node
+          {\color{Mittel-Blau}$v$} is one of the preceding nodes
+          {\color{Mittel-Blau}$u_0, \dots, u_i$}, hence
+          {\color{Mittel-Blau}$v = u_j$} with
+          {\color{Mittel-Blau}$0 \leq j \leq i$}
+      \end{itemize}
+  \end{enumerate}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dijkstra Algorithm}{Proof}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dijkstra Algorithm}{Proof}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dijkstra Algorithm}{Proof}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dijkstra Algorithm}{Proof}
 \end{frame}
