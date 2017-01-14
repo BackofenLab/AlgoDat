@@ -458,7 +458,8 @@
           ({\color{Mittel-Blau}$c$} are the costs of the edge)
           \begin{figure}[!h]
             \begin{adjustbox}{width=0.9\linewidth}
-              \input{Images/Dijkstra/Solving_Induction.tikz}
+              \def\DijkstraTD{0}%
+              \input{Images/Dijkstra/Dijkstra_InductionOrder.tikz}
             \end{adjustbox}
           \end{figure}
         \item
@@ -477,20 +478,88 @@
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Dijkstra Algorithm}{Proof}
+\begin{frame}{Dijkstra Algorithm}{Proof - Example of Iteration 6}
+  \begin{figure}[!h]
+    \begin{adjustbox}{width=0.9\linewidth}
+      \input{Images/Dijkstra/Dijkstra_Induction.tikz}
+    \end{adjustbox}
+  \end{figure}
+  \begin{itemize}
+    \item
+      Preceding node of {\color{Mittel-Blau}$u_5$} is
+      {\color{Mittel-Blau}$v = u_2$}
+    \item
+      In round 3
+      \begin{math}
+        {\color{Mittel-Blau}\mathrm{td}(u_5) = }
+        {\color{Hell-Gruen}\;2 + 4\;}
+        {\color{Mittel-Blau} = 6}
+      \end{math}
+      was already solved
+  \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Dijkstra Algorithm}{Proof}
+  \begin{figure}[!h]
+    \begin{adjustbox}{width=0.9\linewidth}
+      \def\DijkstraTD{1}%
+      \input{Images/Dijkstra/Dijkstra_InductionOrder.tikz}
+    \end{adjustbox}
+  \end{figure}
+  \begin{enumerate}
+    \item
+      \textbf{To show:} Node {\color{Mittel-Blau}$u_i$} contains the correct
+      distance ({\color{Mittel-Blau}$\mathrm{td}(u_i) = \mathrm{dist}(s, u_i)$})
+      and is active
+      \begin{itemize}
+        \item
+          With \textbf{induction assumption}:
+          {\color{Mittel-Blau}$v$} already contains the correct distance which
+          was evaluated in round {\color{Mittel-Blau}$j$}\\
+          (edge from {\color{Mittel-Blau}$v$} to {\color{Mittel-Blau}$u_{i+1}$})
+          and is stored in {\color{Mittel-Blau}$\mathrm{td}(u_{i+1})$}
+        \item
+          {\color{Mittel-Blau}$u_{i+1}$} is active because the preceding node
+          was solved
+      \end{itemize}
+  \end{enumerate}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Dijkstra Algorithm}{Proof}
+  \begin{figure}[!h]
+    \begin{adjustbox}{width=0.9\linewidth}
+      \def\DijkstraTD{1}%
+      \input{Images/Dijkstra/Dijkstra_InductionOrder.tikz}
+    \end{adjustbox}
+  \end{figure}
+  \begin{enumerate}
+    \setcounter{enumi}{1}
+    \item
+      \textbf{To show:} Node {\color{Mittel-Blau}$u_i$} has the smallest
+      value for {\color{Mittel-Blau}$\mathrm{td}(u_i)$} and gets selected by
+      the algorithm
+      \begin{itemize}
+        \item
+          All nodes with smaller {\color{Mittel-Blau}$\mathrm{dist}$} are
+          already solved
+        \item
+          All other nodes {\color{Mittel-Blau}$u_k$} with
+          {\color{Mittel-Blau}$k > i + 1$} have a greater
+          {\color{Mittel-Blau}$\mathrm{dist}(s, u_k)$}
+          an with that the  {\color{Mittel-Blau}$\mathrm{td}(u_k)$} is greater
+          or equal
+        \item[$\Rightarrow$]
+          {\color{Mittel-Blau}$u_{i+1}$} is the node with the
+          smallest {\color{Mittel-Blau}$\mathrm{td}$} and gets selected by the
+          algorithm
+      \end{itemize}
+  \end{enumerate}
 \end{frame}
-
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Dijkstra Algorithm}{Proof}
+\begin{frame}{Dijkstra Algorithm}{Implementation}
 \end{frame}

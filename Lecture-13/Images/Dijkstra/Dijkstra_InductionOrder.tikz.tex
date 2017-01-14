@@ -5,7 +5,7 @@
     color=Mittel-Blau,
     fill=Hell-Blau,
     inner sep=0em,
-    minimum size=1.75em,
+    minimum size=2.0em,
     line width=0.1em,
     font=\large,
     solid
@@ -14,6 +14,11 @@
     draw=Mittel-Blau,
     color=Mittel-Blau,
     fill=orange!50!yellow
+  }, vertex_unreached/.style={
+    vertex,
+    draw=Mittel-Blau,
+    color=Mittel-Blau,
+    fill=white
   }, edge/.style={
     draw=Mittel-Gruen,
     line width=0.2em
@@ -28,12 +33,18 @@
 ]%
 % Draw vertices
 \draw (-2.0, 0.0) node[vertex] (start) {$s$};
-\draw (7.0, 0.0) node[vertex] (end) {$t$};
+\draw (4.5, 0.5) node[vertex] (v2) {$v$};
+\draw (7.0, 0.0) node[vertex_active] (end) {$u_{i+1}$};
 
-\draw[edge_arrow] (4.5, 0.5) node[vertex_active] (v2) {$v$} to
-  node[edge_label, above] {3} (end);
+\ifnum \DijkstraTD>0
+  \node[color=Mittel-Blau, anchor=north]
+    at (end.south) {$\mathrm{td}(u_{i+1})$};
+\fi
+
+\draw[edge_arrow] (v2) -- (end) node[edge_label, above] {$c(v, u_{i+1})$};
 
 \draw[edge_arrow, dashdotted]
   (start) .. controls (1.5, 1.5) and (1.5, -1.0) .. (v2.south west)
   node[edge_label, pos=0.33, above] {$\mathrm{dist}(s, v)$};
+
 \end{tikzpicture}%
