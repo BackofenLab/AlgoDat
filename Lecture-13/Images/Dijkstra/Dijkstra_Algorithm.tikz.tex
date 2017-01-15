@@ -77,41 +77,41 @@
 \only<1>{
   \draw (-1.0, 0.0) node[
     vertex_active,
-    label={[vertex_label, shift={(-1em, -0.5em)}]above:$u_0$}
+    label={[vertex_label, shift={(-1em, -0.5em)}]above:$u_1$}
   ] (vert0) {0};
 }
 \only<2->{
   \draw (-1.0, 0.0) node[
     vertex_settled,
-    label={[vertex_label, shift={(-1em, -0.5em)}]above:$u_0$}
+    label={[vertex_label, shift={(-1em, -0.5em)}]above:$u_1$}
   ] (vert0) {0};
 }
 
 % Vertex 1
 \only<1>{
-  \draw (2.5, 2.5) node[vertex_unreached] (vert1) {$u_1$};
+  \draw (2.5, 2.5) node[vertex_unreached] (vert1) {$u_2$};
 }
 \only<2>{
   \draw (2.5, 2.5) node[
     vertex_active,
-    label={[vertex_label, shift={(-1em, -0.5em)}]above:$u_1$}
+    label={[vertex_label, shift={(-1em, -0.5em)}]above:$u_2$}
   ] (vert1) {1};
 }
 \only<3->{
   \draw (2.5, 2.5) node[
     vertex_settled,
-    label={[vertex_label, shift={(-1em, -0.5em)}]above:$u_1$}
+    label={[vertex_label, shift={(-1em, -0.5em)}]above:$u_2$}
   ] (vert1) {1};
 }
 
-% Vertex 2 (labels for u4 and u2 are swapped)
+% Vertex 2 (labels for u5 and u3 are swapped)
 \only<1>{
-  \draw (4.0, -2.5) node[vertex_unreached] (vert2) {$u_4$};
+  \draw (4.0, -2.5) node[vertex_unreached] (vert2) {$u_5$};
 }
 \only<2-5>{
   \draw (4.0, -2.5) node[
     vertex_active,
-    label={[vertex_label, shift={(-1.5em, 0em)}]above:$u_4$}
+    label={[vertex_label, shift={(-1.5em, 0em)}]above:$u_5$}
   ] (vert2) {%
     \only<2-4>{10}%
     \only<5->{6}%
@@ -120,18 +120,18 @@
 \only<6->{
   \draw (4.0, -2.5) node[
     vertex_settled,
-    label={[vertex_label, shift={(-1.5em, 0em)}]above:$u_4$}
+    label={[vertex_label, shift={(-1.5em, 0em)}]above:$u_5$}
   ] (vert2) {6};
 };
 
 % Vertex 3
 \only<1>{
-  \draw (4.0, 0.0) node[vertex_unreached] (vert3) {$u_3$};
+  \draw (4.0, 0.0) node[vertex_unreached] (vert3) {$u_4$};
 }
 \only<2-4>{
   \draw (4.0, 0.0) node[
     vertex_active,
-    label={[vertex_label, shift={(-2em, -0.5em)}]$u_3$}
+    label={[vertex_label, shift={(-2em, -0.5em)}]$u_4$}
   ] (vert3) {%
     \only<2>{5}%
     \only<3>{4}%
@@ -141,41 +141,41 @@
 \only<5->{
   \draw (4.0, 0.0) node[
     vertex_settled,
-    label={[vertex_label, shift={(-2em, -0.5em)}]$u_3$}
+    label={[vertex_label, shift={(-2em, -0.5em)}]$u_4$}
   ] (vert3) {3};
 }
 
-% Vertex 4 (labels for u4 and u2 are swapped)
+% Vertex 4 (labels for u5 and u3 are swapped)
 \only<1-2>{
-  \draw (5.5, 2.5) node[vertex_unreached] (vert4) {$u_2$};
+  \draw (5.5, 2.5) node[vertex_unreached] (vert4) {$u_3$};
 }
 \only<3>{
   \draw (5.5, 2.5) node[
     vertex_active,
-    label={[vertex_label, shift={(1em, -0.5em)}]$u_2$}
+    label={[vertex_label, shift={(1em, -0.5em)}]$u_3$}
   ] (vert4) {2};
 }
 \only<4->{
   \draw (5.5, 2.5) node[
     vertex_settled,
-    label={[vertex_label, shift={(1em, -0.5em)}]$u_2$}
+    label={[vertex_label, shift={(1em, -0.5em)}]$u_3$}
   ] (vert4) {2};
 }
 
 % Vertex 5
 \only<1-3>{
-  \draw (9.0, 0.0) node[vertex_unreached] (vert5) {$u_5$};
+  \draw (9.0, 0.0) node[vertex_unreached] (vert5) {$u_6$};
 }
 \only<4-6>{
   \draw (9.0, 0.0) node[
     vertex_active,
-    label={[vertex_label, shift={(1em, -0.5em)}]$u_5$}
+    label={[vertex_label, shift={(1em, -0.5em)}]$u_6$}
   ] (vert5) {6};
 }
 \only<7>{
   \draw (9.0, 0.0) node[
     vertex_settled,
-    label={[vertex_label, shift={(1em, -0.5em)}]$u_5$}
+    label={[vertex_label, shift={(1em, -0.5em)}]$u_6$}
   ] (vert5) {6};
 }
 
@@ -249,7 +249,7 @@
 % Edges from vertex 5
 \draw[edge_arrow] (vert5) to node[edge_cost, above] {2} (vert3);
 
-% Overlay of arrows from u_2 (u4) and u_3
+% Overlay of arrows from u3 (u5) and u5 (u3)
 \only<1-5,7>{
   \draw[
     edge_arrow,
@@ -271,25 +271,32 @@
 % Reverse iteration overlays (small arrows)
 \ifnum \DijkstraReverse>0
   % Vertex 1 arrow (reverse iteration)
-  \only<2->{\draw[reverse] (vert1) -- +($0.25*(vert0)-0.25*(vert1)$);}
+  \only<2->{\draw[reverse] ($(vert1.south west) + (0.1, -0.15)$)
+    -- +($0.2*(vert0)-0.2*(vert1)$);}
   
   % Vertex 2 arrow (reverse iteration)
-  \only<2-4>{\draw[reverse] (vert2) -- +($0.2*(vert0)-0.2*(vert2)$);}
+  \only<2-4>{\draw[reverse] ($(vert2.west) - (0.1, 0.0)$)
+    -- +($0.15*(vert0)-0.15*(vert2)$);}
   \only<5->{\draw[reverse] (vert2) -- +($0.4*(vert3)-0.4*(vert2)$);}
 
   % Vertex 3 arrow (reverse iteration)
-  \only<2>{\draw[reverse] (vert3) -- +($0.25*(vert0)-0.25*(vert3)$);}
-  \only<3>{\draw[reverse] (vert3) -- +($0.33*(vert1)-0.33*(vert3)$);}
-  \only<4->{\draw[reverse] (vert3) -- +($0.33*(vert4)-0.33*(vert3)$);}
+  \only<2>{\draw[reverse] ($(vert3.south west) - (0.1, 0.0)$)
+    -- +($0.15*(vert0)-0.15*(vert3)$);}
+  \only<3>{\draw[reverse] ($(vert3.north) + (0.0, 0.1)$)
+    -- +($0.25*(vert1)-0.25*(vert3)$);}
+  \only<4->{\draw[reverse] ($(vert3.north) + (0.0, 0.1)$)
+    -- +($0.25*(vert4)-0.25*(vert3)$);}
 
   % Vertex 4 arrow (reverse iteration)
-  \only<3->{\draw[reverse] (vert4) -- +($0.33*(vert1)-0.33*(vert4)$);}
+  \only<3->{\draw[reverse] ($(vert4.south west) - (0.1, 0.0)$)
+    -- +($0.25*(vert1)-0.25*(vert4)$);}
 
   % Vertex 5 arrow (reverse iteration)
-  \only<4->{\draw[reverse] (vert5) -- +($0.25*(vert4)-0.25*(vert5)$);}
+  \only<4->{\draw[reverse] ($(vert5.north west) - (0.25, 0.15)$)
+    -- +($0.2*(vert4)-0.2*(vert5)$);}
 
   % Explanatory sentence
   \only<7>{\node[anchor=west, align=left, xshift=2em] at (vert2.east)%
-    {\textbf{Example:}\\shortest path to {\color{Mittel-Blau}$u_4$}};}
+    {\textbf{Example:}\\shortest path to {\color{Mittel-Blau}$u_5$}};}
 \fi
 \end{tikzpicture}%

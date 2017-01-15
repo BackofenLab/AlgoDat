@@ -335,7 +335,7 @@
     \end{adjustbox}
     \vspace{-2em}
     \caption{%
-      \only<1>{Start at {\color{Mittel-Blau}$u_0$}}%
+      \only<1>{Start at {\color{Mittel-Blau}$u_1$}}%
       \only<2>{Iteration 1}%
       \only<3>{Iteration 2}%
       \only<4>{Iteration 3}%
@@ -365,12 +365,12 @@
         See references if interested}
       \vspace{1.0em}
     \item
-      With assumption 2 there exists a sorting {\color{Mittel-Blau}$u_0$},
-      {\color{Mittel-Blau}$u_1$}, $\ldots$ with that:
+      With assumption 2 there exists a sorting {\color{Mittel-Blau}$u_1$},
+      {\color{Mittel-Blau}$u_2$}, $\ldots$ with that:
       \begin{displaymath}
-        {\color{Mittel-Blau}\mathrm{dist}(s, u_0)} <
         {\color{Mittel-Blau}\mathrm{dist}(s, u_1)} <
         {\color{Mittel-Blau}\mathrm{dist}(s, u_2)} <
+        {\color{Mittel-Blau}\mathrm{dist}(s, u_3)} <
         \ldots
       \end{displaymath}
   \end{itemize}
@@ -382,12 +382,12 @@
   \textbf{Proof:}
   \begin{itemize}
     \item
-      With \textbf{assumption 2} there exists a sorting {\color{Mittel-Blau}$u_0$},
-      {\color{Mittel-Blau}$u_1$}, $\ldots$ with that:
+      With \textbf{assumption 2} there exists a sorting {\color{Mittel-Blau}$u_1$},
+      {\color{Mittel-Blau}$u_2$}, $\ldots$ with that:
       \begin{displaymath}
-        {\color{Mittel-Blau}\mathrm{dist}(s, u_0)} <
         {\color{Mittel-Blau}\mathrm{dist}(s, u_1)} <
         {\color{Mittel-Blau}\mathrm{dist}(s, u_2)} <
+        {\color{Mittel-Blau}\mathrm{dist}(s, u_3)} <
         \ldots
       \end{displaymath}
     \item
@@ -427,14 +427,14 @@
     \item
       \begin{itemize}
         \item
-          Only the start node {\color{Mittel-Blau}$s = u_0$} is active and
+          Only the start node {\color{Mittel-Blau}$s = u_1$} is active and
           {\color{Mittel-Blau}$\mathrm{td}(s) = 0$}
         \item
-          Node {\color{Mittel-Blau}$u_0$} gets solved and
-          {\color{Mittel-Blau}$\mathrm{td}(u_0) = \mathrm{dist}(s, u_0) = 0$})
+          Node {\color{Mittel-Blau}$u_1$} gets solved and
+          {\color{Mittel-Blau}$\mathrm{td}(u_1) = \mathrm{dist}(s, u_1) = 0$})
       \end{itemize}
     \item
-      Only the start node {\color{Mittel-Blau}$u_0$} is active
+      Only the start node {\color{Mittel-Blau}$u_1$} is active
   \end{enumerate}
 \end{frame}
 
@@ -469,7 +469,7 @@
         \item
           Because {\color{Mittel-Blau}$u_{i+1}$} is currently solved node
           {\color{Mittel-Blau}$v$} is one of the preceding nodes
-          {\color{Mittel-Blau}$u_0, \dots, u_i$}, hence
+          {\color{Mittel-Blau}$u_1, \dots, u_i$}, hence
           {\color{Mittel-Blau}$v = u_j$} with
           {\color{Mittel-Blau}$0 \leq j \leq i$}
       \end{itemize}
@@ -486,12 +486,12 @@
   \end{figure}
   \begin{itemize}
     \item
-      Preceding node of {\color{Mittel-Blau}$u_5$} is
-      {\color{Mittel-Blau}$v = u_2$}
+      Preceding node of {\color{Mittel-Blau}$u_6$} is
+      {\color{Mittel-Blau}$v = u_3$}
     \item
       In round 3
       \begin{math}
-        {\color{Mittel-Blau}\mathrm{td}(u_5) = }
+        {\color{Mittel-Blau}\mathrm{td}(u_6) = }
         {\color{Hell-Gruen}\;2 + 4\;}
         {\color{Mittel-Blau} = 6}
       \end{math}
@@ -559,7 +559,244 @@
       \end{itemize}
   \end{enumerate}
 \end{frame}
+
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Dijkstra Algorithm}{Implementation}
+  \textbf{Implementation:}
+  \begin{itemize}
+    \item
+      We have to manage a set of {\color{Mittel-Blau}active nodes}
+    \item
+      We start with only the {\color{Mittel-Blau}start node} in our set
+    \item
+      At the start of each iteration we need the node
+      {\color{Mittel-Blau}$u$} with the smallest
+      {\color{Mittel-Blau}$\mathrm{td}(u)$}\\[0.5em]
+      {\color{gray}How to implement this?}
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dijkstra Algorithm}{Implementation}
+  \textbf{Implementation:}
+  \begin{itemize}
+    \item
+      Using a {\color{Mittel-Blau}priority queue} with
+      {\color{Mittel-Blau}$\mathrm{td}(u)$} as keys
+    \item
+      The following problem occurs:
+      \begin{itemize}
+        \item
+          The {\color{Mittel-Blau}tentative distance} of an active node might
+          change multiple times before it is settled
+        \item
+          We have to change the key in our {\color{Mittel-Blau}priority queue}
+          without removing the entry
+      \end{itemize}
+  \end{itemize}
+  \vspace{1em}
+  \textbf{Limitations:}
+  \begin{itemize}
+    \item
+    Often only \texttt{insert}, \texttt{getMin} and \texttt{deleteMin}
+    are implemented
+    \item[$\Rightarrow$]
+    We only have access to the first element and not any desired one
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dijkstra Algorithm}{Implementation}
+  \textbf{Alternative:}
+  \begin{itemize}
+    \item
+      If a node reoccurs with a smaller {\color{Mittel-Blau}$\mathrm{dist}$}
+      we insert the element one more time into the
+      {\color{Mittel-Blau}priority queue}\\
+      {\color{gray}(We do nothing if the distance is greater or equal)}
+    \item
+      We do not remove the old entry
+    \item
+      The node always gets solved with the smallest distance because of the
+      priority
+    \item
+      If a node reoccurs with a higher {\color{Mittel-Blau}$\mathrm{dist}$}
+      we remove it and do simply {\color{Mittel-Blau}nothing}
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dijkstra Algorithm}{Implementation - Example}
+  \begin{columns}[T]
+    \begin{column}{0.6\linewidth}
+      \begin{center}
+        \begin{adjustbox}{width=0.9\linewidth}
+          \input{Images/Dijkstra/PriorityQueue.tikz}
+        \end{adjustbox}
+      \end{center}
+    \end{column}
+    \begin{column}{0.4\linewidth}
+      Priority queue:
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dijkstra Algorithm}{Runtime analysis}
+  Graph with {\color{Mittel-Blau}$n$} nodes and {\color{Mittel-Blau}$m$}
+  edges: ({\color{Mittel-Blau}$m \geq n$})
+  \begin{itemize}
+    \item
+      Each node gets solved exactly {\color{Mittel-Blau}one time}
+    \item
+      When solving a node it's outgoing edges are taken into account
+    \item
+      Each edge triggers at maximum one \texttt{insert} operation
+    \item
+      The number of operations on the {\color{Mittel-Blau}priority queue}
+      is at maximum {\color{Mittel-Blau}$O(m)$}
+    \item
+      This results in a runtime of
+      {\color{Mittel-Blau}$O(m \cdot \log m)$}\\
+      {\color{gray}($\log m$ because of at max. $m$ elements in the priority
+        queue)}
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dijkstra Algorithm}{Runtime analysis}
+  Runtime of {\color{Mittel-Blau}$O(m \cdot \log m)$}:
+  \begin{itemize}
+    \item
+      Because of {\color{Mittel-Blau}$m \leq n^2$} we have a maximum runtime of
+      {\color{Mittel-Blau}$O(m \cdot \log n)$}, because
+      {\color{Mittel-Blau}$\log n^2 = 2 \, \log n$}
+    \item
+      With a complex {\color{Mittel-Blau}priotity queue} the runtime can be
+      reduced to {\color{Mittel-Blau}$O(m + n \, \log n)$}
+      \begin{itemize}
+        \item
+          For example with a \textbf{Fibonacci heap}
+        \item
+          This results in a better runtime for complex graphs
+          {\color{Mittel-Blau}$m \sim n^2$}
+        \item
+          Complex heaps create a management overhead
+        \item[$\Rightarrow$]
+          In practice {\color{Mittel-Blau}$m \in O(n)$} with a
+          \textbf{binary heap} being faster\\
+          {\color{gray}(See lecture 6)}
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dijkstra Algorithm}{Additional comments}
+  \textbf{Termination criteria:}
+  \begin{itemize}
+    \item
+      Terminate as soon as the target node {\color{Mittel-Blau}$t$} is settled\\
+      %TODO: Umformulieren:
+      $\ldots$ not before because tentative distance might change:
+      \begin{displaymath}
+        {\color{Mittel-Blau}\mathrm{td}(t) \geq \mathrm{dist}(s, t)}
+      \end{displaymath}
+    \item
+      Before the node {\color{Mittel-Blau}$t$} is solved
+      {\color{Mittel-Blau}all nodes $u$} with
+      {\color{Mittel-Blau}$\mathrm{dist}(s, u) \leq \mathrm{dist}(s, t)$}
+      are settled
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dijkstra Algorithm}{Additional comments}
+  \textbf{Termination criteria:}
+  \begin{itemize}
+    \item
+      Not only the {\color{Mittel-Blau}single source \textbf{single} target}
+      shortest path problem is solved by the Dijkstra algorithm but also the
+      {\color{Mittel-Blau}single source \textbf{all} targets} problem
+    \item
+      This sounds wasteful but there is not a (much) better method for general
+      graphs
+      {\color{gray}Intuitive:} We only know that there is no shorter path if
+      all in the range of {\color{Mittel-Blau}$\mathrm{dist}(s, t)$} around
+      {\color{Mittel-Blau}$s$} is evaluated
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dijkstra Algorithm}{Additional comments}
+  \textbf{Calculate the shortest path:}
+  \begin{itemize}
+    \item
+      With the current implementation of the Dijkstra algorithm we only get
+      the {\color{Mittel-Blau}length} of the path\\
+      {\color{gray}How to get the path too?}
+    \item
+      If we save the preceding node of the current shortest path on
+      {\color{Mittel-Blau}relaxation} of each node we can reconstruct the
+      {\color{Mittel-Blau}path}
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dijkstra Algorithm}
+  \vspace{-1em}
+  \begin{figure}[!h]
+    \begin{adjustbox}{width=\linewidth}
+      \def\DijkstraReverse{1}%
+      \input{Images/Dijkstra/Dijkstra_Algorithm.tikz}
+    \end{adjustbox}
+    \vspace{-2em}
+    \caption{%
+      \only<1>{Start at {\color{Mittel-Blau}$u_1$}}%
+      \only<2>{Iteration 1}%
+      \only<3>{Iteration 2}%
+      \only<4>{Iteration 3}%
+      \only<5>{Iteration 4}%
+      \only<6>{Iteration 5}%
+      \only<7>{Iteration 6}%
+    }
+  \end{figure}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dijkstra Algorithm}{Additional comments}
+  \textbf{Enhancement:}
+  \begin{itemize}
+    \item
+      In our proof we used the assumption that all costs are
+      {\color{Mittel-Blau}not~negative} (even $> 0$)
+    \item
+      With {\color{Mittel-Blau}negative costs} there might be
+      {\color{Mittel-Blau}negative cycles}:
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dijkstra Algorithm}{Runtime analysis}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dijkstra Algorithm}{Runtime analysis}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dijkstra Algorithm}{Runtime analysis}
 \end{frame}

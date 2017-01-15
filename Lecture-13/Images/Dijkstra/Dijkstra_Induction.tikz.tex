@@ -66,37 +66,37 @@
 % Vertex 0
 \draw (-1.0, 0.0) node[
   vertex_settled,
-  label={[vertex_label, shift={(-1em, -0.5em)}]above:$u_0$}
+  label={[vertex_label, shift={(-1em, -0.5em)}]above:$u_1$}
 ] (vert0) {0};
 
 % Vertex 1
 \draw (2.5, 2.5) node[
   vertex_settled,
-  label={[vertex_label, shift={(-1em, -0.5em)}]above:$u_1$}
+  label={[vertex_label, shift={(-1em, -0.5em)}]above:$u_2$}
 ] (vert1) {1};
 
-% Vertex 2 (labels for u4 and u2 are swapped)
+% Vertex 2 (labels for u5 and u3 are swapped)
 \draw (4.0, -2.5) node[
   vertex_active,
-  label={[vertex_label, shift={(-1.5em, 0em)}]above:$u_4$}
+  label={[vertex_label, shift={(-1.5em, 0em)}]above:$u_5$}
 ] (vert2) {6};
 
 % Vertex 3
 \draw (4.0, 0.0) node[
   vertex_active,
-  label={[vertex_label, shift={(-2em, -0.5em)}]$u_3$}
+  label={[vertex_label, shift={(-2em, -0.5em)}]$u_4$}
 ] (vert3) {3};
 
-% Vertex 4 (labels for u4 and u2 are swapped)
+% Vertex 4 (labels for u5 and u3 are swapped)
 \draw (5.5, 2.5) node[
   vertex_settled,
-  label={[vertex_label, shift={(1em, -0.5em)}]$u_2$}
+  label={[vertex_label, shift={(1em, -0.5em)}]$u_3$}
 ] (vert4) {2};
 
 % Vertex 5
 \draw (9.0, 0.0) node[
   vertex_active,
-  label={[vertex_label, shift={(1em, -0.5em)}]$u_5$}
+  label={[vertex_label, shift={(1em, -0.5em)}]$u_6$}
 ] (vert5) {6};
 
 % Edges from vertex 0
@@ -108,14 +108,14 @@
 \draw[edge_arrow] (vert1) to node[edge_cost, above] {3} (vert3);
 \draw[edge_final_highlight] (vert1) to node[edge_cost, above] {1} (vert4);
 
-% Edges from vertex 2 (labels for u4 and u2 are swapped)
+% Edges from vertex 2 (labels for u5 and u3 are swapped)
 \draw[edge_arrow] (vert2) to node[edge_cost, above] {7} (vert5);
 \draw[edge_arrow, bend right=15] (vert2) to node[edge_cost, right] {3} (vert3);
 
 % Edges from vertex 3
 \draw[edge_arrow, bend right=15] (vert3) to node[edge_cost, left] {3} (vert2);
 
-% Edges from vertex 4
+% Edges from vertex 4 (labels for u5 and u3 are swapped)
 \draw[edge_highlight] (vert4) to node[edge_cost, above] {1} (vert3);
 \draw[edge_highlight] (vert4) to node[edge_cost, above] {4} (vert5);
 
