@@ -278,6 +278,27 @@
 
 %-------------------------------------------------------------------------------
 
+\begin{frame}{Linked Lists}{Implementation - Insert}
+  \textbf{Inserting a node after node \texttt{cur} - single line of code:}
+  \onslide<2->
+  \begin{figure}
+    \includegraphics[width=0.5\textwidth]{Images/LinkedList/insert-one-line-pre.pdf}
+  \end{figure}
+  \begin{itemize}
+  \item<3->
+    \lstinline[
+      language=Python,
+      style={python-idle-code}
+    ]|cur.nextNode = Node (value ,cur.nextNode )|
+  \end{itemize}
+  \onslide<4->
+  \begin{figure}
+    \includegraphics[width=0.5\textwidth]{Images/LinkedList/insert-one-line-post.pdf}
+  \end{figure}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
 \begin{frame}{Linked Lists}{Implementation - Remove}
   \textbf{Removing a node \texttt{cur}:}
   \begin{flushleft}
