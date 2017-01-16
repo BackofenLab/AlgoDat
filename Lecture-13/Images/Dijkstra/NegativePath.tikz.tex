@@ -1,0 +1,39 @@
+\begin{tikzpicture}[
+  vertex_base/.style={
+    circle,
+    inner sep=0em,
+    minimum size=1.75em,
+    line width=0.1em,
+    font=\large,
+    solid
+   }, vertex_active/.style={
+    vertex_base,
+    draw=Mittel-Blau,
+    color=Mittel-Blau,
+    fill=orange!50!yellow
+  }, vertex_unreached/.style={
+    vertex_base,
+    draw=Mittel-Blau,
+    color=Mittel-Blau,
+    fill=white
+  }, edge/.style={
+    draw=Mittel-Gruen,
+    line width=0.2em
+  }, edge_arrow/.style={
+    edge,
+    ->
+  }, edge_label/.style={
+    %sloped,
+    midway,
+    color=Mittel-Gruen
+  }
+]%
+% Draw vertices
+\draw (0.0, 0.0) node[vertex_unreached] (v0) {};
+\draw (3.0, -0.5) node[vertex_unreached] (v1) {};
+\draw (1.0, -2.5) node[vertex_unreached] (v2) {};
+
+\draw[edge_arrow] (v0) -- (v1) node[edge_label, above] {5};
+\draw[edge_arrow] (v1) -- (v2) node[edge_label, above, xshift=-0.25em] {-3};
+\draw[edge_arrow] (v2) -- (v0) node[edge_label, above, xshift=0.25em] {2};
+\end{tikzpicture}%

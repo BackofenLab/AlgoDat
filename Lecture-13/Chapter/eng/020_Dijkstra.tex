@@ -784,19 +784,105 @@
       With {\color{Mittel-Blau}negative costs} there might be
       {\color{Mittel-Blau}negative cycles}:
   \end{itemize}
+  \begin{columns}
+    \begin{column}{0.4\linewidth}
+      \begin{figure}[!h]
+        \begin{adjustbox}{width=0.7\linewidth}
+          \input{Images/Dijkstra/NegativePath.tikz}
+        \end{adjustbox}
+        \caption{Here no problem $\ldots$}
+      \end{figure}
+    \end{column}
+    \begin{column}{0.4\linewidth}
+      \begin{figure}[!h]
+        \begin{adjustbox}{width=0.7\linewidth}
+          \def\DijkstraNegativeCycle{0}%
+          \input{Images/Dijkstra/NegativeCycle.tikz}
+        \end{adjustbox}
+        \caption{$\ldots$ but here}
+      \end{figure}
+    \end{column}
+  \end{columns}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Dijkstra Algorithm}{Runtime analysis}
+\begin{frame}{Dijkstra Algorithm}{Additional comments}
+  \textbf{Negative cycles:}
+  \begin{columns}[c]
+    \begin{column}{0.7\linewidth}
+      \begin{adjustbox}{width=\linewidth}
+        \def\DijkstraNegativeCycle{1}%
+        \input{Images/Dijkstra/NegativeCycle.tikz}
+      \end{adjustbox}
+    \end{column}
+    \begin{column}{0.3\linewidth}
+      \begin{itemize}
+        \item
+          No cycle:\\
+          {\color{Mittel-Blau}cost of 1}
+        \item
+          1 cycle:\\
+          {\color{Mittel-Blau}cost of 0}
+        \item
+          2 cycles:\\
+          {\color{Mittel-Blau}cost of -1}
+        \item
+          3 cycles:\\
+          {\color{Mittel-Blau}cost of -2}
+        \item
+          $\cdots$
+      \end{itemize}
+    \end{column}
+  \end{columns}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Dijkstra Algorithm}{Runtime analysis}
+\begin{frame}{Dijkstra Algorithm}{Additional comments}
+  \textbf{Enhancement:}
+  \begin{itemize}
+    \item
+      We need a different algorithm to deal with negative edges
+      \begin{itemize}
+        \item
+          For example the \textbf{Bellman-Ford} algorithm
+        \item
+          If the graph is {\color{Mittel-Blau}acyclic} we can simply use a
+          topological sorting (with DFS) and ralaxing the nodes in order
+          of this sorting
+      \end{itemize}
+    \item
+      Another (not only) in artificial intelligence used variant of the Dijkstra
+      algorithm is the {\color{Mittel-Blau}A* algorithm}\\
+      Additional information given:\\
+      \hspace{1.5em}{\color{Mittel-Blau}$h(u)$}
+      $=$ estimated value for {\color{Mittel-Blau}$\mathrm{dist}(u, t)$}
+  \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Dijkstra Algorithm}{Runtime analysis}
+\begin{frame}{Dijkstra Algorithm}{Example - Negative costs (e-car consumption)}
+  \textbf{Dijkstra algorithm:}\\
+  Message passing only from solved nodes
+  \begin{figure}
+    \begin{adjustbox}{width=0.8\linewidth}
+      \def\DijkstraAlgorithm{1}%
+      \input{Images/Dijkstra/MessagePassing.tikz}
+    \end{adjustbox}
+  \end{figure}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dijkstra Algorithm}{Example - Negative costs (e-car consumption)}
+  \textbf{Bellman-Ford algorithm:}\\
+  Message passing from all nodes until the path lengths are stable
+  \begin{figure}
+    \begin{adjustbox}{width=0.8\linewidth}
+      \def\DijkstraAlgorithm{0}%
+      \input{Images/Dijkstra/MessagePassing.tikz}
+    \end{adjustbox}
+  \end{figure}
 \end{frame}
