@@ -1,0 +1,32 @@
+\begin{tikzpicture}[
+  zoom_line/.style={
+    Mittel-Blau,
+    line width=0.2em
+  },
+  image/.style={
+    inner sep=0
+  }
+]%
+  \node[image, anchor=south west] (small_image) at (0,0) {%
+      \includegraphics[width=\textwidth]%
+        {Images/Dijkstra/Axon.jpg}%
+    };
+  \node[image, anchor=west, xshift=5em] (big_image) at (small_image.east) {%
+      \includegraphics[width=0.8\textwidth]%
+        {Images/Dijkstra/Axon_CloseUp.jpg}%
+    };
+  \begin{scope}[x={(small_image.south east)}, y={(small_image.north west)}]
+    \node (rect) at (0.133, 0.375) [
+      draw,
+      rectangle,
+      minimum size=30,
+      zoom_line
+    ] {};
+    %\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
+    %\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+    %\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+  \end{scope}
+
+  \draw[zoom_line] (rect.north west) to (big_image.north west);
+  \draw[zoom_line] (rect.south west) to (big_image.south west);
+\end{tikzpicture}

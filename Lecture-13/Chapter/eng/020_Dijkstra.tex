@@ -330,11 +330,12 @@
   \vspace{-1em}
   \begin{figure}[!h]
     \begin{adjustbox}{width=\linewidth}
+      \def\DijkstraReverse{0}%
       \input{Images/Dijkstra/Dijkstra_Algorithm.tikz}
     \end{adjustbox}
     \vspace{-2em}
     \caption{%
-      \only<1>{Start at {\color{Mittel-Blau}$u_0$}}%
+      \only<1>{Start at {\color{Mittel-Blau}$u_1$}}%
       \only<2>{Iteration 1}%
       \only<3>{Iteration 2}%
       \only<4>{Iteration 3}%
@@ -348,5 +349,606 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Dijkstra Algorithm}{Proof}
-  %TODO
+  \textbf{Proof:}
+  \begin{itemize}
+    \item
+      \textbf{Assumption 1:}
+      All edges have a positive length
+    \item
+      \textbf{Assumption 2:}
+      Each node has a unique distance
+      {\color{Mittel-Blau}$\mathrm{dist}(s, u)$}\\
+      {\color{gray}(This was not the case on the previous slides)}\\[0.5em]
+      This results in an easy and intuitive proof.\\
+      {\color{gray}
+        It is prossible to show this without assumption 2.
+        See references if interested}
+      \vspace{1.0em}
+    \item
+      With assumption 2 there exists a sorting {\color{Mittel-Blau}$u_1$},
+      {\color{Mittel-Blau}$u_2$}, $\ldots$ with that:
+      \begin{displaymath}
+        {\color{Mittel-Blau}\mathrm{dist}(s, u_1)} <
+        {\color{Mittel-Blau}\mathrm{dist}(s, u_2)} <
+        {\color{Mittel-Blau}\mathrm{dist}(s, u_3)} <
+        \ldots
+      \end{displaymath}
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dijkstra Algorithm}{Proof}
+  \textbf{Proof:}
+  \begin{itemize}
+    \item
+      With \textbf{assumption 2} there exists a sorting {\color{Mittel-Blau}$u_1$},
+      {\color{Mittel-Blau}$u_2$}, $\ldots$ with that:
+      \begin{displaymath}
+        {\color{Mittel-Blau}\mathrm{dist}(s, u_1)} <
+        {\color{Mittel-Blau}\mathrm{dist}(s, u_2)} <
+        {\color{Mittel-Blau}\mathrm{dist}(s, u_3)} <
+        \ldots
+      \end{displaymath}
+    \item
+      We want to show that the \textit{Dijkstra} algorithm finds the shortest
+      path for each node {\color{Mittel-Blau}$u_i$} so that
+      {\color{Mittel-Blau}$\mathrm{td}(u_i) = \mathrm{dist}(s, u_i)$} holds
+    \item
+      Additionally we show that each node gets solved in order of the distance:
+      Node {\color{Mittel-Blau}$u_i$} gets solved in iteration
+      {\color{Mittel-Blau}$i$}
+      \begin{displaymath}
+        {\color{Mittel-Blau}u_1},
+        {\color{Mittel-Blau}u_2},
+        {\color{Mittel-Blau}u_3},
+        \ldots
+      \end{displaymath}
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dijkstra Algorithm}{Proof}
+  \textbf{To show:} Node {\color{Mittel-Blau}$u_i$} gets solved in round
+  {\color{Mittel-Blau}$i$}
+  \begin{enumerate}
+    \item
+      Node {\color{Mittel-Blau}$u_i$} contains the correct distance
+      ({\color{Mittel-Blau}$\mathrm{td}(u_i) = \mathrm{dist}(s, u_i)$})
+      and is active
+    \item
+      Node {\color{Mittel-Blau}$u_i$} has the smallest value for
+      {\color{Mittel-Blau}$\mathrm{td}(u_i)$} and gets selected by the algorithm
+  \end{enumerate}
+  \vspace{1.0em}
+  \textbf{Induction start:}
+  \begin{enumerate}
+    \item
+      \begin{itemize}
+        \item
+          Only the start node {\color{Mittel-Blau}$s = u_1$} is active and
+          {\color{Mittel-Blau}$\mathrm{td}(s) = 0$}
+        \item
+          Node {\color{Mittel-Blau}$u_1$} gets solved and
+          {\color{Mittel-Blau}$\mathrm{td}(u_1) = \mathrm{dist}(s, u_1) = 0$})
+      \end{itemize}
+    \item
+      Only the start node {\color{Mittel-Blau}$u_1$} is active
+  \end{enumerate}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dijkstra Algorithm}{Proof}
+  \textbf{Induction step:} {\color{Mittel-Blau}$i = i+1$}
+  \begin{enumerate}
+    \item
+      \textbf{To show:} Node {\color{Mittel-Blau}$u_i$} contains the correct
+      distance ({\color{Mittel-Blau}$\mathrm{td}(u_i) = \mathrm{dist}(s, u_i)$})
+      and is active
+      \begin{itemize}
+        \item
+          On the shortest path from {\color{Mittel-Blau}$s$} to
+          {\color{Mittel-Blau}$u_{i+1}$} is a preceding node that:
+          \begin{displaymath}
+            \color{Mittel-Blau}\mathrm{dist}(s, u_{i+1})
+            = \mathrm{dist}(s, v) + \mathrm{c}(v, u_{i+1})
+          \end{displaymath}
+          ({\color{Mittel-Blau}$c$} are the costs of the edge)
+          \begin{figure}[!h]
+            \begin{adjustbox}{width=0.9\linewidth}
+              \def\DijkstraTD{0}%
+              \input{Images/Dijkstra/Dijkstra_InductionOrder.tikz}
+            \end{adjustbox}
+          \end{figure}
+        \item
+          With that results
+          {\color{Mittel-Blau}$\mathrm{dist}(s, v) < \mathrm{dist}(s, u_{i+1})$}
+          because {\color{Mittel-Blau}$c > 0$}
+        \item
+          Because {\color{Mittel-Blau}$u_{i+1}$} is currently solved node
+          {\color{Mittel-Blau}$v$} is one of the preceding nodes
+          {\color{Mittel-Blau}$u_1, \dots, u_i$}, hence
+          {\color{Mittel-Blau}$v = u_j$} with
+          {\color{Mittel-Blau}$0 \leq j \leq i$}
+      \end{itemize}
+  \end{enumerate}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dijkstra Algorithm}{Proof - Example of Iteration 6}
+  \begin{figure}[!h]
+    \begin{adjustbox}{width=0.9\linewidth}
+      \input{Images/Dijkstra/Dijkstra_Induction.tikz}
+    \end{adjustbox}
+  \end{figure}
+  \begin{itemize}
+    \item
+      Preceding node of {\color{Mittel-Blau}$u_6$} is
+      {\color{Mittel-Blau}$v = u_3$}
+    \item
+      In round 3
+      \begin{math}
+        {\color{Mittel-Blau}\mathrm{td}(u_6) = }
+        {\color{Hell-Gruen}\;2 + 4\;}
+        {\color{Mittel-Blau} = 6}
+      \end{math}
+      was already solved
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dijkstra Algorithm}{Proof}
+  \begin{figure}[!h]
+    \begin{adjustbox}{width=0.9\linewidth}
+      \def\DijkstraTD{1}%
+      \input{Images/Dijkstra/Dijkstra_InductionOrder.tikz}
+    \end{adjustbox}
+  \end{figure}
+  \begin{enumerate}
+    \item
+      \textbf{To show:} Node {\color{Mittel-Blau}$u_i$} contains the correct
+      distance ({\color{Mittel-Blau}$\mathrm{td}(u_i) = \mathrm{dist}(s, u_i)$})
+      and is active
+      \begin{itemize}
+        \item
+          With \textbf{induction assumption}:
+          {\color{Mittel-Blau}$v$} already contains the correct distance which
+          was evaluated in round {\color{Mittel-Blau}$j$}\\
+          (edge from {\color{Mittel-Blau}$v$} to {\color{Mittel-Blau}$u_{i+1}$})
+          and is stored in {\color{Mittel-Blau}$\mathrm{td}(u_{i+1})$}
+        \item
+          {\color{Mittel-Blau}$u_{i+1}$} is active because the preceding node
+          was solved
+      \end{itemize}
+  \end{enumerate}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dijkstra Algorithm}{Proof}
+  \begin{figure}[!h]
+    \begin{adjustbox}{width=0.9\linewidth}
+      \def\DijkstraTD{1}%
+      \input{Images/Dijkstra/Dijkstra_InductionOrder.tikz}
+    \end{adjustbox}
+  \end{figure}
+  \begin{enumerate}
+    \setcounter{enumi}{1}
+    \item
+      \textbf{To show:} Node {\color{Mittel-Blau}$u_i$} has the smallest
+      value for {\color{Mittel-Blau}$\mathrm{td}(u_i)$} and gets selected by
+      the algorithm
+      \begin{itemize}
+        \item
+          All nodes with smaller {\color{Mittel-Blau}$\mathrm{dist}$} are
+          already solved
+        \item
+          All other nodes {\color{Mittel-Blau}$u_k$} with
+          {\color{Mittel-Blau}$k > i + 1$} have a greater
+          {\color{Mittel-Blau}$\mathrm{dist}(s, u_k)$}
+          an with that the  {\color{Mittel-Blau}$\mathrm{td}(u_k)$} is greater
+          or equal
+        \item[$\Rightarrow$]
+          {\color{Mittel-Blau}$u_{i+1}$} is the node with the
+          smallest {\color{Mittel-Blau}$\mathrm{td}$} and gets selected by the
+          algorithm
+      \end{itemize}
+  \end{enumerate}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dijkstra Algorithm}{Implementation}
+  \textbf{Implementation:}
+  \begin{itemize}
+    \item
+      We have to manage a set of {\color{Mittel-Blau}active nodes}
+    \item
+      We start with only the {\color{Mittel-Blau}start node} in our set
+    \item
+      At the start of each iteration we need the node
+      {\color{Mittel-Blau}$u$} with the smallest
+      {\color{Mittel-Blau}$\mathrm{td}(u)$}\\[0.5em]
+      {\color{gray}How to implement this?}
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dijkstra Algorithm}{Implementation}
+  \textbf{Implementation:}
+  \begin{itemize}
+    \item
+      Using a {\color{Mittel-Blau}priority queue} with
+      {\color{Mittel-Blau}$\mathrm{td}(u)$} as keys
+    \item
+      The following problem occurs:
+      \begin{itemize}
+        \item
+          The {\color{Mittel-Blau}tentative distance} of an active node might
+          change multiple times before it is settled
+        \item
+          We have to change the key in our {\color{Mittel-Blau}priority queue}
+          without removing the entry
+      \end{itemize}
+  \end{itemize}
+  \vspace{1em}
+  \textbf{Limitations:}
+  \begin{itemize}
+    \item
+    Often only \texttt{insert}, \texttt{getMin} and \texttt{deleteMin}
+    are implemented
+    \item[$\Rightarrow$]
+    We only have access to the first element and not any desired one
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dijkstra Algorithm}{Implementation}
+  \textbf{Alternative:}
+  \begin{itemize}
+    \item
+      If a node reoccurs with a smaller {\color{Mittel-Blau}$\mathrm{dist}$}
+      we insert the element one more time into the
+      {\color{Mittel-Blau}priority queue}\\
+      {\color{gray}(We do nothing if the distance is greater or equal)}
+    \item
+      We do not remove the old entry
+    \item
+      The node always gets solved with the smallest distance because of the
+      priority
+    \item
+      If a node reoccurs with a higher {\color{Mittel-Blau}$\mathrm{dist}$}
+      we remove it and do simply {\color{Mittel-Blau}nothing}
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dijkstra Algorithm}{Implementation - Example}
+  \begin{columns}[T]
+    \begin{column}{0.6\linewidth}
+      \begin{center}
+        \begin{adjustbox}{width=0.9\linewidth}
+          \input{Images/Dijkstra/PriorityQueue.tikz}
+        \end{adjustbox}
+      \end{center}
+    \end{column}
+    \begin{column}{0.4\linewidth}
+      Priority queue:
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dijkstra Algorithm}{Runtime analysis}
+  Graph with {\color{Mittel-Blau}$n$} nodes and {\color{Mittel-Blau}$m$}
+  edges: ({\color{Mittel-Blau}$m \geq n$})
+  \begin{itemize}
+    \item
+      Each node gets solved exactly {\color{Mittel-Blau}one time}
+    \item
+      When solving a node it's outgoing edges are taken into account
+    \item
+      Each edge triggers at maximum one \texttt{insert} operation
+    \item
+      The number of operations on the {\color{Mittel-Blau}priority queue}
+      is at maximum {\color{Mittel-Blau}$O(m)$}
+    \item
+      This results in a runtime of
+      {\color{Mittel-Blau}$O(m \cdot \log m)$}\\
+      {\color{gray}($\log m$ because of at max. $m$ elements in the priority
+        queue)}
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dijkstra Algorithm}{Runtime analysis}
+  Runtime of {\color{Mittel-Blau}$O(m \cdot \log m)$}:
+  \begin{itemize}
+    \item
+      Because of {\color{Mittel-Blau}$m \leq n^2$} we have a maximum runtime of
+      {\color{Mittel-Blau}$O(m \cdot \log n)$}, because
+      {\color{Mittel-Blau}$\log n^2 = 2 \, \log n$}
+    \item
+      With a complex {\color{Mittel-Blau}priotity queue} the runtime can be
+      reduced to {\color{Mittel-Blau}$O(m + n \, \log n)$}
+      \begin{itemize}
+        \item
+          For example with a \textbf{Fibonacci heap}
+        \item
+          This results in a better runtime for complex graphs
+          {\color{Mittel-Blau}$m \sim n^2$}
+        \item
+          Complex heaps create a management overhead
+        \item[$\Rightarrow$]
+          In practice {\color{Mittel-Blau}$m \in O(n)$} with a
+          \textbf{binary heap} being faster\\
+          {\color{gray}(See lecture 6)}
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dijkstra Algorithm}{Additional comments}
+  \textbf{Termination criteria:}
+  \begin{itemize}
+    \item
+      Terminate as soon as the target node {\color{Mittel-Blau}$t$} is settled\\
+      $\ldots$ never before because tentative distance might change:
+      \begin{displaymath}
+        {\color{Mittel-Blau}\mathrm{td}(t) \geq \mathrm{dist}(s, t)}
+      \end{displaymath}
+    \item
+      Before the node {\color{Mittel-Blau}$t$} is solved
+      {\color{Mittel-Blau}all nodes $u$} with
+      {\color{Mittel-Blau}$\mathrm{dist}(s, u) \leq \mathrm{dist}(s, t)$}
+      are settled
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dijkstra Algorithm}{Additional comments}
+  \textbf{Termination criteria:}
+  \begin{itemize}
+    \item
+      Not only the {\color{Mittel-Blau}single source \textbf{single} target}
+      shortest path problem is solved by the Dijkstra algorithm but also the
+      {\color{Mittel-Blau}single source \textbf{all} targets} problem
+    \item
+      This sounds wasteful but there is not a (much) better method for general
+      graphs
+      {\color{gray}Intuitive:} We only know that there is no shorter path if
+      all in the range of {\color{Mittel-Blau}$\mathrm{dist}(s, t)$} around
+      {\color{Mittel-Blau}$s$} is evaluated
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dijkstra Algorithm}{Additional comments}
+  \textbf{Calculate the shortest path:}
+  \begin{itemize}
+    \item
+      With the current implementation of the Dijkstra algorithm we only get
+      the {\color{Mittel-Blau}length} of the path\\
+      {\color{gray}How to get the path too?}
+    \item
+      If we save the preceding node of the current shortest path on
+      {\color{Mittel-Blau}relaxation} of each node we can reconstruct the
+      {\color{Mittel-Blau}path}
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dijkstra Algorithm}
+  \vspace{-1em}
+  \begin{figure}[!h]
+    \begin{adjustbox}{width=\linewidth}
+      \def\DijkstraReverse{1}%
+      \input{Images/Dijkstra/Dijkstra_Algorithm.tikz}
+    \end{adjustbox}
+    \vspace{-2em}
+    \caption{%
+      \only<1>{Start at {\color{Mittel-Blau}$u_1$}}%
+      \only<2>{Iteration 1}%
+      \only<3>{Iteration 2}%
+      \only<4>{Iteration 3}%
+      \only<5>{Iteration 4}%
+      \only<6>{Iteration 5}%
+      \only<7>{Iteration 6}%
+    }
+  \end{figure}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dijkstra Algorithm}{Additional comments}
+  \textbf{Enhancement:}
+  \begin{itemize}
+    \item
+      In our proof we used the assumption that all costs are
+      {\color{Mittel-Blau}not~negative} (even $> 0$)
+    \item
+      With {\color{Mittel-Blau}negative costs} there might be
+      {\color{Mittel-Blau}negative cycles}:
+  \end{itemize}
+  \begin{columns}
+    \begin{column}{0.4\linewidth}
+      \begin{figure}[!h]
+        \begin{adjustbox}{width=0.7\linewidth}
+          \input{Images/Dijkstra/NegativePath.tikz}
+        \end{adjustbox}
+        \caption{Here no problem $\ldots$}
+      \end{figure}
+    \end{column}
+    \begin{column}{0.4\linewidth}
+      \begin{figure}[!h]
+        \begin{adjustbox}{width=0.7\linewidth}
+          \def\DijkstraNegativeCycle{0}%
+          \input{Images/Dijkstra/NegativeCycle.tikz}
+        \end{adjustbox}
+        \caption{$\ldots$ but here}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dijkstra Algorithm}{Additional comments}
+  \textbf{Negative cycles:}
+  \begin{columns}[c]
+    \begin{column}{0.7\linewidth}
+      \begin{adjustbox}{width=\linewidth}
+        \def\DijkstraNegativeCycle{1}%
+        \input{Images/Dijkstra/NegativeCycle.tikz}
+      \end{adjustbox}
+    \end{column}
+    \begin{column}{0.3\linewidth}
+      \begin{itemize}
+        \item
+          No cycle:\\
+          {\color{Mittel-Blau}cost of 1}
+        \item
+          1 cycle:\\
+          {\color{Mittel-Blau}cost of 0}
+        \item
+          2 cycles:\\
+          {\color{Mittel-Blau}cost of -1}
+        \item
+          3 cycles:\\
+          {\color{Mittel-Blau}cost of -2}
+        \item
+          $\cdots$
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dijkstra Algorithm}{Additional comments}
+  \textbf{Enhancement:}
+  \begin{itemize}
+    \item
+      We need a different algorithm to deal with negative edges
+      \begin{itemize}
+        \item
+          For example the \textbf{Bellman-Ford} algorithm
+        \item
+          If the graph is {\color{Mittel-Blau}acyclic} we can simply use a
+          topological sorting (with DFS) and ralaxing the nodes in order
+          of this sorting
+      \end{itemize}
+    \item
+      Another (not only) in artificial intelligence used variant of the Dijkstra
+      algorithm is the {\color{Mittel-Blau}A* algorithm}\\
+      Additional information given:\\
+      \hspace{1.5em}{\color{Mittel-Blau}$h(u)$}
+      $=$ estimated value for {\color{Mittel-Blau}$\mathrm{dist}(u, t)$}
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dijkstra Algorithm}{Example - Negative costs (e-car consumption)}
+  \textbf{Dijkstra algorithm:}\\
+  Message passing only from solved nodes
+  \begin{figure}
+    \begin{adjustbox}{width=0.8\linewidth}
+      \def\DijkstraAlgorithm{1}%
+      \input{Images/Dijkstra/MessagePassing.tikz}
+    \end{adjustbox}
+  \end{figure}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dijkstra Algorithm}{Example - Negative costs (e-car consumption)}
+  \textbf{Bellman-Ford algorithm:}\\
+  Message passing from all nodes until the path lengths are stable
+  \begin{figure}
+    \begin{adjustbox}{width=0.8\linewidth}
+      \def\DijkstraAlgorithm{0}%
+      \input{Images/Dijkstra/MessagePassing.tikz}
+    \end{adjustbox}
+  \end{figure}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dijkstra Algorithm}{Application}
+  \textbf{Application example:}
+  \begin{itemize}
+    \item
+      Route planner for car trips (exercise sheet)
+    \item
+      Route planner for bus / train connections\\
+      {\color{gray}What could the graph look like?}
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dijkstra Algorithm}{Application}
+  \textbf{Space-time graph:}
+  \begin{adjustbox}{width=1.1\linewidth}
+    \input{Images/Dijkstra/ApplicationExample.tikz}
+  \end{adjustbox}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dijkstra Algorithm}{Application in image processing}
+  \begin{columns}[T]%
+    \begin{column}{\linewidth-6em}%
+      \vspace{-1em}
+      \begin{figure}[!h]%
+        \includegraphics[width=0.7\linewidth]%
+          {Images/Dijkstra/Axon.jpg}%
+        \caption{Neurons under fluorescence microscope}%
+      \end{figure}%
+    \end{column}%
+    \begin{column}{6em}%
+      \qrcode[height=6em]%
+        {http://www.imagescience.org/meijering/software/neuronj/}%
+    \end{column}%
+  \end{columns}%
+  \begin{itemize}
+    \item
+      \textbf{Task:}
+      Measure length of axons (connections of neurons)
+    \item
+      Demo with ImageJ plugin NeuronJ\\
+      \url{http://www.imagescience.org/meijering/software/neuronj/}
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dijkstra Algorithm}{Application: Trace axons}
+  \begin{adjustbox}{width=0.9\linewidth}
+    \input{Images/Dijkstra/Axon_CloseUp.tikz}
+  \end{adjustbox}
+  \begin{itemize}
+    \item
+      Image as graph: Each pixel is a node
+    \item
+      Implicit edges: Each pixel has an edge to it's 8 neighbours
+      {\color{gray}(no need to save the edges)}
+    \item
+      Costs for nodes (not edges): bright pixels are cheap,\\
+      dark pixels are costly
+  \end{itemize}
 \end{frame}
