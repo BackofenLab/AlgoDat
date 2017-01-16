@@ -1,4 +1,4 @@
-	public long size() {
+        public int size() {
 		return itemCount;
 	}
 
@@ -6,10 +6,10 @@
 		return (itemCount == 0);
 	}
 
-	public void append(T @{\color{java_variable}value}@) { ... }
-	public void insertAfter(Node @{\color{java_variable}cur}@, T @{\color{java_variable}value}@)
+public void add (int data) { ... }
+	public void insertAfter(Node cur, int data)
 		{ ... }
-	public void remove(Node @{\color{java_variable}cur}@) { ... }
-	public Node get(long @{\color{java_variable}position}@) { ... }
-	public boolean contains(T @{\color{java_variable}value}@) { ... }
+	public void remove(Node cur) { ... }
+	public Node get(int position) { ... }
+	public boolean contains( int data) { ... }
 }
