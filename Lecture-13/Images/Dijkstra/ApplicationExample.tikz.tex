@@ -1,0 +1,49 @@
+\begin{tikzpicture}[
+  vertex/.style={
+    draw,
+    rectangle,
+    color=Mittel-Blau,
+    fill=white,
+    line width=0.1em,
+    font=\large
+  }, edge/.style={
+    draw=Mittel-Gruen,
+    line width=0.2em
+  }, edge_arrow/.style={
+    edge,
+    ->
+  }, label/.style={
+    font=\Large,
+    color=Mittel-Gruen
+  }, edge_label/.style={
+    label,
+    midway
+  }
+]%
+% Vertices
+\node[vertex] (v0) at (0, 0) {Freiburg, 11:57 am};
+\node[vertex] (v1) at (10, 0) {Karlsruhe, 12:58 pm};
+\node[vertex] (v2) at (10, 2) {Karlsruhe, 1:33 pm};
+\node[vertex] (v3) at (0, 3) {Freiburg, 12:57 pm};
+\node[vertex] (v4) at (5, 3) {Offenburg, 1:28 pm};
+\node[vertex] (v5) at (5, 5) {Offenburg, 1:28 pm};
+\node[vertex] (v6) at (11, 5) {Strasbourg, 2:04 pm};
+\node[vertex] (v7) at (11, 7) {Strasbourg, 2:16 pm};
+\node[vertex] (v8) at (16, 7) {Paris, 4:35 pm};
+
+% Edges
+\draw[edge_arrow] (v0) -- (v1) node[edge_label, above] {61};
+\draw[edge_arrow] (v0) -- (v3) node[edge_label, right] {60};
+\draw[edge_arrow] (v1) -- (v2) node[edge_label, right] {35};
+
+\draw[edge_arrow, in=180, out=0]
+  plot [smooth, tension=1.25]
+  coordinates {(v2.east) (12, 3.5) (7.5, 4.5) (v7.west)};
+\node[label] at (10, 3.5) {31};
+
+\draw[edge_arrow] (v3) -- (v4) node[edge_label, above] {31};
+\draw[edge_arrow] (v4) -- (v5) node[edge_label, right] {6};
+\draw[edge_arrow] (v5) -- (v6) node[edge_label, above, xshift=1em] {30};
+\draw[edge_arrow] (v6) -- (v7) node[edge_label, right] {12};
+\draw[edge_arrow] (v7) -- (v8) node[edge_label, above] {139};
+\end{tikzpicture}%

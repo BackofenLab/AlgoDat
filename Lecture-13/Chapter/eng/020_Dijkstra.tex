@@ -886,3 +886,70 @@
     \end{adjustbox}
   \end{figure}
 \end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dijkstra Algorithm}{Application}
+  \textbf{Application example:}
+  \begin{itemize}
+    \item
+      Route planner for car trips (exercise sheet)
+    \item
+      Route planner for bus / train connections\\
+      {\color{gray}What could the graph look like?}
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dijkstra Algorithm}{Application}
+  \textbf{Space-time graph:}
+  \begin{adjustbox}{width=1.1\linewidth}
+    \input{Images/Dijkstra/ApplicationExample.tikz}
+  \end{adjustbox}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dijkstra Algorithm}{Application in image processing}
+  \begin{columns}[T]%
+    \begin{column}{\linewidth-6em}%
+      \vspace{-1em}
+      \begin{figure}[!h]%
+        \includegraphics[width=0.7\linewidth]%
+          {Images/Dijkstra/Axon.jpg}%
+        \caption{Neurons under fluorescence microscope}%
+      \end{figure}%
+    \end{column}%
+    \begin{column}{6em}%
+      \qrcode[height=6em]%
+        {http://www.imagescience.org/meijering/software/neuronj/}%
+    \end{column}%
+  \end{columns}%
+  \begin{itemize}
+    \item
+      \textbf{Task:}
+      Measure length of axons (connections of neurons)
+    \item
+      Demo with ImageJ plugin NeuronJ\\
+      \url{http://www.imagescience.org/meijering/software/neuronj/}
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dijkstra Algorithm}{Application: Trace axons}
+  \begin{adjustbox}{width=0.9\linewidth}
+    \input{Images/Dijkstra/Axon_CloseUp.tikz}
+  \end{adjustbox}
+  \begin{itemize}
+    \item
+      Image as graph: Each pixel is a node
+    \item
+      Implicit edges: Each pixel has an edge to it's 8 neighbours
+      {\color{gray}(no need to save the edges)}
+    \item
+      Costs for nodes (not edges): bright pixels are cheap,\\
+      dark pixels are costly
+  \end{itemize}
+\end{frame}
