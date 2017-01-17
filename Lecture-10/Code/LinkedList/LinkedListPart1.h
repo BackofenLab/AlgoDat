@@ -1,13 +1,15 @@
-template<typename T>
 class LinkedList {
+ struct Node {
+        int x;
+        Node *next;
+ };
+
  private:
-  uint64_t _itemCount;
-  Node<T>* _head;
-  Node<T>* _last;
+  int _itemCount;
+  Node _head;
+  Node _last;
  
  public:
   LinkedList();
-  ~LinkedList();
-  
-  uint64_t size() const;
+  int size() const;
   bool isEmpty() const;

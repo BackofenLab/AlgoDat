@@ -1,0 +1,143 @@
+\section{Sorted Sequences}
+
+\begin{frame}{Sorted Sequences}{Introduction}
+  \textbf{Structure:}
+  \begin{itemize}
+    \item<2->
+      We have a set of {\color{Mittel-Blau}keys} mapped to
+      {\color{Mittel-Blau}values}
+    \item<3->
+      We have a ordering {\color{Mittel-Blau}<} applied to the keys
+    \item<4->
+      We need the following operations:
+      \begin{itemize}
+      \item<5->{\color{Mittel-Blau}\texttt{insert(key, value)}}: Insert the given pair
+      \item<6->{\color{Mittel-Blau}\texttt{remove(key)}}: Remove the pair with the given {\color{Mittel-Blau}key}
+      \item<7->{\color{Mittel-Blau}\texttt{lookup(key)}}:  Find the element with the given {\color{Mittel-Blau}key},
+        if it is not available find the element with the smallest key  {\color{Mittel-Blau}>key}
+      \item<8->{\color{Mittel-Blau}\texttt{next()/previous()}}: Returns the element with the next bigger/smaller {\color{Mittel-Blau}key}. This enables iteration over all elements.    
+      \end{itemize}  
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Sorted Sequences}{Introduction}
+  \textbf{Application examples:}
+  \begin{itemize}
+    \item<2->
+      Example: Database for books, products or apartments
+    \item<3->
+      Large number of records (data sets / tuples)
+    \item<4->
+      Typical query: Return all apartments with a monthly rent between
+      400\euro\, and 600\euro
+      \begin{itemize}
+        \item<5->
+          This is called a {\color{Mittel-Blau}range query}
+        \item<6->
+          We can implement this with a combination of
+          {\color{Mittel-Blau}\texttt{lookup(key)}} and
+          {\color{Mittel-Blau}\texttt{next()}}
+        \item<7->
+          It's not essential if an apartments exists with \textbf{exactly}
+          400\euro\, monthly rent
+      \end{itemize}
+    \item<8->
+      We do not want to sort all elements every time on an 
+      {\color{Mittel-Blau}insert} operation
+     \item<9->
+      How could we implement this?
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Sorted Sequences}{Implementation 1 (not good) - Static Array}
+  \textbf{Static array:}
+    \begin{figure}[!b]
+    \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|}
+      \hline
+      3 & 5 & 9 & 14 & 18 & 21 & 26 & 40 & 41 & 42 & 43 & 46\\
+      \hline
+    \end{tabular}
+    \label{fig:sorted_collections:impl_static_array}
+  \end{figure}
+  \begin{itemize}
+    \item<2->
+      {\color{Mittel-Blau}\texttt{lookup}} in time \texttt{$O(\log n)$}
+      \begin{itemize}
+        \item<3-> with \textbf{binary search}
+        \item<4->
+          Example: {\color{Mittel-Blau}\texttt{lookup(41)}}
+      \end{itemize}
+    \item<5->
+      {\color{Mittel-Blau}\texttt{next}} /
+      {\color{Mittel-Blau}\texttt{previous}} in time $O(1)$
+      \begin{itemize}
+        \item<6-> They are next to each other
+      \end{itemize}
+    \item<7->
+      {\color{Mittel-Blau}\texttt{insert}} and
+      {\color{Mittel-Blau}\texttt{remove}} up to $\Theta(n)$\\
+      \begin{itemize}
+        \item<8-> We have to copy up to $n$ elements
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Sorted Sequences}{Implementation 2 (bad) - Hash Table}
+  \textbf{Hash map:}
+  \begin{itemize}
+    \item<2->
+      {\color{Mittel-Blau}\texttt{insert}} and
+      {\color{Mittel-Blau}\texttt{remove}} in $O(1)$\\
+      \begin{itemize}
+        \item<3-> If the hash table is big enough and we use a good hash function
+      \end{itemize}  
+    \item<4->
+      {\color{Mittel-Blau}\texttt{lookup}} in time $O(1)$ 
+      \begin{itemize}
+        \item<5-> if element with \textbf{exactly}
+      this key exists, otherwise we get {\color{Mittel-Blau}None} as result
+      \end{itemize}    
+    \item<5->
+      {\color{Mittel-Blau}\texttt{next}} /
+      {\color{Mittel-Blau}\texttt{previous}} in time up to $\Theta(n)$\\
+       \begin{itemize}
+        \item<6->
+          The order of the elements is independent of the order of the keys
+       \end{itemize}     
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Sorted Sequences}{Implementation 3 (good?) - Linked List}
+  \textbf{Linked list:}
+  \begin{itemize}
+  \item<2-> Runtimes for doubly linked lists:
+    \begin{itemize}
+    \item<3->
+      {\color{Mittel-Blau}\texttt{next}} /
+      {\color{Mittel-Blau}\texttt{previous}} in time $O(1)$\\
+      %The elements are linked like a chain
+    \item<4->
+      {\color{Mittel-Blau}\texttt{insert}} and
+      {\color{Mittel-Blau}\texttt{remove}} in $O(1)$
+    \item<5->
+      {\color{Mittel-Blau}\texttt{lookup}} in time $\Theta(n)$\\
+      %We have to iterate over the elements in the list
+    \end{itemize}
+  \item<6-> Not yet what we want, but structure is related
+    to binary search trees
+  \item<7->Lets have a closer look
+  \end{itemize}
+  %% \begin{figure}
+  %%   \input{Images/LinkedList/DoublyLinkedListAsCollection.tikz}
+  %%   \caption{Doubly linked list}
+  %%   \label{fig:sorted_collections:impl_linked_list}
+  %% \end{figure}
+\end{frame}

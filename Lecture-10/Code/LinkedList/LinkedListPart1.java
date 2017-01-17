@@ -1,9 +1,7 @@
 /**
- * A singly linked list with data type T.
- *
- * @param <T> Data type
+ * A singly linked list with data type int.
  */
-public class LinkedList<T> {
+public class LinkedList {
 
 	private long itemCount;
 	private Node head;
