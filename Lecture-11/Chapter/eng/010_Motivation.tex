@@ -5,18 +5,22 @@
 \begin{frame}{Balanced Trees}{Motivation}
   \textbf{Binary search tree:}
   \begin{itemize}
-    \item
-      With \texttt{\color{Mittel-Blau}BinarySearchTree} we could perform an
-      \texttt{\color{Mittel-Blau}lookup} or
-      \texttt{\color{Mittel-Blau}insert} in $\mathcal{O}(d)$, with $d$ being
-      the {\color{Mittel-Blau}depth} of the tree
-    \item
-      {\color{Mittel-Blau}Best case}:
-      $d = \mathcal{O}(\log n)$ if the keys are inserted randomly
-    \item
-      {\color{Mittel-Blau}Worst case}:
-      $d = \mathcal{O}(n)$ if the keys are inserted in ascending / descending
+  \item<2->
+    With \texttt{\color{Mittel-Blau}BinarySearchTree} we could perform an
+    \texttt{\color{Mittel-Blau}lookup} or
+    \texttt{\color{Mittel-Blau}insert} in $O(d)$, with $d$ being
+    the {\color{Mittel-Blau}depth} of the tree
+  \item<3->
+    {\color{Mittel-Blau}Best case}: $d = O(\log n)$
+    \begin{itemize}
+    \item<4-> If the keys are inserted randomly
+    \end{itemize}   
+  \item<5->
+    {\color{Mittel-Blau}Worst case}: $d = O(n)$
+    \begin{itemize}
+    \item<6->if the keys are inserted in ascending / descending
       order $(20, 19, 18, \dotsc)$
+    \end{itemize}  
   \end{itemize}
 \end{frame}
 
@@ -25,6 +29,9 @@
 \begin{frame}{Balanced Trees}{Motivation}
   \textbf{Gnarley trees:}\hfill
   \qrcode[height=5em]{\GnarleyTreesLink}\\
+    \begin{itemize}
+    \item http://people.ksp.sk/~kuko/bak
+    \end{itemize}  
   \vspace{-1.0em}
   \begin{columns}
     \begin{column}[t]{0.5\linewidth}
@@ -42,6 +49,7 @@
       \end{figure}
     \end{column}
   \end{columns}
+ 
 \end{frame}
 
 %-------------------------------------------------------------------------------
@@ -49,11 +57,11 @@
 \begin{frame}{Balanced Trees}{Motivation}
   \textbf{Balanced trees:}
   \begin{itemize}
-    \item
-      We do not make assumptions about our {\color{Mittel-Blau}key set}
-    \item
-      We want explicitly a depth of ${\color{Mittel-Blau}\mathcal{O}(\log n)}$
-    \item
+    \item<2->
+      We do not want to rely on certain properties of our {\color{Mittel-Blau}key set}
+    \item<3->
+      We explicitly want a depth of ${\color{Mittel-Blau}O(\log n)}$
+    \item<4->
       We {\color{Mittel-Blau}rebalance} the tree from time to time
   \end{itemize}
 \end{frame}
@@ -61,40 +69,40 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Balanced Trees}{Motivation}
-  \textbf{How do we get a depth of $\mathcal{O}(\log n)$?}
+  \textbf{How do we get a depth of $O(\log n)$?}
   \begin{itemize}
-    \item
+    \item<2->
       \textbf{AVL-Tree:}
       \begin{itemize}
-        \item
+        \item<3->
           Binary tree with 2 children per node
-        \item
-          Balancing through \enquote{\color{Mittel-Blau}rotation}
+        \item<4->
+          Balancing via \enquote{\color{Mittel-Blau}rotation}
       \end{itemize}
-    \item
+    \item<5->
       \textbf{(a,b)-Tree} or \textbf{B-Tree:}
       \begin{itemize}
-        \item
-          Each node has between ${\color{Mittel-Blau}a}$ and
+        \item<6->
+          Node have between ${\color{Mittel-Blau}a}$ and
           ${\color{Mittel-Blau}b}$ children
-        \item
-          Special case: the root node
-        \item
+        \item<7->
           Balancing through {\color{Mittel-Blau}splitting} and
           {\color{Mittel-Blau}merging} nodes
-        \item
+        \item<8->
           Used in data bases and file systems
       \end{itemize}
-    \item
+    \item<9->
       \textbf{Red-Black-Tree:}
       \begin{itemize}
-        \item
+        \item<10->
           Binary tree with \enquote{black} and \enquote{red} nodes
-        \item
+        \item<11->
           Balancing through \enquote{\color{Mittel-Blau}rotation} and
           \enquote{\color{Mittel-Blau}recoloring}
-        \item
+        \item<12->
           Can be interpreted as (2, 4)-tree
+        \item<13->
+          Used in C++ std::map, Java SortedMap
       \end{itemize}
   \end{itemize}
 \end{frame}
