@@ -3,20 +3,22 @@
 \begin{frame}{Balanced Trees}{AVL-Tree}
   \textbf{AVL-Tree:}
   \begin{itemize}
-    \item
+    \item<2->
+      Gregory Maximovich \textbf{A}delson-\textbf{V}elskii, Yevgeniy Mikhailovlovich \textbf{L}andis (1963)
+    \item<3->
       Search tree with modified \texttt{\color{Mittel-Blau}insert} and
-      \texttt{\color{Mittel-Blau}remove} operations optimize the
-      {\color{Mittel-Blau}depth} of the tree
-    \item
+      \texttt{\color{Mittel-Blau}remove} operations while satisfying
+      a {\color{Mittel-Blau}depth} condition
+    \item<4->
       Prevents degeneration of the search tree
-    \item
+    \item<5->
       Height difference of left and right subtree is at maximum one
-    \item
+    \item<6->
       With that the height of the search tree is always
-      ${\color{Mittel-Blau}\mathcal{O}(\log n)}$
-    \item
+      ${\color{Mittel-Blau}O(\log n)}$
+    \item<7->
       We can perform all basic operations in
-      ${\color{Mittel-Blau}\mathcal{O}(\log n)}$
+      ${\color{Mittel-Blau}O(\log n)}$
   \end{itemize}
 \end{frame}
 
@@ -61,15 +63,15 @@
 \begin{frame}{Balanced Trees}{AVL-Tree - Rebalancing}
   \textbf{Rotation:}
   \begin{itemize}
-    \item
+    \item<2->
       Central operation of {\color{Mittel-Blau}rebalancing}
-    \item
+    \item<3->
       After rotation:
       \begin{itemize}
-        \item
+        \item<4->
           Subtree {\color{Mittel-Blau}$A$} is a layer higher and subtree
           {\color{Mittel-Blau}$C$} a layer lower
-        \item
+        \item<5->
           The parent child ralation between nodes {\color{Mittel-Blau}$x$} and
           {\color{Mittel-Blau}$y$} have been swapped
       \end{itemize}
@@ -109,16 +111,17 @@
 \begin{frame}{Balanced Trees}{AVL-Tree - Rebalancing}
   \textbf{AVL-Tree:}
   \begin{itemize}
-    \item
+    \item<2->
       If a height difference of $\pm 2$ occurs on an
       \texttt{\color{Mittel-Blau}insert} or
       \texttt{\color{Mittel-Blau}remove} operation the tree is rebalanced
-    \item
+    \item<3->
       Many different cases of rebalancing
-    \item
+    \item<4->
       \textbf{Example:}
       \texttt{\color{Mittel-Blau}insert} of $1,2,3,\dotsc$
   \end{itemize}
+  \onslide<5->
   \begin{figure}
     \includegraphics[width=0.5\linewidth]
       {Images/AVL-Tree/AVL-Tree_Insert1To10.png}
@@ -132,17 +135,17 @@
 \begin{frame}{Balanced Trees}{AVL-Tree - Summary}
   \textbf{Summary:}
   \begin{itemize}
-    \item
+    \item<2->
       Historical the first search tree providing guaranteed
       \texttt{\color{Mittel-Blau}insert}, \texttt{\color{Mittel-Blau}remove}
       and \texttt{\color{Mittel-Blau}lookup} in
-      ${\color{Mittel-Blau}\mathcal{O}(\log n)}$
-    \item
-      Not amortized update costs of $\mathcal{O}(1)$
-    \item
+      ${\color{Mittel-Blau}O(\log n)}$
+    \item<3->
+      Not amortized update costs of {\color{Mittel-Blau}$O(1)$}
+    \item<4->
       Additional memory costs:
       We have to save a height difference for every node
-    \item
+    \item<5->
       Better (and easier) to implement are {\color{Mittel-Blau}(a,b)}-trees
   \end{itemize}
 \end{frame}

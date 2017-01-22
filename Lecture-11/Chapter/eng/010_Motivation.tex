@@ -8,18 +8,18 @@
   \item<2->
     With \texttt{\color{Mittel-Blau}BinarySearchTree} we could perform an
     \texttt{\color{Mittel-Blau}lookup} or
-    \texttt{\color{Mittel-Blau}insert} in $O(d)$, with $d$ being
+    \texttt{\color{Mittel-Blau}insert} in {\color{Mittel-Blau}$O(d)$}, with {\color{Mittel-Blau}$d$} being
     the {\color{Mittel-Blau}depth} of the tree
   \item<3->
-    {\color{Mittel-Blau}Best case}: $d = O(\log n)$
+    Best case: {\color{Mittel-Blau}$d = O(\log n)$}
     \begin{itemize}
     \item<4-> If the keys are inserted randomly
     \end{itemize}   
   \item<5->
-    {\color{Mittel-Blau}Worst case}: $d = O(n)$
+    Worst case: {\color{Mittel-Blau}$d = O(n)$}
     \begin{itemize}
     \item<6->if the keys are inserted in ascending / descending
-      order $(20, 19, 18, \dotsc)$
+      order {\color{Mittel-Blau}$(20, 19, 18, \dotsc)$}
     \end{itemize}  
   \end{itemize}
 \end{frame}
@@ -28,13 +28,15 @@
 
 \begin{frame}{Balanced Trees}{Motivation}
   \textbf{Gnarley trees:}\hfill
+  \onslide<2->
   \qrcode[height=5em]{\GnarleyTreesLink}\\
     \begin{itemize}
-    \item http://people.ksp.sk/~kuko/bak
+    \item \href{http://people.ksp.sk/~kuko/bak}{\color{blue}{\url{http://people.ksp.sk/~kuko/bak}}}
     \end{itemize}  
-  \vspace{-1.0em}
+  \vspace{-2em}
   \begin{columns}
     \begin{column}[t]{0.5\linewidth}
+      \onslide<3->
       \begin{figure}
         \includegraphics[width=\linewidth]{Images/Motivation/BinarySearchTree_Random.png}
         \caption{Binary search tree with random insert~\cite{gnarley_trees}}
@@ -42,6 +44,7 @@
       \end{figure}
     \end{column}
     \begin{column}[t]{0.5\linewidth}
+      \onslide<4->
       \begin{figure}
         \includegraphics[width=\linewidth]{Images/Motivation/BinarySearchTree_Ordered.png}
         \caption{Binary search tree with descending insert~\cite{gnarley_trees}}
@@ -69,7 +72,7 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Balanced Trees}{Motivation}
-  \textbf{How do we get a depth of $O(\log n)$?}
+  \textbf{How do we get a depth of {\color{Mittel-Blau}$O(\log n)$}?}
   \begin{itemize}
     \item<2->
       \textbf{AVL-Tree:}
