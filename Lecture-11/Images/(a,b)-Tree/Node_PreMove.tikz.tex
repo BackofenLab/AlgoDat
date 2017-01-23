@@ -35,13 +35,13 @@ child [path, -, xshift=-5em, yshift=2em, background, edge from parent path={
 child [path, -, xshift=5em, yshift=2em, background, edge from parent path={
   (\tikzparentnode.south east) -- (\tikzchildnode.north)}
 ] { };
-\node [node] {10}
+\node [node] {15}
 child [path, xshift=-2em, edge from parent path={
   (\tikzparentnode.south west) -- (node1.north)}
 ] {
   node [node, xshift=-2em] {2}
   node [node, xshift=0em] (node1) {7}
-  node [node, xshift=2em] {15}
+  node [node, xshift=2em] {10}
 }
 child [path, xshift=2em, edge from parent path={
   (\tikzparentnode.south east) -- (\tikzchildnode.north)}
