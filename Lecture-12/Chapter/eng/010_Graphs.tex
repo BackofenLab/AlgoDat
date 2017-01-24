@@ -4,29 +4,30 @@
 \begin{frame}{Graphs}{Introduction}
   \textbf{Terminology:}
   \begin{itemize}
-    \item
+    \item<2->
       Each Graph {\color{Mittel-Blau}$G = (V, E)$} is build of:
       \begin{itemize}
-        \item
+        \item<3->
           A set of vertices {\color{Mittel-Blau}$V = \{v_1, v_2, \dotsc\}$}
-        \item
+        \item<4->
           A set of edges {\color{Mittel-Blau}$E = \{e_1, e_2, \dotsc\}$}
        \end{itemize}
-     \item
+     \item<5->
        Each edge connects two vertices
        ({\color{Mittel-Blau}$u, v \in V$})
        \begin{itemize}
-         \item
+         \item<6->
            Undirected edge: {\color{Mittel-Blau}$e = \{u, v\}$} (set)
-         \item
+         \item<7->
            Directed edge: {\color{Mittel-Blau}$e = (u, v)$} (tuple)
         \end{itemize}
-      \item
+      \item<8->
         Self-loops are also possible:
         {\color{Mittel-Blau}$e = (u, u)$} or
         {\color{Mittel-Blau}$e = \{u, u\}$}
   \end{itemize}
   \vspace{-1.0em}
+  \onslide<9->
   \begin{columns}
     \begin{column}[b]{0.5\linewidth}
       \begin{figure}
@@ -55,12 +56,13 @@
 \begin{frame}{Graphs}{Introduction}
   \textbf{Weighted graph:}
   \begin{itemize}
-    \item
+    \item<2->
       Each edge is marked with a real number named {\color{Mittel-Blau}weight}
-    \item
+    \item<3->
       The {\color{Mittel-Blau}weight} is also named {\color{Mittel-Blau}length}
       or {\color{Mittel-Blau}cost} of the edge depending on the application
   \end{itemize}
+  \onslide<4->
   \begin{figure}
     \begin{adjustbox}{width=0.75\linewidth}
       \input{Images/Graphs/Introduction_WeightedGraph.tikz}
@@ -77,15 +79,16 @@
     \begin{column}{0.40\linewidth}
       \textbf{Example:} Road network
       \begin{itemize}
-        \item
+        \item<2->
           Corssing: {\color{Mittel-Blau}vertices}
-        \item
+        \item<3->
           Roads: {\color{Mittel-Blau}edges}
-        \item
+        \item<4->
           Travel time:\\
           {\color{Mittel-Blau}costs of the edges}
       \end{itemize}
     \end{column}
+    \onslide<5->
     \begin{column}{0.6\linewidth}
       \begin{figure}[!h]
         \includegraphics[width=\linewidth]
@@ -105,13 +108,14 @@
 \begin{frame}{Graphs}{Implementation}
   \textbf{How to represent this graph digitally?}
   \begin{itemize}
-    \item
+    \item<2->
       {\color{Mittel-Blau}Adjacency matrix} with space consumtion
       \begin{math}
         \color{Mittel-Blau}
         \Theta(\vert V \vert^2)
       \end{math}
   \end{itemize}
+  \onslide<3->
   \begin{columns}
     \begin{column}{0.45\linewidth}
       \begin{figure}[!h]
@@ -182,16 +186,17 @@
 \begin{frame}{Graphs}{Implementation}
   \textbf{How to represent this graph digitally?}
   \begin{itemize}
-    \item
+    \item<2->
       {\color{Mittel-Blau}Adjacency list / fields} with space consumtion
       \begin{math}
         \color{Mittel-Blau}
         \Theta(\vert V \vert + \vert E \vert)
       \end{math}
-    \item
+    \item<3->
       Each list item stores the {\color{Mittel-Blau}target vertice}
       and the {\color{Mittel-Gruen}cost} of the edge
   \end{itemize}
+  \onslide<4->
   \begin{columns}
     \begin{column}{0.45\linewidth}
       \begin{figure}[!h]
@@ -246,12 +251,13 @@
 \begin{frame}{Graphs}{Implementation}
   \textbf{Visual ordering:}
   \begin{itemize}
-    \item
+    \item<2->
       Graph is fully defined through the
       {\color{Mittel-Blau}adjacency matrix / list}
-    \item
+    \item<3->
       (Type of) visual display of the graph is unimportant
   \end{itemize}
+  \onslide<4->
   \begin{columns}
     \begin{column}[b]{0.4\linewidth}
       \begin{figure}[!h]
