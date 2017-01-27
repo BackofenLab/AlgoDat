@@ -1,0 +1,26 @@
+\begin{tikzpicture}[
+  string/.style={
+    color=black
+  },
+  slice/.style={
+    color=black,
+    fill=Hell-Gruen
+  },
+  lbl/.style={
+    color=black,
+    font=\Large
+  }
+]%
+\draw[string] (0, 0) rectangle (8, 1);
+\draw[slice] (2, 0) rectangle (5, 1);
+
+\node[lbl, anchor=south] at (0.25, 1) {1};
+\node[lbl, anchor=south] at (2.25, 1) {$i$};
+\node[lbl, anchor=south] at (4.75, 1) {$j$};
+\node[lbl, anchor=south] at (7.75, 1) {$\vert x \vert$};
+
+\node[lbl] at (3.5, 0.5) {$x[i..j]$};
+
+\draw[decorate, decoration={brace, amplitude=0.5em, mirror}, yshift=-0.25em]
+  (2, 0) -- (5, 0) node[lbl, midway,yshift=-1.5em] {slice};
+\end{tikzpicture}
