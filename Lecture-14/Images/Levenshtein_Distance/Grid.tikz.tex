@@ -35,7 +35,8 @@
     minimum size=4em
   },
   dist/.style={
-    color=black
+    color=red,
+    font=\Large
   }
 ]%
   % {from word}{to word}{distance}{show on slide}
@@ -112,7 +113,7 @@
           \FPeval{\result}{clip(\rowi*5+\celli-5)}
           \only<\result->{
         \fi
-          \node[dist] at ($(\scx*\celli, -\scy*\rowi) + (1em, 0em)$)
+          \node[dist] at ($(\scx*\celli, -\scy*\rowi) + (1.5em, 0em)$)
             {\third};
         \ifnum \AlgoFinal=0}\fi
 
