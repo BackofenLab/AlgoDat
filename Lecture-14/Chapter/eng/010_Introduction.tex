@@ -1,0 +1,67 @@
+\section{Introduction}
+
+\begin{frame}{Introduction}
+  \textbf{Edit distance:}
+  \begin{itemize}
+    \item
+      Measurement for similarity of two words / strings
+    \item
+      Algorithm for efficient calculation
+    \item
+      General principle: dynamic programming
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Introduction}{Motivation: Error tolerant string comparison}
+  \begin{adjustbox}{width=\linewidth}
+    \includegraphics[width=\linewidth]%
+      {Images/Introduction/Google_Volcano.png}
+  \end{adjustbox}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Introduction}{Motivation}
+  \textbf{A lot of applications where similar string are searched:}
+  \begin{itemize}
+    \item
+      Duplicates in databases:\\[0.5em]
+      \begin{tabular}{ll}
+        \texttt{Hein Bl\"od} & \texttt{27568 Bremerhaven}\\
+        \texttt{Hein Bloed} & \texttt{27568 Bremerhafen}\\
+        \texttt{Hein Doof} & \texttt{27478 Cuxhaven}
+      \end{tabular}
+    \item
+      Product search:\\[0.5em]
+      \texttt{memory stik}
+    \item
+      Websearch:\\[0.5em]
+      \texttt{eyjaf\"ollajak\"ull}\\
+      \texttt{uniwersit\"at verien 2014}
+    \item
+      Bioinformatics: Similarity of DNA-sequences
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Introduction}{Example: Bioinformtics DNA-matching}
+  \textbf{Search of similar proteins:}
+  \begin{itemize}
+    \item
+      \texttt{BLAST} (\textbf{B}asic \textbf{L}ocal \textbf{A}lignment
+        \textbf{S}earch \textbf{T}ool)
+    \item
+      Alignment $\hat{=}$ Edit distance
+    \item
+      Changed life-science completely
+  \end{itemize}
+  \vspace{1.0em}
+  \textbf{Google-Scholar entry:}
+  \begin{figure}[!h]
+    \includegraphics[width=\linewidth]%
+      {Images/Introduction/Google_BLAST.png}
+  \end{figure}
+\end{frame}

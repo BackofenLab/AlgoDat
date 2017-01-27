@@ -1,0 +1,170 @@
+\section{Edit distance}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Edit distance}
+  \textbf{Definition of edit distance}: (\textit{Levenshtein-distance})
+  \begin{itemize}
+    \item
+      Let {\color{Mittel-Blau}$x$}, {\color{Mittel-Blau}$y$} be two strings
+    \item
+      Edit distance {\color{Mittel-Blau}$\mathrm{ED}(x, y)$} of
+      {\color{Mittel-Blau}$x$} and {\color{Mittel-Blau}$y$}:\\
+      The minimal number of operations to transform {\color{Mittel-Blau}$x$}
+      into {\color{Mittel-Blau}$y$}
+      \begin{itemize}
+        \item
+          \texttt{Insert} a character
+        \item
+          \texttt{Replace} a character with another
+        \item
+          \texttt{Delete} a character
+          % Die Position einer Operation ist ... siehe Beispiel ???
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Edit distance}{Example}
+  \begin{columns}
+    \begin{column}{0.5\linewidth}
+      \begin{center}
+        \begin{tabular}{c@{}c@{}c@{}c@{}cl}
+          1 & 2 & 3 & 4 & 5\\
+          D & O & O & F\\
+          {} & {} & $\downarrow$ & {} & {} & \texttt{replace(1, B)}\\
+          B & O & O & F\\
+          {} & {} & $\downarrow$ & {} & {} & \texttt{replace(2, L)}\\
+          B & L & O & F\\
+          {} & {} & $\downarrow$ & {} & {} & \texttt{insert(4, E)}\\
+          B & L & O & E & F\\
+          {} & {} & $\downarrow$ & {} & {} & \texttt{replace(5, D)}\\
+          B & L & O & E & D\\
+          {} & {} & {} & {} & {} &
+          $\underbrace{\hspace{7.5em}}_{\mathrm{ED} = 4}$
+        \end{tabular}
+      \end{center}
+    \end{column}
+    \begin{column}{0.5\linewidth}
+      \begin{center}
+        \begin{tabular}{c@{}c@{}c@{}c@{}cl}
+          1 & 2 & 3 & 4 & 5\\
+          B & L & O & E & D\\
+          {} & {} & $\downarrow$ & {} & {} & \texttt{replace(5, F)}\\
+          B & L & O & E & F\\
+          {} & {} & $\downarrow$ & {} & {} & \texttt{delete(4)}\\
+          B & L & O & F\\
+          {} & {} & $\downarrow$ & {} & {} & \texttt{replace(2, O)}\\
+          B & O & O & F\\
+          {} & {} & $\downarrow$ & {} & {} & \texttt{replace(1, D)}\\
+          D & O & O & F\\
+          {} & {} & {} & {} & {} &
+          $\underbrace{\hspace{7.5em}}_{\mathrm{ED} = 4}$
+        \end{tabular}
+      \end{center}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Edit distance}
+  \textbf{Notation:}
+  \begin{itemize}
+    \item
+      $\varepsilon$ is the empty string
+    \item
+      $\vert x \vert$ is the length of the string $x$ (number of characters)
+    \item
+      $x[i..j]$ is the slice of $x$ from $i$ to $j$ where
+      $1 \leq i \leq j \leq \vert x \vert$
+  \end{itemize}
+  \begin{figure}[!h]
+    \begin{adjustbox}{width=0.75\linewidth}
+      \input{Images/Levenshtein_Distance/Slice.tikz}
+    \end{adjustbox}
+  \end{figure}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Edit distance}
+  \textbf{Trivial facts:}
+  \begin{itemize}
+    \item
+      $\mathrm{ED}(x, y) = \mathrm{ED}(y, x)$
+    \item
+      $\mathrm{ED}(x, \epsilon) = \vert x \vert$
+    \item
+      $\mathrm{ED}(x, y) \geq \mathrm{abs}(\vert x \vert - \vert y \vert)$
+      \hfill
+      $\mathrm{abs}(x) = \begin{cases}
+        x & \text{if } x \geq 0\\
+        -x & \text{else}
+      \end{cases}$
+    \item
+      $\mathrm{ED}(x, y) \leq \mathrm{ED}(x[1..n-1], y[1..m-1]) + 1$
+      \hfill
+      $n = \vert x \vert, \; m = \vert y \vert$
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Edit distance}{Solving examples}
+  \textbf{Solutions based on examples:}
+  \begin{itemize}
+    \item
+      From \texttt{VERIEN} to \texttt{FERIEN}?
+    \item
+      From \texttt{MEXIKO} to \texttt{AMERIKA}?
+    \item
+      From \texttt{AAEBEAABEAREEAEBA} to \texttt{RBEAAEEBAAAEBBAEAE}?
+    \item
+      Searching biggest substrings can yield the solution but doesn't have to
+  \end{itemize}
+  \vspace{1.0em}
+  \textbf{Recursive approach:}
+  \begin{itemize}
+    \item
+      Dividing in two halves? Not a good idea:\\[0.5em]
+      {\color{Mittel-Blau}$\mathrm{ED}(GRAU, RAUM) = 2$} \; but \;
+      {\color{Mittel-Blau}$\mathrm{ED}(GR, RA) + \mathrm{ED}(AU, UM) = 4$}
+      \\[0.5em]
+    \item
+      Finding \enquote{smaller} sub problems?\\
+      {\color{gray}Let's try it!}
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Edit distance}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Edit distance}
+  \textbf{Terminology:}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Edit distance}
+  
+\end{frame}
+
+%{%
+%\setbeamertemplate{headline}[default]
+%\makeatletter\def\beamer@entrycode{\vspace*{-\headheight}}\makeatother
+%\begin{frame}{Levenshtein Distance}
+%  \begin{center}
+%    \begin{adjustbox}{width=0.8\linewidth}
+%      \def\AlgoIntro{1}
+%      \def\AlgoFinal{0}
+%      \input{Images/Levenshtein_Distance/Grid.tikz}
+%    \end{adjustbox}
+%  \end{center}
+%\end{frame}
+%}%
