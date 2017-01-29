@@ -63,9 +63,9 @@
 ]%
 % Draw vertices
 \draw (0.0, 0.0) node[vertex_level_0] (vert0) {};
-\draw (2.5, 1.0) node[vertex] (vert1) {};
-\draw (2.0, -2.0) node[vertex] (vert2) {};
-\draw (9.0, 0.0) node[vertex] (vert3) {};
+\draw (2.5, 1.0) node[vertex_level_1] (vert1) {};
+\draw (2.0, -2.0) node[vertex_level_1] (vert2) {};
+\draw (9.0, 0.0) node[vertex_level_1] (vert3) {};
 \draw (5.0, 2.0) node[vertex] (vert4) {};
 \draw (11.0, -2.0) node[vertex] (vert5) {};
 \draw (7.0, -3.0) node[vertex] (vert6) {};
@@ -73,9 +73,9 @@
 \draw (9.5, 2.0) node[vertex] (vert8) {};
 
 % Draw edges
-\draw[edge_arrow] (vert0) -- (vert2);
-\draw[edge_arrow] (vert0) -- (vert3);
-\draw[edge_arrow] (vert0) -- (vert1);
+\draw[edge_level_1] (vert0) -- (vert2);
+\draw[edge_level_1] (vert0) -- (vert3);
+\draw[edge_level_1] (vert0) -- (vert1);
 
 \draw[edge_arrow] (vert1) -- (vert4);
 \draw[edge_arrow] (vert3) -- (vert5);

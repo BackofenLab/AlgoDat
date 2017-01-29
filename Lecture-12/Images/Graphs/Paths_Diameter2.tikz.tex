@@ -1,0 +1,55 @@
+\begin{tikzpicture}[
+  vertice/.style={
+    circle,
+    draw=Mittel-Blau,
+    color=Mittel-Blau,
+    inner sep=0em,
+    minimum size=1.75em,
+    line width=0.1em,
+    font=\large
+  }, edge/.style={
+    draw=Mittel-Gruen,
+    line width=0.2em
+  }, edge_arrow/.style={
+    edge,
+    ->
+  }, edge_cost/.style={
+    midway,
+    color=Hell-Gruen,
+    font=\Large
+  }, edge_highlight/.style={
+    edge_arrow,
+    preaction={
+      draw,yellow,-,% Draw yellow without any arrow head
+      double=yellow,
+      double distance=2\pgflinewidth,
+    }
+  }
+]%
+\draw (-1.0, 0.0) node[vertice] (vert0) {0};
+\draw (2.5, 2.0) node[vertice] (vert1) {1};
+\draw (4.0, -2.0) node[vertice] (vert2) {2};
+\draw (4.0, 0.0) node[vertice] (vert3) {3};
+\draw (5.5, 2.0) node[vertice] (vert4) {4};
+\draw (9.0, 0.0) node[vertice] (vert5) {5};
+
+\draw[edge_arrow] (vert0) to node[edge_cost, above] {1} (vert1);
+\draw[edge_arrow] (vert0) to node[edge_cost, above] {5} (vert3);
+\draw[edge_arrow] (vert0) to node[edge_cost, above] {10} (vert2);
+
+\draw[edge_arrow] (vert1) to node[edge_cost, above] {1} (vert4);
+\draw[edge_arrow] (vert1) to node[edge_cost, above] {3} (vert3);
+
+\draw[edge_highlight] (vert2) to node[edge_cost, above] {7} (vert5);
+
+\draw[edge_highlight, bend right=15]
+  (vert3) to node[edge_cost, left] {3} (vert2);
+
+\draw[edge_arrow] (vert4) to node[edge_cost, above] {1} (vert3);
+\draw[edge_arrow] (vert4) to node[edge_cost, above] {4} (vert5);
+
+\draw[edge_arrow] (vert5) to node[edge_cost, above] {2} (vert3);
+
+% Overlay
+\draw[edge_arrow, bend right=15] (vert2) to node[edge_cost, right] {3} (vert3);
+\end{tikzpicture}%

@@ -1,8 +1,59 @@
+
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Graphs}{Degrees (Valency)}
+  \textbf{Degree of a vertex:} Directed graph:
+   {\color{Mittel-Blau}$G = (V , E)$}
+    \onslide<2->
+    \begin{figure}
+    \begin{adjustbox}{width=0.325\linewidth}
+      \input{Images/Graphs/Degree_Directed.tikz}
+    \end{adjustbox}
+    \caption{Vertex with in- / outdegree of 3 / 2}
+    \label{fig:graph:degree_directed}
+  \end{figure}      
+  \begin{itemize}
+    \item<3->
+     {\color{Mittel-Blau}Indegree} of a vertex {\color{Mittel-Blau}$u$}
+     is the number of {\color{Mittel-Blau}edge heads} adjacent to the
+     vertex
+     \begin{displaymath}
+       \mathrm{deg}^{+}({\color{Mittel-Blau}u}) =
+       \left\vert \{
+         (v, {\color{Mittel-Blau}u})
+         : \; (v, {\color{Mittel-Blau}u}) \in {\color{Mittel-Blau}E} \} 
+       \right\vert
+      \end{displaymath}
+    \item<4->
+      {\color{Mittel-Blau}Outdegree} of a vertex {\color{Mittel-Blau}$u$}
+      is the number of {\color{Mittel-Blau}edge tails} adjacent to the
+      vertex
+      \begin{displaymath}
+        \mathrm{deg}^{-}({\color{Mittel-Blau}u}) =
+        \left\vert \{
+          ({\color{Mittel-Blau}u}, v)
+          : \; ({\color{Mittel-Blau}u}, v) \in {\color{Mittel-Blau}E} \}
+        \right\vert
+      \end{displaymath}
+  \end{itemize} 
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
 \begin{frame}{Graphs}{Degrees (Valency)}
   \textbf{Degree of a vertex:} Undirected graph:
-  {\color{Mittel-Blau}$G = (V , E)$}
+         {\color{Mittel-Blau}$G = (V , E)$}
+  \onslide<2->
+  \begin{figure}
+    \begin{adjustbox}{width=0.325\linewidth}
+      \input{Images/Graphs/Degree_Undirected.tikz}
+    \end{adjustbox}
+    \caption{Vertex with degree of 4}
+    \label{fig:graph:degree_undirected}
+  \end{figure}       
   \begin{itemize}
-    \item<2->
+    \item<3->
       {\color{Mittel-Blau}Degree} of a vertex {\color{Mittel-Blau}$u$}
       is the number of {\color{Mittel-Blau}vertices} adjacent to the
       vertex
@@ -14,92 +65,15 @@
         \right\vert
       \end{displaymath}
   \end{itemize}
-  \onslide<3->
-  \begin{figure}
-    \begin{adjustbox}{width=0.325\linewidth}
-      \input{Images/Graphs/Degree_Undirected.tikz}
-    \end{adjustbox}
-    \caption{Vertex with degree of 4}
-    \label{fig:graph:degree_undirected}
-  \end{figure}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Graphs}{Degrees (Valency)}
-  \textbf{Degree of a vertex:} Directed graph:
-  {\color{Mittel-Blau}$G = (V , E)$}
-  \begin{itemize}
-    \item<2->
-     {\color{Mittel-Blau}Indegree} of a vertex {\color{Mittel-Blau}$u$}
-     is the number of {\color{Mittel-Blau}edge heads} adjacent to the
-     vertex
-     \begin{displaymath}
-       \mathrm{deg}^{+}({\color{Mittel-Blau}u}) =
-       \left\vert \{
-         (v, {\color{Mittel-Blau}u})
-         : \; (v, {\color{Mittel-Blau}u}) \in {\color{Mittel-Blau}E} \} 
-       \right\vert
-      \end{displaymath}
-    \item<3->
-      {\color{Mittel-Blau}Outdegree} of a vertex {\color{Mittel-Blau}$u$}
-      is the number of {\color{Mittel-Blau}edge tails} adjacent to the
-      vertex
-      \begin{displaymath}
-        \mathrm{deg}^{-}({\color{Mittel-Blau}u}) =
-        \left\vert \{
-          ({\color{Mittel-Blau}u}, v)
-          : \; ({\color{Mittel-Blau}u}, v) \in {\color{Mittel-Blau}E} \}
-        \right\vert
-      \end{displaymath}
-  \end{itemize}
-  \onslide<4->
-  \begin{figure}
-    \begin{adjustbox}{width=0.325\linewidth}
-      \input{Images/Graphs/Degree_Directed.tikz}
-    \end{adjustbox}
-    \caption{Vertex with in- / outdegree of 3 / 2}
-    \label{fig:graph:degree_directed}
-  \end{figure}
-\end{frame}
-
-%-------------------------------------------------------------------------------
 
 \begin{frame}{Graphs}{Paths}
   \textbf{Paths in a graph:}
-  {\color{Mittel-Blau}$G = (V , E)$}
-  \begin{itemize}
-    \item<2->
-      A path of {\color{Mittel-Blau}$G$} is a sequence of edges
-      \begin{math}
-        {\color{Mittel-Blau}u_1},
-        {\color{Mittel-Blau}u_2},
-        \dots,
-        {\color{Mittel-Blau}u_i} \in {\color{Mittel-Blau}V}
-      \end{math}
-      with
-      \begin{itemize}
-        \item<3->
-          Undirected graph:
-          \begin{math}
-            \{{\color{Mittel-Blau}u_1}, {\color{Mittel-Blau}u_2}\},
-            \{{\color{Mittel-Blau}u_2}, {\color{Mittel-Blau}u_3}\},
-            \dots,
-            \{{\color{Mittel-Blau}u_{i-1}}, {\color{Mittel-Blau}u_i}\} \in
-            {\color{Mittel-Blau}E}
-          \end{math}
-        \item<4->
-          Directed graph:
-          \begin{math}
-          ({\color{Mittel-Blau}u_1}, {\color{Mittel-Blau}u_2}),
-          ({\color{Mittel-Blau}u_2}, {\color{Mittel-Blau}u_3}),
-          \dots,
-          ({\color{Mittel-Blau}u_{i-1}}, {\color{Mittel-Blau}u_i}) \in
-          {\color{Mittel-Blau}E}
-          \end{math}
-      \end{itemize}
-  \end{itemize}
-  \onslide<5->
+         {\color{Mittel-Blau}$G = (V , E)$}
+  \onslide<2->
   \begin{columns}
     \begin{column}[b]{0.5\linewidth}
       \begin{figure}
@@ -122,27 +96,44 @@
       \end{figure}
     \end{column}
   \end{columns}
+  \begin{itemize}
+    \item<3->
+      A path of {\color{Mittel-Blau}$G$} is a sequence of edges
+      \begin{math}
+        {\color{Mittel-Blau}u_1},
+        {\color{Mittel-Blau}u_2},
+        \dots,
+        {\color{Mittel-Blau}u_i} \in {\color{Mittel-Blau}V}
+      \end{math}
+      with
+      \begin{itemize}
+        \item<4->
+          Undirected graph:
+          \begin{math}
+            \{{\color{Mittel-Blau}u_1}, {\color{Mittel-Blau}u_2}\},
+            \{{\color{Mittel-Blau}u_2}, {\color{Mittel-Blau}u_3}\},
+            \dots,
+            \{{\color{Mittel-Blau}u_{i-1}}, {\color{Mittel-Blau}u_i}\} \in
+            {\color{Mittel-Blau}E}
+          \end{math}
+        \item<4->
+          Directed graph:
+          \begin{math}
+          ({\color{Mittel-Blau}u_1}, {\color{Mittel-Blau}u_2}),
+          ({\color{Mittel-Blau}u_2}, {\color{Mittel-Blau}u_3}),
+          \dots,
+          ({\color{Mittel-Blau}u_{i-1}}, {\color{Mittel-Blau}u_i}) \in
+          {\color{Mittel-Blau}E}
+          \end{math}
+      \end{itemize}
+  \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Graphs}{Paths}
   \textbf{Paths in a graph:}
-  {\color{Mittel-Blau}$G = (V , E)$}
-  \begin{itemize}
-    \item<2->
-      The {\color{Mittel-Blau}length of a path} is:
-      (also costs of a path)
-      \begin{itemize}
-        \item<3->
-          Without weights:
-          {\color{Mittel-Blau}number of edges} taken
-        \item<4->
-          With weights:
-          {\color{Mittel-Blau}sum of weigths of edges} taken
-      \end{itemize}
-  \end{itemize}
-  \onslide<5->
+         {\color{Mittel-Blau}$G = (V , E)$}
   \begin{columns}
     \begin{column}[b]{0.5\linewidth}
       \begin{figure}
@@ -165,15 +156,38 @@
       \end{figure}
     \end{column}
   \end{columns}
+  \begin{itemize}
+    \item<4->
+      The {\color{Mittel-Blau}length of a path} is:
+      (also costs of a path)
+      \begin{itemize}
+        \item<5->
+          Without weights:
+          {\color{Mittel-Blau}number of edges} taken
+        \item<6->
+          With weights:
+          {\color{Mittel-Blau}sum of weigths of edges} taken
+      \end{itemize}
+  \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Graphs}{Paths}
   \textbf{Shortest path in a graph:}
-  {\color{Mittel-Blau}$G = (V , E)$}
+         {\color{Mittel-Blau}$G = (V , E)$}
+  \onslide<2->
+  \begin{figure}
+    \begin{adjustbox}{width=0.75\linewidth}
+      \input{Images/Graphs/Paths_Shortest.tikz}
+    \end{adjustbox}
+    \caption{{\color{Mittel-Blau}Shortest path} from 0 to 2 with cost / distance
+      {\color{Mittel-Blau}$d(0,2) = ?$}
+     }
+    \label{fig:graphs:shortest_path}
+  \end{figure}
   \begin{itemize}
-    \item<2->
+    \item<3->
       The {\color{Mittel-Blau}shortest path} between two vertices
       ${\color{Mittel-Blau}u}, {\color{Mittel-Blau}v}$ is the path
       \begin{math}
@@ -182,29 +196,38 @@
       \end{math}
       with the shortest length ${\color{Mittel-Blau}d(u,v)}$ or lowest costs
   \end{itemize}
-  \onslide<3->
+\end{frame}
+
+%-------------------------------------------------------------------------------
+\begin{frame}{Graphs}{Paths}
+  \textbf{Shortest path in a graph:}
+         {\color{Mittel-Blau}$G = (V , E)$}
   \begin{figure}
     \begin{adjustbox}{width=0.75\linewidth}
-      \input{Images/Graphs/Paths_Shortest.tikz}
+      \input{Images/Graphs/Paths_Shortest2.tikz}
     \end{adjustbox}
     \caption{{\color{Mittel-Blau}Shortest path} from 0 to 2 with cost / distance
       {\color{Mittel-Blau}$d(0,2) = 6$}
       ${\color{Mittel-Blau}P}~=~(0, 1, 4, 3, 2)$}
     \label{fig:graphs:shortest_path}
   \end{figure}
+  \begin{itemize}
+    \item
+      The {\color{Mittel-Blau}shortest path} between two vertices
+      ${\color{Mittel-Blau}u}, {\color{Mittel-Blau}v}$ is the path
+      \begin{math}
+        {\color{Mittel-Blau}P}
+          = ({\color{Mittel-Blau}u}, \dots, {\color{Mittel-Blau}v})
+      \end{math}
+      with the shortest length ${\color{Mittel-Blau}d(u,v)}$ or lowest costs
+  \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------------------------------
-
 \begin{frame}{Graphs}{Paths}
   \textbf{Diameter of a graph:}
-  {\color{Mittel-Blau}$G = (V , E)$}
-  \begin{itemize}
-    \item<2->
-      The {\color{Mittel-Blau}diameter} of a graph is the length / the costs of
-      the {\color{Mittel-Blau}longest shortest path}
-  \end{itemize}
-  \vspace{-0.5em}
+         {\color{Mittel-Blau}$G = (V , E)$}
+  \onslide<2->
   \hfill\begin{math}
     \displaystyle
     {\color{Mittel-Blau}d} =
@@ -212,22 +235,62 @@
         \in {\color{Mittel-Blau}V}}
       {\color{Mittel-Blau}d(u, \color{Mittel-Blau}v)}
   \end{math}
-  \onslide<3->
   \begin{figure}
     \begin{adjustbox}{width=0.75\linewidth}
       \input{Images/Graphs/Paths_Diameter.tikz}
     \end{adjustbox}
     \caption{{\color{Mittel-Blau}Diameter} of graph is
-      ${\color{Mittel-Blau}d} = 10, \; {\color{Mittel-Blau}P} = (3,2,5)$}
+      ${\color{Mittel-Blau}d} = ?$}
     \label{fig:graphs:diameter}
   \end{figure}
+  \vspace{-0.5em}
+  \begin{itemize}
+    \item<3->
+      The {\color{Mittel-Blau}diameter} of a graph is the length / the costs of
+      the {\color{Mittel-Blau}longest shortest path}
+  \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
+\begin{frame}{Graphs}{Paths}
+  \textbf{Diameter of a graph:}
+         {\color{Mittel-Blau}$G = (V , E)$}
+  \hfill\begin{math}
+    \displaystyle
+    {\color{Mittel-Blau}d} =
+      \max\limits_{{\color{Mittel-Blau}u}, {\color{Mittel-Blau}v}
+        \in {\color{Mittel-Blau}V}}
+      {\color{Mittel-Blau}d(u, \color{Mittel-Blau}v)}
+  \end{math}
+  \begin{figure}
+    \begin{adjustbox}{width=0.75\linewidth}
+      \input{Images/Graphs/Paths_Diameter2.tikz}
+    \end{adjustbox}
+    \caption{{\color{Mittel-Blau}Diameter} of graph is
+      ${\color{Mittel-Blau}d} = 10, \; {\color{Mittel-Blau}P} = (3,2,5)$}
+    \label{fig:graphs:diameter}
+  \end{figure}
+  \vspace{-0.5em}
+  \begin{itemize}
+    \item
+      The {\color{Mittel-Blau}diameter} of a graph is the length / the costs of
+      the {\color{Mittel-Blau}longest shortest path}
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
 \begin{frame}{Graphs}{Connected Components}
   \textbf{Connected components:}
-  {\color{Mittel-Blau}$G = (V , E)$}
+      {\color{Mittel-Blau}$G = (V , E)$}
+  \onslide<2->
+  \begin{figure}
+    \begin{adjustbox}{width=0.65\linewidth}
+      \input{Images/Graphs/Graph_ConnectedComponents.tikz}
+    \end{adjustbox}
+    \caption{Four connected components}
+    \label{fig:graph:connected_components}
+  \end{figure}   
   \begin{itemize}
     \item<2->
       Undirected graph:
@@ -245,14 +308,6 @@
           {\color{Mittel-Blau}$u$} and {\color{Mittel-Blau}$v$} exists
       \end{itemize}
   \end{itemize}
-  \onslide<5->
-  \begin{figure}
-    \begin{adjustbox}{width=0.65\linewidth}
-      \input{Images/Graphs/Graph_ConnectedComponents.tikz}
-    \end{adjustbox}
-    \caption{Four connected components}
-    \label{fig:graph:connected_components}
-  \end{figure}
 \end{frame}
 
 %-------------------------------------------------------------------------------
@@ -285,19 +340,19 @@
     \item<3->
       We visit each reachable vertex connected to {\color{Mittel-Blau}$s$}
     \item<4->
-      {\color{Mittel-Blau}Breadth-first search}: Searching in order of the
+      {\color{Mittel-Blau}Breadth-first search}: in sequence of the
       smallest distance to {\color{Mittel-Blau}$s$}
     \item<5->
-      {\color{Mittel-Blau}Depth-first search}: Searching in order of the
+      {\color{Mittel-Blau}Depth-first search}: in sequence of the
       largest distance to {\color{Mittel-Blau}$s$}
     \item<6->
-      Is often used as subroutine of other algorithms
-      \begin{itemize}
-        \item<7->
-          Searching of connected components
-        \item<8->
-          Flood fill in drawing programms
-      \end{itemize}
+      Not a problem on its own but is often used as subroutine of other algorithms
+      %\begin{itemize}
+      %  \item<7->
+      %    Searching of connected components
+      %  \item<8->
+      %    Flood fill in drawing programms
+      %\end{itemize}
   \end{itemize}
 \end{frame}
 
@@ -320,7 +375,7 @@
       {\color{Mittel-Blau}level 1}-vertex
       ({\color{Mittel-Blau}level 2})
     \item<6->
-      Mark iterative reachable vertices for all level
+      Iteratively mark reachable vertices for all levels
     \item<7->
       All connected nodes are now marked and in the same
       {\color{Mittel-Blau}connected component} as the start vertex
@@ -340,6 +395,143 @@
   \begin{figure}
     \begin{adjustbox}{width=0.95\linewidth}
       \input{Images/Graphs/Search_BreadthFirst.tikz}
+    \end{adjustbox}
+    \caption{spanning tree of a breadth-first search}
+    \label{fig:graph:breadth_first_search_spanning_tree}
+  \end{figure}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+\begin{frame}{Graphs}{Connected Components - Breadth-First Search}
+  \begin{itemize}
+    \item<2->
+      The marked vertices create a \enquote{spanning tree} containing all
+      reachable nodes
+  \end{itemize}
+  \onslide<3->
+  \begin{figure}
+    \begin{adjustbox}{width=0.95\linewidth}
+      \input{Images/Graphs/Search_BreadthFirst.tikz}
+    \end{adjustbox}
+    \caption{spanning tree of a breadth-first search}
+    \label{fig:graph:breadth_first_search_spanning_tree}
+  \end{figure}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Graphs}{Connected Components - Breadth-First Search}
+  \begin{itemize}
+    \item
+      The marked vertices create a \enquote{spanning tree} containing all
+      reachable nodes
+  \end{itemize}
+  \begin{figure}
+    \begin{adjustbox}{width=0.95\linewidth}
+      \input{Images/Graphs/Search_BreadthFirst1.tikz}
+    \end{adjustbox}
+    \caption{spanning tree of a breadth-first search}
+    \label{fig:graph:breadth_first_search_spanning_tree}
+  \end{figure}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Graphs}{Connected Components - Breadth-First Search}
+  \begin{itemize}
+    \item
+      The marked vertices create a \enquote{spanning tree} containing all
+      reachable nodes
+  \end{itemize}
+  \begin{figure}
+    \begin{adjustbox}{width=0.95\linewidth}
+      \input{Images/Graphs/Search_BreadthFirst2.tikz}
+    \end{adjustbox}
+    \caption{spanning tree of a breadth-first search}
+    \label{fig:graph:breadth_first_search_spanning_tree}
+  \end{figure}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Graphs}{Connected Components - Breadth-First Search}
+  \begin{itemize}
+    \item
+      The marked vertices create a \enquote{spanning tree} containing all
+      reachable nodes
+  \end{itemize}
+  \begin{figure}
+    \begin{adjustbox}{width=0.95\linewidth}
+      \input{Images/Graphs/Search_BreadthFirst3.tikz}
+    \end{adjustbox}
+    \caption{spanning tree of a breadth-first search}
+    \label{fig:graph:breadth_first_search_spanning_tree}
+  \end{figure}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Graphs}{Connected Components - Breadth-First Search}
+  \begin{itemize}
+    \item
+      The marked vertices create a \enquote{spanning tree} containing all
+      reachable nodes
+  \end{itemize}
+  \begin{figure}
+    \begin{adjustbox}{width=0.95\linewidth}
+      \input{Images/Graphs/Search_BreadthFirst4.tikz}
+    \end{adjustbox}
+    \caption{spanning tree of a breadth-first search}
+    \label{fig:graph:breadth_first_search_spanning_tree}
+  \end{figure}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+
+\begin{frame}{Graphs}{Connected Components - Breadth-First Search}
+  \begin{itemize}
+    \item
+      The marked vertices create a \enquote{spanning tree} containing all
+      reachable nodes
+  \end{itemize}
+  \begin{figure}
+    \begin{adjustbox}{width=0.95\linewidth}
+      \input{Images/Graphs/Search_BreadthFirst5.tikz}
+    \end{adjustbox}
+    \caption{spanning tree of a breadth-first search}
+    \label{fig:graph:breadth_first_search_spanning_tree}
+  \end{figure}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Graphs}{Connected Components - Breadth-First Search}
+  \begin{itemize}
+    \item
+      The marked vertices create a \enquote{spanning tree} containing all
+      reachable nodes
+  \end{itemize}
+  \begin{figure}
+    \begin{adjustbox}{width=0.95\linewidth}
+      \input{Images/Graphs/Search_BreadthFirst6.tikz}
+    \end{adjustbox}
+    \caption{spanning tree of a breadth-first search}
+    \label{fig:graph:breadth_first_search_spanning_tree}
+  \end{figure}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Graphs}{Connected Components - Breadth-First Search}
+  \begin{itemize}
+    \item
+      The marked vertices create a \enquote{spanning tree} containing all
+      reachable nodes
+  \end{itemize}
+  \begin{figure}
+    \begin{adjustbox}{width=0.95\linewidth}
+      \input{Images/Graphs/Search_BreadthFirst7.tikz}
     \end{adjustbox}
     \caption{spanning tree of a breadth-first search}
     \label{fig:graph:breadth_first_search_spanning_tree}

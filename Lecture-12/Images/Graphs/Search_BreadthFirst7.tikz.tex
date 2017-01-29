@@ -63,29 +63,29 @@
 ]%
 % Draw vertices
 \draw (0.0, 0.0) node[vertex_level_0] (vert0) {};
-\draw (2.5, 1.0) node[vertex] (vert1) {};
-\draw (2.0, -2.0) node[vertex] (vert2) {};
-\draw (9.0, 0.0) node[vertex] (vert3) {};
-\draw (5.0, 2.0) node[vertex] (vert4) {};
-\draw (11.0, -2.0) node[vertex] (vert5) {};
-\draw (7.0, -3.0) node[vertex] (vert6) {};
+\draw (2.5, 1.0) node[vertex_level_1] (vert1) {};
+\draw (2.0, -2.0) node[vertex_level_1] (vert2) {};
+\draw (9.0, 0.0) node[vertex_level_1] (vert3) {};
+\draw (5.0, 2.0) node[vertex_level_2] (vert4) {};
+\draw (11.0, -2.0) node[vertex_level_2] (vert5) {};
+\draw (7.0, -3.0) node[vertex_level_3] (vert6) {};
 \draw (7.5, 1.5) node[vertex] (vert7) {};
 \draw (9.5, 2.0) node[vertex] (vert8) {};
 
 % Draw edges
-\draw[edge_arrow] (vert0) -- (vert2);
-\draw[edge_arrow] (vert0) -- (vert3);
-\draw[edge_arrow] (vert0) -- (vert1);
+\draw[edge_level_1] (vert0) -- (vert2);
+\draw[edge_level_1] (vert0) -- (vert3);
+\draw[edge_level_1] (vert0) -- (vert1);
 
-\draw[edge_arrow] (vert1) -- (vert4);
-\draw[edge_arrow] (vert3) -- (vert5);
+\draw[edge_level_2] (vert1) -- (vert4);
+\draw[edge_level_2] (vert3) -- (vert5);
 
-\draw[edge_arrow] (vert4) -- (vert6);
+\draw[edge_level_3] (vert4) -- (vert6);
 
-\draw[edge_arrow] (vert2) to node[edge_label] {} (vert4);
+\draw[edge_arrow] (vert2) to node[edge_label] {forward edge} (vert4);
 \draw[edge_arrow]
-  (vert3) to node[edge_label, shift={(-3em,0em)}] {} (vert2);
-\draw[edge_arrow] (vert6) to node[edge_label, below] {} (vert3);
+  (vert3) to node[edge_label, shift={(-3em,0em)}] {cross edge} (vert2);
+\draw[edge_arrow] (vert6) to node[edge_label, below] {backward edge} (vert3);
 
 \draw[edge_arrow]
   (vert7) to node[above, shift={(0em, 1.5em)}, align=left]

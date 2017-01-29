@@ -147,6 +147,7 @@
       \end{figure}
     \end{column}
     \begin{column}{0.45\linewidth}
+      \onslide<5->
       \begin{figure}[!h]
         \begin{tabular}{p{0.25em}p{1.15em}p{1.15em}p{1.15em}p{1.15em}p{1.15em}}
           {} & {} & \multicolumn{4}{c}{end-vertice}\\
@@ -235,6 +236,7 @@
       \end{figure}
     \end{column}
     \begin{column}{0.45\linewidth}
+      \onslide<5->
       \begin{figure}[!h]
         \begin{tabular}{p{0.25em}p{1.0em}p{1.0em}p{1.0em}p{1.0em}p{1.0em}}
           \cline{3-4}
@@ -276,8 +278,15 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Graphs}{Implementation}
-  \textbf{Visual ordering:}
-    \onslide<2->
+  \textbf{Graph: Arrangement}
+   \begin{itemize}
+    \item<2->
+      Graph is fully defined through the
+      {\color{Mittel-Blau}adjacency matrix / list}
+    \item<3->
+      The arrangement is not relevant for visualisation of the graph
+  \end{itemize}
+    \onslide<4->
    \begin{columns}
     \begin{column}[b]{0.4\linewidth}
       \begin{figure}[!h]
@@ -290,22 +299,16 @@
       \end{figure}
     \end{column}
     \begin{column}[b]{0.55\linewidth}
+      \onslide<5->
       \begin{figure}[!h]
         \begin{adjustbox}{width=0.875\linewidth}
           \input{Images/Graphs/Storage_DirectedGraphOrdered.tikz}
         \end{adjustbox}
         \vspace{-0.75em}
-        \caption{Same graph ordered by number}
+        \caption{Same graph ordered by number - outer planar graph}
       \end{figure}
     \end{column}
   \end{columns}
-  \begin{itemize}
-    \item<3->
-      Graph is fully defined through the
-      {\color{Mittel-Blau}adjacency matrix / list}
-    \item<4->
-      (Type of) visual display of the graph is unimportant
-  \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------------------------------
