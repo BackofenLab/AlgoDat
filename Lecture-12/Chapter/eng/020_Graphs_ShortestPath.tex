@@ -600,23 +600,184 @@
 
 %-------------------------------------------------------------------------------
 
+\begin{frame}{Graphs}{Connected Components - Depth-First Search}
+  \begin{itemize}
+    \item
+      The marked vertices create a different spanning tree containing all
+      reachable nodes
+  \end{itemize}
+  \begin{figure}
+    \begin{adjustbox}{width=0.95\linewidth}
+      \input{Images/Graphs/Search_DepthFirst1.tikz}
+    \end{adjustbox}
+    \caption{spanning tree of a depth-first search}
+    \label{fig:graph:depth_first_search_spanning_tree}
+  \end{figure}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Graphs}{Connected Components - Depth-First Search}
+  \begin{itemize}
+    \item
+      The marked vertices create a different spanning tree containing all
+      reachable nodes
+  \end{itemize}
+  \begin{figure}
+    \begin{adjustbox}{width=0.95\linewidth}
+      \input{Images/Graphs/Search_DepthFirst2.tikz}
+    \end{adjustbox}
+    \caption{spanning tree of a depth-first search}
+    \label{fig:graph:depth_first_search_spanning_tree}
+  \end{figure}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+
+\begin{frame}{Graphs}{Connected Components - Depth-First Search}
+  \begin{itemize}
+    \item
+      The marked vertices create a different spanning tree containing all
+      reachable nodes
+  \end{itemize}
+  \begin{figure}
+    \begin{adjustbox}{width=0.95\linewidth}
+      \input{Images/Graphs/Search_DepthFirst3.tikz}
+    \end{adjustbox}
+    \caption{spanning tree of a depth-first search}
+    \label{fig:graph:depth_first_search_spanning_tree}
+  \end{figure}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Graphs}{Connected Components - Depth-First Search}
+  \begin{itemize}
+    \item
+      The marked vertices create a different spanning tree containing all
+      reachable nodes
+  \end{itemize}
+  \begin{figure}
+    \begin{adjustbox}{width=0.95\linewidth}
+      \input{Images/Graphs/Search_DepthFirst4.tikz}
+    \end{adjustbox}
+    \caption{spanning tree of a depth-first search}
+    \label{fig:graph:depth_first_search_spanning_tree}
+  \end{figure}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+
+\begin{frame}{Graphs}{Connected Components - Depth-First Search}
+  \begin{itemize}
+    \item
+      The marked vertices create a different spanning tree containing all
+      reachable nodes
+  \end{itemize}
+  \begin{figure}
+    \begin{adjustbox}{width=0.95\linewidth}
+      \input{Images/Graphs/Search_DepthFirst5.tikz}
+    \end{adjustbox}
+    \caption{spanning tree of a depth-first search}
+    \label{fig:graph:depth_first_search_spanning_tree}
+  \end{figure}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Graphs}{Connected Components - Depth-First Search}
+  \begin{itemize}
+    \item
+      The marked vertices create a different spanning tree containing all
+      reachable nodes
+  \end{itemize}
+  \begin{figure}
+    \begin{adjustbox}{width=0.95\linewidth}
+      \input{Images/Graphs/Search_DepthFirst6.tikz}
+    \end{adjustbox}
+    \caption{spanning tree of a depth-first search}
+    \label{fig:graph:depth_first_search_spanning_tree}
+  \end{figure}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+
+\begin{frame}{Graphs}{Connected Components - Depth-First Search}
+  \begin{itemize}
+    \item
+      The marked vertices create a different spanning tree containing all
+      reachable nodes
+  \end{itemize}
+  \begin{figure}
+    \begin{adjustbox}{width=0.95\linewidth}
+      \input{Images/Graphs/Search_DepthFirst7.tikz}
+    \end{adjustbox}
+    \caption{spanning tree of a depth-first search}
+    \label{fig:graph:depth_first_search_spanning_tree}
+  \end{figure}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+
+\begin{frame}{Graphs}{Connected Components - Depth-First Search}
+  \begin{itemize}
+    \item
+      The marked vertices create a different spanning tree containing all
+      reachable nodes
+  \end{itemize}
+  \begin{figure}
+    \begin{adjustbox}{width=0.95\linewidth}
+      \input{Images/Graphs/Search_DepthFirst8.tikz}
+    \end{adjustbox}
+    \caption{spanning tree of a depth-first search}
+    \label{fig:graph:depth_first_search_spanning_tree}
+  \end{figure}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Graphs}{Connected Components - Depth-First Search}
+  \begin{itemize}
+    \item
+      The marked vertices create a different spanning tree containing all
+      reachable nodes
+  \end{itemize}
+  \begin{figure}
+    \begin{adjustbox}{width=0.95\linewidth}
+      \input{Images/Graphs/Search_DepthFirst9.tikz}
+    \end{adjustbox}
+    \caption{spanning tree of a depth-first search}
+    \label{fig:graph:depth_first_search_spanning_tree}
+  \end{figure}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+\begin{frame}{Graphs}{Why is this called Breadth - and Depth First Search?}
+ 
+\end{frame}
+
+%------------------------------------------------------------------------------
 \begin{frame}{Graphs}{Connected Components - Breadth-/Depth-First Search}
   \textbf{Runtime complexity:}
   \begin{itemize}
     \item<2->
       Constant costs for each visited vertex and edge
     \item<3->
-      Let {\color{Mittel-Blau}$V'$} and {\color{Mittel-Blau}$E'$} be the
-      reachable vertices and edges
-    \item<4->
-      All vertices of {\color{Mittel-Blau}$V'$} are in the same connected
-      component as our start vertex {\color{Mittel-Blau}$s$}
-    \item<5->
       We get a runtime complexity of
       \begin{math}
         \Theta(\vert {\color{Mittel-Blau}V'} \vert
           + \vert {\color{Mittel-Blau}E'} \vert)
       \end{math}
+    \item<4->
+      Let {\color{Mittel-Blau}$V'$} and {\color{Mittel-Blau}$E'$} be the
+      reachable vertices and edges
+    \item<5->
+      All vertices of {\color{Mittel-Blau}$V'$} are in the same connected
+      component as our start vertex {\color{Mittel-Blau}$s$}
     \item<6->
       This can only be improved by a constant factor
   \end{itemize}

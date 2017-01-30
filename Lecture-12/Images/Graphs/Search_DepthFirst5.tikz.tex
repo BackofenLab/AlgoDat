@@ -64,28 +64,28 @@
 % Draw vertices
 \draw (0.0, 0.0) node[vertex_level_0] (vert0) {0};
 \draw (2.5, 1.0) node[vertex] (vert1) {6};
-\draw (2.0, -2.5) node[vertex] (vert2) {2};
-\draw (9.0, 0.0) node[vertex] (vert3) {1};
-\draw (5.0, 2.0) node[vertex] (vert4) {3};
+\draw (2.0, -2.5) node[vertex_level_1] (vert2) {2};
+\draw (9.0, 0.0) node[vertex_level_1] (vert3) {1};
+\draw (5.0, 2.0) node[vertex_level_1] (vert4) {3};
 \draw (11.0, -2.0) node[vertex] (vert5) {5};
-\draw (7.0, -3.0) node[vertex] (vert6) {4};
+\draw (7.0, -3.0) node[vertex_level_1] (vert6) {4};
 \draw (7.5, 1.5) node[vertex] (vert7) {};
 \draw (9.5, 2.0) node[vertex] (vert8) {};
 
 % Layer below
-\draw[edge_arrow] (vert3) -- (vert2);
+\draw[edge_level_1] (vert3) -- (vert2);
 \draw[edge_arrow] (vert0) -- (vert1);
 
 % Draw edges
-\draw[edge_arrow] (vert0) -- (vert3);
+\draw[edge_level_1] (vert0) -- (vert3);
 
 \draw[edge_arrow] (vert1) to node[edge_label] {} (vert4);
 \draw[edge_arrow] (vert3) -- (vert5);
 
-\draw[edge_arrow] (vert4) -- (vert6);
+\draw[edge_level_1] (vert4) -- (vert6);
 
-\draw[edge_arrow] (vert2) -- (vert4);
-\draw[edge_arrow] (vert6) to node[edge_label, below] {} (vert3);
+\draw[edge_level_1] (vert2) -- (vert4);
+\draw[edge_arrow] (vert6) to node[edge_label, below] {back edge} (vert3);
 
 \draw[edge_arrow]
   (vert7) to node[above, shift={(0em, 1.5em)}, align=left]
