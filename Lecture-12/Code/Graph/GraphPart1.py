@@ -3,10 +3,10 @@ class Graph:
 		self.vertices = []
 		self.edges = []
 	
-	def addVertice(self, vert):
+	def add_vertice(self, vert):
 		self.vertices.append(vert)
 	
-	def addEdge(self, fromVert, toVert):
+	def add_edge(self, fromVert, toVert):
 		self.edges.append((fromVert, toVert))
 	
 	...
