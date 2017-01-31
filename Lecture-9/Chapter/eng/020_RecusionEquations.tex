@@ -667,7 +667,7 @@
   \begin{displaymath}
     T(n) = \begin{cases}
       \Theta(n^{\log_b a}) & \text{if } a > b\\
-      \Theta(n \, \log n) & \text{if } a = b\\
+      \Theta(n \, \log_b n) & \text{if } a = b\\
       \Theta(n) & \text{if } a < b
     \end{cases}
   \end{displaymath}
@@ -715,7 +715,7 @@
       \hspace{1.5em} if {\color{Mittel-Blau}
         $f(n) \in \Theta(n^{\log_b a})$
       }\\
-      {\color{gray}Each layer has equal costs, $\log n$ layers}
+      {\color{gray}Each layer has equal costs, $\log_b n$ layers}
   \end{itemize}
 \end{frame}
 

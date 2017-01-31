@@ -1,0 +1,272 @@
+\def\eps{$\varepsilon$}%
+\def\scx{3.5}\def\scy{3.5}%
+\def\splittokens#1#2#3#4#5#6{%
+  \def\first{#1}\def\second{#2}\def\third{#3}%
+  \def\fourth{#4}\def\fifth{#5}\def\sixth{#6}%
+}%
+\begin{tikzpicture}[
+  connection/.style={
+    color=Mittel-Blau,
+    line width=0.15em,
+    font=\Large
+  },
+  connectionY/.style={
+    connection,
+    preaction={
+      draw,yellow!70!white,-,% Draw without any arrow head
+      double=yellow!70!white,
+      double distance=7\pgflinewidth,
+    }
+  },
+  connectionB/.style={
+    connection,
+    preaction={
+      draw,blue!40!white,-,% Draw without any arrow head
+      double=blue!40!white,
+      double distance=7\pgflinewidth,
+    }
+  },
+  box/.style={
+    draw,
+    rectangle,
+    color=black,
+    fill=white,
+    align=center,
+    minimum size=4em
+  },
+  dist/.style={
+    color=red,
+    font=\Large
+  }
+]%
+  % {from word}{to word}{distance}{show on slide}
+  \def\celldata{%
+    {%
+      \eps\eps{0}{7},\eps{R}{1}{7},\eps{RA}{2}{7},\eps{RAU}{3}{7},%
+      \eps{RAUM}{4}{7}%
+    },{%
+      {G}\eps{1}{7},{G}{R}{1}{7},{G}{RA}{2}{7},{G}{RAU}{3}{7},%
+      {G}{RAUM}{4}{7}%
+    },{%
+      {GR}\eps{2}{7},{GR}{R}{1}{7},{GR}{RA}{2}{7},{GR}{RAU}{3}{7},%
+      {GR}{RAUM}{4}{7}%
+    },{%
+      {GRA}\eps{3}{7},{GRA}{R}{2}{7},{GRA}{RA}{1}{7},{GRA}{RAU}{2}{4},%
+      {GRA}{RAUM}{3}{3}%
+    },{%
+      {GRAU}\eps{4}{7},{GRAU}{R}{3}{7},{GRAU}{RA}{2}{7},{GRAU}{RAU}{1}{2},%
+      {GRAU}{RAUM}{2}{1}%
+    }%
+  }
+
+  % {letter to ins}{show on slide}{highlight on slide}{highlight color}
+  % {alternative highlight color}
+  \def\horizdata{%
+    {{R}{7}{2}{Y}{Y},{A}{7}{3}{Y}{Y},{U}{7}{4}{Y}{Y},{M}{7}{5}{Y}{Y}},%
+    {{R}{7}{-1}{}{},{A}{7}{8}{Y}{Y},{U}{7}{9}{Y}{Y},{M}{7}{10}{Y}{Y}},%
+    {{R}{7}{-1}{}{},{A}{7}{13}{Y}{Y},{U}{7}{14}{Y}{Y},{M}{7}{15}{Y}{Y}},%
+    {{R}{7}{-1}{}{},{A}{7}{-1}{}{},{U}{7}{19}{Y}{Y},{M}{5}{20}{Y}{Y}},%
+    {{R}{7}{-1}{}{},{A}{7}{-1}{}{},{U}{7}{-1}{}{},{M}{2}{25}{Y}{B}}%
+  }
+
+  % {letter to del}{show on slide}{highlight on slide}{highlight color}
+  % {alternative highlight color}
+  % rows are columns, columns are rows ;D
+  \def\vertdata{%
+    {{G}{7}{6}{Y}{B},{R}{7}{11}{Y}{Y},{A}{7}{16}{Y}{Y},{U}{7}{21}{Y}{Y}},%
+    {{G}{7}{-1}{}{},{R}{7}{-1}{}{},{A}{7}{17}{Y}{Y},{U}{7}{22}{Y}{Y}},%
+    {{G}{7}{-1}{}{},{R}{7}{-1}{}{},{A}{7}{-1}{Y}{Y},{U}{7}{23}{Y}{Y}},%
+    {{G}{7}{-1}{}{},{R}{7}{-1}{}{},{A}{7}{-1}{}{},{U}{6}{-1}{}{}},%
+    {{G}{7}{-1}{}{},{R}{7}{-1}{}{},{A}{7}{-1}{}{},{U}{3}{-1}{}{}}%
+  }
+
+  % {from letter}{to letter}{show on slide}{highlight on slide}{highlight color}
+  % {alternative highlight color}
+  \def\diagdata{%
+    {{G}{R}{7}{7}{Y}{Y},{G}{A}{7}{8}{Y}{Y},{G}{U}{7}{9}{Y}{Y},%
+      {G}{M}{7}{10}{Y}{Y}},%
+    {{R}{R}{7}{12}{Y}{B},{R}{A}{7}{13}{Y}{Y},{R}{U}{7}{14}{Y}{Y},%
+      {R}{M}{7}{15}{Y}{Y}},%
+    {{A}{R}{7}{-1}{}{},{A}{A}{7}{18}{Y}{B},{A}{U}{7}{-1}{}{},%
+      {A}{M}{7}{-1}{}{}},%
+    {{U}{R}{7}{-1}{}{},{U}{A}{7}{-1}{}{},{U}{U}{7}{24}{Y}{B},{U}{M}{4}{-1}{}{}}%
+  }
+
+  % Create frame for constant scaling
+  \fill[white] ($(\scx, -\scy) + (-2em, 2em)$)
+    rectangle ($(\scx*5, -\scy*5) + (2em, -2em)$);
+
+  % Draw cells
+  \foreach \row [count=\rowi] in \celldata {%
+    \foreach \cell [count=\celli] in \row {%
+      % for each cell: split tokens
+      \expandafter\splittokens\cell{}{}
+
+      \ifnum \AlgoIntro>0\only<\fourth->{\fi
+      \node[box] (n\celli\rowi) at (\scx*\celli, -\scy*\rowi)
+        {\first\\$\downarrow$\\\second};
+      \ifnum \AlgoIntro>0}\fi
+
+      \ifnum \AlgoIntro=0
+
+        \ifnum \AlgoFinal=0
+          \FPeval{\result}{clip(\rowi*5+\celli-5)}
+          \only<\result->{
+        \fi
+          \node[dist] at ($(\scx*\celli, -\scy*\rowi) + (1.5em, 0em)$)
+            {\third};
+        \ifnum \AlgoFinal=0}\fi
+
+      \fi% end \ifnum \AlgoIntro=0
+    }
+  }
+
+  % Horizontal connections (ins)
+  \foreach \row [count=\rowi] in \horizdata {%
+    \foreach \cell [
+      count=\celli,
+      evaluate=\celli as \cellj using int(\celli+1)
+    ] in \row {
+      % for each cell: split tokens
+      \expandafter\splittokens\cell{}
+
+      \ifnumgreater{\AlgoIntro}{0}{
+        % let the connections appear one after another
+        \only<\second->{
+          \draw[->, connection] ({n\celli\rowi}.east)
+            -- ({n\cellj\rowi}.west) node[midway, below]
+            {\texttt{+ins(\color{Mittel-Gruen}\first\color{Mittel-Blau})}};
+        }
+      }{
+        \ifnumgreater{\AlgoFinal}{0}{
+          % highlight connections with secondary color
+          \ifnumgreater{\third}{0}{\def\high{\fifth}}{\def\high{}}
+          \draw[->, connection\high] ({n\celli\rowi}.east)
+            -- ({n\cellj\rowi}.west) node[midway, below]
+            {\texttt{+ins(\color{Mittel-Gruen}\first\color{Mittel-Blau})}};
+        }{
+          \ifnumgreater{\third}{0}{
+            % highlight connections one after another
+            \only<1-\third>{
+              \draw[->, connection] ({n\celli\rowi}.east)
+                -- ({n\cellj\rowi}.west) node[midway, below]
+                {\texttt{+ins(\color{Mittel-Gruen}\first\color{Mittel-Blau})}};
+            }
+            \only<\third->{
+              \draw[->, connection\fourth] ({n\celli\rowi}.east)
+                -- ({n\cellj\rowi}.west) node[midway, below]
+                {\texttt{+ins(\color{Mittel-Gruen}\first\color{Mittel-Blau})}};
+            }
+          }{
+            % connection does not get highlighted
+            \draw[->, connection] ({n\celli\rowi}.east)
+              -- ({n\cellj\rowi}.west) node[midway, below]
+              {\texttt{+ins(\color{Mittel-Gruen}\first\color{Mittel-Blau})}};
+          }
+        }
+      }
+    }
+  }
+
+  % Vertical connections (del)
+  \foreach \col [count=\coli] in \vertdata {%
+    \foreach \cell [
+      count=\celli,
+      evaluate=\celli as \cellj using int(\celli+1)
+    ] in \col {
+      % for each cell: split tokens
+      \expandafter\splittokens\cell{}
+
+      \ifnumgreater{\AlgoIntro}{0}{
+        % let the connections appear one after another
+        \only<\second->{
+          \draw[->, connection] ({n\coli\celli}.south)
+            -- ({n\coli\cellj}.north) node[midway, below, sloped]
+            {\texttt{+del(\color{Mittel-Gruen}\first\color{Mittel-Blau})}};
+        }
+      }{
+        \ifnumgreater{\AlgoFinal}{0}{
+          % highlight connections with secondary color
+          \ifnumgreater{\third}{0}{\def\high{\fifth}}{\def\high{}}
+          \draw[->, connection\high] ({n\coli\celli}.south)
+            -- ({n\coli\cellj}.north) node[midway, below, sloped]
+            {\texttt{+del(\color{Mittel-Gruen}\first\color{Mittel-Blau})}};
+        }{
+          \ifnumgreater{\third}{0}{
+            % highlight connections one after another
+            \only<1-\third>{
+              \draw[->, connection] ({n\coli\celli}.south)
+                -- ({n\coli\cellj}.north) node[midway, below, sloped]
+                {\texttt{+del(\color{Mittel-Gruen}\first\color{Mittel-Blau})}};
+            }
+            \only<\third->{
+              \draw[->, connection\fourth] ({n\coli\celli}.south)
+                -- ({n\coli\cellj}.north) node[midway, below, sloped]
+                {\texttt{+del(\color{Mittel-Gruen}\first\color{Mittel-Blau})}};
+            }
+          }{
+            % connection does not get highlighted
+            \draw[->, connection] ({n\coli\celli}.south)
+              -- ({n\coli\cellj}.north) node[midway, below, sloped]
+              {\texttt{+del(\color{Mittel-Gruen}\first\color{Mittel-Blau})}};
+          }
+        }
+      }
+    }
+  }
+
+  % Diagonal connections (repl)
+  \foreach \row [
+    count=\rowi,
+    evaluate=\rowi as \rowj using int(\rowi+1)
+  ] in \diagdata {
+    \foreach \cell [
+      count=\celli,
+      evaluate=\celli as \cellj using int(\celli+1)
+    ] in \row {
+      % for each cell: split tokens
+      \expandafter\splittokens\cell
+
+      \ifnumgreater{\AlgoIntro}{0}{
+        % let the connections appear one after another
+        \only<\second->{
+          \draw[->, connection] ({n\celli\rowi}.south east)
+            -- ({n\cellj\rowj}.north west) node[midway, below, sloped]
+            {\texttt{+repl(\color{Mittel-Gruen}\first\color{Mittel-Blau},%
+                \color{Mittel-Gruen}\second\color{Mittel-Blau})}};
+        }
+      }{
+      \ifnumgreater{\AlgoFinal}{0}{
+        % highlight connections with secondary color
+        \ifnumgreater{\fourth}{0}{\def\high{\sixth}}{\def\high{}}
+        \draw[->, connection\high] ({n\celli\rowi}.south east)
+          -- ({n\cellj\rowj}.north west) node[midway, below, sloped]
+          {\texttt{+repl(\color{Mittel-Gruen}\first\color{Mittel-Blau},%
+              \color{Mittel-Gruen}\second\color{Mittel-Blau})}};
+      }{
+        \ifnumgreater{\fourth}{0}{
+          % highlight connections one after another
+          \only<1-\fourth>{
+            \draw[->, connection] ({n\celli\rowi}.south east)
+              -- ({n\cellj\rowj}.north west) node[midway, below, sloped]
+              {\texttt{+repl(\color{Mittel-Gruen}\first\color{Mittel-Blau},%
+                  \color{Mittel-Gruen}\second\color{Mittel-Blau})}};
+          }
+            \only<\fourth->{
+              \draw[->, connection\fifth] ({n\celli\rowi}.south east)
+                -- ({n\cellj\rowj}.north west) node[midway, below, sloped]
+                {\texttt{+repl(\color{Mittel-Gruen}\first\color{Mittel-Blau},%
+                    \color{Mittel-Gruen}\second\color{Mittel-Blau})}};
+            }
+          }{
+            % connection does not get highlighted
+            \draw[->, connection] ({n\celli\rowi}.south east)
+              -- ({n\cellj\rowj}.north west) node[midway, below, sloped]
+              {\texttt{+repl(\color{Mittel-Gruen}\first\color{Mittel-Blau},%
+                  \color{Mittel-Gruen}\second\color{Mittel-Blau})}};
+          }
+        }
+      }
+    }
+  }
+\end{tikzpicture}

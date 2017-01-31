@@ -26,7 +26,7 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Linked Lists}{Introduction}
-  \textbf{Properties in comperison to an array:}
+  \textbf{Properties in comparison to an array:}
   \begin{itemize}
     \item<2->
       Minimal extra space for storing pointer
@@ -278,6 +278,27 @@
 
 %-------------------------------------------------------------------------------
 
+\begin{frame}{Linked Lists}{Implementation - Insert}
+  \textbf{Inserting a node after node \texttt{cur} - single line of code:}
+  \onslide<2->
+  \begin{figure}
+    \includegraphics[width=0.5\textwidth]{Images/LinkedList/insert-one-line-pre.pdf}
+  \end{figure}
+  \begin{itemize}
+  \item<3->
+    \lstinline[
+      language=Python,
+      style={python-idle-code}
+    ]|cur.nextNode = Node (value ,cur.nextNode )|
+  \end{itemize}
+  \onslide<4->
+  \begin{figure}
+    \includegraphics[width=0.5\textwidth]{Images/LinkedList/insert-one-line-post.pdf}
+  \end{figure}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
 \begin{frame}{Linked Lists}{Implementation - Remove}
   \textbf{Removing a node \texttt{cur}:}
   \begin{flushleft}
@@ -323,7 +344,7 @@
         style={python-idle-code}
       ]|pre.nextNode = cur.nextNode|
     \item<3->
-      \texttt{cur} will get automaticly destroyed if no more references exist
+      \texttt{cur} will get automatically destroyed if no more references exist
       (\lstinline[
         language=Python,
         style={python-idle-code},
@@ -473,46 +494,46 @@
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}[fragile]{Linked Lists}{Implementation - LinkedList - C++ - Header}
-  \lstinputlisting[
-    language=C++,
-    tabsize=4,
-    style={cpp-eclipse-code},
-    breaklines=false,
-    escapechar={@},
-    emph={uint64_t},
-    emphstyle=\color{cpp_typedef}
-  ]{Code/LinkedList/LinkedListPart1.h}
-\end{frame}
+%% \begin{frame}[fragile]{Linked Lists}{Implementation - LinkedList - C++ - Header}
+%%   \lstinputlisting[
+%%     language=C++,
+%%     tabsize=4,
+%%     style={cpp-eclipse-code},
+%%     breaklines=false,
+%%     escapechar={@},
+%%     emph={uint64_t},
+%%     emphstyle=\color{cpp_typedef}
+%%   ]{Code/LinkedList/LinkedListPart1.h}
+%% \end{frame}
 
-%-------------------------------------------------------------------------------
+%% %-------------------------------------------------------------------------------
 
-\begin{frame}[fragile]{Linked Lists}{Implementation - LinkedList - C++ - Header}
-  \lstinputlisting[
-    language=C++,
-    tabsize=4,
-    style={cpp-eclipse-code},
-    breaklines=false,
-    escapechar={@},
-    emph={uint64_t},
-    emphstyle=\color{cpp_typedef}
-  ]{Code/LinkedList/LinkedListPart2.h}
-\end{frame}
+%% \begin{frame}[fragile]{Linked Lists}{Implementation - LinkedList - C++ - Header}
+%%   \lstinputlisting[
+%%     language=C++,
+%%     tabsize=4,
+%%     style={cpp-eclipse-code},
+%%     breaklines=false,
+%%     escapechar={@},
+%%     emph={uint64_t},
+%%     emphstyle=\color{cpp_typedef}
+%%   ]{Code/LinkedList/LinkedListPart2.h}
+%% \end{frame}
 
-%-------------------------------------------------------------------------------
+%% %-------------------------------------------------------------------------------
 
-\begin{frame}[fragile]{Linked Lists}{Implementation - LinkedList - C++}
-  \vspace{-1.25em}
-  \lstinputlisting[
-    language=C++,
-    tabsize=4,
-    style={cpp-eclipse-code},
-    breaklines=false,
-    escapechar={@},
-    emph={uint64_t},
-    emphstyle=\color{cpp_typedef}
-  ]{Code/LinkedList/LinkedList.cpp}
-\end{frame}
+%% \begin{frame}[fragile]{Linked Lists}{Implementation - LinkedList - C++}
+%%   \vspace{-1.25em}
+%%   \lstinputlisting[
+%%     language=C++,
+%%     tabsize=4,
+%%     style={cpp-eclipse-code},
+%%     breaklines=false,
+%%     escapechar={@},
+%%     emph={uint64_t},
+%%     emphstyle=\color{cpp_typedef}
+%%   ]{Code/LinkedList/LinkedList.cpp}
+%% \end{frame}
 
 %-------------------------------------------------------------------------------
 
