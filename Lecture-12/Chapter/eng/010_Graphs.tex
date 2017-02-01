@@ -2,38 +2,32 @@
 \subsection{Introduction}
 
 \begin{frame}{Graphs}{Introduction}
-  \textbf{Terminology:}
+  \textbf{Graphs - Overview:}
   \begin{itemize}
-    \item
-      Each Graph {\color{Mittel-Blau}$G = (V, E)$} is build of:
-      \begin{itemize}
-        \item
-          A set of vertices {\color{Mittel-Blau}$V = \{v_1, v_2, \dotsc\}$}
-        \item
-          A set of edges {\color{Mittel-Blau}$E = \{e_1, e_2, \dotsc\}$}
-       \end{itemize}
-     \item
-       Each edge connects two vertices
-       ({\color{Mittel-Blau}$u, v \in V$})
-       \begin{itemize}
-         \item
-           Undirected edge: {\color{Mittel-Blau}$e = \{u, v\}$} (set)
-         \item
-           Directed edge: {\color{Mittel-Blau}$e = (u, v)$} (tuple)
-        \end{itemize}
-      \item
-        Self-loops are also possible:
-        {\color{Mittel-Blau}$e = (u, u)$} or
-        {\color{Mittel-Blau}$e = \{u, u\}$}
+    \item<2->
+      Besides arrays, lists and trees the most common datastructure\\
+      (Trees are a special type of graph)
+    \item<3->
+      Representation of graphs in the computer
+    \item<4->
+      Breadth first search (BFS)
+    \item<5->
+      Depth first search (DFS)
+    \item<6->
+      Connected components of a graph
   \end{itemize}
-  \vspace{-1.0em}
+\end{frame}        
+
+\begin{frame}{Graphs}{Introduction}
+  \textbf{Terminology:}
+  \onslide<2->
   \begin{columns}
     \begin{column}[b]{0.5\linewidth}
       \begin{figure}
         \begin{adjustbox}{width=0.75\linewidth}
           \input{Images/Graphs/Introduction_UndirectedGraph.tikz}
         \end{adjustbox}
-        \caption{Undirected graph}
+        %\caption{Undirected graph}
         \label{fig:graphs:introduction_undirected}
       \end{figure}
     \end{column}
@@ -43,31 +37,55 @@
           \input{Images/Graphs/Introduction_DirectedGraph.tikz}
         \end{adjustbox}
         \vspace{-1.0em}
-        \caption{Directed graph}
+        %\caption{Directed graph}
         \label{fig:graphs:introduction_directed}
       \end{figure}
     \end{column}
   \end{columns}
+  \begin{itemize}
+    \item<3->
+      Each Graph {\color{Mittel-Blau}$G = (V, E)$} consists of:
+      \begin{itemize}
+        \item<4->
+          A set of vertices (nodes) {\color{Mittel-Blau}$ V = \{v_1, v_2, \dotsc\}$}
+        \item<5->
+          A set of edges (arcs) {\color{Mittel-Blau}$ E = \{e_1, e_2, \dotsc\}$}
+       \end{itemize}
+     \item<6->
+       Each edge connects two vertices
+       ({\color{Mittel-Blau}$u, v \in V$})
+       \begin{itemize}
+         \item<7->
+           Undirected edge: {\color{Mittel-Blau}$e = \{u, v\}$} (set)
+         \item<8->
+           Directed edge: {\color{Mittel-Blau}$e = (u, v)$} (tuple)
+        \end{itemize}
+      \item<9->
+        Self-loops are also possible:
+        {\color{Mittel-Blau}$e = (u, u)$} or
+        {\color{Mittel-Blau}$e = \{u, u\}$}
+  \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Graphs}{Introduction}
   \textbf{Weighted graph:}
-  \begin{itemize}
-    \item
-      Each edge is marked with a real number named {\color{Mittel-Blau}weight}
-    \item
-      The {\color{Mittel-Blau}weight} is also named {\color{Mittel-Blau}length}
-      or {\color{Mittel-Blau}cost} of the edge depending on the application
-  \end{itemize}
+  \onslide<2->
   \begin{figure}
     \begin{adjustbox}{width=0.75\linewidth}
       \input{Images/Graphs/Introduction_WeightedGraph.tikz}
     \end{adjustbox}
-    \caption{Weighted graph}
+    %\caption{Weighted graph}
     \label{fig:graphs:introduction_weighted}
   \end{figure}
+  \begin{itemize}
+    \item<3->
+      Each edge is marked with a real number named {\color{Mittel-Blau}weight}
+    \item<4->
+      The {\color{Mittel-Blau}weight} is also named {\color{Mittel-Blau}length}
+      or {\color{Mittel-Blau}cost} of the edge depending on the application
+  \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------------------------------
@@ -77,15 +95,16 @@
     \begin{column}{0.40\linewidth}
       \textbf{Example:} Road network
       \begin{itemize}
-        \item
-          Corssing: {\color{Mittel-Blau}vertices}
-        \item
+        \item<2->
+          Intersections: {\color{Mittel-Blau}vertices}
+        \item<3->
           Roads: {\color{Mittel-Blau}edges}
-        \item
+        \item<4->
           Travel time:\\
           {\color{Mittel-Blau}costs of the edges}
       \end{itemize}
     \end{column}
+    \onslide<5->
     \begin{column}{0.6\linewidth}
       \begin{figure}[!h]
         \includegraphics[width=\linewidth]
@@ -103,15 +122,20 @@
 \subsection{Implementation}
 
 \begin{frame}{Graphs}{Implementation}
-  \textbf{How to represent this graph digitally?}
+  \textbf{How to represent this graph computationally?}
   \begin{itemize}
-    \item
-      {\color{Mittel-Blau}Adjacency matrix} with space consumtion
+    \item<2->
+      Two classic variants
+    \begin{enumerate}
+    \item<3->
+      {\color{Mittel-Blau}Adjacency matrix} with space consumption
       \begin{math}
         \color{Mittel-Blau}
         \Theta(\vert V \vert^2)
       \end{math}
+      \end{enumerate}
   \end{itemize}
+  \onslide<4->
   \begin{columns}
     \begin{column}{0.45\linewidth}
       \begin{figure}[!h]
@@ -123,6 +147,7 @@
       \end{figure}
     \end{column}
     \begin{column}{0.45\linewidth}
+      \onslide<5->
       \begin{figure}[!h]
         \begin{tabular}{p{0.25em}p{1.15em}p{1.15em}p{1.15em}p{1.15em}p{1.15em}}
           {} & {} & \multicolumn{4}{c}{end-vertice}\\
@@ -180,18 +205,26 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Graphs}{Implementation}
-  \textbf{How to represent this graph digitally?}
+  \textbf{How to represent this graph computationally?}
   \begin{itemize}
-    \item
-      {\color{Mittel-Blau}Adjacency list / fields} with space consumtion
+    \item<2->
+      Two classic variants
+      \begin{enumerate}
+         \setcounter{enumi}{1}
+       \item<2->
+      {\color{Mittel-Blau}Adjacency list / fields} with space consumption
       \begin{math}
         \color{Mittel-Blau}
         \Theta(\vert V \vert + \vert E \vert)
       \end{math}
-    \item
+      \begin{itemize}
+    \item<3->
       Each list item stores the {\color{Mittel-Blau}target vertice}
       and the {\color{Mittel-Gruen}cost} of the edge
+      \end{itemize}
+      \end{enumerate}
   \end{itemize}
+  \onslide<4->
   \begin{columns}
     \begin{column}{0.45\linewidth}
       \begin{figure}[!h]
@@ -203,6 +236,7 @@
       \end{figure}
     \end{column}
     \begin{column}{0.45\linewidth}
+      \onslide<5->
       \begin{figure}[!h]
         \begin{tabular}{p{0.25em}p{1.0em}p{1.0em}p{1.0em}p{1.0em}p{1.0em}}
           \cline{3-4}
@@ -235,7 +269,7 @@
           \multicolumn{1}{c|}{{\color{Mittel-Blau}2}, \color{Mittel-Gruen}-2}\\
           \cline{3-4}
         \end{tabular}
-        \caption{Adjacency matrix}
+        \caption{Adjacency list}
       \end{figure}
     \end{column}
   \end{columns}
@@ -244,15 +278,16 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Graphs}{Implementation}
-  \textbf{Visual ordering:}
-  \begin{itemize}
-    \item
+  \textbf{Graph: Arrangement}
+   \begin{itemize}
+    \item<2->
       Graph is fully defined through the
       {\color{Mittel-Blau}adjacency matrix / list}
-    \item
-      (Type of) visual display of the graph is unimportant
+    \item<3->
+      The arrangement is not relevant for visualisation of the graph
   \end{itemize}
-  \begin{columns}
+    \onslide<4->
+   \begin{columns}
     \begin{column}[b]{0.4\linewidth}
       \begin{figure}[!h]
         \begin{adjustbox}{width=0.8\linewidth}
@@ -264,12 +299,13 @@
       \end{figure}
     \end{column}
     \begin{column}[b]{0.55\linewidth}
+      \onslide<5->
       \begin{figure}[!h]
         \begin{adjustbox}{width=0.875\linewidth}
           \input{Images/Graphs/Storage_DirectedGraphOrdered.tikz}
         \end{adjustbox}
         \vspace{-0.75em}
-        \caption{Same graph ordered by number}
+        \caption{Same graph ordered by number - outer planar graph}
       \end{figure}
     \end{column}
   \end{columns}

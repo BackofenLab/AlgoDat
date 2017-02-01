@@ -2,11 +2,12 @@
 
 \begin{frame}{Application example}{Image processing}
   \begin{itemize}
-    \item
+    \item<2->
       Connected component labeling
-    \item
+    \item<3->
       Counting of objects in an image
   \end{itemize}
+  \onslide<4->
   \begin{figure}[!h]
     \begin{columns}
       \begin{column}{0.45\linewidth}
@@ -65,14 +66,14 @@
 \begin{frame}{Application example}{Image processing}
   \textbf{Interpret image as graph:}
   \begin{itemize}
-    \item
+    \item<2->
       Each white pixel is a node
-    \item
+    \item<3->
       Edges between adjacent pixels (normally 4 or 8 neighbors)
-    \item
+    \item<4->
       Edges are not saved externally,
       algorithm works directly on array
-    \item
+    \item<5->
       Breadth- / depth-first search find all connected components (particles)
   \end{itemize}
 \end{frame}
@@ -82,6 +83,7 @@
 \begin{frame}{Application example}{Image processing}
   \textbf{Find connected components:}\\
   \vspace{0.5em}
+  \onslide<2->
   \begin{columns}[T]
     \begin{column}{0.6\linewidth}
       \includegraphics[width=\linewidth]%
@@ -89,9 +91,9 @@
     \end{column}
     \begin{column}{0.4\linewidth}
       \begin{itemize}
-        \item
+        \item<3->
           Search pixel-by-pixel for non-zero intensity
-        \item
+        \item<4->
           Label found pixel as component~1
       \end{itemize}
     \end{column}
