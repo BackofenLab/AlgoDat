@@ -5,19 +5,19 @@
 \begin{frame}{Edit distance}
   \textbf{Definition of edit distance}: (\textit{Levenshtein-distance})
   \begin{itemize}
-    \item
+    \item<2->
       Let {\color{Mittel-Blau}$x$}, {\color{Mittel-Blau}$y$} be two strings
-    \item
+    \item<2->
       Edit distance {\color{Mittel-Blau}$\mathrm{ED}(x, y)$} of
       {\color{Mittel-Blau}$x$} and {\color{Mittel-Blau}$y$}:\\
       The minimal number of operations to transform {\color{Mittel-Blau}$x$}
       into {\color{Mittel-Blau}$y$}
       \begin{itemize}
-        \item
+        \item<3->
           \texttt{Insert} a character
-        \item
+        \item<4->
           \texttt{Replace} a character with another
-        \item
+        \item<5->
           \texttt{Delete} a character
           % Die Position einer Operation ist ... siehe Beispiel ???
       \end{itemize}
@@ -72,14 +72,15 @@
 \begin{frame}{Edit distance}
   \textbf{Notation:}
   \begin{itemize}
-    \item
+    \item<2->
       $\varepsilon$ is the empty string
-    \item
+    \item<3->
       $\vert x \vert$ is the length of the string $x$ (number of characters)
-    \item
+    \item<5->
       $x[i..j]$ is the slice of $x$ from $i$ to $j$ where
       $1 \leq i \leq j \leq \vert x \vert$
   \end{itemize}
+  \onslide<6->
   \begin{figure}[!h]
     \begin{adjustbox}{width=0.75\linewidth}
       \input{Images/Levenshtein_Distance/Slice.tikz}
@@ -92,18 +93,18 @@
 \begin{frame}{Edit distance}
   \textbf{Trivial facts:}
   \begin{itemize}
-    \item
+    \item<2->
       $\mathrm{ED}(x, y) = \mathrm{ED}(y, x)$
-    \item
+    \item<3->
       $\mathrm{ED}(x, \epsilon) = \vert x \vert$
-    \item
+    \item<4->
       $\mathrm{ED}(x, y) \geq \mathrm{abs}(\vert x \vert - \vert y \vert)$
       \hfill
       $\mathrm{abs}(x) = \begin{cases}
         x & \text{if } x \geq 0\\
         -x & \text{else}
       \end{cases}$
-    \item
+    \item<5->
       $\mathrm{ED}(x, y) \leq \mathrm{ED}(x[1..n-1], y[1..m-1]) + 1$
       \hfill
       $n = \vert x \vert, \; m = \vert y \vert$
@@ -115,24 +116,25 @@
 \begin{frame}{Edit distance}{Solving examples}
   \textbf{Solutions based on examples:}
   \begin{itemize}
-    \item
+    \item<2->
       From \texttt{VERIEN} to \texttt{FERIEN}?
-    \item
+    \item<3->
       From \texttt{MEXIKO} to \texttt{AMERIKA}?
-    \item
+    \item<4->
       From \texttt{AAEBEAABEAREEAEBA} to \texttt{RBEAAEEBAAAEBBAEAE}?
-    \item
+    \item<5->
       Searching biggest substrings can yield the solution but doesn't have to
   \end{itemize}
   \vspace{1.0em}
+  \onslide<6->
   \textbf{Recursive approach:}
   \begin{itemize}
-    \item
+    \item<7->
       Dividing in two halves? Not a good idea:\\[0.5em]
       {\color{Mittel-Blau}$\mathrm{ED}(GRAU, RAUM) = 2$} \; but \;
       {\color{Mittel-Blau}$\mathrm{ED}(GR, RA) + \mathrm{ED}(AU, UM) = 4$}
       \\[0.5em]
-    \item
+    \item<8->
       Finding \enquote{smaller} sub problems?\\
       {\color{gray}Let's try it!}
   \end{itemize}
@@ -143,9 +145,9 @@
 \begin{frame}{Edit distance}
   \textbf{Terminology:}
   \begin{itemize}
-    \item
+    \item<2->
       Let {\color{Mittel-Blau}$x$}, {\color{Mittel-Blau}$y$} be two strings
-    \item
+    \item<3->
       Let $\sigma_1, \dots, \sigma_k$ be a sequence of $k$ operations
       where $k = \mathrm{ED}(x, y)$ for {\color{Mittel-Blau}$x \rightarrow y$}
       (transform {\color{Mittel-Blau}$x$} into {\color{Mittel-Blau}$y$})\\
@@ -158,12 +160,13 @@
 \begin{frame}{Edit distance}
   \textbf{Terminology:}
   \begin{itemize}
-    \item
+    \item<2->
       We only regard {\color{Mittel-Blau}monotonous} sequences:\\
       The positition of $\sigma_{i+1}$ is $\geq$ the position of $\sigma_i$
       where we only allow the positions to be equal on a \texttt{delete}
       operation
   \end{itemize}
+  \onslide<3->
   \begin{columns}
     \begin{column}{0.5\linewidth}
       \begin{center}
@@ -213,16 +216,17 @@
 \begin{frame}{Edit distance}
   \textbf{Terminology:}
   \begin{itemize}
-    \item
+    \item<2->
       \textbf{Lemma:}
       For any {\color{Mittel-Blau}$x$} and {\color{Mittel-Blau}$y$}
       with $k = \mathrm{ED}(x, y)$ exists a {\color{Mittel-Blau}monotonous}
       sequence of $k$ operations for {\color{Mittel-Blau}$x \rightarrow y$}
-    \item
+    \item<3->
       \textbf{Intuition:}
       The order of our sequence is not relevant\\
       (We can sort them monotonous as desired)
   \end{itemize}
+  \onslide<4->
   \begin{columns}[T]
     \begin{column}{0.5\linewidth}
       \begin{center}
@@ -252,9 +256,10 @@
 \begin{frame}{Edit distance}{Recursive approach}
   \textbf{Regard last operation:}
   \begin{itemize}
-    \item
+    \item<2->
       Solve {\color{Mittel-Blau}blue} part recursively
   \end{itemize}
+  \onslide<3->
   \begin{columns}[T]
     \begin{column}{0.3\linewidth}
       \begin{figure}[!h]
@@ -317,9 +322,10 @@
 \begin{frame}{Edit distance}{Recursive approach}
   \textbf{Regard last operation:}
   \begin{itemize}
-    \item
+    \item<2->
       Solve {\color{Mittel-Blau}blue} part recursively
   \end{itemize}
+  \onslide<3->
   \begin{columns}
     \begin{column}{0.3\linewidth}
       \begin{figure}[!h]
@@ -362,16 +368,17 @@
     \begin{column}{0.65\linewidth}
       \textbf{Dynamic programming:}
       \begin{itemize}
-        \item
+        \item<2->
           Instances of Bellman's principle of optimality:
         \begin{itemize}
-          \item
+          \item<3->
             Shortest paths
-          \item
+          \item<4->
             Edit distance
           \end{itemize}
       \end{itemize}
     \end{column}
+    \onslide<5->
     \begin{column}{0.35\linewidth}
       \begin{figure}[!h]
         \includegraphics[width=0.9\linewidth, clip, trim=10 0 10 0]%
@@ -380,13 +387,14 @@
       \end{figure}
     \end{column}
   \end{columns}
+  \onslide<6->
   \begin{itemize}
-    \item
+    \item<7->
       Optimal solutions consist of optimal partial solutions
       \begin{itemize}
-        \item
+        \item<8->
           Shortest paths: Each partial path has to be optimal
-        \item
+        \item<9->
           Edit distance: Each partial alignment has to be optimal\\
           \begin{figure}[!h]
             \only<1|handout:0>{
@@ -403,7 +411,7 @@
             }%
           \end{figure}
       \end{itemize}
-    \item
+    \item<10->
       Always solvable through dynamic programming\\
       (Caching of optimal partial solutions)
   \end{itemize}
@@ -414,10 +422,10 @@
 \begin{frame}{Edit distance}
   \textbf{Case analysis:}
   \begin{itemize}
-    \item
+    \item<2->
       We regard the last operation $\sigma_k$
       \begin{itemize}
-        \item
+        \item<3->
           $\sigma_1, \dots, \sigma_{k-1}$:
           {\color{Mittel-Blau}$x \rightarrow z$} and $\sigma_k$:
           {\color{Mittel-Blau}$z \rightarrow y$}\\
@@ -427,9 +435,9 @@
             z = \mathrm{SAUBLOEF}, \;
             y = \mathrm{SAUBLOED}
           \end{displaymath}
-        \item
+        \item<4->
           Let $n = \vert x \vert, \; m = \vert y \vert, \; m' = \vert z \vert$
-        \item
+        \item<5->
           We note $m' \in \{m - 1, m, m + 1\}$
           \hspace{1.5em}
           {\color{gray}why?}
@@ -442,30 +450,30 @@
 \begin{frame}{Edit distance}
   \textbf{Case analysis:}
   \begin{itemize}
-    \item
+    \item<2->
       Case 1: {\color{Mittel-Blau}$\sigma_k$} does something at the outer end:
       \begin{itemize}
-        \item
+        \item<3->
           Case 1a:
           {\color{Mittel-Blau}$\sigma_k = \texttt{insert}(m' + 1, y[m])$}
           \hfill
           [then {\color{Mittel-Blau}$m' = m - 1$}]
-        \item
+        \item<4->
           Case 1b:
           {\color{Mittel-Blau}$\sigma_k = \texttt{delete}(m')$}
           \hfill
           [then {\color{Mittel-Blau}$m' = m + 1$}]
-        \item
+        \item<5->
           Case 1c:
           {\color{Mittel-Blau}$\sigma_k = \texttt{replace}(m', y[m])$}
           \hfill
           [then {\color{Mittel-Blau}$m' = m$}]
       \end{itemize}
       \vspace{0.5em}
-    \item
+    \item<6->
       Case 2: {\color{Mittel-Blau}$\sigma_k$} does nothing at the outer end:
       \begin{itemize}
-        \item
+        \item<7->
           Then {\color{Mittel-Blau}$z[m'] = y[m]$} and
           {\color{Mittel-Blau}$x[n'] = z[m']$} and with that\\
           $\sigma_1, \dots, \sigma_{k-1}$:
@@ -480,22 +488,22 @@
 \begin{frame}{Edit distance}
   \textbf{Case analysis:}
   \begin{itemize}
-    \item
+    \item<2->
       Case 1a (\texttt{insert}):
       \hfill
       {\color{Mittel-Blau}$\sigma_1, \dots, \sigma_{k-1}$}:
       {\color{Mittel-Blau}$x\hphantom{[1..n-1]} \rightarrow y[1..m-1]$}
-    \item
+    \item<3->
       Case 1b (\texttt{delete}):
       \hfill
       {\color{Mittel-Blau}$\sigma_1, \dots, \sigma_{k-1}$}:
       {\color{Mittel-Blau}$x[1..n-1] \rightarrow y\hphantom{[1..m-1]}$}
-    \item
+    \item<4->
       Case 1c (\texttt{replace}):
       \hfill
       {\color{Mittel-Blau}$\sigma_1, \dots, \sigma_{k-1}$}:
       {\color{Mittel-Blau}$x[1..n-1] \rightarrow y[1..m-1]$}
-    \item
+    \item<5->
       Case 2 (\texttt{nothing}):
       \hfill
       {\color{Mittel-Blau}$\sigma_1, \dots, \sigma_{k}$}:
@@ -503,30 +511,30 @@
   \end{itemize}
   \textbf{This results in the recursive formula:}
   \begin{itemize}
-    \item
+    \item<6->
       For {\color{Mittel-Blau}$\vert x \vert > 0$} and
       {\color{Mittel-Blau}$\vert y \vert > 0$} is
       {\color{Mittel-Blau}$\mathrm{ED}(x, y)$} the minimum of
       \begin{itemize}
-        \item
+        \item<7->
           {\color{Mittel-Blau}
             $\mathrm{ED}(x\hphantom{[1..n-1]}, y[1..m-1]) + 1$} and
-        \item
+        \item<8->
           {\color{Mittel-Blau}
             $\mathrm{ED}(x[1..n-1], y\hphantom{[1..m-1]}) + 1$} and
-        \item
+        \item<9->
           {\color{Mittel-Blau}
             $\mathrm{ED}(x[1..n-1], y[1..m-1]) + 1$} if
           {\color{Mittel-Blau}$x[n] \neq y[m]$}
-        \item
+        \item<10->
           {\color{Mittel-Blau}
             $\mathrm{ED}(x[1..n-1], y[1..m-1]) + 0$} if
           {\color{Mittel-Blau}$x[n] = y[m]$}
       \end{itemize}
-    \item
+    \item<11->
       For {\color{Mittel-Blau}$\vert x \vert = 0$} is
       {\color{Mittel-Blau}$\mathrm{ED}(x, y) = \vert y \vert$}
-    \item
+    \item<12->
       For {\color{Mittel-Blau}$\vert y \vert = 0$} is
       {\color{Mittel-Blau}$\mathrm{ED}(x, y) = \vert x \vert$}
   \end{itemize}
@@ -551,14 +559,14 @@
 \begin{frame}{Edit distance}{Runtime analysis}
   \textbf{Recursive program:}
   \begin{itemize}
-    \item
+    \item<2->
       The algorithm results in the following recursive formular:
       \begin{align*}
         T(n, m) &= T(n-1, m) + T(n, m-1) + T(n-1, m-1) + 1\\
         & \geq T(n-1, m-1) + T(n-1, m-1) + T(n-1, m-1)
         & = 3 \cdot T(n-1, m-1)
       \end{align*}
-    \item
+    \item<3->
       This results in {\color{Mittel-Blau}$T(n, n) \geq 3^n$}
     \item[$\Rightarrow$]
       The runtime is at least {\color{Mittel-Blau}exponential}
@@ -570,20 +578,21 @@
 \begin{frame}{Edit distance}
   \textbf{Dynamic programming:}
   \begin{itemize}
-    \item
+    \item<2->
       We create a table with all possible combination of substrings and save
       calculated entries
-    \item
+    \item<2->
       This results in a runtime and space consumption of
       {\color{Mittel-Blau}$O(n \cdot m)$}
   \end{itemize}
   \vspace{1em}
+  \onslide<3->
   \textbf{Visualization on the next slide:}
   \begin{itemize}
-    \item
+    \item<4->
       Operations always refer to the last position\\
       (indices are omitted)
-    \item
+    \item<5->
       We also display the replaced character on a \texttt{replace} operation
       to visualize operations without costs\\
       $\Rightarrow$ \texttt{\color{Mittel-Blau}repl(\color{Mittel-Gruen}A%
@@ -634,18 +643,18 @@
 \begin{frame}{Edit distance}
   \textbf{How to get the sequence of operations?}
   \begin{itemize}
-    \item
+    \item<2->
       We save at each recursion the most efficient previous entry
       (the {\color{Mittel-Blau}highlighted arrows} in our image)
-    \item
+    \item<3->
       There can be {\color{Mittel-Blau}more than one} arrows to the three
       previous entries
-    \item
+    \item<4->
       If we follow the highlighted path from {\color{Mittel-Blau}$(n, m)$} to
       {\color{Mittel-Blau}$(1, 1)$} we get the optimum operations to transform
       {\color{Mittel-Blau}$x$} into {\color{Mittel-Blau}$y$}
       \begin{itemize}
-        \item
+        \item<5->
           If we can follow {\color{Mittel-Blau}more than one path} there exist
           more than one ideal {\color{Mittel-Blau}sequence}
       \end{itemize}
@@ -672,7 +681,7 @@
 \begin{frame}{Edit distance}
   \textbf{General principle:}
   \begin{itemize}
-    \item
+    \item<2->
       Recursive computation of $\ldots$
       \begin{itemize}
         \item[$\ldots$]
@@ -680,15 +689,15 @@
         \item[$\ldots$]
           a limited number of partial problems
       \end{itemize}
-    \item
+    \item<3->
       Computation of the solutions for all partial problems
-    \item
+    \item<4->
       In a order that unsolved partial problems consist of already solved
       partial problems
-    \item
+    \item<5->
       The \enquote{path} to our solution normally gets computed while searching
       the best solution
-    \item
+    \item<5->
       Dijkstra algorithm is basically dynamic programming!
   \end{itemize}
 \end{frame}
@@ -698,15 +707,15 @@
 \begin{frame}{Edit distance}{Additional applications (I)}
   \textbf{Additional applications:}
   \begin{itemize}
-    \item
+    \item<2->
       \textit{Edit distance}: global alignment with $O(n^2)$ space and time
       consumption
-    \item
+    \item<3->
       But: Model for deletition unrealistic
       \begin{itemize}
-        \item
+        \item<4->
           In evolution larger pieces are more likely
-        \item
+        \item<5->
           \texttt{delete} operation: first gap expensive (e.g. 2),
           remainding are cheaper (e.g. 0.5)
           \begin{figure}[!h]
@@ -715,7 +724,7 @@
               S & A & U & B & L & O & E & D
             \end{tabular}
           \end{figure}
-        \item
+        \item<6->
           Solution in $O(n^3)$ time or $O(n^2)$ affine
       \end{itemize}
   \end{itemize}
@@ -727,9 +736,9 @@
   $O(n^2)$ space consumption might be problematic:\\[0.5em]
   \textbf{Hirschberg algorithm:}
   \begin{itemize}
-    \item
+    \item<2->
       Divide-and-conquer approach
-    \item
+    \item<3->
       $O(n)$ space and $O(n^2)$ time consumption
   \end{itemize}
 \end{frame}
@@ -742,9 +751,9 @@
       {Images/Additional_Applications/Whole_Genome_Shotgun_Sequencing.png}
   \end{figure}
   \begin{itemize}
-    \item
+    \item<2->
       Sequencing: $O(n^2)$ is too much
-    \item
+    \item<3->
       Index: suffixtree, suffixarray, burrow-wheeler-transform
   \end{itemize}
 \end{frame}

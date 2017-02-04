@@ -3,11 +3,11 @@
 \begin{frame}{Introduction}
   \textbf{Edit distance:}
   \begin{itemize}
-    \item
+    \item<2->
       Measurement for similarity of two words / strings
-    \item
+    \item<3->
       Algorithm for efficient calculation
-    \item
+    \item<4->
       General principle: dynamic programming
   \end{itemize}
 \end{frame}
@@ -26,21 +26,21 @@
 \begin{frame}{Introduction}{Motivation}
   \textbf{A lot of applications where similar string are searched:}
   \begin{itemize}
-    \item
+    \item<2->
       Duplicates in databases:\\[0.5em]
       \begin{tabular}{ll}
         \texttt{Hein Bl\"od} & \texttt{27568 Bremerhaven}\\
         \texttt{Hein Bloed} & \texttt{27568 Bremerhafen}\\
         \texttt{Hein Doof} & \texttt{27478 Cuxhaven}
       \end{tabular}
-    \item
+    \item<3->
       Product search:\\[0.5em]
       \texttt{memory stik}
-    \item
+    \item<4->
       Websearch:\\[0.5em]
       \texttt{eyjaf\"ollajak\"ull}\\
       \texttt{uniwersit\"at verien 2014}
-    \item
+    \item<5->
       Bioinformatics: Similarity of DNA-sequences
   \end{itemize}
 \end{frame}
@@ -50,15 +50,16 @@
 \begin{frame}{Introduction}{Example: Bioinformtics DNA-matching}
   \textbf{Search of similar proteins:}
   \begin{itemize}
-    \item
+    \item<2->
       \texttt{BLAST} (\textbf{B}asic \textbf{L}ocal \textbf{A}lignment
         \textbf{S}earch \textbf{T}ool)
-    \item
+    \item<3->
       Alignment $\hat{=}$ Edit distance
-    \item
+    \item<4->
       Changed life-science completely
   \end{itemize}
   \vspace{1.0em}
+  \onslide<5->
   \textbf{Google-Scholar entry:}
   \begin{figure}[!h]
     \includegraphics[width=\linewidth]%
