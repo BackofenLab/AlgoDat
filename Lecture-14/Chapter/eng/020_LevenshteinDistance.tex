@@ -33,34 +33,46 @@
         \begin{tabular}{c@{}c@{}c@{}c@{}cl}
           1 & 2 & 3 & 4 & 5\\
           D & O & O & F\\
+          \only<2-13>{
           {} & {} & $\downarrow$ & {} & {} & \texttt{replace(1, B)}\\
-          B & O & O & F\\
+          B & O & O & F}\\
+          \only<3-13>{
           {} & {} & $\downarrow$ & {} & {} & \texttt{replace(2, L)}\\
-          B & L & O & F\\
+          B & L & O & F}\\
+          \only<4-13>{
           {} & {} & $\downarrow$ & {} & {} & \texttt{insert(4, E)}\\
-          B & L & O & E & F\\
-          {} & {} & $\downarrow$ & {} & {} & \texttt{replace(5, D)}\\
+          B & L & O & E & F}\\
+          \only<5-13>{
+          {} & {} & $\downarrow$ & {} & {} & \texttt{replace(5, D)}}\\
           B & L & O & E & D\\
+          \only<6-13>{
           {} & {} & {} & {} & {} &
-          $\underbrace{\hspace{7.5em}}_{\mathrm{ED} = 4}$
+          $\underbrace{\hspace{7.5em}}_{\mathrm{ED} = 4}$}
         \end{tabular}
       \end{center}
     \end{column}
     \begin{column}{0.5\linewidth}
       \begin{center}
         \begin{tabular}{c@{}c@{}c@{}c@{}cl}
+          \only<7-13>{
           1 & 2 & 3 & 4 & 5\\
-          B & L & O & E & D\\
+          B & L & O & E & D\\}
+          \only<9-13>{
           {} & {} & $\downarrow$ & {} & {} & \texttt{replace(5, F)}\\
-          B & L & O & E & F\\
+          B & L & O & E & F}\\
+          \only<10-13>{
           {} & {} & $\downarrow$ & {} & {} & \texttt{delete(4)}\\
-          B & L & O & F\\
+          B & L & O & F}\\
+          \only<11-13>{
           {} & {} & $\downarrow$ & {} & {} & \texttt{replace(2, O)}\\
-          B & O & O & F\\
-          {} & {} & $\downarrow$ & {} & {} & \texttt{replace(1, D)}\\
-          D & O & O & F\\
+          B & O & O & F}\\
+          \only<12-13>{
+          {} & {} & $\downarrow$ & {} & {} & \texttt{replace(1, D)}}\\
+          \only<8-13>{
+            D & O & O & F}\\
+          \only<13-13>{
           {} & {} & {} & {} & {} &
-          $\underbrace{\hspace{7.5em}}_{\mathrm{ED} = 4}$
+          $\underbrace{\hspace{7.5em}}_{\mathrm{ED} = 4}$}
         \end{tabular}
       \end{center}
     \end{column}
@@ -161,7 +173,7 @@
   \textbf{Terminology:}
   \begin{itemize}
     \item<2->
-      We only regard {\color{Mittel-Blau}monotonous} sequences:\\
+      We only consider {\color{Mittel-Blau}monotonous} sequences:\\
       The positition of $\sigma_{i+1}$ is $\geq$ the position of $\sigma_i$
       where we only allow the positions to be equal on a \texttt{delete}
       operation
@@ -173,15 +185,19 @@
         \begin{tabular}{c@{}c@{}c@{}c@{}cl}
           1 & 2 & 3 & 4 & 5\\
           D & O & O & F\\
+          \only<1-1>
           {} & {} & $\downarrow$ & {} & {} &
           \texttt{replace({\color{Mittel-Blau}1}, B)}\\
           B & O & O & F\\
+          \only<2-2>
           {} & {} & $\downarrow$ & {} & {} &
           \texttt{replace({\color{Mittel-Blau}2}, L)}\\
           B & L & O & F\\
+          \only<3-3>
           {} & {} & $\downarrow$ & {} & {} &
-          \texttt{insert({\color{Mittel-Blau}4}, E)}\\
+          \only{insert({\color{Mittel-Blau}4}, E)}\\
           B & L & O & E & F\\
+          \only<4-4>
           {} & {} & $\downarrow$ & {} & {} &
           \texttt{replace({\color{Mittel-Blau}5}, D)}\\
           B & L & O & E & D
@@ -254,7 +270,7 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Edit distance}{Recursive approach}
-  \textbf{Regard last operation:}
+  \textbf{Consider the last operation:}
   \begin{itemize}
     \item<2->
       Solve {\color{Mittel-Blau}blue} part recursively
@@ -320,7 +336,7 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Edit distance}{Recursive approach}
-  \textbf{Regard last operation:}
+  \textbf{Consider the last operation:}
   \begin{itemize}
     \item<2->
       Solve {\color{Mittel-Blau}blue} part recursively
@@ -423,7 +439,7 @@
   \textbf{Case analysis:}
   \begin{itemize}
     \item<2->
-      We regard the last operation $\sigma_k$
+      We consider the last operation $\sigma_k$
       \begin{itemize}
         \item<3->
           $\sigma_1, \dots, \sigma_{k-1}$:
@@ -509,32 +525,33 @@
       {\color{Mittel-Blau}$\sigma_1, \dots, \sigma_{k}$}:
       {\color{Mittel-Blau}$x[1..n-1] \rightarrow y[1..m-1]$}
   \end{itemize}
+  \onslide<6->
   \textbf{This results in the recursive formula:}
   \begin{itemize}
-    \item<6->
+    \item<7->
       For {\color{Mittel-Blau}$\vert x \vert > 0$} and
       {\color{Mittel-Blau}$\vert y \vert > 0$} is
       {\color{Mittel-Blau}$\mathrm{ED}(x, y)$} the minimum of
       \begin{itemize}
-        \item<7->
-          {\color{Mittel-Blau}
-            $\mathrm{ED}(x\hphantom{[1..n-1]}, y[1..m-1]) + 1$} and
         \item<8->
           {\color{Mittel-Blau}
-            $\mathrm{ED}(x[1..n-1], y\hphantom{[1..m-1]}) + 1$} and
+            $\mathrm{ED}(x\hphantom{[1..n-1]}, y[1..m-1]) + 1$} and
         \item<9->
+          {\color{Mittel-Blau}
+            $\mathrm{ED}(x[1..n-1], y\hphantom{[1..m-1]}) + 1$} and
+        \item<10->
           {\color{Mittel-Blau}
             $\mathrm{ED}(x[1..n-1], y[1..m-1]) + 1$} if
           {\color{Mittel-Blau}$x[n] \neq y[m]$}
-        \item<10->
+        \item<11->
           {\color{Mittel-Blau}
             $\mathrm{ED}(x[1..n-1], y[1..m-1]) + 0$} if
           {\color{Mittel-Blau}$x[n] = y[m]$}
       \end{itemize}
-    \item<11->
+    \item<12->
       For {\color{Mittel-Blau}$\vert x \vert = 0$} is
       {\color{Mittel-Blau}$\mathrm{ED}(x, y) = \vert y \vert$}
-    \item<12->
+    \item<13->
       For {\color{Mittel-Blau}$\vert y \vert = 0$} is
       {\color{Mittel-Blau}$\mathrm{ED}(x, y) = \vert x \vert$}
   \end{itemize}
@@ -563,12 +580,12 @@
       The algorithm results in the following recursive formular:
       \begin{align*}
         T(n, m) &= T(n-1, m) + T(n, m-1) + T(n-1, m-1) + 1\\
-        & \geq T(n-1, m-1) + T(n-1, m-1) + T(n-1, m-1)
+        & \geq T(n-1, m-1) + T(n-1, m-1) + T(n-1, m-1)\\
         & = 3 \cdot T(n-1, m-1)
       \end{align*}
     \item<3->
       This results in {\color{Mittel-Blau}$T(n, n) \geq 3^n$}
-    \item[$\Rightarrow$]
+    \item<4->[$\Rightarrow$]
       The runtime is at least {\color{Mittel-Blau}exponential}
   \end{itemize}
 \end{frame}
