@@ -86,7 +86,10 @@ directories_server:
 # Create the index for all chapters
 build/$(ALGO_BUILD_CHAPTER_NAME).tex:
 	@echo "Reading chapters ($(ALGO_BUILD_CHAPTER_NAME))"
-	@ls Chapter/$(ALGO_LANGUAGE)/*.tex | awk '{printf "\\input{%s}\n", $$1}' > build/$(ALGO_BUILD_CHAPTER_NAME).tex
+	@ls Chapter/$(ALGO_LANGUAGE)/020_Exam.tex | awk '{printf "\\input{%s}\n", $$1}' > build/$(ALGO_BUILD_CHAPTER_NAME).tex
+	@ls Chapter/$(ALGO_LANGUAGE)/030_Exercises.tex | awk '{printf "\\input{%s}\n", $$1}' >> build/$(ALGO_BUILD_CHAPTER_NAME).tex
+#@ls Chapter/$(ALGO_LANGUAGE)/*.tex | awk '{printf "\\input{%s}\n", $$1}' > build/$(ALGO_BUILD_CHAPTER_NAME).tex
+
 
 # ------------------------------------------------------------------------------
 # Build the pdf
