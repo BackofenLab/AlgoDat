@@ -7,19 +7,19 @@
   path/.style={
     ->,
     line width=0.25em,
-    color=Mittel-Blau
+    color=MainA
   },
   path_error/.style={
     <-,
     line width=0.25em,
-    color=red!70!gray
+    color=SecA
   },
   lleft/.style={
-    color=Mittel-Gruen,
+    color=MainB,
     shift={(-0.5em,-0.5em)}
   },
   lright/.style={
-    color=Mittel-Gruen!80!black,
+    color=MainB,
     shift={(0.5em,-0.5em)}
   },
   level/.style={
@@ -27,22 +27,22 @@
     level distance = 4.0em
   }
 ]%
-%\begin{pgfonlayer}{main}
-\node [node, label={[lleft]above:\vphantom{0}}] {11}
-child [path] {
-  node [node] (left) {2}
-  child[path] {node [node] {3}}
-  child[path] {node [node] {\textbf{7}}}
-}
-child [path] {
-  node [node] (right) {4}
-  child[path] {node [node] {5}}
-  child[path] {node [node] {\textbf{8}}}
-};
-%\end{pgfonlayer}
+\begin{pgfonlayer}{main}
+  \node [node, label={[lleft]above:\vphantom{0}}] {11}
+  child [path] {
+    node [node] (left) {2}
+    child[path] {node [node] {3}}
+    child[path] {node [node] {\textbf{7}}}
+  }
+  child [path] {
+    node [node] (right) {4}
+    child[path] {node [node] {5}}
+    child[path] {node [node] {\textbf{8}}}
+  };
+\end{pgfonlayer}
 
-% \begin{pgfonlayer}{background}
-%   \fill [color={Hell-Blau!40}] ($(left) - (1.0, 1.80) - (0.25, 0.025)$)
-%     rectangle ($(right) + (1.0, 0.2) + (0.25, 0.025)$);
-% \end{pgfonlayer}
+\begin{pgfonlayer}{background}
+  \fill [color={MainALight!40}] ($(left) - (1.0, 1.80) - (0.25, 0.025)$)
+    rectangle ($(right) + (1.0, 0.2) + (0.25, 0.025)$);
+\end{pgfonlayer}
 \end{tikzpicture}
