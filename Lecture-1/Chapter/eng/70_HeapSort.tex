@@ -165,40 +165,42 @@
         \item
           Repair the heap like previously described
       \end{itemize}
-    \item
-      Output: {\color{MainB}4}, {\color{MainB}5},
-      {\color{MainB}\ldots}
+    \item<2- |handout:1>
+      Output: {\color{MainB}4}%
+      \only<6- |handout:1>{, {\color{MainB}5}, {\color{MainB}\ldots}}
   \end{itemize}
   \vspace*{-0.5em}
-  \begin{center}
-    \begin{figure}[!h]%
-      \begin{columns}%
-        \begin{column}{0.33\textwidth}%
-          \begin{centering}
-            \begin{adjustbox}{height=8em}
-              \input{Images/HeapSort/HeapSort_First.tikz}%
-            \end{adjustbox}%
-          \end{centering}
-        \end{column}%
-        \begin{column}{0.33\textwidth}%
-          \begin{centering}
-            \begin{adjustbox}{height=8em}
-              \input{Images/HeapSort/HeapSort_Second.tikz}%
-            \end{adjustbox}%
-          \end{centering}
-        \end{column}%
-        \begin{column}{0.33\textwidth}%
-          \begin{centering}
-            \begin{adjustbox}{height=8em}
-              \input{Images/HeapSort/HeapSort_Third.tikz}%
-            \end{adjustbox}%
-          \end{centering}
-        \end{column}%
-      \end{columns}%
-      \caption{One iteration of HeapSort}%
-      \label{fig:heapsort_repair}%
-    \end{figure}
-  \end{center}
+  \only<2- |handout:1>{
+    \begin{center}
+      \begin{figure}[!h]%
+        \begin{columns}%
+          \begin{column}{0.33\textwidth}%
+            \begin{centering}
+              \begin{adjustbox}{height=8em}
+                \input{Images/HeapSort/HeapSort_First.tikz}%
+              \end{adjustbox}%
+            \end{centering}
+          \end{column}%
+          \begin{column}{0.33\textwidth}<4- |handout:1>%
+            \begin{centering}
+              \begin{adjustbox}{height=8em}
+                \input{Images/HeapSort/HeapSort_Second.tikz}%
+              \end{adjustbox}%
+            \end{centering}
+          \end{column}%
+          \begin{column}{0.33\textwidth}<6- |handout:1>%
+            \begin{centering}
+              \begin{adjustbox}{height=8em}
+                \input{Images/HeapSort/HeapSort_Third.tikz}%
+              \end{adjustbox}%
+            \end{centering}
+          \end{column}%
+        \end{columns}%
+        \caption{One iteration of HeapSort}%
+        \label{fig:heapsort_repair}%
+      \end{figure}
+    \end{center}
+  }
 \end{frame}
 
 %-------------------------------------------------------------------------------
@@ -208,13 +210,13 @@
   \begin{itemize}
     \item
       This operation is called {\color{MainA}heapify}
-    \item
+    \item<2- |handout:1>
       The {\color{MainA}$n$} elements are already in the containing array
-    \item
+    \item<3- |handout:1>
       Interpret this field als binary heap with currently without the
       {\color{MainA}heap property}
-    \item
-      We repair the heap from bottom up with {\color{MainA}sift}
+    \item<4- |handout:1>
+      We repair the heap from bottom up (in layers) with {\color{MainA}sift}
   \end{itemize}
 \end{frame}
 
@@ -253,7 +255,7 @@
             \input{Images/HeapSort/Heapify_First.tikz}%
           \end{adjustbox}%
         \end{column}%
-        \begin{column}{0.425\textwidth}%
+        \begin{column}{0.425\textwidth}<2- |handout:1>%
           \begin{adjustbox}{width=\linewidth}%
               \input{Images/HeapSort/Heapify_Second.tikz}%
           \end{adjustbox}%
@@ -276,7 +278,7 @@
            \input{Images/HeapSort/Heapify_Third.tikz}%
          \end{adjustbox}%
        \end{column}%
-       \begin{column}{0.425\textwidth}%
+       \begin{column}{0.425\textwidth}<2- |handout:1>%
           \begin{adjustbox}{width=\linewidth}%
             \input{Images/HeapSort/Heapify_Fourth.tikz}%
           \end{adjustbox}%
@@ -310,18 +312,23 @@
     \item
       \textbf{MinSort:} Iterate through all non-sorted elements
     \item
-      \textbf{HeapSort:} Take the root of the heap
+      \textbf{HeapSort:} Finding the minimum is trivial (concept)
+      \begin{center}
+        \textit{Just take the root of the heap}
+      \end{center}
   \end{itemize}
   \vspace*{1.5em}
-  \textbf{Removing the minimum in HeapSort:}
-  \begin{itemize}
-    \item
-      Repair the heap and restore the {\color{MainA}heap property}
-      \begin{itemize}
-        \item
-          We don't have to repair the whole heap
-      \end{itemize}
-    \item
-      More of this in the next lecture
-  \end{itemize}
+  \only<2- |handout:1>{
+    \textbf{Removing the minimum in HeapSort:}
+    \begin{itemize}
+      \item
+        Repair the heap and restore the {\color{MainA}heap property}
+        \begin{itemize}
+          \item
+            We don't have to repair the whole heap
+        \end{itemize}
+      \item
+        More of this in the next lecture
+    \end{itemize}
+  }
 \end{frame}
