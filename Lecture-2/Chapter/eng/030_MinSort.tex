@@ -88,13 +88,13 @@
           \input{Images/MinSort/MinSort_Brace.tikz}%
         \end{adjustbox}%
         \caption{\textit{Minsort}
-          \only<1>{with start data}%
-          \only<2->{at iteration}
-          \only<2>{$i = 1$}%
-          \only<3>{$i = 2$}%
-          \only<4>{$i = 3$}%
-          \only<5>{$i = 4$}%
-          \only<6>{$i$}%
+          \only<1 |handout:0>{with start data}%
+          \only<2- |handout:1>{at iteration}
+          \only<2 |handout:0>{$i = 1$}%
+          \only<3 |handout:0>{$i = 2$}%
+          \only<4 |handout:0>{$i = 3$}%
+          \only<5 |handout:1>{$i = 4$}%
+          \only<6 |handout:0>{$i$}%
           }%
         \label{fig:minsort_brace}%
       \end{figure}
@@ -124,17 +124,51 @@
 \codeslide{python}{
 \begin{frame}{Runtime analysis - Minsort}
   \textbf{Alternative: Analyse the Code:}
-  \lstinputlisting[
-    language=Python,
-    style={python-idle-code},
-    basicstyle=\small,
-    tabsize=4,
-    emph={minsort},
-    emphstyle=\color{blue}
-  ]{Code/MinSort.py}
+%  \input{Images/MinSort/MinSort_Code_Highlight.tikz}
+%  \lstinputlisting[
+%    language=Python,
+%    style={python-idle-code},
+%    basicstyle=\small,
+%    tabsize=4,
+%    emph={minsort},
+%    emphstyle=\color{blue},
+%    escapechar={@}
+%  ]{Code/MinSort/MinSort.py}
 \end{frame}
 }
-%TODO: MinSort Java, C++
+
+%-------------------------------------------------------------------------------
+
+\codeslide{java}{
+\begin{frame}{Runtime analysis - Minsort}
+  \textbf{Alternative: Analyse the Code:}
+  \lstinputlisting[
+    language=Java,
+    style={java-eclipse-code},
+    basicstyle=\small,
+    tabsize=4,
+    emph={minSort},
+    emphstyle=\color{blue}
+  ]{Code/MinSort/MinSort.java}
+\end{frame}
+}
+
+%-------------------------------------------------------------------------------
+
+\codeslide{cpp}{
+\begin{frame}{Runtime analysis - Minsort}
+\textbf{Alternative: Analyse the Code:}
+  \lstinputlisting[
+    language=C++,
+    style={cpp-eclipse-code},
+    basicstyle=\small,
+    tabsize=4,
+    morekeywords={size_t},
+    emph={min_sort},
+    emphstyle=\color{blue}
+  ]{Code/MinSort/MinSort.cpp}
+\end{frame}
+}
 
 %-------------------------------------------------------------------------------
 
