@@ -1,6 +1,6 @@
-\subsection{MinSort}
+\subsection{Minsort}
 
-\begin{frame}{MinSort - Algorithm}
+\begin{frame}{Minsort - Algorithm}
   \begin{columns}
     \begin{column}{0.5\textwidth}
       \textbf{Informal description:}
@@ -20,7 +20,7 @@
         \begin{adjustbox}{width=\linewidth}
           \input{Images/MinSort/MinSort_Explanation.tikz}%
         \end{adjustbox}
-        \caption{\textit{MinSort}}%
+        \caption{\textit{Minsort}}%
         \label{fig:minsort_fourth_iteration}%
       \end{figure}%
     \end{column}
@@ -30,8 +30,8 @@
 %-------------------------------------------------------------------------------
 
 \codeslide{python}{
-\begin{frame}{MinSort - Algorithm}
-  \textbf{MinSort in Python:}
+\begin{frame}{Minsort - Algorithm}
+  \textbf{Minsort in Python:}
   \lstinputlisting[
     language=Python,
     style={python-idle-code},
@@ -46,8 +46,8 @@
 %-------------------------------------------------------------------------------
 
 \codeslide{java}{
-\begin{frame}{MinSort - Algorithm}
-  \textbf{MinSort in Java:}
+\begin{frame}{Minsort - Algorithm}
+  \textbf{Minsort in Java:}
   \lstinputlisting[
     language=Java,
     style={java-eclipse-code},
@@ -62,8 +62,8 @@
 %-------------------------------------------------------------------------------
 
 \codeslide{cpp}{
-\begin{frame}{MinSort - Algorithm}
-  \textbf{MinSort in C++:}
+\begin{frame}{Minsort - Algorithm}
+  \textbf{Minsort in C++:}
   \lstinputlisting[
     language=C++,
     style={cpp-eclipse-code},
@@ -94,7 +94,7 @@
     \begin{column}{0.585\textwidth}<2- |handout:1>
       \vspace*{-1.0em}%
       \begin{table}[!h]%
-        \caption{Runtime for \textit{MinSort}}%
+        \caption{Runtime for \textit{Minsort}}%
         \label{tab:minsort_runtime}%
         \begin{tabular}{c|c}%
           $n$ & Runtime / \si{\milli\second}\\
@@ -117,9 +117,10 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{MinSort - Runtime}
-  \textbf{How long does our program run?}\vspace*{-0.5em}
+  \textbf{How long does our program run?}
+  \vspace{-0.5em}
   \begin{columns}
-    \begin{column}{0.415\textwidth}
+    \begin{column}[t]{0.5\textwidth}
       \begin{itemize}
         \item
           We test it for different input sizes
@@ -129,11 +130,11 @@
           slower the more numbers are being sorted
       \end{itemize}
     \end{column}
-    \begin{column}{0.585\textwidth}
+    \begin{column}[t]{0.45\textwidth}
       \begin{center}%
         \begin{figure}[!h]%
-          \includegraphics[width=\textwidth]{Images/MinSort/RuntimeSquared.png}%
-          \vspace*{-1.0em}\caption{Runtime of \textit{MinSort}}%
+          \includegraphics[width=\textwidth]{Images/MinSort/Minsort.png}%
+          \vspace*{-1.0em}\caption{Runtime of \textit{Minsort}}%
           \label{fig:minsort_runtime}%
         \end{figure}%
       \end{center}
@@ -144,12 +145,13 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{MinSort - Runtime}
+  \textbf{Runtime analysis:}
+  \vspace{-0.5em}
   \begin{columns}%
-    \begin{column}{0.5\textwidth}%
-      \textbf{Runtime analysis:}
+    \begin{column}[t]{0.5\textwidth}%
       \begin{itemize}
         \item
-          In this lecture we study this diagram for \textit{MinSort}
+          In this lecture we study this diagram for \textit{Minsort}
           \begin{itemize}
             \item
               Thats what you should do in the first exercise sheet
@@ -164,11 +166,11 @@
           \end{itemize}
       \end{itemize}
     \end{column}%
-    \begin{column}{0.5\textwidth}%
+    \begin{column}[t]{0.45\textwidth}%
       \begin{center}%
         \begin{figure}[!h]%
-          \includegraphics[width=\textwidth]{Images/MinSort/RuntimeSquared.png}%
-          \vspace*{-1.0em}\caption{Runtime of \textit{MinSort}}%
+          \includegraphics[width=\textwidth]{Images/MinSort/Minsort.png}%
+          \vspace*{-1.0em}\caption{Runtime of \textit{Minsort}}%
           \label{fig:minsort_runtime_2}%
         \end{figure}%
       \end{center}
