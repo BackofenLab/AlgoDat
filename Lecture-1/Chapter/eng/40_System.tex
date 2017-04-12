@@ -30,7 +30,7 @@
           \end{enumerate}
       \end{itemize}
     \item
-      Link: {\color{Mittel-Blau}\href{\LectureDaphneLink}{Daphne}}
+      Link: {\color{MainA}\href{\LectureDaphneLink}{Daphne}}
   \end{itemize}
 \end{frame}
 
@@ -46,10 +46,10 @@
       Ask in the forum and not separate.
       Others might also be interested in the answer
     \item
-      {\color{Mittel-Blau}I}, {\color{Mittel-Blau}Claudis Korzen} or one of the
-      {\color{Mittel-Blau}tutors} will reply as fast as possible
+      {\color{MainA}I}, {\color{MainA}Claudis Korzen} or one of the
+      {\color{MainA}tutors} will reply as fast as possible
     \item
-      Link: {\color{Mittel-Blau}\href{\LectureForumLink}{Forum}}
+      Link: {\color{MainA}\href{\LectureForumLink}{Forum}}
   \end{itemize}
 \end{frame}
 
@@ -61,18 +61,18 @@
   \textbf{Checkstyle (flake8):}
   \begin{itemize}
     \item
-      Installation: \textbf{python} \texttt{-m pip install flake8}
+      Installation: \textbf{python3} \texttt{-m pip install flake8}
     \item
-      Check file: \textbf{flake8} \texttt{path/to/file.py}
+      Check file: \textbf{python3} \texttt{-m flake8 path/to/files/*.py}
     \item
-      Check directory: \textbf{flake8} \texttt{path/to/directory}
-    \item
-      Link: {\color{Mittel-Blau}\href{\LectureCheckstyleLink}{flake8}}
+      Link: {\color{MainA}\href{\LectureCheckstyleLink}{flake8}}
   \end{itemize}
 \end{frame}
+}
 
 %-------------------------------------------------------------------------------
 
+%\codeslide{python}{
 %\subsubsection{Checkstyle}
 %\begin{frame}{Checkstyle}
 %  \textbf{Checkstyle (pep8):}
@@ -84,16 +84,41 @@
 %    \item
 %      Check: \textbf{pep8} \texttt{--show-source --show-pep8 <file>}
 %    \item
-%      Link: {\color{Mittel-Blau}\href{\LectureCheckstyleLink}{pep8}}
+%      Link: {\color{MainA}\href{\LectureCheckstyleLink}{pep8}}
 %  \end{itemize}
 %\end{frame}
-}
+%}
+
+%-------------------------------------------------------------------------------
+
+\subsubsection{Unit Tests}
+\begin{frame}{Unit Tests}
+  \textbf{Why unit tests?}
+  \begin{enumerate}
+    \item
+      A non-trivial method without an unit test is probably wrong
+    \item<2- |handout:1>
+      Simplifies debugging
+    \item<3- |handout:1>
+      We and you can automatic check corectness of code
+  \end{enumerate}
+  \vspace{1em}
+  \only<4- |handout:1>{\textbf{What is a good unit test?}}
+  \begin{itemize}
+    \item<5- |handout:1>
+      Unit test checks desired output for a given input
+    \item<6- |handout:1>
+      At least one \textbf{typical} input
+    \item<7- |handout:1>
+      At least one \textbf{critical} case\\
+      {\color{Hint}E.g. double occurrence of a value in sorting}
+  \end{itemize}
+\end{frame}
 
 %-------------------------------------------------------------------------------
 
 \codeslide{python}{
-\subsubsection{Test}
-\begin{frame}{Test}{doctest}
+\begin{frame}{Unit Tests}{doctest}
   \textbf{Testing (doctest):}
   \vspace{-1.0em}
   \begin{columns}
@@ -111,9 +136,12 @@
     \begin{column}[t]{0.5\linewidth}
       \begin{itemize}
         \item
-          Run: \textbf{python} \textit{<file>}
-        \item
-          Debug: \textbf{python} \textit{<file> -v}
+          Tests are contained in docstrings
+        \item<2- |handout:1>
+          Module \texttt{doctest} runs them
+        \item<3- |handout:1>
+          Run check with:\\
+          \textbf{python3} \textit{-m doctest path/to/files/*.py -v}
       \end{itemize}
     \end{column}
   \end{columns}
@@ -134,7 +162,7 @@
 %    \item
 %      Upload: \textbf{git} \texttt{push origin master}
 %    \item
-%      Link: {\color{Mittel-Blau}\href{\LectureGitLink}{Git}}
+%      Link: {\color{MainA}\href{\LectureGitLink}{Git}}
 %  \end{itemize}
 %\end{frame}
 
@@ -147,11 +175,11 @@
     \item
       Initialize / update directory: \textbf{svn} \texttt{checkout <URL>}
     \item
-      Add files / folders: \textbf{svn} \texttt{add <file> --all}
+      Add files / folders: \textbf{svn} \texttt{add <file> -{}-all}
     \item
       Create snapshot: \textbf{svn} \texttt{commit -m "<Your Message>"}
     \item
-      Link: {\color{Mittel-Blau}\href{\LectureSubversionLink}{Subversion}}
+      Link: {\color{MainA}\href{\LectureSubversionLink}{Subversion}}
   \end{itemize}
 \end{frame}
 
@@ -162,8 +190,18 @@
   \textbf{Jenkins:}
   \begin{itemize}
     \item
-      Provides current build status
+      Provides our build system
     \item
-      Link: {\color{Mittel-Blau}\href{\LectureJenkinsLink}{Jenkins}}
+      You can check if your uploded code runs
+      \begin{itemize}
+        \item
+          Especially whether all \textbf{unit test} pass
+        \item
+          And if \textbf{checkstyle} \texttt{(flake8)} is statisfied
+      \end{itemize}
+    \item
+      Will be shown in the {\color{MainA}first exercise}
+    \item
+      Link: {\color{MainA}\href{\LectureJenkinsLink}{Jenkins}}
   \end{itemize}
 \end{frame}

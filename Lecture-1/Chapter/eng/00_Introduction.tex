@@ -1,13 +1,18 @@
 \toclesssection{Algorithms and Datastructures}
 
-\begin{frame}{Algorithms and Datastructures}
+\begin{frame}{Algorithms and Datastructures}{Topics of this Lecture}
+  \textbf{Topics of the Lecture:}
   \begin{itemize}
     \item
-      Efficient data handling and processing
+      \only<1>{Algorithms and Data Structures}
+      \only<2-|handout:1>{
+        Efficient data handling and processing\\
+        $\ldots$ for problems that occur in practical \textbf{any} larger program / project
+      }
     \item
-      \textbf{Algorithm:} Solving of complex computional problems
+      \textbf{Algorithm} $\hat{=}$ Solving of complex computional problems
     \item
-      \textbf{Datastructure:} Representation of data on computer
+      \textbf{Datastructure} $\hat{=}$ Representation of data on computer
   \end{itemize}
 \end{frame}
 
@@ -17,11 +22,11 @@
   \hfill
   \qrcode[height=6em]{https://www.youtube.com/watch?v=kPRA0W1kECg}\\
   \vspace*{-1.5em}
-  \begin{figure}
+  \begin{figure}[!h]
     \begin{center}
       \href{https://www.youtube.com/watch?v=kPRA0W1kECg}{
         \begin{adjustbox}{width=0.75\linewidth}%
-          \input{Images/MinSort/MinSort_Play.tikz.tex}%
+          \input{Images/MinSort/MinSort_Play.tikz}%
         \end{adjustbox}
       }
     \end{center}
@@ -30,7 +35,7 @@
         Sorting with \textit{Minsort}%
       }%
     }%
-    \label{fig:minsort}%
+    \label{fig:minsort_play}%
   \end{figure}
 \end{frame}
 
@@ -38,16 +43,16 @@
 
 \begin{frame}{Example 2: Navigation}
   \begin{columns}
-    \begin{column}{0.575\textwidth}
+    \begin{column}{0.55\textwidth}
       \begin{itemize}
-        \item
+        \item<2-|handout:1>
           \textbf{Datastructures:} How to represent the map as data?
-        \item
+        \item<3-|handout:1>
           \textbf{Algorithms:} How to find the shortest / fastest way?
       \end{itemize}
     \end{column}%
-    \begin{column}{0.425\textwidth}
-      \begin{figure}
+    \begin{column}{0.45\textwidth}
+      \begin{figure}[!h]
         \includegraphics[width=\textwidth]
           {Images/Introduction/OpenStreetmap.png}
         \caption{Navigationplan \copyright\,%

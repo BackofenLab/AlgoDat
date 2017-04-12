@@ -1,9 +1,26 @@
-\def\MinSortDrawNumbers{0}
 \begin{tikzpicture}
 %Generate MinSort pattern
-\input{Images/MinSort/MinSort_Data.tikz}
+\foreach[count=\x] \h/\c in {
+  1/MainBLight,%
+  2/MainBLight,%
+  3/MainBLight,%
+  12/MainALight,%
+  7/MainALight,%
+  4/MainA,%
+  6/MainALight,%
+  10/MainALight,%
+  8/MainALight,%
+  15/MainALight,%
+  14/MainALight,%
+  5/MainALight,%
+  11/MainALight,%
+  9/MainALight,%
+  13/MainALight%
+} {
+  \draw[fill=\c] (\x + 0.1, 0.0) rectangle (\x + 0.9, \h/2);
+}
 
 % Draw play button
-\draw[color=black, fill=Hell-Gruen]
+\draw[color=black, fill=MainBLight]
   (8, 1.5) -- (8, 5.5) -- (10, 3.5) -- (8, 1.5);
 \end{tikzpicture}

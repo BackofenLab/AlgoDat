@@ -5,14 +5,14 @@
   path/.style={
     ->,
     line width=0.25em,
-    color=Mittel-Blau
+    color=MainA
   },
   lleft/.style={
-    color=Greenb,
+    color=MainB,
     shift={(-0.5em,-0.75em)}
   },
   lright/.style={
-    color=Greenb!80!black,
+    color=MainB!80!black,
     shift={(0.5em,-0.75em)}
   },
   level/.style={
@@ -21,15 +21,15 @@
   }
 ]
 
-\node [node, label={[lleft]above:{\protect{\onslide<2->{0}}}}] (root) {4}
+\node [node, label={[lleft]above:{\only<2-|handout: 1>{0}}}] (root) {4}
 child [path] {
-  node [node, label={[lleft]above:{\protect{\onslide<3->{1}}}}] {8}
-  child {node [node, label={[lleft]above:{\protect{\onslide<5->{3}}}}] {17}}
-  child {node [node, label={[lright]above:{\protect{\onslide<6->{4}}}}] {9}}
+  node [node, label={[lleft]above:{\only<3-|handout: 1>{1}}}] {8}
+  child {node [node, label={[lleft]above:{\only<5-|handout: 1>{3}}}] {17}}
+  child {node [node, label={[lright]above:{\only<6-|handout: 1>{4}}}] {9}}
 }
 child [path] {
-  node [node, label={[lright]above:{\protect{\onslide<4->{2}}}}] {5}
-  child {node [node, label={[lleft]above:{\protect{\onslide<7->{5}}}}] {11}}
-  child {node [node, label={[lright]above:{\protect{\onslide<8->{6}}}}] {7}}
+  node [node, label={[lright]above:{\only<4-|handout: 1>{2}}}] {5}
+  child {node [node, label={[lleft]above:{\only<7-|handout: 1>{5}}}] {11}}
+  child {node [node, label={[lright]above:{\only<8-|handout: 1>{6}}}] {7}}
 };
 \end{tikzpicture}

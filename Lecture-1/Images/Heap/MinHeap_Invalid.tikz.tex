@@ -1,3 +1,9 @@
+\only<1 |handout:0>{%
+  \colorlet{AlgoHeapErrPath}{MainA}%
+}%
+\only<2- |handout:1>{%
+  \colorlet{AlgoHeapErrPath}{SecA}%
+}%
 \begin{tikzpicture}[
   node/.style={
     color=black
@@ -5,19 +11,18 @@
   path/.style={
     ->,
     line width=0.25em,
-    color=Blueb
+    color=MainA
   },
   path_error/.style={
     <-,
     line width=0.25em,
-    color=red!70!gray
+    color=AlgoHeapErrPath
   },
   level/.style={
     sibling distance = 8.0em/#1,
     level distance = 4.0em
   }
-]
-
+]%
 \node [node] (root) {17}
 child [path_error] {
   node [node] {15}

@@ -5,23 +5,17 @@
   path/.style={
     ->,
     line width=0.25em,
-    color=Mittel-Blau
-  },
-  path_error/.style={
-    <-,
-    line width=0.25em,
-    color=\currentred%red!70!gray
+    color=MainA
   },
   level/.style={
     sibling distance = 6.0em/#1,
     level distance = 4.0em
   }
-]
-
+]%
 \node [node] (root) {8}
 child [path] {
   node [node] {9}
-  child[path] {node [node, color=Mittel-Gruen] {\textbf{17}}}
+  child[path] {node [node, color=MainB] {\textbf{17}}}
   child[path] {node [node] {10}}
 }
 child [path] {

@@ -8,11 +8,12 @@
     \item
       Better structure for finding the smallest element
   \end{itemize}
-  \textbf{Binary heap:}
+  \vspace{1em}
+  \only<2- |handout:1>{\textbf{Binary heap:}}
   \begin{itemize}
-    \item
+    \item<2- |handout:1>
       Preferably a complete binary tree
-    \item
+    \item<2- |handout:1>
       \textbf{Heap property:} Each child is smaller / larger than the parent
       element
   \end{itemize}
@@ -24,13 +25,13 @@
   \textbf{Min heap:}
   \begin{itemize}
     \item
-      \textbf{Heap property:} Each child is {\color{Mittel-Blau}smaller}
+      \textbf{Heap property:} Each child is {\color{MainA}smaller}
       (larger) than the parent element
   \end{itemize}
-  \begin{columns}
-    \begin{column}{0.45\textwidth}
-      \begin{figure}[!h]
-        \begin{adjustbox}{width=\linewidth}
+  \begin{columns}%
+    \begin{column}[b]{0.45\textwidth}%
+      \begin{figure}[!h]%
+        \begin{adjustbox}{height=0.75\linewidth}%
           \input{Images/Heap/MinHeap_Valid.tikz}
         \end{adjustbox}
         \caption{Valid min heap}
@@ -38,9 +39,9 @@
       \end{figure}
     \end{column}%
     \hspace*{0.1em}%
-    \begin{column}{0.45\textwidth}
-      \begin{figure}[!h]
-        \begin{adjustbox}{width=\linewidth}
+    \begin{column}[b]{0.45\textwidth}%
+      \begin{figure}[!h]%
+        \begin{adjustbox}{height=0.75\linewidth}%
           \input{Images/Heap/MinHeap_Invalid.tikz}
         \end{adjustbox}
         \caption{Invalid min heap}
@@ -57,15 +58,15 @@
   \begin{itemize}
     \item
       We number all nodes from top to bottom and left to right starting at
-      {\color{Mittel-Blau}0}
+      {\color{MainA}0}
       \begin{itemize}
         \item
-          The children of node {\color{Mittel-Blau}$i$} are
-          {\color{Mittel-Blau}$2i + 1$} and {\color{Mittel-Blau}$2i + 2$}
+          The children of node {\color{MainA}$i$} are
+          {\color{MainA}$2i + 1$} and {\color{MainA}$2i + 2$}
         \vspace*{0.5em}
         \item
-          The parent node of {\color{Mittel-Blau}$i$} is
-          {\color{Mittel-Blau}$\mathrm{floor}\left(\frac{i-1}{2}\right)$}
+          The parent node of {\color{MainA}$i$} is
+          {\color{MainA}$\mathrm{floor}\left(\frac{i-1}{2}\right)$}
       \end{itemize}
   \end{itemize}%
   \vspace*{-1.5em}%
@@ -85,21 +86,21 @@
         \caption{Elements stored in array}
         \label{tab:minheap_numbered}
         \begin{tabular}{ccccccc}
-          {\color{Mittel-Gruen}0}&
-          {\color{Mittel-Gruen}1}&
-          {\color{Mittel-Gruen}2}&
-          {\color{Mittel-Gruen}3}&
-          {\color{Mittel-Gruen}4}&
-          {\color{Mittel-Gruen}5}&
-          {\color{Mittel-Gruen}6}\\
+          \only<2- |handout:1>{\color{MainB}0}&
+          \only<3- |handout:1>{\color{MainB}1}&
+          \only<4- |handout:1>{\color{MainB}2}&
+          \only<5- |handout:1>{\color{MainB}3}&
+          \only<6- |handout:1>{\color{MainB}4}&
+          \only<7- |handout:1>{\color{MainB}5}&
+          \only<8- |handout:1>{\color{MainB}6}\\
           \hline
-          \multicolumn{1}{|c}{4}&%
-          \multicolumn{1}{|c}{8}&%
-          \multicolumn{1}{|c}{5}&%
-          \multicolumn{1}{|c}{17}&%
-          \multicolumn{1}{|c}{9}&%
-          \multicolumn{1}{|c}{11}&%
-          \multicolumn{1}{|c|}{7}\\
+          \multicolumn{1}{|c}{\only<2- |handout:1>{4}}&%
+          \multicolumn{1}{|c}{\only<3- |handout:1>{8}}&%
+          \multicolumn{1}{|c}{\only<4- |handout:1>{5}}&%
+          \multicolumn{1}{|c}{\only<5- |handout:1>{17}}&%
+          \multicolumn{1}{|c}{\only<6- |handout:1>{9}}&%
+          \multicolumn{1}{|c}{\only<7- |handout:1>{11}}&%
+          \multicolumn{1}{|c|}{\only<8- |handout:1>{7}}\\
           \hline
         \end{tabular}
       \end{table}
@@ -112,37 +113,39 @@
 \begin{frame}{HeapSort - Algorithm 4 / 10}
   \textbf{Taking the smallest element:}
   \begin{itemize}
-    \item
-      Remove he smallest element (root node)
-    \item
+    \item<2- |handout:1>
+      Remove the smallest element (root node)
+    \item<3- |handout:1>
       Replace the root with the last node
-    \item
-      {\color{Mittel-Blau}Sift} the root node until the
-      {\color{Mittel-Blau}heap property} is statisfied
+    \item<4- |handout:1>
+      {\color{MainA}Sift} the root node until the
+      {\color{MainA}heap property} is statisfied
   \end{itemize}
-  \begin{figure}[!h]%
-    \begin{columns}%
-      \begin{column}{0.3\textwidth}%
-        \begin{adjustbox}{width=\linewidth}
-          \input{Images/HeapSort/MinHeap_Repair_First.tikz}%
-        \end{adjustbox}%
-      \end{column}%
-      \hspace*{0.05em}%
-      \begin{column}{0.3\textwidth}%
-        \begin{adjustbox}{width=\linewidth}
-          \input{Images/HeapSort/MinHeap_Repair_Second.tikz}%
-        \end{adjustbox}
-      \end{column}%
-      \hspace*{0.05em}%
-      \begin{column}{0.3\textwidth}%
-        \begin{adjustbox}{width=\linewidth}
-          \input{Images/HeapSort/MinHeap_Repair_Third.tikz}%
-        \end{adjustbox}%
-      \end{column}%
-    \end{columns}%
-    \caption{Repair of a min heap}%
-    \label{fig:minheap_repair}%
-  \end{figure}
+  \only<5- |handout:1>{
+    \begin{figure}[!h]%
+      \begin{columns}%
+        \begin{column}{0.3\textwidth}%
+          \begin{adjustbox}{width=\linewidth}
+            \input{Images/HeapSort/MinHeap_Repair_First.tikz}%
+          \end{adjustbox}%
+        \end{column}%
+        \hspace*{0.05em}%
+        \begin{column}{0.3\textwidth}<7- |handout:1>%
+          \begin{adjustbox}{width=\linewidth}
+            \input{Images/HeapSort/MinHeap_Repair_Second.tikz}%
+          \end{adjustbox}
+        \end{column}%
+        \hspace*{0.05em}%
+        \begin{column}{0.3\textwidth}<9- |handout:1>%
+          \begin{adjustbox}{width=\linewidth}
+            \input{Images/HeapSort/MinHeap_Repair_Third.tikz}%
+          \end{adjustbox}%
+        \end{column}%
+      \end{columns}%
+      \caption{Repair of a min heap}%
+      \label{fig:minheap_repair}%
+    \end{figure}
+  }
 \end{frame}
 
 %-------------------------------------------------------------------------------
@@ -151,7 +154,7 @@
   \textbf{HeapSort:}
   \begin{itemize}
     \item
-      Organize the {\color{Mittel-Blau}$n$} elements as heap
+      Organize the {\color{MainA}$n$} elements as heap
     \item
       While the heap contains more elements
       \begin{itemize}
@@ -162,40 +165,42 @@
         \item
           Repair the heap like previously described
       \end{itemize}
-    \item
-      Output: {\color{Mittel-Gruen}4}, {\color{Mittel-Gruen}5},
-      {\color{Mittel-Gruen}\ldots}
+    \item<2- |handout:1>
+      Output: {\color{MainB}4}%
+      \only<6- |handout:1>{, {\color{MainB}5}, {\color{MainB}\ldots}}
   \end{itemize}
   \vspace*{-0.5em}
-  \begin{center}
-    \begin{figure}[!h]%
-      \begin{columns}%
-        \begin{column}{0.33\textwidth}%
-          \begin{centering}
-            \begin{adjustbox}{height=8em}
-              \input{Images/HeapSort/HeapSort_First.tikz}%
-            \end{adjustbox}%
-          \end{centering}
-        \end{column}%
-        \begin{column}{0.33\textwidth}%
-          \begin{centering}
-            \begin{adjustbox}{height=8em}
-              \input{Images/HeapSort/HeapSort_Second.tikz}%
-            \end{adjustbox}%
-          \end{centering}
-        \end{column}%
-        \begin{column}{0.33\textwidth}%
-          \begin{centering}
-            \begin{adjustbox}{height=8em}
-              \input{Images/HeapSort/HeapSort_Third.tikz}%
-            \end{adjustbox}%
-          \end{centering}
-        \end{column}%
-      \end{columns}%
-      \caption{One iteration of HeapSort}%
-      \label{fig:heapsort_repair}%
-    \end{figure}
-  \end{center}
+  \only<2- |handout:1>{
+    \begin{center}
+      \begin{figure}[!h]%
+        \begin{columns}%
+          \begin{column}{0.33\textwidth}%
+            \begin{centering}
+              \begin{adjustbox}{height=8em}
+                \input{Images/HeapSort/HeapSort_First.tikz}%
+              \end{adjustbox}%
+            \end{centering}
+          \end{column}%
+          \begin{column}{0.33\textwidth}<4- |handout:1>%
+            \begin{centering}
+              \begin{adjustbox}{height=8em}
+                \input{Images/HeapSort/HeapSort_Second.tikz}%
+              \end{adjustbox}%
+            \end{centering}
+          \end{column}%
+          \begin{column}{0.33\textwidth}<6- |handout:1>%
+            \begin{centering}
+              \begin{adjustbox}{height=8em}
+                \input{Images/HeapSort/HeapSort_Third.tikz}%
+              \end{adjustbox}%
+            \end{centering}
+          \end{column}%
+        \end{columns}%
+        \caption{One iteration of HeapSort}%
+        \label{fig:heapsort_repair}%
+      \end{figure}
+    \end{center}
+  }
 \end{frame}
 
 %-------------------------------------------------------------------------------
@@ -204,14 +209,14 @@
   \textbf{Creation of a heap:}
   \begin{itemize}
     \item
-      This operation is called {\color{Mittel-Blau}heapify}
-    \item
-      The {\color{Mittel-Blau}$n$} elements are already in the containing array
-    \item
+      This operation is called {\color{MainA}heapify}
+    \item<2- |handout:1>
+      The {\color{MainA}$n$} elements are already in the containing array
+    \item<3- |handout:1>
       Interpret this field als binary heap with currently without the
-      {\color{Mittel-Blau}heap property}
-    \item
-      We repair the heap from bottom up with {\color{Mittel-Blau}sift}
+      {\color{MainA}heap property}
+    \item<4- |handout:1>
+      We repair the heap from bottom up (in layers) with {\color{MainA}sift}
   \end{itemize}
 \end{frame}
 
@@ -223,13 +228,13 @@
     \caption{Input in array}%
     \label{tab:heapify_numbers}%
     \begin{tabular}{ccccccc}
-      {\color{Mittel-Gruen}0}&
-      {\color{Mittel-Gruen}1}&
-      {\color{Mittel-Gruen}2}&
-      {\color{Mittel-Gruen}3}&
-      {\color{Mittel-Gruen}4}&
-      {\color{Mittel-Gruen}5}&
-      {\color{Mittel-Gruen}6}\\
+      {\color{MainB}0}&
+      {\color{MainB}1}&
+      {\color{MainB}2}&
+      {\color{MainB}3}&
+      {\color{MainB}4}&
+      {\color{MainB}5}&
+      {\color{MainB}6}\\
       \hline
       \multicolumn{1}{|c}{11}&%
       \multicolumn{1}{|c}{7}&%
@@ -250,7 +255,7 @@
             \input{Images/HeapSort/Heapify_First.tikz}%
           \end{adjustbox}%
         \end{column}%
-        \begin{column}{0.425\textwidth}%
+        \begin{column}{0.425\textwidth}<2- |handout:1>%
           \begin{adjustbox}{width=\linewidth}%
               \input{Images/HeapSort/Heapify_Second.tikz}%
           \end{adjustbox}%
@@ -273,7 +278,7 @@
            \input{Images/HeapSort/Heapify_Third.tikz}%
          \end{adjustbox}%
        \end{column}%
-       \begin{column}{0.425\textwidth}%
+       \begin{column}{0.425\textwidth}<2- |handout:1>%
           \begin{adjustbox}{width=\linewidth}%
             \input{Images/HeapSort/Heapify_Fourth.tikz}%
           \end{adjustbox}%
@@ -307,18 +312,23 @@
     \item
       \textbf{MinSort:} Iterate through all non-sorted elements
     \item
-      \textbf{HeapSort:} Take the root of the heap
+      \textbf{HeapSort:} Finding the minimum is trivial (concept)
+      \begin{center}
+        \textit{Just take the root of the heap}
+      \end{center}
   \end{itemize}
   \vspace*{1.5em}
-  \textbf{Removing the minimum in HeapSort:}
-  \begin{itemize}
-    \item
-      Repair the heap and restore the {\color{Mittel-Blau}heap property}
-      \begin{itemize}
-        \item
-          We don't have to repair the whole heap
-      \end{itemize}
-    \item
-      More of this in the next lecture
-  \end{itemize}
+  \only<2- |handout:1>{
+    \textbf{Removing the minimum in HeapSort:}
+    \begin{itemize}
+      \item
+        Repair the heap and restore the {\color{MainA}heap property}
+        \begin{itemize}
+          \item
+            We don't have to repair the whole heap
+        \end{itemize}
+      \item
+        More of this in the next lecture
+    \end{itemize}
+  }
 \end{frame}
