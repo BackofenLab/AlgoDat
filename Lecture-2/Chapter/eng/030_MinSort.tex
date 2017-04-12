@@ -4,43 +4,6 @@
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Runtime analysis - Minsort 1/10}
- How long does the program run?
- \begin{itemize}
-    \item
-      In the last lecture we had a schematic.
-    \item
-      \textbf{Observation:} It is going to be \enquote{disproportional} slower
-      the more numbers are being sorted.
-    \item
-      How can we say more precisely what is happening?
-  \end{itemize}
-\end{frame}
-
-%-------------------------------------------------------------------------------
-
-\begin{frame}{Runtime analysis - Minsort 2/10}
-  How can we analyse the runtime?
-  \begin{itemize}
-    \item Ideally we have a formula which provides the runtime of the
-      program for an specific input
-    \item
-      \textbf{Problem:} The runtime is also depending on many other
-        influences, especially:
-      \begin{itemize}
-        \item
-          Which kind of computer is the code executed on.
-        \item What is running in the background.
-        \item Which compiler is used to compile the code.
-      \end{itemize}
-    \item
-      \textbf{Abstraction 1:} Analyse the number of basic operations,
-        rather than analysing the runtime.
-  \end{itemize}
-\end{frame}
-
-%-------------------------------------------------------------------------------
-
 \begin{frame}{Runtime analysis - Minsort 3/10}
   How many operations does \textit{Minsort} need?
   \begin{itemize}
@@ -272,4 +235,38 @@
     for $n \geq 2$:\\[1.0em]
     $\hspace*{1.5em}\Rightarrow T(n) \geq C_1 \cdot n^2$
   \end{block}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Runtime Example}
+  \begin{itemize}
+    \item
+      The runtime is growing quadratic with the number of elements
+      ${\color{Mittel-Blau}n}$ in the list.\\
+    \item
+      $2\, \times$ elements $\Rightarrow$ $4\, \times$ runtime\\
+      \begin{itemize}
+        \item
+          $C = \SI{1}{\nano\second}$
+          (1 simple instruction $\approx \SI{1}{\nano\second}$)
+        \item
+          $n = 10^6$ (1 million numbers = $\SI{4}{\mega\byte}$
+          with $\SI{4}{\byte\per number}$)
+          \begin{itemize}
+            \item
+              $C \cdot n^2 = \SI{e-9}{\second} \cdot 10^{12}
+              = \SI{e3}{\second} = \SI{16.7}{\minute}$
+          \end{itemize}
+        \item
+          $n = 10^9$ (1 billion numbers = $\SI{4}{\giga\byte}$)
+          \begin{itemize}
+            \item
+              $C \cdot n^2 = \SI{e-9}{\second} \cdot 10^{18}
+              = \SI{e9}{\second} = 31.7$~years
+          \end{itemize}
+      \end{itemize}
+    \item
+      \textbf{Quadratic runtime = \enquote{big} problems unsolvable}
+  \end{itemize}
 \end{frame}
