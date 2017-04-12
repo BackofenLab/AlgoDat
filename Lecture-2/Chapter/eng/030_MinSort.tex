@@ -205,8 +205,8 @@
         (n-i)\cdot C'_2
       }
       \onslide<8- |handout:1>{
-        \ \textcolor{SecA}{\leq}\ 
-        \sum^{\textcolor{SecA}{n}}_{i=1} i\cdot C'_2
+        \ \textcolor{SecB}{\leq}\ 
+        \sum^{\textcolor{SecB}{n}}_{i=1} i\cdot C'_2
       }
     }
   \end{displaymath}
@@ -296,68 +296,102 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Runtime analysis - Minsort}
-  \begin{block}{Proof of the statement ({\color{Mittel-Gruen}upper bound}):}
-    We assume: Swap, Compare $\in \mathcal{O}(1)$\\
-    $\hspace{1.5em}\Rightarrow C_\text{s} = C_\text{c} = 1$
-    \vspace*{0.5em}
-    \begin{center}
-      $\displaystyle
-      T(n)
-      \;\leq\;
-        2 n \, + \, \underbrace{
-          \sum \limits^{n - 1}_{i = 1} i
-          \,=\, \frac{n^2 - n}{2}
-        }_\text{Small Gauss sum}
-        \, + \,2  n
-      \;\leq\; \frac{n^2 + 3 n}{2}
-      \;\leq\; \frac{n^2 + n^2}{2}
-      \;\leq\; \frac{2 n^2}{2}
-      \,=\, n^2
-      $
-    \end{center}
-    $\Rightarrow T(n) \leq C_2 \cdot n^2, \, C_2 = 1$
-  \end{block}
+  \textbf{Finding an {\color{MainBLight}upper bound}:
+    $T(n) \leq C_2 \cdot n^2$}
+  \begin{eqnarray*}
+    T(n) & \leq & \sum\limits^{n}_{i=1} C'_2\cdot i\\
+    \onslide<2- |handout:1>{
+      & = & C'_2 \cdot
+      \only<2 |handout:0>{\sum\limits^{n}_{i=1} i}
+      \only<3- |handout:1>{\textcolor{MainA}{\sum\limits^{n}_{i=1} i}}
+    }\\
+    \onslide<3- |handout:1>{
+      & & \hspace{1cm}
+      \textcolor{MainA}{
+        \Downarrow\hspace{0.5cm}
+        \rlap{\text{Small Gauss sum}}
+      }
+    }\\
+    \onslide<3- |handout:1>{
+      & = & C'_2 \cdot \textcolor{MainA}{\frac{n(n + 1)}{2}}
+    }\\
+    \onslide<4- |handout:1>{
+      & \leq & C'_2 \cdot \frac{n(n + n)}{2}, \ 1 \leq n
+    }\\
+    \onslide<5- |handout:1>{
+      & = & C'_2 \cdot \frac{2 \cdot n^2}{2}
+    }
+    \onslide<6- |handout:1>{
+      \quad = \quad C'_2 \cdot n^2
+    }
+  \end{eqnarray*}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}<1 |handout:0>{Excursion - Small Gauss Formula}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Runtime analysis - Minsort}
-  \begin{block}{Proof of $C_1 \cdot n^2 \leq T(n)$
-      ({\color{Mittel-Gruen}lower bound}):}
-    We assume: Compare $\in \mathcal{O}(1)$\\
-    $\hspace{1.5em}\Rightarrow C_\text{c} = 1, \; C_\text{s} = 0$\\
-    \vspace*{0.5em}
-    Analogous for the {\color{Mittel-Gruen}lower bound}
-    (no value is swapped), there exists a $C_1$, for that
-    applys:\\[0.5em]
-    \begin{centering}
-      \begin{math}
-        \begin{array}{@{}rcl@{}}
-          T(n) & \geq &
-          \displaystyle
-          n - 1 + \sum^{n - 1}_{i=1} i
-          = \frac{n^2 - n}{2} + n - 1
-          = \frac{n^2 + n}{2} - 1
-        \end{array}
-      \end{math}
-    \end{centering}
-  \end{block}
+  \textbf{Finding a {\color{MainBLight}lower bound}:
+    $C_1 \cdot n^2 \leq T(n)$}\\[0.5em]
+  \hspace{1.5em}Like for the upper boundary there exists a {\color{MainA}$C_1$}.
+    Summation\\
+  \hspace{1.5em}analysis is the same\onslide<4- |handout:1>{,
+    \textcolor{MainA}{only final approximation differs}}
+  \begin{eqnarray*}
+    T(n) & \geq & \sum\limits^{n-1}_{i=1} C'_1 \cdot (n - i)
+    \onslide<2- |handout:1>{
+      \ =\  C'_1 \sum\limits^{n-1}_{i=1} i
+    }\\
+    \onslide<3- |handout:1>{
+      & \geq & C'_1 \cdot \dfrac{
+        \only<3-4>{(n - 1)}
+        \only<5->{\textcolor{MainA}{(n - 1)}}
+        \cdot n}{2}
+    }
+    \onslide<4- |handout:1>{
+      \hspace{1.5em}\text{\color{MainA}How do we get to $n^2$?}
+    }\\
+    \onslide<5- |handout:1>{
+      & & \hspace{1cm}
+        \textcolor{MainA}{
+          \Downarrow\hspace{0.5cm}
+          \rlap{$n - 1 \geq \dfrac{n}{2}$ for $n \geq 2$}
+        }
+    }\\
+    \onslide<6- |handout:1>{
+      & \geq & C'_1 \cdot
+      \dfrac{\textcolor{MainA}{n} \cdot n}{\textcolor{MainA}{2} \cdot 2}
+    }
+    \onslide<7- |handout:1>{
+      \ = \ \dfrac{c'_1}{4} \cdot n^2
+    }
+  \end{eqnarray*}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Runtime analysis - Minsort}
-  \begin{block}{Proof of $C_1 \cdot n^2 \leq T(n)$:}
-    \vspace*{0.5em}
-    \begin{center}
-      $\displaystyle
-        T(n) \; \geq \;
-          = \frac{n^2 + n}{2} - 1
-      $\\
-    \end{center}
-    $T(n)$ is always bigger than / equal to $\frac{1}{2} \cdot n^2$
-    for $n \geq 2$:\\[1.0em]
-    $\hspace*{1.5em}\Rightarrow T(n) \geq C_1 \cdot n^2$
+  \textbf{Runtime Analysis:}
+  \begin{itemize}
+    \item
+      {\color{MainB}Upper bound}:
+      \hspace{1.5em} $T(n) \leq C'_2 \cdot n^2$
+    \item
+      {\color{MainB}Lower bound}:
+      \hspace{1.5em} $\dfrac{C'_1}{4} \cdot n^2 \leq T(n)$
+  \end{itemize}
+  \begin{block}{Summarized:}
+    \begin{displaymath}
+      \frac{C'_1}{4} \cdot n^2 \leq T(n) \leq C'_2 \cdot n^2
+    \end{displaymath}
+    \textbf{Quadratic runtime proven:}
+    \begin{displaymath}
+      C_1 \cdot n^2 \leq T(n) \leq C_2 \cdot n^2
+    \end{displaymath}
   \end{block}
 \end{frame}
 
@@ -368,6 +402,9 @@
     \item
       The runtime is growing quadratic with the number of elements
       ${\color{Mittel-Blau}n}$ in the list.\\
+    \item
+      Let constants $\color{Mittel-Blau}C_1$ and $\color{Mittel-Blau}C_2$
+      for which $\color{Mittel-Blau}C_1 \cdot n^2 \leq T(n) \leq C_2 \cdot n^2$
     \item
       $2\, \times$ elements $\Rightarrow$ $4\, \times$ runtime\\
       \begin{itemize}
