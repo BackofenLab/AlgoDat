@@ -50,7 +50,16 @@
 
 %-------------------------------------------------------------------------------
 
-%TODO: Add figures
+\begin{frame}{Runtime Example}
+  \begin{overlayarea}{\textwidth}{\textheight}
+    \includegraphics<1|handout:0>[width=\linewidth]
+      {Images/Runtime/lower-upper-Tn-o1.pdf}%
+    \includegraphics<2|handout:0>[width=\linewidth]
+      {Images/Runtime/lower-upper-Tn-o2.pdf}%
+    \includegraphics<3|handout:1>[width=\linewidth]
+      {Images/Runtime/lower-upper-Tn-o3.pdf}%
+  \end{overlayarea}
+\end{frame}
 
 %-------------------------------------------------------------------------------
 
@@ -121,10 +130,9 @@
 
 %-------------------------------------------------------------------------------
 
-\codeslide{python}{
-\begin{frame}{Runtime analysis - Minsort}
-  \textbf{Alternative: Analyse the Code:}
-%  \input{Images/MinSort/MinSort_Code_Highlight.tikz}
+%\codeslide{python}{
+%\begin{frame}{Runtime analysis - Minsort}
+%  \textbf{Alternative: Analyse the Code:}
 %  \lstinputlisting[
 %    language=Python,
 %    style={python-idle-code},
@@ -134,115 +142,156 @@
 %    emphstyle=\color{blue},
 %    escapechar={@}
 %  ]{Code/MinSort/MinSort.py}
-\end{frame}
-}
+%\end{frame}
+%}
 
 %-------------------------------------------------------------------------------
 
-\codeslide{java}{
-\begin{frame}{Runtime analysis - Minsort}
-  \textbf{Alternative: Analyse the Code:}
-  \lstinputlisting[
-    language=Java,
-    style={java-eclipse-code},
-    basicstyle=\small,
-    tabsize=4,
-    emph={minSort},
-    emphstyle=\color{blue}
-  ]{Code/MinSort/MinSort.java}
-\end{frame}
-}
+%\codeslide{java}{
+%\begin{frame}{Runtime analysis - Minsort}
+%  \textbf{Alternative: Analyse the Code:}
+%  \lstinputlisting[
+%    language=Java,
+%    style={java-eclipse-code},
+%    basicstyle=\small,
+%    tabsize=4,
+%    emph={minSort},
+%    emphstyle=\color{blue}
+%  ]{Code/MinSort/MinSort.java}
+%\end{frame}
+%}
 
 %-------------------------------------------------------------------------------
 
-\codeslide{cpp}{
-\begin{frame}{Runtime analysis - Minsort}
-\textbf{Alternative: Analyse the Code:}
-  \lstinputlisting[
-    language=C++,
-    style={cpp-eclipse-code},
-    basicstyle=\small,
-    tabsize=4,
-    morekeywords={size_t},
-    emph={min_sort},
-    emphstyle=\color{blue}
-  ]{Code/MinSort/MinSort.cpp}
-\end{frame}
-}
-
-%-------------------------------------------------------------------------------
-
-\begin{frame}{Runtime analysis - Minsort}
-  \begin{center}
-    \begin{math}
-      \begin{array}{l}
-        \displaystyle
-        \max T(n) = \underbrace{
-          \sum^{n - 2}_{i = 0}
-          \left(
-            \hspace*{1.5em}
-            \overbrace{
-              C_\text{s}
-              \vphantom{
-                \sum^{n - 1}_{j = i + 1}
-              }
-            }^\text{swap}
-            \hspace*{1.5em} +
-            \underbrace{
-              \overbrace{
-                \hspace*{0.5em}
-                \sum^{n - 1}_{j = i + 1} C_\text{c}
-                \hspace*{0.5em}
-              }^\text{compare}
-            }_{
-            \lstinline[
-              language=Python,
-              style={python-idle-code},
-              basicstyle=\small
-              ]|range(i+1, len(elements))|
-            }
-            \hspace*{0.5em}
-          \right)
-        }_{
-        \lstinline[
-          language=Python,
-          style={python-idle-code},
-          basicstyle=\small
-        ]|range(0, len(elements)-1)|
-      }\\[5em]
-      \displaystyle\hspace*{2.5em}
-        = \sum^{n - 2}_{i = 0} \left(C_\text{s} + (n - i) C_\text{c}\right)\\
-      \displaystyle\hspace*{2.5em}
-        = \color{Mittel-Blau}
-        \sum^{n - 1}_{i = 1} \left(C_\text{s} + (n - i + 1) C_\text{c}\right)
-      \end{array}
-    \end{math}
-  \end{center}
-\end{frame}
+%\codeslide{cpp}{
+%\begin{frame}{Runtime analysis - Minsort}
+%\textbf{Alternative: Analyse the Code:}
+%  \lstinputlisting[
+%    language=C++,
+%    style={cpp-eclipse-code},
+%    basicstyle=\small,
+%    tabsize=4,
+%    morekeywords={size_t},
+%    emph={min_sort},
+%    emphstyle=\color{blue}
+%  ]{Code/MinSort/MinSort.cpp}
+%\end{frame}
+%}
 
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Runtime analysis - Minsort}
-  \begin{center}
-    \begin{math}
-      T(n) \leq
-      \left\lbrace
-      \begin{array}{l}
-      \displaystyle\hspace*{1.5em}\color{Mittel-Blau}
-        \sum^{n - 1}_{i = 1} \left(C_\text{s} + (n - i + 1) C_\text{c}\right)\\
-      \displaystyle\hspace*{1.5em}
-        = \sum^{n - 1}_{i = 1} \left(C_\text{s} + C_\text{c}\right)
-        + \sum^{n - 1}_{i = 1} \left(n - i\right) C_\text{c}\\
-      \displaystyle\hspace{1.5em}
-        = \left(n - 1\right) \cdot \left(C_\text{s} + C_\text{c}\right)
-        + C_\text{c} \sum_{i = 1}^{n - 1} i\\
-     % \displaystyle\hspace*{1.5em}
-     %   \leq n \left(C_\text{s} + C_\text{c}\right) + C_\text{c} \sum^n_{i=1} i
-      \end{array}
-      \right.
-    \end{math}
-  \end{center}
+  %  \textbf{Alternative: Analyse the Code:}\\
+  \includegraphics<1 |handout:0>[width=1.1\textwidth]%
+    {Images/CodeAnalysis/minsort-code-analysis-o1.pdf}
+  \includegraphics<2 |handout:0>[width=1.1\textwidth]%
+    {Images/CodeAnalysis/minsort-code-analysis-o2.pdf}
+  \includegraphics<3 |handout:0>[width=1.1\textwidth]%
+    {Images/CodeAnalysis/minsort-code-analysis-o3.pdf}
+  \includegraphics<4- |handout:1>[width=1.1\textwidth]%
+    {Images/CodeAnalysis/minsort-code-analysis-o4.pdf}
+  \begin{displaymath}
+    \textcolor{MainA}{
+      \onslide<5- |handout:1>{
+        T(n) \leq \sum^{n-2}_{i=0}
+        \sum\limits^{\textcolor{SecA}{n-1}}_{\textcolor{SecA}{j=i+1}} C'_2
+      }
+      \onslide<6- |handout:1>{
+        = \sum^{\textcolor{MainB}{n-2}}_{\textcolor{MainB}{i=0}}
+        \textcolor{SecA}{(n-i-1)} \cdot C'_2
+      }
+      \onslide<7- |handout:1>{
+        = \sum^{\textcolor{MainB}{n-1}}_{\textcolor{MainB}{i=1}}
+        (n-i)\cdot C'_2
+      }
+      \onslide<8- |handout:1>{
+        \ \textcolor{SecA}{\leq}\ 
+        \sum^{\textcolor{SecA}{n}}_{i=1} i\cdot C'_2
+      }
+    }
+  \end{displaymath}
+  \vspace{-2em}
+  \onslide<9- |handout:1>{
+    \textbf{Remark}:
+    $C'_2$ is cost of comparison $\Rightarrow$ assumed constant
+  }
+  \vspace{2em}
 \end{frame}
+
+
+%-------------------------------------------------------------------------------
+
+%\begin{frame}{Runtime analysis - Minsort}
+%  \begin{center}
+%    \begin{math}
+%      \begin{array}{l}
+%        \displaystyle
+%        \max T(n) = \underbrace{
+%          \sum^{n - 2}_{i = 0}
+%          \left(
+%            \hspace*{1.5em}
+%            \overbrace{
+%              C_\text{s}
+%              \vphantom{
+%                \sum^{n - 1}_{j = i + 1}
+%              }
+%            }^\text{swap}
+%            \hspace*{1.5em} +
+%            \underbrace{
+%              \overbrace{
+%                \hspace*{0.5em}
+%                \sum^{n - 1}_{j = i + 1} C_\text{c}
+%                \hspace*{0.5em}
+%              }^\text{compare}
+%            }_{
+%            \lstinline[
+%              language=Python,
+%              style={python-idle-code},
+%              basicstyle=\small
+%              ]|range(i+1, len(elements))|
+%            }
+%            \hspace*{0.5em}
+%          \right)
+%        }_{
+%        \lstinline[
+%          language=Python,
+%          style={python-idle-code},
+%          basicstyle=\small
+%        ]|range(0, len(elements)-1)|
+%      }\\[5em]
+%      \displaystyle\hspace*{2.5em}
+%        = \sum^{n - 2}_{i = 0} \left(C_\text{s} + (n - i) C_\text{c}\right)\\
+%      \displaystyle\hspace*{2.5em}
+%        = \color{Mittel-Blau}
+%        \sum^{n - 1}_{i = 1} \left(C_\text{s} + (n - i + 1) C_\text{c}\right)
+%      \end{array}
+%    \end{math}
+%  \end{center}
+%\end{frame}
+
+%-------------------------------------------------------------------------------
+
+%\begin{frame}{Runtime analysis - Minsort}
+%  \begin{center}
+%    \begin{math}
+%      T(n) \leq
+%      \left\lbrace
+%      \begin{array}{l}
+%      \displaystyle\hspace*{1.5em}\color{Mittel-Blau}
+%        \sum^{n - 1}_{i = 1} \left(C_\text{s} + (n - i + 1) C_\text{c}\right)\\
+%      \displaystyle\hspace*{1.5em}
+%        = \sum^{n - 1}_{i = 1} \left(C_\text{s} + C_\text{c}\right)
+%        + \sum^{n - 1}_{i = 1} \left(n - i\right) C_\text{c}\\
+%      \displaystyle\hspace{1.5em}
+%        = \left(n - 1\right) \cdot \left(C_\text{s} + C_\text{c}\right)
+%        + C_\text{c} \sum_{i = 1}^{n - 1} i\\
+%     % \displaystyle\hspace*{1.5em}
+%     %   \leq n \left(C_\text{s} + C_\text{c}\right) + C_\text{c} \sum^n_{i=1} i
+%      \end{array}
+%      \right.
+%    \end{math}
+%  \end{center}
+%\end{frame}
 
 %-------------------------------------------------------------------------------
 
