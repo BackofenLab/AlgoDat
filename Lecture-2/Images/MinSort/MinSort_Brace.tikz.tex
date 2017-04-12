@@ -1,25 +1,92 @@
-\def\MinSortDrawNumbers{0}
-\begin{tikzpicture}
-%Generate MinSort pattern
-\input{Images/MinSort/MinSort_Data.tikz}
-
-%Draw brace
-\draw (4.0, 7.5)
-  [
+\def\AlgoMinsort#1#2#3{
+  \draw[fill=#3] (#1 + 0.1, 0.0) rectangle (#1 + 0.9, #2/2);
+  \draw (#1 + 0.5, -0.5) node {\huge #2};
+}
+\begin{tikzpicture}[
+  cmp_brace/.style={
     line width=0.25em,
     color=black,
     decoration={
-        brace,
-        raise=0.75em,
-        amplitude=15pt
+      brace,
+      raise=0.75em,
+      amplitude=15pt
     },
     decorate
-  ] --
-  node [
+  },
+  cmp_label/.style={
     color=black,
     pos=0.5,
     yshift=4em,
     font=\Huge
-  ] {$n-3$ elements left}
-  (16.0, 7.5);
+  }
+]%
+%Generate static MinSort pattern
+\foreach \p/\h/\c in {
+%  1/1/MainBLight,%
+%  2/2/MainBLight,%
+%  3/3/MainBLight,%
+%  4/12/MainALight,%
+  5/7/MainALight,%
+%  6/4/MainALight,%
+  7/6/MainALight,%
+  8/10/MainALight,%
+  9/8/MainALight,%
+  10/15/MainALight,%
+%  11/14/MainALight,%
+%  12/5/MainALight,%
+  13/11/MainALight,%
+%  14/9/MainALight,%
+  15/13/MainALight%
+} {
+\AlgoMinsort{\p}{\h}{\c}
+}
+
+\only<1-2 |handout:0>{\AlgoMinsort{1}{14}{MainALight}}
+\only<3- |handout:1>{\AlgoMinsort{1}{1}{MainBLight}}
+
+\only<1-3 |handout:0>{\AlgoMinsort{2}{9}{MainALight}}
+\only<4- |handout:1>{\AlgoMinsort{2}{2}{MainBLight}}
+
+\only<1-4 |handout:0>{\AlgoMinsort{3}{5}{MainALight}}
+\only<5- |handout:1>{\AlgoMinsort{3}{3}{MainBLight}}
+
+\only<1-5 |handout:1>{\AlgoMinsort{4}{12}{MainALight}}
+\only<6- |handout:0>{\AlgoMinsort{4}{4}{MainBLight}}
+
+\only<1-4 |handout:0>{\AlgoMinsort{6}{4}{MainALight}}
+\only<5 |handout:1>{\AlgoMinsort{6}{4}{MainA}}
+\only<6- |handout:0>{\AlgoMinsort{6}{12}{MainALight}}
+
+\only<1-2 |handout:0>{\AlgoMinsort{11}{1}{MainA}}
+\only<3- |handout:1>{\AlgoMinsort{11}{14}{MainALight}}
+
+\only<1-3 |handout:0>{\AlgoMinsort{12}{3}{MainALight}}
+\only<4 |handout:0>{\AlgoMinsort{12}{3}{MainA}}
+\only<5- |handout:1>{\AlgoMinsort{12}{5}{MainALight}}
+
+\only<1-2 |handout:0>{\AlgoMinsort{14}{2}{MainALight}}
+\only<3 |handout:0>{\AlgoMinsort{14}{2}{MainA}}
+\only<4- |handout:1>{\AlgoMinsort{14}{9}{MainALight}}
+
+%Draw braces
+\only<1-2>{
+  \draw (1.0, 7.5) [cmp_brace] --
+    node [cmp_label] {$n$ elements left} (16.0, 7.5);
+}
+\only<3>{
+  \draw (2.0, 7.5) [cmp_brace] --
+    node [cmp_label] {$n-1$ elements left} (16.0, 7.5);
+}
+\only<4>{
+  \draw (3.0, 7.5) [cmp_brace] --
+    node [cmp_label] {$n-2$ elements left} (16.0, 7.5);
+}
+\only<5>{
+  \draw (4.0, 7.5) [cmp_brace] --
+    node [cmp_label] {$n-3$ elements left} (16.0, 7.5);
+}
+\only<6->{
+  \draw (5.0, 7.5) [cmp_brace] --
+  node [cmp_label] {$n-i$ elements left} (16.0, 7.5);
+}
 \end{tikzpicture}

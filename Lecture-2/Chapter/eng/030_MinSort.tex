@@ -38,9 +38,8 @@
       The number of operations needed is only depending on the size
       {\color{MainA}$n$} of the array and not on the content!
     \item
-      \textbf{Claim:}
-      There are constants {\color{MainA}$C_1$} and {\color{MainA}$C_2$}
-      such that:
+      \textbf{Claim:} There are constants {\color{MainA}$C_1$}
+      and {\color{MainA}$C_2$} such that:
       \begin{displaymath}
         \textcolor{MainA}{C_1 \cdot n^2 \leq T(n) \leq C_2 \cdot n^2}
       \end{displaymath}%
@@ -48,6 +47,10 @@
       This is called \enquote{quadratic runtime} (due to {\color{MainA}$n^2$})
   \end{itemize}
 \end{frame}
+
+%-------------------------------------------------------------------------------
+
+%TODO: Add figures
 
 %-------------------------------------------------------------------------------
 
@@ -69,7 +72,8 @@
     \begin{adjustbox}{width=0.5\linewidth}
       \input{Images/MinSort/MinSort_Compact.tikz}%
     \end{adjustbox}%
-    \caption{\textit{Minsort} at the fourth iteration}%
+    \caption{\textit{Minsort} at the iteration $i = 4$.
+      We have to check $n - 3$ elements}%
     \label{fig:minsort_def}%
   \end{figure}
 \end{frame}
@@ -83,26 +87,36 @@
         \begin{adjustbox}{width=\linewidth}%
           \input{Images/MinSort/MinSort_Brace.tikz}%
         \end{adjustbox}%
-        \caption{\textit{Minsort} at the fourth iteration}%
+        \caption{\textit{Minsort}
+          \only<1>{with start data}%
+          \only<2->{at iteration}
+          \only<2>{$i = 1$}%
+          \only<3>{$i = 2$}%
+          \only<4>{$i = 3$}%
+          \only<5>{$i = 4$}%
+          \only<6>{$i$}%
+          }%
         \label{fig:minsort_brace}%
       \end{figure}
     \end{column}
     \begin{column}{0.40\textwidth}
       Compares at each iteration:
       \begin{align*}
-        T_1  \leq &~ n\\
-        T_2  \leq &~ (n-1)\\
-        {}  \vdots~ &~ {} \\
-        T_{n-1}  \leq &~ 2\\
-        T_n  \leq &~ 1
+        \only<2- |handout:1>{T_1 \leq &~ C'_2 \cdot (n-0)}\\
+        \only<3- |handout:1>{T_2 \leq &~ C'_2 \cdot (n-1)}\\
+        \only<4- |handout:1>{T_3 \leq &~ C'_2 \cdot (n-2)}\\
+        \only<5- |handout:1>{T_4 \leq &~ C'_2 \cdot (n-3)}\\
+        \only<6- |handout:1>{{}  \vdots~ &~ {} }\\
+        \only<6- |handout:1>{T_{n-1}  \leq &~ C'_2 \cdot 2}\\
+        \only<6- |handout:1>{T_n  \leq &~ C'_2 \cdot 1}
       \end{align*}
     \end{column}
   \end{columns}
-  \[
+  \onslide<7 |handout:1>{\begin{displaymath}
     T(n)
-      = C \cdot \left(T_1 + \cdots + T_n\right)
-      \leq C \cdot \sum \limits^n_{i=1} i
-  \]
+    = C \cdot \left(T_1 + \cdots + T_n\right)
+    \leq C \cdot \sum \limits^n_{i=1} i
+  \end{displaymath}}
 \end{frame}
 
 %-------------------------------------------------------------------------------
