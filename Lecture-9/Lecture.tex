@@ -1,9 +1,10 @@
 \NeedsTeXFormat{LaTeX2e}
 \listfiles
 \setcounter{errorcontextlines}{\maxdimen}
-\documentclass{beamer}
-\beamertemplatenavigationsymbolsempty
+
 \input{build/Config}
+
+\documentclass[\LectureMode]{beamer}
 
 \input{Packages/LecturePackages_General}
 \input{Packages/LecturePackages_\LectureLanguage}
@@ -59,8 +60,7 @@
 {
   \ifthenelse{\boolean{sectiontoc}}{
     \begin{frame}<beamer>{\LectureToC}
-      \tableofcontents[currentsection,
-        subsubsectionstyle=show/show/show/shaded]
+      \tableofcontents[currentsection]
     \end{frame}
   }
 }
@@ -69,9 +69,7 @@
 {
   \ifthenelse{\boolean{subsectiontoc}}{
     \begin{frame}<beamer>{\LectureToC}
-      \tableofcontents[currentsection,
-        currentsubsection,
-        subsubsectionstyle=show/show/shaded/shaded]
+      \tableofcontents[currentsection,currentsubsection]
     \end{frame}
   }
 }

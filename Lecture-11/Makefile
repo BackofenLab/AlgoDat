@@ -9,6 +9,7 @@ ALGO_FULL_NAME := $(shell basename "$(ALGO_ROOT_DIR)")
 ALGO_LANGUAGE ?= eng
 ALGO_PROGLANG ?= python
 ALGO_DESIGN ?= plain
+ALGO_MODE ?= presentation
 
 ALGO_BUILD_NAME = $(ALGO_BUILD_PREFIX)_$(ALGO_LANGUAGE)
 ALGO_BUILD_CHAPTER_NAME = $(ALGO_CHAPTER_NAME)_$(ALGO_LANGUAGE)
@@ -31,6 +32,11 @@ help:
 	@echo "	Use switch ALGO_DESIGN=<value> to set the lecture design"
 	@echo "	ufcd: Design of University of Freiburg"
 	@echo "	plain: Standard design of the beamer template"
+	@echo
+	@echo "Mode:"
+	@echo "	Use switch ALGO_MODE=<value> to set the presentation mode"
+	@echo "	presentation: All animations are included"
+	@echo "	handout: All animations are collapsed for a compact handout"
 	@echo
 	@echo "MikTeX: (Windows)"
 	@echo "	clean: Clean all build files"
@@ -98,6 +104,12 @@ build/$(ALGO_BUILD_NAME).pdf: build/$(ALGO_BUILD_CHAPTER_NAME).tex
 	@echo '\def\LectureProgLanguage{$(ALGO_PROGLANG)}' >> build/Config.tex
 	@echo '\def\LectureDesign{$(ALGO_DESIGN)}' >> build/Config.tex
 	@
+ifeq ($(ALGO_MODE),presentation)
+	@echo '\def\LectureMode{}' >> build/Config.tex
+else
+	@echo '\def\LectureMode{$(ALGO_MODE)}' >> build/Config.tex
+endif
+	@
 	@echo "Copying literature-database"
 	@cp -t build/Literature/General Literature/General/*.bib || true
 	@cp -t build/Literature/$(ALGO_LANGUAGE) Literature/$(ALGO_LANGUAGE)/*.bib || true
@@ -117,6 +129,12 @@ build_server_forced: build/$(ALGO_BUILD_CHAPTER_NAME).tex
 	@echo '\def\LectureLanguage{$(ALGO_LANGUAGE)}' > build/Config.tex
 	@echo '\def\LectureProgLanguage{$(ALGO_PROGLANG)}' >> build/Config.tex
 	@echo '\def\LectureDesign{$(ALGO_DESIGN)}' >> build/Config.tex
+	@
+ifeq ($(ALGO_MODE),presentation)
+	@echo '\def\LectureMode{}' >> build/Config.tex
+else
+	@echo '\def\LectureMode{$(ALGO_MODE)}' >> build/Config.tex
+endif
 	@
 	@echo "Building (1st iteration)"
 	@pdflatex -interaction=batchmode $(ALGO_BUILD_PREFIX).tex
