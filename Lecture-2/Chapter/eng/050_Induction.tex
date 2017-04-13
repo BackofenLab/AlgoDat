@@ -7,7 +7,7 @@
 \begin{frame}{Induction}
   \textbf{Basics:}
   \begin{itemize}
-    \item 
+    \item
       You want to show assumption $A(n)$ is valid $\forall n \in \mathbb{N}$
     \item
       We show induction in two steps:
@@ -19,6 +19,36 @@
           \textbf{Induction step:} we show that the assumption is valid for 
           all $n$ (normally one step forward: $n = n + 1$).
       \end{enumerate}
+    \item
+      If both has been proven, then {\color{MainA}$A(n)$} holds for all natural
+      numbers {\color{MainA}$n$} by \textbf{induction}
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Induction - Example 1}
+  \begin{block}{Claim:}
+    A \textbf{complete} binary tree of depth $d$ has $n(d) = 2^d - 1$ nodes
+  \end{block}
+  \begin{itemize}
+    \item
+      \textbf{Induction basis:} Formular holds for {\color{MainA}$d = 1$}
+      \begin{columns}
+        \begin{column}{0.5\linewidth}
+          \begin{figure}[!h]
+            \begin{adjustbox}{width=4em}
+              \input{Images/Induction/BinaryTree_Root.tikz}
+            \end{adjustbox}
+            \caption{Tree of depth {\color{MainA}$1$} has
+              {\color{MainA}$1$} node}
+          \end{figure}
+        \end{column}
+        \begin{column}{0.5\linewidth}
+          {\color{MainA}$n(1) = 2^1 - 1 = 1$}\\
+          $\Rightarrow$ correct $\checkmark$
+        \end{column}
+      \end{columns}
   \end{itemize}
 \end{frame}
 
@@ -29,31 +59,44 @@
   \begin{itemize}
     \item
       \textbf{Induction assumption:}
-      $n(d) = 2^d-1$
-    \item
+      {\color{MainA}$n(d) = 2^d-1$}
+    \item<2- |handout:1>
       \textbf{Induction basis:}
-      $n(1) = 2^d - 1 = 2^1 - 1 = 1 ~{\color{Mittel-Blau}\checked}$
-    \item
+      $n(1) = 2^d - 1 = 2^1 - 1 = 1 ~{\color{Mittel-Blau}\checkmark}$
+    \item<3- |handout:1>
       \textbf{Induction step:}
       to show for $d = d + 1$
       \begin{columns}
-        \begin{column}{0.6\textwidth}
+        \begin{column}<3- |handout:1>{0.6\textwidth}
           \begin{figure}%
-            \begin{centering}%
+            \begin{adjustbox}{height=7.0em}
               \input{Images/Induction/BinaryTree_SubTrees.tikz}%
-              \caption{Binary tree with subtrees}%
-              \label{fig:binary_tree_subtrees}%
-            \end{centering}%
+            \end{adjustbox}%
+            \vspace{-0.5em}
+            \caption{Binary tree with subtrees}%
+            \label{fig:binary_tree_subtrees}%
           \end{figure}
         \end{column}
         \begin{column}{0.4\linewidth}
+          \vspace{1.5em}
           \begin{align*}
-          n(d + 1) = &~ 2 \cdot n(d) + 1\\
-          {} = &~ 2 \cdot \left(2^d - 1\right) + 1\\
-          {} = &~ 2^{d + 1} - 2 + 1\\
-          {} = &~ 2^{d + 1} - 1 ~{\color{Mittel-Blau}\checked}
+            \onslide<4- |handout:1>{
+              n(d + 1) = &~ 2 \cdot n(d) + 1
+            }\\
+            \onslide<5- |handout:1>{
+              {} = &~ 2 \cdot \textcolor{MainA}{\left(2^d - 1\right)} + 1
+            }\\
+            \onslide<6- |handout:1>{
+              {} = &~ 2^{d + 1} - 2 + 1
+            }\\
+            \onslide<7- |handout:1>{
+              {} = &~ 2^{d + 1} - 1 ~{\color{MainA}\checkmark}
+            }
           \end{align*}
-          $n(d) = 2^d - 1 ~\forall n \in \mathbb{N} ~\Square$
+          \onslide<8- |handout:1>{
+            \llap{$\Rightarrow$ \textbf{By induction:}}
+            $n(d) = 2^d - 1 ~\forall n \in \mathbb{N} ~\Square$
+          }
         \end{column}
       \end{columns}
   \end{itemize}
