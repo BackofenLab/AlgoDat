@@ -1,46 +1,36 @@
-\tikzstyle{node}=[
-  draw,
-  circle,
-  very thick,
-  color=black,
-  fill=white,
-]%
-%
-\tikzstyle{node_filled}=[
-  draw,
-  circle,
-  very thick,
-  color=black,
-  fill=orange!50!yellow
-]%
-%
-\tikzstyle{node_leaf}=[
-  draw,
-  circle,
-  very thick,
-  color=black,
-  fill=green!50!white,
-]%
-%
-\tikzstyle{path}=[
-  draw,
-  line width=0.25em,
-  color=orange!50!yellow!80!black
-]%
-%
-\tikzstyle{path_normal}=[
-  draw,
-  very thick,
-  color=black
-]%
-%
-\begin{adjustbox}{width=\linewidth}
 \begin{tikzpicture}[
   level/.style={
     sibling distance = 10.0em/#1,
     level distance = 3.5em
+  },
+  node/.style={
+    draw,
+    circle,
+    very thick,
+    color=black,
+    fill=white
+  },
+  node_filled/.style={
+    node,
+    color=black,
+    fill=orange!50!yellow
+  },
+  node_leaf/.style={
+    node,
+    color=black,
+    fill=green!50!white,
+  },
+  path/.style={
+    draw,
+    line width=0.25em,
+    color=orange!50!yellow!80!black
+  },
+  path_normal/.style={
+    draw,
+    very thick,
+    color=black
   }
-]
+]%
 \node [node_filled, label={[anchor=south]above:Root}] (root) {}
 child [path_normal] {
   node [node] {}
@@ -69,4 +59,3 @@ child [path] {
   }
 };
 \end{tikzpicture}
-\end{adjustbox}

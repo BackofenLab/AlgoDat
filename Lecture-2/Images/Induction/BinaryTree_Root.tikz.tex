@@ -1,0 +1,20 @@
+\begin{tikzpicture}[
+  level/.style={
+    sibling distance = 10.0em/#1,
+    level distance = 3.5em
+  },
+  node/.style={
+    draw,
+    circle,
+    very thick,
+    color=black,
+    fill=white
+  },
+  node_filled/.style={
+    node,
+    color=black,
+    fill=orange!50!yellow
+  }
+]%
+\node [node_filled, label={[anchor=south]above:Root}] (root) {};
+\end{tikzpicture}
