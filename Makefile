@@ -7,6 +7,7 @@ ALGO_FULL_NAME := $(shell basename $(ALGO_ROOT_DIR))
 ALGO_LANGUAGE ?= eng
 ALGO_PROGLANG ?= python
 ALGO_DESIGN ?= plain
+ALGO_MODE ?= presentation
 
 all: clean build
 
@@ -26,6 +27,11 @@ help:
 	@echo "	Use switch ALGO_DESIGN=<value> to set the lecture design"
 	@echo "	ufcd: Design of University of Freiburg"
 	@echo "	plain: Standard design of the beamer template"
+	@echo
+	@echo "Mode:"
+	@echo "	Use switch ALGO_MODE=<value> to set the presentation mode"
+	@echo "	presentation: All animations are included"
+	@echo "	handout: All animations are collapsed for a compact handout"
 	@echo
 	@echo "MikTeX: (Windows)"
 	@echo "	clean/lectures: Clean all lectures"
@@ -73,21 +79,21 @@ build: directories build/lectures build/exercisesheets
 
 build/lectures:
 	@echo "Building lectures"
-	@ls -d Lecture-* | awk '{system("$(MAKE) --directory="$$1" ALGO_LANGUAGE=$(ALGO_LANGUAGE) ALGO_PROGLANG=$(ALGO_PROGLANG) ALGO_DESIGN=$(ALGO_DESIGN) export");}'
+	@ls -d Lecture-* | awk '{system("$(MAKE) --directory="$$1" ALGO_LANGUAGE=$(ALGO_LANGUAGE) ALGO_PROGLANG=$(ALGO_PROGLANG) ALGO_DESIGN=$(ALGO_DESIGN) ALGO_MODE=$(ALGO_MODE) export");}'
 
 build/exercisesheets:
 	@echo "Building exercise-sheets"
-	@ls -d ExerciseSheet-* | awk '{system("$(MAKE) --directory="$$1" ALGO_LANGUAGE=$(ALGO_LANGUAGE) ALGO_PROGLANG=$(ALGO_PROGLANG) ALGO_DESIGN=$(ALGO_DESIGN) export");}'
+	@ls -d ExerciseSheet-* | awk '{system("$(MAKE) --directory="$$1" ALGO_LANGUAGE=$(ALGO_LANGUAGE) ALGO_PROGLANG=$(ALGO_PROGLANG) ALGO_DESIGN=$(ALGO_DESIGN) ALGO_MODE=$(ALGO_MODE) export");}'
 
 # ------------------------------------------------------------------------------
 build_server: directories build_server/lectures build_server/exercisesheets
 build_server/lectures:
 	@echo "Building lectures (server)"
-	@ls -d Lecture-* | awk '{system("$(MAKE) --directory="$$1" ALGO_LANGUAGE=$(ALGO_LANGUAGE) ALGO_PROGLANG=$(ALGO_PROGLANG) ALGO_DESIGN=$(ALGO_DESIGN) export_server");}'
+	@ls -d Lecture-* | awk '{system("$(MAKE) --directory="$$1" ALGO_LANGUAGE=$(ALGO_LANGUAGE) ALGO_PROGLANG=$(ALGO_PROGLANG) ALGO_DESIGN=$(ALGO_DESIGN) ALGO_MODE=$(ALGO_MODE) export_server");}'
 
 build_server/exercisesheets:
 	@echo "Building exercise-sheets (server)"
-	@ls -d ExerciseSheet-* | awk '{system("$(MAKE) --directory="$$1" ALGO_LANGUAGE=$(ALGO_LANGUAGE) ALGO_PROGLANG=$(ALGO_PROGLANG) ALGO_DESIGN=$(ALGO_DESIGN) export_server");}'
+	@ls -d ExerciseSheet-* | awk '{system("$(MAKE) --directory="$$1" ALGO_LANGUAGE=$(ALGO_LANGUAGE) ALGO_PROGLANG=$(ALGO_PROGLANG) ALGO_DESIGN=$(ALGO_DESIGN) ALGO_MODE=$(ALGO_MODE) export_server");}'
 
 export:
 	@echo "Exporting generated files"
