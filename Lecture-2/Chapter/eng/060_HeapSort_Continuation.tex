@@ -1,11 +1,58 @@
 % Reset to Heapsort
-\setcounter{subsubsection}{2}
+\setcounter{subsubsection}{0}
 
 \begin{frame}<beamer>{Structure}
   \tableofcontents[currentsection,currentsubsection]
 \end{frame}
 
-\begin{frame}{Runtime - Heapsort 3/6}
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Runtime - Heapsort}
+  \textbf{Heapsort has the following steps:}
+  \begin{itemize}
+    \item
+      \textbf{Initially:} \texttt{heapify} list of $n$ elements
+    \item<2- |handout:1>
+    \textbf{Then:} until all $n$ elements are sorted
+    \begin{itemize}
+      \item<3- |handout:1>
+        Remove root as minimal element
+      \item<4- |handout:1>
+        Move last leaf to root position
+      \item<5- |handout:1>
+        Repair heap by \texttt{sifting}
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Runtime - Heapsort}{Heapify}
+  Runtime of \texttt{heapify} depends on depth {\color{MainA}$d$}:
+  \begin{figure}[!h]
+    \begin{adjustbox}{width=0.7\linewidth}
+      \input{Images/HeapSort/BinaryTree_Layer.tikz}
+    \end{adjustbox}
+    \vspace{-0.5em}
+  \end{figure}
+  \onslide<2- |handout:1>{
+    Runtime of \texttt{heapify} with depth of {\color{MainA}$d$}:}
+  \begin{itemize}
+    \item<2- |handout:1>
+      No costs at depth {\color{MainA}$d$} with {\color{MainA}$2^{d-1}$}
+      (or less) nodes
+    \item<3- |handout:1>
+      The cost for \texttt{sifting} with depth {\color{MainA}$1$}
+      are at most {\color{MainA}$1 C$} per node
+    \item<4- |handout:1>
+      In general: \texttt{Sifting} costs are linear with path length
+      \textit{and} number of nodes
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Runtime - Heapsort}
   Runtime of \textit{heapify} with depth of $d$:
   \begin{itemize}
     \item
@@ -35,7 +82,7 @@
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Runtime - Heapsort 4/6}
+\begin{frame}{Runtime - Heapsort}
   \begin{itemize}
     \item
       Runtime for heapify:
@@ -67,7 +114,7 @@
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Runtime - Heapsort 6/6}
+\begin{frame}{Runtime - Heapsort}
   \textbf{Runtime costs:}
   \begin{itemize}
     \item
@@ -90,5 +137,3 @@
       \end{itemize}
   \end{itemize}
 \end{frame}
-
-\setcounter{subsubsection}{0}

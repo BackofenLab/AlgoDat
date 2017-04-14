@@ -1,0 +1,69 @@
+% Reset to Induction
+\setcounter{subsubsection}{1}
+
+\begin{frame}<beamer>{Structure}
+  \tableofcontents[currentsection,currentsubsection]
+\end{frame}
+
+\begin{frame}{Induction - Example 2}
+  \begin{itemize}
+    \item
+      \textbf{Induction assumption:}
+      \begin{align*}
+        {\color{Hell-Gruen}A}(n) \leq &~ {\color{Hell-Gruen}B}(n)\\
+        \sum \limits^n_{i=1} \left(i \cdot 2^{n-i} \right) \leq &~ 2^{n+1}
+      \end{align*}
+    \item
+      \textbf{Induction basis:}
+      $n = 1$:
+      \begin{align*}
+        \sum \limits^n_{i=1} \left(i \cdot 2^{n-i} \right) \leq &~ 2^{n+1}\\
+        \sum \limits^1_{i=1} \left(i \cdot 2^{1-i} \right) \leq &~ 2^{1+1}\\
+        2^0 \leq &~ 2^2 ~{\color{Mittel-Blau}\checked}
+      \end{align*}
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Induction - Example 2}
+  \textbf{Induction step:}
+  $(n = n +1)$:
+  \begin{align*}
+    {\color{Hell-Gruen}A}(n+1) \leq &~ {\color{Hell-Gruen}B}(n+1)\\
+    %----------------------------------------------------------------------
+    \sum\limits^{n+1}_{i=1} \left(i \cdot 2^{n+1-i} \right)
+    \leq &~ 2^{n+1+1}\\
+    %----------------------------------------------------------------------
+    2 \cdot \sum\limits^{n+1}_{i=1} \left(i \cdot 2^{n-i} \right)
+    \leq &~ 2 \cdot 2^{n+1} & \hspace*{1.5em} \bigg\vert :2\\
+    %----------------------------------------------------------------------
+    \sum\limits^{n+1}_{i=1} \left(i \cdot 2^{n-i} \right)
+    \leq &~ 2^{n+1}\\
+  \end{align*}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Induction - Example 2}
+  \textbf{Induction step:}
+  $(n = n +1)$:
+  \begin{align*}
+    \sum\limits^{n+1}_{i=1} \left(i \cdot 2^{n-i} \right)
+    \leq &~ 2^{n+1}\\
+    %----------------------------------------------------------------------
+    \sum\limits^{n}_{i=1} \left(i \cdot 2^{n-i}\right)
+    + \left(n + 1\right) \cdot 2^{n - \left(n + 1\right)}
+    \leq &~ 2^{n+1}\\
+    %----------------------------------------------------------------------
+    \sum\limits^{n}_{i=1} \left(i \cdot 2^{n-i}\right)
+    + 2n + 2
+    \leq &~ 2^{n+1}\\
+    %----------------------------------------------------------------------
+   {\color{Hell-Gruen}A}(n) + 2n + 2
+   \leq &~ {\color{Hell-Gruen}B}(n) ~\textbf{\color{Mittel-Blau}\lightning}
+  \end{align*}
+  \begin{center}
+    \alert{Assumtion is still correct!}
+  \end{center}
+\end{frame}
