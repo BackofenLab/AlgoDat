@@ -43,41 +43,54 @@
       (or less) nodes
     \item<3- |handout:1>
       The cost for \texttt{sifting} with depth {\color{MainA}$1$}
-      are at most {\color{MainA}$1 C$} per node
+      is at most {\color{MainA}$1 C$} per node
     \item<4- |handout:1>
       In general: \texttt{Sifting} costs are linear with path length
-      \textit{and} number of nodes
+      \textbf{and} number of nodes
   \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Runtime - Heapsort}
-  Runtime of \textit{heapify} with depth of $d$:
-  \begin{itemize}
-    \item
-      No costs at depth $d$ with $2^{d - 1}$ (or less) nodes.
-    \item
-      In a full heap with depth $d$ are $2 \, d - 1$ non-root nodes.\\
-      The cost for \textbf{sifting} with depth $1$ are $1 \, C$
-      ({\color{Mittel-Blau}compare})\\
-      or $2 \, C$ ({\color{Mittel-Blau}compare} and {\color{Mittel-Blau}swap})
-  \end{itemize}%
-  \begin{figure}[!h]%
-    \begin{table}%
-      \begin{center}%
-        \begin{tabular}{c|c|c|c}
-          Depth:     & Nodes:    & Path length: & Costs per node:\\
-          \hline
-          $d - 1$    & $2^d$     & 1            & $\leq 2 \cdot C$\\
-          $d - 2$    & $2^{d-1}$ & 2            & $\leq 4 \cdot C$\\
-          $\vdots$   & $\vdots$  & $\vdots$     & $\vdots$ 
-        \end{tabular}%
-        \caption{Sifting costs}%
-        \label{tab:sifting_costs}%
-      \end{center}%
-    \end{table}%
+  \texttt{Heapify} total runtime:
+  \vspace{-1em}
+  \begin{figure}[!h]
+    \begin{adjustbox}{width=0.7\linewidth}
+      \input{Images/HeapSort/BinaryTree_Layer_General.tikz}
+    \end{adjustbox}
+    \vspace{-0.5em}
   \end{figure}
+  \vspace{-1.5em}
+  \begin{table}[!h]
+    \begin{center}%
+      \begin{tabular}{c|c|c|c|c}
+        Depth & Nodes & Path length & Costs per node
+        & \onslide<6- |handout:1>{\color{MainB}Upper bound}\\
+        \hline
+        $d$ & $2^{d-1}$ & 0 & $\leq C \cdot 0$ &
+        \onslide<6- |handout:1>{\color{MainB}$\leq C \cdot 1$}\\
+        \onslide<2- |handout:1>{$d-1$ & $2^{d-2}$ & 1 & $\leq C \cdot 1$ &}
+        \onslide<6- |handout:1>{\color{MainB}$\leq C \cdot 2$}\\
+        \onslide<3- |handout:1>{$d-2$ & $2^{d-3}$ & 2 & $\leq C \cdot 2$ &}
+        \onslide<6- |handout:1>{\color{MainB}$\leq C \cdot 3$}\\
+        \onslide<4- |handout:1>{$d-3$ & $2^{d-4}$ & 3 & $\leq C \cdot 3$ &}
+        \onslide<6- |handout:1>{\color{MainB}$\leq C \cdot 4$}\\
+      \end{tabular}%
+      \label{tab:sifting_costs}%
+    \end{center}%
+  \end{table}
+  \vspace{-1em}
+  \onslide<5- |handout:1>{
+    \textbf{In total:}\hspace{1.5em}
+    \begin{math}
+      \displaystyle
+      T(d) \leq \sum\limits_{i=1}^{d} \left(C \cdot (i - 1) \cdot 2^{d-i}\right)
+      \onslide<6- |handout:1>{\textcolor{MainB}{
+        \leq \sum\limits_{i=1}^{d} \left(C \cdot i \cdot 2^{d-i}\right)
+      }}
+    \end{math}
+  }
 \end{frame}
 
 %-------------------------------------------------------------------------------
