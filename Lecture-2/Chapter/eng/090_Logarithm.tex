@@ -2,8 +2,10 @@
 
 \begin{frame}{Base of Logaritms}
   \begin{block}{Logarithm to different bases:}
-    $\log_a n = \dfrac{\log_b n}{\log_b a} = \log_b n \cdot \dfrac{1}{\log_b a}$
-
+    \begin{displaymath}
+      \log_a n = \dfrac{\log_b n}{\log_b a}
+      = \log_b n \cdot \dfrac{1}{\log_b a}
+    \end{displaymath}\\[0.5em]
     The only difference is a constant coefficient $\frac{1}{\log_b a}$
   \end{block}
   \textbf{Examples:}
@@ -13,14 +15,56 @@
         \log_2 4
         = \log_{10} 4 \cdot \frac{1}{\log_2 10}
         = 0.602 \ldots \cdot 3.322 \ldots
-        = 2 ~{\color{Mittel-Blau}\checked}
+        = 2 ~{\color{Mittel-Blau}\checkmark}
       \end{math}
     \item
       \begin{math}
         \log_{10} 1000
         = \log_{\mathrm{e}} 1000 \cdot \frac{1}{\log_{\mathrm{e}} 10}
         = \ln 1000 \cdot \frac{1}{\ln 10}
-        = 3 ~{\color{Mittel-Blau}\checked}
+        = 3 ~{\color{Mittel-Blau}\checkmark}
       \end{math}
   \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Runtime Example}
+  \textbf{Runtime of $n \; \log_2 n$:}
+  \begin{itemize}
+    \item
+      Assume we have constants $\color{MainA}C_1$ and $\color{MainA}C_2$
+      with
+      \begin{displaymath}
+        \textcolor{MainA}{
+          C_1 \cdot n \cdot \log_2 n \leq T(n) \leq C_2 \cdot n \cdot log_2 n
+          \hspace{1.5em}\text{for}~n \geq 2
+        }
+      \end{displaymath}
+    \item
+      $2\, \times$ elements
+      $\Rightarrow$ only slightly larger than $2\, \times$ runtime\\
+      \begin{itemize}
+        \item
+          $C = \SI{1}{\nano\second}$
+          (1 simple instruction $\approx \SI{1}{\nano\second}$)
+        \item
+          $n = 2^{20}$ (1 million numbers = $\SI{4}{\mega\byte}$
+          with $\SI{4}{\byte\per number}$)
+          \begin{itemize}
+            \item
+              $C \cdot n \cdot log_2 n = \SI{e-9}{\second} \cdot 2^{20} \cdot 20
+              = \SI{21.0}{\milli\second}$
+          \end{itemize}
+        \item
+          $n = 2^{30}$ (1 billion numbers = $\SI{4}{\giga\byte}$)
+          \begin{itemize}
+            \item
+              $C \cdot n \cdot log_2 n = \SI{e-9}{\second} \cdot 2^{30} \cdot 30
+              = \SI{32}{\second}$
+          \end{itemize}
+      \end{itemize}
+      \item
+        \textbf{Runtime $n \; \log_2 n$ is nearly as good as linear!}
+    \end{itemize}
 \end{frame}

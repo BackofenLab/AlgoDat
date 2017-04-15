@@ -5,16 +5,56 @@
   \tableofcontents[currentsection,currentsubsection]
 \end{frame}
 
+\begin{frame}
+  \textbf{Runtime of the other operations:}
+  \begin{itemize}
+    \item<2- |handout:1>
+      Constant costs for taking out {\color{MainA}$n$} $\times$ maximum
+    \item<3- |handout:1>
+      Maximum of {\color{MainA}$d$} steps repairing the heap
+      {\color{MainA}$n$} times
+    \item<4- |handout:1>
+      Depth of heap at the start is {\color{MainA}$d \leq 1 + \log_2 n$}
+      \only<4- |handout:0>{\hspace{1.5em}{\color{MainB}Why?}}
+      \begin{displaymath}
+        \textcolor{MainA}{
+          2^{d-1} \leq n
+          ~\Rightarrow~
+          d - 1 \leq \log_2 n
+          ~\Rightarrow~
+          d \leq 1 + \log_2 n
+        }
+      \end{displaymath}
+    \item<5- |handout:1>
+      \textbf{Recall}: The number of elements is decreasing
+      \begin{itemize}
+        \item<6- |handout:1>
+          \textbf{Hence}:
+          {\color{MainA}$T(n) \leq n \cdot (1 +\log_2 n) \cdot C$}
+        \item<7- |handout:1>
+          We can reduce this to:
+          \begin{displaymath}
+            \textcolor{MainA}{
+              T(n) \leq 2 \cdot n  \, \log_2 n \cdot C
+              \hspace{1.5em} (\text{holds for}~n > 2)
+            }
+          \end{displaymath}
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
 \begin{frame}{Runtime - Heapsort}
   \textbf{Runtime costs:}
   \begin{itemize}
     \item
       \texttt{Heapify}: $T(n) \leq 4 \cdot n \cdot C$
-    \item
+    \item<2- |handout:1>
       \texttt{Remove}: $T(n) \leq 2 \cdot n \, \log_2 n \cdot C$
-    \item
+    \item<3- |handout:1>
       Total runtime: $T(n) \leq 6 \cdot n \, \log_2 n \cdot C$
-    \item
+    \item<4- |handout:1>
       Constraints:
       \begin{itemize}
         \item
@@ -23,7 +63,7 @@
         \item
           {\color{MainB}Lower bound}:
           $C_1 \cdot n \, \log_2 n \leq T(n)$ (for $n \geq 2$)
-        \item
+        \item<5- |handout:1>
           $\Rightarrow$ $C_1$ and $C_2$ are constant
       \end{itemize}
   \end{itemize}
