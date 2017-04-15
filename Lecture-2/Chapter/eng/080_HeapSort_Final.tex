@@ -1,0 +1,30 @@
+% Reset to Induction
+\setcounter{subsubsection}{0}
+
+\begin{frame}<beamer>{Structure}
+  \tableofcontents[currentsection,currentsubsection]
+\end{frame}
+
+\begin{frame}{Runtime - Heapsort}
+  \textbf{Runtime costs:}
+  \begin{itemize}
+    \item
+      \texttt{Heapify}: $T(n) \leq 4 \cdot n \cdot C$
+    \item
+      \texttt{Remove}: $T(n) \leq 2 \cdot n \, \log_2 n \cdot C$
+    \item
+      Total runtime: $T(n) \leq 6 \cdot n \, \log_2 n \cdot C$
+    \item
+      Constraints:
+      \begin{itemize}
+        \item
+          {\color{MainB}Upper bound}:
+          $C_2 \cdot n \, \log_2 n \geq T(n)$ (for $n \geq 2$)
+        \item
+          {\color{MainB}Lower bound}:
+          $C_1 \cdot n \, \log_2 n \leq T(n)$ (for $n \geq 2$)
+        \item
+          $\Rightarrow$ $C_1$ and $C_2$ are constant
+      \end{itemize}
+  \end{itemize}
+\end{frame}

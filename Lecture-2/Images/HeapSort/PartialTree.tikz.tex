@@ -1,0 +1,59 @@
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+\begin{tikzpicture}[
+  level/.style={
+    sibling distance = 10.0em/#1,
+    level distance = 3em
+  },
+  node/.style={
+    draw,
+    circle,
+    very thick,
+    color=black,
+    fill=white
+  },
+  path/.style={
+    draw,
+    very thick,
+    color=black
+  }
+]%
+% Bounding box
+\draw[color=white] (-4.5, 1) rectangle (4.5, -4);
+
+% Binary tree
+\begin{pgfonlayer}{main}%
+\node [node] (ro) {}
+child [path] {
+  node [node] {}
+  child {
+    node [node] (le) {}
+    child {node [node] {}}
+    child {node [node] {}}
+  }
+  child {
+    node [node] {}
+    child {node [node] {}}
+    child[draw opacity=0] {}
+  }
+}
+child [path] {
+  node [node] {}
+  child {
+    node [node] {}
+  }
+  child {
+    node [node] (ri) {}
+  }
+};
+\end{pgfonlayer}%
+
+% Background
+\only<5- |handout:1>{
+  \begin{pgfonlayer}{background}%
+    \draw[draw=none, fill=MainBLight!40]
+      ($(ro.north) + (0, 0.5)$) -- ($(le.south west) + (-1.5, -0.25)$)
+      -- ($(ri.south east) + (1.5, -0.25)$) -- cycle;
+  \end{pgfonlayer}%
+}
+\end{tikzpicture}
