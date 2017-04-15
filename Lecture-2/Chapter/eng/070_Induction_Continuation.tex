@@ -5,21 +5,50 @@
   \tableofcontents[currentsection,currentsubsection]
 \end{frame}
 
+\begin{frame}{Induction - Example 2}:
+% No needed in title since formula is on each slide
+%    \begin{math}
+%      \sum_{i=1}^{d} \left(i \cdot 2^{d-i}\right) \leq 2^{d+1}
+%    \end{math}
+  \begin{itemize}
+    \item
+      \textbf{We want to proof (induction assumption):}
+      \begin{align*}
+        \underbrace{
+          \sum\limits^d_{i=1} \left(i \cdot 2^{d-i} \right)
+        }
+        \leq &~
+        \underbrace{
+          2^{d+1}
+          \vphantom{\sum\limits^d_{i=1}}
+        }\\
+        {\textcolor{MainB}A}(d) \leq &~ {\textcolor{MainB}B}(d)
+      \end{align*}
+      \begin{itemize}
+        \item
+          We denote the left side with {\color{MainB}$A$},
+          the right side with {\color{MainB}$B$}
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
 \begin{frame}{Induction - Example 2}
   \begin{itemize}
     \item
-      \textbf{Induction assumption:}
+      \textbf{Induction basis:} $d := 1$:
       \begin{align*}
-        {\color{Hell-Gruen}A}(n) \leq &~ {\color{Hell-Gruen}B}(n)\\
-        \sum \limits^n_{i=1} \left(i \cdot 2^{n-i} \right) \leq &~ 2^{n+1}
-      \end{align*}
-    \item
-      \textbf{Induction basis:}
-      $n = 1$:
-      \begin{align*}
-        \sum \limits^n_{i=1} \left(i \cdot 2^{n-i} \right) \leq &~ 2^{n+1}\\
-        \sum \limits^1_{i=1} \left(i \cdot 2^{1-i} \right) \leq &~ 2^{1+1}\\
-        2^0 \leq &~ 2^2 ~{\color{Mittel-Blau}\checked}
+        {\textcolor{MainB}A}(d) \leq &~ {\textcolor{MainB}B}(d)\\
+        \onslide<2- |handout:1>{
+          \sum \limits^d_{i=1} \left(i \cdot 2^{d-i} \right) \leq &~ 2^{d+1}
+        }\\
+        \onslide<3- |handout:1>{
+          \sum \limits^1_{i=1} \left(i \cdot 2^{1-i} \right) \leq &~ 2^{1+1}
+        }\\
+        \onslide<4- |handout:1>{
+          2^0 \leq &~ 2^2 ~{\textcolor{MainA}\checkmark}
+        }
       \end{align*}
   \end{itemize}
 \end{frame}
@@ -27,43 +56,66 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Induction - Example 2}
-  \textbf{Induction step:}
-  $(n = n +1)$:
+  \textbf{Induction step:} $(d := d + 1)$:
+  \begin{itemize}
+    \item
+      \textbf{Idea:}
+      Write down right formula and try to get ${\textcolor{MainB}A}(d)$
+      and ${\textcolor{MainB}B}(d)$ out of it
+  \end{itemize}
   \begin{align*}
-    {\color{Hell-Gruen}A}(n+1) \leq &~ {\color{Hell-Gruen}B}(n+1)\\
+    {\color{MainB}A}(d) \leq &~ {\color{MainB}B}(d) & \Rightarrow &&~
+    {\color{MainB}A}(d+1) \leq &~ {\color{MainB}B}(d+1)\\
     %----------------------------------------------------------------------
-    \sum\limits^{n+1}_{i=1} \left(i \cdot 2^{n+1-i} \right)
-    \leq &~ 2^{n+1+1}\\
+    \onslide<2- |handout:1>{
+      &&&& \sum\limits^{d+1}_{i=1} \left(i \cdot 2^{d+1-i} \right)
+      \leq &~ 2^{d+1+1}
+    }\\
     %----------------------------------------------------------------------
-    2 \cdot \sum\limits^{n+1}_{i=1} \left(i \cdot 2^{n-i} \right)
-    \leq &~ 2 \cdot 2^{n+1} & \hspace*{1.5em} \bigg\vert :2\\
-    %----------------------------------------------------------------------
-    \sum\limits^{n+1}_{i=1} \left(i \cdot 2^{n-i} \right)
-    \leq &~ 2^{n+1}\\
+    \onslide<3- |handout:1>{
+      &&&& 2 \cdot \sum\limits^{d+1}_{i=1} \left(i \cdot 2^{d-i} \right)
+      \leq &~ 2 \cdot 2^{d+1}\\
+      &&&& \vdots
+    }
   \end{align*}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Induction - Example 2}
-  \textbf{Induction step:}
-  $(n = n +1)$:
+  \textbf{Induction step:} $(d := d + 1)$:
   \begin{align*}
-    \sum\limits^{n+1}_{i=1} \left(i \cdot 2^{n-i} \right)
-    \leq &~ 2^{n+1}\\
+    \vdots\\
+    2 \cdot \sum\limits^{d+1}_{i=1} \left(i \cdot 2^{d-i} \right)
+    \leq &~ 2 \cdot 2^{d+1}\\
     %----------------------------------------------------------------------
-    \sum\limits^{n}_{i=1} \left(i \cdot 2^{n-i}\right)
-    + \left(n + 1\right) \cdot 2^{n - \left(n + 1\right)}
-    \leq &~ 2^{n+1}\\
+    \onslide<2- |handout:1>{
+      2 \cdot \sum\limits^{d\textcolor{SecA}{+1}}_{i=1}
+        \left(i \cdot 2^{d-i} \right)
+      \leq &~ 2 \cdot \textcolor{MainB}{B}(d)
+    }\\
     %----------------------------------------------------------------------
-    \sum\limits^{n}_{i=1} \left(i \cdot 2^{n-i}\right)
-    + 2n + 2
-    \leq &~ 2^{n+1}\\
+    \onslide<3- |handout:1>{
+      2 \cdot \sum\limits^{d}_{i=1} \left(i \cdot 2^{d-i} \right)
+        \textcolor{SecA}{+ 2 \cdot (d + 1) \cdot 2^{d-(d+1)}}
+      \leq &~ 2 \cdot \textcolor{MainB}{B}(d)
+    }\\
     %----------------------------------------------------------------------
-   {\color{Hell-Gruen}A}(n) + 2n + 2
-   \leq &~ {\color{Hell-Gruen}B}(n) ~\textbf{\color{Mittel-Blau}\lightning}
+    \onslide<4- |handout:1>{
+     2 \cdot {\color{MainB}A}(n) + (d + 1)
+     \leq &~ 2 \cdot {\color{MainB}B}(n)
+    }
   \end{align*}
-  \begin{center}
-    \alert{Assumtion is still correct!}
-  \end{center}
+  \vspace{-1.5em}
+  \begin{itemize}
+    \item<5- |handout:1>
+      \textbf{Problem:}
+      Does not work but claim still holds
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Induction - Example 2}
+  %TODO
 \end{frame}
