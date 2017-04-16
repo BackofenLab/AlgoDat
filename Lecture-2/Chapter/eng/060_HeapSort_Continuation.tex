@@ -1,94 +1,193 @@
 % Reset to Heapsort
-\setcounter{subsubsection}{2}
+\setcounter{subsubsection}{0}
 
 \begin{frame}<beamer>{Structure}
   \tableofcontents[currentsection,currentsubsection]
 \end{frame}
 
-\begin{frame}{Runtime - Heapsort 3/6}
-  Runtime of \textit{heapify} with depth of $d$:
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Runtime - Heapsort}
+  \textbf{Heapsort has the following steps:}
   \begin{itemize}
     \item
-      No costs at depth $d$ with $2^{d - 1}$ (or less) nodes.
-    \item
-      In a full heap with depth $d$ are $2 \, d - 1$ non-root nodes.\\
-      The cost for \textbf{sifting} with depth $1$ are $1 \, C$
-      ({\color{Mittel-Blau}compare})\\
-      or $2 \, C$ ({\color{Mittel-Blau}compare} and {\color{Mittel-Blau}swap})
-  \end{itemize}%
-  \begin{figure}[!h]%
-    \begin{table}%
-      \begin{center}%
-        \begin{tabular}{c|c|c|c}
-          Depth:     & Nodes:    & Path length: & Costs per node:\\
-          \hline
-          $d - 1$    & $2^d$     & 1            & $\leq 2 \cdot C$\\
-          $d - 2$    & $2^{d-1}$ & 2            & $\leq 4 \cdot C$\\
-          $\vdots$   & $\vdots$  & $\vdots$     & $\vdots$ 
-        \end{tabular}%
-        \caption{Sifting costs}%
-        \label{tab:sifting_costs}%
-      \end{center}%
-    \end{table}%
+      \textbf{Initially:} \texttt{heapify} list of $n$ elements
+    \item<2- |handout:1>
+    \textbf{Then:} until all $n$ elements are sorted
+    \begin{itemize}
+      \item<3- |handout:1>
+        Remove root as minimal element
+      \item<4- |handout:1>
+        Move last leaf to root position
+      \item<5- |handout:1>
+        Repair heap by \texttt{sifting}
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Runtime - Heapsort}{Heapify}
+  Runtime of \texttt{heapify} depends on depth {\color{MainA}$d$}:
+  \begin{figure}[!h]
+    \begin{adjustbox}{width=0.7\linewidth}
+      \input{Images/HeapSort/BinaryTree_Layer.tikz}
+    \end{adjustbox}
+    \vspace{-0.5em}
   \end{figure}
-\end{frame}
-
-%-------------------------------------------------------------------------------
-
-\begin{frame}{Runtime - Heapsort 4/6}
+  \onslide<2- |handout:1>{
+    Runtime of \texttt{heapify} with depth of {\color{MainA}$d$}:}
   \begin{itemize}
-    \item
-      Runtime for heapify:
-      \[\displaystyle
-      T(d) \leq C \cdot \sum \limits^d_{i=2} \left(i \cdot 2^{d-i} \right)
-      \leq C \cdot 2^{d + 1}\]
-    \item
-      Runtime for the other operations:
-      \begin{itemize}
-        \item
-          Constant costs for taking out $n \, \times$ maximum.
-        \item
-          Maximum of $d$ steps repairing the heap $n$ times.
-        \item
-          Depth of heap at the start is $d \leq 1 + \log_2 n$
-        \item
-          Remove costs:
-          \begin{itemize}
-            \item
-              Constant size:
-              $T(n) \leq n \cdot (1 +\log_2 n) \cdot C$
-            \item
-              But the number of elements is decreasing:\\
-              $T(n) \leq 2 \cdot n  \, \log_2 n \cdot C$ (for $n > 2$).
-          \end{itemize}
-      \end{itemize}
+    \item<2- |handout:1>
+      No costs at depth {\color{MainA}$d$} with {\color{MainA}$2^{d-1}$}
+      (or less) nodes
+    \item<3- |handout:1>
+      The cost for \texttt{sifting} with depth {\color{MainA}$1$}
+      is at most {\color{MainA}$1 C$} per node
+    \item<4- |handout:1>
+      In general: \texttt{Sifting} costs are linear with path length
+      \textbf{and} number of nodes
   \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Runtime - Heapsort 6/6}
-  \textbf{Runtime costs:}
+\begin{frame}{Runtime - Heapsort}{Heapify}
+  \texttt{Heapify} total runtime:
+  \vspace{-0.5em}
+  \begin{figure}[!h]
+    \begin{adjustbox}{width=0.7\linewidth}
+      \input{Images/HeapSort/BinaryTree_Layer_General.tikz}
+    \end{adjustbox}
+    \vspace{-0.5em}
+  \end{figure}
+  \vspace{-2em}
+  \begin{table}[!h]
+    \begin{center}%
+      \begin{tabular}{c|c|c|c|c}
+        Depth & Nodes & Path length & Costs per node
+        & \onslide<6- |handout:1>{\color{MainB}Upper bound}\\
+        \hline
+        $d$ & $2^{d-1}$ & 0 & $\leq C \cdot 0$ &
+        \onslide<6- |handout:1>{\color{MainB}$\leq C \cdot 1$}\\
+        \onslide<2- |handout:1>{$d-1$ & $2^{d-2}$ & 1 & $\leq C \cdot 1$ &}
+        \onslide<6- |handout:1>{\color{MainB}$\leq C \cdot 2$}\\
+        \onslide<3- |handout:1>{$d-2$ & $2^{d-3}$ & 2 & $\leq C \cdot 2$ &}
+        \onslide<6- |handout:1>{\color{MainB}$\leq C \cdot 3$}\\
+        \onslide<4- |handout:1>{$d-3$ & $2^{d-4}$ & 3 & $\leq C \cdot 3$ &}
+        \onslide<6- |handout:1>{\color{MainB}$\leq C \cdot 4$}\\
+      \end{tabular}%
+      \label{tab:sifting_costs}%
+    \end{center}%
+  \end{table}
+  \vspace{-1em}
+  \onslide<5- |handout:1>{
+    \textbf{In total:}\hspace{1.5em}
+    \begin{math}
+      \displaystyle
+      \textcolor{MainA}{
+        T(d) \leq \sum\limits_{i=1}^{d}
+        \left(C \cdot (i - 1) \cdot 2^{d-i}\right)
+      }
+      \onslide<6- |handout:1>{\textcolor{MainB}{
+        \leq \sum\limits_{i=1}^{d} \left(C \cdot i \cdot 2^{d-i}\right)
+      }}
+    \end{math}
+  }
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Runtime - Heapsort}{Heapify}
+  \texttt{Heapify} total runtime:
+  \begin{displaymath}
+    \textcolor{MainA}{
+      T(d) \leq
+    }
+    \only<0 |handout:1>{
+      \underbrace{
+        \textcolor{MainB}{
+          C \cdot \sum \limits^d_{i=1}
+          \left(i \cdot 2^{d-i} \right)
+        }
+        \textcolor{MainA}{
+          \leq C \cdot 2^{d + 1}
+        }
+      }_{\text{See next slides}}
+    }
+    \only<1- |handout:0>{
+      \textcolor{MainB}{
+        C \cdot \sum \limits^d_{i=1}
+        \left(i \cdot 2^{d-i} \right)
+      }
+      \textcolor{MainA}{
+        \leq C \cdot 2^{d + 1}
+      }
+    }
+  \end{displaymath}
   \begin{itemize}
-    \item
-      Heapify: $T(n) \leq 4 \cdot n \cdot C$
-    \item
-      Remove: $T(n) \leq 2 \cdot n \, \log_2 n \cdot C$
-    \item
-      Total runtime: $T(n) \leq 6 \cdot n \, \log_2 n \cdot C$
-    \item
-      Constraints:
-      \begin{itemize}
-        \item
-          Upper bound:
-          $C_2 \cdot n \, \log_2 n \geq T(n)$ (for $n \geq 2$)
-        \item
-          Lower bound:
-          $C_1 \cdot n \, \log_2 n \leq T(n)$ (for $n \geq 2$)
-        \item
-          $\Rightarrow$ $C_1$ and $C_2$ are constant
-      \end{itemize}
+    \item<2- |handout:1>
+      \textbf{Hence:} Resulting costs for \texttt{heapify}:
+      \begin{displaymath}
+        \textcolor{MainA}{
+          T(d) \leq C \cdot 2^{d+1}
+        }
+      \end{displaymath}
+    \item<3- |handout:1>
+      \textbf{But:} We want costs in relation to {\color{MainA}$n$}
   \end{itemize}
 \end{frame}
 
-\setcounter{subsubsection}{0}
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Runtime - Heapsort}{Heapify}
+  \texttt{Heapify} total runtime:
+  \begin{displaymath}
+    \textcolor{MainA}{T(d) \leq C \cdot 2^{d + 1}}
+  \end{displaymath}
+  \vspace{-1em}
+  \begin{columns}
+    \begin{column}{\linewidth}
+      \begin{itemize}
+        \item<2- |handout:1>
+        A binary tree of depth {\color{MainA}$d$} has
+        {\color{MainA}$2^{d-1} \leq n$} nodes
+        \onslide<3- |handout:0>{
+          \color{MainB}Why?
+        }
+      \end{itemize}
+    \end{column}
+    \begin{column}{0pt}\end{column} % Dummys
+  \end{columns}
+  \begin{columns}
+    \begin{column}[t]{0.5\linewidth}
+      \begin{itemize}
+        \item<5- |handout:1>
+          {\color{MainB}$2^{d-1} - 1$} nodes in full tree till layer
+          {\color{MainB}$d - 1$}
+        \item<6- |handout:1>
+          At least {\color{MainA}$1$} node in layer {\color{MainA}$d$}
+          \vspace{1.0em}
+        \item<7- |handout:1>
+          {\color{Hint}Equation times $2^2$}\\
+          $\Rightarrow$ {\color{MainA}$2^{d-1} \cdot 2^2 \leq 2^2 \cdot n$}
+        \item<8- |handout:1>
+          Cost for \texttt{heapify}:\\
+          $\Rightarrow$ {\color{MainA}$T(n) \leq C \cdot 4 \cdot n$}
+      \end{itemize}
+    \end{column}
+    \begin{column}[t]{0.5\linewidth}
+      \onslide<4- |handout:1>{
+        \vspace{-2em}
+        \begin{figure}[!h]
+          \begin{adjustbox}{width=\linewidth}
+            \input{Images/HeapSort/PartialTree.tikz}
+          \end{adjustbox}%
+          \vspace{-1em}%
+          \caption{Partial binary tree}
+          \label{fig:heapsort:partial_tree}
+        \end{figure}
+      }
+    \end{column}
+  \end{columns}
+\end{frame}

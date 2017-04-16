@@ -1,0 +1,47 @@
+\section{Runtime Example}
+
+\toclesssubsection{Minsort}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Runtime analysis - Minsort}
+  \vspace{-1em}
+  \begin{figure}[!h]
+    \includegraphics[width=0.75\linewidth]{Images/MinSort/Minsort.png}
+    \label{fig:introduction:minsort_runtime}
+  \end{figure}
+  \vspace{-0.5em}
+  \textbf{How long does the program run?}
+  \begin{itemize}
+    \item
+      In the last lecture we had a schematic
+    \item
+      \textbf{Observation:} It is going to be \enquote{disproportional} slower
+      the more numbers are being sorted
+    \item
+      How can we say more precisely what is happening?
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Runtime analysis - Minsort}
+  \textbf{How can we analyse the runtime?}
+  \begin{itemize}
+    \item
+      Ideally we have a formula which provides the runtime of the program for
+      an specific input
+    \item<2- |handout:1>
+      \textbf{Problem:}
+      The runtime is also depending on many other influences, especially:
+      \begin{itemize}
+        \item
+          Which kind of computer is the code executed on
+        \item What is running in the background
+        \item Which compiler is used to compile the code
+      \end{itemize}
+    \item<3- |handout:1>
+      \textbf{Abstraction 1:}
+      Analyse the number of basic operations, rather than analysing the runtime
+  \end{itemize}
+\end{frame}

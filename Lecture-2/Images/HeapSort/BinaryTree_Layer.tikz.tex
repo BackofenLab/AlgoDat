@@ -1,0 +1,100 @@
+\begin{tikzpicture}[
+  level/.style={
+    sibling distance = 10.0em/#1,
+    level distance = 3.5em
+  },
+  node/.style={
+    draw,
+    circle,
+    very thick,
+    color=black,
+    fill=white
+  },
+  node_filled/.style={
+    node,
+    color=black,
+    fill=orange!50!yellow
+  },
+  node_leaf/.style={
+    node,
+    color=black,
+    fill=green!50!white
+  },
+  path/.style={
+    draw,
+    very thick,
+    color=black
+  },
+  layer/.style={
+    dashed,
+    line width=0.125em,
+    color=MainA
+  },
+  lbl/.style={
+    anchor=west,
+    font=\Large,
+    color=MainA
+  }
+]%
+% Bounding box
+\draw[color=white] (-4, 0.5) rectangle (9.5, -4.5);
+
+% Tree
+\node (root) at (0, 0) [node_filled] {}
+child [path] {
+  node (n1) [node] {}
+  child {
+    node (n3) [node] {}
+    child {node (c1) [node_leaf] {}}
+    child {node (c2) [node_leaf] {}}
+  }
+  child {
+    node (n4) [node] {}
+    child {node (c3) [node_leaf] {}}
+    child {node (c4) [node_leaf] {}}
+  }
+}
+child [path] {
+  node (n2) [node] {}
+  child {
+    node (n5) [node] {}
+    child {node (c5) [node_leaf] {}}
+    child {node (c6) [node_leaf] {}}
+  }
+  child [path] {
+    node (n6) [node] {}
+    child {node (c7) [node_leaf] {}}
+    child {node (c8) [node_leaf] {}}
+  }
+};
+
+% Animations with depth
+\only<2- |handout:1>{
+  % Layer 4
+  \draw[layer] ($(c1.east) + (0.1, 0)$) -- ($(c2.west) - (0.1, 0)$);
+  \draw[layer] ($(c3.east) + (0.1, 0)$) -- ($(c4.west) - (0.1, 0)$);
+  \draw[layer] ($(c5.east) + (0.1, 0)$) -- ($(c6.west) - (0.1, 0)$);
+  \draw[layer] ($(c7.east) + (0.1, 0)$) -- ($(c8.west) - (0.1, 0)$);
+
+  \node[lbl] (l1) at (4.5,0 |- c8) {Depth $4 \rightarrow 2^3$ nodes};
+  \draw[layer] ($(c8.east) + (0.1, 0)$) -- ($(l1.west) - (0.1, 0)$);
+}
+\only<4- |handout:1>{
+  % Layer 3
+  \draw[layer] ($(n3.east) + (0.1, 0)$) -- ($(n4.west) - (0.1, 0)$);
+  \draw[layer] ($(n5.east) + (0.1, 0)$) -- ($(n6.west) - (0.1, 0)$);
+
+  \node[lbl] (l2) at (4.5,0 |- n6) {Depth $3 \rightarrow 2^2$ nodes};
+  \draw[layer] ($(n6.east) + (0.1, 0)$) -- ($(l2.west) - (0.1, 0)$);
+
+  % Layer 2
+  \draw[layer] ($(n1.east) + (0.1, 0)$) -- ($(n2.west) - (0.1, 0)$);
+
+  \node[lbl] (l3) at (4.5,0 |- n2) {Depth $2 \rightarrow 2^1$ nodes};
+  \draw[layer] ($(n2.east) + (0.1, 0)$) -- ($(l3.west) - (0.1, 0)$);
+
+  % Layer 1
+  \node[lbl] (l4) at (4.5,0 |- root) {Depth $1 \rightarrow 2^0$ nodes};
+  \draw[layer] ($(root.east) + (0.1, 0)$) -- ($(l4.west) - (0.1, 0)$);
+}
+\end{tikzpicture}

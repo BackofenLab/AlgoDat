@@ -1,0 +1,132 @@
+% Reset to Induction
+\setcounter{subsubsection}{1}
+
+\begin{frame}<beamer>{Structure}
+  \tableofcontents[currentsection,currentsubsection]
+\end{frame}
+
+\begin{frame}{Induction - Example 2}
+  \begin{itemize}
+    \item
+      \textbf{We want to proof (induction assumption):}
+      \begin{align*}
+        \underbrace{
+          \sum\limits^d_{i=1} \left(i \cdot 2^{d-i} \right)
+        }
+        \leq &~
+        \underbrace{
+          2^{d+1}
+          \vphantom{\sum\limits^d_{i=1}}
+        }\\
+        {\textcolor{MainB}A}(d) \leq &~ {\textcolor{MainB}B}(d)
+      \end{align*}
+      \begin{itemize}
+        \item
+          We denote the left side with {\color{MainB}$A$},
+          the right side with {\color{MainB}$B$}
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Induction - Example 2}
+  \begin{itemize}
+    \item
+      \textbf{Induction basis:} $d := 1$:
+      \begin{align*}
+        {\textcolor{MainB}A}(d) \leq &~ {\textcolor{MainB}B}(d)\\
+        \onslide<2- |handout:1>{
+          \sum \limits^d_{i=1} \left(i \cdot 2^{d-i} \right) \leq &~ 2^{d+1}
+        }\\
+        \onslide<3- |handout:1>{
+          \sum \limits^1_{i=1} \left(i \cdot 2^{1-i} \right) \leq &~ 2^{1+1}
+        }\\
+        \onslide<4- |handout:1>{
+          2^0 \leq &~ 2^2 ~{\textcolor{MainA}\checkmark}
+        }
+      \end{align*}
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Induction - Example 2}
+  \textbf{Induction step:} $(d := d + 1)$:
+  \begin{itemize}
+    \item
+      \textbf{Idea:}
+      Write down right formula and try to get ${\textcolor{MainB}A}(d)$
+      and ${\textcolor{MainB}B}(d)$ out of it
+  \end{itemize}
+  \begin{align*}
+    {\color{MainB}A}(d) \leq &~ {\color{MainB}B}(d) & \Rightarrow &&~
+    {\color{MainB}A}(d+1) \leq &~ {\color{MainB}B}(d+1)\\
+    %----------------------------------------------------------------------
+    \onslide<2- |handout:1>{
+      &&&& \sum\limits^{d+1}_{i=1} \left(i \cdot 2^{d+1-i} \right)
+      \leq &~ 2^{d+1+1}
+    }\\
+    %----------------------------------------------------------------------
+    \onslide<3- |handout:1>{
+      &&&& 2 \cdot \sum\limits^{d+1}_{i=1} \left(i \cdot 2^{d-i} \right)
+      \leq &~ 2 \cdot 2^{d+1}\\
+      &&&& \vdots
+    }
+  \end{align*}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Induction - Example 2}
+  \textbf{Induction step:} $(d := d + 1)$:
+  \begin{align*}
+    \vdots\\
+    2 \cdot \sum\limits^{d+1}_{i=1} \left(i \cdot 2^{d-i} \right)
+    \leq &~ 2 \cdot 2^{d+1}\\
+    %----------------------------------------------------------------------
+    \onslide<2- |handout:1>{
+      2 \cdot \sum\limits^{d\textcolor{SecA}{+1}}_{i=1}
+        \left(i \cdot 2^{d-i} \right)
+      \leq &~ 2 \cdot \textcolor{MainB}{B}(d)
+    }\\
+    %----------------------------------------------------------------------
+    \onslide<3- |handout:1>{
+      2 \cdot \sum\limits^{d}_{i=1} \left(i \cdot 2^{d-i} \right)
+        \textcolor{SecA}{+ 2 \cdot (d + 1) \cdot 2^{d-(d+1)}}
+      \leq &~ 2 \cdot \textcolor{MainB}{B}(d)
+    }\\
+    %----------------------------------------------------------------------
+    \onslide<4- |handout:1>{
+     2 \cdot {\color{MainB}A}(n) + (d + 1)
+     \leq &~ 2 \cdot {\color{MainB}B}(n)
+    }
+  \end{align*}
+  \vspace{-1.5em}
+  \begin{itemize}
+    \item<5- |handout:1>
+      \textbf{Problem:}
+      Does not work but claim still holds
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Induction - Example 2}
+  \textbf{Working proof:}
+  \begin{itemize}
+    \item
+      Show a {\color{MainB}little bit stronger} claim
+      \begin{displaymath}
+        \textcolor{MainA}{\sum_{i=1}^{d} \left(i \cdot 2^{d-i}\right) \leq}
+        \textcolor{MainB}{~2^{d+1} - d - 2~}
+        \textcolor{MainA}{\leq 2^{d+1}}
+      \end{displaymath}
+    \item<2- |handout:1>
+      \textbf{Advantage:}
+      Results in a stronger induction assumption
+      \begin{center}
+        \color{MainB}$\Rightarrow$ exercise
+      \end{center}
+  \end{itemize}
+\end{frame}
