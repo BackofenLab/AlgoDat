@@ -17,17 +17,19 @@
   \item example sorting:
     \begin{itemize}
       \item
-        Runtime of \textit{Minsort} ``is growing as" $\quad{}\quad{}n^2$
+        Runtime of \textit{Minsort} \enquote{is growing as}
+        $\quad{}\quad{}n^2$
       \item
-         Runtime of \textit{HeapSort} ``is growing as'' $\quad{}n \, \log n$
+         Runtime of \textit{HeapSort} \enquote{is growing as}
+         $\quad{}n \, \log n$
     \end{itemize}
-    \item<2->
+    \item<2- |handout:1>
       Growth of a function in runtime $T(n)$
       \begin{itemize}
       \item The role of constants (e.g. $1ns$) is minor
       \item it is enough if relation holds for some $n\geq \ldots$
       \end{itemize}
-    \item<3->
+    \item<3- |handout:1>
       Describe the growth of the function \textbf{more formally}
     \begin{itemize}
       \item
@@ -60,16 +62,16 @@
       \end{itemize}
    \item
      \textbf{Example:}
-   \begin{itemize}[<+->]
-     \item
-       $f(n) = 3 \, n$
-     \item
-       $f(n) = 2 \, n \, \log n$
-     \item
-       $f(n) = \frac{1}{10} n^2$
-     \item
-       $f(n) = n^2 + 3 \, n \, \log n - 4 \, n$
-    \end{itemize}
+     \begin{itemize}[<+- |handout:1>]
+       \item
+         $f(n) = 3 \, n$
+       \item
+         $f(n) = 2 \, n \, \log n$
+       \item
+         $f(n) = \frac{1}{10} n^2$
+       \item
+         $f(n) = n^2 + 3 \, n \, \log n - 4 \, n$
+      \end{itemize}
   \end{itemize}
 \end{frame}
 
@@ -79,22 +81,21 @@
   \textbf{Big $\mathcal{O}$-Notation:}
   \begin{itemize}
     \item
-      Given two functions $f$ and $g$: \\
+      Given two functions $f$ and $g$:\\
       $f,g\!: \mathbb{N} \to \mathbb{R}$
     \item
-      \textbf{Intuitive:} $f$ is Big-O from $g$ ($f$ is $\mathcal{O}(g)$)\\
-         \begin{itemize}
-            \item
-            ... if $f$ relative to $g$ does not grow faster than $g$
-            \item
-                the growth rate matters, not the absolute values
-        \end{itemize}
+      \textbf{Intuitive:} $f$ is Big-O from $g$ ($f$ is $\mathcal{O}(g)$)
+      \begin{itemize}
+        \item
+          $\ldots$ if $f$ relative to $g$ does not grow faster than $g$
+        \item
+          the growth rate matters, not the absolute values
+      \end{itemize}
   \end{itemize}
 \end{frame}
 
-
 %-------------------------------------------------------------------------------
-\usetikzlibrary{arrows,shapes}
+
 % For every picture that defines or uses external nodes, you'll have to
 % apply the 'remember picture' style. To avoid some typing, we'll apply
 % the style to all pictures.
@@ -110,55 +111,68 @@
   \textbf{Big $\mathcal{O}$-Notation:}%
   \begin{itemize}
     \item
-      \textbf{Informal:} $f = \mathcal O(g)$\\
-      
-        \begin{itemize}
-            \item
-               $=$ corresponds to $is$ not $is equal$
-            \item
-               ... if for some value $n_0$ for all $n \geq n_0$
-            \item
-               $f(n) \leq C \cdot g(n)$ for a constant C
-            \item 
-                ($f = \mathcal O(g)$: From a value $n_0$ for all $n \geq n_0 \rightarrow f(n) \leq C \cdot g(n)$)
-        \end{itemize}
+      \textbf{Informal:} $f = \mathcal O(g)$
+      \begin{itemize}
+        \item
+           $=$ corresponds to $is$ not $is equal$
+        \item
+           $\ldots$ if for some value $n_0$ for all $n \geq n_0$
+        \item
+           $f(n) \leq C \cdot g(n)$ for a constant C
+        \item
+            ($f = \mathcal O(g)$: From a value $n_0$ for all
+            $n \geq n_0 \rightarrow f(n) \leq C \cdot g(n)$)
+      \end{itemize}
   \end{itemize}
   \begin{block}{\textbf{Formal:} $f \in \mathcal O(g)$}
     \begin{math}
-      \mathcal O(g) = \lbrace \tikz[baseline] {\node (fun) [anchor=base] {f};}: \mathbb{N} \to \mathbb{R} ~ \tikz[baseline] {\node (for) [anchor=base] {|};}\tikz[baseline] {\node (exone) [anchor=base] {$\exists$};}\!\!n_0 \in \mathbb{N},\tikz[baseline] {\node (extwo) [anchor=base] {$\exists$};}\!\!C > 0,\tikz[baseline] {\node (forall) [anchor=base] {$\forall$};}\!\!n > n_0\!\!\tikz[baseline] {\node (such) [anchor=base] {:};}        f(n) \leq C \cdot g(n)\rbrace
+      \mathcal O(g) = \lbrace \tikz[baseline] {
+        \node (fun) [anchor=base] {f};
+      }: \mathbb{N} \to \mathbb{R} ~ \tikz[baseline] {
+        \node (for) [anchor=base] {|};
+      }\tikz[baseline] {
+        \node (exone) [anchor=base] {$\exists$};
+      }\!\!n_0 \in \mathbb{N},
+      \tikz[baseline] {
+        \node (extwo) [anchor=base] {$\exists$};
+      }\!\!C > 0,\tikz[baseline] {
+        \node (forall) [anchor=base] {$\forall$};
+      }\!\!n > n_0\!\!\tikz[baseline] {
+        \node (such) [anchor=base] {:};
+      }
+      f(n) \leq C \cdot g(n)\rbrace
     \end{math}
   \end{block}
-\tikz[baseline] {\node (funtext) [anchor=north] {
-{\footnotesize\onslide<2->{\begin{tabular}[c]{@{}c@{}}
-      ``set of\\
-      all functions''
-    \end{tabular}}
-}};}\quad{} \tikz[baseline] {\node (fortext) [anchor=north] {
-{\footnotesize\onslide<3->{\begin{tabular}[c]{@{}c@{}}
-    ``for which''
-    \end{tabular}}
-}};}\quad{} \tikz[baseline] {\node (extext) [anchor=north] {
-{\footnotesize\onslide<4->{\begin{tabular}[c]{@{}c@{}}
-    ``it exists''
-    \end{tabular}}
-}};}\quad{} \tikz[baseline] {\node (foralltext) [anchor=north] {
-{\footnotesize\onslide<5->{\begin{tabular}[c]{@{}c@{}}
-    ``for all''
-    \end{tabular}}
-}};}\quad{} \tikz[baseline] {\node (suchtext) [anchor=north] {
-{\footnotesize\onslide<6->{\begin{tabular}[c]{@{}c@{}}
-    ``such that''
-    \end{tabular}}
-}};}
-\begin{tikzpicture}[>=stealth,overlay,thick]
-        \path[->,color=red]<2-> (funtext) edge [bend left]  (fun);
-        \path[->,color=red]<3-> (fortext) edge [bend left]  (for);
-        \path[->,color=red]<4-> (extext) edge [bend left]  (exone);
-        \path[->,color=red]<4-> (extext) edge [bend right]  (extwo);
-        \path[->,color=red]<5-> (foralltext) edge [bend left]  (forall);
-        \path[->,color=red]<6-> (suchtext) edge [bend left]  (such);
-\end{tikzpicture}
-
+  \tikz[baseline] {\node (funtext) [anchor=north] {
+    {\footnotesize\onslide<2- |handout:1>{\begin{tabular}[c]{@{}c@{}}
+          ``set of\\
+          all functions''
+        \end{tabular}}
+  }};}\quad{} \tikz[baseline] {\node (fortext) [anchor=north] {
+    {\footnotesize\onslide<3- |handout:1>{\begin{tabular}[c]{@{}c@{}}
+        ``for which''
+        \end{tabular}}
+  }};}\quad{} \tikz[baseline] {\node (extext) [anchor=north] {
+    {\footnotesize\onslide<4- |handout:1>{\begin{tabular}[c]{@{}c@{}}
+        ``it exists''
+        \end{tabular}}
+  }};}\quad{} \tikz[baseline] {\node (foralltext) [anchor=north] {
+    {\footnotesize\onslide<5- |handout:1>{\begin{tabular}[c]{@{}c@{}}
+        ``for all''
+        \end{tabular}}
+  }};}\quad{} \tikz[baseline] {\node (suchtext) [anchor=north] {
+    {\footnotesize\onslide<6- |handout:1>{\begin{tabular}[c]{@{}c@{}}
+        ``such that''
+        \end{tabular}}
+  }};}
+  \begin{tikzpicture}[>=stealth,overlay,thick]
+    \path[->,color=red]<2- |handout:1> (funtext) edge [bend left]  (fun);
+    \path[->,color=red]<3- |handout:1> (fortext) edge [bend left]  (for);
+    \path[->,color=red]<4- |handout:1> (extext) edge [bend left]  (exone);
+    \path[->,color=red]<4- |handout:1> (extext) edge [bend right]  (extwo);
+    \path[->,color=red]<5- |handout:1> (foralltext) edge [bend left]  (forall);
+    \path[->,color=red]<6- |handout:1> (suchtext) edge [bend left]  (such);
+  \end{tikzpicture}
 \end{frame}
 
 %-------------------------------------------------------------------------------
@@ -215,10 +229,17 @@
     \end{math}
   ]
     \begin{eqnarray*}
-\onslide<2->{      &5 \, n + 7 &\leq \;\; 5 \, n + n \hspace{1em} (\text{for} ~ n \geq 7)}\\
-\onslide<3->{          && = \;\; 6 \, n}
+      \onslide<2- |handout:1>{
+        &5 \, n + 7 &\leq \;\; 5 \, n + n
+        \hspace{1em} (\text{for} ~ n \geq 7)
+      }\\
+      \onslide<3- |handout:1>{
+        && = \;\; 6 \, n
+      }
     \end{eqnarray*}
-\onslide<4->{    $\hspace{1.5em} \Rightarrow n_0 = 7, \, C = 6$ \qedhere}
+    \onslide<4- |handout:1>{
+      $\hspace{1.5em} \Rightarrow n_0 = 7, \, C = 6$ \qedhere
+    }
   \end{proof}
 \end{frame}
 
@@ -227,10 +248,17 @@
 \begin{frame}{$\mathcal{O}$-Notation}{Proof}
   \begin{proof}[Alternate proof:]
     \begin{eqnarray*}
-\onslide<2->{       &5 \, n + 7 &\leq \;\; 5 \, n + 7 \, n \hspace{1em} (\text{for} ~ n \geq 1)}\\
-\onslide<3->{       && = \;\; 12 \, n }
+      \onslide<2- |handout:1>{
+        &5 \, n + 7 &\leq \;\; 5 \, n + 7 \, n
+        \hspace{1em} (\text{for} ~ n \geq 1)
+      }\\
+      \onslide<3- |handout:1>{
+        && = \;\; 12 \, n
+      }
     \end{eqnarray*}
-    \onslide<4->{$\hspace{1.5em} \Rightarrow n_0 = 1, \, C = 12$ \qedhere}
+    \onslide<4- |handout:1>{
+      $\hspace{1.5em} \Rightarrow n_0 = 1, \, C = 12$ \qedhere
+    }
   \end{proof}
 \end{frame}
 
@@ -240,14 +268,14 @@
   \textbf{Big O-Notation:}
   \begin{itemize}
     \item
-      We are only interested in the term with the Highest-order, the fasted growing Summand,
-      the others will be ignored
+      We are only interested in the term with the highest-order,
+      the fasted growing summand, the others will be ignored
     \item
-      $f(n)$ is limited {\color{Mittel-Blau}from above} by $c \cdot g(n)$
+      $f(n)$ is limited {\color{Mittel-Blau}from above} by $C \cdot g(n)$
   \end{itemize}
   \textbf{Examples:}
   \begin{align*}
-     2 \, n^2 + 7 \, n - 20 \in & \,\mathcal{O}(n^2) \\
+     2 \, n^2 + 7 \, n - 20 \in & \,\mathcal{O}(n^2)\\
      2 \, n^2 + 7 \, n \, \log n - 20 \in & {}\\
      7 \, n \, \log n - 20 \in & {}\\
      5 \in & {}\\
@@ -255,15 +283,19 @@
   \end{align*}
 \end{frame}
 
-\begin{frame}{Harder Example}
+%-------------------------------------------------------------------------------
+
+\begin{frame}{$\mathcal{O}$-Notation}{Examples}
+  \textbf{Harder Example:}
   \begin{itemize}
-  \item polynomes are simple
-  \item more problematic: combination of complex functions
-    \begin{displaymath}
-           2 \sqrt{x} + 3 \ln x \in \mathcal{O} (??)
-    \end{displaymath}
+    \item Polynomes are simple
+    \item More problematic: combination of complex functions
+      \begin{displaymath}
+        2 \sqrt{x} + 3 \ln x \in \mathcal{O} (??)
+      \end{displaymath}
   \end{itemize}
 \end{frame}
+
 %-------------------------------------------------------------------------------
 
 \section{\texorpdfstring{$\Omega$}{Omega}-Notation}
@@ -272,34 +304,34 @@
   \textbf{Omega-Notation:}
   \begin{itemize}
     \item
-      \textbf{Intuitive}:\\
-
-          \begin{itemize}
-            \item
-              $f \in \Omega(g)$, $f$ is growing at least as fast as $g$
-            \item
-              So the same as Big-O but with \textit{at-least} and not \textit{at-most}.
-          \end{itemize}
-
+      \textbf{Intuitive}:
+      \begin{itemize}
+        \item
+          $f \in \Omega(g)$, $f$ is growing at least as fast as $g$
+        \item
+          So the same as Big-O but with \textit{at-least} and not
+          \textit{at-most}
+      \end{itemize}
   \end{itemize}
- 	\begin{block}{\textbf{Formal:} $f \in \Omega(g)$}
+  \begin{block}{\textbf{Formal:} $f \in \Omega(g)$}
     \begin{math}
       \Omega(g) = \lbrace f: \mathbb{N} \to \mathbb{R} ~ | ~
         \exists n_0 \in \mathbb{N}, \, \exists C > 0, \,  \forall n > n_0:\,
-        f(n) \tikz[baseline] {\node (geq) [anchor=base] {$\geq$};} C \cdot g(n)\rbrace
+        f(n) \tikz[baseline] {\node (geq) [anchor=base] {$\geq$};}
+        C \cdot g(n)\rbrace
     \end{math}
- 	\end{block}
-        \begin{center}
-          \tikz[baseline] {\node (geqtext) [anchor=base] {
-{\footnotesize\onslide<1->{\begin{tabular}[c]{@{}c@{}}
-      ``in $O(n)$\\
-      we had $\leq$''
-    \end{tabular}}
-}};}
- \end{center}
-\begin{tikzpicture}[>=stealth,overlay,thick]
-  \path[->,color=red] (geqtext) edge [bend right]  (geq);
-\end{tikzpicture}
+  \end{block}
+  \begin{center}
+    \tikz[baseline] {\node (geqtext) [anchor=base] {
+      {\footnotesize\onslide<1->{\begin{tabular}[c]{@{}c@{}}
+        ``in $O(n)$\\
+        we had $\leq$''
+      \end{tabular}}
+    }};}
+  \end{center}
+  \begin{tikzpicture}[>=stealth,overlay,thick]
+    \path[->,color=red] (geqtext) edge [bend right] (geq);
+  \end{tikzpicture}
 \end{frame}
 
 %-------------------------------------------------------------------------------
@@ -342,11 +374,11 @@
   \textbf{Big Omega-Notation:}
   \begin{itemize}
     \item
-      We are only interested in the term with the Highest-order, the fasted growing Summand,
-      the others will be ignored.
+      We are only interested in the term with the highest-order,
+      the fasted growing summand, the others will be ignored
     \item
       $f(n)$ is limited {\color{Mittel-Blau}from underneath} by
-      $c \cdot g(n)$.\\
+      $c \cdot g(n)$
   \end{itemize}
   \textbf{Examples:}
   \begin{align*}
@@ -366,33 +398,34 @@
   \textbf{Theta-Notation:}
   \begin{itemize}
     \item
-      \textbf{Intuitive}: $f$ is Theta from $g$ ...\\
-        \begin{itemize}
-            \item
-              ... if $f$ is growing as much as $g$
-            \item
-              $f \in \Theta(g)$, $f$ is growing at the same speed as $g$
+      \textbf{Intuitive}: $f$ is Theta from $g$ $\ldots$
+      \begin{itemize}
+        \item
+          $\ldots$ if $f$ is growing as much as $g$
+        \item
+          $f \in \Theta(g)$, $f$ is growing at the same speed as $g$
        \end{itemize}
   \end{itemize}
- 	\begin{block}{\textbf{Formal:} $f \in \Theta(g)$}
- 		$\Theta(g) = \underbrace{\mathcal O(g) \cap \Omega(g)}_{Intersection}$
- 	\end{block}
+  \begin{block}{\textbf{Formal:} $f \in \Theta(g)$}
+    $\Theta(g) = \underbrace{\mathcal O(g) \cap \Omega(g)}_{Intersection}$
+  \end{block}
   \textbf{Example:}\\
   \hspace*{1.5em}$f(n) = 5 \, n + 7, \;
     f(n) \in \mathcal{O}(n), \,
     f(n) \in \Omega(n)$\\
   \hspace*{3.0em}$\Rightarrow f(n) \in \Theta(n)$\\[0.5em]
   \begin{center}
-   \textit{Proof for $\mathcal{O}(g)$ and $\Omega(g)$ look at slides~\ref{slide:proofone} and~\ref{slide:prooftwo}}
+   \textit{Proof for $\mathcal{O}(g)$ and $\Omega(g)$ look at
+     slides~\ref{slide:proofone} and~\ref{slide:prooftwo}}
   \end{center}
 \end{frame}
 
 \begin{frame}{$\Theta$-Notation}{Graphs}
-     \begin{center}
-       \includegraphics[width=0.8\textwidth]{Images/lower-upper-bound.pdf}
+  \begin{center}
+    \includegraphics[width=0.8\textwidth]{Images/lower-upper-bound.pdf}
   \end{center}
   \begin{itemize}
-  \item $f$ and $g$ have the same ``growth''
+    \item $f$ and $g$ have the same ``growth''
   \end{itemize}
 \end{frame}
 %-------------------------------------------------------------------------------
@@ -432,7 +465,7 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Runtime}{Common Runtimes}
-\label{slide:theta-examples}
+  \label{slide:theta-examples}
   \begin{table}[!h]
     \begin{center}
       \caption{Common runtime types}
@@ -463,29 +496,31 @@
   \begin{itemize}
   \item so far: 
     \begin{itemize}
-    \item membership in $O(\ldots)$ proofed \textbf{manually}
-      \begin{center}
-        explicit calculation of $n_0$ and $C$
-      \end{center}
-    \item \textbf{however:} both reminds of \textbf{limits} in calculus
+      \item membership in $O(\ldots)$ proofed \textbf{manually}
+        \begin{center}
+          explicit calculation of $n_0$ and $C$
+        \end{center}
+      \item \textbf{however:} both reminds of \textbf{limits} in calculus
     \end{itemize}
   \end{itemize}
 \end{frame}
 
 \begin{frame}{$\mathcal{O}$-Notation}{Limit / Convergence}
-\label{slide:limit}
+  \label{slide:limit}
   \textbf{Definition of \enquote{Limit}}
   \begin{itemize}
     \item
-      The limit of an indefinite sequence $f_1, f_2, f_3$... is $L$\\
-      if for all $\epsilon > 0$ one $n_0 \in \mathbb{N}$ exists, such that for all \\
-      $n \geq n_0$ the following holds true: $\left| f_n - L \right| \leq \epsilon$
+      The limit of an indefinite sequence $f_1, f_2, f_3, \ldots$ is $L$\\
+      if for all $\epsilon > 0$ one $n_0 \in \mathbb{N}$ exists,
+      such that for all\\
+      $n \geq n_0$ the following holds true:
+      $\left| f_n - L \right| \leq \epsilon$
     \item
       A function $f\!: \mathbb{N} \rightarrow \mathbb{R}$ can be written as a
       sequence\\
-      $\Rightarrow$ $\lim\limits_{n \rightarrow \infty}$ $f_n$ = $L$
+      $\Rightarrow$ $\lim\limits_{n \rightarrow \infty} f_n = L$
   \end{itemize}
-  \begin{block}<2->{Convergence}
+  \begin{block}<2- |handout:1>{Convergence}
     \begin{math}
       \forall \epsilon > 0 \; \exists n_0 \in \mathbb{N} \;\;
       \forall n \geq n_0 \! : \; \left| f_n - L \right| \leq \epsilon
@@ -498,42 +533,45 @@
 \begin{frame}{$\mathcal{O}$-Notation}{Limit / Convergence}
   \begin{itemize}
   \item Example for a limit proof
-  \item function $f(n) = 2 + \frac{1}{n}$ with limes $2$
-  \item ``engineering'' solution: use $n=\infty{}$
+  \item Function $f(n) = 2 + \frac{1}{n}$ with limes $2$
+  \item \enquote{Engineering} solution: use $n=\infty{}$
     \begin{displaymath}
-      \frac{1}{\infty}=0 \Rightarrow       \lim_{n \to \infty} f(n)
+      \frac{1}{\infty} = 0 \Rightarrow \lim_{n \to \infty} f(n)
         = \lim_{n \to \infty} 2 + \dfrac{1}{n}
         = 2
     \end{displaymath}
   \end{itemize}
 \end{frame}
+
+%-------------------------------------------------------------------------------
+
 \begin{frame}{$\mathcal{O}$-Notation}{Limit / Convergence}
   \begin{itemize}
   \item Now a more formal proof for $\displaystyle\lim_{n \to \infty} 2 +
     \dfrac{1}{n}  = 2$
-  \item we need to show: for all given $\epsilon$ there is an $n_0$ such
+  \item We need to show: for all given $\epsilon$ there is an $n_0$ such
     that for all $n \geq n_0$
     \begin{displaymath}
       \left| 2 + \dfrac{1}{n} - 2 \right| =  \left| \dfrac{1}{n}  \right| \leq \epsilon
     \end{displaymath}
-  \item<2-> e.g.: for $\epsilon=0.01$ we get $\frac{1}{n} \leq \epsilon$
+  \item<2- |handout:1>
+    E.g.: for $\epsilon=0.01$ we get $\frac{1}{n} \leq \epsilon$
     for $n\geq 100$
-  \item<3-> in general
+  \item<3- |handout:1>
+    In general
     \begin{displaymath}
       n_0 = \left\lceil \dfrac{1}{\epsilon} \right\rceil
     \end{displaymath}
-  \item<4-> then we get:
+  \item<4- |handout:1>
+    Then we get:
     \begin{eqnarray*}
       \left|
         \frac{1}{n} \vphantom{\dfrac{1}{\frac{1}{\epsilon}}}
-      \right|
-        = \dfrac{1}{n}
+      \right| = \dfrac{1}{n}
       \; \leq \;
-      \dfrac{1}{n_0} =  \dfrac{1}{\left\lceil\frac{1}{\epsilon}
-        \right\rceil}
-\leq   \dfrac{1}{\frac{1}{\epsilon}}
-        = \epsilon
-      \qed
+      \dfrac{1}{n_0} = \dfrac{1}{\left\lceil\frac{1}{\epsilon}\right\rceil}
+      \leq \dfrac{1}{\frac{1}{\epsilon}}
+      = \epsilon \qed
     \end{eqnarray*}
   \end{itemize}
 \end{frame}
@@ -541,12 +579,13 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{$\mathcal{O}$-Notation}{Limit / Convergence}
-\label{slide:fraction}
+  \label{slide:fraction}
   Let $f,g \! : \; \mathbb{N} \to \mathbb{R}$ with an existing limit
   \[\lim_{n \to \infty} \dfrac{f(n)}{g(n)} = L\]
-  Hence the following holds
+  Hence the following holds:
   \begin{align}
-\label{eq:big-O}    & f \in \mathcal{O}(g) & \Leftrightarrow
+    \label{eq:big-O}
+    & f \in \mathcal{O}(g) & \Leftrightarrow
     && \lim_{n \to \infty} \dfrac{f(n)}{g(n)} < \infty\\
     & f \in \Omega(g) & \Leftrightarrow
     && \lim_{n \to \infty} \dfrac{f(n)}{g(n)} > 0\\
@@ -568,7 +607,8 @@
      \exists n_0, \, C\; \forall n \geq n_0:
      \; f(n) \leq C \cdot g(n)$
      \begin{alignat*}{2}
-       \Rightarrow && \exists n_0, \, C\; \forall n \geq n_0: \dfrac{f(n)}{g(n)} &\leq \; C\\
+       \Rightarrow && \exists n_0, \, C\; \forall n \geq n_0:
+       \dfrac{f(n)}{g(n)} &\leq \; C\\
        \Rightarrow && \displaystyle
        \lim_{n \to \infty}\dfrac{f(n)}{g(n)} &\leq \; C
        \qedhere
@@ -594,7 +634,8 @@
         \begin{aligned}
           \stackrel{\text{def. limes}}{\Rightarrow} \hspace*{0.5em} &&
           \exists n_0, \, \forall n \geq n_0: \hspace*{1.0em}&&
-          \frac{f(n)}{g(n)} &\leq \; C + \varepsilon \;\;\; (e.g.\;\varepsilon = 1)\\
+          \frac{f(n)}{g(n)} &\leq \; C + \varepsilon \;\;\;
+            (e.g.\;\varepsilon = 1)\\
           \Rightarrow \; &&
           \exists n_0, \, \forall n \geq n_0: \hspace*{1.0em}&&
           f(n) &\leq \; \underbrace{(C + 1)}_{O-notation\;constant} \cdot g(n)\\

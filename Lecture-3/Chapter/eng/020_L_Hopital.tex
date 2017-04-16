@@ -2,32 +2,35 @@
 
 \begin{frame}{Limits with L'H\^{o}pital}
   \begin{itemize}
-  \item \textbf{Intuitive:}\\
-  \begin{displaymath}
-    \lim\limits_{n \rightarrow \infty} 2 + \dfrac{1}{n} = 2  +
-    \dfrac{1}{\infty} = 2
-  \end{displaymath}
-  \vspace{0.0em}\\
-\item<2->   \textbf{With L'H\^{o}pital:}
-  \begin{itemize}
     \item
-      Let $f, \, g : \mathbb{N} \rightarrow \mathbb{R}$
-    \item
-      If
-      \begin{math}
-        \lim\limits_{n \to \infty} f(n)
-          = \lim\limits_{n \to \infty} g(n)
-          = \infty / 0
-      \end{math}
-  \end{itemize}
-  \begin{displaymath}
-    \Rightarrow \lim\limits_{n \rightarrow \infty} \dfrac{f(n)}{g(n)}
-      = \lim\limits_{n \rightarrow \infty} \dfrac{f'(n)}{g'(n)}
-  \end{displaymath}
-  \item<3->\textbf{holy inspiration}
-    \begin{center}
-      you need a doctoral degree for that
-    \end{center}
+      \textbf{Intuitive:}\\
+      \begin{displaymath}
+        \lim\limits_{n \rightarrow \infty} 2 + \dfrac{1}{n}
+        = 2  + \dfrac{1}{\infty} = 2
+      \end{displaymath}
+      \vspace{0em}\\
+    \item<2- |handout:1>
+      \textbf{With L'H\^{o}pital:}
+      \begin{itemize}
+        \item
+          Let $f, \, g : \mathbb{N} \rightarrow \mathbb{R}$
+        \item
+          If
+          \begin{math}
+            \lim\limits_{n \to \infty} f(n)
+              = \lim\limits_{n \to \infty} g(n)
+              = \infty / 0
+          \end{math}
+      \end{itemize}
+      \begin{displaymath}
+        \Rightarrow \lim\limits_{n \rightarrow \infty} \dfrac{f(n)}{g(n)}
+          = \lim\limits_{n \rightarrow \infty} \dfrac{f'(n)}{g'(n)}
+      \end{displaymath}
+    \item<3- |handout:1>
+      \textbf{Holy inspiration}
+      \begin{center}
+        you need a doctoral degree for that
+      \end{center}
   \end{itemize}
 \end{frame}
 
@@ -41,22 +44,18 @@
     \hspace{1em} \stackrel{\text{plugging in}}{\longrightarrow} \hspace{1em}
       \dfrac{\infty}{\infty}
   \end{displaymath}
-  
   \textbf{Determine the limit with using L'H\^{o}pital:}
-  
   \begin{displaymath}
-      \lim\limits_{n \rightarrow \infty} \dfrac{f(n)}{g(n)}
-        = \lim\limits_{n \rightarrow \infty} \dfrac{f'(n)}{g'(n)} = 0
-    \end{displaymath}
-  
+    \lim\limits_{n \rightarrow \infty} \dfrac{f(n)}{g(n)}
+      = \lim\limits_{n \rightarrow \infty} \dfrac{f'(n)}{g'(n)} = 0
+  \end{displaymath}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Limits with L'H\^{o}pital}
-
   \begin{block}{\textbf{Using L'H\^{o}pital:}}
-    Numerator: \; $\textbf{f(n)}\!: n \mapsto \ln (n)$ \\
+    Numerator: \; $\textbf{f(n)}\!: n \mapsto \ln (n)$\\
     Denominator: $\textbf{g(n)}\!: n \mapsto n$\\
     \hspace{1.5em}
     $\Rightarrow f'(n) = \dfrac{1}{n}$ \; (derivation from Numerator)\\
@@ -77,7 +76,7 @@
 \begin{frame}{Limits with L'H\^{o}pital}
   \textbf{What can we take for granted without proofing?}
   \begin{itemize}
-    \item 
+    \item
       Only things that are trivial
     \item
       It is always better to proof it

@@ -22,19 +22,20 @@
       Transitivity:
       \begin{eqnarray*}
         f \in \Theta(g) \; \wedge \; g \in \Theta(h)
-       \onslide<2->{ & \rightarrow & f \in \Theta(h)}\\
-        f \in \mathcal{O}(g) \; \wedge \; g \in \mathcal{O}(h)
-        \onslide<3->{ & \rightarrow & f \in \mathcal{O}(h)}\\
-        f \in \Omega(g) \; \wedge  \; g \in \Omega(h)
- \onslide<4->{        & \rightarrow & f \in \Omega(h)}
+       \onslide<2- |handout:1>{& \rightarrow & f \in \Theta(h)}\\
+       f \in \mathcal{O}(g) \; \wedge \; g \in \mathcal{O}(h)
+       \onslide<3- |handout:1>{ & \rightarrow & f \in \mathcal{O}(h)}\\
+       f \in \Omega(g) \; \wedge  \; g \in \Omega(h)
+       \onslide<4- |handout:1>{& \rightarrow & f \in \Omega(h)}
       \end{eqnarray*}
-    \item<5->
+    \item<5- |handout:1>
       Symmetry:
       \begin{eqnarray*}
         f \in \Theta(g) & \leftrightarrow & g \in \Theta(f)\\
-\onslide<6->{        f \in \mathcal{O}(g)} \onslide<7->{ & \leftrightarrow & g \in \Omega(f)}
+        \onslide<6- |handout:1>{f \in \mathcal{O}(g)}
+        \onslide<7- |handout:1>{& \leftrightarrow & g \in \Omega(f)}
       \end{eqnarray*}
-    \item<8->
+    \item<8- |handout:1>
       Reflexivity:
       \begin{eqnarray*}
         f \in \Theta(f) & f \in \Omega(f) & f \in \mathcal{O}(f)
@@ -47,23 +48,23 @@
 \begin{frame}{$\mathcal{O}$-Notation}{Calculation Rules}
   \begin{itemize}
     \item
-    Trivial:
-    \begin{eqnarray*}
-      f & \in & \mathcal{O} (f)\\
-      k \cdot \mathcal{O} (f) & = & \mathcal{O} (f)\\
-      \mathcal{O} (f + k) & = & \mathcal{O} (f)
-    \end{eqnarray*}
+      Trivial:
+      \begin{eqnarray*}
+        f & \in & \mathcal{O} (f)\\
+        k \cdot \mathcal{O} (f) & = & \mathcal{O} (f)\\
+        \mathcal{O} (f + k) & = & \mathcal{O} (f)
+      \end{eqnarray*}
     \item
-    Addition:
-    \begin{eqnarray*}
-      \mathcal{O} (f) + \mathcal{O} (g) & = & \mathcal{O} 
-      (\mathrm{max}\{f,\;g\})
-    \end{eqnarray*}
+      Addition:
+      \begin{eqnarray*}
+        \mathcal{O} (f) + \mathcal{O} (g) & = & \mathcal{O} 
+        (\mathrm{max}\{f,\;g\})
+      \end{eqnarray*}
     \item
-    Multiplication:
-    \begin{eqnarray*}
-      \mathcal{O} (f) \cdot \mathcal{O} (g) & = & \mathcal{O} (f \cdot g)
-    \end{eqnarray*}
+      Multiplication:
+      \begin{eqnarray*}
+        \mathcal{O} (f) \cdot \mathcal{O} (g) & = & \mathcal{O} (f \cdot g)
+      \end{eqnarray*}
   \end{itemize}
 \end{frame}
 
@@ -230,13 +231,14 @@
 
 %-------------------------------------------------------------------------------
 
+\codeslide{python}{
 \begin{frame}{$\mathcal{O}$-Notation}{Arithmetic mean}
   \begin{itemize}
     \item
-      {\color{Mittel-Blau}Input:} Field $x$ with $n$ numbers
+      {\color{MainA}Input:} List $x$ with $n$ numbers
     \item
-      {\color{Mittel-Blau}Output:} $a[i]$ is the arithmetic mean of $x[0]$ to 
-      $x[i]$
+      {\color{MainA}Output:} $a[i]$ is the arithmetic mean of $x[0]$
+      to $x[i]$
   \end{itemize}
   \lstinputlisting[
     language=Python,
@@ -245,8 +247,53 @@
     tabsize=4,
     emph={arithMean},
     emphstyle=\color{blue}
-  ]{Code/ArithmeticMean.py}
+  ]{Code/ArithmeticMean/ArithmeticMean.py}
 \end{frame}
+}
+
+%-------------------------------------------------------------------------------
+
+\codeslide{java}{
+\begin{frame}{$\mathcal{O}$-Notation}{Arithmetic mean}
+  \begin{itemize}
+    \item
+      {\color{MainA}Input:} Array $x$ with $n$ numbers
+    \item
+      {\color{MainA}Output:} $a[i]$ is the arithmetic mean of $x[0]$
+      to $x[i]$
+  \end{itemize}
+  \lstinputlisting[
+    language=Java,
+    style={java-eclipse-code},
+    basicstyle=\small,
+    tabsize=4,
+    emph={arithMean},
+    emphstyle=\color{blue}
+  ]{Code/ArithmeticMean/ArithmeticMean.java}
+\end{frame}
+}
+
+%-------------------------------------------------------------------------------
+
+\codeslide{cpp}{
+\begin{frame}{$\mathcal{O}$-Notation}{Arithmetic mean}
+  \begin{itemize}
+    \item
+      {\color{MainA}Input:} Vector $x$ with $n$ numbers
+    \item
+      {\color{MainA}Output:} $a[i]$ is the arithmetic mean of $x[0]$
+      to $x[i]$
+  \end{itemize}
+  \lstinputlisting[
+    language=C++,
+    style={cpp-eclipse-code},
+    basicstyle=\small,
+    tabsize=4,
+    emph={arith_mean},
+    emphstyle=\color{blue}
+  ]{Code/ArithmeticMean/ArithmeticMean.cpp}
+\end{frame}
+}
 
 %-------------------------------------------------------------------------------
 
@@ -300,7 +347,7 @@
     \item
       We only analyze the runtime when $n \geq n_0$
     \item
-      We talk about {\color{Mittel-Blau}asymptotic analysis}, when we discuss 
+      We talk about {\color{MainA}asymptotic analysis}, when we discuss 
       cost, runtime, etc. as $\mathcal{O}(\ldots)$, $\Omega(\ldots)$
       or $\Theta(\ldots)$
   \end{itemize}
@@ -351,7 +398,7 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{$\mathcal{O}$-Notation}{Discussion}
-  \begin{block}{When is A faster then B?}%
+  \begin{block}{When is A faster then B?}
     We search the minimal $n_0$:
     \begin{align*}%
       f(n_0) & = \; g(n_0)\\
@@ -362,42 +409,54 @@
       {} & \approx \; (10^3)^4 = 10^{12}\\
       {} & \approx \; \SI{1}{trillion}
     \end{align*}
-    A ist faster than B if $n_0$ has more than 1 Trillion elements.
+    A ist faster than B if $n_0$ has more than 1 trillion elements
   \end{block}
 \end{frame}
 
+%-------------------------------------------------------------------------------
+
 \begin{frame}{Runtime Examples}{Continued}
   \begin{itemize}
-  \item logarithm of different bases differ only by a constant
-    \begin{displaymath}
-          \log_a n = \dfrac{\log_b n}{\log_b a} = \dfrac{1}{\log_b a}\cdot \log_b n 
-    \end{displaymath}
-  \item Hence: $\log_a n \in \Theta(\log_b n)$
-  \item For exponent this does not hold
-    \begin{displaymath}
-     3^n \not\in\Theta(2^n)
-    \end{displaymath}
-  \item Proof: Use equation~$(\ref{eq:big-O})$ from
-    Slide~\ref{slide:fraction}
-    \begin{displaymath}
-    3^n \in \mathcal{O}(2^n) \Leftrightarrow \lim_{n \to \infty} \dfrac{3^n}{2^n} < \infty
-    \end{displaymath}
-  \item however:
-\begin{displaymath}
-    \lim_{n \to \infty} \dfrac{3^n}{2^n} =  \lim_{n \to \infty}
-    \left(\dfrac{3}{2}\right)^n = \infty
-    \end{displaymath}
+    \item
+      Logarithm of different bases differ only by a constant
+      \begin{displaymath}
+        \log_a n = \dfrac{\log_b n}{\log_b a}
+        = \dfrac{1}{\log_b a}\cdot \log_b n 
+      \end{displaymath}
+    \item
+      Hence: $\log_a n \in \Theta(\log_b n)$
+    \item
+      For exponent this does not hold
+      \begin{displaymath}
+        3^n \not\in\Theta(2^n)
+      \end{displaymath}
+    \item
+      Proof: Use equation~$(\ref{eq:big-O})$ from Slide~\ref{slide:fraction}
+      \begin{displaymath}
+        3^n \in \mathcal{O}(2^n)
+        \Leftrightarrow \lim_{n \to \infty} \dfrac{3^n}{2^n} < \infty
+      \end{displaymath}
+    \item
+      However:
+      \begin{displaymath}
+        \lim_{n \to \infty} \dfrac{3^n}{2^n} =  \lim_{n \to \infty}
+        \left(\dfrac{3}{2}\right)^n = \infty
+      \end{displaymath}
   \end{itemize}
 \end{frame}
 
+%-------------------------------------------------------------------------------
+
 \begin{frame}{Additional Figure}
   \begin{itemize}
-  \item Figure for Slide~\ref{slide:limit}
+  \item
+    Figure for Slide~\ref{slide:limit}
     \begin{center}
-\includegraphics[width=0.9\textwidth]{Images/limits-epsilon.pdf}
+      \includegraphics[width=0.9\textwidth]{Images/limits-epsilon.pdf}
     \end{center}
   \end{itemize}
 \end{frame}
+
 %%% ==========================================
 %%% This should be at the END of the file !!!!!!
 %%%
