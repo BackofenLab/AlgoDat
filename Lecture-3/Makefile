@@ -55,6 +55,7 @@ clean:
 
 clean_server:
 	@echo "Cleaning (server)"
+	@rm -r -f build | true
 	@rm -f *.log
 	@rm -f *.aux
 	@rm -f *.bbl
@@ -70,13 +71,13 @@ build: directories build/$(ALGO_BUILD_NAME).pdf
 export: build
 	@echo "Exporting"
 	@mkdir -p ../$(ALGO_EXPORT_DIR)
-	@cp build/$(ALGO_BUILD_NAME).pdf ../$(ALGO_EXPORT_DIR)/$(ALGO_FULL_NAME)_$(ALGO_LANGUAGE).pdf
+	@cp build/$(ALGO_BUILD_NAME).pdf ../$(ALGO_EXPORT_DIR)/$(ALGO_FULL_NAME)_$(ALGO_LANGUAGE)_$(ALGO_MODE).pdf
 
 # ------------------------------------------------------------------------------
 build_server: directories_server build_server_forced
 export_server: build_server
 	@echo "Exporting (server)"
-	@cp $(ALGO_BUILD_NAME).pdf ../$(ALGO_FULL_NAME)_$(ALGO_LANGUAGE).pdf
+	@cp $(ALGO_BUILD_NAME).pdf ../$(ALGO_FULL_NAME)_$(ALGO_LANGUAGE)_$(ALGO_MODE).pdf
 
 # ------------------------------------------------------------------------------
 directories:

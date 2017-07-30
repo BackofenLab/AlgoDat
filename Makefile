@@ -68,6 +68,17 @@ clean/exercisesheets:
 clean/full: clean clean/lectures clean/exercisesheets
 	@rm -f ./*.pdf
 
+clean_server: clean_server/lectures clean_server/exercisesheets
+	@echo "Cleaned"
+
+clean_server/lectures:
+	@echo "Cleaning Lectures"
+	@ls -d Lecture-* | awk '{system("$(MAKE) --directory="$$1" clean_server");}'
+
+clean_server/exercisesheets:
+	@echo "Cleaning ExerciseSheets"
+	@ls -d ExerciseSheet-* | awk '{system("$(MAKE) --directory="$$1" clean_server");}'
+
 # ------------------------------------------------------------------------------
 directories:
 	@echo "Creating directories"
