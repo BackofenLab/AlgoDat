@@ -10,17 +10,18 @@
     \item
       \textbf{Abstraction 2:} We calculate the upper (lower) bound,
       rather than counting the operations exactly\\[0.5em]
-      \textbf{Reason}: Runtime is unknown, but we know:
+      \textbf{Reason}: Runtime is approximated by number of basic operations,
+	    but we can still infer:
       \begin{itemize}
         \item {\color{MainBLight}Upper bound}
         \item {\color{MainBLight}Lower bound}
       \end{itemize}
       \vspace{1em}
     \item
-      \textbf{Basic Setting:}
+      \textbf{Basic Assmuption:}
       \begin{itemize}
         \item
-          {\color{MainA}$n$} is size of input (i.e. array)
+          {\color{MainA}$n$} is size of the input data (i.e. array)
         \item
           {\color{MainA}$T(n)$} number of operations for input
           {\color{MainA}$n$}
@@ -35,7 +36,7 @@
   \begin{itemize}
     \item
       \textbf{Observation:}
-      The number of operations needed is only depending on the size
+      The number of operations depends only on the size
       {\color{MainA}$n$} of the array and not on the content!
     \item
       \textbf{Claim:} There are constants {\color{MainA}$C_1$}
@@ -123,8 +124,8 @@
   \end{columns}
   \onslide<7 |handout:1>{\begin{displaymath}
     T(n)
-    = C \cdot \left(T_1 + \cdots + T_n\right)
-    \leq C \cdot \sum \limits^n_{i=1} i
+    = C'_2 \cdot \left(T_1 + \cdots + T_n\right)
+    \leq \sum \limits^n_{i=1} \left(C'_2 \cdot i\right)
   \end{displaymath}}
 \end{frame}
 
@@ -296,7 +297,7 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Runtime analysis - Minsort}
-  \textbf{Finding an {\color{MainBLight}upper bound}:
+  \textbf{Proof of {\color{MainBLight}upper bound}:
     $T(n) \leq C_2 \cdot n^2$}
   \begin{eqnarray*}
     T(n) & \leq & \sum\limits^{n}_{i=1} C'_2\cdot i\\
@@ -335,7 +336,7 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Runtime analysis - Minsort}
-  \textbf{Finding a {\color{MainBLight}lower bound}:
+  \textbf{Proof of {\color{MainBLight}lower bound}:
     $C_1 \cdot n^2 \leq T(n)$}\\[0.5em]
   \hspace{1.5em}Like for the upper boundary there exists a {\color{MainA}$C_1$}.
     Summation\\
@@ -348,8 +349,8 @@
     }\\
     \onslide<3- |handout:1>{
       & \geq & C'_1 \cdot \dfrac{
-        \only<3-4>{(n - 1)}
-        \only<5->{\textcolor{MainA}{(n - 1)}}
+        \only<3-4|handout:0>{(n - 1)}
+        \only<5- |handout:1>{\textcolor{MainA}{(n - 1)}}
         \cdot n}{2}
     }
     \onslide<4- |handout:1>{
@@ -367,7 +368,7 @@
       \dfrac{\textcolor{MainA}{n} \cdot n}{\textcolor{MainA}{2} \cdot 2}
     }
     \onslide<7- |handout:1>{
-      \ = \ \dfrac{c'_1}{4} \cdot n^2
+      \ = \ \dfrac{C'_1}{4} \cdot n^2
     }
   \end{eqnarray*}
 \end{frame}
@@ -377,14 +378,14 @@
 \begin{frame}{Runtime analysis - Minsort}
   \textbf{Runtime Analysis:}
   \begin{itemize}
-    \item
+    \item<1- |handout:1>
       {\color{MainB}Upper bound}:
       \hspace{1.5em} $T(n) \leq C'_2 \cdot n^2$
-    \item
+    \item<2- |handout:1>
       {\color{MainB}Lower bound}:
       \hspace{1.5em} $\dfrac{C'_1}{4} \cdot n^2 \leq T(n)$
   \end{itemize}
-  \begin{block}{Summarized:}
+  \onslide<3- |handout:1>{\begin{block}{Summarized:}
     \begin{displaymath}
       \frac{C'_1}{4} \cdot n^2 \leq T(n) \leq C'_2 \cdot n^2
     \end{displaymath}
@@ -392,26 +393,26 @@
     \begin{displaymath}
       C_1 \cdot n^2 \leq T(n) \leq C_2 \cdot n^2
     \end{displaymath}
-  \end{block}
+  \end{block}}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Runtime Example}
   \begin{itemize}
-    \item
+    \item<1- |handout:1>
       The runtime is growing quadratic with the number of elements
       ${\color{MainA}n}$ in the list
-    \item
+    \item<2- |handout:1>
       Let constants $\color{MainA}C_1$ and $\color{MainA}C_2$
       for which $\color{MainA}C_1 \cdot n^2 \leq T(n) \leq C_2 \cdot n^2$
-    \item
+    \item<3- |handout:1>
       $2\, \times$ elements $\Rightarrow$ $4\, \times$ runtime
       \begin{itemize}
-        \item
+        \item<4- |handout:1>
           $C = \SI{1}{\nano\second}$
           (1 simple instruction $\approx \SI{1}{\nano\second}$)
-        \item
+        \item<5- |handout:1>
           $n = 10^6$ (1 million numbers = $\SI{4}{\mega\byte}$
           with $\SI{4}{\byte\per number}$)
           \begin{itemize}
@@ -419,7 +420,7 @@
               $C \cdot n^2 = \SI{e-9}{\second} \cdot 10^{12}
               = \SI{e3}{\second} = \SI{16.7}{\minute}$
           \end{itemize}
-        \item
+        \item<6- |handout:1>
           $n = 10^9$ (1 billion numbers = $\SI{4}{\giga\byte}$)
           \begin{itemize}
             \item
@@ -427,7 +428,7 @@
               = \SI{e9}{\second} = 31.7$~years
           \end{itemize}
       \end{itemize}
-    \item
+    \item<7- |handout:1>
       \textbf{Quadratic runtime = \enquote{big} problems unsolvable}
   \end{itemize}
 \end{frame}
