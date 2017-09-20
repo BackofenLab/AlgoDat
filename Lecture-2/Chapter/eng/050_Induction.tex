@@ -7,19 +7,19 @@
 \begin{frame}{Induction}
   \textbf{Basics:}
   \begin{itemize}
-    \item
+    \item<2- | handout:1>
       You want to show assumption $A(n)$ is valid $\forall n \in \mathbb{N}$
-    \item
+    \item<3- | handout:1>
       We show induction in two steps:
       \begin{enumerate}
-        \item
+        \item<4- | handout:1>
           \textbf{Induction basis:} we show that our assumption is valid 
-          at one point (for example: $n = 1$).
-        \item
+          at one point (for example: $n = 1, A(1)$).
+        \item<5- | handout:1>
           \textbf{Induction step:} we show that the assumption is valid for 
-          all $n$ (normally one step forward: $n = n + 1$).
+          all $n$ (normally one step forward: $n = n + 1, A(1), \ldots, A(n)$).
       \end{enumerate}
-    \item
+    \item<6- | handout:1>
       If both has been proven, then {\color{MainA}$A(n)$} holds for all natural
       numbers {\color{MainA}$n$} by \textbf{induction}
   \end{itemize}
@@ -33,7 +33,7 @@
   \end{block}
   \begin{itemize}
     \item
-      \textbf{Induction basis:} Formular holds for {\color{MainA}$d = 1$}
+      \textbf{Induction basis:} Assumption holds for {\color{MainA}$d = 1$}
       \begin{columns}
         \begin{column}{0.5\linewidth}
           \begin{figure}[!h]

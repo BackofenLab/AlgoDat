@@ -1,7 +1,7 @@
 \subsection{Heapsort}
 
 \begin{frame}{Runtime - Heapsort}
-  \textbf{Intuitive:}
+  \textbf{Intuitive to extract minimum:}
   \begin{itemize}
     \item
       \textbf{Minsort:}
@@ -9,17 +9,18 @@
       unsorted elements.
     \item
       \textbf{Heapsort:}
-      The root-element is always the smallest (min-heap).
-      We only need to repair a small part of the full tree after an delete
+      The root node is always the smallest (minheap).
+      We only need to repair a part of the full tree after an delete
       operation.
   \end{itemize}
   \textbf{Formal:}
   \begin{itemize}
     \item 
-    Let T$(n)$ be the runtime for the \textit{Heapsort}
-    algorithm with $n$ elements.
+      Let {\color{MainA}T$(n)$} be the runtime for the \textit{Heapsort}
+      algorithm with {\color{MainA}$n$} elements.
     \item
-    On the next pages we will proof $T(n) \leq C \cdot n \, \log_2 n$
+      On the next pages we will proof
+	  {\color{MainA}$T(n) \leq C \cdot n \, \log_2 n$}
   \end{itemize}
 \end{frame}
 
@@ -31,13 +32,13 @@
       Depth of a binary tree:
       \begin{itemize}
         \item
-          \textbf{Depth \textit{d}:}
+          \textbf{Depth} {\color{MainA}$d$}\textbf{:}
           longest path through the tree
         \item
-          Complete binary tree has $n = 2^d - 1$ nodes
+          Complete binary tree has {\color{MainA}$n = 2^d - 1$} nodes
         \item
-          Example: $d = 4$\\
-          $\Rightarrow n = 2^4 - 1 = 15$
+          Example: {\color{MainA}$d = 4$}\\
+          {\color{MainA}$\Rightarrow n = 2^4 - 1 = 15$}
       \end{itemize}
     \end{column}
     \begin{column}{0.5\textwidth}

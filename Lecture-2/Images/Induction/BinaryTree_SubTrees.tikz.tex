@@ -15,6 +15,11 @@
     color=black,
     fill=white
   },
+  node_filled/.style={
+    node,
+    color=black,
+    fill=orange!50!yellow
+  },
   tree/.style={
     draw,
     very thick,
@@ -48,7 +53,7 @@
     color=black
   }
 ]%
-\node [node, label={[anchor=south]above:Root}] (root) {}
+\node [node_filled, label={[anchor=south]above:Root}] (root) {}
 child [path] {
   child {
     node[tree] {\only<4->{\Large $n(d)$}}
