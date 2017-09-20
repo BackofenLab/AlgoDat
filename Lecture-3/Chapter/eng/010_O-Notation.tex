@@ -1,12 +1,3 @@
-%%% ===================================================================
-%%% RCS Header:
-%%% $RCSfile: local.el,v $
-%%% $Revision: 1.27 $
-%%% $Date: 2014/11/07 15:36:00 $
-%%% $Author: backofen $
-%%% $Locker:  $
-%%% ===================================================================
-
 \section{\texorpdfstring{$\mathcal{O}$}{O}-Notation}
 
 \toclesssubsection{Motivation / Definition}
@@ -14,13 +5,14 @@
 \begin{frame}{$\mathcal{O}$-Notation}{Motivation}
   \textbf{We are interested in:}
   \begin{itemize}
-  \item example sorting:
+  \item
+    Example: \texttt{sorting}
     \begin{itemize}
       \item
-        Runtime of \textit{Minsort} \enquote{is growing as}
+        Runtime of \texttt{Minsort} \enquote{is growing as}
         $\quad{}\quad{}n^2$
       \item
-         Runtime of \textit{HeapSort} \enquote{is growing as}
+         Runtime of \texttt{HeapSort} \enquote{is growing as}
          $\quad{}n \, \log n$
     \end{itemize}
     \item<2- |handout:1>
@@ -51,7 +43,7 @@
 \begin{frame}{$\mathcal{O}$-Notation}{Definition}
   \textbf{Big $\mathcal{O}$-Notation:}
   \begin{itemize}
-    \item
+    \item<2- |handout:1>
      Consider the function:
       $f\!: \mathbb{N} \to \mathbb{R}, \; n \mapsto f(n)$
       \begin{itemize}
@@ -60,7 +52,7 @@
         \item
           $\mathbb{R}\!:$ Real numbers $\rightarrow$ runtime
       \end{itemize}
-   \item
+   \item<3- |handout:1>
      \textbf{Example:}
      \begin{itemize}[<+- |handout:1>]
        \item
@@ -80,11 +72,11 @@
 \begin{frame}{$\mathcal{O}$-Notation}{Definition}
   \textbf{Big $\mathcal{O}$-Notation:}
   \begin{itemize}
-    \item
+    \item<2- |handout:1>
       Given two functions $f$ and $g$:\\
       $f,g\!: \mathbb{N} \to \mathbb{R}$
-    \item
-      \textbf{Intuitive:} $f$ is Big-O from $g$ ($f$ is $\mathcal{O}(g)$)
+    \item<3- |handout:1>
+      \textbf{Intuitive:} $f$ is Big-O of $g$ ($f$ is $\mathcal{O}(g)$)
       \begin{itemize}
         \item
           $\ldots$ if $f$ relative to $g$ does not grow faster than $g$
@@ -110,21 +102,23 @@
 \begin{frame}{$\mathcal{O}$-Notation}{Definition}
   \textbf{Big $\mathcal{O}$-Notation:}%
   \begin{itemize}
-    \item
+    \item<2- |handout:1>
       \textbf{Informal:} $f = \mathcal O(g)$
       \begin{itemize}
-        \item
-           $=$ corresponds to $is$ not $is equal$
-        \item
+        \item<2- |handout:1>
+           \enquote{$=$} corresponds to $is$ not $is equal$
+        \item<3- |handout:1>
            $\ldots$ if for some value $n_0$ for all $n \geq n_0$
-        \item
+        \item<4- |handout:1>
            $f(n) \leq C \cdot g(n)$ for a constant C
-        \item
+        \item<5- |handout:1>
             ($f = \mathcal O(g)$: From a value $n_0$ for all
             $n \geq n_0 \rightarrow f(n) \leq C \cdot g(n)$)
       \end{itemize}
+	\item<6- |handout:1>
+      \textbf{Formal:} $f \in \mathcal O(g)$\\
   \end{itemize}
-  \begin{block}{\textbf{Formal:} $f \in \mathcal O(g)$}
+  \begin{block}{\textbf{Formal:} $f \in \mathcal O(g)$}<6- |handout:1>
     \begin{math}
       \mathcal O(g) = \lbrace \tikz[baseline] {
         \node (fun) [anchor=base] {f};
@@ -144,34 +138,34 @@
     \end{math}
   \end{block}
   \tikz[baseline] {\node (funtext) [anchor=north] {
-    {\footnotesize\onslide<2- |handout:1>{\begin{tabular}[c]{@{}c@{}}
+    {\footnotesize\onslide<7- |handout:1>{\begin{tabular}[c]{@{}c@{}}
           ``set of\\
           all functions''
         \end{tabular}}
   }};}\quad{} \tikz[baseline] {\node (fortext) [anchor=north] {
-    {\footnotesize\onslide<3- |handout:1>{\begin{tabular}[c]{@{}c@{}}
+    {\footnotesize\onslide<8- |handout:1>{\begin{tabular}[c]{@{}c@{}}
         ``for which''
         \end{tabular}}
   }};}\quad{} \tikz[baseline] {\node (extext) [anchor=north] {
-    {\footnotesize\onslide<4- |handout:1>{\begin{tabular}[c]{@{}c@{}}
+    {\footnotesize\onslide<9- |handout:1>{\begin{tabular}[c]{@{}c@{}}
         ``it exists''
         \end{tabular}}
   }};}\quad{} \tikz[baseline] {\node (foralltext) [anchor=north] {
-    {\footnotesize\onslide<5- |handout:1>{\begin{tabular}[c]{@{}c@{}}
+    {\footnotesize\onslide<10- |handout:1>{\begin{tabular}[c]{@{}c@{}}
         ``for all''
         \end{tabular}}
   }};}\quad{} \tikz[baseline] {\node (suchtext) [anchor=north] {
-    {\footnotesize\onslide<6- |handout:1>{\begin{tabular}[c]{@{}c@{}}
+    {\footnotesize\onslide<11- |handout:1>{\begin{tabular}[c]{@{}c@{}}
         ``such that''
         \end{tabular}}
   }};}
   \begin{tikzpicture}[>=stealth,overlay,thick]
-    \path[->,color=red]<2- |handout:1> (funtext) edge [bend left]  (fun);
-    \path[->,color=red]<3- |handout:1> (fortext) edge [bend left]  (for);
-    \path[->,color=red]<4- |handout:1> (extext) edge [bend left]  (exone);
-    \path[->,color=red]<4- |handout:1> (extext) edge [bend right]  (extwo);
-    \path[->,color=red]<5- |handout:1> (foralltext) edge [bend left]  (forall);
-    \path[->,color=red]<6- |handout:1> (suchtext) edge [bend left]  (such);
+    \path[->,color=red]<7- |handout:1> (funtext) edge [bend left]  (fun);
+    \path[->,color=red]<8- |handout:1> (fortext) edge [bend left]  (for);
+    \path[->,color=red]<9- |handout:1> (extext) edge [bend left]  (exone);
+    \path[->,color=red]<9- |handout:1> (extext) edge [bend right]  (extwo);
+    \path[->,color=red]<10- |handout:1> (foralltext) edge [bend left]  (forall);
+    \path[->,color=red]<11- |handout:1> (suchtext) edge [bend left]  (such);
   \end{tikzpicture}
 \end{frame}
 
@@ -212,7 +206,7 @@
       $f(n) = 5 \, n + 7$ $\rightarrow$ linear growth
   \end{itemize}
   \begin{alertblock}{Attention}
-    $f(n) \leq g(n)$ is not correct, better is
+    $f(n) \leq g(n)$ is not guaranteed, better is
     $f(n) \leq C \cdot g(n) \;\; \forall n > n_0$.
   \end{alertblock}
 \end{frame}
@@ -233,7 +227,7 @@
         &5 \, n + 7 &\leq \;\; 5 \, n + n
         \hspace{1em} (\text{for} ~ n \geq 7)
       }\\
-      \onslide<3- |handout:1>{
+      \quad{}\onslide<3- |handout:1>{
         && = \;\; 6 \, n
       }
     \end{eqnarray*}
@@ -252,7 +246,7 @@
         &5 \, n + 7 &\leq \;\; 5 \, n + 7 \, n
         \hspace{1em} (\text{for} ~ n \geq 1)
       }\\
-      \onslide<3- |handout:1>{
+      \quad{}\onslide<3- |handout:1>{
         && = \;\; 12 \, n
       }
     \end{eqnarray*}
@@ -338,6 +332,7 @@
 
 \begin{frame}{$\Omega$-Notation}{Proof}
   \label{slide:prooftwo}
+  \textbf{Example:}\\
   \begin{proof}[Proof of $f(n) = 5n + 7 \in \Omega(n)$:]
     \begin{eqnarray*}
       &\underbrace{5 \, n + 7}_{f(n)} &\geq \;\; \underbrace{1 \cdot n}_{g(n)}
@@ -398,7 +393,7 @@
   \textbf{Theta-Notation:}
   \begin{itemize}
     \item
-      \textbf{Intuitive}: $f$ is Theta from $g$ $\ldots$
+      \textbf{Intuitive}: $f$ is Theta of $g$ $\ldots$
       \begin{itemize}
         \item
           $\ldots$ if $f$ is growing as much as $g$
@@ -494,13 +489,13 @@
 
 \begin{frame}
   \begin{itemize}
-  \item so far: 
+  \item So far discussed:
     \begin{itemize}
-      \item membership in $O(\ldots)$ proofed \textbf{manually}
-        \begin{center}
-          explicit calculation of $n_0$ and $C$
-        \end{center}
-      \item \textbf{however:} both reminds of \textbf{limits} in calculus
+      \item Membership in $O(\ldots)$ proofed by hand:\\
+        {\color{MainA}Explicit calculation of $n_0$ and $C$}
+	  \vspace{1em}
+      \item
+	    \textbf{However:} Both hint at {\color{MainA}limits} in calculus
     \end{itemize}
   \end{itemize}
 \end{frame}
@@ -510,7 +505,8 @@
   \textbf{Definition of \enquote{Limit}}
   \begin{itemize}
     \item
-      The limit of an indefinite sequence $f_1, f_2, f_3, \ldots$ is $L$\\
+      The {\color{MainA}limit $L$} exists for an infinite sequence
+	  $f_1, f_2, f_3, \ldots$\\
       if for all $\epsilon > 0$ one $n_0 \in \mathbb{N}$ exists,
       such that for all\\
       $n \geq n_0$ the following holds true:
@@ -520,7 +516,7 @@
       sequence\\
       $\Rightarrow$ $\lim\limits_{n \rightarrow \infty} f_n = L$
   \end{itemize}
-  \begin{block}<2- |handout:1>{Convergence}
+  \begin{block}<2- |handout:1>{The limit is converging:}
     \begin{math}
       \forall \epsilon > 0 \; \exists n_0 \in \mathbb{N} \;\;
       \forall n \geq n_0 \! : \; \left| f_n - L \right| \leq \epsilon
@@ -532,9 +528,9 @@
 
 \begin{frame}{$\mathcal{O}$-Notation}{Limit / Convergence}
   \begin{itemize}
-  \item Example for a limit proof
-  \item Function $f(n) = 2 + \frac{1}{n}$ with limes $2$
-  \item \enquote{Engineering} solution: use $n=\infty{}$
+  \item Example for the proof of a limit
+  \item Function $f(n) = 2 + \frac{1}{n}$ with limes $\lim_{n \to \infty} f(n) = 2$
+  \item \enquote{Engineering} solution: use $n = \infty{}$
     \begin{displaymath}
       \frac{1}{\infty} = 0 \Rightarrow \lim_{n \to \infty} f(n)
         = \lim_{n \to \infty} 2 + \dfrac{1}{n}
@@ -647,12 +643,3 @@
     \end{center}
   \end{proof}
 \end{frame}
-
-%%% ==========================================
-%%% This should be at the END of the file !!!!!!
-%%%
-%%% Local Variables: 
-%%% mode: latex 
-%%% TeX-master: "~/TeX/TeXinput/Scripts/Algo-Data-EMS/Rolf-2016/AlgoDat/Lecture-3/Lecture.tex" 
-%%% End: 
-%%% ==========================================
