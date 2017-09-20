@@ -58,7 +58,7 @@
 \codeslide{python}{
 \subsubsection{Checkstyle}
 \begin{frame}{Checkstyle}{flake8}
-  \textbf{Checkstyle (flake8):}
+  \textbf{Checkstyle / Linting (flake8):}
   \begin{itemize}
     \item
       Installation: \textbf{python3} \texttt{-m pip install flake8}
@@ -173,11 +173,14 @@
   \textbf{Version management (subversion):}
   \begin{itemize}
     \item
+	  Keeps a history of code changes
+    \item
       Initialize / update directory: \textbf{svn} \texttt{checkout <URL>}
     \item
       Add files / folders: \textbf{svn} \texttt{add <file> -{}-all}
     \item
-      Create snapshot: \textbf{svn} \texttt{commit -m "<Your Message>"}
+      Create snapshot: \textbf{svn} \texttt{commit -m "<Your Message>"}\\
+	  Data is uploaded to Jenkins automatically
     \item
       Link: {\color{MainA}\href{\LectureSubversionLink}{Subversion}}
   \end{itemize}
@@ -200,7 +203,7 @@
           And if \textbf{checkstyle} \texttt{(flake8)} is statisfied
       \end{itemize}
     \item
-      Will be shown in the {\color{MainA}first exercise}
+      Will be shown in the first exercise
     \item
       Link: {\color{MainA}\href{\LectureJenkinsLink}{Jenkins}}
   \end{itemize}

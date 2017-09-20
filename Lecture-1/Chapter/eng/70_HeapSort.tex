@@ -6,7 +6,7 @@
     \item
       The principle stays the same
     \item
-      Better structure for finding the smallest element
+      Better structure for finding the smallest element quicker
   \end{itemize}
   \vspace{1em}
   \only<2- |handout:1>{\textbf{Binary heap:}}
@@ -14,7 +14,7 @@
     \item<2- |handout:1>
       Preferably a complete binary tree
     \item<2- |handout:1>
-      \textbf{Heap property:} Each child is smaller / larger than the parent
+      \textbf{Heap property:} Each child is {\color{MainA}smaller} (larger) than the parent
       element
   \end{itemize}
 \end{frame}
@@ -24,9 +24,11 @@
 \begin{frame}{Heapsort - Algorithm 2 / 10}
   \textbf{Min heap:}
   \begin{itemize}
-    \item
+    \item<1- |handout:1>
       \textbf{Heap property:} Each child is {\color{MainA}smaller}
       (larger) than the parent element
+	\item<2- |handout:1>
+	  A valid heap fulfills the property at each node
   \end{itemize}
   \begin{columns}%
     \begin{column}[b]{0.45\textwidth}%
@@ -65,7 +67,7 @@
           {\color{MainA}$2i + 1$} and {\color{MainA}$2i + 2$}
         \vspace*{0.5em}
         \item
-          The parent node of {\color{MainA}$i$} is
+          The parent node of node {\color{MainA}$i$} is
           {\color{MainA}$\mathrm{floor}\left(\frac{i-1}{2}\right)$}
       \end{itemize}
   \end{itemize}%
@@ -83,7 +85,7 @@
     \end{column}
     \begin{column}{0.5\textwidth}
       \begin{table}[!h]
-        \caption{Elements stored in array}
+        \caption{Elements can be stored in array}
         \label{tab:minheap_numbered}
         \begin{tabular}{ccccccc}
           \only<2- |handout:1>{\color{MainB}0}&
@@ -111,14 +113,14 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Heapsort - Algorithm 4 / 10}
-  \textbf{Taking the smallest element:}
+  \textbf{Repairing after taking the smallest element:} (\texttt{heap.pop()})
   \begin{itemize}
     \item<2- |handout:1>
       Remove the smallest element (root node)
     \item<3- |handout:1>
       Replace the root with the last node
     \item<4- |handout:1>
-      {\color{MainA}Sift} the root node until the
+      {\color{MainA}Sift} the new root node down until the
       {\color{MainA}heap property} is statisfied
   \end{itemize}
   \only<5- |handout:1>{
@@ -156,7 +158,7 @@
     \item
       Organize the {\color{MainA}$n$} elements as heap
     \item
-      While the heap contains more elements
+      While the heap still contains elements
       \begin{itemize}
         \item
           Take the smallest element
@@ -213,8 +215,7 @@
     \item<2- |handout:1>
       The {\color{MainA}$n$} elements are already in the containing array
     \item<3- |handout:1>
-      Interpret this field als binary heap with currently without the
-      {\color{MainA}heap property}
+      Interpret this field als binary heap where the {\color{MainA}heap property} is not yet statisfied
     \item<4- |handout:1>
       We repair the heap from bottom up (in layers) with {\color{MainA}sift}
   \end{itemize}
@@ -307,10 +308,10 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Heapsort - Algorithm 10 / 10}
-  \textbf{Finding the minimum:}
+  \textbf{Finding the minimum is intuitive:}
   \begin{itemize}
     \item
-      \textbf{MinSort:} Iterate through all non-sorted elements
+      \textbf{Minsort:} Iterate through all non-sorted elements
     \item
       \textbf{Heapsort:} Finding the minimum is trivial (concept)
       \begin{center}
