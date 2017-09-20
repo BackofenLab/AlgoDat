@@ -8,8 +8,7 @@
       Place pearls on crossings and clamp strings between them
   \end{itemize}
   \begin{figure}
-    \includegraphics[width=0.75\linewidth]{Images/Dijkstra/DijkstraMap}
-    \caption{Map $\copyright\,$ Mehlhorn / Sanders}
+    \includegraphics[width=0.45\linewidth]{Images/Dijkstra/DijkstraMapTF.png}
   \end{figure}
 \end{frame}
 
@@ -18,29 +17,30 @@
 \begin{frame}{Dijkstra Algorithm}{Shortest Path without Computer}
   \vspace{-1.5em}
   \begin{columns}
-    \begin{column}{0.55\linewidth}
+    \begin{column}{0.5\linewidth}
       \begin{figure}[!t]
-        \includegraphics[width=0.8\linewidth]
-          {Images/Dijkstra/DijkstraMap}
-        \caption{Map $\copyright\,$ Mehlhorn / Sanders}
+        \includegraphics[width=0.6\linewidth]
+          {Images/Dijkstra/DijkstraMapTF.png}
+          \caption{Based on OpenStreetMaps; CC BY-SA 2.0}
       \end{figure}
       \vspace{-1.5em}
       \begin{itemize}
         \item
           Take the net and pull it slowly upwards until fully lifted
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.5\linewidth}
+      \begin{figure}[!t]
+        \includegraphics[width=0.7\linewidth]
+          {Images/Dijkstra/DijkstraTreeTF.pdf}
+        \vspace{-0.5em}
+      \end{figure}
+      \begin{itemize}
         \item
           Each node (pearl) now has a specific height
         \item
           The distance to M is exactly the {\color{Mittel-Blau}shortest path}
-      \end{itemize}
-    \end{column}
-    \begin{column}{0.45\linewidth}
-      \begin{figure}[!t]
-        \includegraphics[width=\linewidth]
-          {Images/Dijkstra/DijkstraTree_WithOverlay}
-        \vspace{-0.5em}
-        \caption{Map $\copyright\,$ Mehlhorn / Sanders}
-      \end{figure}
+        \end{itemize}
     \end{column}
   \end{columns}
 \end{frame}
