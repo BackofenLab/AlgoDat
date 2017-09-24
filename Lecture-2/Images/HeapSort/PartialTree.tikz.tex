@@ -19,7 +19,7 @@
   }
 ]%
 % Bounding box
-\draw[color=white] (-4.5, 1) rectangle (4.5, -4);
+\draw[color=white] (-4.75, 1) rectangle (4.75, -4);
 
 % Binary tree
 \begin{pgfonlayer}{main}%
@@ -54,6 +54,13 @@ child [path] {
     \draw[draw=none, fill=MainBLight!40]
       ($(ro.north) + (0, 0.5)$) -- ($(le.south west) + (-1.5, -0.25)$)
       -- ($(ri.south east) + (1.5, -0.25)$) -- cycle;
+  \end{pgfonlayer}%
+}
+\only<6- |handout:1>{
+  \begin{pgfonlayer}{background}%
+    \draw[draw=none, fill=MainALight!40]
+    ($(le.south west) + (-1.5, -0.25)$) -- ($(ri.south east) + (1.5, -0.25)$) --
+    ($(ri.south east) + (1.5, -1.5)$) -- ($(le.south west) + (-1.5, -1.5)$);
   \end{pgfonlayer}%
 }
 \end{tikzpicture}

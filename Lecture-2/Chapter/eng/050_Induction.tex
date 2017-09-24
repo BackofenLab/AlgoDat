@@ -14,7 +14,7 @@
       \begin{enumerate}
         \item<4- | handout:1>
           \textbf{Induction basis:} we show that our assumption is valid 
-          at one point (for example: $n = 1, A(1)$).
+          at one point (for example: $n = 1, \, A(1)$).
         \item<5- | handout:1>
           \textbf{Induction step:} we show that the assumption is valid for 
           all $n$ (normally one step forward: $n = n + 1, A(1), \ldots, A(n)$).
@@ -32,7 +32,7 @@
     A \textbf{complete} binary tree of depth $d$ has $n(d) = 2^d - 1$ nodes
   \end{block}
   \begin{itemize}
-    \item
+    \item<2- |handout:1>
       \textbf{Induction basis:} Assumption holds for {\color{MainA}$d = 1$}
       \begin{columns}
         \begin{column}{0.5\linewidth}
@@ -46,7 +46,7 @@
         \end{column}
         \begin{column}{0.5\linewidth}
           {\color{MainA}$n(1) = 2^1 - 1 = 1$}\\
-          $\Rightarrow$ correct $\checkmark$
+          \onslide<3- |handout:1>{$\Rightarrow$ correct $\checkmark$}
         \end{column}
       \end{columns}
   \end{itemize}
@@ -65,7 +65,7 @@
       $n(1) = 2^d - 1 = 2^1 - 1 = 1 ~{\color{Mittel-Blau}\checkmark}$
     \item<3- |handout:1>
       \textbf{Induction step:}
-      to show for $d = d + 1$
+      to show for $d := d + 1$
       \begin{columns}
         \begin{column}<3- |handout:1>{0.6\textwidth}
           \begin{figure}%

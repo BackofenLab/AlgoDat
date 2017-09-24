@@ -32,7 +32,7 @@
 \begin{frame}{Runtime Example}
   \textbf{Runtime of $n \; \log_2 n$:}
   \begin{itemize}
-    \item
+    \item<1- |handout:1>
       Assume we have constants $\color{MainA}C_1$ and $\color{MainA}C_2$
       with
       \begin{displaymath}
@@ -41,14 +41,14 @@
           \hspace{1.5em}\text{for}~n \geq 2
         }
       \end{displaymath}
-    \item
+    \item<2- |handout:1>
       $2\, \times$ elements
       $\Rightarrow$ only slightly larger than $2\, \times$ runtime\\
       \begin{itemize}
-        \item
+        \item<3- |handout:1>
           $C = \SI{1}{\nano\second}$
           (1 simple instruction $\approx \SI{1}{\nano\second}$)
-        \item
+        \item<4- |handout:1>
           $n = 2^{20}$ (1 million numbers = $\SI{4}{\mega\byte}$
           with $\SI{4}{\byte\per number}$)
           \begin{itemize}
@@ -56,7 +56,7 @@
               $C \cdot n \cdot log_2 n = \SI{e-9}{\second} \cdot 2^{20} \cdot 20
               = \SI{21.0}{\milli\second}$
           \end{itemize}
-        \item
+        \item<5- |handout:1>
           $n = 2^{30}$ (1 billion numbers = $\SI{4}{\giga\byte}$)
           \begin{itemize}
             \item
@@ -64,7 +64,7 @@
               = \SI{32}{\second}$
           \end{itemize}
       \end{itemize}
-    \item
+    \item<6- |handout:1>
       \textbf{Runtime $n \; \log_2 n$ is nearly as good as linear!}
   \end{itemize}
 \end{frame}
