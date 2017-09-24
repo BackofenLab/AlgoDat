@@ -27,9 +27,10 @@
     \item<1- |handout:1>
       \textbf{Heap property:} Each child is {\color{MainA}smaller}
       (larger) than the parent element
-	\item<2- |handout:1>
-	  A valid heap fulfills the property at each node
+  \item<2- |handout:1>
+    A valid heap fulfills the property at each node
   \end{itemize}
+  \vspace{-1em}
   \begin{columns}%
     \begin{column}[b]{0.45\textwidth}%
       \begin{figure}[!h]%
@@ -71,7 +72,7 @@
           {\color{MainA}$\mathrm{floor}\left(\frac{i-1}{2}\right)$}
       \end{itemize}
   \end{itemize}%
-  \vspace*{-1.5em}%
+  \vspace{-2em}%
   \begin{columns}%
     \begin{column}{0.5\textwidth}
       \begin{figure}[!h]%
@@ -113,7 +114,7 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Heapsort - Algorithm 4 / 10}
-  \textbf{Repairing after taking the smallest element:} (\texttt{heap.pop()})
+  \textbf{Repairing after taking the smallest element:} \texttt{heap.pop()}
   \begin{itemize}
     \item<2- |handout:1>
       Remove the smallest element (root node)
