@@ -7,17 +7,17 @@
 \begin{frame}{Runtime analysis - Minsort}
   How many operations does \textit{Minsort} need?
   \begin{itemize}
-    \item
+    \item<1- |handout:1>
       \textbf{Abstraction 2:} We calculate the upper (lower) bound,
       rather than counting the operations exactly\\[0.5em]
       \textbf{Reason}: Runtime is approximated by number of basic operations,
-	    but we can still infer:
+      but we can still infer:
       \begin{itemize}
         \item {\color{MainBLight}Upper bound}
         \item {\color{MainBLight}Lower bound}
       \end{itemize}
       \vspace{1em}
-    \item
+    \item<2- |handout:1>
       \textbf{Basic Assmuption:}
       \begin{itemize}
         \item
@@ -34,17 +34,17 @@
 \begin{frame}{Runtime analysis - Minsort}
   How many operations does \textit{Minsort} need?
   \begin{itemize}
-    \item
+    \item<1- |handout:1>
       \textbf{Observation:}
       The number of operations depends only on the size
       {\color{MainA}$n$} of the array and not on the content!
-    \item
+    \item<2- |handout:1>
       \textbf{Claim:} There are constants {\color{MainA}$C_1$}
       and {\color{MainA}$C_2$} such that:
       \begin{displaymath}
         \textcolor{MainA}{C_1 \cdot n^2 \leq T(n) \leq C_2 \cdot n^2}
       \end{displaymath}%
-    \item
+    \item<3- |handout:1>
       This is called \enquote{quadratic runtime} (due to {\color{MainA}$n^2$})
   \end{itemize}
 \end{frame}

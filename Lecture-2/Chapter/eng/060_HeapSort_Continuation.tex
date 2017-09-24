@@ -68,14 +68,18 @@
         Depth & Nodes & Path length & Costs per node
         & \onslide<6- |handout:1>{\color{MainB}Upper bound}\\
         \hline
-        $d$ & $2^{d-1}$ & 0 & $\leq C \cdot 0$ &
-        \onslide<6- |handout:1>{\color{MainB}$\leq C \cdot 1$}\\
+        \onslide<1- |handout:1>{$d$ & $2^{d-1}$ & 0 & $\leq C \cdot 0$ &}
+        \onslide<7- |handout:1>{\color{MainB}$\leq C \cdot 1$}\\
         \onslide<2- |handout:1>{$d-1$ & $2^{d-2}$ & 1 & $\leq C \cdot 1$ &}
-        \onslide<6- |handout:1>{\color{MainB}$\leq C \cdot 2$}\\
+        \onslide<6- |handout:1>{\color{MainB}%
+          \only<6>{Standard}%
+          \only<7>{$\leq C \cdot 2$}}\\
         \onslide<3- |handout:1>{$d-2$ & $2^{d-3}$ & 2 & $\leq C \cdot 2$ &}
-        \onslide<6- |handout:1>{\color{MainB}$\leq C \cdot 3$}\\
+        \onslide<6- |handout:1>{\color{MainB}%
+          \only<6>{Equation}%
+          \only<7>{$\leq C \cdot 3$}}\\
         \onslide<4- |handout:1>{$d-3$ & $2^{d-4}$ & 3 & $\leq C \cdot 3$ &}
-        \onslide<6- |handout:1>{\color{MainB}$\leq C \cdot 4$}\\
+        \onslide<7- |handout:1>{\color{MainB}$\leq C \cdot 4$}\\
       \end{tabular}%
       \label{tab:sifting_costs}%
     \end{center}%
@@ -183,7 +187,6 @@
           \begin{adjustbox}{width=\linewidth}
             \input{Images/HeapSort/PartialTree.tikz}
           \end{adjustbox}%
-          \vspace{-1em}%
           \caption{Partial binary tree}
           \label{fig:heapsort:partial_tree}
         \end{figure}
