@@ -1,10 +1,10 @@
 def subOne(n):
 	"""Subtracts 1 from n
 	
-	>>> myMethod(5)
+	>>> subOne(5)
 	4
 	
-	>>> myMethod(3)
+	>>> subOne(3)
 	2
 	"""
 	return n-2
