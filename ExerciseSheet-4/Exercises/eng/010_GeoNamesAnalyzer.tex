@@ -10,23 +10,22 @@ Implement a \textit{geo\_names\_analyzer.py} file with the following functionali
     Only consider localities with > 0 inhabitants (column 15).
     You can find the country code in column 9.
   \item
-    A function \textit{compute\_most\_frequent\_city\_names\_by\_sorting} which
-    calculates the most-frequent world-wide locality names via sorting.
+    A function \textit{compute\_names\_by\_sorting} which
+    calculates the most-frequent world-wide locality names via sorting (using lists only).
   \item
-    A function \textit{compute\_most\_frequent\_city\_names\_by\_map} which does the
-    same, but instead of sorting via the usage of an associative array (use Python's \textit{dictionary} class).
+    A function \textit{compute\_names\_by\_map} which does the
+    same, but instead of sorting lists via the usage of an associative array (use Python's \textit{dictionary} class).
     Write some unit tests for both functions.
     Do not use the \textit{allCountries.txt} file for testing,
     but instead generate a small table yourself (see lecture) or use the table for Austria (\textit{AT.zip}) 
     from the website.
     
-    \textbf{ATTENTION}: Do not upload the \textit{allCountries.txt} file into
-    the SVN directory! (instant exmatriculation guaranteed)
+    \textbf{ATTENTION}: Do not upload the \textit{allCountries.txt} file into the SVN directory!
 \end{enumerate}
 
 Hints:
 \begin{itemize}
-\item Read in the file and process it line by line, do not attempt store the file in a data structure
-\item Ideally, you would want to read the file line by line without unpacking it (you can do this too inside Python)
+\item Read in the file and process it line by line, do not store the file in a data structure
+\item If you want to you can also read the file line by line without unpacking it to save space (using the \textit{zipfile} module)
 \end{itemize}
 
