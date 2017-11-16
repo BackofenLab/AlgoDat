@@ -1,5 +1,3 @@
-
-
 \section{Associative Arrays}
 
 \toclesssubsection{Introduction}
@@ -8,7 +6,7 @@
   \textbf{Reminder:}
   \begin{itemize}
   \item An associative array is like a normal array, only that
-    the indices are not {\color{Mittel-Blau}~ 0, 1, 2, ...}, but
+    the indices are not {\color{MainA}$0, 1, 2, \ldots$}, but
     different, e.g. telephone numbers
   \end{itemize}
   \onslide<2->\textbf{Problem:}
@@ -16,18 +14,17 @@
   \onslide<2->\item Quickly find a element with a specific key
   \onslide<3->\item Naive solution: Store pairs of key and value
     in a normal field
-  \onslide<4->\item For {\color{Mittel-Blau} n } keys searching requires {\color{Mittel-Blau} $\Theta(n)$} time
-  \onslide<5->\item With a {\color{Mittel-Blau} Hash Map } this just requires {\color{Mittel-Blau} $\Theta(1)$}
+  \onslide<4->\item For {\color{MainA}n} keys searching requires {\color{MainA} $\Theta(n)$} time
+  \onslide<5->\item With a {\color{MainA}hash map} this just requires {\color{MainA} $\Theta(1)$}
     in the best case, ... regardless how many elements are in the map!
   \end{itemize}
 \end{frame}
-
 
 %% \begin{frame}{Associative Arrays}{How do we build a Map?}
 %%   \textbf{Structure:}
 %%   \begin{itemize}
 %%       \item
-%%         Mapping {\color{Mittel-Blau}keys to values}
+%%         Mapping {\color{MainA}keys to values}
 %%       \begin{itemize}
 %%         \item
 %%           Key universe: $\mathbb{U}$
@@ -50,21 +47,21 @@
 %%           style={python-idle-code},
 %%           basicstyle=\small,
 %%           emph={insert},
-%%           emphstyle=\color{Mittel-Blau}
+%%           emphstyle=\color{MainA}
 %%         ]|insert(key, value)| & Insert an element with a key and value\\
 %%         \lstinline[
 %%           language=Python,
 %%           style={python-idle-code},
 %%           basicstyle=\small,
 %%           emph={lookup},
-%%           emphstyle=\color{Mittel-Blau}
+%%           emphstyle=\color{MainA}
 %%         ]|lookup(key)| & Retireve the mapped element with a key\\
 %%         \lstinline[
 %%           language=Python,
 %%           style={python-idle-code},
 %%           basicstyle=\small,
 %%           emph={erase},
-%%           emphstyle=\color{Mittel-Blau}
+%%           emphstyle=\color{MainA}
 %%         ]|erase(key)| & Delete the mapping from key to value
 %%       \end{tabularx}
 %%       \hfill\\
@@ -92,21 +89,21 @@
 %%           style={python-idle-code},
 %%           basicstyle=\small,
 %%           emph={insert},
-%%           emphstyle=\color{Mittel-Blau}
+%%           emphstyle=\color{MainA}
 %%         ]|insert(key, value)| & {} & $\mathcal{O}(1)$\\
 %%         \lstinline[
 %%           language=Python,
 %%           style={python-idle-code},
 %%           basicstyle=\small,
 %%           emph={lookup},
-%%           emphstyle=\color{Mittel-Blau}
+%%           emphstyle=\color{MainA}
 %%         ]|lookup(key)| & {} & $\mathcal{O}(1)$\\
 %%         \lstinline[
 %%           language=Python,
 %%           style={python-idle-code},
 %%           basicstyle=\small,
 %%           emph={erase},
-%%           emphstyle=\color{Mittel-Blau}
+%%           emphstyle=\color{MainA}
 %%         ]|erase(key)| & {} & $\mathcal{O}(1)$
 %%       \end{tabularx}
 %%     \item
@@ -156,21 +153,21 @@
 %%           style={python-idle-code},
 %%           basicstyle=\small,
 %%           emph={insert},
-%%           emphstyle=\color{Mittel-Blau}
+%%           emphstyle=\color{MainA}
 %%         ]|insert(key, value)| & {} & $\mathcal{O}(1)$\\
 %%         \lstinline[
 %%           language=Python,
 %%           style={python-idle-code},
 %%           basicstyle=\small,
 %%           emph={lookup},
-%%           emphstyle=\color{Mittel-Blau}
+%%           emphstyle=\color{MainA}
 %%         ]|lookup(key)| & {} & $\mathcal{O}(n)$\\
 %%         \lstinline[
 %%           language=Python,
 %%           style={python-idle-code},
 %%           basicstyle=\small,
 %%           emph={erase},
-%%           emphstyle=\color{Mittel-Blau}
+%%           emphstyle=\color{MainA}
 %%         ]|erase(key)| & {} & $\mathcal{O}(n)$
 %%       \end{tabularx}
 %%     \item

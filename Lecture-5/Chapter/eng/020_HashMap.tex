@@ -7,7 +7,7 @@
   \textbf{Idea:}
   \begin{itemize}
     \item
-      Mapping the keys onto indices with a {\color{Mittel-Blau}hash function}
+      Mapping the keys onto indices with a {\color{MainA}hash function}
     \item
       Store the values at the calculated indices in a normal array
   \end{itemize}
@@ -17,14 +17,14 @@
       Key set: $x = \{3904433, 312692, 5148949\}$
     \onslide <2-> \item
       Hash function:
-      {\color{Mittel-Blau}$h(x) = x \;\mathrm{mod}\; 5$},
-      in the range {\color{Mittel-Blau} $[0, \ldots, 4]$ }
-    \onslide <3-> \item We need an array {\color{Mittel-Blau}T}
-      with {\color{Mittel-Blau}5} elements.\\
-      A "hashtable" with 5 "buckets"
+      {\color{MainA}$h(x) = x \;\mathrm{mod}\; 5$},
+      in the range {\color{MainA} $[0, \ldots, 4]$ }
+    \onslide <3-> \item We need an array {\color{MainA}T}
+      with {\color{MainA}5} elements.\\
+      A \enquote{hashtable} with 5 \enquote{buckets}
     \onslide <4-> \item
-      The element with the key {\color{Mittel-Blau}x}
-      is stored in {\color{Mittel-Blau}$T[h(x)]$}
+      The element with the key {\color{MainA}x}
+      is stored in {\color{MainA}$T[h(x)]$}
   \end{itemize}
 \end{frame}
 
@@ -36,19 +36,16 @@
   \begin{itemize}
     \setlength\itemsep{0.75em}
     \item<2->
-    \small insert(3904433,"A"):
-    $\hspace*{0.0em} h(3904433) = 3$
-    $\hspace*{-0.1em} \Rightarrow$
+    \small \texttt{insert(3904433,"A")}:
+    $h(3904433) = 3 \hspace*{-0.1em} \Rightarrow$
     T[3] = {\color{inkscapeGreen}(3904433, "A")}
     \item<3->
-    \small insert(312692, "B"):
-    $\hspace*{0.0em} h(312692) = 2$
-    $\hspace*{-0.1em} \Rightarrow$
+    \small \texttt{insert(312692, "B")}:
+    $h(312692) = 2 \hspace*{-0.1em} \Rightarrow$
     T[2] = {\color{inkscapeMaroon}(312692, "B")}
     \item<4->
-    \small insert(5148949, "C"):
-    $\hspace*{0.0em} h(5148949) = 4$
-    $\hspace*{-0.1em} \Rightarrow$
+    \small \texttt{insert(5148949, "C")}:
+    $h(5148949) = 4 \hspace*{-0.1em} \Rightarrow$
     T[4] = {\color{inkscapeNavy}(5148949, "C")}
   \end{itemize}
   \vspace{0.1em}
@@ -71,19 +68,17 @@
   \begin{itemize}
      \setlength\itemsep{0.75em}
     \item<1->
-    search(3904433):
-      $\hspace*{0.5em} h(3904433) = 3$
-      $\hspace*{0.5em} \Rightarrow$
+      \texttt{search(3904433)}:
+      $h(3904433) = 3 \hspace*{0.5em} \Rightarrow$
       T[3] $\rightarrow$ {\color{inkscapeGreen}(3904433, "A")}
     \item<2->
-      search(123459):
-      $\hspace*{0.5em} h(123459) = 4$
-      $\hspace*{0.5em} \Rightarrow$
+      \texttt{search(123459)}:
+      $h(123459) = 4 \hspace*{0.5em} \Rightarrow$
       T[4] {}\\
       \vspace{0.75em}
       $\Rightarrow$ {\color{red}Value with key 123459 does not exist}
     \item<3->
-      Search time for this example: {\color{Mittel-Blau}$\mathcal{O}(1)$}
+      Search time for this example: {\color{MainA}$\mathcal{O}(1)$}
   \end{itemize}
   \vspace*{-1.0em}
   \begin{figure}
@@ -99,11 +94,12 @@
   \textbf{Further inserting:}
   \begin{itemize}
     \item<1->
-      insert(876543, "D"):
+      \texttt{insert(876543, "D")}:
       $\hspace*{0.5em} h(876543) = 3$\\
       \onslide <2->
       $\hspace*{0.5em} \Rightarrow$
-      T[3] = (876543, "D") {\color{red}{COLLISION!}}
+      T[3] = (876543, "D")
+      $\Rightarrow$ {\color{red}{Collision}}
     \item<3->
       This happens more often than expected
       \begin{itemize}
@@ -128,9 +124,10 @@
   \textbf{Problem:}
   \begin{itemize}
     \item
-      Two keys are equal {\color{Mittel-Blau} $h(x) = h(y)$} but not the values {\color{Mittel-Blau} $x \neq y$}
+      Two keys are equal {\color{MainA} $h(x) = h(y)$} but not the values
+      {\color{MainA} $x \neq y$}
   \end{itemize}
-  \onslide <2-> \textbf{Easiest Solution:}
+  \onslide<2->{\textbf{Easiest Solution:}}
   \begin{itemize}
     \item<3->
       Represent each bucket as list of key value pairs
@@ -245,23 +242,22 @@
 
 \begin{frame}{Associative Arrays}{Expected Runtime}
   \begin{columns}
-    \begin{column}{0.4\linewidth}
-      {\color{Mittel-Blau}Best case}:
+    \begin{column}{0.5\linewidth}
+      {\color{MainA}Best case}:
       \begin{itemize}
         \item
-          We have {\color{Mittel-Blau}$n$} keys which are equally distributed over {\color{Mittel-Blau}$m$} buckets
+          We have {\color{MainA}$n$} keys which are equally distributed over {\color{MainA}$m$} buckets
         \item
-          We have {\color{Mittel-Blau}$\approx \frac{n}{m}$} pairs per bucket
-        %\item
-          %The runtime is nearly {\color{Mittel-Blau}$\mathcal{O}(1)$} for searching when \textbf{not}
-          %{\color{Mittel-Blau}$n \gg m$}
+          We have {\color{MainA}$\approx \frac{n}{m}$} pairs per bucket
+        \item
+          The runtime for searching is nearly {\color{MainA}$\mathcal{O}(1)$}
+          when \textbf{not} {\color{MainA}$n \gg m$}
       \end{itemize}
     \end{column}
     \begin{column}{0.5\linewidth}
       \begin{center}
         \textbf{Best case}\\
-       \textbf{($m = 5, \, n = 10$)}\\
-\ \\
+        \textbf{($m = 5, \, n = 10$)}\\[1em]
         \includegraphics[height=0.4\textheight]{Images/hash-uniform.pdf}
 %        \label{tab:hash_table:runtime_best_case}
         %  \begin{tabularx}{\textwidth}{c|c}
@@ -308,19 +304,18 @@
 \begin{frame}{Associative Arrays}{Expected Runtime}
   \begin{columns}
     \begin{column}{0.4\linewidth}
-      {\color{Mittel-Blau}Worst case}:
+      {\color{MainA}Worst case}:
       \begin{itemize}
         \item
-          All {\color{Mittel-Blau}$n$} keys are mapped onto the same bucket
+          All {\color{MainA}$n$} keys are mapped onto the same bucket
         \item
-          The runtime is {\color{Mittel-Blau}$\Theta(n)$} for searching
+          The runtime is {\color{MainA}$\Theta(n)$} for searching
       \end{itemize}
     \end{column}
     \begin{column}{0.5\linewidth}
       \begin{center}
         \textbf{Worst case}\\
-        \textbf{($m = 5, \, n = 10$)}\\
-\ \\
+        \textbf{($m = 5, \, n = 10$)}\\[1em]
         \includegraphics[height=0.4\textheight]{Images/hash-extreme.pdf}
         \label{tab:hash_table:runtime_worst_case}
         % \begin{tabularx}{\textwidth}{c|c}

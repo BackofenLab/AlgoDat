@@ -1,12 +1,3 @@
-%%% ===================================================================
-%%% RCS Header:
-%%% $RCSfile: local.el,v $
-%%% $Revision: 1.27 $
-%%% $Date: 2014/11/07 15:36:00 $
-%%% $Author: backofen $
-%%% $Locker:  $
-%%% ===================================================================
-
 \subsection{Probability Calculation}
 \def\E{\mathbb{E}}
 \begin{frame}{Universal Hashing}{Probability Calculation}
@@ -14,14 +5,16 @@
     \begin{column}{0.65\textwidth}
       \begin{itemize}
         \item<2->
-          We just discuss the discrete case.
+          We just discuss the discrete case
         \item<3->
-          Probability space {\color{Mittel-Blau}$\Omega$} with {\color{Mittel-Blau}elementary (simple) events}
+          Probability space {\color{MainA}$\Omega$} with {\color{MainA}elementary (simple) events}
         \item<4->
-          Events have probabilities .. Condition  {\color{Mittel-Blau}\[\sum_{e \in \Omega} P(e) = 1\]}
+          Events {\color{MainA}$e$} have probabilities $\ldots$\\
+          {\color{MainA}\[\sum_{e \in \Omega} P(e) = 1\]}
         \item<5->
-          The probability for a subset of events {\color{Mittel-Blau}$E \subseteq \Omega$} is
-          {\color{Mittel-Blau}\[P(E) = \sum_{e \in E} P(e) \mid e \in E\]}
+          The probability for a subset of events
+          {\color{MainA}$E \subseteq \Omega$} is
+          {\color{MainA}\[P(E) = \sum_{e \in E} P(e) \mid e \in E\]}
       \end{itemize}
     \end{column}
     \begin{column}{0.35\textwidth}
@@ -30,7 +23,7 @@
         \caption{Throwing a dice}
         \label{tab:probabilities:rolling_dice}
         \begin{tabularx}{0.5\linewidth}{c|c}
-          {\color{Mittel-Blau}$e$} & {\color{Mittel-Blau}$P(e)$}\\
+          {\color{MainA}$e$} & {\color{MainA}$P(e)$}\\
           \midrule
           1 & $\sfrac{1}{6}$\\
           2 & $\sfrac{1}{6}$\\
@@ -52,12 +45,13 @@
       \textbf{Example:}
       \begin{itemize}
         \item<2->
-          Rolling a dice twice ({\color{Mittel-Blau}$\Omega = \{1,\dots,6\}^2$})
+          Rolling a dice twice ({\color{MainA}$\Omega = \{1,\dots,6\}^2$})
         \item<3->
-          Each event {\color{Mittel-Blau}$e \in \Omega$} has the probability
-          {\color{Mittel-Blau}$P(e) = \sfrac{1}{36}$}
+          Each event {\color{MainA}$e \in \Omega$} has the probability
+          {\color{MainA}$P(e) = \sfrac{1}{36}$}
         \item<4->
-          {\color{Mittel-Blau}$E =$} if both eye numbers even, then {\color{Mittel-Blau}$P(E)=$}
+          {\color{MainA}$E =$} if both results are even,
+          then {\color{MainA}$P(E)=$}
       \end{itemize}
     \end{column}
     \onslide<3->
@@ -66,7 +60,7 @@
         \caption{Throwing a dice twice}
         \label{tab:probabilities_rolling_dice_twice}
         \begin{tabularx}{0.8\linewidth}{c|c}
-          {\color{Mittel-Blau}$e$} &{\color{Mittel-Blau} $P(e)$}\\
+          {\color{MainA}$e$} & {\color{MainA} $P(e)$}\\
           \midrule
           $(1, 1)$ & $\sfrac{1}{36}$\\
           $(1, 2)$ & $\sfrac{1}{36}$\\
@@ -88,29 +82,32 @@
       \textbf{Example:}
       \begin{itemize}
       \setlength\itemsep{1em}
-      \item <1->
-        Random variable 
+      \item<1->
+        Random variable
         \begin{itemize}
-        \item <2->
-        Assigns a number to the result of an experiment          
-        \item <3->
-        For example: {\color{Mittel-Blau}$X =$} Sum of eye numbers for rolling twice  
-        \item <4->
-          {\color{Mittel-Blau}$X = 12$} and {\color{Mittel-Blau}$X \geq 7$} are then just events
-        \item <5->
-          Example 1: {\color{Mittel-Blau}$P(X = 2) = $}
-        \item <6->
-          Example 2: {\color{Mittel-Blau}$P(X = 4) = $}  
+        \item<2->
+          Assigns a number to the result of an experiment
+        \item<3->
+          For example: {\color{MainA}$X =$}
+          Sum of results for rolling twice
+        \item<4->
+          {\color{MainA}$X = 12$} and {\color{MainA}$X \geq 7$}
+          are regarded as events
+        \item<5->
+          Example 1: {\color{MainA}$P(X = 2) = $}
+        \item<6->
+          Example 2: {\color{MainA}$P(X = 4) = $}
         \end{itemize}
       \end{itemize}
     \end{column}
-    \onslide <4->
+    \onslide<4->
     \begin{column}{0.45\linewidth}
       \begin{table}[!h]
         \caption{Throwing a dice twice}
         \label{tab:probabilities:rolling_dice_twice2}
         \begin{tabularx}{0.95\linewidth}{c|cc}
-          {\color{Mittel-Blau}$e$} & {\color{Mittel-Blau}$P(e)$} & {\color{Mittel-Blau}$X$}\\
+          {\color{MainA}$e$} & {\color{MainA}$P(e)$} &
+          {\color{MainA}$X$}\\
           \midrule
           $(1, 1)$ & $\sfrac{1}{36}$ & 2\\
           $(1, 2)$ & $\sfrac{1}{36}$ & 3\\
@@ -133,9 +130,9 @@
 %%       \vspace{1em}
 %%       \begin{itemize}
 %%         \item
-%%           {\color{Mittel-Blau}$E = \{e_{(i,\,j)} \in \Omega
+%%           {\color{MainA}$E = \{e_{(i,\,j)} \in \Omega
 %%           \mid X \;\mathrm{mod}\; 2 = 0\}$}\\
-%%           {\color{Mittel-Blau}$P(E) =$}
+%%           {\color{MainA}$P(E) =$}
 %%       \end{itemize}
 %%     \end{column}
 %%     \begin{column}{0.45\linewidth}
@@ -143,7 +140,7 @@
 %%         \caption{Throwing a dice twice}
 %%         \label{tab:probabilities:rolling_dice_twice3}
 %%         \begin{tabularx}{0.95\linewidth}{c|cc}
-%%           {\color{Mittel-Blau}$e_{(i,\,j)}$} & {\color{Mittel-Blau}$P(e_{(i,\,j)})$} &{\color{Mittel-Blau} $X = i + j$}\\
+%%           {\color{MainA}$e_{(i,\,j)}$} & {\color{MainA}$P(e_{(i,\,j)})$} &{\color{MainA} $X = i + j$}\\
 %%           \midrule
 %%           $(1, 1)$ & $\sfrac{1}{36}$ & 2\\
 %%           $(1, 2)$ & $\sfrac{1}{36}$ & 3\\
@@ -161,11 +158,11 @@
 
 \begin{frame}{Universal Hashing}{Probability Calculation}
   \onslide<1->
-  \textbf{Expected value} is defined as  {\color{Mittel-Blau}$\E(X)  = \sum \left(k \cdot P(X = k)\right)$}
+  \textbf{Expected value} is defined as  {\color{MainA}$\E(X)  = \sum \left(k \cdot P(X = k)\right)$}
   \vspace*{0em}
   \begin{itemize}
     \item <2->
-      Intuitive: The weighted average of possible values of {\color{Mittel-Blau}$X$}, where
+      Intuitive: The weighted average of possible values of {\color{MainA}$X$}, where
       the weights are the probabilities of the values
   \end{itemize}
   \vspace*{-1.0em}
@@ -177,7 +174,7 @@
      \caption{Throwing a dice once}
     \label{tab:probabilities:value_rolling_dice_once}
     \begin{tabularx}{0.25\linewidth}{c|cc}
-      {\color{Mittel-Blau}$X$} & {\color{Mittel-Blau}$P(X)$}\\
+      {\color{MainA}$X$} & {\color{MainA}$P(X)$}\\
       \midrule
       1 & $\sfrac{1}{6}$\\
       2 & $\sfrac{1}{6}$\\
@@ -194,7 +191,7 @@
     \caption{Throwing a dice twice}
     \label{tab:probabilities:value_rolling_dice_twice}
     \begin{tabularx}{0.275\linewidth}{c|cc}
-      {\color{Mittel-Blau}$X$ }&{\color{Mittel-Blau} $P(X)$}\\
+      {\color{MainA}$X$ }&{\color{MainA} $P(X)$}\\
       \midrule
       2 & $\sfrac{1}{36}$\\
       3 & $\sfrac{2}{36}$\\
@@ -209,22 +206,22 @@
  \begin{itemize}
  \vspace*{-1.0em}
  \item<4-> Example rolling once: \onslide<5->
-  {\color{Mittel-Blau}$\E(X) = 1 \cdot \frac{1}{6} + 2 \cdot \frac{1}{6}
+  {\color{MainA}$\E(X) = 1 \cdot \frac{1}{6} + 2 \cdot \frac{1}{6}
     + \dots + 6 \cdot \frac{1}{6} = 3.5$}
- \item<6-> Example rolling twice: \rlap{\onslide<7->{\color{Mittel-Blau}$\E(X) = 2 \cdot \frac{1}{36} + 3 \cdot \frac{2}{36}    + \dots + 12 \cdot \frac{1}{36} = 7$}}
+ \item<6-> Example rolling twice: \rlap{\onslide<7->{\color{MainA}$\E(X) = 2 \cdot \frac{1}{36} + 3 \cdot \frac{2}{36}    + \dots + 12 \cdot \frac{1}{36} = 7$}}
    \end{itemize}
 \end{frame}
 
 
 %% \begin{frame}{Universal Hashing}{Probability Calculation}
 %%   \textbf{Expected value:}
-%%   {\color{Mittel-Blau}\[E(X)
+%%   {\color{MainA}\[E(X)
 %%     = \sum \left(k \cdot P(X = k)\right)\]}
 %%   \begin{itemize}
 %%     \item
-%%       The weighted average of all possible resulting values {\color{Mittel-Blau}$X$}
+%%       The weighted average of all possible resulting values {\color{MainA}$X$}
 %%     \item
-%%       The weight factor is the result value {\color{Mittel-Blau}$X$} itself
+%%       The weight factor is the result value {\color{MainA}$X$} itself
 %%   \end{itemize}
 %% \end{frame}
 
@@ -236,7 +233,7 @@
 %%     \caption{Throwing a dice once}
 %%     \label{tab:probabilities:value_rolling_dice_once}
 %%     \begin{tabularx}{0.25\linewidth}{c|cc}
-%%       {\color{Mittel-Blau}$X$} & {\color{Mittel-Blau}$P(X)$}\\
+%%       {\color{MainA}$X$} & {\color{MainA}$P(X)$}\\
 %%       \midrule
 %%       1 & $\sfrac{1}{6}$\\
 %%       2 & $\sfrac{1}{6}$\\
@@ -248,7 +245,7 @@
 %%   \end{table}
 %%   \onslide<1>
 %%   Throwing the dice once:
-%%   {\color{Mittel-Blau}\[E(X) = 1 \cdot \frac{1}{6} + 2 \cdot \frac{1}{6}
+%%   {\color{MainA}\[E(X) = 1 \cdot \frac{1}{6} + 2 \cdot \frac{1}{6}
 %%     + \dots + 6 \cdot \frac{1}{6} = 3.5\]}
 %% \end{frame}
 
@@ -260,7 +257,7 @@
 %%     \caption{Throwing a dice twice}
 %%     \label{tab:probabilities:value_rolling_dice_twice}
 %%     \begin{tabularx}{0.275\linewidth}{c|cc}
-%%       {\color{Mittel-Blau}$X$ }&{\color{Mittel-Blau} $P(X)$}\\
+%%       {\color{MainA}$X$ }&{\color{MainA} $P(X)$}\\
 %%       \midrule
 %%       2 & $\sfrac{1}{36}$\\
 %%       3 & $\sfrac{2}{36}$\\
@@ -271,7 +268,7 @@
 %%     \end{tabularx}
 %%   \end{table}
 %%   Throwing the dice twice:
-%%   {\color{Mittel-Blau}\[E(X) = 2 \cdot \frac{1}{36} + 3 \cdot \frac{2}{36}
+%%   {\color{MainA}\[E(X) = 2 \cdot \frac{1}{36} + 3 \cdot \frac{2}{36}
 %%     + \dots + 12 \cdot \frac{1}{36} = 7\]}
 %% \end{frame}
 
@@ -279,19 +276,19 @@
 
 \begin{frame}{Universal Hashing}{Probability Calculation}
    \textbf{Sum of expected values:}
-   For independent (discrete) result variables {\color{Mittel-Blau}$X_1,\dots,X_n$} we can write:
-     {\color{Mittel-Blau}\[\E\left(X_1+\dots+X_n\right)
+   For independent (discrete) result variables {\color{MainA}$X_1,\dots,X_n$} we can write:
+     {\color{MainA}\[\E\left(X_1+\dots+X_n\right)
        = \E(X_1) + \dots + \E(X_n)\]}
    \onslide<2->
    \textbf{Example:} Throwing two dice
    \begin{itemize}
      \item<3->
-       {\color{Mittel-Blau}$X_1$}: Expected number of eyes dice {\color{Mittel-Blau}$1$}: {\color{Mittel-Blau}$\E(X_1) = 3.5$}
+       {\color{MainA}$X_1$}: Expected result of dice {\color{MainA}$1$}: {\color{MainA}$\E(X_1) = 3.5$}
      \item<4->
-       {\color{Mittel-Blau}$X_2$}: Expected number of eyes dice {\color{Mittel-Blau}$2$}: {\color{Mittel-Blau}$\E(X_2) = 3.5$}
+       {\color{MainA}$X_2$}: Expected result of dice {\color{MainA}$2$}: {\color{MainA}$\E(X_2) = 3.5$}
      \item<5->
-       {\color{Mittel-Blau}$X = X_1 + X_2$}: Expected total number of eyes:
-       {\color{Mittel-Blau}\[\E(X)
+       {\color{MainA}$X = X_1 + X_2$}: Expected total number:
+       {\color{MainA}\[\E(X)
          = \E(X_1 + X_2)
          = \E(X_1) + \E(X_2) = 3.5 + 3.5 = 7\]}
    \end{itemize}
@@ -304,7 +301,7 @@
   \begin{block}{Corollary:}
     The probability of the event $E$ is $p = P(E)$.
     Let $X$ be the occurences of the event $E$ and $n$ be the number
-    of executions of the experiment. Then {\color{Mittel-Blau}$\E(X) = n \cdot P(E) = n \cdot p$}
+    of executions of the experiment. Then {\color{MainA}$\E(X) = n \cdot P(E) = n \cdot p$}
   \end{block}
   \onslide<2->
   \begin{example}[Rolling the dice 60 times:]
@@ -316,9 +313,8 @@
 
 \begin{frame}{Universal Hashing}{Probability Calculation}
   \begin{proof}[Proof Corollary:]
-    Indicator variable: {\color{Mittel-Blau}$X_i$}\\
+    Indicator variable: $X_i$\\
     \vspace*{-1.5em}
-            {\color{Mittel-Blau}
     \onslide<2->
     \begin{align*}
       X_i &=
@@ -329,10 +325,9 @@
           \end{array}
           \right. \hspace{1.5em}\\
         \Rightarrow \; X = \sum_{i=1}^{n} X_i
-    \end{align*}}
+    \end{align*}
     \vspace*{-1.0em}
-            {\color{Mittel-Blau}
-    \onslide<3->          
+    \onslide<3->
     \begin{align*}
       \E(X) &= \E\left(\sum_{i=1}^{n} X_i\right)
         = \sum_{i=1}^{n} \E(X_i)
@@ -344,15 +339,6 @@
     \vspace*{-1.0em}
     \begin{align*}
         \text{Def. $\E$-value: }  \E(X_i) &= \; 0 \cdot P(X_i = 0) + 1 \cdot P(X_i = 1) &= \; P(X_i = 1) \\[0.5em]   
-    \end{align*}}
+    \end{align*}
   \end{proof}
 \end{frame}
-
-%%% ===================================================================
-%%% This should be at the END of the file !!!!!!
-%%%
-%%% Local Variables: 
-%%% mode: latex 
-%%% TeX-master: "~/TeX/TeXinput/Scripts/Algo-Data-EMS/Rolf-2016/AlgoDat/Lecture-5/Lecture.tex" 
-%%% End: 
-%%% ===================================================================
