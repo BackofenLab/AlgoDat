@@ -31,11 +31,11 @@ Either use the add_ufcd_linux.sh script provided in scripts, or the following co
 mkdir ~/texmf
 cd ~/texmf
 
-# Download University of Freiburg Corporate Design (access restricted to university IP range):
-wget http://www.zuv.uni-freiburg.de/service/cd/download/latext/ufcd.tds.zip
-wget http://www.zuv.uni-freiburg.de/service/cd/download/latext/ufcd-logo-uni.tds.zip
-wget http://www.zuv.uni-freiburg.de/service/cd/download/latext/ufcd-logo-iif.tds.zip
-wget http://www.zuv.uni-freiburg.de/service/cd/download/latext/ufcd-logo-imtek.tds.zip
+# Download University of Freiburg Corporate Design (**access restricted to university IP range**):
+wget -U firefox http://www.zuv.uni-freiburg.de/service/cd/download/latext/ufcd.tds.zip
+wget -U firefox http://www.zuv.uni-freiburg.de/service/cd/download/latext/ufcd-logo-uni.tds.zip
+wget -U firefox http://www.zuv.uni-freiburg.de/service/cd/download/latext/ufcd-logo-iif.tds.zip
+wget -U firefox http://www.zuv.uni-freiburg.de/service/cd/download/latext/ufcd-logo-imtek.tds.zip
 
 unzip ufcd.tds.zip
 unzip ufcd-logo-uni.tds.zip
