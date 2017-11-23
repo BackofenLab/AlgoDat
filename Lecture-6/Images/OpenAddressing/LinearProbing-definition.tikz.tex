@@ -29,17 +29,21 @@
   \draw (\xi + 0.5, 0.5) node[bucket_text, anchor=south] {\xi};
 }
 
-\foreach \type [count=\xi] in
-    {taken}{
+\foreach \type [count=\xi] in {taken} {
   \draw (\xi + 0.45 +4, 1.0) edge[arrow_\type, in=0, out=90] (\xi+4, 1.4);
   \draw (\xi+4, 1.4) edge[->, arrow_\type, in=90, out=180] (\xi +4- 0.45, 1.0);
 }
 
-
-% \draw (0.45, 1.0) edge[arrow_shadow, in=0, out=90] (0, 1.4);
-% \draw (7.0, 1.4) edge[->, arrow_shadow, in=90, out=180] (6.55, 1.0);
-
-%\draw (1.5, -0.75) node[hash_text] {$h(s, 4)$};
-\draw (5.5, -0.75) node[hash_text_final] {$h(s)$};
+\draw (5.5, -0.75) node[hash_text_final] {$h(s, 0)$};
 \draw (5.5, -0.5) edge[->, arrow_taken, color={Mittel-Blau}] (5.5, -0.1);
+\only<0 |handout:1>{
+  \foreach \type [count=\xi] in {taken,taken,taken} {
+    \draw (\xi + 0.45 + 1.0, 1.0) edge[arrow_\type, in=0, out=90]
+      (\xi + 1.0, 1.4);
+    \draw (\xi+1, 1.4) edge[->, arrow_\type, in=90, out=180]
+      (\xi + 1.0 - 0.45, 1.0);
+  }
+  \draw (1.5, -0.75) node[hash_text] {$h(s, 4)$};
+  \draw (1.5, -0.5) edge[->, arrow_taken, color={Mittel-Blau}] (1.5, -0.1);
+}
 \end{tikzpicture}%
