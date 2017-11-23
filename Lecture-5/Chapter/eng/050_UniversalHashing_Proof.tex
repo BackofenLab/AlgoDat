@@ -1,3 +1,12 @@
+%%% ===================================================================
+%%% RCS Header:
+%%% $RCSfile: local.el,v $
+%%% $Revision: 1.27 $
+%%% $Date: 2014/11/07 15:36:00 $
+%%% $Author: backofen $
+%%% $Locker:  $
+%%% ===================================================================
+
 \subsection{Proof}
 \def\E{\mathbb{E}}
 \begin{frame}{Universal Hashing}{Proof}
@@ -58,44 +67,34 @@
   \textbf{Auxiliary calculation:}
    {\color{MainA}
      \onslide<1->
-     \vspace*{-2em}
-     \begin{align*}
+     \vspace*{-1.7em}
+     \begin{eqnarray*}
        \hspace{6em}           
-       \begin{array}{rl}
-         \E[I_y] & = P(I_y = 1)\\
-         {} & = P(h(y) = i)\\
-         {} & = P(h(y) = h(x))\\
-         {} & \leq c \cdot \frac{1}{m}
-       \end{array}
-   \end{align*}}
+         \E[I_y] & = & P(I_y = 1)\\
+         {} & = & P(h(y) = i)\\
+         {} & = & P(h(y) = h(x))\\
+         {} & \leq &  c \cdot \frac{1}{m}
+   \end{eqnarray*}}
    {\color{MainA}
      \onslide<3->
-     \vspace{-0.6em}
-     \begin{displaymath}
-       \hspace*{-3em}
-       \Rightarrow 1 + \sum_{y \in \mathbb{S} \setminus x} \E(I_y)
-       \leq 1 + \sum_{y \in \mathbb{S} \setminus x} c \cdot \frac{1}{m}
-     \end{displaymath}
-     \onslide<4->
-     \vspace{-0.6em}
-     \begin{displaymath}
-       \hspace*{-3em}
-       = 1 + \left(\vert \mathbb{S}  \vert - 1\right) \cdot c \cdot \frac{1}{m}
-     \end{displaymath}
-     \onslide<5->
-     \vspace{-0.6em}
-     \begin{displaymath}
-       \hspace*{-3em}
-       \displaystyle \leq 1 + \vert \mathbb{S} \vert \cdot c \cdot \frac{1}{m}
-       = 1 + c \cdot \frac{\vert \mathbb{S} \vert}{m}
-     \end{displaymath}
-     \onslide<6->
-     \vspace{-0.6em}
-     \begin{displaymath}
-       \hspace*{5em}
-       \E\left[\vert \mathbb{S}_i \vert\right]
-       = 1 + \sum_{y \in \mathbb{S} \setminus \{x\}}
-       \leq 1 + c \cdot \frac{\vert \mathbb{S} \vert}{m}
-       \hspace*{7.5em}\square
-   \end{displaymath}}
+     \vspace{-0.6em}   
+     \begin{alignat*}{3}
+\hspace*{-2cm} \text{\textbf{Hence:\quad{}}}        \E\left[\vert \mathbb{S}_i \vert\right]
+=1 + \sum_{y \in \mathbb{S} \setminus x}  \E\left[l_y \right]
+      &\ \leq\ 1 + \sum_{y \in \mathbb{S} \setminus x} c \cdot \frac{1}{m}\\
+     &\onslide<4->\ =\ 1 + \left(\vert \mathbb{S}  \vert - 1\right) \cdot c \cdot \frac{1}{m}\\
+     &\onslide<5->\ \leq\ \displaystyle 1 + \vert \mathbb{S} \vert \cdot c \cdot \frac{1}{m}\\
+&\onslide<5->\ =\  1 + c \cdot \frac{\vert \mathbb{S} \vert}{m}
+&\quad\square
+     \end{alignat*}
+}
 \end{frame}
+
+%%% ===================================================================
+%%% This should be at the END of the file !!!!!!
+%%%
+%%% Local Variables: 
+%%% mode: latex 
+%%% TeX-master: "~/TeX/TeXinput/Scripts/Algo-Data-EMS/AlgoDat/Lecture-5/Lecture.tex" 
+%%% End: 
+%%% ===================================================================
