@@ -139,7 +139,7 @@
   \textbf{For each node applies the total order:}\\
   \onslide<2->
   \hspace{1.5em}keys of left subtree
-  < \texttt{\color{Mittel-Blau}node.key} < keys of right 
+  < \texttt{\color{Mittel-Blau}node.key} < keys of right
   subtree
   \onslide<3->
   \begin{columns}
@@ -155,16 +155,17 @@
     \end{column}
     \begin{column}{0.23\linewidth}
       \textbf{Examples:}
-      \begin{compactitem}[{\color{Uni-Grau}\footnotesize$\blacksquare$}]
+      %\begin{itemize}[{\color{black!50!white}\footnotesize$\blacksquare$}]
+      \begin{itemize}
         \item<4->
           \texttt{\color{red}lookup(14)}
         \item<5->
           \texttt{\color{Mittel-Gruen!50!blue}lookup(6)}
         \item<6->
           \texttt{\color{yellow!50!orange}lookup(19)}
-      \end{compactitem}
-    \end{column}
-  \end{columns}
+      \end{itemize}
+  \end{column}
+\end{columns}
 \end{frame}
 
 %-------------------------------------------------------------------------------
@@ -179,7 +180,7 @@
     \item<4->
       Else we insert a new node
     \item<5->If the key was not present we get a \texttt{\color{Mittel-Blau}None} entry
-    \item<6->We insert the node there  
+    \item<6->We insert the node there
   \end{itemize}
   \onslide<7->
   \vspace{-1em}
