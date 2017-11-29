@@ -277,7 +277,7 @@
         \item
           Then $T_i = A \cdot i $ for a constant $A$
         \item
-           We have to copy $i-1$ element    
+           We have to copy $i-1$ elements
       \end{itemize}
   \end{itemize}
   \begin{align*}
@@ -732,13 +732,15 @@
   \textbf{How do we shrink the array?}
   \begin{itemize}
     \item
-      Like for the extension of the array, we can
-      shrink the array by half, if it is half-full
+      If the array is half-full, we can shrink it by half,
+      like for the append operation
     \item
       If we \textit{append} directly after \textit{shrinking} we have to
       extend the array again
       \begin{itemize}
         \item
+          We leave some space for following append operations
+        \item[$\Rightarrow$]
           We only shrink the array to $75\%$ 
        \end{itemize}
   \end{itemize}
