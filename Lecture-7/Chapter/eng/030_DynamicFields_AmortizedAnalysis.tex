@@ -15,8 +15,8 @@
     \def\FSAsize{16}\def\FSAelements{11}%
     \def\FSAcopy{0}\def\FSAdelete{0}\def\FSAinsert{0}%
     \def \FSAcopyarrow{1}%
-    \def\FSAlabelsize{Size ${\color{Mittel-Blau}s_i}$}%
-    \def\FSAlabelcapacity{Capacity ${\color{Mittel-Blau}c_i}$}%
+    \def\FSAlabelsize{Size ${\color{MainA}s_i}$}%
+    \def\FSAlabelcapacity{Capacity ${\color{MainA}c_i}$}%
     \input{Images/FixedSizeArray_Sizes.tikz}%
     \vspace*{-0.5em}%
     \caption{Static array with capacity $c_i$}%
@@ -28,23 +28,23 @@
     \item
       We have $n$ instructions $O = \{O_1,\dots,O_n\}$
     \item
-      The {\color{Mittel-Blau}size} after operation $i$ is
-      {\color{Mittel-Blau}$s_i$},
-      with ${\color{Mittel-Blau}s_0} := 0$
+      The {\color{MainA}size} after operation $i$ is
+      {\color{MainA}$s_i$},
+      with ${\color{MainA}s_0} := 0$
     \item
-      The {\color{Mittel-Blau}capacity} after operation $i$ is
-      {\color{Mittel-Blau}$c_i$},
-      with ${\color{Mittel-Blau}c_0} := 0$
+      The {\color{MainA}capacity} after operation $i$ is
+      {\color{MainA}$c_i$},
+      with ${\color{MainA}c_0} := 0$
     \item
-      The {\color{Mittel-Blau}cost} of operation $i$ is
-      ${\color{Mittel-Blau}\mathrm{cost}(O_i)}$
+      The {\color{MainA}cost} of operation $i$ is
+      ${\color{MainA}\mathrm{cost}(O_i)}$
       (previously named $T_i$)\\[0.5em]
       \begin{tabular}{lll}
         Reallocation: &
-        ${\color{Mittel-Blau}\mathrm{cost}(O_i)}
-          \leq A \cdot {\color{Mittel-Blau}s_i},$ & {}\\
+        ${\color{MainA}\mathrm{cost}(O_i)}
+          \leq A \cdot {\color{MainA}s_i},$ & {}\\
         Insert / Delete (Update): &
-        ${\color{Mittel-Blau}\mathrm{cost}(O_i)}
+        ${\color{MainA}\mathrm{cost}(O_i)}
           \leq A,$ & {}
       \end{tabular}
   \end{itemize}
@@ -61,16 +61,16 @@
     \begin{tabular}{|l|l|l|l|l|c|}
       \bottomrule
       \multicolumn{3}{|c|}{Operation} &
-      Size {\color{Mittel-Blau}$s_i$} &
-      Capactity {\color{Mittel-Blau}$c_i$} &
+      Size {\color{MainA}$s_i$} &
+      Capactity {\color{MainA}$c_i$} &
       $\begin{array}{c}
         \text{Costs}\\
-        {\color{Mittel-Blau}\mathrm{cost}(O_i)}
+        {\color{MainA}\mathrm{cost}(O_i)}
       \end{array}$\\
       \toprule
-      $O_1$ & append & {\color{Mittel-Blau}realloc.} &
-      $s_1$ & {\color{Mittel-Blau}$c_1$} &
-      ${\color{Mittel-Blau}A \cdot s_1}$\\
+      $O_1$ & append & {\color{MainA}realloc.} &
+      $s_1$ & {\color{MainA}$c_1$} &
+      ${\color{MainA}A \cdot s_1}$\\
       $O_2$ & append & {} &
       $s_2$ & $c_2 = c_1$ & $A\cdot 1$\\
       $O_3$ & append & {} &
@@ -78,9 +78,9 @@
       $O_4$ & remove & {} &
       $s_4$ & $c_4 = c_1$ & $A\cdot 1$\\
       \midrule
-      $O_5$ & remove & {\color{Mittel-Blau}realloc.} &
-      $s_5$ & {\color{Mittel-Blau}$c_5$} &
-      ${\color{Mittel-Blau}A \cdot s_5}$\\
+      $O_5$ & remove & {\color{MainA}realloc.} &
+      $s_5$ & {\color{MainA}$c_5$} &
+      ${\color{MainA}A \cdot s_5}$\\
       $O_6$ & append & {} &
       $s_6$ & $c_6 = c_5$ & $A\cdot 1$\\
       $O_7$ & remove & {} &
@@ -88,9 +88,9 @@
       $O_8$ & append & {} &
       $s_8$ & $c_8 = c_5$ & $A\cdot 1$\\
       \midrule
-      $O_9$ & append & {\color{Mittel-Blau}realloc.} &
-      $s_9$ & {\color{Mittel-Blau}$c_9$} &
-      ${\color{Mittel-Blau}A \cdot s_9}$\\
+      $O_9$ & append & {\color{MainA}realloc.} &
+      $s_9$ & {\color{MainA}$c_9$} &
+      ${\color{MainA}A \cdot s_9}$\\
       $\dots$ & $\dots$ & $\dots$ & $\dots$ & $\dots$ & $\dots$\\
       $O_n$ & append & {} &
       $s_n$ & $c_n$ & $A\cdot 1$\\
@@ -105,32 +105,33 @@
   \textbf{Implementation:}
   \begin{itemize}
     \item
-      If {\color{Mittel-Blau}$O_i$} is an \textit{append} operation and
-      ${\color{Mittel-Blau}s_{i-1}} = {\color{Mittel-Blau}c_{i-1}}$:\\
+      If {\color{MainA}$O_i$} is an \textit{append} operation and
+      ${\color{MainA}s_{i-1}} = {\color{MainA}c_{i-1}}$:\\
       $\Rightarrow$ Resize array to
-      ${\color{Mittel-Blau}c_i}
-        = \left\lfloor\frac{3}{2} {\color{Mittel-Blau}s_i} \right\rfloor$\\
-      $\Rightarrow {\color{Mittel-Blau}cost(O_i)}
-        = A \cdot {\color{Mittel-Blau}s_i}$
+      ${\color{MainA}c_i}
+        = \left\lfloor\frac{3}{2} {\color{MainA}s_i} \right\rfloor
+        = \mathrm{floor}\left(\frac{3}{2}{\color{MainA}s_i}\right)$\\
+      $\Rightarrow {\color{MainA}cost(O_i)}
+        = A \cdot {\color{MainA}s_i}$
   \end{itemize}
   \begin{figure}[!h]
     \def\FSAsize{7}\def\FSAelements{7}%
     \def\FSAcopy{0}\def\FSAdelete{0}\def\FSAinsert{0}%
     \def\FSAcopyarrow{0}%
-    \def\FSAlabelsize{${\color{Mittel-Blau}s_{i-1}} = 7$}%
+    \def\FSAlabelsize{${\color{MainA}s_{i-1}} = 7$}%
     \def\FSAlabelcapacity{%
-      ${\color{Mittel-Blau}c_{i-1}}%
-        = {\color{Mittel-Blau}s_{i-1}} = 7$}%
+      ${\color{MainA}c_{i-1}}%
+        = {\color{MainA}s_{i-1}} = 7$}%
     \input{Images/FixedSizeArray_Sizes.tikz}%
     %
     \hspace*{0.5em}\raisebox{2em}{$\Rightarrow$}\hspace*{0.5em}%
     %
     \def\FSAsize{12}\def\FSAelements{0}%
     \def\FSAcopy{7}\def\FSAdelete{0}\def\FSAinsert{1}%
-    \def\FSAlabelsize{${\color{Mittel-Blau}s_i}
-      = {\color{Mittel-Blau}s_{i-1} + 1}=8$}%
-    \def\FSAlabelcapacity{$12={\color{Mittel-Blau}c_i}
-      = \lfloor\frac{3}{2}{\color{Mittel-Blau}s_i}\rfloor = 8$}%
+    \def\FSAlabelsize{${\color{MainA}s_i}
+      = {\color{MainA}s_{i-1} + 1}=8$}%
+    \def\FSAlabelcapacity{$12={\color{MainA}c_i}
+      = \lfloor\frac{3}{2}{\color{MainA}s_i}\rfloor = 8$}%
     \input{Images/FixedSizeArray_Sizes.tikz}%
     \caption{\textit{Append} operation with reallocation}
     \label{fig:dynamic_fields:amortized_analysis:append}
@@ -146,33 +147,34 @@
   \textbf{Implementation:}
   \begin{itemize}
     \item
-    If {\color{Mittel-Blau}$O_i$} is an \textit{remove} operation and
-    ${\color{Mittel-Blau}s_{i-1}}
-      \leq \frac{1}{3} {\color{Mittel-Blau}c_{i-1}}$:\\
+    If {\color{MainA}$O_i$} is an \textit{remove} operation and
+    ${\color{MainA}s_{i-1}}
+      \leq \frac{1}{3} {\color{MainA}c_{i-1}}$:\\
     $\Rightarrow$ Resize array to
-    ${\color{Mittel-Blau}c_i}
-      = \left\lfloor\frac{3}{2} {\color{Mittel-Blau}s_i} \right\rfloor$\\
-    $\Rightarrow {\color{Mittel-Blau}cost(O_i)}
-      = A \cdot {\color{Mittel-Blau}s_i}$
+    ${\color{MainA}c_i}
+      = \left\lfloor\frac{3}{2} {\color{MainA}s_i} \right\rfloor
+      = \mathrm{floor}\left(\frac{3}{2} {\color{MainA}s_i}\right)$\\
+    $\Rightarrow {\color{MainA}cost(O_i)}
+      = A \cdot {\color{MainA}s_i}$
   \end{itemize}
   \begin{figure}[!h]
     \def\FSAsize{15}\def\FSAelements{5}%
     \def\FSAcopy{0}\def\FSAdelete{0}\def\FSAinsert{0}%
     \def\FSAcopyarrow{0}%
-    \def\FSAlabelsize{${\color{Mittel-Blau}s_{i-1}} = 5$}%
+    \def\FSAlabelsize{${\color{MainA}s_{i-1}} = 5$}%
     \def\FSAlabelcapacity{%
-      ${\color{Mittel-Blau}c_{i-1}} = 15%
-      \geq {3\cdot\color{Mittel-Blau}s_{i-1}}$}%
+      ${\color{MainA}c_{i-1}} = 15%
+      \geq {3\cdot\color{MainA}s_{i-1}}$}%
     \input{Images/FixedSizeArray_Sizes.tikz}%
     %
     \hspace*{0.5em}\raisebox{2em}{$\Rightarrow$}\hspace*{0.5em}%
     %
     \def\FSAsize{6}\def\FSAelements{0}%
     \def\FSAcopy{4}\def\FSAdelete{1}\def\FSAinsert{0}%
-    \def\FSAlabelsize{${\color{Mittel-Blau}s_i}
-      = {\color{Mittel-Blau}s_{i-1}- 1} $}%
-    \def\FSAlabelcapacity{$6={\color{Mittel-Blau}c_i}
-      = \frac{3}{2}{\color{Mittel-Blau}s_i}$ = 4}%
+    \def\FSAlabelsize{${\color{MainA}s_i}
+      = {\color{MainA}s_{i-1}- 1} $}%
+    \def\FSAlabelcapacity{$6={\color{MainA}c_i}
+      = \frac{3}{2}{\color{MainA}s_i}$ = 4}%
     \input{Images/FixedSizeArray_Sizes.tikz}%
     \caption{\textit{Remove} operation with reallocation}
     \label{fig:dynamic_fields:amortized_analysis:remove}
@@ -185,19 +187,19 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Dynamic Arrays}{Amortized Analysis - Proof}
-  \textbf{Idea for prove:}
+  \textbf{Idea for proof:}
   \begin{itemize}
     \item
-      Expansive are only those operations, where reallocations are necessary.
+      Expensive are only operations where reallocations are necessary
     \item
       If we just reallocated, it takes some time until the next reallocation is required.
     \item \textbf{Assumption:}
       After a costly \textit{reallocation} of size $X$ we have at least $X$ operations of runtime $O(1)$
     \item
-      \textbf{Then:} Total cost of {\color{Mittel-Blau}$n$} operations is maximally {\color{Mittel-Blau}$2 \cdot n$}
+      \textbf{Then:} Total cost of {\color{MainA}$n$} operations is maximally {\color{MainA}$2 \cdot n$}
   \end{itemize}
-  %% \[\Rightarrow {\color{Mittel-Blau}\mathrm{cost}(O_i)} \dots
-  %%   {\color{Mittel-Blau}\mathrm{cost}(O_{i + n})} \leq 2 \, n \cdot C,
+  %% \[\Rightarrow {\color{MainA}\mathrm{cost}(O_i)} \dots
+  %%   {\color{MainA}\mathrm{cost}(O_{i + n})} \leq 2 \, n \cdot C,
   %%   \hspace*{0.5em}n \in \mathbb{N}\]
 \end{frame}
 
@@ -217,47 +219,47 @@
         \end{array}$} &
       $\begin{array}{c}
         \text{Size}\\
-        {\color{Mittel-Blau}s_i}
+        {\color{MainA}s_i}
       \end{array}$ &
       $\begin{array}{c}
         \text{Capacity}\\
-        {\color{Mittel-Blau}c_i}
+        {\color{MainA}c_i}
       \end{array}$ &
       $\begin{array}{c}
         \text{Costs}\\
-        {\color{Mittel-Blau}\mathrm{cost}(O_i)}
+        {\color{MainA}\mathrm{cost}(O_i)}
       \end{array}$\\
 \cline{1-6}
-      $O_1$ &app. & {\color{Mittel-Blau}realloc.} &
-      $s_1$ & {\color{Mittel-Blau}$c_1=4$} &
-      ${\color{Mittel-Blau}C_1 \cdot s_1}$ &
+      $O_1$ &app. & {\color{MainA}realloc.} &
+      $s_1$ & {\color{MainA}$c_1=4$} &
+      ${\color{MainA}C_1 \cdot s_1}$ &
       \raisebox{-0.5em}{\multirow{4}{*}{%
         $\left.\begin{array}{@{}l@{}}\\[4.0em]\end{array}\right\rbrace
         \begin{array}{@{}l@{}}
            \text{distance}\\
-           4 \geq \left\lfloor\dfrac{{\color{Mittel-Blau}s_1}}{2}\right\rfloor
+           4 \geq \left\lfloor\dfrac{{\color{MainA}s_1}}{2}\right\rfloor
         \end{array}$%
       }}\\
       $O_2$ &app.& {} & $s_2$ & $c_2 = c_1$ & $C_2$\\
       $O_3$ &app.& {} & $s_3$ & $c_3 = c_1$ & $C_2$\\
       $O_4$ &app.& {} & $s_4$ & $c_4 = c_1$ & $C_2$\\
 \cline{1-6}%
-      $O_5$ &app.& {\color{Mittel-Blau}realloc.} &
-      $s_5$ & {\color{Mittel-Blau}$c_5 = \lfloor\frac{3}{2} s_5\rfloor=7$} &
-      ${\color{Mittel-Blau}C_1 \cdot s_5}$ &
+      $O_5$ &app.& {\color{MainA}realloc.} &
+      $s_5$ & {\color{MainA}$c_5 = \lfloor\frac{3}{2} s_5\rfloor=7$} &
+      ${\color{MainA}C_1 \cdot s_5}$ &
       \raisebox{-0.5em}{\multirow{3}{*}{%
         $\left.\begin{array}{@{}l@{}}\\[3.05em]\end{array}\right\rbrace
         \begin{array}{@{}l@{}}
           \text{distance}\\
-           3\geq\left\lfloor\dfrac{{\color{Mittel-Blau}s_5}}{2}\right\rfloor
+           3\geq\left\lfloor\dfrac{{\color{MainA}s_5}}{2}\right\rfloor
         \end{array}$%
       }}\\
       $O_6$ &app.& {} & $s_6$ & $c_6 = c_5$ & $C_2$\\
       $O_7$ &app.& {} & $s_7$ & $c_7 = c_5$ & $C_2$\\
       \cline{1-6}
-      $O_8$ &app.& {\color{Mittel-Blau}realloc.} &
-      $s_8$ & {\color{Mittel-Blau}$c_8 = \frac{3}{2} s_8=12$} &
-      ${\color{Mittel-Blau}C_1 \cdot s_8}$\\
+      $O_8$ &app.& {\color{MainA}realloc.} &
+      $s_8$ & {\color{MainA}$c_8 = \frac{3}{2} s_8=12$} &
+      ${\color{MainA}C_1 \cdot s_8}$\\
       $\dots$ & $\dots$ & $\dots$ & $\dots$ & $\dots$& $\dots$\\
       \cline{1-6}
     \end{tabular}
@@ -271,13 +273,13 @@
   \begin{itemize}
     \item
       \textbf{Lemma:}
-      If a \textit{reallocation} occurs at ${\color{Mittel-Blau}O_i}$
-      the nearest \textit{reallocation} is at ${\color{Mittel-Blau}O_j}$
-      with $j - i > \dfrac{{\color{Mittel-Blau}s_i}}{2}$
+      If a \textit{reallocation} occurs at ${\color{MainA}O_i}$
+      the nearest \textit{reallocation} is at ${\color{MainA}O_j}$
+      with $j - i > \dfrac{{\color{MainA}s_i}}{2}$
     \item
       \textbf{Corollary:}
-      ${\color{Mittel-Blau}\mathrm{cost}(O_1)}+\dots
-        +{\color{Mittel-Blau}\mathrm{cost}(O_n)} \leq 4 \, A \cdot n$
+      ${\color{MainA}\mathrm{cost}(O_1)}+\dots
+        +{\color{MainA}\mathrm{cost}(O_n)} \leq 4 \, A \cdot n$
   \end{itemize}
 \end{frame}
 
@@ -286,25 +288,25 @@
 \begin{frame}{Dynamic Arrays}{Proof: Worst Case Same Operation}
   \vspace*{-1.5em}
   \begin{table}[!h]
-    \caption{Case 1: $\frac{1}{2} {\color{Mittel-Blau}s_i}$ \textit{appends}}
+    \caption{Case 1: $\frac{1}{2} {\color{MainA}s_i}$ \textit{appends}}
     \label{tab:dynamic_fields:amortized_analysis:proof_add}
     \begin{tabularx}{\linewidth}{@{}r@{}c@{}lc@{}l}
       {} & {} & \multicolumn{1}{c}{Array} & Costs\\
       \cmidrule{1-4}
-      {\color{Mittel-Blau}$O_i$}: & {} &
+      {\color{MainA}$O_i$}: & {} &
       \def\FSAsize{9}\def\FSAelements{0}%
       \def\FSAcopy{5}\def\FSAdelete{0}\def\FSAinsert{1}%
       \def\FSAcopyarrow{1}%
-      \def\FSAlabelsize{${\color{Mittel-Blau}s_i}$}%
-      \def\FSAlabelcapacity{${\color{Mittel-Blau}c_i}$}%
+      \def\FSAlabelsize{${\color{MainA}s_i}$}%
+      \def\FSAlabelcapacity{${\color{MainA}c_i}$}%
       \raisebox{-2em}{\begin{adjustbox}{width=11.25em}%
         \input{Images/FixedSizeArray_Sizes.tikz}%
       \end{adjustbox}} &
       $\begin{array}{c}
-        \text{{\color{Mittel-Blau}reallocation}}\\
-        A \cdot {\color{Mittel-Blau}s_i}\;\text{(linear)}
+        \text{{\color{MainA}reallocation}}\\
+        {\color{MainA}A \cdot s_i}\;\text{(linear)}
       \end{array}$\\
-      {\color{Mittel-Blau}$O_{i+1}$}: & $\hspace*{0.5em}$ &
+      {\color{MainA}$O_{i+1}$}: & $\hspace*{0.5em}$ &
       \def\FSAsize{9}\def\FSAelements{6}%
       \def\FSAcopy{0}\def\FSAdelete{0}\def\FSAinsert{1}%
       \begin{adjustbox}{width=11.25em}%
@@ -315,17 +317,17 @@
           \begin{array}{@{}c@{}}\\[4.0em]\end{array}
         \right\rbrace
         \begin{array}{@{}c@{}}
-          \dfrac{\color{Mittel-Blau}s_i}{2}\\
+          \dfrac{\color{MainA}s_i}{2}\\
           \text{times}
         \end{array}$}\\
-      {\color{Mittel-Blau}$O_{i+2}$}: & {} &
+      {\color{MainA}$O_{i+2}$}: & {} &
       \def\FSAsize{9}\def\FSAelements{7}%
       \def\FSAcopy{0}\def\FSAdelete{0}\def\FSAinsert{1}%
       \begin{adjustbox}{width=11.25em}%
         \input{Images/FixedSizeArray.tikz}%
       \end{adjustbox} &
       $A$ (constant)\\
-      {\color{Mittel-Blau}$O_{i+3}$}: & {} &
+      {\color{MainA}$O_{i+3}$}: & {} &
       \def\FSAsize{9}\def\FSAelements{8}%
       \def\FSAcopy{0}\def\FSAdelete{0}\def\FSAinsert{1}%
       \begin{adjustbox}{width=11.25em}%
@@ -333,15 +335,15 @@
       \end{adjustbox} &
       $A$ (constant)\\
       \cmidrule{1-4}
-      {\color{Mittel-Blau}$O_j$}: & {} &
+      {\color{MainA}$O_j$}: & {} &
       \def\FSAsize{11}\def\FSAelements{0}%
       \def\FSAcopy{9}\def\FSAdelete{0}\def\FSAinsert{1}%
       \begin{adjustbox}{width=13.75em}%
         \input{Images/FixedSizeArray.tikz}%
       \end{adjustbox}$\hspace*{0.25em}\cdots$ &
       $\begin{array}{c}
-        \text{{\color{Mittel-Blau}reallocation}}\\
-        \llap{$A \cdot$} {\color{Mittel-Blau}s_j}\;\text{(earliest realloc)}
+        \text{{\color{MainA}reallocation}}\\
+        \llap{$A \cdot$} {\color{MainA}s_j}\;\text{(earliest realloc)}
       \end{array}$\\
     \end{tabularx}
   \end{table}
@@ -352,25 +354,25 @@
 \begin{frame}{Dynamic Arrays}{Amortized Analysis - Proof}
   \vspace*{-1.5em}
   \begin{table}[!h]
-    \caption{Case 2: $\frac{1}{2} {\color{Mittel-Blau}s_i}$ \textit{removes}}
+    \caption{Case 2: $\frac{1}{2} {\color{MainA}s_i}$ \textit{removes}}
     \label{tab:dynamic_fields:amortized_analysis:proof_remove}
     \begin{tabularx}{\linewidth}{@{}r@{}c@{}lc@{}l}
       {} & {} & \multicolumn{1}{c}{Array} & Costs\\
       \cmidrule{1-4}
-      {\color{Mittel-Blau}$O_i$}: & {} &
+      {\color{MainA}$O_i$}: & {} &
       \def\FSAsize{9}\def\FSAelements{0}%
       \def\FSAcopy{6}\def\FSAdelete{0}\def\FSAinsert{0}%
       \def\FSAcopyarrow{1}%
-      \def\FSAlabelsize{${\color{Mittel-Blau}s_i}$}%
-      \def\FSAlabelcapacity{${\color{Mittel-Blau}c_i}$}%
+      \def\FSAlabelsize{${\color{MainA}s_i}$}%
+      \def\FSAlabelcapacity{${\color{MainA}c_i}$}%
       \raisebox{-2em}{\begin{adjustbox}{width=11.25em}%
         \input{Images/FixedSizeArray_Sizes.tikz}%
       \end{adjustbox}} &
       $\begin{array}{c}
-        \text{{\color{Mittel-Blau}reallocation}}\\
-        A \cdot {\color{Mittel-Blau}s_i}\;\text{(linear)}
+        \text{{\color{MainA}reallocation}}\\
+        {\color{MainA}A \cdot s_i}\;\text{(linear)}
       \end{array}$\\
-      {\color{Mittel-Blau}$O_{i+1}$}: & $\hspace*{0.5em}$ &
+      {\color{MainA}$O_{i+1}$}: & $\hspace*{0.5em}$ &
       \def\FSAsize{9}\def\FSAelements{5}%
       \def\FSAcopy{0}\def\FSAdelete{1}\def\FSAinsert{0}%
       \begin{adjustbox}{width=11.25em}%
@@ -381,33 +383,33 @@
           \begin{array}{@{}c@{}}\\[3.0em]\end{array}
         \right\rbrace
         \begin{array}{@{}c@{}}
-          \dfrac{\color{Mittel-Blau}s_i}{2}\\
+          \dfrac{\color{MainA}s_i}{2}\\
           \text{times}
         \end{array}$}\\
-      {\color{Mittel-Blau}$O_{i+2}$}: & {} &
+      {\color{MainA}$O_{i+2}$}: & {} &
       \def\FSAsize{9}\def\FSAelements{4}%
       \def\FSAcopy{0}\def\FSAdelete{1}\def\FSAinsert{0}%
       \begin{adjustbox}{width=11.25em}%
         \input{Images/FixedSizeArray.tikz}%
       \end{adjustbox} &
       $A$ (constant)\\
-      {\color{Mittel-Blau}$O_{i+3}$}: & {} &
+      {\color{MainA}$O_{i+3}$}: & {} &
       \def\FSAsize{9}\def\FSAelements{3}%
       \def\FSAcopy{0}\def\FSAdelete{1}\def\FSAinsert{0}%
       \begin{adjustbox}{width=11.25em}%
         \input{Images/FixedSizeArray.tikz}%
       \end{adjustbox} &
-      $C_2$ (constant)\\
+      $A$ (constant)\\
       \cmidrule{1-4}
-      {\color{Mittel-Blau}$O_j$}: & {} &
+      {\color{MainA}$O_j$}: & {} &
       \def\FSAsize{3}\def\FSAelements{0}%
       \def\FSAcopy{2}\def\FSAdelete{1}\def\FSAinsert{0}%
       \begin{adjustbox}{width=3.75em}%
         \input{Images/FixedSizeArray.tikz}%
       \end{adjustbox} &
       $\begin{array}{c}
-        \text{{\color{Mittel-Blau}reallocation}}\\
-        A \cdot {\color{Mittel-Blau}s_j}\;\text{(earliest reallocation)}
+        \text{{\color{MainA}reallocation}}\\
+        {\color{MainA}A \cdot s_j}\;\text{(earliest reallocation)}
       \end{array}$\\
     \end{tabularx}
   \end{table}
@@ -419,34 +421,34 @@
   \textbf{Proof of lemma:}
   \begin{itemize}
   \item
-    If a reallocation happens at {\color{Mittel-Blau}$O_i$} and then again at {\color{Mittel-Blau}$O_j$}, then {\color{Mittel-Blau}$j - i\geq s_i/2$}
+    If a reallocation happens at {\color{MainA}$O_i$} and then again at {\color{MainA}$O_j$}, then {\color{MainA}$j - i\geq s_i/2$}
     \item
-      After operation {\color{Mittel-Blau}$O_i$} the capacity is
+      After operation {\color{MainA}$O_i$} the capacity is
       \[
-        {\color{Mittel-Blau}c_i}
-        = \left\lfloor\frac{3}{2}\cdot{\color{Mittel-Blau}s_i}\right\rfloor
+        {\color{MainA}c_i}
+        = \left\lfloor\frac{3}{2}\cdot{\color{MainA}s_i}\right\rfloor
       \]
     \item
-      Lets consider a operation {\color{Mittel-Blau}$O_k$} to {\color{Mittel-Blau}$O_i$} with
-      $k -i \leq \dfrac{\color{Mittel-Blau}s_i}{2}$:
+      Lets consider a operation {\color{MainA}$O_i$} to {\color{MainA}$O_k$} with
+      $k -i \leq \dfrac{\color{MainA}s_i}{2}$:
       \begin{itemize}
         \item
           Case 1: Since the \textit{reallocation} we have inserted at
           maximum
           $\mathrm{floor}\left(
-            \frac{1}{2} \cdot {\color{Mittel-Blau}s_i}
+            \frac{1}{2} \cdot {\color{MainA}s_i}
           \right)$ elementsation
           \vspace{0.5em}\\
           \begin{tabularx}{\linewidth}{Xr}
-            ${\color{Mittel-Blau}s_k}
-              \leq {\color{Mittel-Blau}s_i} +
+            ${\color{MainA}s_k}
+              \leq {\color{MainA}s_i} +
                 \left\lfloor
-                  \dfrac{\color{Mittel-Blau}s_i}{2}
+                  \dfrac{\color{MainA}s_i}{2}
                   \vphantom{\dfrac{3}{2}}
                 \right\rfloor
-              = \left\lfloor\dfrac{3}{2} {\color{Mittel-Blau}s_i}\right\rfloor
+              = \left\lfloor\dfrac{3}{2} {\color{MainA}s_i}\right\rfloor
               = c_i$ &
-              {\color{Mittel-Blau}no reallocation needed}
+              {\color{MainA}no reallocation needed}
           \end{tabularx}
       \end{itemize}
   \end{itemize}
@@ -459,23 +461,22 @@
       \begin{itemize}
         \item
           Case 2: Since the \textit{reallocation} we have removed at
-          maximum $\mathrm{floor}\left(
-            \frac{1}{2} \cdot {\color{Mittel-Blau}s_i}
-          \right)$ elements
+          maximum $\left\lfloor\frac{1}{2} {\color{MainA}s_i} \right\rfloor$
+          elements
           \vspace{0.5em}\\
           \begin{tabularx}{\linewidth}{Xr}
-           ${\color{Mittel-Blau}s_k}
-             \geq {\color{Mittel-Blau}s_i} -
+           ${\color{MainA}s_k}
+             \geq {\color{MainA}s_i} -
                \left\lfloor
-                 \dfrac{\color{Mittel-Blau}s_i}{2}
+                 \dfrac{\color{MainA}s_i}{2}
                  \vphantom{\dfrac{1}{2}}
                \right\rfloor
-             = \left\lceil\dfrac{1}{2} {\color{Mittel-Blau}s_i}\right\rceil$ &
-           \multirow{2}{*}{\color{Mittel-Blau}no reallocation needed}\\[1.0em]
-           $\Rightarrow 3 \cdot {\color{Mittel-Blau}s_k}
-             \geq \left\lceil\dfrac{3}{2} {\color{Mittel-Blau}s_i}\right\rceil
-             \geq \left\lfloor\dfrac{3}{2} {\color{Mittel-Blau}s_i}\right\rfloor
-             = {\color{Mittel-Blau}c_i}$
+             = \left\lceil\dfrac{1}{2} {\color{MainA}s_i}\right\rceil$ &
+           \multirow{2}{*}{\color{MainA}no reallocation needed}\\[1.0em]
+           $\Rightarrow 3 \cdot {\color{MainA}s_k}
+             \geq \left\lceil\dfrac{3}{2} {\color{MainA}s_i}\right\rceil
+             \geq \left\lfloor\dfrac{3}{2} {\color{MainA}s_i}\right\rfloor
+             = {\color{MainA}c_i}$
           \end{tabularx}
       \end{itemize}
 \end{frame}
@@ -485,31 +486,30 @@
 \begin{frame}{Dynamic Arrays}{Amortized Analysis - Proof of Corollary}
   \begin{block}{Corollary:}
     \begin{displaymath}
-      {\color{Mittel-Blau}\mathrm{cost}(O_1)}+\dots+
-      {\color{Mittel-Blau}\mathrm{cost}(O_n)} \leq 4 A \cdot n
+      \mathrm{cost}(O_1)+\dots+\mathrm{cost}(O_n) \leq 4 A \cdot n
     \end{displaymath}
   \end{block}
   \begin{itemize}
     \item
       Let the \textit{reallocations} be at operations
       \begin{math}
-        {\color{Mittel-Blau}\mathrm{cost}(O_{i_1})},\dots,
-        {\color{Mittel-Blau}\mathrm{cost}(O_{i_\ell})}
+        {\color{MainA}\mathrm{cost}(O_{i_1})},\dots,
+        {\color{MainA}\mathrm{cost}(O_{i_m})}
       \end{math}
     \item
-      The {\color{Mittel-Blau}cost} of all \textit{reallocations} are
+      The {\color{MainA}cost} of all \textit{reallocations} are
       \begin{math}
         A \cdot \left(
-          {\color{Mittel-Blau}s_{i_1}}+\dots+{\color{Mittel-Blau}s_{i_\ell}}
+          {\color{MainA}s_{i_1}}+\dots+{\color{MainA}s_{i_m}}
         \right)
       \end{math}
     \item
       With the lemma we know:
       \begin{displaymath}
-        i_2-i_1 > \frac{\color{Mittel-Blau}s_{i_1}}{2},\hspace{1.0em}
-        i_3-i_2 > \frac{\color{Mittel-Blau}s_{i_2}}{2},\hspace{1.0em}
+        i_2-i_1 > \frac{\color{MainA}s_{i_1}}{2},\hspace{1.0em}
+        i_3-i_2 > \frac{\color{MainA}s_{i_2}}{2},\hspace{1.0em}
         \dotsc,\hspace{1.0em}
-        i_\ell-i_{\ell-1} > \frac{\color{Mittel-Blau}s_{i_{\ell-1}}}{2}
+        i_m-i_{m-1} > \frac{\color{MainA}s_{i_{m-1}}}{2}
       \end{displaymath}
   \end{itemize}
 \end{frame}
@@ -521,18 +521,18 @@
     \item
       We can conclude that:
       \begin{align*}
-        i_2-i_1 &> \frac{\color{Mittel-Blau}s_{i_1}}{2} &
+        i_2-i_1 &> \frac{\color{MainA}s_{i_1}}{2} &
         \Rightarrow &&
-        {\color{Mittel-Blau}s_{i_1}} &< 2 (i_2 - i_1)\\
-        i_3-i_2 &> \frac{\color{Mittel-Blau}s_{i_2}}{2} &
+        {\color{MainA}s_{i_1}} &< 2 (i_2 - i_1)\\
+        i_3-i_2 &> \frac{\color{MainA}s_{i_2}}{2} &
         \Rightarrow &&
-        {\color{Mittel-Blau}s_{i-2}} &< 2 (i_3 - i_2)\\
+        {\color{MainA}s_{i-2}} &< 2 (i_3 - i_2)\\
         {} & {} & \vdots\;\;\\
-        i_\ell-i_{\ell-1} &> \frac{\color{Mittel-Blau}s_{i_{\ell-1}}}{2} &
+        i_m-i_{m-1} &> \frac{\color{MainA}s_{i_{m-1}}}{2} &
         \Rightarrow &&
-        {\color{Mittel-Blau}s_{i_{\ell-1}}} &< 2 (i_\ell - i_{\ell-1})\\
+        {\color{MainA}s_{i_{m-1}}} &< 2 (i_m - i_{m-1})\\
         {} & {} & {} &&
-        {\color{Mittel-Blau}s_{i_\ell}} &\leq n
+        {\color{MainA}s_{i_m}} &\leq n
         \hspace*{3.0em}\text{(trivial)}
       \end{align*}
   \end{itemize}
@@ -543,23 +543,23 @@
 \begin{frame}{Dynamic Arrays}{Amortized Analysis - Proof of Corollary}
   \begin{itemize}
     \item
-      The {\color{Mittel-Blau}costs} of all reallocations are:
+      The {\color{MainA}costs} of all reallocations are:
       \begin{align*}
-        {\color{Mittel-Blau}cost}(realloc.)
+        {\color{MainA}cost}(realloc.)
           & = A \cdot \left(
-              {\color{Mittel-Blau}s_{i_1}}+\dots+{\color{Mittel-Blau}s_{i_\ell}}
+              {\color{MainA}s_{i_1}}+\dots+{\color{MainA}s_{i_m}}
             \right)\\
           & < A \cdot \left(
-              2(i_2-i_1)+2(i_3-i_2)+\dots+2(i_\ell-i_{\ell-1}) + n
+              2(i_2-i_1)+2(i_3-i_2)+\dots+2(i_m-i_{m-1}) + n
             \right)\\
           & \hspace{1.5em} = A \cdot \left(
-              2 (i_\ell - i_1) + n
+              2 (i_m - i_1) + n
             \right)\\
           & \leq A \cdot \left(2n + n\right) = 3A \cdot n
       \end{align*}
     \item
       Additionally we have to consider the respective constant costs for
-      a normal append or remove: {\color{Mittel-Blau}$\leq A \cdot n$} therefore in total {\color{Mittel-Blau}$\leq 4 \cdot A \cdot n$}
+      a normal append or remove ({\color{MainA}$\leq A \cdot n$}) therefore in total {\color{MainA}$\leq 4 \cdot A \cdot n$}
   \end{itemize}
 \end{frame}
 
@@ -568,62 +568,63 @@
 \begin{frame}{Dynamic Arrays}{Amortized Analysis - Alternate Proof of Corollary}
   \vspace*{-1.5em}
   \begin{table}[!h]
-    \caption{Case 1: $\frac{1}{2} {\color{Mittel-Blau}s_i}$ \textit{appends}}
+    \caption{Case 1: $\frac{1}{2} {\color{MainA}s_i}$ \textit{appends}}
     \label{tab:dynamic_fields:amortized_analysis:proof_corollary_add}
     \begin{tabularx}{\linewidth}{@{}r@{}c@{}lc@{}l}
       {} & {} & \multicolumn{1}{c}{Array} & Costs\\
       \cmidrule{1-4}
-      {\color{Mittel-Blau}$O_i$}: & {} &
+      {\color{MainA}$O_i$}: & {} &
       \def\FSAsize{9}\def\FSAelements{0}%
       \def\FSAcopy{5}\def\FSAdelete{0}\def\FSAinsert{1}%
       \def\FSAcopyarrow{1}%
-      \def\FSAlabelsize{${\color{Mittel-Blau}s_i}$}%
-      \def\FSAlabelcapacity{${\color{Mittel-Blau}c_i}$}%
+      \def\FSAlabelsize{${\color{MainA}s_i}$}%
+      \def\FSAlabelcapacity{${\color{MainA}c_i}$}%
       \raisebox{-2em}{\begin{adjustbox}{width=11.25em}%
         \input{Images/FixedSizeArray_Sizes.tikz}%
       \end{adjustbox}} &
       $\begin{array}{c}
-        \text{{\color{Mittel-Blau}reallocation}}\\
-        C_1 \cdot {\color{Mittel-Blau}s_i}\;\text{(linear)}
+        \text{{\color{MainA}reallocation}}\\
+        {\color{MainA}A \cdot s_i}\;\text{(linear)}
       \end{array}$\\
-      {\color{Mittel-Blau}$O_{i+1}$}: & $\hspace*{0.5em}$ &
+      {\color{MainA}$O_{i+1}$}: & $\hspace*{0.5em}$ &
       \def\FSAsize{9}\def\FSAelements{6}%
       \def\FSAcopy{0}\def\FSAdelete{0}\def\FSAinsert{1}%
       \begin{adjustbox}{width=11.25em}%
         \input{Images/FixedSizeArray.tikz}%
       \end{adjustbox} &
-      $C_2$ (constant) &
+      $A$ (constant) &
       \multirow{3}{*}{$\left.
           \begin{array}{@{}c@{}}\\[4.0em]\end{array}
         \right\rbrace
         \begin{array}{@{}c@{}}
-          \dfrac{\color{Mittel-Blau}s_i}{2}\\
+          \dfrac{\color{MainA}s_i}{2}\\
           \text{times}
         \end{array}$}\\
-      {\color{Mittel-Blau}$O_{i+2}$}: & {} &
+      {\color{MainA}$O_{i+2}$}: & {} &
       \def\FSAsize{9}\def\FSAelements{7}%
       \def\FSAcopy{0}\def\FSAdelete{0}\def\FSAinsert{1}%
       \begin{adjustbox}{width=11.25em}%
         \input{Images/FixedSizeArray.tikz}%
       \end{adjustbox} &
-      $C_2$ (constant)\\
-      {\color{Mittel-Blau}$O_{i+3}$}: & {} &
+      $A$ (constant)\\
+      {\color{MainA}$O_{i+3}$}: & {} &
       \def\FSAsize{9}\def\FSAelements{8}%
       \def\FSAcopy{0}\def\FSAdelete{0}\def\FSAinsert{1}%
       \begin{adjustbox}{width=11.25em}%
         \input{Images/FixedSizeArray.tikz}%
       \end{adjustbox} &
-      $C_2$ (constant)\\
+      $A$ (constant)\\
       \cmidrule{1-4}
-      {\color{Mittel-Blau}$O_j$}: & {} &
+      {\color{MainA}$O_j$}: & {} &
       \def\FSAsize{11}\def\FSAelements{0}%
       \def\FSAcopy{9}\def\FSAdelete{0}\def\FSAinsert{1}%
       \begin{adjustbox}{width=13.75em}%
         \input{Images/FixedSizeArray.tikz}%
       \end{adjustbox}$\hspace*{0.25em}\cdots$ &
       $\begin{array}{c}
-        \text{{\color{Mittel-Blau}reallocation}}\\
-        C_1 \cdot {\color{Mittel-Blau}s_j}\;\text{(earliest reallocation)}
+        \text{{\color{MainA}reallocation}}\\
+        {\color{MainA}A \cdot s_j}\\
+        \text{(earliest realloc.)}
       \end{array}$\\
     \end{tabularx}
   \end{table}
@@ -634,20 +635,21 @@
 \begin{frame}{Dynamic Arrays}{Amortized Analysis - Alternate Proof of Corollary}
   \begin{itemize}
     \item
-      Total costs of {\color{Mittel-Blau}$A \cdot \frac{3}{2} \cdot s_i$ }for {\color{Mittel-Blau}$\frac{s_i}{2} +1$} operations
+      Total costs of {\color{MainA}$A \cdot \frac{3}{2} \cdot s_i$}
+      for {\color{MainA}$\frac{s_i}{2} + 1$} operations
     \item
       Cost per operation:
       \begin{displaymath}
         \frac{
-          \frac{3}{2} A \cdot {\color{Mittel-Blau}s_i}
+          \frac{3}{2} A \cdot {\color{MainA}s_i}
         }{
-          \frac{1}{2}{\color{Mittel-Blau}s_i} + 1
+          \frac{1}{2}{\color{MainA}s_i} + 1
         }
         \leq
         \frac{
-          \frac{3}{2} A \cdot {\color{Mittel-Blau}s_i}
+          \frac{3}{2} A \cdot {\color{MainA}s_i}
         }{
-          \frac{1}{2}{\color{Mittel-Blau}s_i}
+          \frac{1}{2}{\color{MainA}s_i}
         }
         = 3 \cdot A = \text{const.}
       \end{displaymath}
@@ -657,72 +659,69 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Dynamic Arrays}{Amortized Analysis - Alternate Proof of Corollary}
-  \begin{itemize}
-  \item Runtime analysis for local worst-case sequence
-  \end{itemize}
-  \vspace*{-1.5em}
   \begin{table}[!h]
-    %\caption{Case 2: $\frac{1}{2} {\color{Mittel-Blau}s_i}$ \textit{removes}}
+    %\caption{Case 2: $\frac{1}{2} {\color{MainA}s_i}$ \textit{removes}}
     \label{tab:dynamic_fields:amortized_analysis:proof_corollary_remove}
     \begin{tabularx}{\linewidth}{@{}r@{}c@{}lc@{}l}
       {} & {} & \multicolumn{1}{c}{Array} & Costs\\
       \cmidrule{1-4}
-      {\color{Mittel-Blau}$O_i$}: & {} &
+      {\color{MainA}$O_i$}: & {} &
       \def\FSAsize{9}\def\FSAelements{0}%
       \def\FSAcopy{6}\def\FSAdelete{0}\def\FSAinsert{0}%
       \def\FSAcopyarrow{1}%
-      \def\FSAlabelsize{${\color{Mittel-Blau}s_i}$}%
-      \def\FSAlabelcapacity{${\color{Mittel-Blau}c_i}$}%
+      \def\FSAlabelsize{${\color{MainA}s_i}$}%
+      \def\FSAlabelcapacity{${\color{MainA}c_i}$}%
       \raisebox{-2em}{\begin{adjustbox}{width=11.25em}%
         \input{Images/FixedSizeArray_Sizes.tikz}%
       \end{adjustbox}} &
       $\begin{array}{c}
-        \text{{\color{Mittel-Blau}reallocation}}\\
-        C_1 \cdot {\color{Mittel-Blau}s_i}\;\text{(linear)}
+        \text{{\color{MainA}reallocation}}\\
+        {\color{MainA}A \cdot s_i}\;\text{(linear)}
       \end{array}$\\
-      {\color{Mittel-Blau}$O_{i+1}$}: & $\hspace*{0.5em}$ &
+      {\color{MainA}$O_{i+1}$}: & $\hspace*{0.5em}$ &
       \def\FSAsize{9}\def\FSAelements{5}%
       \def\FSAcopy{0}\def\FSAdelete{1}\def\FSAinsert{0}%
       \begin{adjustbox}{width=11.25em}%
         \input{Images/FixedSizeArray.tikz}%
       \end{adjustbox} &
-      $C_2$ (constant) &
+      $A$ (constant) &
       \multirow{3}{*}{$\left.
           \begin{array}{@{}c@{}}\\[3.0em]\end{array}
         \right\rbrace
         \begin{array}{@{}c@{}}
-          \dfrac{\color{Mittel-Blau}s_i}{2}\\
+          \dfrac{\color{MainA}s_i}{2}\\
           \text{times}
         \end{array}$}\\
-      {\color{Mittel-Blau}$O_{i+2}$}: & {} &
+      {\color{MainA}$O_{i+2}$}: & {} &
       \def\FSAsize{9}\def\FSAelements{4}%
       \def\FSAcopy{0}\def\FSAdelete{1}\def\FSAinsert{0}%
       \begin{adjustbox}{width=11.25em}%
         \input{Images/FixedSizeArray.tikz}%
       \end{adjustbox} &
-      $C_2$ (constant)\\
-      {\color{Mittel-Blau}$O_{i+3}$}: & {} &
+      $A$ (constant)\\
+      {\color{MainA}$O_{i+3}$}: & {} &
       \def\FSAsize{9}\def\FSAelements{3}%
       \def\FSAcopy{0}\def\FSAdelete{1}\def\FSAinsert{0}%
       \begin{adjustbox}{width=11.25em}%
         \input{Images/FixedSizeArray.tikz}%
       \end{adjustbox} &
-      $C_2$ (constant)\\
+      $A$ (constant)\\
       \cmidrule{1-4}
-      {\color{Mittel-Blau}$O_j$}: & {} &
+      {\color{MainA}$O_j$}: & {} &
       \def\FSAsize{3}\def\FSAelements{0}%
       \def\FSAcopy{2}\def\FSAdelete{1}\def\FSAinsert{0}%
       \begin{adjustbox}{width=3.75em}%
         \input{Images/FixedSizeArray.tikz}%
       \end{adjustbox} &
       $\begin{array}{c}
-        \text{{\color{Mittel-Blau}reallocation}}\\
-        C_1 \cdot {\color{Mittel-Blau}s_j}\;\text{(linear)}
+        \text{{\color{MainA}reallocation}}\\
+        {\color{MainA}A \cdot s_j}\;\text{(linear)}
       \end{array}$\\
     \end{tabularx}
   \end{table}
   \begin{itemize}
-  \item Same total cost as previous slide
+    \item Runtime analysis for local worst-case sequence
+    \item Same total cost as previous slide
   \end{itemize}
 \end{frame}
 
@@ -731,36 +730,36 @@
 %% \begin{frame}{Dynamic Arrays}{Amortized Analysis - Alternate Proof of Corollary}
 %%   \begin{itemize}
 %%     \item
-%%       For $\frac{\color{Mittel-Blau}s_i}{2} + 1$ elements we have total
-%%       {\color{Mittel-Blau}costs} of:\\
+%%       For $\frac{\color{MainA}s_i}{2} + 1$ elements we have total
+%%       {\color{MainA}costs} of:\\
 %%       \hspace{1.5em}With $C_2 = C_1 = C \in \mathbb{R}$
 %%       \begin{displaymath}
-%%         C_2 \cdot \frac{\color{Mittel-Blau}s_i}{2}
-%%         + C_1 \cdot {\color{Mittel-Blau}s_i}
-%%         = \frac{3}{2} C \cdot {\color{Mittel-Blau}s_i}
+%%         C_2 \cdot \frac{\color{MainA}s_i}{2}
+%%         + C_1 \cdot {\color{MainA}s_i}
+%%         = \frac{3}{2} C \cdot {\color{MainA}s_i}
 %%       \end{displaymath}
 %%     \item
 %%       Cost per operation:
 %%       \begin{displaymath}
 %%         \frac{
-%%           \frac{3}{2} C \cdot {\color{Mittel-Blau}s_i}
+%%           \frac{3}{2} C \cdot {\color{MainA}s_i}
 %%         }{
-%%           \frac{1}{2}{\color{Mittel-Blau}s_i} + 1
+%%           \frac{1}{2}{\color{MainA}s_i} + 1
 %%         }
 %%         \leq
 %%         \frac{
-%%           \frac{3}{2} C \cdot {\color{Mittel-Blau}s_i}
+%%           \frac{3}{2} C \cdot {\color{MainA}s_i}
 %%         }{
-%%           \frac{1}{2}{\color{Mittel-Blau}s_i}
+%%           \frac{1}{2}{\color{MainA}s_i}
 %%         }
 %%         = 3 C = \text{const.}
 %%       \end{displaymath}
 %%     \item
 %%     Total costs:
 %%     \begin{math}
-%%       {\color{Mittel-Blau}\mathrm{cost}(O_k)}+\dots+
-%%       {\color{Mittel-Blau}
-%%         \mathrm{cost}(O_{k+\frac{1}{2}{\color{Mittel-Blau}s_i} + 1})}
+%%       {\color{MainA}\mathrm{cost}(O_k)}+\dots+
+%%       {\color{MainA}
+%%         \mathrm{cost}(O_{k+\frac{1}{2}{\color{MainA}s_i} + 1})}
 %%       \leq 3C \cdot n
 %%     \end{math}
 %%   \end{itemize}
@@ -777,12 +776,13 @@
        \enquote{Save first, spend later} 
     \item
       For each operation we deposit some coins on an \enquote{bank account}\\
-      We still have constant costs.
+      $\Rightarrow$ We still have {\color{MainA}constant costs}
     \item
-      When we have a linear (reallocation) operation we pay with the coins from our \enquote{bank account}
+      When we have a {\color{MainA}linear operation} (reallocation)
+      we pay with the coins from our \enquote{bank account}
     \item
-      For the Duplication strategy we have to pay
-      two coins per operation.
+      For the \enquote{double the size} strategy we have to pay
+      two coins per operation
   \end{itemize}
 \end{frame}
 
@@ -792,7 +792,7 @@
     Yet Another Proof of Corollary}
   \begin{tabularx}{\linewidth}{@{}lclc}
     \textbf{Double the size:} &
-    {\color{Mittel-Blau}$\mathrm{cost}(O_i)$} &
+    {\color{MainA}$\mathrm{cost}(O_i)$} &
     $\begin{array}{c}
       \text{deposit /}\\
       \text{withdraw}
@@ -804,48 +804,48 @@
     \def\FSAsize{1}\def\FSAelements{0}%
     \def\FSAcopy{0}\def\FSAdelete{0}\def\FSAinsert{1}%
     \input{Images/FixedSizeArray.tikz} &
-    $O(1)$ & \hspace{1.5em}{\color{Mittel-Gruen}+2} & 2\\
+    $O(1)$ & \hspace{1.5em}{\color{MainB}+2} & 2\\
     \def\FSAsize{2}\def\FSAelements{0}%
     \def\FSAcopy{1}\def\FSAdelete{0}\def\FSAinsert{1}%
     \input{Images/FixedSizeArray.tikz} &
-    $O(1 + {\color{Mittel-Blau}1})$ &
-    \hspace{1.5em}{\color{Mittel-Gruen}+2} {\color{Mittel-Blau}-1} &
-    {\color{Mittel-Blau}3}\\
+    $O(1 + {\color{MainA}1})$ &
+    \hspace{1.5em}{\color{MainB}+2} {\color{MainA}-1} &
+    {\color{MainA}3}\\
     \def\FSAsize{4}\def\FSAelements{0}%
     \def\FSAcopy{2}\def\FSAdelete{0}\def\FSAinsert{1}%
     \input{Images/FixedSizeArray.tikz} &
-    $O(1 + {\color{Mittel-Blau}2})$ &
-    \hspace{1.5em}{\color{Mittel-Gruen}+2} {\color{Mittel-Blau}-2} &
-    {\color{Mittel-Blau}3}\\
+    $O(1 + {\color{MainA}2})$ &
+    \hspace{1.5em}{\color{MainB}+2} {\color{MainA}-2} &
+    {\color{MainA}3}\\
     \def\FSAsize{4}\def\FSAelements{3}%
     \def\FSAcopy{0}\def\FSAdelete{0}\def\FSAinsert{1}%
     \input{Images/FixedSizeArray.tikz} &
-    $O(1)$ & \hspace{1.5em}{\color{Mittel-Gruen}+2} & 5\\
+    $O(1)$ & \hspace{1.5em}{\color{MainB}+2} & 5\\
     \def\FSAsize{8}\def\FSAelements{0}%
     \def\FSAcopy{4}\def\FSAdelete{0}\def\FSAinsert{1}%
     \input{Images/FixedSizeArray.tikz} &
-    $O(1 + {\color{Mittel-Blau}4})$ &
-    \hspace{1.5em}{\color{Mittel-Gruen}+2} {\color{Mittel-Blau}-4} &
-    {\color{Mittel-Blau}3}\\
+    $O(1 + {\color{MainA}4})$ &
+    \hspace{1.5em}{\color{MainB}+2} {\color{MainA}-4} &
+    {\color{MainA}3}\\
     \def\FSAsize{8}\def\FSAelements{5}%
     \def\FSAcopy{0}\def\FSAdelete{0}\def\FSAinsert{1}%
     \input{Images/FixedSizeArray.tikz} &
-    $O(1)$ & \hspace{1.5em}{\color{Mittel-Gruen}+2} & 5\\
+    $O(1)$ & \hspace{1.5em}{\color{MainB}+2} & 5\\
     \def\FSAsize{8}\def\FSAelements{6}%
     \def\FSAcopy{0}\def\FSAdelete{0}\def\FSAinsert{1}%
     \input{Images/FixedSizeArray.tikz} &
-    $O(1)$ & \hspace{1.5em}{\color{Mittel-Gruen}+2} & 7\\
+    $O(1)$ & \hspace{1.5em}{\color{MainB}+2} & 7\\
     \def\FSAsize{8}\def\FSAelements{7}%
     \def\FSAcopy{0}\def\FSAdelete{0}\def\FSAinsert{1}%
     \input{Images/FixedSizeArray.tikz} &
-    $\O(1)$ & \hspace{1.5em}{\color{Mittel-Gruen}+2} & 9\\
+    $O(1)$ & \hspace{1.5em}{\color{MainB}+2} & 9\\
     \def\FSAsize{10}\def\FSAelements{0}%
     \def\FSAcopy{8}\def\FSAdelete{0}\def\FSAinsert{1}%
     \input{Images/FixedSizeArray.tikz}%
     \hspace*{0.25em}$\cdots$ &
-    $O(1 + {\color{Mittel-Blau}8})$ &
-    \hspace{1.5em}{\color{Mittel-Gruen}+2} {\color{Mittel-Blau}-8} &
-    {\color{Mittel-Blau}3}\\
+    $O(1 + {\color{MainA}8})$ &
+    \hspace{1.5em}{\color{MainB}+2} {\color{MainA}-8} &
+    {\color{MainA}3}\\
     \hspace*{1.5em}\dots & \dots & \hspace{1.5em}\dots & \dots
   \end{tabularx}
 \end{frame}
@@ -861,12 +861,12 @@
     \def\FSAcopyarrow{1}%
     \def\FSAinsertarrow{1}%
     \def\FSAlabelsize{\raisebox{1.75em}{$\begin{array}{c}
-        {\color{Mittel-Blau}s_{i-1}}\\
+        {\color{MainA}s_{i-1}}\\
         \text{old elements}
       \end{array}$}}%
     \def\FSAlabelinsertcapacity{new elements}%
-    \def\FSAlabelcapacity{${\color{Mittel-Blau}c_i}
-      = 2 \cdot {\color{Mittel-Blau}c_{i-1}}$}%
+    \def\FSAlabelcapacity{${\color{MainA}c_i}
+      = 2 \cdot {\color{MainA}c_{i-1}}$}%
     \input{Images/FixedSizeArray_Copy.tikz}%
     \vspace{-0.5em}%
     \caption{Array after realloc. (insert) operation}
@@ -875,9 +875,12 @@
   \textbf{Why do we need to deposit 2 coints per operation?}
   \begin{enumerate}
     \item
-      Each newly inserted element has to be copied later (first coin)
+      Each newly inserted element has to be copied later\\
+      (first coin)
     \item
-      Due to the factor of two there is for each new element also an old one in the array that also has to be copied (second coin)
+      Due to the factor of two there is for each new element also an old
+      one in the array that also has to be copied\\
+      (second coin)
   \end{enumerate}
 \end{frame}
 
@@ -892,32 +895,64 @@
     \def\FSAcopyarrow{1}%
     \def\FSAinsertarrow{1}%
     \def\FSAlabelsize{\raisebox{1.75em}{$\begin{array}{c}
-        {\color{Mittel-Blau}s_{i-1}-1}\\
+        {\color{MainA}s_{i-1}-1}\\
         \text{old elements}
         \end{array}$}}%
     \def\FSAlabelinsertcapacity{removed elements}%
-    \def\FSAlabelcapacity{${\color{Mittel-Blau}c_i}
-      = \frac{1}{2} \cdot {\color{Mittel-Blau}c_{i-1}}$}%
+    \def\FSAlabelcapacity{${\color{MainA}c_i}
+      = \frac{1}{2} \cdot {\color{MainA}c_{i-1}}$}%
     \input{Images/FixedSizeArray_Copy.tikz}%
     \vspace{-0.5em}%
     \caption{Array after realloc. (remove) operation}
     \label{fig:dynamic_fields:amortized_analysis:yapoc_array_shrink}
   \end{figure}
   \vspace*{-1.0em}
-    \textbf{Shrinking strategy: if array 1/4 full shrink by half}
+    \textbf{Shrinking strategy: If array 1/4 full shrink by half}
   \begin{itemize}
   \item
     How many coins do we need per \textit{remove} operation?
   \item
     \textbf{Worst case:}
-    The previous remove operation triggered a \textit{reallocation}\\
-    $\hspace{1.5em}\Rightarrow$ Array is half full
+    The previous remove operation triggered a \textit{reallocation}
+  \item[$\Rightarrow$]
+    Array is half full
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Dynamic Arrays}{Amortized Analysis -
+    Yet Another Proof of Corollary}
+  \vspace{-2.0em}
+  \begin{figure}[!h]%
+    \def\FSAsize{14}\def\FSAelements{0}%
+    \def\FSAcopy{7}\def\FSAdelete{1}\def\FSAinsert{0}%
+    \def\FSAcopyarrow{1}%
+    \def\FSAinsertarrow{1}%
+    \def\FSAlabelsize{\raisebox{1.75em}{$\begin{array}{c}
+        {\color{MainA}s_{i-1}-1}\\
+        \text{old elements}
+        \end{array}$}}%
+    \def\FSAlabelinsertcapacity{removed elements}%
+    \def\FSAlabelcapacity{${\color{MainA}c_i}
+      = \frac{1}{2} \cdot {\color{MainA}c_{i-1}}$}%
+    \input{Images/FixedSizeArray_Copy.tikz}%
+    \vspace{-0.5em}%
+    \caption{Array after realloc. (remove) operation}
+    \label{fig:dynamic_fields:amortized_analysis:yapoc_array_shrink2}
+  \end{figure}
+  \vspace*{-1.0em}
+  \textbf{Shrinking strategy: If array 1/4 full shrink by half}
+  \begin{itemize}
+    \item
+      Array is half full
     \item
       The nearest \textit{reallocation} is after removing
-      $\frac{1}{4} {\color{Mittel-Blau}c_i}$ elements
+      $\frac{1}{4} {\color{MainA}c_i}$ elements
     \item
-      We have to copy $\frac{1}{4} {\color{Mittel-Blau}c_i}$ elements\\
-      $\hspace{1.5em}\Rightarrow$ 1 coin per operation is enough
+      We have to copy $\frac{1}{4} {\color{MainA}c_i}$ elements
+    \item[$\Rightarrow$]
+      1 coin per operation is enough
   \end{itemize}
 \end{frame}
 
