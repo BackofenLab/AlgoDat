@@ -36,7 +36,8 @@
       (\x, 0.0)
       rectangle
       (\x + 1.0, 1.0);
-    \draw (\x + 0.5, 0.5) node {\Huge \x};
+    \FPeval{\value}{clip(\x+1)}
+    \draw (\x + 0.5, 0.5) node {\Huge \value};
   \fi
 }
 \foreach \x in {0,...,\FSAcopy}{
@@ -45,7 +46,7 @@
       (\x + \FSAelements, 0.0)
       rectangle
       (\x + \FSAelements + 1.0, 1.0);
-    \FPeval{\value}{clip(\x+\FSAelements)}
+    \FPeval{\value}{clip(\x+\FSAelements+1)}
     \draw (\x + \FSAelements + 0.5, 0.5)
       node {\Huge \value};
     \draw[arrow_copy]
@@ -59,7 +60,7 @@
     (\x + \FSAelements + \FSAcopy, 0.0)
     rectangle
     (\x + \FSAelements + \FSAcopy + 1.0, 1.0);
-  \FPeval{\value}{clip(\x+\FSAelements+\FSAcopy)}
+  \FPeval{\value}{clip(\x+\FSAelements+\FSAcopy+1)}
   \draw (\x + \FSAelements + \FSAcopy + 0.5, 0.5)
     node {\Huge \value};
   \fi
@@ -70,7 +71,7 @@
       (\x + \FSAelements + \FSAcopy + \FSAdelete, 0.0)
       rectangle
       (\x + \FSAelements + \FSAcopy + \FSAdelete + 1.0, 1.0);
-    \FPeval{\value}{clip(\x+\FSAelements+\FSAcopy+\FSAdelete)}
+    \FPeval{\value}{clip(\x+\FSAelements+\FSAcopy+\FSAdelete+1)}
     \draw (\x + \FSAelements + \FSAcopy + \FSAdelete + 0.5, 0.5)
       node {\Huge \value};
     \draw[arrow_insert]

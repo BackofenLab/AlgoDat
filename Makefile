@@ -6,7 +6,7 @@ ALGO_FULL_NAME := $(shell basename $(ALGO_ROOT_DIR))
 
 ALGO_LANGUAGE ?= eng
 ALGO_PROGLANG ?= python
-ALGO_DESIGN ?= plain
+ALGO_DESIGN ?= ufcd
 ALGO_MODE ?= presentation
 
 all: clean build

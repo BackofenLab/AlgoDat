@@ -1,3 +1,12 @@
+%%% ===================================================================
+%%% RCS Header:
+%%% $RCSfile: local.el,v $
+%%% $Revision: 1.27 $
+%%% $Date: 2014/11/07 15:36:00 $
+%%% $Author: backofen $
+%%% $Locker:  $
+%%% ===================================================================
+
 \subsection{Amortized Analysis}
 
 \begin{frame}{Dynamic Arrays}{Amortized Analysis}
@@ -60,31 +69,31 @@
       \end{array}$\\
       \toprule
       $O_1$ & append & {\color{Mittel-Blau}realloc.} &
-      $s_1 = 1$ & {\color{Mittel-Blau}$c_1 = 3$} &
+      $s_1$ & {\color{Mittel-Blau}$c_1$} &
       ${\color{Mittel-Blau}A \cdot s_1}$\\
       $O_2$ & append & {} &
-      $s_2 = 2$ & $c_2 = c_1$ & $A$\\
+      $s_2$ & $c_2 = c_1$ & $A\cdot 1$\\
       $O_3$ & append & {} &
-      $s_3 = 3$ & $c_3 = c_1$ & $A$\\
+      $s_3$ & $c_3 = c_1$ & $A\cdot 1$\\
       $O_4$ & remove & {} &
-      $s_4 = 2$ & $c_4 = c_1$ & $A$\\
+      $s_4$ & $c_4 = c_1$ & $A\cdot 1$\\
       \midrule
       $O_5$ & remove & {\color{Mittel-Blau}realloc.} &
-      $s_5 = 1$ & {\color{Mittel-Blau}$c_5 = \frac{2}{3} c_1 = 2$} &
+      $s_5$ & {\color{Mittel-Blau}$c_5$} &
       ${\color{Mittel-Blau}A \cdot s_5}$\\
       $O_6$ & append & {} &
-      $s_6 = 2$ & $c_6 = c_5$ & $A$\\
+      $s_6$ & $c_6 = c_5$ & $A\cdot 1$\\
       $O_7$ & remove & {} &
-      $s_7 = 1$ & $c_7 = c_5$ & $A$\\
+      $s_7$ & $c_7 = c_5$ & $A\cdot 1$\\
       $O_8$ & append & {} &
-      $s_8 = 2$ & $c_8 = c_5$ & $A$\\
+      $s_8$ & $c_8 = c_5$ & $A\cdot 1$\\
       \midrule
       $O_9$ & append & {\color{Mittel-Blau}realloc.} &
-      $s_9 = 3$ & {\color{Mittel-Blau}$c_9 = 3 \cdot c_5 = 6$} &
+      $s_9$ & {\color{Mittel-Blau}$c_9$} &
       ${\color{Mittel-Blau}A \cdot s_9}$\\
       $\dots$ & $\dots$ & $\dots$ & $\dots$ & $\dots$ & $\dots$\\
       $O_n$ & append & {} &
-      $s_n$ & $c_n$ & $A$\\
+      $s_n$ & $c_n$ & $A\cdot 1$\\
       \bottomrule
     \end{tabular}
   \end{table}
@@ -116,16 +125,19 @@
     %
     \hspace*{0.5em}\raisebox{2em}{$\Rightarrow$}\hspace*{0.5em}%
     %
-    \def\FSAsize{13}\def\FSAelements{0}%
-    \def\FSAcopy{8}\def\FSAdelete{0}\def\FSAinsert{1}%
+    \def\FSAsize{12}\def\FSAelements{0}%
+    \def\FSAcopy{7}\def\FSAdelete{0}\def\FSAinsert{1}%
     \def\FSAlabelsize{${\color{Mittel-Blau}s_i}
-      = {\color{Mittel-Blau}s_{i-1}} + 1$}%
-    \def\FSAlabelcapacity{${\color{Mittel-Blau}c_i}
-      = \frac{3}{2}{\color{Mittel-Blau}s_i}$ = 13}%
+      = {\color{Mittel-Blau}s_{i-1} + 1}=8$}%
+    \def\FSAlabelcapacity{$12={\color{Mittel-Blau}c_i}
+      = \lfloor\frac{3}{2}{\color{Mittel-Blau}s_i}\rfloor = 8$}%
     \input{Images/FixedSizeArray_Sizes.tikz}%
     \caption{\textit{Append} operation with reallocation}
     \label{fig:dynamic_fields:amortized_analysis:append}
   \end{figure}
+\begin{itemize}
+  \item[] \textbf{Result:} after operation we have $c_i=\frac{3}{2}\cdot s_i$
+  \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------------------------------
@@ -144,27 +156,30 @@
       = A \cdot {\color{Mittel-Blau}s_i}$
   \end{itemize}
   \begin{figure}[!h]
-    \def\FSAsize{12}\def\FSAelements{4}%
+    \def\FSAsize{15}\def\FSAelements{5}%
     \def\FSAcopy{0}\def\FSAdelete{0}\def\FSAinsert{0}%
     \def\FSAcopyarrow{0}%
-    \def\FSAlabelsize{${\color{Mittel-Blau}s_{i-1}} = 4$}%
+    \def\FSAlabelsize{${\color{Mittel-Blau}s_{i-1}} = 5$}%
     \def\FSAlabelcapacity{%
-      ${\color{Mittel-Blau}c_{i-1}} = 12%
-      \geq {\color{Mittel-Blau}s_{i-1}}$}%
+      ${\color{Mittel-Blau}c_{i-1}} = 15%
+      \geq {3\cdot\color{Mittel-Blau}s_{i-1}}$}%
     \input{Images/FixedSizeArray_Sizes.tikz}%
     %
     \hspace*{0.5em}\raisebox{2em}{$\Rightarrow$}\hspace*{0.5em}%
     %
-    \def\FSAsize{4}\def\FSAelements{0}%
-    \def\FSAcopy{3}\def\FSAdelete{1}\def\FSAinsert{0}%
+    \def\FSAsize{6}\def\FSAelements{0}%
+    \def\FSAcopy{4}\def\FSAdelete{1}\def\FSAinsert{0}%
     \def\FSAlabelsize{${\color{Mittel-Blau}s_i}
-      = {\color{Mittel-Blau}s_{i-1}} - 1$}%
-    \def\FSAlabelcapacity{${\color{Mittel-Blau}c_i}
+      = {\color{Mittel-Blau}s_{i-1}- 1} $}%
+    \def\FSAlabelcapacity{$6={\color{Mittel-Blau}c_i}
       = \frac{3}{2}{\color{Mittel-Blau}s_i}$ = 4}%
     \input{Images/FixedSizeArray_Sizes.tikz}%
     \caption{\textit{Remove} operation with reallocation}
     \label{fig:dynamic_fields:amortized_analysis:remove}
   \end{figure}
+  \begin{itemize}
+  \item[] \textbf{Result:} after operation we have again $c_i=\frac{3}{2}\cdot s_i$
+  \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------------------------------
@@ -176,10 +191,10 @@
       Expansive are only those operations, where reallocations are necessary.
     \item
       If we just reallocated, it takes some time until the next reallocation is required.
-    \item
+    \item \textbf{Assumption:}
       After a costly \textit{reallocation} of size $X$ we have at least $X$ operations of runtime $O(1)$
     \item
-      Total cost of {\color{Mittel-Blau}$n$} operations is maximally {\color{Mittel-Blau}$2 \cdot n$}
+      \textbf{Then:} Total cost of {\color{Mittel-Blau}$n$} operations is maximally {\color{Mittel-Blau}$2 \cdot n$}
   \end{itemize}
   %% \[\Rightarrow {\color{Mittel-Blau}\mathrm{cost}(O_i)} \dots
   %%   {\color{Mittel-Blau}\mathrm{cost}(O_{i + n})} \leq 2 \, n \cdot C,
@@ -194,12 +209,11 @@
     \caption{Dynamic Array with %
       $C_\text{ext} = \frac{3}{2}$}%
     \label{tab:amortized_analysis_limit}%
-    \vspace*{-1.5em}%
-    \begin{tabular}{|l|l|l|l|c|@{}l}
-      \cmidrule[\heavyrulewidth]{1-5}\addlinespace[-\belowrulesep]
-      \multicolumn{2}{|c|}{$\begin{array}{c}
+    \vspace*{-0.2em}%
+    \begin{tabular}{|l|l|l|l|l|c|@{}l}
+\cline{1-6}%      \cmidrule[\heavyrulewidth]{1-5}\addlinespace[-\belowrulesep]
+      \multicolumn{3}{|c|}{$\begin{array}{c}
           \text{Operation}\\
-          \text{(append)}
         \end{array}$} &
       $\begin{array}{c}
         \text{Size}\\
@@ -213,39 +227,39 @@
         \text{Costs}\\
         {\color{Mittel-Blau}\mathrm{cost}(O_i)}
       \end{array}$\\
-      \addlinespace[-0.25\aboverulesep]\cmidrule[\heavyrulewidth]{1-5}
-      $O_1$ & {\color{Mittel-Blau}realloc.} &
-      $s_1 = 1$ & {\color{Mittel-Blau}$c_1 = 4$} &
+\cline{1-6}
+      $O_1$ &app. & {\color{Mittel-Blau}realloc.} &
+      $s_1$ & {\color{Mittel-Blau}$c_1=4$} &
       ${\color{Mittel-Blau}C_1 \cdot s_1}$ &
       \raisebox{-0.5em}{\multirow{4}{*}{%
-        $\left.\begin{array}{@{}l@{}}\\[4.5em]\end{array}\right\rbrace
+        $\left.\begin{array}{@{}l@{}}\\[4.0em]\end{array}\right\rbrace
         \begin{array}{@{}l@{}}
            \text{distance}\\
            4 \geq \left\lfloor\dfrac{{\color{Mittel-Blau}s_1}}{2}\right\rfloor
         \end{array}$%
       }}\\
-      $O_2$ & {} & $s_2 = 2$ & $c_2 = c_1$ & $C_2$\\
-      $O_3$ & {} & $s_3 = 3$ & $c_3 = c_1$ & $C_2$\\
-      $O_4$ & {} & $s_4 = 4$ & $c_4 = c_1$ & $C_2$\\
-      \cmidrule{1-5}
-      $O_5$ & {\color{Mittel-Blau}realloc.} &
-      $s_5 = 5$ & {\color{Mittel-Blau}$c_5 = \frac{3}{2} s_5 = 7$} &
+      $O_2$ &app.& {} & $s_2$ & $c_2 = c_1$ & $C_2$\\
+      $O_3$ &app.& {} & $s_3$ & $c_3 = c_1$ & $C_2$\\
+      $O_4$ &app.& {} & $s_4$ & $c_4 = c_1$ & $C_2$\\
+\cline{1-6}%
+      $O_5$ &app.& {\color{Mittel-Blau}realloc.} &
+      $s_5$ & {\color{Mittel-Blau}$c_5 = \lfloor\frac{3}{2} s_5\rfloor=7$} &
       ${\color{Mittel-Blau}C_1 \cdot s_5}$ &
       \raisebox{-0.5em}{\multirow{3}{*}{%
-        $\left.\begin{array}{@{}l@{}}\\[3.25em]\end{array}\right\rbrace
+        $\left.\begin{array}{@{}l@{}}\\[3.05em]\end{array}\right\rbrace
         \begin{array}{@{}l@{}}
           \text{distance}\\
-          3 \geq \left\lfloor\dfrac{{\color{Mittel-Blau}s_5}}{2}\right\rfloor
+           3\geq\left\lfloor\dfrac{{\color{Mittel-Blau}s_5}}{2}\right\rfloor
         \end{array}$%
       }}\\
-      $O_6$ & {} & $s_6 = 6$ & $c_6 = c_5$ & $C_2$\\
-      $O_7$ & {} & $s_7 = 7$ & $c_7 = c_5$ & $C_2$\\
-      \cmidrule{1-5}
-      $O_8$ & {\color{Mittel-Blau}realloc.} &
-      $s_8 = 8$ & {\color{Mittel-Blau}$c_8 = \frac{3}{2} s_8 = 12$} &
+      $O_6$ &app.& {} & $s_6$ & $c_6 = c_5$ & $C_2$\\
+      $O_7$ &app.& {} & $s_7$ & $c_7 = c_5$ & $C_2$\\
+      \cline{1-6}
+      $O_8$ &app.& {\color{Mittel-Blau}realloc.} &
+      $s_8$ & {\color{Mittel-Blau}$c_8 = \frac{3}{2} s_8=12$} &
       ${\color{Mittel-Blau}C_1 \cdot s_8}$\\
-      $\dots$ & $\dots$ & $\dots$ & $\dots$ & $\dots$\\
-      \addlinespace[0.5\aboverulesep]\cmidrule[\heavyrulewidth]{1-5}
+      $\dots$ & $\dots$ & $\dots$ & $\dots$ & $\dots$& $\dots$\\
+      \cline{1-6}
     \end{tabular}
   \end{table}
 \end{frame}
@@ -269,7 +283,7 @@
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Dynamic Arrays}{Amortized Analysis - Proof}
+\begin{frame}{Dynamic Arrays}{Proof: Worst Case Same Operation}
   \vspace*{-1.5em}
   \begin{table}[!h]
     \caption{Case 1: $\frac{1}{2} {\color{Mittel-Blau}s_i}$ \textit{appends}}
@@ -327,7 +341,7 @@
       \end{adjustbox}$\hspace*{0.25em}\cdots$ &
       $\begin{array}{c}
         \text{{\color{Mittel-Blau}reallocation}}\\
-        A \cdot {\color{Mittel-Blau}s_j}\;\text{(earliest reallocation)}
+        \llap{$A \cdot$} {\color{Mittel-Blau}s_j}\;\text{(earliest realloc)}
       \end{array}$\\
     \end{tabularx}
   \end{table}
@@ -410,7 +424,7 @@
       After operation {\color{Mittel-Blau}$O_i$} the capacity is
       \[
         {\color{Mittel-Blau}c_i}
-        = \mathrm{floor}\left(\frac{3}{2}\cdot{\color{Mittel-Blau}s_i}\right)
+        = \left\lfloor\frac{3}{2}\cdot{\color{Mittel-Blau}s_i}\right\rfloor
       \]
     \item
       Lets consider a operation {\color{Mittel-Blau}$O_k$} to {\color{Mittel-Blau}$O_i$} with
@@ -421,7 +435,7 @@
           maximum
           $\mathrm{floor}\left(
             \frac{1}{2} \cdot {\color{Mittel-Blau}s_i}
-          \right)$ elements
+          \right)$ elementsation
           \vspace{0.5em}\\
           \begin{tabularx}{\linewidth}{Xr}
             ${\color{Mittel-Blau}s_k}
@@ -906,3 +920,12 @@
       $\hspace{1.5em}\Rightarrow$ 1 coin per operation is enough
   \end{itemize}
 \end{frame}
+
+%%% ===================================================================
+%%% This should be at the END of the file !!!!!!
+%%%
+%%% Local Variables: 
+%%% mode: latex 
+%%% TeX-master: "~/TeX/TeXinput/Scripts/Algo-Data-EMS/AlgoDat/Lecture-7/Lecture.tex" 
+%%% End: 
+%%% ===================================================================
