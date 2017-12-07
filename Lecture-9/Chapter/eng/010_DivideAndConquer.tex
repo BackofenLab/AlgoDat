@@ -1,13 +1,5 @@
-%%% ===================================================================
-%%% RCS Header:
-%%% $RCSfile: local.el,v $
-%%% $Revision: 1.27 $
-%%% $Date: 2014/11/07 15:36:00 $
-%%% $Author: backofen $
-%%% $Locker:  $
-%%% ===================================================================
+\toclesssection{Divide and Conquer}
 
-\section{Divide and Conquer}
 \toclesssubsection{Concept}
 
 %-------------------------------------------------------------------------------
@@ -16,20 +8,17 @@
   \textbf{Concept:}
   \begin{itemize}
     \item<2->
-      {\color{Mittel-Blau}Divide} the problem into smaller subproblems
+      {\color{MainA}Divide} the problem into smaller subproblems
     \item<3->
-      {\color{Mittel-Blau}Conquer} the subproblems through recursive solving.\\
+      {\color{MainA}Conquer} the subproblems through recursive solving.\\
       If subproblems are small enough solve them directly
     \item<4->
-      {\color{Mittel-Blau}Connect} all subsolutions to solve the overall problem
-  \end{itemize}
-  \vspace{1.0em}
-  \begin{itemize}
+      {\color{MainA}Connect} all subsolutions to solve the overall problem
     \item<5->
-      {\color{Mittel-Blau}Recursive} application of the algorithm on smaller
+      {\color{MainA}Recursive} application of the algorithm on smaller
       subproblems
     \item<6->
-      {\color{Mittel-Blau}Direct} solving of small subproblems
+      {\color{MainA}Direct} solving of small subproblems
   \end{itemize}
 \end{frame}
 
@@ -38,32 +27,31 @@
 \subsection{Maximum Subtotal}
 
 \begin{frame}{Divide and Conquer}{Maximum Subtotal}
-  \onslide<2->
   \textbf{Input:}
   \begin{itemize}
-    \item
-      Progression {\color{Mittel-Blau}$X$} of {\color{Mittel-Blau}$n$} integers
+    \item<2->
+      Sequence {\color{MainA}$X$} of {\color{MainA}$n$} integers
   \end{itemize}
-   \onslide<3->
   \textbf{Output:}
   \begin{itemize}
-    \item
-      Maximum sum of an uninterrupted subsequence of {\color{Mittel-Blau}$X$} and its index boundary
+    \item<3->
+      Maximum sum of an uninterrupted subsequence of
+      {\color{MainA}$X$} and its index boundary
   \end{itemize}
   \vspace{-1em}
-     \onslide<4->
-    \begin{table}[!t]
-      \caption{Input values}
-      \begin{tabular}{c|c|c|c|c|c|c|c|c|c|c}
-        Index & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9\\
-        \midrule
-        Value & 31 & -41 & 59 & 26 & -53 & 58 & 97 & -93 & -23 & 84
-      \end{tabular}
-      \label{tab:divide_and_conquer:max_subtotal_example_values}
-    \end{table}
-    \vspace{1em}
-    %TODO: Hand-Drawings here (Free space) or no free space?
-    \textbf{Output:} Sum: 187, Start: 2, End: 6
+  \onslide<4->
+  \begin{table}[!t]
+    \caption{Input values}
+    \begin{tabular}{c|c|c|c|c|c|c|c|c|c|c}
+      Index & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9\\
+      \midrule
+      Value & 31 & -41 & 59 & 26 & -53 & 58 & 97 & -93 & -23 & 84
+    \end{tabular}
+    \label{tab:divide_and_conquer:max_subtotal_example_values}
+  \end{table}
+  \vspace{1em}
+  %TODO: Hand-Drawings here (Free space) or no free space?
+  \textbf{Output:} Sum: 187, Start: 2, End: 6
 \end{frame}
 
 %-------------------------------------------------------------------------------
@@ -99,14 +87,14 @@
   \vspace{-1.5em}
   \begin{itemize}
     \item<2->
-      Solve the left / right half of the problem {\color{Mittel-Blau}recursive}
+      Solve the left / right half of the problem {\color{MainA}recursive}
     \item<3->
       Combine both solutions into a overall solution
     \item<4->
-      The maximum is located in the {\color{Mittel-Blau}left~half~($A$)}
-      or the {\color{Mittel-Blau}right~half~($B$)}
+      The maximum is located in the {\color{MainA}left~half~($A$)}
+      or the {\color{MainA}right~half~($B$)}
     \item<5->
-      The maximum interval can {\color{Mittel-Blau} overlap with the border ($C$)}
+      The maximum interval can {\color{MainA} overlap with the border ($C$)}
   \end{itemize}
 \end{frame}
 
@@ -114,23 +102,27 @@
 
 \begin{frame}{Divide and Conquer}{Maximum Subtotal}
   \textbf{Principle:}
-    \begin{figure}
+  \begin{figure}[!h]
     \begin{adjustbox}{width=\linewidth}
       \input{Images/DivideAndConquer/MaxSubTotal_Divide.tikz}
     \end{adjustbox}
     \label{fig:divide_and_conquer:max_sub_total_divide2}
-    \end{figure}
-    \vspace{-1.5em}
-    \begin{itemize}
+  \end{figure}
+  \vspace{-1.5em}
+  \begin{itemize}
     \item<2->
-    Small problems are solved directly: {\color{Mittel-Blau}$n = 1 \Rightarrow \max = X[0]$}
-  \item<3->  
-    Big problems are decomposed into two subproblems and solved recursivly.
-    Subsolutions {\color{Mittel-Blau}$A$} and  {\color{Mittel-Blau}$B$} are returned.
-  \item<4->
-    To solve $C$ we have to calculate $rmax$ and $lmax$
-  \item<5->
-    Overall solution is maximum of {\color{Mittel-Blau}$A$}  {\color{Mittel-Blau}$B$}  {\color{Mittel-Blau}$C$}
+      Small problems are solved directly:
+      {\color{MainA}$n = 1 \Rightarrow \max = X[0]$}
+    \item<3->
+      Big problems are decomposed into two subproblems and solved recursively.
+      Subsolutions {\color{MainA}$A$} and {\color{MainA}$B$}
+      are returned
+    \item<4->
+      To solve {\color{MainA}$C$} we have to calculate
+      {\color{MainA}rmax} and {\color{MainA}lmax}
+    \item<5->
+      Overall solution is maximum of {\color{MainA}$A$}
+      {\color{MainA}$B$} and {\color{MainA}$C$}
   \end{itemize}
 \end{frame}
 
@@ -146,7 +138,8 @@
     style={python-idle-code},
     escapechar={@},
     emph={maxSubArray,lmax,rmax},
-    emphstyle=\color{blue}
+    emphstyle=\color{blue},
+    breaklines=false
   ]{Code/DivideAndConquer/MaxSubTotal_DivideAndConquer.py}
 \end{frame}
 
@@ -164,6 +157,7 @@
     emphstyle=\color{blue}
   ]{Code/DivideAndConquer/MaxSubTotal_SecondTrivialCase.py}
 \end{frame}
+
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Divide and Conquer}{Maximum Subtotal - Python}
@@ -237,17 +231,17 @@
       %\midrule
       $X$ & 58 & -53 & 26 & 59 & -41 & 31\\
       %\midrule
-       {\color{Mittel-Blau}$sum$} & 58 & 5 & 31 & 90 & 49 & 80\\
-      {\color{Mittel-Blau}$lmax$} & 58 & 58 & 58 & 90 & 90 & 90\\
+       {\color{MainA}$sum$} & 58 & 5 & 31 & 90 & 49 & 80\\
+      {\color{MainA}$lmax$} & 58 & 58 & 58 & 90 & 90 & 90\\
     \end{tabular}
   \end{table}
   \begin{itemize}
     \item<2->
-      The {\color{Mittel-Blau}$sum$} and {\color{Mittel-Blau}$lmax$} are initialized with $X[i]$
+      The {\color{MainA}$sum$} and {\color{MainA}$lmax$} are initialized with $X[i]$
     \item<3->
-      We iterate over {\color{Mittel-Blau}$X$} from {\color{Mittel-Blau}$i+1$} to {\color{Mittel-Blau}$j$} and update {\color{Mittel-Blau}$sum$}
+      We iterate over {\color{MainA}$X$} from {\color{MainA}$i+1$} to {\color{MainA}$j$} and update {\color{MainA}$sum$}
     \item<4->
-      If {\color{Mittel-Blau}$s > lmax$} then {\color{Mittel-Blau}$lmax$}
+      If {\color{MainA}$sum > lmax$} then {\color{MainA}$lmax$}
       gets updated
   \end{itemize}
 \end{frame}
@@ -266,15 +260,15 @@
 
 %-------------------------------------------------------------------------------
 
-%% \begin{frame}{Divide and Conquer}{Maximum Subtotal}
-%%   \begin{figure}
-%%     \begin{adjustbox}{width=\linewidth}
-%%       \input{Images/DivideAndConquer/MaxSubTotal_Example.tikz}
-%%     \end{adjustbox}
-%%     \caption{\textit{maxSubArray} with $X = [-3, 9, -4, 7]$}
-%%     \label{fig:divide_and_conquer:max_sub_array_example}
-%%   \end{figure}
-%% \end{frame}
+% \begin{frame}{Divide and Conquer}{Maximum Subtotal}
+%   \begin{figure}
+%     \begin{adjustbox}{width=\linewidth}
+%       \input{Images/DivideAndConquer/MaxSubTotal_Example.tikz}
+%     \end{adjustbox}
+%     \caption{\textit{maxSubArray} with $X = [-3, 9, -4, 7]$}
+%     \label{fig:divide_and_conquer:max_sub_array_example}
+%   \end{figure}
+% \end{frame}
 
 %-------------------------------------------------------------------------------
 
@@ -308,24 +302,24 @@
       } + \underbrace{
         \Theta(n)
         \vphantom{\left(\frac{n}{2}\right)}
-      }_\text{cobination of solutions} & n > 1
+      }_\text{combination of solutions} & n > 1
     \end{cases}
   \end{displaymath}
     \begin{itemize}
     \item<2->
-      There exist two constants $a$ and $b$ with:
+      There exist two constants {\color{MainA}$a$} and {\color{MainA}$b$} with:
       \begin{displaymath}
         T(n) \leq \begin{cases}
-          \hfill a & n = 1\\
-          2 \cdot T\left(\frac{n}{2}\right) + b \cdot n & n > 1
+          \hfill {\color{MainA}a} & n = 1\\
+          2 \cdot T\left(\frac{n}{2}\right) + {\color{MainA}b} \cdot n & n > 1
         \end{cases}
       \end{displaymath}
     \item<3->
-      We define $c := \max(a,b)$:
+      We define {\color{MainA}$c := \max(a,b)$}:
       \begin{displaymath}
         T(n) \leq \begin{cases}
-          \hfill c & n = 1\\
-          2 \cdot T\left(\frac{n}{2}\right) + c \cdot n & n > 1
+          \hfill {\color{MainA}c} & n = 1\\
+          2 \cdot T\left(\frac{n}{2}\right) + {\color{MainA}c} \cdot n & n > 1
         \end{cases}
       \end{displaymath}
   \end{itemize}
@@ -384,26 +378,26 @@
   \textbf{Depth:}
   \begin{itemize}
     \item<2->
-      Top level with depth {\color{Mittel-Blau}$i = 0$}
+      Top level with depth {\color{MainA}$i = 0$}
     \item<3->
-      Lowest level with {\color{Mittel-Blau}$2^i = n$} elements
+      Lowest level with {\color{MainA}$2^i = n$} elements
       \begin{displaymath}
-        {\color{Mittel-Blau}\Rightarrow i = \log_2 n}
+        {\color{MainA}\Rightarrow i = \log_2 n}
       \end{displaymath}
   \end{itemize}
   \onslide<4->
   \textbf{Runtime:}
   \begin{itemize}
     \item<5->
-      A total of {\color{Mittel-Blau}$\log_2 n + 1$} levels with each cost of
-      {\color{Mittel-Blau}$c \cdot n$}\\
+      A total of {\color{MainA}$\log_2 n + 1$} levels with each cost of
+      {\color{MainA}$c \cdot n$}\\
       \color{gray}
       The costs of merging the solutions and solving of the trivial
       problems are the same here
   \end{itemize}
   \onslide<6->
   \begin{displaymath}
-    {\color{Mittel-Blau}
+    {\color{MainA}
     T(n) = c \cdot n \log_2 n + c \cdot n \in \Theta(n\,\log n)}
   \end{displaymath}
 \end{frame}
@@ -414,15 +408,15 @@
   \textbf{Summary:}
   \begin{itemize}
     \item<2->
-      Direct solution is slow with {\color{Mittel-Blau}$O(n^3)$}
+      Direct solution is slow with {\color{MainA}$\mathcal{O}(n^3)$}
     \item<3->
       Better solution with incremental update of sum was
-      {\color{Mittel-Blau}$O(n^2)$}
+      {\color{MainA}$\mathcal{O}(n^2)$}
     \item<4->
       Divide and conquer approach results in
-      {\color{Mittel-Blau}$O(n\,\log n)$}
+      {\color{MainA}$\mathcal{O}(n\,\log n)$}
     \item<5->
-      There is an approach running in {\color{Mittel-Blau}$O(n)$}
+      There is an approach running in {\color{MainA}$\mathcal{O}(n)$}
       if you assume that all subtotals are positive
   \end{itemize}
 \end{frame}
@@ -456,16 +450,3 @@
 }
 
 %TODO: Implement for Java / C++
-
-%-------------------------------------------------------------------------------
-
-
-
-%%% ===================================================================
-%%% This should be at the END of the file !!!!!!
-%%%
-%%% Local Variables: 
-%%% mode: latex 
-%%% TeX-master: "~/TeX/TeXinput/Scripts/Algo-Data-EMS/Rolf-2016/AlgoDat/Lecture-9/Lecture.tex" 
-%%% End: 
-%%% ===================================================================
