@@ -13,28 +13,30 @@
 \draw[list] (0, 0) rectangle ++(16, 1);
 \draw[list] (8, 1.5) -- (8, -0.5);
 
-
 %% Draw A
-\onslide<2->
-\draw[sum] (1.5, 0) rectangle ++(2, 1);
-\node[label_sum, anchor=south] at (2.5, 0) {A};
+\only<2->{
+  \draw[sum] (1.5, 0) rectangle ++(2, 1);
+  \node[label_sum, anchor=south] at (2.5, 0) {A};
+}
 %% Draw B
-\onslide<3->
-\draw[sum] (13, 0) rectangle ++(2.5, 1);
-\node[label_sum, anchor=south] at (14.25, 0) {B};
+\only<3->{
+  \draw[sum] (13, 0) rectangle ++(2.5, 1);
+  \node[label_sum, anchor=south] at (14.25, 0) {B};
+}
 
 %% Draw rmax lmax
-\onslide<6->
-\draw[sum] (6, 0) rectangle ++(5, 1);
-\draw[list] (8, 1.5) -- (8, -0.5);
-\node[label_sum, anchor=south] at (7, 0) {rmax};
-\node[label_sum, anchor=south] at (9.5, 0) {lmax};
+\only<6->{
+  \draw[sum] (6, 0) rectangle ++(5, 1);
+  \draw[list] (8, 1.5) -- (8, -0.5);
+  \node[label_sum, anchor=south] at (7, 0) {rmax};
+  \node[label_sum, anchor=south] at (9.5, 0) {lmax};
+}
 
-
-\onslide<7->
-\draw[
-  decorate,
-  decoration={brace, raise=0.25em, amplitude=0.5em},
-  thick
-] (6, 1) -- node[midway, yshift=2em, label_sum] {C} (11, 1);
+\only<7->{
+  \draw[
+    decorate,
+    decoration={brace, raise=0.25em, amplitude=0.5em},
+    thick
+  ] (6, 1) -- node[midway, yshift=2em, label_sum] {C} (11, 1);
+}
 \end{tikzpicture}

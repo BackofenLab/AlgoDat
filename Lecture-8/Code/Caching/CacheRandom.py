@@ -1,4 +1,6 @@
 def init(size):
+	"""Creates a randomly ordered dataset."""
+
 	# use system time as seed
 	random.seed(None)
 	
