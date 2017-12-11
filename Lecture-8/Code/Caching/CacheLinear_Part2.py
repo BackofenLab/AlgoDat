@@ -1,4 +1,6 @@
 def run(param):
+	"""Processes the dataset."""
+
 	# unpack data
 	(order, data) = param
 	

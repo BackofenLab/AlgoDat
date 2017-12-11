@@ -8,18 +8,18 @@
   \textbf{Concept:}
   \begin{itemize}
     \item<2->
-      {\color{Mittel-Blau}Divide} the problem into smaller subproblems
+      {\color{MainA}Divide} the problem into smaller subproblems
     \item<3->
-      {\color{Mittel-Blau}Conquer} the subproblems through recursive solving.\\
+      {\color{MainA}Conquer} the subproblems through recursive solving.\\
       If subproblems are small enough solve them directly
     \item<4->
-      {\color{Mittel-Blau}Connect} all solutions of the subproblems to a solution of the
+      {\color{MainA}Connect} all solutions of the subproblems to a solution of the
       full problem
     \item<5->
-      {\color{Mittel-Blau}Recursive} application of the algorithm to ever smaller
+      {\color{MainA}Recursive} application of the algorithm to ever smaller
       subproblems
     \item<6->
-      {\color{Mittel-Blau}Direct} solving of sufficently small subproblems
+      {\color{MainA}Direct} solving of sufficently small subproblems
   \end{itemize}
 \end{frame}
 
@@ -28,7 +28,7 @@
 \codeslide{python}{
   \begin{frame}{Divide and Conquer}{Introduction - Python}
     \begin{itemize}
-      \item<2->Function {\color{Mittel-Blau}solve} for solving a {\color{Mittel-Blau}problem} of size {\color{Mittel-Blau}$n$}
+      \item<2->Function {\color{MainA}solve} for solving a {\color{MainA}problem} of size {\color{MainA}$n$}
     \end{itemize}
   \onslide<3->
   \vspace{-0.5em}
@@ -49,35 +49,43 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Divide and Conquer}{Features}
+  \textbf{Divide and Conquer:}
   \begin{itemize}
-    \item<2->
+    \item<2-| handout: 1>
       Can help with conceptual hard problems
+    \item<3-| handout: 1>
+      {\color{MainA}Solution} of the trivial problems has to be known
+    \item<4-| handout: 1>
+      {\color{MainA}Dividing} in subproblems has to be possible
+    \item<5-| handout: 1>
+      {\color{MainA}Combination} of solutions has to be possible
+  \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{Divide and Conquer}{Features}
+  \textbf{Features:}
+  \begin{itemize}
+    \item<1->
+      Realization of {\color{MainA}efficient solutions}
       \begin{itemize}
+        \item<2->
+          If trivial solution is {\color{MainA}$\in O(1)$}
         \item<3->
-          {\color{Mittel-Blau}Solution} of the trivial problems has to be known
+          And separation / combination of subproblems is
+          {\color{MainA}$\in O(n)$}
         \item<4->
-          {\color{Mittel-Blau}Dividing} in subproblems has to be possible
+          And the number of subproblems is limited
         \item<5->
-          {\color{Mittel-Blau}Combination} of solutions has to be possible
+          The runtime is {\color{MainA}$\in O(n \cdot \log n)$}
       \end{itemize}
     \item<6->
-      Realization of {\color{Mittel-Blau}efficient solutions}
-      \begin{itemize}
-        \item<7->
-          If trivial solution is {\color{Mittel-Blau}$\in O(1)$}
-        \item<8->
-          And separation / combination of subproblems is {\color{Mittel-Blau}$\in O(n)$}
-        \item<9->
-          And the number of subproblems is limited
-        \item<10->
-          The runtime is {\color{Mittel-Blau}$\in O(n \cdot \log n)$}
-      \end{itemize}
-       \item<11->
       Suitable for parallel processing
       \begin{itemize}
-        \item<12->
-          Subproblems are {\color{Mittel-Blau}independent} of each other
-        \item<13->
+        \item<7->
+          Subproblems are {\color{MainA}independent} of each other
+        \item<8->
           Only needed input for each subproblem has to be known
       \end{itemize}
   \end{itemize}
@@ -125,7 +133,7 @@
     \onslide<3->
   \begin{itemize}
     \item<4->
-      Progression {\color{Mittel-Blau}$X$} of {\color{Mittel-Blau}$n$} integers
+      Sequence {\color{MainA}$X$} of {\color{MainA}$n$} integers
   \end{itemize}
    \onslide<5->
   \textbf{Output:}
@@ -176,10 +184,10 @@
       Maximum profit of buying and selling shares
   \end{itemize}
   \begin{figure}
-    \begin{adjustbox}{width=\linewidth}
-%      \input{Images/DivideAndConquer/Shares_Graph.tikz}
-    \includegraphics[width=0.7\textwidth]{Images/DivideAndConquer/shares-graph.pdf}
-    \end{adjustbox}
+    \begin{center}
+      \includegraphics[width=0.9\textwidth]%
+        {Images/DivideAndConquer/shares-graph.pdf}
+    \end{center}
     \caption{Stock value over time}
     \label{fig:divide_and_conquer:shares_value}
   \end{figure}
@@ -231,9 +239,9 @@
     \item<2->
       Three interleaved loops
     \item<3->
-      Each loop with runtime {\color{Mittel-Blau}$O(n)$}
+      Each loop with runtime {\color{MainA}$O(n)$}
     \item<4->
-      Algorithm runtime of {\color{Mittel-Blau}$O(n^3)$}
+      Algorithm runtime of {\color{MainA}$O(n^3)$}
   \end{itemize}
 \end{frame}
 
@@ -254,13 +262,13 @@
   \end{table}
   \begin{itemize}
     \item<2->
-      We iterate at least {\color{Mittel-Blau}$\frac{n}{3}$} values for {\color{Mittel-Blau}$i$}
+      We iterate at least {\color{MainA}$\frac{n}{3}$} values for {\color{MainA}$i$}
     \item<3->
-      For each {\color{Mittel-Blau}$i$} we iterate at least {\color{Mittel-Blau}$\frac{n}{3}$} values for {\color{Mittel-Blau}$j$}
+      For each {\color{MainA}$i$} we iterate at least {\color{MainA}$\frac{n}{3}$} values for {\color{MainA}$j$}
     \item<4->
-      For each {\color{Mittel-Blau}$j$} we have at least {\color{Mittel-Blau}$\frac{n}{3}$} additions
+      For each {\color{MainA}$j$} we have at least {\color{MainA}$\frac{n}{3}$} additions
     \item<5->
-      We need at least {\color{Mittel-Blau}$T(n) = (\frac{n}{3})^3 \in \Omega(n^3)$} steps
+      We need at least {\color{MainA}$T(n) = (\frac{n}{3})^3 \in \Omega(n^3)$} steps
   \end{itemize}
   
 \end{frame}
@@ -271,10 +279,10 @@
   \textbf{Runtime:}
   \begin{itemize}
     \item<2->
-      With {\color{Mittel-Blau}$T(n) \in O(n^3)$} and
-      $T(n) \in {\color{Mittel-Blau}\Omega(n^3)}$ we know:
+      With {\color{MainA}$T(n) \in O(n^3)$} and
+      {\color{MainA}$T(n) \in \Omega(n^3)$} we know:
       \begin{displaymath}
-        \color{Mittel-Blau}
+        \color{MainA}
         T(n) \in \Theta(n^3)
       \end{displaymath}
     \item<3->
@@ -301,7 +309,8 @@
       \begin{eqnarray*}
         S_{i,\,j+1} &=& X[i] + X[i+1] + \dots + X[j] + X[j+1]\\
         S_{i,\,j+1} &=& S_{i,\,j} + X[j+1]
-        ~{\color{Mittel-Blau}\in O(1)}\hspace{1em} \text{instead of}\hspace{1em} {\color{Mittel-Blau}\in O(n)}
+        ~{\color{MainA}\in O(1)}\hspace{1em}
+          \text{instead of}\hspace{1em} {\color{MainA}\in O(n)}
       \end{eqnarray*}
   \end{itemize}
 \end{frame}
@@ -323,7 +332,7 @@
     emphstyle=\color{blue}
   ]{Code/DivideAndConquer/MaxSubTotal.py}
    \begin{itemize}
-   \item<3->Runtime {\color{Mittel-Blau}$\in O(n^2)$}
+   \item<3->Runtime {\color{MainA}$\in O(n^2)$}
    \end{itemize}  
 \end{frame}
 }
@@ -344,20 +353,22 @@
    \vspace{-1.5em}
 \textbf{Divide and Conquer Idea to solve:}
   \begin{itemize}
-  \item split the sequence in the middle 
+  \item<1->
+    Split the sequence in the middle
   \item<2->
-    Solve the left half of the problem
+    Solve left half of the problem
   \item<3->
-    Solve right half and combine both solutions into a total solution
+    Solve right half and combine both solutions into one
   \item<4->
-    OK if maximum is located in {\color{Mittel-Blau}left~half~($A$)}
-    or {\color{Mittel-Blau}right~half~($B$)}
+    Maximum might be located in {\color{MainA}left~half~($A$)}
+    or {\color{MainA}right~half~($B$)}
   \item<5->
-    Problem: Maximum can {\color{Mittel-Blau} overlap split }
+    Problem: Maximum can {\color{MainA} overlap the split}
   \item<6->
-    To solve this case we have to calculate $rmax$ and $lmax$
+    To solve this case we have to calculate {\color{MainA}rmax}
+    and {\color{MainA}lmax}
   \item<7->
-    The overall solution is the {\color{Mittel-Blau}maximum of $A$, $B$ and $C$}
+    The overall solution is the {\color{MainA}maximum of $A$, $B$ and $C$}
   \end{itemize}
 \end{frame}
 
@@ -367,24 +378,24 @@
   \textbf{Principle - Divide and Conquer:}
   \begin{itemize}
     \item<2->
-      Small problems are solved directly: {\color{Mittel-Blau}$n = 1 \Rightarrow \max = X[0]$}
+      Small problems are solved directly:
+      {\color{MainA}$n = 1 \Rightarrow \max = X[0]$}
     \item<3->
-      Bigger problems are partitioned into two subproblems and recursivly solved. Subsolutions A and B
-      are returned.
-    \item<4>
-      To determine subsolution C, rmax and lmax for the subproblems are computed.
-    \item<5>
-      The overall solution is the {\color{Mittel-Blau}maximum of $A$, $B$ and $C$}
+      Bigger problems are partitioned into two subproblems
+      and recursively solved.
+      Subsolutions {\color{MainA}A} and {\color{MainA}B} are returned
+    \item<4->
+      To determine subsolution {\color{MainA}C}, {\color{MainA}rmax}
+      and {\color{MainA}lmax} for the subproblems are computed
+    \item<5->
+      The overall solution is the {\color{MainA}maximum of $A$, $B$ and $C$}
   \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
-
 \codeslide{python}{
   \begin{frame}{Divide and Conquer}{Example - Maximum Subtotal - Python}
-  \textbf{Divide and conquer solution} 
-  \vspace{-0.5em}
   \lstinputlisting[
     language=Python,
     basicstyle=\small,
@@ -392,7 +403,8 @@
     style={python-idle-code},
     escapechar={@},
     emph={maxSubArray},
-    emphstyle=\color{blue}
+    emphstyle=\color{blue},
+    breaklines=false
   ]{Code/DivideAndConquer/MaxSubTotal_DivideAndConquer.py}
 \end{frame}
 }
