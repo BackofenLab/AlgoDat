@@ -1,4 +1,4 @@
- 
+
   void append(int value);
   void insertAfter(Node cur, int value);
   void remove(Node cur);

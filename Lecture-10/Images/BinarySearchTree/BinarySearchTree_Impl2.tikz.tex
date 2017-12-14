@@ -32,35 +32,35 @@
     sibling distance = 3.5em,
   }]
 \node (0, 0) [node] (root) {12}
-child [->, path] {
+child [<-, path] {
   node [node] (child_left) {7}
-  child [->, path] {
+  child [<-, path] {
     node [node] (child_left_left) {3}
-    child [->, path] { node [node_null] {\texttt{None}} }
+    child [<-, path] { node [node_null] {\texttt{None}} }
     child [->, path] {
       node [node] (child_left_left_right) {5}
-      child [->, path] { node [node_null] {\texttt{None}} }
+      child [<-, path] { node [node_null] {\texttt{None}} }
       child [->, path] { node [node_null] {\texttt{None}} }
     }
   }
   child [->, path] {
     node [node] (child_left_right) {10}
-    child [->, path] { node [node_null] {\texttt{None}} }
+    child [<-, path] { node [node_null] {\texttt{None}} }
     child [->, path] { node [node_null] {\texttt{None}} }
   }
 }
 child [->, path] {
   node [node] (child_right) {18}
-  child [->, path] {
+  child [<-, path] {
     node [node] (child_right_left) {15}
     child [->, path] {
       node [node] (child_right_left_left) {14}
-      child [->, path] { node [node_null] {\texttt{None}} }
+      child [<-, path] { node [node_null] {\texttt{None}} }
       child [->, path] { node [node_null] {\texttt{None}} }
     }
     child [->, path] {
       node [node] (child_right_left_right) {16}
-      child [->, path] { node [node_null] {\texttt{None}} }
+      child [<-, path] { node [node_null] {\texttt{None}} }
       child [->, path] { node [node_null] {\texttt{None}} }
     }
   }
