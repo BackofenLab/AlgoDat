@@ -3,18 +3,22 @@
 \begin{frame}{Binary Search Trees}{Introduction}
   \textbf{Runtime of a search tree:}
   \begin{itemize}
-  \item<3-> {\color{Mittel-Blau}\texttt{next}} and {\color{Mittel-Blau}\texttt{previous}} in $O(1)$
-    \begin{itemize}
-    \item<4-> pointers corresponding to linked list
-    \end{itemize}
-  \item<5-> {\color{Mittel-Blau}\texttt{insert}} and {\color{Mittel-Blau}\texttt{remove}} in $O(log~n)$
-    \begin{itemize}
-    \item<6-> We will see why
-    \end{itemize}
-  \item<7-> {\color{Mittel-Blau}\texttt{lookup}} in $O(log~n)$
-    \begin{itemize}
-    \item<8-> The structure helps searching efficiently
-    \end{itemize}
+    \item<2->
+      {\color{Mittel-Blau}\texttt{next}} and
+      {\color{Mittel-Blau}\texttt{previous}} in $O(1)$\\[0.5em]
+      \onslide<3->{
+        Pointers corresponding to linked list
+      }
+      \vspace{1em}
+  \item<4->
+    {\color{Mittel-Blau}\texttt{insert}} and
+    {\color{Mittel-Blau}\texttt{remove}} in $O(log\,n)$
+    \vspace{1em}
+  \item<5->
+    {\color{Mittel-Blau}\texttt{lookup}} in $O(log\,n)$\\[0.5em]
+    \onslide<6->{
+      The structure helps searching efficiently
+    }
   \end{itemize}
 \end{frame}
 
@@ -37,6 +41,10 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Binary Search Trees}{Introduction}
+  \begin{itemize}
+    \item
+      Edge direction indicates ordering
+  \end{itemize}
   \begin{figure}
     \input{Images/BinarySearchTree/BinarySearchTree_Example1.tikz}
     \caption{A binary search tree}
@@ -78,7 +86,7 @@
       (\texttt{\color{Mittel-Blau}leftChild} /
       \texttt{\color{Mittel-Blau}rightChild})
     \item<4->
-      \texttt{\color{Mittel-Blau}Null} for missing children
+      \texttt{\color{Mittel-Blau}None} for missing children
   \end{itemize}
   \onslide<5->
   \vspace{-1.0em}
@@ -143,7 +151,7 @@
   subtree
   \onslide<3->
   \begin{columns}
-    \begin{column}{0.77\linewidth}
+    \begin{column}{0.8\linewidth}
       \begin{figure}
         \begin{adjustbox}{width=\linewidth}
           \input{Images/BinarySearchTree/BinarySearchTree_Impl1.tikz}
@@ -153,19 +161,14 @@
         \label{fig:binary_search_trees:binary_tree_lookup}
       \end{figure}
     \end{column}
-    \begin{column}{0.23\linewidth}
-      \textbf{Examples:}
-      %\begin{itemize}[{\color{black!50!white}\footnotesize$\blacksquare$}]
-      \begin{itemize}
-        \item<4->
-          \texttt{\color{red}lookup(14)}
-        \item<5->
-          \texttt{\color{Mittel-Gruen!50!blue}lookup(6)}
-        \item<6->
-          \texttt{\color{yellow!50!orange}lookup(19)}
-      \end{itemize}
-  \end{column}
-\end{columns}
+    \begin{column}{0.2\linewidth}
+      \textbf{Examples:}\\[1em]
+      \onslide<4->$\rlap\text\texttt{\color{red}lookup(14)}$\\[0.5em]
+      \onslide<5->$\rlap\text\texttt{\color{Mittel-Gruen!50!blue}lookup(6)}$
+        \\[0.5em]
+      \onslide<6->$\rlap\text\texttt{\color{yellow!50!orange}lookup(19)}$
+    \end{column}
+  \end{columns}
 \end{frame}
 
 %-------------------------------------------------------------------------------

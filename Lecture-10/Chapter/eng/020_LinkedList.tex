@@ -10,10 +10,10 @@
     \item<4->
       Data elements can be simple types or composed datastructures
     \item<5->
-      Elements are linked through references / pointer to the predecessor /
-      successor
+      {\color{MainA}Elements are linked} through references / pointer
+      to the predecessor / successor
     \item<6->
-      Single / Doubly linked lists possible
+      Single / doubly linked lists possible
   \end{itemize}
   \onslide<7->
   \begin{figure}
@@ -43,7 +43,7 @@
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Linked Lists}{Variation}
+\begin{frame}{Linked Lists}{Variants}
   \textbf{List with head / last element pointer:}
    \onslide<2->
   \begin{figure}
@@ -65,7 +65,7 @@
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Linked Lists}{Variation}
+\begin{frame}{Linked Lists}{Variants}
   \textbf{Doubly linked list:}
   \onslide<2->
     \begin{figure}
@@ -86,7 +86,8 @@
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}[fragile]{Linked Lists}{Implementation - Node/Element - Java}
+\codeslide{java}{
+\begin{frame}{Linked Lists}{Implementation - Node/Element - Java}
   \small{
   \lstinputlisting[
     language=Java,
@@ -102,7 +103,7 @@
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}[fragile]{Linked Lists}{Implementation - Node/Element - Java}
+\begin{frame}{Linked Lists}{Implementation - Node/Element - Java}
   \vspace{-1.125em}
   \lstinputlisting[
     language=Java,
@@ -130,9 +131,11 @@
 %%     emphstyle=\color{java_static}
 %%   ]{Code/LinkedList/NodePart3.java}
 %% \end{frame}
+}
 
 %-------------------------------------------------------------------------------
 
+\codeslide{cpp}{
 %% \begin{frame}[fragile]{Linked Lists}{Implementation - Node/Element - C++ - Header}
 %%   \vspace{-1.125em}
 %%   \lstinputlisting[
@@ -146,7 +149,7 @@
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}[fragile]{Linked Lists}{Implementation - Node/Element - C++}
+\begin{frame}{Linked Lists}{Implementation - Node/Element - C++}
   \lstinputlisting[
     language=C++,
     tabsize=4,
@@ -158,7 +161,7 @@
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}[fragile]{Linked Lists}{Implementation - Node/Element - C++}
+\begin{frame}{Linked Lists}{Implementation - Node/Element - C++}
   \lstinputlisting[
     language=C++,
     tabsize=4,
@@ -167,10 +170,12 @@
     escapechar={@}
   ]{Code/LinkedList/NodePart2new.cpp}
 \end{frame}
+}
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}[fragile]{Linked Lists}{Implementation - Node/Element - Python}
+\codeslide{python}{
+\begin{frame}{Linked Lists}{Implementation - Node/Element - Python}
   \lstinputlisting[
     language=Python,
     tabsize=4,
@@ -181,6 +186,7 @@
     emphstyle=\color{blue}
   ]{Code/LinkedList/Node.py}
 \end{frame}
+}
 
 %-------------------------------------------------------------------------------
 
@@ -247,13 +253,13 @@
 \begin{frame}{Linked Lists}{Implementation - Insert}
   \textbf{Inserting a node after node \texttt{cur}:}
   \begin{itemize}
-    \item<2->
+    \item
       \lstinline[
         language=Python,
         style={python-idle-code}
       ]|ins.nextNode = cur.nextNode|
   \end{itemize}
-  \onslide<3->
+  \onslide<2->
   \begin{flushleft}
     \input{Images/LinkedList/SinglyLinkedListInsert_Third.tikz}
   \end{flushleft}
@@ -264,13 +270,13 @@
 \begin{frame}{Linked Lists}{Implementation - Insert}
   \textbf{Inserting a node after node \texttt{cur}:}
   \begin{itemize}
-    \item<2->
+    \item
       \lstinline[
         language=Python,
         style={python-idle-code}
       ]|cur.nextNode = ins|
   \end{itemize}
-  \onslide<3->
+  \onslide<2->
   \begin{flushleft}
     \input{Images/LinkedList/SinglyLinkedListInsert_Fourth.tikz}
   \end{flushleft}
@@ -281,20 +287,24 @@
 \begin{frame}{Linked Lists}{Implementation - Insert}
   \textbf{Inserting a node after node \texttt{cur} - single line of code:}
   \onslide<2->
-  \begin{figure}
-    \includegraphics[width=0.5\textwidth]{Images/LinkedList/insert-one-line-pre.pdf}
-  \end{figure}
+  \begin{center}
+    \begin{adjustbox}{width=0.8\linewidth}
+      \input{Images/LinkedList/SinglyLinkedListInsert_OneLine_Before.tikz}
+    \end{adjustbox}
+  \end{center}
   \begin{itemize}
-  \item<3->
-    \lstinline[
-      language=Python,
-      style={python-idle-code}
-    ]|cur.nextNode = Node (value ,cur.nextNode )|
+    \item<3->
+      \lstinline[
+        language=Python,
+        style={python-idle-code}
+      ]|cur.nextNode = Node(value, cur.nextNode)|
   \end{itemize}
   \onslide<4->
-  \begin{figure}
-    \includegraphics[width=0.5\textwidth]{Images/LinkedList/insert-one-line-post.pdf}
-  \end{figure}
+  \begin{center}
+    \begin{adjustbox}{width=0.8\linewidth}
+      \input{Images/LinkedList/SinglyLinkedListInsert_OneLine_After.tikz}
+    \end{adjustbox}
+  \end{center}
 \end{frame}
 
 %-------------------------------------------------------------------------------
@@ -370,10 +380,11 @@
 
 \begin{frame}{Linked Lists}{Implementation - Remove}
   \textbf{Removing the first node:}
+  \vspace{-1.0em}
   \onslide<2->
-    \begin{flushleft}
+  \begin{flushright}
     \input{Images/LinkedList/SinglyLinkedListRemoveFirst_First.tikz}
-  \end{flushleft}
+  \end{flushright}
   \begin{itemize}
     \item<3->
       Update the pointer to the next element:\\
@@ -438,7 +449,8 @@
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}[fragile]{Linked Lists}{Implementation - LinkedList - Python}
+\codeslide{python}{
+\begin{frame}{Linked Lists}{Implementation - LinkedList - Python}
   \lstinputlisting[
     language=Python,
     tabsize=4,
@@ -451,7 +463,7 @@
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}[fragile]{Linked Lists}{Implementation - LinkedList - Python}
+\begin{frame}{Linked Lists}{Implementation - LinkedList - Python}
   \lstinputlisting[
     language=Python,
     tabsize=4,
@@ -460,9 +472,11 @@
     emphstyle=\color{blue}
   ]{Code/LinkedList/LinkedListPart2.py}
 \end{frame}
+}
 
 %-------------------------------------------------------------------------------
 
+\codeslide{java}{
 \begin{frame}[fragile]{Linked Lists}{Implementation - LinkedList - Java}
   \vspace{-1.125em}
   \lstinputlisting[
@@ -491,6 +505,7 @@
     emphstyle=\color{java_static}
   ]{Code/LinkedList/LinkedListPart2.java}
 \end{frame}
+}
 
 %-------------------------------------------------------------------------------
 
@@ -558,24 +573,24 @@
 
 \begin{frame}[fragile]{Linked Lists}{Implementation - Append}
   \textbf{Appending an element:}
-    \onslide<2->
+  \vspace{-1.0em}
+  \onslide<2->
   \begin{flushleft}
     \input{Images/LinkedList/SinglyLinkedListWithHeadAppend.tikz}
   \end{flushleft}
+  \vspace{-0.5em}
+  \onslide<3->
+  \lstinputlisting[
+    language=Python,
+    tabsize=4,
+    style={python-idle-code},
+    breaklines=false,
+    escapechar={@},
+    emph={append},
+    emphstyle=\color{blue}
+  ]{Code/LinkedList/LinkedListAppend.py}
   \begin{itemize}
-  \item<3->
-    \vspace{-1.0em}
-      \lstinputlisting[
-        language=Python,
-        tabsize=4,
-        style={python-idle-code},
-        breaklines=false,
-        escapechar={@},
-        emph={append},
-        emphstyle=\color{blue}
-      ]{Code/LinkedList/LinkedListAppend.py}
     \item<4->
-      \vspace{-1.0em}
       The pointer to \texttt{last} avoids the iteration of the whole list
   \end{itemize}
 \end{frame}
@@ -594,19 +609,19 @@
 \begin{frame}[fragile]{Linked Lists}{Implementation - Insert After}
   \textbf{Inserting after node \texttt{cur}:}
   \begin{itemize}
-    \item<2->
+    \item
       The pointer to \texttt{head} is not modified
-    \item<3->
-      \lstinputlisting[
-        language=Python,
-        tabsize=4,
-        style={python-idle-code},
-        breaklines=false,
-        escapechar={@},
-        emph={insertAfter},
-        emphstyle=\color{blue}
-      ]{Code/LinkedList/LinkedListInsertAfter.py}
   \end{itemize}
+  \onslide<2->
+  \lstinputlisting[
+    language=Python,
+    tabsize=4,
+    style={python-idle-code},
+    breaklines=false,
+    escapechar={@},
+    emph={insertAfter},
+    emphstyle=\color{blue}
+  ]{Code/LinkedList/LinkedListInsertAfter.py}
 \end{frame}
 
 %-------------------------------------------------------------------------------
@@ -624,20 +639,20 @@
 \begin{frame}[fragile]{Linked Lists}{Implementation - Remove}
   \textbf{Remove node \texttt{cur}:}
   \begin{itemize}
-    \item<2->
+    \item
       Searching the predecessor in $O(n)$
-    \onslide<3->  
-      \lstinputlisting[
-        language=Python,
-        tabsize=4,
-        style={python-idle-code},
-        breaklines=false,
-        escapechar={@},
-        emph={remove},
-        emphstyle=\color{blue},
-        morekeywords={None}
-      ]{Code/LinkedList/LinkedListRemove.py}
   \end{itemize}
+  \onslide<2->
+  \lstinputlisting[
+    language=Python,
+    tabsize=4,
+    style={python-idle-code},
+    breaklines=false,
+    escapechar={@},
+    emph={remove},
+    emphstyle=\color{blue},
+    morekeywords={None}
+  ]{Code/LinkedList/LinkedListRemove.py}
 \end{frame}
 
 %-------------------------------------------------------------------------------
@@ -645,20 +660,20 @@
 \begin{frame}[fragile]{Linked Lists}{Implementation - Get}
   \textbf{Getting a reference to node at \texttt{pos}:}
   \begin{itemize}
-    \item<3->
-      Iterate the entries of the list until at position ($O(n)$)
-    \onslide<4->
-      \lstinputlisting[
-        language=Python,
-        tabsize=4,
-        style={python-idle-code},
-        breaklines=false,
-        escapechar={@},
-        emph={get},
-        emphstyle=\color{blue},
-        morekeywords={None}
-      ]{Code/LinkedList/LinkedListGet.py}
+    \item
+      Iterate the entries of the list until at position in $O(n)$
   \end{itemize}
+  \onslide<2->
+  \lstinputlisting[
+    language=Python,
+    tabsize=4,
+    style={python-idle-code},
+    breaklines=false,
+    escapechar={@},
+    emph={get},
+    emphstyle=\color{blue},
+    morekeywords={None}
+  ]{Code/LinkedList/LinkedListGet.py}
 \end{frame}
 
 %-------------------------------------------------------------------------------
@@ -669,7 +684,7 @@
     \item<2->
       First element is head without an assigned value
     \item<3->
-      Iterate the entries of the list until value found ($O(n)$)
+      Iterate the entries of the list until value found in $O(n)$
     \onslide<4->
       \lstinputlisting[
         language=Python,
@@ -740,25 +755,29 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Linked Lists}{Runtime}
-  \textbf{Runtime:}
+  \textbf{Runtime of doubly linked list:}
   \begin{itemize}
-  \item<2->
-    Doubly linked list:
-    \begin{itemize}
-    \item<3-> {\color{Mittel-Blau}\texttt{next}} and {\color{Mittel-Blau}\texttt{previous}} in $O(1)$
-      \begin{itemize}
-      \item<4-> each element has a pointer to pred-/sucessor
-      \end{itemize}
-    \item<5-> {\color{Mittel-Blau}\texttt{insert}} and {\color{Mittel-Blau}\texttt{remove}} in $O(1)$
-      \begin{itemize}
-      \item<6-> a constant number of pointers needs to be modified
-      \end{itemize}
-    \item<7-> {\color{Mittel-Blau}\texttt{lookup}} in $\Theta(n)$
-      \begin{itemize}
-      \item<8-> Even if the elements are sorted we can only retrieve them in $\Theta(n)$.\\ Why?
-      \end{itemize}
-    \end{itemize}
-  \end{itemize}  
+    \item<2->
+      {\color{Mittel-Blau}\texttt{next}} and
+      {\color{Mittel-Blau}\texttt{previous}} in $O(1)$\\[0.5em]
+      \onslide<3->{
+        Each element has a pointer to pred-/sucessor
+      }
+      \vspace{1em}
+    \item<4->
+      {\color{Mittel-Blau}\texttt{insert}} and
+      {\color{Mittel-Blau}\texttt{remove}} in $O(1)$\\[0.5em]
+      \onslide<5->{
+        A constant number of pointers needs to be modified
+      }
+      \vspace{1em}
+    \item<6->
+      {\color{Mittel-Blau}\texttt{lookup}} in $\Theta(n)$\\[0.5em]
+      \onslide<7->{
+        Even if the elements are sorted we can only retrieve them in $\Theta(n)$
+       }
+       \onslide<8->{\hspace{1.5em}\color{MainA}Why?}
+  \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------------------------------
