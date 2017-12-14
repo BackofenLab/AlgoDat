@@ -6,7 +6,7 @@
 		return (itemCount == 0);
 	}
 
-public void add (int data) { ... }
+	public void add (int data) { ... }
 	public void insertAfter(Node cur, int data)
 		{ ... }
 	public void remove(Node cur) { ... }

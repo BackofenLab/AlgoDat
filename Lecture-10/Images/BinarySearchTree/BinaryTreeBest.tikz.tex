@@ -17,14 +17,14 @@
     sibling distance = 4.0em,
   }]
 \node (0, 0) [node] (root) {12}
-child [->, path] {
+child [<-, path] {
   node [node] {7}
-  child [->, path] { node [node] {3} }
+  child [<-, path] { node [node] {3} }
   child [->, path] { node [node] {10} }
 }
 child [->, path] {
   node [node] {18}
-  child [->, path] { node [node] {15} }
+  child [<-, path] { node [node] {15} }
   child [->, path] { node [node] {22} }
 };
 \end{tikzpicture}

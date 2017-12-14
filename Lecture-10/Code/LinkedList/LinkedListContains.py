@@ -4,6 +4,6 @@ def contains(self, value):
 	for i in range(0, itemCount):
 		cur = cur.nextNode
 		if cur.value == value:
-			return true
+			return True
 
-	return false
+	return False
