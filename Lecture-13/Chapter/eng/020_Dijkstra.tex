@@ -39,7 +39,7 @@
         \item
           Each node (pearl) now has a specific height
         \item
-          The distance to M is exactly the {\color{Mittel-Blau}shortest path}
+          The distance to M is exactly the {\color{MainA}shortest path}
         \end{itemize}
     \end{column}
   \end{columns}
@@ -54,27 +54,27 @@
       \input{Images/Dijkstra/ShortestPath.tikz}
     \end{adjustbox}
     \label{fig:dijkstra:shortest_path_introduction}
-    \caption{Shortest path from {\color{Mittel-Blau}$s$} to
-    {\color{Mittel-Blau}$t$}}
+    \caption{Shortest path from {\color{MainA}$s$} to
+    {\color{MainA}$t$}}
   \end{figure}
   \vspace{-1.5em}
   \begin{itemize}
     \item
-      Let {\color{Mittel-Gruen}$r$} be the shortest path from
-      {\color{Mittel-Blau}$s$} to {\color{Mittel-Blau}$t$}
+      Let {\color{MainB}$r$} be the shortest path from
+      {\color{MainA}$s$} to {\color{MainA}$t$}
     \item
-      For each node {\color{Mittel-Blau}$u$} on path {\color{Mittel-Gruen}$r$}
-      the path from {\color{Mittel-Blau}$u$} to {\color{Mittel-Blau}$t$} is
+      For each node {\color{MainA}$u$} on path {\color{MainB}$r$}
+      the path from {\color{MainA}$u$} to {\color{MainA}$t$} is
       the shortest path
   \end{itemize}
   \textbf{Proof:}
   \begin{itemize}
     \item
-      If there was a shorter path from {\color{Mittel-Blau}$s$} to
-      {\color{Mittel-Blau}$u$} then we could choose this path to get faster to
-      {\color{Mittel-Blau}$t$}
+      If there was a shorter path from {\color{MainA}$s$} to
+      {\color{MainA}$u$} then we could choose this path to get faster to
+      {\color{MainA}$t$}
     \item
-      Then {\color{Mittel-Gruen}$r$} would not be the shortest path
+      Then {\color{MainB}$r$} would not be the shortest path
   \end{itemize}
 \end{frame}
 
@@ -87,20 +87,20 @@
       \input{Images/Dijkstra/ShortestPath.tikz}
     \end{adjustbox}
     \label{fig:dijkstra:shortest_path_introduction_re}
-    \caption{Shortest path from {\color{Mittel-Blau}$s$} to
-      {\color{Mittel-Blau}$t$}}
+    \caption{Shortest path from {\color{MainA}$s$} to
+      {\color{MainA}$t$}}
   \end{figure}
   \vspace{-1.5em}
   \begin{itemize}
     \item
-      This is also correct for all sub paths on {\color{Mittel-Gruen}$r$}
+      This is also correct for all sub paths on {\color{MainB}$r$}
     \item
-      If the shortest path from {\color{Mittel-Blau}$s$} to
-      {\color{Mittel-Blau}$t$} passes {\color{Mittel-Blau}$u_1$} and
-      {\color{Mittel-Blau}$u_2$} then the sub path
-      $({\color{Mittel-Blau}u_1}, {\color{Mittel-Blau}u_2})$
-      is the shortest path from {\color{Mittel-Blau}$u_1$} to
-      {\color{Mittel-Blau}$u_2$}
+      If the shortest path from {\color{MainA}$s$} to
+      {\color{MainA}$t$} passes {\color{MainA}$u_1$} and
+      {\color{MainA}$u_2$} then the sub path
+      $({\color{MainA}u_1}, {\color{MainA}u_2})$
+      is the shortest path from {\color{MainA}$u_1$} to
+      {\color{MainA}$u_2$}
   \end{itemize}
 \end{frame}
 
@@ -113,22 +113,22 @@
     \end{adjustbox}%
     \vspace{-1.0em}
     \label{fig:dijkstra:shortest_paths_introduction}%
-    \caption{Shortest paths from {\color{Mittel-Blau}$s$} to
-      {\color{Mittel-Blau}$t$}}
+    \caption{Shortest paths from {\color{MainA}$s$} to
+      {\color{MainA}$t$}}
   \end{figure}
   \vspace{-1.0em}
   \begin{itemize}
     \item
-      If we know the shortest path form {\color{Mittel-Blau}$s$}
-      to the preceding nodes of {\color{Mittel-Blau}$t$}
+      If we know the shortest path form {\color{MainA}$s$}
+      to the preceding nodes of {\color{MainA}$t$}
       \begin{math}
         (
-          {\color{Mittel-Blau}v_1},
-          {\color{Mittel-Blau}v_2},
-          {\color{Mittel-Blau}v_3}
+          {\color{MainA}v_1},
+          {\color{MainA}v_2},
+          {\color{MainA}v_3}
         )
        \end{math}
-       we can determine the shortest path to {\color{Mittel-Blau}$t$}
+       we can determine the shortest path to {\color{MainA}$t$}
    \end{itemize}
 \end{frame}
 
@@ -185,32 +185,28 @@
       \textbf{Example:}
       \begin{itemize}
         \item
-          Lift pearl {\color{Mittel-Blau}$M$} a little bit
+          Lift pearl {\color{MainA}$A$} a little bit
         \item
-          Connections to pearls {\color{Mittel-Blau}$R$},
-          {\color{Mittel-Blau}$L$} and {\color{Mittel-Blau}$G$} are hanging in
-          the air
+          Connection to pearl {\color{MainA}$B$} is hanging in the air
         \item
-          Lift further until pearl {\color{Mittel-Blau}$R$} starts to lift at
+          Lift further until pearl {\color{MainA}$B$} starts to lift at
           $\SI{5}{m}$
         \item
-          The shortest path to {\color{Mittel-Blau}$R$} is now known
+          The shortest path to {\color{MainA}$B$} is now known
         \item
-          Lift further: The wires from {\color{Mittel-Blau}$R$},
-          {\color{Mittel-Blau}$O$} and {\color{Mittel-Blau}$Q$} are now in the
-          air
+          Lift further: The wires from {\color{MainA}$C$},
+          {\color{MainA}$D$}, {\color{MainA}$E$} and {\color{MainA}$F$}
+          are now in the air
         \item
-          One of the pearls {\color{Mittel-Blau}$G$}, {\color{Mittel-Blau}$L$},
-          {\color{Mittel-Blau}$Q$} or {\color{Mittel-Blau}$O$} is the next one\\
+          One of the pearls {\color{MainA}$C$}, {\color{MainA}$D$},
+          {\color{MainA}$E$} or {\color{MainA}$F$} is the next one\\
           {\color{gray}Which one?}
       \end{itemize}
     \end{column}
     \begin{column}{0.45\linewidth}
       \begin{figure}[!t]
         \includegraphics[width=\linewidth]
-          {Images/Dijkstra/DijkstraTree_WithOverlay}
-        \vspace{-0.5em}
-        \caption{Map $\copyright\,$ Mehlhorn / Sanders}
+          {Images/Dijkstra/DijkstraTreeTF.pdf}
       \end{figure}
     \end{column}
   \end{columns}
@@ -225,17 +221,15 @@
       \textbf{Example:}
       \begin{itemize}
         \item
-          At $\SI{11}{m}$ pearl {\color{Mittel-Blau}$L$} gets lifted
+          At $\SI{11}{m}$ pearl {\color{MainA}$C$} gets lifted
         \item
-          The wires to {\color{Mittel-Blau}$N$} and {\color{Mittel-Blau}$K$}
-          are now in the air
+          The wire to {\color{MainA}$D$} is now in the air
         \item
-          One of the pearls {\color{Mittel-Blau}$G$}, {\color{Mittel-Blau}$K$},
-          {\color{Mittel-Blau}$N$}, {\color{Mittel-Blau}$Q$} or
-          {\color{Mittel-Blau}$O$} is the next one\\
+          One of the pearls {\color{MainA}$D$}, {\color{MainA}$E$}
+          and {\color{MainA}$F$} is the next one\\
           {\color{gray}Which one?}
         \item
-          At $\SI{13}{m}$ pearl {\color{Mittel-Blau}$O$} gets lifted\\
+          At $\SI{12}{m}$ pearl {\color{MainA}$D$} gets lifted\\
           $\cdots$
         \item
           {\color{gray}How to translate this into an computer algorithm?}
@@ -244,9 +238,7 @@
     \begin{column}{0.45\linewidth}
       \begin{figure}[!t]
         \includegraphics[width=\linewidth]
-        {Images/Dijkstra/DijkstraTree_WithOverlay}
-        \vspace{-0.5em}
-        \caption{Map $\copyright\,$ Mehlhorn / Sanders}
+          {Images/Dijkstra/DijkstraTreeTF.pdf}
       \end{figure}
     \end{column}
   \end{columns}
@@ -259,9 +251,9 @@
   Three types of nodes
   \begin{itemize}
     \item
-      {\color{Mittel-Blau}Settled:}
-      For node {\color{Mittel-Blau}$u$} we know
-      {\color{Mittel-Blau}$\mathrm{dist}(s, u)$}
+      {\color{MainA}Settled:}
+      For node {\color{MainA}$u$} we know
+      {\color{MainA}$\mathrm{dist}(s, u)$}
       \hfill
       \raisebox{-0.5em}{\begin{adjustbox}{height=1.5em}%
         \input{Images/Dijkstra/Vertex/Vertex_Settled.tikz}%
@@ -269,9 +261,9 @@
       {\color{gray}(Pearl example: This pearl is hanging in the air)}
       \vspace{0.5em}
     \item
-      {\color{Mittel-Blau}Active:}
-      For node {\color{Mittel-Blau}$u$} we know a tentative distance
-      {\color{Mittel-Blau}$\mathrm{td}(u) \geq \mathrm{dist}(s, u)$}
+      {\color{MainA}Active:}
+      For node {\color{MainA}$u$} we know a tentative distance
+      {\color{MainA}$\mathrm{td}(u) \geq \mathrm{dist}(s, u)$}
       (Can be optimal but doesn't have to)
       \hfill
       \raisebox{-0.5em}{\begin{adjustbox}{height=1.5em}%
@@ -281,7 +273,7 @@
         one connected wire is already in the air)}
         \vspace{0.5em}
     \item
-      {\color{Mittel-Blau}Unreached:}
+      {\color{MainA}Unreached:}
       We have not reached the node yet
       \hfill
       \raisebox{-0.5em}{\begin{adjustbox}{height=1.5em}%
@@ -297,17 +289,17 @@
   \textbf{High level description:}
   \begin{itemize}
     \item
-      Each iteration take the {\color{Mittel-Blau}active} node
-      {\color{Mittel-Blau}$u$} with the
-      {\color{Mittel-Blau}smallest $\mathrm{td}(u)$}\\
+      Each iteration take the {\color{MainA}active} node
+      {\color{MainA}$u$} with the
+      {\color{MainA}smallest $\mathrm{td}(u)$}\\
       {\color{gray}(The pearl getting lifted next)}
     \item
-      We update the state of the node {\color{Mittel-Blau}$u$} to
-      {\color{Mittel-Blau}settled}\\
+      We update the state of the node {\color{MainA}$u$} to
+      {\color{MainA}settled}\\
       {\color{gray}(The pearl gets lifted)}
     \item
-      We check for each {\color{Mittel-Blau}neighbor $v$} of node
-      {\color{Mittel-Blau}$u$} if we can reach {\color{Mittel-Blau}$v$} faster
+      We check for each {\color{MainA}neighbor $v$} of node
+      {\color{MainA}$u$} if we can reach {\color{MainA}$v$} faster
       than currently possible\\
       {\color{gray}(Check all outgoing wires from this pearl:
         Activate all connected pearls, update
@@ -328,7 +320,7 @@
     \end{adjustbox}
     \vspace{-2em}
     \caption{%
-      \only<1>{Start at {\color{Mittel-Blau}$u_1$}}%
+      \only<1>{Start at {\color{MainA}$u_1$}}%
       \only<2>{Iteration 1}%
       \only<3>{Iteration 2}%
       \only<4>{Iteration 3}%
@@ -350,20 +342,20 @@
     \item
       \textbf{Assumption 2:}
       Each node has a unique distance
-      {\color{Mittel-Blau}$\mathrm{dist}(s, u)$}\\
+      {\color{MainA}$\mathrm{dist}(s, u)$} to the start {\color{MainA}$s$}\\
       {\color{gray}(This was not the case on the previous slides)}\\[0.5em]
       This results in an easy and intuitive proof.\\
       {\color{gray}
-        It is prossible to show this without assumption 2.
+        It is possible to show this without assumption 2.
         See references if interested}
       \vspace{1.0em}
     \item
-      With assumption 2 there exists a sorting {\color{Mittel-Blau}$u_1$},
-      {\color{Mittel-Blau}$u_2$}, $\ldots$ with that:
+      With assumption 2 there exists a sorting {\color{MainA}$u_1$},
+      {\color{MainA}$u_2$}, $\ldots$ with that:
       \begin{displaymath}
-        {\color{Mittel-Blau}\mathrm{dist}(s, u_1)} <
-        {\color{Mittel-Blau}\mathrm{dist}(s, u_2)} <
-        {\color{Mittel-Blau}\mathrm{dist}(s, u_3)} <
+        {\color{MainA}\mathrm{dist}(s, u_1)} <
+        {\color{MainA}\mathrm{dist}(s, u_2)} <
+        {\color{MainA}\mathrm{dist}(s, u_3)} <
         \ldots
       \end{displaymath}
   \end{itemize}
@@ -375,26 +367,26 @@
   \textbf{Proof:}
   \begin{itemize}
     \item
-      With \textbf{assumption 2} there exists a sorting {\color{Mittel-Blau}$u_1$},
-      {\color{Mittel-Blau}$u_2$}, $\ldots$ with that:
+      With \textbf{assumption 2} there exists a sorting {\color{MainA}$u_1$},
+      {\color{MainA}$u_2$}, $\ldots$ with that:
       \begin{displaymath}
-        {\color{Mittel-Blau}\mathrm{dist}(s, u_1)} <
-        {\color{Mittel-Blau}\mathrm{dist}(s, u_2)} <
-        {\color{Mittel-Blau}\mathrm{dist}(s, u_3)} <
+        {\color{MainA}\mathrm{dist}(s, u_1)} <
+        {\color{MainA}\mathrm{dist}(s, u_2)} <
+        {\color{MainA}\mathrm{dist}(s, u_3)} <
         \ldots
       \end{displaymath}
     \item
       We want to show that the \textit{Dijkstra} algorithm finds the shortest
-      path for each node {\color{Mittel-Blau}$u_i$} so that
-      {\color{Mittel-Blau}$\mathrm{td}(u_i) = \mathrm{dist}(s, u_i)$} holds
+      path for each node {\color{MainA}$u_i$} so that
+      {\color{MainA}$\mathrm{td}(u_i) = \mathrm{dist}(s, u_i)$} holds
     \item
       Additionally we show that each node gets solved in order of the distance:
-      Node {\color{Mittel-Blau}$u_i$} gets solved in iteration
-      {\color{Mittel-Blau}$i$}
+      Node {\color{MainA}$u_i$} gets solved in iteration
+      {\color{MainA}$i$}
       \begin{displaymath}
-        {\color{Mittel-Blau}u_1},
-        {\color{Mittel-Blau}u_2},
-        {\color{Mittel-Blau}u_3},
+        {\color{MainA}u_1},
+        {\color{MainA}u_2},
+        {\color{MainA}u_3},
         \ldots
       \end{displaymath}
   \end{itemize}
@@ -403,16 +395,16 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Dijkstra Algorithm}{Proof}
-  \textbf{To show:} Node {\color{Mittel-Blau}$u_i$} gets solved in round
-  {\color{Mittel-Blau}$i$}
+  \textbf{To show:} Node {\color{MainA}$u_i$} gets solved in round
+  {\color{MainA}$i$}
   \begin{enumerate}
     \item
-      Node {\color{Mittel-Blau}$u_i$} contains the correct distance
-      ({\color{Mittel-Blau}$\mathrm{td}(u_i) = \mathrm{dist}(s, u_i)$})
+      Node {\color{MainA}$u_i$} contains the correct distance
+      ({\color{MainA}$\mathrm{td}(u_i) = \mathrm{dist}(s, u_i)$})
       and is active
     \item
-      Node {\color{Mittel-Blau}$u_i$} has the smallest value for
-      {\color{Mittel-Blau}$\mathrm{td}(u_i)$} and gets selected by the algorithm
+      Node {\color{MainA}$u_i$} has the smallest value for
+      {\color{MainA}$\mathrm{td}(u_i)$} and gets selected by the algorithm
   \end{enumerate}
   \vspace{1.0em}
   \textbf{Induction start:}
@@ -420,35 +412,35 @@
     \item
       \begin{itemize}
         \item
-          Only the start node {\color{Mittel-Blau}$s = u_1$} is active and
-          {\color{Mittel-Blau}$\mathrm{td}(s) = 0$}
+          Only the start node {\color{MainA}$s = u_1$} is active and
+          {\color{MainA}$\mathrm{td}(s) = 0$}
         \item
-          Node {\color{Mittel-Blau}$u_1$} gets solved and
-          {\color{Mittel-Blau}$\mathrm{td}(u_1) = \mathrm{dist}(s, u_1) = 0$})
+          Node {\color{MainA}$u_1$} gets solved and
+          {\color{MainA}$\mathrm{td}(u_1) = \mathrm{dist}(s, u_1) = 0$}
       \end{itemize}
     \item
-      Only the start node {\color{Mittel-Blau}$u_1$} is active
+      Only the start node {\color{MainA}$u_1$} is active
   \end{enumerate}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Dijkstra Algorithm}{Proof}
-  \textbf{Induction step:} {\color{Mittel-Blau}$i = i+1$}
+  \textbf{Induction step:} {\color{MainA}$i = i+1$}
   \begin{enumerate}
     \item
-      \textbf{To show:} Node {\color{Mittel-Blau}$u_i$} contains the correct
-      distance ({\color{Mittel-Blau}$\mathrm{td}(u_i) = \mathrm{dist}(s, u_i)$})
+      \textbf{To show:} Node {\color{MainA}$u_i$} contains the correct
+      distance ({\color{MainA}$\mathrm{td}(u_i) = \mathrm{dist}(s, u_i)$})
       and is active
       \begin{itemize}
         \item
-          On the shortest path from {\color{Mittel-Blau}$s$} to
-          {\color{Mittel-Blau}$u_{i+1}$} is a preceding node that:
+          On the shortest path from {\color{MainA}$s$} to
+          {\color{MainA}$u_{i+1}$} is a preceding node that:
           \begin{displaymath}
-            \color{Mittel-Blau}\mathrm{dist}(s, u_{i+1})
+            \color{MainA}\mathrm{dist}(s, u_{i+1})
             = \mathrm{dist}(s, v) + \mathrm{c}(v, u_{i+1})
           \end{displaymath}
-          ({\color{Mittel-Blau}$c$} are the costs of the edge)
+          ({\color{MainA}$\mathrm{c}(v, u_{i+1})$} are the costs of the edge)
           \begin{figure}[!h]
             \begin{adjustbox}{width=0.9\linewidth}
               \def\DijkstraTD{0}%
@@ -457,14 +449,14 @@
           \end{figure}
         \item
           With that results
-          {\color{Mittel-Blau}$\mathrm{dist}(s, v) < \mathrm{dist}(s, u_{i+1})$}
-          because {\color{Mittel-Blau}$c > 0$}
+          {\color{MainA}$\mathrm{dist}(s, v) < \mathrm{dist}(s, u_{i+1})$}
+          because {\color{MainA}$c > 0$}
         \item
-          Because {\color{Mittel-Blau}$u_{i+1}$} is currently solved node
-          {\color{Mittel-Blau}$v$} is one of the preceding nodes
-          {\color{Mittel-Blau}$u_1, \dots, u_i$}, hence
-          {\color{Mittel-Blau}$v = u_j$} with
-          {\color{Mittel-Blau}$0 \leq j \leq i$}
+          Because {\color{MainA}$u_{i+1}$} is currently settled, the node
+          {\color{MainA}$v$} is one of the preceding nodes
+          {\color{MainA}$u_1, \dots, u_i$}, hence
+          {\color{MainA}$v = u_j$} with
+          {\color{MainA}$0 \leq j \leq i$}
       \end{itemize}
   \end{enumerate}
 \end{frame}
@@ -479,14 +471,14 @@
   \end{figure}
   \begin{itemize}
     \item
-      Preceding node of {\color{Mittel-Blau}$u_6$} is
-      {\color{Mittel-Blau}$v = u_3$}
+      Preceding node of {\color{MainA}$u_6$} is
+      {\color{MainA}$v = u_3$}
     \item
       In round 3
       \begin{math}
-        {\color{Mittel-Blau}\mathrm{td}(u_6) = }
+        {\color{MainA}\mathrm{td}(u_6) = }
         {\color{Hell-Gruen}\;2 + 4\;}
-        {\color{Mittel-Blau} = 6}
+        {\color{MainA} = 6}
       \end{math}
       was already solved
   \end{itemize}
@@ -503,18 +495,18 @@
   \end{figure}
   \begin{enumerate}
     \item
-      \textbf{To show:} Node {\color{Mittel-Blau}$u_i$} contains the correct
-      distance ({\color{Mittel-Blau}$\mathrm{td}(u_i) = \mathrm{dist}(s, u_i)$})
+      \textbf{To show:} Node {\color{MainA}$u_i$} contains the correct
+      distance {\color{MainA}$\mathrm{td}(u_i) = \mathrm{dist}(s, u_i)$}
       and is active
       \begin{itemize}
         \item
           With \textbf{induction assumption}:
-          {\color{Mittel-Blau}$v$} already contains the correct distance which
-          was evaluated in round {\color{Mittel-Blau}$j$}\\
-          (edge from {\color{Mittel-Blau}$v$} to {\color{Mittel-Blau}$u_{i+1}$})
-          and is stored in {\color{Mittel-Blau}$\mathrm{td}(u_{i+1})$}
+          {\color{MainA}$v$} already contains the correct distance which
+          was evaluated in round {\color{MainA}$j$}\\
+          (edge from {\color{MainA}$v$} to {\color{MainA}$u_{i+1}$})
+          and is stored in {\color{MainA}$\mathrm{td}(u_{i+1})$}
         \item
-          {\color{Mittel-Blau}$u_{i+1}$} is active because the preceding node
+          {\color{MainA}$u_{i+1}$} is active because the preceding node
           was solved
       \end{itemize}
   \end{enumerate}
@@ -532,22 +524,22 @@
   \begin{enumerate}
     \setcounter{enumi}{1}
     \item
-      \textbf{To show:} Node {\color{Mittel-Blau}$u_{i+1}$} has the smallest
-      value for {\color{Mittel-Blau}$\mathrm{td}(u_{i+1})$} and gets selected by
+      \textbf{To show:} Node {\color{MainA}$u_{i+1}$} has the smallest
+      value for {\color{MainA}$\mathrm{td}(u_{i+1})$} and gets selected by
       the algorithm
       \begin{itemize}
         \item
-          All nodes with smaller {\color{Mittel-Blau}$\mathrm{dist}$} are
+          All nodes with smaller {\color{MainA}$\mathrm{dist}$} are
           already solved
         \item
-          All other nodes {\color{Mittel-Blau}$u_k$} with
-          {\color{Mittel-Blau}$k > i + 1$} have a greater
-          {\color{Mittel-Blau}$\mathrm{dist}(s, u_k)$}
-          an with that the  {\color{Mittel-Blau}$\mathrm{td}(u_k)$} is greater
+          All other nodes {\color{MainA}$u_k$} with
+          {\color{MainA}$k > i + 1$} have a greater
+          {\color{MainA}$\mathrm{dist}(s, u_k)$}
+          and with that the {\color{MainA}$\mathrm{td}(u_k)$} is greater
           or equal
         \item[$\Rightarrow$]
-          {\color{Mittel-Blau}$u_{i+1}$} is the node with the
-          smallest {\color{Mittel-Blau}$\mathrm{td}$} and gets selected by the
+          {\color{MainA}$u_{i+1}$} is the node with the
+          smallest {\color{MainA}$\mathrm{td}$} and gets selected by the
           algorithm
       \end{itemize}
   \end{enumerate}
@@ -559,13 +551,13 @@
   \textbf{Implementation:}
   \begin{itemize}
     \item
-      We have to manage a set of {\color{Mittel-Blau}active nodes}
+      We have to manage a set of {\color{MainA}active nodes}
     \item
-      We start with only the {\color{Mittel-Blau}start node} in our set
+      We start with only the {\color{MainA}start node} in our set
     \item
       At the start of each iteration we need the node
-      {\color{Mittel-Blau}$u$} with the smallest
-      {\color{Mittel-Blau}$\mathrm{td}(u)$}\\[0.5em]
+      {\color{MainA}$u$} with the smallest
+      {\color{MainA}$\mathrm{td}(u)$}\\[0.5em]
       {\color{gray}How to implement this?}
   \end{itemize}
 \end{frame}
@@ -576,16 +568,16 @@
   \textbf{Implementation:}
   \begin{itemize}
     \item
-      Using a {\color{Mittel-Blau}priority queue} with
-      {\color{Mittel-Blau}$\mathrm{td}(u)$} as keys
+      Using a {\color{MainA}priority queue} with
+      {\color{MainA}$\mathrm{td}(u)$} as keys
     \item
       The following problem occurs:
       \begin{itemize}
         \item
-          The {\color{Mittel-Blau}tentative distance} of an active node might
+          The {\color{MainA}tentative distance} of an active node might
           change multiple times before it is settled
         \item
-          We have to change the key in our {\color{Mittel-Blau}priority queue}
+          We have to change the key in our {\color{MainA}priority queue}
           without removing the entry
       \end{itemize}
   \end{itemize}
@@ -606,18 +598,18 @@
   \textbf{Alternative:}
   \begin{itemize}
     \item
-      If a node reoccurs with a smaller {\color{Mittel-Blau}$\mathrm{dist}$}
+      If a node reoccurs with a smaller {\color{MainA}$\mathrm{dist}$}
       we insert the element one more time into the
-      {\color{Mittel-Blau}priority queue}\\
+      {\color{MainA}priority queue}\\
       {\color{gray}(We do nothing if the distance is greater or equal)}
     \item
       We do not remove the old entry
     \item
       The node always gets solved with the smallest distance because of the
-      priority
+      {\color{MainA}smaller key}
     \item
-      If a node reoccurs with a higher {\color{Mittel-Blau}$\mathrm{dist}$}
-      we remove it and do simply {\color{Mittel-Blau}nothing}
+      If a settled node reoccurs with a higher {\color{MainA}$\mathrm{dist}$}
+      we remove it and do simply {\color{MainA}nothing}
   \end{itemize}
 \end{frame}
 
@@ -641,21 +633,21 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Dijkstra Algorithm}{Runtime analysis}
-  Graph with {\color{Mittel-Blau}$n$} nodes and {\color{Mittel-Blau}$m$}
-  edges: ({\color{Mittel-Blau}$m \geq n$})
+  Graph with {\color{MainA}$n$} nodes and {\color{MainA}$m$}
+  edges: ({\color{MainA}$m \geq n$})
   \begin{itemize}
     \item
-      Each node gets solved exactly {\color{Mittel-Blau}one time}
+      Each node gets solved exactly {\color{MainA}one time}
     \item
       When solving a node it's outgoing edges are taken into account
     \item
       Each edge triggers at maximum one \texttt{insert} operation
     \item
-      The number of operations on the {\color{Mittel-Blau}priority queue}
-      is at maximum {\color{Mittel-Blau}$O(m)$}
+      The number of operations on the {\color{MainA}priority queue}
+      is at maximum {\color{MainA}$O(m)$}
     \item
       This results in a runtime of
-      {\color{Mittel-Blau}$O(m \cdot \log m)$}\\
+      {\color{MainA}$O(m \cdot \log m)$}\\
       {\color{gray}($\log m$ because of at max. $m$ elements in the priority
         queue)}
   \end{itemize}
@@ -664,25 +656,25 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Dijkstra Algorithm}{Runtime analysis}
-  Runtime of {\color{Mittel-Blau}$O(m \cdot \log m)$}:
+  Runtime of {\color{MainA}$O(m \cdot \log m)$}:
   \begin{itemize}
     \item
-      Because of {\color{Mittel-Blau}$m \leq n^2$} we have a maximum runtime of
-      {\color{Mittel-Blau}$O(m \cdot \log n)$}, because
-      {\color{Mittel-Blau}$\log n^2 = 2 \, \log n$}
+      Because of {\color{MainA}$m \leq n^2$} we have a maximum runtime of
+      {\color{MainA}$O(m \cdot \log n)$}, because
+      {\color{MainA}$\log n^2 = 2 \, \log n$}
     \item
-      With a complex {\color{Mittel-Blau}priotity queue} the runtime can be
-      reduced to {\color{Mittel-Blau}$O(m + n \, \log n)$}
+      With a complex {\color{MainA}priority queue} the runtime can be
+      reduced to {\color{MainA}$O(m + n \, \log n)$}
       \begin{itemize}
         \item
           For example with a \textbf{Fibonacci heap}
         \item
           This results in a better runtime for complex graphs
-          {\color{Mittel-Blau}$m \sim n^2$}
+          {\color{MainA}$m \sim n^2$}
         \item
           Complex heaps create a management overhead
         \item[$\Rightarrow$]
-          In practice {\color{Mittel-Blau}$m \in O(n)$} with a
+          In practice {\color{MainA}$m \in O(n)$} with a
           \textbf{binary heap} being faster\\
           {\color{gray}(See lecture 6)}
       \end{itemize}
@@ -695,15 +687,15 @@
   \textbf{Termination criteria:}
   \begin{itemize}
     \item
-      Terminate as soon as the target node {\color{Mittel-Blau}$t$} is settled\\
+      Terminate as soon as the target node {\color{MainA}$t$} is settled\\
       $\ldots$ never before because tentative distance might change:
       \begin{displaymath}
-        {\color{Mittel-Blau}\mathrm{td}(t) \geq \mathrm{dist}(s, t)}
+        {\color{MainA}\mathrm{td}(t) \geq \mathrm{dist}(s, t)}
       \end{displaymath}
     \item
-      Before the node {\color{Mittel-Blau}$t$} is solved
-      {\color{Mittel-Blau}all nodes $u$} with
-      {\color{Mittel-Blau}$\mathrm{dist}(s, u) \leq \mathrm{dist}(s, t)$}
+      Before the node {\color{MainA}$t$} is solved
+      {\color{MainA}all nodes $u$} with
+      {\color{MainA}$\mathrm{dist}(s, u) \leq \mathrm{dist}(s, t)$}
       are settled
   \end{itemize}
 \end{frame}
@@ -714,15 +706,15 @@
   \textbf{Termination criteria:}
   \begin{itemize}
     \item
-      Not only the {\color{Mittel-Blau}single source \textbf{single} target}
+      Not only the {\color{MainA}single source \textbf{single} target}
       shortest path problem is solved by the Dijkstra algorithm but also the
-      {\color{Mittel-Blau}single source \textbf{all} targets} problem
+      {\color{MainA}single source \textbf{all} targets} problem
     \item
       This sounds wasteful but there is not a (much) better method for general
-      graphs
-      {\color{gray}Intuitive:} We only know that there is no shorter path if
-      all in the range of {\color{Mittel-Blau}$\mathrm{dist}(s, t)$} around
-      {\color{Mittel-Blau}$s$} is evaluated
+      graphs\\
+      \textbf{Intuitive:} We only know that there is no shorter path if
+      all nodes in the distance of {\color{MainA}$\mathrm{dist}(s, t)$} are
+      evaluated
   \end{itemize}
 \end{frame}
 
@@ -733,12 +725,12 @@
   \begin{itemize}
     \item
       With the current implementation of the Dijkstra algorithm we only get
-      the {\color{Mittel-Blau}length} of the path\\
-      {\color{gray}How to get the path too?}
+      the {\color{MainA}length} of the path\\
+      {\color{gray}How to get the path itself too?}
     \item
       If we save the preceding node of the current shortest path on
-      {\color{Mittel-Blau}relaxation} of each node we can reconstruct the
-      {\color{Mittel-Blau}path}
+      {\color{MainA}settling} of each node we can reconstruct the
+      {\color{MainA}path}
   \end{itemize}
 \end{frame}
 
@@ -753,7 +745,7 @@
     \end{adjustbox}
     \vspace{-2em}
     \caption{%
-      \only<1>{Start at {\color{Mittel-Blau}$u_1$}}%
+      \only<1>{Start at {\color{MainA}$u_1$}}%
       \only<2>{Iteration 1}%
       \only<3>{Iteration 2}%
       \only<4>{Iteration 3}%
@@ -771,10 +763,10 @@
   \begin{itemize}
     \item
       In our proof we used the assumption that all costs are
-      {\color{Mittel-Blau}not~negative} (even $> 0$)
+      {\color{MainA}not~negative} (even $> 0$)
     \item
-      With {\color{Mittel-Blau}negative costs} there might be
-      {\color{Mittel-Blau}negative cycles}:
+      With {\color{MainA}negative costs} there might be
+      {\color{MainA}negative cycles}:
   \end{itemize}
   \begin{columns}
     \begin{column}{0.4\linewidth}
@@ -812,16 +804,16 @@
       \begin{itemize}
         \item
           No cycle:\\
-          {\color{Mittel-Blau}cost of 1}
+          {\color{MainA}cost of 1}
         \item
           1 cycle:\\
-          {\color{Mittel-Blau}cost of 0}
+          {\color{MainA}cost of 0}
         \item
           2 cycles:\\
-          {\color{Mittel-Blau}cost of -1}
+          {\color{MainA}cost of -1}
         \item
           3 cycles:\\
-          {\color{Mittel-Blau}cost of -2}
+          {\color{MainA}cost of -2}
         \item
           $\cdots$
       \end{itemize}
@@ -840,16 +832,16 @@
         \item
           For example the \textbf{Bellman-Ford} algorithm
         \item
-          If the graph is {\color{Mittel-Blau}acyclic} we can simply use a
-          topological sorting (with DFS) and ralaxing the nodes in order
+          If the graph is {\color{MainA}acyclic} we can simply use a
+          topological sorting (with DFS) and settling the nodes in order
           of this sorting
       \end{itemize}
     \item
       Another (not only) in artificial intelligence used variant of the Dijkstra
-      algorithm is the {\color{Mittel-Blau}A* algorithm}\\
+      algorithm is the {\color{MainA}A* algorithm}\\
       Additional information given:\\
-      \hspace{1.5em}{\color{Mittel-Blau}$h(u)$}
-      $=$ estimated value for {\color{Mittel-Blau}$\mathrm{dist}(u, t)$}
+      \hspace{1.5em}{\color{MainA}$h(u)$}
+      $=$ estimated value for {\color{MainA}$\mathrm{dist}(u, t)$}
   \end{itemize}
 \end{frame}
 
