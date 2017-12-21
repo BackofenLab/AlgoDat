@@ -1,10 +1,6 @@
-
-
-%-------------------------------------------------------------------------------
-
 \begin{frame}{Graphs}{Degrees (Valency)}
   \textbf{Degree of a vertex:} Directed graph:
-   {\color{Mittel-Blau}$G = (V , E)$}
+   {\color{MainA}$G = (V , E)$}
     \onslide<2->
     \begin{figure}
     \begin{adjustbox}{width=0.325\linewidth}
@@ -12,28 +8,29 @@
     \end{adjustbox}
     \caption{Vertex with in- / outdegree of 3 / 2}
     \label{fig:graph:degree_directed}
-  \end{figure}      
+  \end{figure}
+  \vspace{-1em}
   \begin{itemize}
     \item<3->
-     {\color{Mittel-Blau}Indegree} of a vertex {\color{Mittel-Blau}$u$}
-     is the number of {\color{Mittel-Blau}edge heads} adjacent to the
+     {\color{MainA}Indegree} of a vertex {\color{MainA}$u$}
+     is the number of {\color{MainA}edge head ends} adjacent to the
      vertex
      \begin{displaymath}
-       \mathrm{deg}^{+}({\color{Mittel-Blau}u}) =
+       \mathrm{deg}^{+}({\color{MainA}u}) =
        \left\vert \{
-         (v, {\color{Mittel-Blau}u})
-         : \; (v, {\color{Mittel-Blau}u}) \in {\color{Mittel-Blau}E} \} 
+         (v, {\color{MainA}u})
+         : \; (v, {\color{MainA}u}) \in {\color{MainA}E} \} 
        \right\vert
       \end{displaymath}
     \item<4->
-      {\color{Mittel-Blau}Outdegree} of a vertex {\color{Mittel-Blau}$u$}
-      is the number of {\color{Mittel-Blau}edge tails} adjacent to the
+      {\color{MainA}Outdegree} of a vertex {\color{MainA}$u$}
+      is the number of {\color{MainA}edge tail ends} adjacent to the
       vertex
       \begin{displaymath}
-        \mathrm{deg}^{-}({\color{Mittel-Blau}u}) =
+        \mathrm{deg}^{-}({\color{MainA}u}) =
         \left\vert \{
-          ({\color{Mittel-Blau}u}, v)
-          : \; ({\color{Mittel-Blau}u}, v) \in {\color{Mittel-Blau}E} \}
+          ({\color{MainA}u}, v)
+          : \; ({\color{MainA}u}, v) \in {\color{MainA}E} \}
         \right\vert
       \end{displaymath}
   \end{itemize} 
@@ -43,7 +40,7 @@
 
 \begin{frame}{Graphs}{Degrees (Valency)}
   \textbf{Degree of a vertex:} Undirected graph:
-         {\color{Mittel-Blau}$G = (V , E)$}
+         {\color{MainA}$G = (V , E)$}
   \onslide<2->
   \begin{figure}
     \begin{adjustbox}{width=0.325\linewidth}
@@ -54,14 +51,14 @@
   \end{figure}       
   \begin{itemize}
     \item<3->
-      {\color{Mittel-Blau}Degree} of a vertex {\color{Mittel-Blau}$u$}
-      is the number of {\color{Mittel-Blau}vertices} adjacent to the
+      {\color{MainA}Degree} of a vertex {\color{MainA}$u$}
+      is the number of {\color{MainA}vertices} adjacent to the
       vertex
       \begin{displaymath}
-        \mathrm{deg}({\color{Mittel-Blau}u}) =
+        \mathrm{deg}({\color{MainA}u}) =
         \left\vert \{
-          \{v, {\color{Mittel-Blau}u}\}
-          : \; \{v, {\color{Mittel-Blau}u}\} \in {\color{Mittel-Blau}E} \} 
+          \{v, {\color{MainA}u}\}
+          : \; \{v, {\color{MainA}u}\} \in {\color{MainA}E} \} 
         \right\vert
       \end{displaymath}
   \end{itemize}
@@ -72,7 +69,7 @@
 
 \begin{frame}{Graphs}{Paths}
   \textbf{Paths in a graph:}
-         {\color{Mittel-Blau}$G = (V , E)$}
+         {\color{MainA}$G = (V , E)$}
   \onslide<2->
   \begin{columns}
     \begin{column}[b]{0.5\linewidth}
@@ -80,8 +77,8 @@
         \begin{adjustbox}{width=0.95\linewidth}
           \input{Images/Graphs/Paths_Undirected.tikz}
         \end{adjustbox}
-        \caption{{\color{Mittel-Blau}Undirected path} of length 3 \newline
-          ${\color{Mittel-Blau}P} = (0, 3, 2, 4)$}
+        \caption{{\color{MainA}Undirected path} of length 3 \newline
+          ${\color{MainA}P} = (0, 3, 2, 4)$}
         \label{fig:graphs:undirected_path}
       \end{figure}
     \end{column}
@@ -90,40 +87,40 @@
         \begin{adjustbox}{width=0.95\linewidth}
           \input{Images/Graphs/Paths_Directed.tikz}
         \end{adjustbox}
-        \caption{{\color{Mittel-Blau}Directed path} of length 3 \newline
-          ${\color{Mittel-Blau}P} = (0, 3, 1, 4)$}
+        \caption{{\color{MainA}Directed path} of length 3 \newline
+          ${\color{MainA}P} = (0, 3, 1, 4)$}
         \label{fig:graphs:directed_path}
       \end{figure}
     \end{column}
   \end{columns}
   \begin{itemize}
     \item<3->
-      A path of {\color{Mittel-Blau}$G$} is a sequence of edges
+      A path of {\color{MainA}$G$} is a sequence of edges
       \begin{math}
-        {\color{Mittel-Blau}u_1},
-        {\color{Mittel-Blau}u_2},
+        {\color{MainA}u_1},
+        {\color{MainA}u_2},
         \dots,
-        {\color{Mittel-Blau}u_i} \in {\color{Mittel-Blau}V}
+        {\color{MainA}u_i} \in {\color{MainA}V}
       \end{math}
       with
       \begin{itemize}
         \item<4->
           Undirected graph:
           \begin{math}
-            \{{\color{Mittel-Blau}u_1}, {\color{Mittel-Blau}u_2}\},
-            \{{\color{Mittel-Blau}u_2}, {\color{Mittel-Blau}u_3}\},
+            \{{\color{MainA}u_1}, {\color{MainA}u_2}\},
+            \{{\color{MainA}u_2}, {\color{MainA}u_3}\},
             \dots,
-            \{{\color{Mittel-Blau}u_{i-1}}, {\color{Mittel-Blau}u_i}\} \in
-            {\color{Mittel-Blau}E}
+            \{{\color{MainA}u_{i-1}}, {\color{MainA}u_i}\} \in
+            {\color{MainA}E}
           \end{math}
         \item<4->
           Directed graph:
           \begin{math}
-          ({\color{Mittel-Blau}u_1}, {\color{Mittel-Blau}u_2}),
-          ({\color{Mittel-Blau}u_2}, {\color{Mittel-Blau}u_3}),
+          ({\color{MainA}u_1}, {\color{MainA}u_2}),
+          ({\color{MainA}u_2}, {\color{MainA}u_3}),
           \dots,
-          ({\color{Mittel-Blau}u_{i-1}}, {\color{Mittel-Blau}u_i}) \in
-          {\color{Mittel-Blau}E}
+          ({\color{MainA}u_{i-1}}, {\color{MainA}u_i}) \in
+          {\color{MainA}E}
           \end{math}
       \end{itemize}
   \end{itemize}
@@ -133,15 +130,15 @@
 
 \begin{frame}{Graphs}{Paths}
   \textbf{Paths in a graph:}
-         {\color{Mittel-Blau}$G = (V , E)$}
+         {\color{MainA}$G = (V , E)$}
   \begin{columns}
     \begin{column}[b]{0.5\linewidth}
       \begin{figure}
         \begin{adjustbox}{width=0.95\linewidth}
           \input{Images/Graphs/Paths_Directed.tikz}
         \end{adjustbox}
-        \caption{{\color{Mittel-Blau}Directed path} of length 3 \newline
-          ${\color{Mittel-Blau}P} = (0, 3, 1, 4)$}
+        \caption{{\color{MainA}Directed path} of length 3 \newline
+          ${\color{MainA}P} = (0, 3, 1, 4)$}
         \label{fig:graphs:directed_path_length}
       \end{figure}
     \end{column}
@@ -150,23 +147,23 @@
         \begin{adjustbox}{width=0.8\linewidth}
           \input{Images/Graphs/Paths_Weighted.tikz}
         \end{adjustbox}
-        \caption{{\color{Mittel-Blau}Weighted path} with cost 6 \newline
-          ${\color{Mittel-Blau}P} = (2, 3, 1)$}
+        \caption{{\color{MainA}Weighted path} with cost 6 \newline
+          ${\color{MainA}P} = (2, 3, 1)$}
         \label{fig:graphs:weighted_path_length}
       \end{figure}
     \end{column}
   \end{columns}
   \begin{itemize}
     \item<4->
-      The {\color{Mittel-Blau}length of a path} is:
+      The {\color{MainA}length of a path} is:
       (also costs of a path)
       \begin{itemize}
         \item<5->
           Without weights:
-          {\color{Mittel-Blau}number of edges} taken
+          {\color{MainA}number of edges} taken
         \item<6->
           With weights:
-          {\color{Mittel-Blau}sum of weigths of edges} taken
+          {\color{MainA}sum of weigths of edges} taken
       \end{itemize}
   \end{itemize}
 \end{frame}
@@ -175,77 +172,79 @@
 
 \begin{frame}{Graphs}{Paths}
   \textbf{Shortest path in a graph:}
-         {\color{Mittel-Blau}$G = (V , E)$}
+         {\color{MainA}$G = (V , E)$}
   \onslide<2->
   \begin{figure}
     \begin{adjustbox}{width=0.75\linewidth}
       \input{Images/Graphs/Paths_Shortest.tikz}
     \end{adjustbox}
-    \caption{{\color{Mittel-Blau}Shortest path} from 0 to 2 with cost / distance
-      {\color{Mittel-Blau}$d(0,2) = ?$}
+    \caption{{\color{MainA}Shortest path} from 0 to 2 with cost / distance
+      {\color{MainA}$d(0,2) = ?$}%
      }
     \label{fig:graphs:shortest_path}
   \end{figure}
+  \vspace{-1em}
   \begin{itemize}
     \item<3->
-      The {\color{Mittel-Blau}shortest path} between two vertices
-      ${\color{Mittel-Blau}u}, {\color{Mittel-Blau}v}$ is the path
+      The {\color{MainA}shortest path} between two vertices
+      ${\color{MainA}u}, {\color{MainA}v}$ is the path
       \begin{math}
-        {\color{Mittel-Blau}P}
-          = ({\color{Mittel-Blau}u}, \dots, {\color{Mittel-Blau}v})
+        {\color{MainA}P}
+          = ({\color{MainA}u}, \dots, {\color{MainA}v})
       \end{math}
-      with the shortest length ${\color{Mittel-Blau}d(u,v)}$ or lowest costs
+      with the shortest length ${\color{MainA}d(u,v)}$ or lowest costs
   \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 \begin{frame}{Graphs}{Paths}
   \textbf{Shortest path in a graph:}
-         {\color{Mittel-Blau}$G = (V , E)$}
+         {\color{MainA}$G = (V , E)$}
   \begin{figure}
     \begin{adjustbox}{width=0.75\linewidth}
       \input{Images/Graphs/Paths_Shortest2.tikz}
     \end{adjustbox}
-    \caption{{\color{Mittel-Blau}Shortest path} from 0 to 2 with cost / distance
-      {\color{Mittel-Blau}$d(0,2) = 6$}
-      ${\color{Mittel-Blau}P}~=~(0, 1, 4, 3, 2)$}
+    \caption{{\color{MainA}Shortest path} from 0 to 2 with cost / distance
+      {\color{MainA}$d(0,2) = 6$}\\
+      ${\color{MainA}P}~=~(0, 1, 4, 3, 2)$}
   \end{figure}
+  \vspace{-1em}
   \begin{itemize}
     \item
-      The {\color{Mittel-Blau}shortest path} between two vertices
-      ${\color{Mittel-Blau}u}, {\color{Mittel-Blau}v}$ is the path
+      The {\color{MainA}shortest path} between two vertices
+      ${\color{MainA}u}, {\color{MainA}v}$ is the path
       \begin{math}
-        {\color{Mittel-Blau}P}
-          = ({\color{Mittel-Blau}u}, \dots, {\color{Mittel-Blau}v})
+        {\color{MainA}P}
+          = ({\color{MainA}u}, \dots, {\color{MainA}v})
       \end{math}
-      with the shortest length ${\color{Mittel-Blau}d(u,v)}$ or lowest costs
+      with the shortest length ${\color{MainA}d(u,v)}$ or lowest costs
   \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 \begin{frame}{Graphs}{Paths}
   \textbf{Diameter of a graph:}
-         {\color{Mittel-Blau}$G = (V , E)$}
+         {\color{MainA}$G = (V , E)$}
   \onslide<2->
   \hfill\begin{math}
     \displaystyle
-    {\color{Mittel-Blau}d} =
-      \max\limits_{{\color{Mittel-Blau}u}, {\color{Mittel-Blau}v}
-        \in {\color{Mittel-Blau}V}}
-      {\color{Mittel-Blau}d(u, \color{Mittel-Blau}v)}
+    {\color{MainA}d} =
+      \max\limits_{{\color{MainA}u}, {\color{MainA}v}
+        \in {\color{MainA}V}}
+      {\color{MainA}d(u, \color{MainA}v)}
   \end{math}
   \begin{figure}
     \begin{adjustbox}{width=0.75\linewidth}
       \input{Images/Graphs/Paths_Diameter.tikz}
     \end{adjustbox}
-    \caption{{\color{Mittel-Blau}Diameter} of graph is
-      ${\color{Mittel-Blau}d} = ?$}
+    \caption{{\color{MainA}Diameter} of graph is
+      ${\color{MainA}d} = ?$}
   \end{figure}
   \vspace{-0.5em}
   \begin{itemize}
     \item<3->
-      The {\color{Mittel-Blau}diameter} of a graph is the length / the costs of
-      the {\color{Mittel-Blau}longest shortest path}
+      The {\color{MainA}diameter} of a graph is the length / the costs of
+      the {\color{MainA}longest shortest path}
   \end{itemize}
 \end{frame}
 
@@ -253,33 +252,33 @@
 
 \begin{frame}{Graphs}{Paths}
   \textbf{Diameter of a graph:}
-         {\color{Mittel-Blau}$G = (V , E)$}
+         {\color{MainA}$G = (V , E)$}
   \hfill\begin{math}
     \displaystyle
-    {\color{Mittel-Blau}d} =
-      \max\limits_{{\color{Mittel-Blau}u}, {\color{Mittel-Blau}v}
-        \in {\color{Mittel-Blau}V}}
-      {\color{Mittel-Blau}d(u, \color{Mittel-Blau}v)}
+    {\color{MainA}d} =
+      \max\limits_{{\color{MainA}u}, {\color{MainA}v}
+        \in {\color{MainA}V}}
+      {\color{MainA}d(u, \color{MainA}v)}
   \end{math}
   \begin{figure}
     \begin{adjustbox}{width=0.75\linewidth}
       \input{Images/Graphs/Paths_Diameter2.tikz}
     \end{adjustbox}
-    \caption{{\color{Mittel-Blau}Diameter} of graph is
-      ${\color{Mittel-Blau}d} = 10, \; {\color{Mittel-Blau}P} = (3,2,5)$}
+    \caption{{\color{MainA}Diameter} of graph is
+      ${\color{MainA}d} = 10, \; {\color{MainA}P} = (3,2,5)$}
   \end{figure}
   \vspace{-0.5em}
   \begin{itemize}
     \item
-      The {\color{Mittel-Blau}diameter} of a graph is the length / the costs of
-      the {\color{Mittel-Blau}longest shortest path}
+      The {\color{MainA}diameter} of a graph is the length / the costs of
+      the {\color{MainA}longest shortest path}
   \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 \begin{frame}{Graphs}{Connected Components}
   \textbf{Connected components:}
-      {\color{Mittel-Blau}$G = (V , E)$}
+      {\color{MainA}$G = (V , E)$}
   \onslide<2->
   \begin{figure}
     \begin{adjustbox}{width=0.65\linewidth}
@@ -292,16 +291,16 @@
       Undirected graph:
       \begin{itemize}
         \item<3->
-          All connected components are a partition of {\color{Mittel-Blau}$V$}
+          All connected components are a partition of {\color{MainA}$V$}
           \begin{displaymath}
-            {\color{Mittel-Blau}V}
-              = {\color{Mittel-Blau}V_1} \cup \dots \cup 
-              {\color{Mittel-Blau}V_k}
+            {\color{MainA}V}
+              = {\color{MainA}V_1} \cup \dots \cup 
+              {\color{MainA}V_k}
           \end{displaymath}
         \item<4->
-          Two vertices ${\color{Mittel-Blau}u}, {\color{Mittel-Blau}v}$
+          Two vertices ${\color{MainA}u}, {\color{MainA}v}$
           are in the same connected component if a path between
-          {\color{Mittel-Blau}$u$} and {\color{Mittel-Blau}$v$} exists
+          {\color{MainA}$u$} and {\color{MainA}$v$} exists
       \end{itemize}
   \end{itemize}
 \end{frame}
@@ -310,13 +309,13 @@
 
 \begin{frame}{Graphs}{Connected Components}
   \textbf{Connected components:}
-  {\color{Mittel-Blau}$G = (V , E)$}
+  {\color{MainA}$G = (V , E)$}
   \begin{itemize}
     \item<2->
       Directed graph:
       \begin{itemize}
         \item<3->
-          Named {\color{Mittel-Blau}strongly connected components}
+          Named {\color{MainA}strongly connected components}
         \item<4->
           Direction of edge has to be regarded
         \item<5->
@@ -331,51 +330,51 @@
   \textbf{Graph Exploration:} (Informal definition)
   \begin{itemize}
     \item<2->
-      Let {\color{Mittel-Blau}$G = (V , E)$} be a graph and
-      ${\color{Mittel-Blau}s} \in {\color{Mittel-Blau}V}$ a start vertex
+      Let {\color{MainA}$G = (V , E)$} be a graph and
+      ${\color{MainA}s} \in {\color{MainA}V}$ a start vertex
     \item<3->
-      We visit each reachable vertex connected to {\color{Mittel-Blau}$s$}
+      We visit each reachable vertex connected to {\color{MainA}$s$}
     \item<4->
-      {\color{Mittel-Blau}Breadth-first search}: in sequence of the
-      smallest distance to {\color{Mittel-Blau}$s$}
+      {\color{MainA}Breadth-first search}: in order of the
+      smallest distance to {\color{MainA}$s$}
     \item<5->
-      {\color{Mittel-Blau}Depth-first search}: in sequence of the
-      largest distance to {\color{Mittel-Blau}$s$}
+      {\color{MainA}Depth-first search}: in order of the
+      largest distance to {\color{MainA}$s$}
     \item<6->
       Not a problem on its own but is often used as subroutine of other algorithms
-      %\begin{itemize}
-      %  \item<7->
-      %    Searching of connected components
-      %  \item<8->
-      %    Flood fill in drawing programms
-      %\end{itemize}
+      \begin{itemize}
+        \item<7->
+          Searching of connected components
+        \item<8->
+          Flood fill in drawing programms
+      \end{itemize}
   \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Graphs}{Connected Components - Breadth-First Search}
-  \textbf{Idea:}
+  \textbf{Breadth-First Search:}
   \begin{enumerate}
-    \item<2->
+    \item
       We start with all vertices unmarked and
-      {\color{Mittel-Blau}mark visited vertices}
+      {\color{MainA}mark visited vertices}
+    \item<2->
+      Mark the start vertex {\color{MainA}$s$}
+      ({\color{MainA}level 0})
     \item<3->
-      Mark the start vertex {\color{Mittel-Blau}$s$}
-      ({\color{Mittel-Blau}level 0})
+      Mark all unmarked {\color{MainA}connected vertices}
+      ({\color{MainA}level 1})
     \item<4->
-      Mark all unmarked {\color{Mittel-Blau}connected vertices}
-      ({\color{Mittel-Blau}level 1})
+      Mark all unmarked {\color{MainA}vertices connected} to a
+      {\color{MainA}level 1}-vertex
+      ({\color{MainA}level 2})
     \item<5->
-      Mark all unmarked {\color{Mittel-Blau}vertices connected} to a
-      {\color{Mittel-Blau}level 1}-vertex
-      ({\color{Mittel-Blau}level 2})
-    \item<6->
       Iteratively mark reachable vertices for all levels
-    \item<7->
+    \item<6->
       All connected nodes are now marked and in the same
-      {\color{Mittel-Blau}connected component} as the start vertex
-      {\color{Mittel-Blau}$s$}
+      {\color{MainA}connected component} as the start vertex
+      {\color{MainA}$s$}
   \end{enumerate}
 \end{frame}
 
@@ -383,11 +382,11 @@
 
 \begin{frame}{Graphs}{Connected Components - Breadth-First Search}
   \begin{itemize}
-    \item<2->
+    \item
       The marked vertices create a \enquote{spanning tree} containing all
       reachable nodes
   \end{itemize}
-  \onslide<3->
+  \onslide<2->
   \begin{figure}
     \begin{adjustbox}{width=0.95\linewidth}
       \input{Images/Graphs/Search_BreadthFirst.tikz}
@@ -512,20 +511,21 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Graphs}{Connected Components - Depth-First Search}
-  \textbf{Idea:}
+  \textbf{Depth-First Search:}
   \begin{enumerate}
     \item<2->
       We start with all vertices unmarked and
-      {\color{Mittel-Blau}mark visited vertices}
+      {\color{MainA}mark visited vertices}
     \item<3->
-      Mark the start vertex {\color{Mittel-Blau}$s$}
+      Mark the start vertex {\color{MainA}$s$}
     \item<4->
-      Pick an unmarked {\color{Mittel-Blau}connected vertex} and start a
-      {\color{Mittel-Blau}recursive depth-first search} with the vertex as
+      Pick an unmarked {\color{MainA}connected vertex} and start a
+      {\color{MainA}recursive depth-first search} with the vertex as
       start vertex\\
       (continue on step 2)
     \item<5->
-      If no unmarked connected vertex exists go one vertex back\\
+      If no unmarked connected vertex exists go one vertex back
+      and continue recursive search\\
       (reduce the recursion level by one)
   \end{enumerate}
 \end{frame}
@@ -536,17 +536,17 @@
   \textbf{Depth-first search:}
   \begin{itemize}
     \item<2->
-      Search starts with {\color{Mittel-Blau}long paths} (searching with depth)
+      Search starts with {\color{MainA}long paths} (searching with depth)
     \item<3->
-      Marks like {\color{Mittel-Blau}breadth-first search} all connected
+      Marks like {\color{MainA}breadth-first search} all connected
       vertices
     \item<4->
-      If the graph is acyclic we get a {\color{Mittel-Blau}topological sorting}
+      If the graph is acyclic we get a {\color{MainA}topological sorting}
       \begin{itemize}
         \item<5->
           Each newly visited vertex gets marked by an increasing number
         \item<6->
-          The numbers increase with path from the start vertex
+          The numbers increase with path length from the start vertex
       \end{itemize}
   \end{itemize}
 \end{frame}
@@ -555,11 +555,11 @@
 
 \begin{frame}{Graphs}{Connected Components - Depth-First Search}
   \begin{itemize}
-    \item<2->
+    \item
       The marked vertices create a different spanning tree containing all
       reachable nodes
   \end{itemize}
-  \onslide<3->
+  \onslide<2->
   \begin{figure}
     \begin{adjustbox}{width=0.95\linewidth}
       \input{Images/Graphs/Search_DepthFirst.tikz}
@@ -726,21 +726,21 @@
 \begin{frame}{Graphs}{Connected Components - Breadth-/Depth-First Search}
   \textbf{Runtime complexity:}
   \begin{itemize}
-    \item<2->
+    \item
       Constant costs for each visited vertex and edge
-    \item<3->
+    \item<2->
       We get a runtime complexity of
       \begin{math}
-        \Theta(\vert {\color{Mittel-Blau}V'} \vert
-          + \vert {\color{Mittel-Blau}E'} \vert)
+        \Theta(\vert {\color{MainA}V'} \vert
+          + \vert {\color{MainA}E'} \vert)
       \end{math}
-    \item<4->
-      Let {\color{Mittel-Blau}$V'$} and {\color{Mittel-Blau}$E'$} be the
+    \item<3->
+      Let {\color{MainA}$V'$} and {\color{MainA}$E'$} be the
       reachable vertices and edges
+    \item<4->
+      All vertices of {\color{MainA}$V'$} are in the same connected
+      component as our start vertex {\color{MainA}$s$}
     \item<5->
-      All vertices of {\color{Mittel-Blau}$V'$} are in the same connected
-      component as our start vertex {\color{Mittel-Blau}$s$}
-    \item<6->
       This can only be improved by a constant factor
   \end{itemize}
 \end{frame}

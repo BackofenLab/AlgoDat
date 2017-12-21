@@ -6,7 +6,8 @@ class Graph:
 	def addVertice(self, vert):
 		self.vertices.append(vert)
 	
-	def addEdge(self, fromVert, toVert):
-		self.edges.append((fromVert, toVert))
+	def addEdge(self, fromVert, toVert, cost):
+		self.edges.append( \
+			(fromVert, toVert, cost))
 	
 	...

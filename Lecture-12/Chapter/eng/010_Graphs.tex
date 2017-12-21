@@ -1,5 +1,5 @@
-\section{Graphs}
-\subsection{Introduction}
+\toclesssection{Graphs}
+\toclesssubsection{Introduction}
 
 \begin{frame}{Graphs}{Introduction}
   \textbf{Graphs - Overview:}
@@ -16,7 +16,7 @@
     \item<6->
       Connected components of a graph
   \end{itemize}
-\end{frame}        
+\end{frame}
 
 \begin{frame}{Graphs}{Introduction}
   \textbf{Terminology:}
@@ -44,26 +44,26 @@
   \end{columns}
   \begin{itemize}
     \item<3->
-      Each Graph {\color{Mittel-Blau}$G = (V, E)$} consists of:
+      Each Graph {\color{MainA}$G = (V, E)$} consists of:
       \begin{itemize}
         \item<4->
-          A set of vertices (nodes) {\color{Mittel-Blau}$ V = \{v_1, v_2, \dotsc\}$}
+          A set of vertices (nodes) {\color{MainA}$ V = \{v_1, v_2, \dotsc\}$}
         \item<5->
-          A set of edges (arcs) {\color{Mittel-Blau}$ E = \{e_1, e_2, \dotsc\}$}
+          A set of edges (arcs) {\color{MainA}$ E = \{e_1, e_2, \dotsc\}$}
        \end{itemize}
      \item<6->
        Each edge connects two vertices
-       ({\color{Mittel-Blau}$u, v \in V$})
+       ({\color{MainA}$u, v \in V$})
        \begin{itemize}
          \item<7->
-           Undirected edge: {\color{Mittel-Blau}$e = \{u, v\}$} (set)
+           Undirected edge: {\color{MainA}$e = \{u, v\}$} (set)
          \item<8->
-           Directed edge: {\color{Mittel-Blau}$e = (u, v)$} (tuple)
+           Directed edge: {\color{MainA}$e = (u, v)$} (tuple)
         \end{itemize}
       \item<9->
         Self-loops are also possible:
-        {\color{Mittel-Blau}$e = (u, u)$} or
-        {\color{Mittel-Blau}$e = \{u, u\}$}
+        {\color{MainA}$e = (u, u)$} or
+        {\color{MainA}$e = \{u, u\}$}
   \end{itemize}
 \end{frame}
 
@@ -81,10 +81,10 @@
   \end{figure}
   \begin{itemize}
     \item<3->
-      Each edge is marked with a real number named {\color{Mittel-Blau}weight}
+      Each edge is marked with a real number named {\color{MainA}weight}
     \item<4->
-      The {\color{Mittel-Blau}weight} is also named {\color{Mittel-Blau}length}
-      or {\color{Mittel-Blau}cost} of the edge depending on the application
+      The {\color{MainA}weight} is also named {\color{MainA}length}
+      or {\color{MainA}cost} of the edge depending on the application
   \end{itemize}
 \end{frame}
 
@@ -96,12 +96,12 @@
       \textbf{Example:} Road network
       \begin{itemize}
         \item<2->
-          Intersections: {\color{Mittel-Blau}vertices}
+          Intersections: {\color{MainA}vertices}
         \item<3->
-          Roads: {\color{Mittel-Blau}edges}
+          Roads: {\color{MainA}edges}
         \item<4->
           Travel time:\\
-          {\color{Mittel-Blau}costs of the edges}
+          {\color{MainA}costs of the edges}
       \end{itemize}
     \end{column}
     \onslide<5->
@@ -123,31 +123,24 @@
 
 \begin{frame}{Graphs}{Implementation}
   \textbf{How to represent this graph computationally?}
-  \begin{itemize}
+  \begin{enumerate}
     \item<2->
-      Two classic variants
-    \begin{enumerate}
-    \item<3->
-      {\color{Mittel-Blau}Adjacency matrix} with space consumption
-      \begin{math}
-        \color{Mittel-Blau}
-        \Theta(\vert V \vert^2)
-      \end{math}
-      \end{enumerate}
-  \end{itemize}
-  \onslide<4->
+      {\color{MainA}Adjacency matrix} with space consumption
+      $\color{MainA}\Theta(\vert V \vert^2)$
+  \end{enumerate}
+  \onslide<3->
   \begin{columns}
     \begin{column}{0.45\linewidth}
       \begin{figure}[!h]
         \begin{adjustbox}{width=0.75\linewidth}
           \input{Images/Graphs/Storage_DirectedGraph.tikz}
         \end{adjustbox}
-        \caption{Weighted graph with {\color{Mittel-Blau}$\vert V \vert = 4$},
-          {\color{Mittel-Blau}$\vert E \vert = 6$}}
+        \caption{Weighted graph with {\color{MainA}$\vert V \vert = 4$},
+          {\color{MainA}$\vert E \vert = 6$}}
       \end{figure}
     \end{column}
     \begin{column}{0.45\linewidth}
-      \onslide<5->
+      \onslide<4->
       \begin{figure}[!h]
         \begin{tabular}{p{0.25em}p{1.15em}p{1.15em}p{1.15em}p{1.15em}p{1.15em}}
           {} & {} & \multicolumn{4}{c}{end-vertice}\\
@@ -171,29 +164,29 @@
             \def\verticenumber{0}%
             \input{Images/Graphs/GraphVertice.tikz}%
           } &
-          \multicolumn{1}{|c|}{} & \multicolumn{1}{c}{\color{Mittel-Gruen}2} &
-          \multicolumn{1}{|c|}{} & \multicolumn{1}{c|}{\color{Mittel-Gruen}3}\\
+          \multicolumn{1}{|c|}{} & \multicolumn{1}{c}{\color{MainB}2} &
+          \multicolumn{1}{|c|}{} & \multicolumn{1}{c|}{\color{MainB}3}\\
           \cline{3-6}
           {} & {%
             \def\verticenumber{1}%
             \input{Images/Graphs/GraphVertice.tikz}%
           } &
           \multicolumn{1}{|c|}{} & \multicolumn{1}{c}{} &
-          \multicolumn{1}{|c|}{\color{Mittel-Gruen}9} & \multicolumn{1}{c|}{}\\
+          \multicolumn{1}{|c|}{\color{MainB}9} & \multicolumn{1}{c|}{}\\
           \cline{3-6}
           {} & {%
             \def\verticenumber{2}%
             \input{Images/Graphs/GraphVertice.tikz}%
           } &
           \multicolumn{1}{|c|}{} & \multicolumn{1}{c}{} &
-          \multicolumn{1}{|c|}{} & \multicolumn{1}{c|}{\color{Mittel-Gruen}-1}\\
+          \multicolumn{1}{|c|}{} & \multicolumn{1}{c|}{\color{MainB}-1}\\
           \cline{3-6}
           {} & {%
             \def\verticenumber{3}%
             \input{Images/Graphs/GraphVertice.tikz}%
           } &
-          \multicolumn{1}{|c|}{} & \multicolumn{1}{c}{\color{Mittel-Gruen}7} &
-          \multicolumn{1}{|c|}{\color{Mittel-Gruen}-2} & \multicolumn{1}{c|}{}\\
+          \multicolumn{1}{|c|}{} & \multicolumn{1}{c}{\color{MainB}7} &
+          \multicolumn{1}{|c|}{\color{MainB}-2} & \multicolumn{1}{c|}{}\\
           \cline{3-6}
         \end{tabular}
         \caption{Adjacency matrix}
@@ -206,24 +199,16 @@
 
 \begin{frame}{Graphs}{Implementation}
   \textbf{How to represent this graph computationally?}
-  \begin{itemize}
+  \begin{enumerate}
+    \setcounter{enumi}{1}
     \item<2->
-      Two classic variants
-      \begin{enumerate}
-         \setcounter{enumi}{1}
-       \item<2->
-      {\color{Mittel-Blau}Adjacency list / fields} with space consumption
-      \begin{math}
-        \color{Mittel-Blau}
-        \Theta(\vert V \vert + \vert E \vert)
-      \end{math}
-      \begin{itemize}
-    \item<3->
-      Each list item stores the {\color{Mittel-Blau}target vertice}
-      and the {\color{Mittel-Gruen}cost} of the edge
-      \end{itemize}
-      \end{enumerate}
-  \end{itemize}
+      {\color{MainA}Adjacency list / fields} with space consumption
+      $\color{MainA}\Theta(\vert V \vert + \vert E \vert)$\\
+      \onslide<3->{
+        Each list item stores the {\color{MainA}target vertice}
+        and the {\color{MainB}cost} of the edge
+      }
+  \end{enumerate}
   \onslide<4->
   \begin{columns}
     \begin{column}{0.45\linewidth}
@@ -231,8 +216,8 @@
         \begin{adjustbox}{width=0.75\linewidth}
           \input{Images/Graphs/Storage_DirectedGraph.tikz}
         \end{adjustbox}
-        \caption{Weighted graph with {\color{Mittel-Blau}$\vert V \vert = 4$},
-          {\color{Mittel-Blau}$\vert E \vert = 6$}}
+        \caption{Weighted graph with {\color{MainA}$\vert V \vert = 4$},
+          {\color{MainA}$\vert E \vert = 6$}}
       \end{figure}
     \end{column}
     \begin{column}{0.45\linewidth}
@@ -246,27 +231,27 @@
             \def\verticenumber{0}%
             \input{Images/Graphs/GraphVertice.tikz}%
           } &
-          \multicolumn{1}{|c|}{{\color{Mittel-Blau}1}, \color{Mittel-Gruen}2} &
-          \multicolumn{1}{c|}{{\color{Mittel-Blau}3}, \color{Mittel-Gruen}3}\\
+          \multicolumn{1}{|c|}{{\color{MainA}1}, \color{MainB}2} &
+          \multicolumn{1}{c|}{{\color{MainA}3}, \color{MainB}3}\\
           \cline{3-4}
           {} & {%
             \def\verticenumber{1}%
             \input{Images/Graphs/GraphVertice.tikz}%
           } &
-          \multicolumn{1}{|c|}{{\color{Mittel-Blau}2}, \color{Mittel-Gruen}9}\\
+          \multicolumn{1}{|c|}{{\color{MainA}2}, \color{MainB}9}\\
           \cline{3-3}
           {} & {%
             \def\verticenumber{2}%
             \input{Images/Graphs/GraphVertice.tikz}%
           } &
-          \multicolumn{1}{|c|}{{\color{Mittel-Blau}3}, \color{Mittel-Gruen}-1}\\
+          \multicolumn{1}{|c|}{{\color{MainA}3}, \color{MainB}-1}\\
           \cline{3-4}
           {} & {%
             \def\verticenumber{3}%
             \input{Images/Graphs/GraphVertice.tikz}%
           } &
-          \multicolumn{1}{|c|}{{\color{Mittel-Blau}1}, \color{Mittel-Gruen}7} &
-          \multicolumn{1}{c|}{{\color{Mittel-Blau}2}, \color{Mittel-Gruen}-2}\\
+          \multicolumn{1}{|c|}{{\color{MainA}1}, \color{MainB}7} &
+          \multicolumn{1}{c|}{{\color{MainA}2}, \color{MainB}-2}\\
           \cline{3-4}
         \end{tabular}
         \caption{Adjacency list}
@@ -279,10 +264,9 @@
 
 \begin{frame}{Graphs}{Implementation}
   \textbf{Graph: Arrangement}
-   \begin{itemize}
+  \begin{itemize}
     \item<2->
-      Graph is fully defined through the
-      {\color{Mittel-Blau}adjacency matrix / list}
+      Graph is fully defined through the {\color{MainA}adjacency matrix / list}
     \item<3->
       The arrangement is not relevant for visualisation of the graph
   \end{itemize}
@@ -294,8 +278,8 @@
           \input{Images/Graphs/Storage_DirectedGraph.tikz}
         \end{adjustbox}
         \vspace{-0.75em}
-        \caption{Weighted graph with {\color{Mittel-Blau}$\vert V \vert = 4$},
-          {\color{Mittel-Blau}$\vert E \vert = 6$}}
+        \caption{Weighted graph with {\color{MainA}$\vert V \vert = 4$},
+          {\color{MainA}$\vert E \vert = 6$}}
       \end{figure}
     \end{column}
     \begin{column}[b]{0.55\linewidth}
@@ -325,21 +309,6 @@
     emph={Graph, __init__, addVertice, addEdge, toString},
     emphstyle={\color{blue}}
   ]{Code/Graph/GraphPart1.py}
-\end{frame}
-
-%-------------------------------------------------------------------------------
-
-\begin{frame}{Graphs}{Implementation - Python}
-  \lstinputlisting[
-    language=Python,
-    basicstyle=\small,
-    tabsize=4,
-    style={python-idle-code},
-    breaklines=false,
-    escapechar={@},
-    emph={Graph, __init__, addVertice, addEdge, toString},
-    emphstyle={\color{blue}}
-  ]{Code/Graph/GraphPart2.py}
 \end{frame}
 }
 
