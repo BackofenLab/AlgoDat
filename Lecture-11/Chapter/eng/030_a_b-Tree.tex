@@ -7,7 +7,7 @@
     \item<2->
       Also known as \textbf{b-tree} (b for \enquote{balanced})
     \item<3->
-      Used in data bases and file systems
+      Used in databases and file systems
   \end{itemize}
   \onslide<4->
   \textbf{Idea:}
@@ -15,7 +15,7 @@
     \item<5->
       Save a varying number of elements per node
     \item<6->
-      So we have space for elements on an \texttt{\color{Mittel-Blau}insert}
+      So we have space for elements on an \texttt{\color{MainA}insert}
       and balance operation
   \end{itemize}
 \end{frame}
@@ -28,8 +28,8 @@
     \item<2->
       All leaves have the same depth
     \item<3->
-      Each inner node has {\color{Mittel-Blau}$\geq a$} and
-      {\color{Mittel-Blau}$\leq b$} nodes\\
+      Each inner node has {\color{MainA}$\geq a$} and
+      {\color{MainA}$\leq b$} nodes\\
       (Only the root node may have less nodes)
   \end{itemize}
   \onslide<4->
@@ -41,13 +41,13 @@
   \end{figure}
     \begin{itemize}
     \item<5->
-      Each node with {\color{Mittel-Blau}$n$} children is called \enquote{node of degree $n$} and
-      holds {\color{Mittel-Blau}$n-1$} sorted elements
+      Each node with {\color{MainA}$n$} children is called \enquote{node of degree $n$} and
+      holds {\color{MainA}$n-1$} sorted elements
     \item<6->
       Subtrees are located \enquote{between} the elements
     \item<7->
-      We require: {\color{Mittel-Blau}$a \geq 2$} and
-      {\color{Mittel-Blau}$b \geq 2\,a - 1$}
+      We require: {\color{MainA}$a \geq 2$} and
+      {\color{MainA}$b \geq 2\,a - 1$}
   \end{itemize}
 \end{frame}
 
@@ -96,25 +96,27 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{(a,b)-Trees}{Implementation - Lookup}
-  \textbf{Searching an element:} (\texttt{\color{Mittel-Blau}lookup})
+  \textbf{Searching an element:} (\texttt{\color{MainA}lookup})
   \begin{itemize}
     \item<2->
-      The same algorithm as in {\color{Mittel-Blau}BinarySearchTree}
+      The same algorithm as in {\color{MainA}BinarySearchTree}
     \item<3->
       Searching from the root downwards
     \item<4->
       The keys at each node set the path
   \end{itemize}
   \onslide<5->
-  \begin{figure}
-    \includegraphics[width=1\textwidth]{Images/(a,b)-Tree/25.pdf}
+  \begin{figure}[!h]
+    \includegraphics[width=1\textwidth]{Images/(a,b)-Tree/(3,5)-Tree_Search.png}
+    \caption{(3,5)-Tree~\cite{gnarley_trees}}
+    \label{fig:a_b_tree:a_b_tree_example}
   \end{figure}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
 \begin{frame}{(a,b)-Trees}{Implementation - Insert}
-  \textbf{Inserting an element:} (\texttt{\color{Mittel-Blau}insert})
+  \textbf{Inserting an element:} (\texttt{\color{MainA}insert})
   \begin{itemize}
     \item<2->
       Search the position to insert the key into
@@ -123,7 +125,8 @@
     \item<4->
       Insert the element into the tree
     \item<5->
-      {\color{cyan}Attention:} Nodes can have one element too many (Degree {\color{Mittel-Blau}$b+1$})
+      \textbf{Attention:} As a result node can overflow by one element\\
+      (Degree {\color{MainA}$b+1$})
     \item<6-> Then we \textbf{split} the node
   \end{itemize}
 \end{frame}
@@ -131,7 +134,7 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{(a,b)-Trees}{Implementation - Insert}
-  \textbf{Inserting an element:} (\texttt{\color{Mittel-Blau}insert})
+  \textbf{Inserting an element:} (\texttt{\color{MainA}insert})
     \begin{figure}
     \begin{columns}
       \begin{column}{0.35\linewidth}
@@ -156,35 +159,34 @@
     \vspace{-1.0em}
   \begin{itemize}
     \item<2->
-      If the degree is higher than {\color{Mittel-Blau}$b+1$}
+      If the degree is higher than {\color{MainA}$b+1$}
       we split the node
-    \begin{itemize}
-      \item<3->
-        This results in a node with
-        {\color{Mittel-Blau}$\mathrm{ceil}\left(\frac{b-1}{2}\right)$} elements,
-        a element for the parent node, and a node with
-        {\color{Mittel-Blau}$\mathrm{floor}\left(\frac{b-1}{2}\right)$} elements
-      \item<4->
-        Thats why we have the limit {\color{Mittel-Blau}$b \geq 2\,a - 1$}
-    \end{itemize}
+    \item<3->
+      This results in a node with
+      {\color{MainA}$\mathrm{ceil}\left(\frac{b-1}{2}\right)$} elements,
+      a node with
+      {\color{MainA}$\mathrm{floor}\left(\frac{b-1}{2}\right)$} elements
+      and one element for the parent node
+    \item<4->
+      Thats why we have the limit {\color{MainA}$b \geq 2\,a - 1$}
   \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
 \begin{frame}{(a,b)-Trees}{Implementation - Insert}
-  \textbf{Inserting an element:} (\texttt{\color{Mittel-Blau}insert})
+  \textbf{Inserting an element:} (\texttt{\color{MainA}insert})
   \begin{itemize}
     \item<2->
-      If the degree is higher than {\color{Mittel-Blau}$b+1$}
+      If the degree is higher than {\color{MainA}$b+1$}
       we split the node
     \item<3->
       Now the parent node can be of a higher degree than
-      {\color{Mittel-Blau}$b+1$}
+      {\color{MainA}$b+1$}
     \item<4->
-      We {\color{Mittel-Blau}split} the parent nodes the same way
+      We {\color{MainA}split} the parent nodes the same way
     \item<5->
-      If the node to split is the root we split it and create a new root node\\
+      If we split the root node we create a new parent root node\\
       (The tree is now one level deeper)
   \end{itemize}
 \end{frame}
@@ -192,45 +194,51 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{(a,b)-Trees}{Implementation - Remove}
-  \textbf{Removing an element:} (\texttt{\color{Mittel-Blau}remove})
+  \textbf{Removing an element:} (\texttt{\color{MainA}remove})
   \begin{itemize}
     \item<2->
-      Search the element in {\color{Mittel-Blau}$O(\log n)$} time
+      Search the element in {\color{MainA}$O(\log n)$} time
     \item<3->
       \textbf{Case 1:}
-      The element is contained by a leaf, remove it
+      The element is contained by a leaf
+      \begin{itemize}
+        \item Remove element
+      \end{itemize}
     \item<4->
       \textbf{Case 2:}
       The element is contained by an inner node
       \begin{itemize}
         \item<5->
-          Search the {\color{Mittel-Blau}successor} in the right subtree
+          Search the {\color{MainA}successor} in the right subtree
         \item<6->
-          The {\color{Mittel-Blau}successor} is always contained by a leaf
+          The {\color{MainA}successor} is always contained by a leaf
         \item<7->
-          Replace the element with its {\color{Mittel-Blau}successor} and
-          delete the {\color{Mittel-Blau}successor} from the leaf
+          Replace the element with its {\color{MainA}successor} and
+          delete the {\color{MainA}successor} from the leaf
       \end{itemize}
     \item<8->
-      {\color{cyan}Attention:} The leaf might be too small (degree of {\color{Mittel-Blau}$a-1$})\\
-      $\Rightarrow$ We {\color{Mittel-Blau}rebalance} the tree
+      \textbf{Attention:}
+      The leaf might be too small (degree of {\color{MainA}$a-1$})\\
+      $\Rightarrow$ We {\color{MainA}rebalance} the tree
   \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
 \begin{frame}{(a,b)-Trees}{Implementation - Remove}
-  \textbf{Removing an element:} (\texttt{\color{Mittel-Blau}remove})
+  \textbf{Removing an element:} (\texttt{\color{MainA}remove})
   \begin{itemize}
     \item<2->
-      {\color{cyan}Attention:} The leaf might be too small (degree of {\color{Mittel-Blau}$a-1$})\\
-      $\Rightarrow$ We {\color{Mittel-Blau}rebalance} the tree
+      \textbf{Attention:} The leaf might be too small
+      (degree of {\color{MainA}$a-1$})\\
+      $\Rightarrow$ We {\color{MainA}rebalance} the tree
       \vspace{0.5em}
       \begin{itemize}
         \item<3->
         \textbf{Case a:}
-        If the left or right neighbour node has a degree greater than
-        {\color{Mittel-Blau}a} we \textbf{borrow} one element from this node
+        If the left or right neighbour node has a degree
+        {\color{MainA}greater than a} we \textbf{borrow} one element
+        from this node
       \end{itemize}
       \onslide<4->
       \begin{figure}
@@ -251,7 +259,7 @@
             \end{adjustbox}
           \end{column}
         \end{columns}
-        \caption{Borrowing an element}
+        \caption{Borrow an element}
         \label{fig:a_b_tree:move}
       \end{figure}
   \end{itemize}
@@ -260,16 +268,16 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{(a,b)-Trees}{Implementation - Remove}
-  \textbf{Removing an element:} (\texttt{\color{Mittel-Blau}remove})
+  \textbf{Removing an element:} (\texttt{\color{MainA}remove})
   \begin{itemize}
     \item<2->
-      {\color{cyan}Attention:} The leaf might be too small (degree of {\color{Mittel-Blau}$a-1$})\\
-      $\Rightarrow$ We {\color{Mittel-Blau}rebalance} the tree
+      \textbf{Attention:} The leaf might be too small (degree of {\color{MainA}$a-1$})\\
+      $\Rightarrow$ We {\color{MainA}rebalance} the tree
       \vspace{0.5em}
       \begin{itemize}
         \item<3->
           \textbf{Case b:}
-          We {\color{Mittel-Blau}combine} the node with its right or left
+          We {\color{MainA}merge} the node with its right or left
           neighbour
       \end{itemize}
       \onslide<4->
@@ -291,7 +299,7 @@
             \end{adjustbox}
           \end{column}
         \end{columns}
-        \caption{Combining two nodes}
+        \caption{Merge two nodes}
         \label{fig:a_b_tree:merge}
       \end{figure}
   \end{itemize}
@@ -300,15 +308,22 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{(a,b)-Trees}{Implementation - Remove}
-  \textbf{Removing an element:} (\texttt{\color{Mittel-Blau}remove})
+  \textbf{Removing an element:} (\texttt{\color{MainA}remove})
   \begin{itemize}
     \item<2->
-      Now the parent node can be of degree {\color{Mittel-Blau}$a-1$}
+      Now the parent node can be of degree {\color{MainA}$a-1$}
     \item<3->
-      We {\color{Mittel-Blau}combine} parent nodes the same way
+      We {\color{MainA}merge} parent nodes the same way
     \item<4->
-      If the root has only one child left we take the child as new root\\
-      (The tree shrinks one level)
+      If the root has only a single child
+      \begin{itemize}
+        \item
+          Remove the root
+        \item
+          Define sole child as new root
+        \item
+          The tree shrinks by one level
+      \end{itemize}
   \end{itemize}
 \end{frame}
 
@@ -317,73 +332,65 @@
 \subsubsection{Runtime Complexity}
 
 \begin{frame}{(a,b)-Trees}{Runtime Complexity}
-  \textbf{Runtime complexity of \texttt{\color{Mittel-Blau}lookup},
-    \texttt{\color{Mittel-Blau}insert} and \texttt{\color{Mittel-Blau}remove}:}
+  \textbf{Runtime complexity of \texttt{\color{MainA}lookup},
+    \texttt{\color{MainA}insert} and \texttt{\color{MainA}remove}:}
   \begin{itemize}
     \item<2->
-      All operations in {\color{Mittel-Blau}$O(d)$} with
-      {\color{Mittel-Blau}$d$} being the depth of the tree
+      All operations in {\color{MainA}$O(d)$} with
+      {\color{MainA}$d$} being the depth of the tree
     \item<3->
-      Each node (except the root) has more than {\color{Mittel-Blau}$a$}
-      children\\
+      Each node (except the root) has {\color{MainA}more than $a$
+      children}\\
       \begin{math}
         \Rightarrow
-        \color{Mittel-Blau}
+        \color{MainA}
         n \geq a^{d-1}
       \end{math}
       and
       \begin{math}
-        \color{Mittel-Blau}
+        \color{MainA}
         d \leq 1 + \log_a n = O(log_a n)
       \end{math}
-    \item<4->
-      If we look closer:
-      \begin{itemize}
-        \item<5->
-          \texttt{\color{Mittel-Blau}lookup} always takes
-          \begin{math}
-            \color{Mittel-Blau}
-            \Theta(d)
-          \end{math}
-        \item<6->
-          \texttt{\color{Mittel-Blau}insert} and
-          \texttt{\color{Mittel-Blau}remove}
-          often require only {\color{Mittel-Blau}$O(1)$} time
-        \item<7->
-          Only in the {\color{Mittel-Blau}worst case} we have to
-          {\color{Mittel-Blau}split} or
-          {\color{Mittel-Blau}combine} all nodes on a path up to the root
-        \item<8->
-          We want to analyse in detail
-        \item<9->
-          Therefore instead of {\color{Mittel-Blau}$b \geq 2 \, a - 1$}
-          we need {\color{Mittel-Blau}$b \geq 2 \, a$}.
-        \item<10-> Here is a counter-example for (2,3)-trees, analysis of (2,4)-trees
-      \end{itemize}
+  \end{itemize}
+  \vspace{1em}
+  \onslide<4->\textbf{In detail:}
+  \begin{itemize}
+    \item<5->
+      \texttt{\color{MainA}lookup} always takes $\color{MainA}\Theta(d)$
+    \item<6->
+      \texttt{\color{MainA}insert} and
+      \texttt{\color{MainA}remove}
+      often require only {\color{MainA}$O(1)$} time
+    \item<7->
+      \textbf{Worst case:} {\color{MainA}split} or
+      {\color{MainA}merge} all nodes on path up to the root
+    \item<8->
+      Therefore instead of {\color{MainA}$b \geq 2 \, a - 1$}
+      we need {\color{MainA}$b \geq 2 \, a$}
   \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
 %% \begin{frame}{(a,b)-Trees}{Runtime Complexity}
-%%   \textbf{Runtime complexity of \texttt{\color{Mittel-Blau}lookup},
-%%     \texttt{\color{Mittel-Blau}insert} and \texttt{\color{Mittel-Blau}remove}:}
+%%   \textbf{Runtime complexity of \texttt{\color{MainA}lookup},
+%%     \texttt{\color{MainA}insert} and \texttt{\color{MainA}remove}:}
 %%   \begin{itemize}
 %%     \item<2->
 %%       If we look closer:
 %%       \begin{itemize}
 %%         \item<3->
-%%           \texttt{\color{Mittel-Blau}insert} and
-%%           \texttt{\color{Mittel-Blau}remove}
-%%           often require only {\color{Mittel-Blau}$O(1)$} time
+%%           \texttt{\color{MainA}insert} and
+%%           \texttt{\color{MainA}remove}
+%%           often require only {\color{MainA}$O(1)$} time
 %%         \item<4->
-%%           Only in the {\color{Mittel-Blau}worst case} we have to
-%%           {\color{Mittel-Blau}split} or
-%%           {\color{Mittel-Blau}combine} all nodes on a path up to the root
+%%           Only in the {\color{MainA}worst case} we have to
+%%           {\color{MainA}split} or
+%%           {\color{MainA}combine} all nodes on a path up to the root
 %%       \end{itemize}
 %%     \item<5->
-%%       We need {\color{Mittel-Blau}$b \geq 2 \, a$} instead of
-%%       {\color{Mittel-Blau}$b \geq 2 \, a - 1$}
+%%       We need {\color{MainA}$b \geq 2 \, a$} instead of
+%%       {\color{MainA}$b \geq 2 \, a - 1$}
 %%     \item<6->
 %%       Here is a negative example of a (2,3)-tree
 %%   \end{itemize}
@@ -392,10 +399,10 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{(a,b)-Trees}{Runtime Complexity - Counter-example for (2,3)-Tree}
-  \textbf{(2,3)-Tree:}
+  \textbf{Counter example (2,3)-Tree:}
   \begin{itemize}
     \item<2->
-      Before executing \texttt{\color{Mittel-Blau}delete(11)}
+      Before executing \texttt{\color{MainA}delete(11)}
    \onslide<3->
   \end{itemize}
   \begin{figure}
@@ -410,10 +417,10 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{(a,b)-Trees}{Runtime Complexity - Counter example for (2,3)-Tree}
-  \textbf{(2,3)-Tree:}
+  \textbf{Counter example (2,3)-Tree:}
   \begin{itemize}
   \item
-    Executing \texttt{\color{Mittel-Blau}delete(11)}
+    Executing \texttt{\color{MainA}delete(11)}
   \end{itemize}
   \begin{figure}
     \begin{adjustbox}{width=0.6\linewidth}
@@ -427,10 +434,10 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{(a,b)-Trees}{Runtime Complexity - Counter example for (2,3)-Tree}
-  \textbf{(2,3)-Tree:}
+  \textbf{Counter example (2,3)-Tree:}
   \begin{itemize}
     \item
-      Executing \texttt{\color{Mittel-Blau}delete(11)}
+      Executing \texttt{\color{MainA}delete(11)}
   \end{itemize}
   \begin{figure}
     \begin{adjustbox}{width=0.6\linewidth}
@@ -444,10 +451,10 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{(a,b)-Trees}{Runtime Complexity - Counter example for (2,3)-Tree}
-  \textbf{(2,3)-Tree:}
+  \textbf{Counter example (2,3)-Tree:}
   \begin{itemize}
     \item
-      Executing \texttt{\color{Mittel-Blau}delete(11)}
+      Executing \texttt{\color{MainA}delete(11)}
   \end{itemize}
   \begin{figure}
     \begin{adjustbox}{width=0.6\linewidth}
@@ -461,10 +468,10 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{(a,b)-Trees}{Runtime Complexity - Counter example for (2,3)-Tree}
-  \textbf{(2,3)-Tree:}
+  \textbf{Counter example (2,3)-Tree:}
   \begin{itemize}
     \item
-      Executed \texttt{\color{Mittel-Blau}delete(11)}
+      Executed \texttt{\color{MainA}delete(11)}
   \end{itemize}
   \begin{figure}
     \begin{adjustbox}{width=0.6\linewidth}
@@ -478,10 +485,10 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{(a,b)-Trees}{Runtime Complexity - Counter example for (2,3)-Tree}
-  \textbf{(2,3)-Tree:}
+  \textbf{Counter example (2,3)-Tree:}
   \begin{itemize}
-    \item<2->
-      Executing \texttt{\color{Mittel-Blau}insert(11)}
+    \item
+      Executing \texttt{\color{MainA}insert(11)}
   \end{itemize}
   \onslide<3->
   \begin{figure}
@@ -496,10 +503,10 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{(a,b)-Trees}{Runtime Complexity - Counter example for (2,3)-Tree}
-  \textbf{(2,3)-Tree:}
+  \textbf{Counter example (2,3)-Tree:}
   \begin{itemize}
     \item
-      Executing \texttt{\color{Mittel-Blau}insert(11)}
+      Executing \texttt{\color{MainA}insert(11)}
   \end{itemize}
   \begin{figure}
     \begin{adjustbox}{width=0.7\linewidth}
@@ -513,10 +520,10 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{(a,b)-Trees}{Runtime Complexity - Counter example for (2,3)-Tree}
-  \textbf{(2,3)-Tree:}
+  \textbf{Counter example (2,3)-Tree:}
   \begin{itemize}
     \item
-      Executing \texttt{\color{Mittel-Blau}insert(11)}
+      Executing \texttt{\color{MainA}insert(11)}
   \end{itemize}
   \begin{figure}
     \begin{adjustbox}{width=0.7\linewidth}
@@ -530,10 +537,10 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{(a,b)-Trees}{Runtime Complexity - Counter example for (2,3)-Tree}
-  \textbf{(2,3)-Tree:}
+  \textbf{Counter example (2,3)-Tree:}
   \begin{itemize}
     \item
-      Executed \texttt{\color{Mittel-Blau}insert(11)}
+      Executed \texttt{\color{MainA}insert(11)}
   \end{itemize}
   \begin{figure}
     \begin{adjustbox}{width=0.6\linewidth}
@@ -549,18 +556,18 @@
 \begin{frame}{(a,b)-Trees}{Runtime Complexity - Counter example for (2,3)-Tree}
   \begin{columns}
     \begin{column}{0.6\linewidth}
-      \textbf{(2,3)-Tree:}
+      \textbf{Counter example (2,3)-Tree:}
       \begin{itemize}
-        \item<2->
+        \item
           We are exactly where we started
+        \item<2->
+          If {\color{MainA}$b=2\,a-1$} then we can create a sequence of
+          \texttt{\color{MainA}insert} and
+          \texttt{\color{MainA}remove} operations where each operation
+          costs {\color{MainA}$O(\log n)$}
         \item<3->
-          If {\color{Mittel-Blau}$b=2\,a-1$} then we can create a sequence of
-          \texttt{\color{Mittel-Blau}insert} and
-          \texttt{\color{Mittel-Blau}remove} operations where each operation
-          costs {\color{Mittel-Blau}$O(\log n)$}
-        \item<4->
-          We need {\color{Mittel-Blau}$b \geq 2 \, a$} instead of
-          {\color{Mittel-Blau}$b \geq 2 \, a - 1$}
+          We need {\color{MainA}$b \geq 2 \, a$} instead of
+          {\color{MainA}$b \geq 2 \, a - 1$}
       \end{itemize}
     \end{column}
     \begin{column}{0.4\linewidth}
@@ -582,20 +589,20 @@
   \textbf{(2,4)-Tree:}
   \begin{itemize}
     \item<2->
-      If all nodes have {\color{Mittel-Blau}2 children} we have to
-      {\color{Mittel-Blau}combine} the nodes up to the root on a
-      \texttt{\color{Mittel-Blau}remove} operation
+      If all nodes have {\color{MainA}2 children} we have to
+      {\color{MainA}merge} the nodes up to the root on a
+      \texttt{\color{MainA}remove} operation
     \item<3->
-      If all nodes have {\color{Mittel-Blau}4 children} we have to
-      {\color{Mittel-Blau}split} the nodes up to the root on a
-      \texttt{\color{Mittel-Blau}insert} operation
+      If all nodes have {\color{MainA}4 children} we have to
+      {\color{MainA}split} the nodes up to the root on a
+      \texttt{\color{MainA}insert} operation
     \item<4->
-      If all nodes have {\color{Mittel-Blau}3 children} it takes some time
+      If all nodes have {\color{MainA}3 children} it takes some time
       to reach one of the previous two states
     \item<5->[$\Rightarrow$]
-      \textbf{Nodes of degree 3 are harmless}\\
-      Neither an \texttt{\color{Mittel-Blau}insert} nor a
-      \texttt{\color{Mittel-Blau}remove} operation trigger rebalancing
+      \textbf{Nodes of degree 3 are stable}\\
+      Neither an \texttt{\color{MainA}insert} nor a
+      \texttt{\color{MainA}remove} operation trigger rebalancing
       operations
   \end{itemize}
 \end{frame}
@@ -605,23 +612,23 @@
 \begin{frame}{(a,b)-Trees}{Runtime Complexity - (2,4)-Tree}
   \textbf{(2,4)-Tree:}
   \begin{itemize}
-    \item<2->
+    \item
       \textbf{Idea:}
       \begin{itemize}
-        \item<3->
+        \item<2->
           After an expensive operation the tree is in a stable state
-        \item<4->
+        \item<3->
           It takes some time until the next expensive operation occurs
       \end{itemize}
-    \item<5->
+    \item<4->
       Like with dynamic arrays:
       \begin{itemize}
-        \item<6->
-          {\color{Mittel-Blau}Reallocation} is expensive but it takes some time
+        \item<5->
+          {\color{MainA}Reallocation} is expensive but it takes some time
           until the next expensive operation occurs
-        \item<7->
-          If we {\color{Mittel-Blau}overallocate} clever we have an amortized
-          runtime of {\color{Mittel-Blau}$O(1)$}
+        \item<6->
+          If we {\color{MainA}overallocate} clever we have an amortized
+          runtime of {\color{MainA}$O(1)$}
       \end{itemize}
   \end{itemize}
 \end{frame}
@@ -632,15 +639,15 @@
   \textbf{Terminology:}
   \begin{itemize}
     \item<2->
-      We analyze a sequence of {\color{Mittel-Blau}$n$} operations
+      We analyze a sequence of {\color{MainA}$n$} operations
     \item<3->
-      Let {\color{Mittel-Blau}$\Phi_i$} be the potential of the tree after
-      the {\color{Mittel-Blau}$i$}-\textit{th} operation
+      Let {\color{MainA}$\Phi_i$} be the potential of the tree after
+      the {\color{MainA}$i$}-\textit{th} operation
     \item<4->
-      $=$ is the number of nodes
-      with {\color{Mittel-Blau}degree 3}
-    %\item<5->
-    %  We start with an empty tree: ${\color{Mittel-Blau}\Phi_0} = 0$
+      {\color{MainA}$\Phi_i$}
+      $=$ the number of stable nodes with {\color{MainA}degree 3}
+    \item<5->
+      Empty tree has 0 nodes: ${\color{MainA}\Phi} = 0$
   \end{itemize}
 \end{frame}
 
@@ -650,14 +657,14 @@
   \textbf{Example:}
   \begin{itemize}
     \item<2->
-      Nodes of {\color{Mittel-Blau}degree 3} are highlighted
+      Nodes of {\color{MainA}degree 3} are highlighted
   \end{itemize}
   \onslide<3->
   \begin{figure}[!h]
     \begin{adjustbox}{width=0.8\linewidth}
       \input{Images/(a,b)-Tree/(2,4)-Tree_Example_Potential.tikz}
     \end{adjustbox}
-    \caption{Tree with potential ${\color{Mittel-Blau}\Phi} = 4$}
+    \caption{Tree with potential ${\color{MainA}\Phi} = 4$}
     \label{fig:a_b_tree:potential_introduction}
   \end{figure}
 \end{frame}
@@ -668,56 +675,38 @@
   \textbf{Terminology:}
   \begin{itemize}
     \item<2->
-      Let {\color{Mittel-Blau}$c_i$} be the costs $=$ runtime of the {\color{Mittel-Blau}$i$}-th operation
+      Let {\color{MainA}$c_i$} be the costs $=$ runtime of
+      the {\color{MainA}$i$}-th operation
     \item<3->
       We will show:
       \begin{itemize}
-      \item<4-> Each operation can maximally destroy one harmless node
-      \item<5-> For each further step, that incurs cost, the operation
-        creates a further harmless node
-     \end{itemize} 
+      \item<4-> Each operation can at most destroy one stable node
+      \item<5-> For each cost incurring step the operation
+        creates an additional stable node
+     \end{itemize}
     \item<6->
-      The costs for operation {\color{Mittel-Blau}$i$} are coupled to the
+      The costs for operation {\color{MainA}$i$} are coupled to the
       difference of the potential levels
       \begin{displaymath}
-        {\color{Mittel-Blau}c_i} \leq A \cdot \underbrace{(
-          {\color{Mittel-Blau}\Phi_i} -
-          {\color{Mittel-Blau}\Phi_{i-1}}
+        {\color{MainA}c_i} \leq A \cdot \underbrace{(
+          {\color{MainA}\Phi_i} -
+          {\color{MainA}\Phi_{i-1}}
         )} + B, \hspace{1.5em} A > 0 \text{ and } B > A
       \end{displaymath}\\
       \vspace{-0.75em}
-      Number of harmless ({\color{Mittel-Blau}degree 3}) nodes at operation
-      {\color{Mittel-Blau}$i$}. Can be $-1$, but not smaller than $-1$
-      \item<7->
-      With that each operation has an amortitzed cost of
-      {\color{Mittel-Blau}$O(1)$}
+      Number of gained stable nodes ({\color{MainA}degree 3}) $\geq -1$
+    \item<7->
+      Each operation has an amortitzed cost of
+      {\color{MainA}$O(1)$} summing up to {\color{MainA}$O(n)$} in total
   \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
-%% begin{frame}{(a,b)-Trees}{Runtime Complexity - (2,4)-Tree}
-%%   \textbf{We will show:}
-%%   \begin{itemize}
-%%     \item<2->
-%%       Each operation can at maximum destroys one harmmless node
-%%     \item<3->
-%%       Each operation producing costs creates a new harmless node
-%%     \item<4->
-%%       The sum of all costs upto operation {\color{Mittel-Blau}$i$} will be
-%%       {\color{Mittel-Blau}$O(i)$}
-%%     \item<5->
-%%       With that each operation has an amortitzed cost of
-%%       {\color{Mittel-Blau}$O(1)$}
-%%   \end{itemize}
-%% \end{frame}
-
-%-------------------------------------------------------------------------------
-
 \begin{frame}{(a,b)-Trees}{Runtime Complexity - (2,4)-Tree}
   \textbf{Case 1:}
-  {\color{Mittel-Blau}$i$}-\textit{th} operation is an
-  \texttt{\color{Mittel-Blau}insert} operation on a full node
+  {\color{MainA}$i$}-\textit{th} operation is an
+  \texttt{\color{MainA}insert} operation on a full node
   \onslide<2->
   \begin{figure}
     \begin{columns}
@@ -737,12 +726,12 @@
         \end{adjustbox}
       \end{column}
     \end{columns}
-    \caption{Splitting a node on \texttt{\color{Mittel-Blau}insert}}
+    \caption{Splitting a node on \texttt{\color{MainA}insert}}
     \label{fig:a_b_tree:node_split_potential}
   \end{figure}
   \begin{itemize}
     \item<3->
-      Each splitted node creates a node of {\color{Mittel-Blau}degree 3}
+      Each splitted node creates a node of {\color{MainA}degree 3}
     \item<4->
       The parent node receives an element from the splitted node
     \item<5->
@@ -754,37 +743,37 @@
 
 \begin{frame}{(a,b)-Trees}{Runtime Complexity - (2,4)-Tree}
   \textbf{Case 1:}
-  {\color{Mittel-Blau}$i$}-\textit{th} operation is an
-  \texttt{\color{Mittel-Blau}insert} operation on a full node
+  {\color{MainA}$i$}-\textit{th} operation is an
+  \texttt{\color{MainA}insert} operation on a full node
   \begin{itemize}
     \item<2->
-      Let {\color{Mittel-Blau}$m$} be the number of nodes split
+      Let {\color{MainA}$m$} be the number of nodes split
     \item<3->
-      The potential rises by {\color{Mittel-Blau}$m$}
+      The potential rises by {\color{MainA}$m$}
     \item<4->
-      If the \enquote{stop-node} is of {\color{Mittel-Blau}degree 3} then the
+      If the \enquote{stop-node} is of {\color{MainA}degree 3} then the
       potential goes down by one
   \end{itemize}
   \onslide<5->
   \begin{align*}
-    {\color{Mittel-Blau}\Phi_i}
-      &\geq {\color{Mittel-Blau}\Phi_{i-1}} + {\color{Mittel-Blau}m} - 1\\
-    \Rightarrow {\color{Mittel-Blau}m}
-      &\leq {\color{Mittel-Blau}\Phi_i} - {\color{Mittel-Blau}\Phi_{i-1}} + 1
+    {\color{MainA}\Phi_i}
+      &\geq {\color{MainA}\Phi_{i-1}} + {\color{MainA}m} - 1\\
+    \Rightarrow {\color{MainA}m}
+      &\leq {\color{MainA}\Phi_i} - {\color{MainA}\Phi_{i-1}} + 1
   \end{align*}
  \onslide<6->
   Costs:
   \begin{math}
-    {\color{Mittel-Blau}c_i} \leq A \cdot {\color{Mittel-Blau}m} + B
+    {\color{MainA}c_i} \leq A \cdot {\color{MainA}m} + B
   \end{math}
   \begin{align*}
-    \Rightarrow {\color{Mittel-Blau}c_i}
+    \Rightarrow {\color{MainA}c_i}
       &\leq A \cdot \left(
-        {\color{Mittel-Blau}\Phi_i} - {\color{Mittel-Blau}\Phi_{i-1}} + 1
+        {\color{MainA}\Phi_i} - {\color{MainA}\Phi_{i-1}} + 1
       \right) + B\\
-    {\color{Mittel-Blau}c_i}
+    {\color{MainA}c_i}
       &\leq A \cdot \left(
-      {\color{Mittel-Blau}\Phi_i} - {\color{Mittel-Blau}\Phi_{i-1}}
+      {\color{MainA}\Phi_i} - {\color{MainA}\Phi_{i-1}}
       \right) + \underbrace{A + B}_{B'}\\
   \end{align*}
 \end{frame}
@@ -793,8 +782,8 @@
 
 \begin{frame}{(a,b)-Trees}{Runtime Complexity - (2,4)-Tree}
   \textbf{Case 2:}
-  {\color{Mittel-Blau}$i$}-\textit{th} operation is an
-  \texttt{\color{Mittel-Blau}remove} operation
+  {\color{MainA}$i$}-\textit{th} operation is an
+  \texttt{\color{MainA}remove} operation
   \begin{itemize}
     \item<2->
       \textbf{Case 2.1:} Inner node
@@ -802,13 +791,13 @@
         \item<3->
          Searching the successor in a tree is
           \begin{math}
-           {\color{Mittel-Blau}O(d)} =
-           {\color{Mittel-Blau}O(\log n)}
+           {\color{MainA}O(d)} =
+           {\color{MainA}O(\log n)}
           \end{math}
         \item<4->
           Normally the tree is coupled with a doubly linked list\\
           $\Rightarrow$ We can find the succcessor in
-          {\color{Mittel-Blau}$O(1)$}
+          {\color{MainA}$O(1)$}
     \end{itemize}
   \end{itemize}
   \vspace{0.5em}
@@ -826,11 +815,11 @@
 
 \begin{frame}{(a,b)-Trees}{Runtime Complexity - (2,4)-Tree}
   \textbf{Case 2:}
-  {\color{Mittel-Blau}$i$}-\textit{th} operation is an
-  \texttt{\color{Mittel-Blau}remove} operation
+  {\color{MainA}$i$}-\textit{th} operation is an
+  \texttt{\color{MainA}remove} operation
   \begin{itemize}
     \item<2->
-      \textbf{Case 2.1:} Borrowing a node
+      \textbf{Case 2.1:} Borrow a node
       \begin{itemize}
         \item<3->
           Creates no additional operations
@@ -857,7 +846,7 @@
         \end{adjustbox}
       \end{column}
     \end{columns}
-    \caption{Borrowing an element case 2.1.1}
+    \caption{Case 2.1.1: Borrow an element}
     \label{fig:a_b_tree:move_potential_1}
   \end{figure}
 \end{frame}
@@ -866,16 +855,16 @@
 
 \begin{frame}{(a,b)-Trees}{Runtime Complexity - (2,4)-Tree}
   \textbf{Case 2:}
-  {\color{Mittel-Blau}$i$}-\textit{th} operation is an
-  \texttt{\color{Mittel-Blau}remove} operation
+  {\color{MainA}$i$}-\textit{th} operation is an
+  \texttt{\color{MainA}remove} operation
   \begin{itemize}
     \item<2->
-    \textbf{Case 2.1:} Borrowing a node
+    \textbf{Case 2.1:} Borrow a node
     \begin{itemize}
       \item<3->
       Creates no additional operations
       \item<4->
-      Case 2.1.2: Potential lowers by one
+      Case 2.1.2: Potential is lowered by one
     \end{itemize}
    \onslide<5->
   \end{itemize}
@@ -897,7 +886,7 @@
         \end{adjustbox}
       \end{column}
     \end{columns}
-    \caption{Borrowing an element case 2.1.2}
+    \caption{Case 2.1.2: Borrow an element}
     \label{fig:a_b_tree:move_potential_2}
   \end{figure}
 \end{frame}
@@ -906,95 +895,102 @@
 
 \begin{frame}{(a,b)-Trees}{Runtime Complexity - (2,4)-Tree}
   \textbf{Case 2:}
-  {\color{Mittel-Blau}$i$}-\textit{th} operation is an
-  \texttt{\color{Mittel-Blau}remove} operation
+  {\color{MainA}$i$}-\textit{th} operation is an
+  \texttt{\color{MainA}remove} operation
   \begin{itemize}
     \item<2->
-      \textbf{Case 2.2:} Merging a node
+      \textbf{Case 2.2:} Merging two node
       \onslide<3->
-        \begin{figure}
-    \begin{columns}
-      \begin{column}{0.35\linewidth}
-        \begin{adjustbox}{width=\linewidth}
-          \input{Images/(a,b)-Tree/Node_PreMerge.tikz}
-        \end{adjustbox}
-      \end{column}
-      \begin{column}{0.1\linewidth}
-        \begin{center}
-          $\Rightarrow$
-        \end{center}
-      \end{column}
-      \begin{column}{0.35\linewidth}
-        \begin{adjustbox}{width=0.85\linewidth}
-          \input{Images/(a,b)-Tree/Node_PostMerge_Potential.tikz}
-        \end{adjustbox}
-      \end{column}
-    \end{columns}
-    \caption{Merging two nodes}
-    \label{fig:a_b_tree:merge_potential}
-        \end{figure}
-    \vspace{-1.0em}    
-    \begin{itemize}
-      \item<3->
-        Potential rises by one
-      \item<4->
-        Parent node has one element less after the operation
-      \item<5->
-        This operation propagates upwards until a node of degree $>$ 2
-        or a degree 2 node, which can borrow from a neighbour
-      \item<6->
-        The potential rises by {\color{Mittel-Blau}$m$}
-      \item<7->
-        If the \enquote{stop-node} is of {\color{Mittel-Blau}degree 2} then the
-        potential eventually goes down by one
-      \item<8->
-        Same costs as \texttt{\color{Mittel-Blau}insert}
-    \end{itemize}
+      \begin{figure}
+          \begin{columns}
+          \begin{column}{0.35\linewidth}
+            \begin{adjustbox}{width=\linewidth}
+              \input{Images/(a,b)-Tree/Node_PreMerge.tikz}
+            \end{adjustbox}
+          \end{column}
+          \begin{column}{0.1\linewidth}
+            \begin{center}
+              $\Rightarrow$
+            \end{center}
+          \end{column}
+          \begin{column}{0.35\linewidth}
+            \begin{adjustbox}{width=0.85\linewidth}
+              \input{Images/(a,b)-Tree/Node_PostMerge_Potential.tikz}
+            \end{adjustbox}
+          \end{column}
+        \end{columns}
+        \caption{Merging two nodes}
+        \label{fig:a_b_tree:merge_potential}
+      \end{figure}
+    \item<3->
+      Potential rises by one
+    \item<4->
+      Parent node has one element less after the operation
+    \item<5->
+      This operation propagates upwards until a node of degree $> 2$
+      or a node of degree 2, which can borrow from a neighbour
+  \end{itemize}
+\end{frame}
+
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}{(a,b)-Trees}{Runtime Complexity - (2,4)-Tree}
+  \textbf{Case 2:}
+  {\color{MainA}$i$}-\textit{th} operation is an
+  \texttt{\color{MainA}remove} operation
+  \begin{itemize}
+    \item
+      \textbf{Case 2.2:} Merging two node
+      \begin{figure}
+        \begin{columns}
+          \begin{column}{0.35\linewidth}
+            \begin{adjustbox}{width=\linewidth}
+              \input{Images/(a,b)-Tree/Node_PreMerge.tikz}
+            \end{adjustbox}
+          \end{column}
+          \begin{column}{0.1\linewidth}
+            \begin{center}
+              $\Rightarrow$
+            \end{center}
+          \end{column}
+          \begin{column}{0.35\linewidth}
+            \begin{adjustbox}{width=0.85\linewidth}
+              \input{Images/(a,b)-Tree/Node_PostMerge_Potential.tikz}
+            \end{adjustbox}
+          \end{column}
+        \end{columns}
+        \caption{Merging two nodes}
+        \label{fig:a_b_tree:merge_potential2}
+      \end{figure}
+    \item<2->
+      The potential rises by {\color{MainA}$m$}
+    \item<3->
+      If the \enquote{stop-node} is of {\color{MainA}degree 2} then the
+      potential eventually goes down by one
+    \item<4->
+      Same costs as \texttt{\color{MainA}insert}
   \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
-%% \begin{frame}{(a,b)-Trees}{Runtime Complexity - (2,4)-Tree}
-%%   \textbf{Case 2:}
-%%   {\color{Mittel-Blau}$i$}-\textit{th} operation is an
-%%   \texttt{\color{Mittel-Blau}remove} operation
-%%   \begin{itemize}
-%%     \item
-%%     \textbf{Case 2.2:} Merging a node
-%%     \begin{itemize}
-%%       \item<3->
-%%         Let {\color{Mittel-Blau}$m$} be the number of nodes merged
-%%       \item<4->
-%%         The potential rises by {\color{Mittel-Blau}$m$}
-%%       \item<5->
-%%         If the \enquote{stop-node} is of {\color{Mittel-Blau}degree 2} then the
-%%         potential eventually goes down by one
-%%       \item<6->
-%%         Same costs as \texttt{\color{Mittel-Blau}insert}
-%%     \end{itemize}
-%%   \end{itemize}
-%% \end{frame}
-
-%-------------------------------------------------------------------------------
-
 \begin{frame}{(a,b)-Trees}{Runtime Complexity - (2,4)-Tree - Lemma}
-  \begin{block}{Lemma:}
-    \begin{itemize}
-      \item<2->
-        We know:
-        \begin{displaymath}
-        {\color{Mittel-Blau}c_i} \leq A \cdot \left(
-        {\color{Mittel-Blau}\Phi_i} - {\color{Mittel-Blau}\Phi_{i-1}}
-        \right) + B, \hspace{1.5em} A > 0 \text{ and } B > A
-        \end{displaymath}
-      \item<3->
-        With that we can conclude:
-        \begin{displaymath}
-          \sum_{i=0}^{n} {\color{Mittel-Blau}c_i} = O(n)
-        \end{displaymath}
-    \end{itemize}
-  \end{block}
+  \textbf{Lemma:}
+  \begin{itemize}
+    \item<2->
+      We know:
+      \begin{displaymath}
+      {\color{MainA}c_i} \leq A \cdot \left(
+      {\color{MainA}\Phi_i} - {\color{MainA}\Phi_{i-1}}
+      \right) + B, \hspace{1.5em} A > 0 \text{ and } B > A
+      \end{displaymath}
+    \item<3->
+      With that we can conclude:
+      \begin{displaymath}
+        \sum_{i=0}^{n} {\color{MainA}c_i} \in O(n)
+      \end{displaymath}
+  \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------------------------------
@@ -1002,24 +998,24 @@
 \begin{frame}{(a,b)-Trees}{Runtime Complexity - (2,4)-Tree - Lemma - Proof}
   \textbf{Proof:}
   \begin{align*}
-    \sum_{i=0}^{n} {\color{Mittel-Blau}c_i}
+    \sum_{i=0}^{n} {\color{MainA}c_i}
       &\leq \underbrace{A \cdot \left(
-        {\color{Mittel-Blau}\Phi_1} - {\color{Mittel-Blau}\Phi_0}
-      \right) + B}_{\leq {\color{Mittel-Blau}c_1}} +
+        {\color{MainA}\Phi_1} - {\color{MainA}\Phi_0}
+      \right) + B}_{\leq {\color{MainA}c_1}} +
       \underbrace{A \cdot \left(
-        {\color{Mittel-Blau}\Phi_2} - {\color{Mittel-Blau}\Phi_1}
-      \right) + B}_{\leq {\color{Mittel-Blau}c_1}} + \dots +
+        {\color{MainA}\Phi_2} - {\color{MainA}\Phi_1}
+      \right) + B}_{\leq {\color{MainA}c_2}} + \dots +
       \underbrace{A \cdot \left(
-        {\color{Mittel-Blau}\Phi_n} - {\color{Mittel-Blau}\Phi_{n-1}}
-      \right) + B}_{\leq {\color{Mittel-Blau}c_n}}\\
+        {\color{MainA}\Phi_n} - {\color{MainA}\Phi_{n-1}}
+      \right) + B}_{\leq {\color{MainA}c_n}}\\
     &\hspace{1.0em}= A \cdot \left(
-      {\color{Mittel-Blau}\Phi_n} - {\color{Mittel-Blau}\Phi_0}
+      {\color{MainA}\Phi_n} - {\color{MainA}\Phi_0}
     \right) + B \cdot n \hspace{1.5em} \mid \text{telescope sum}\\
-    &\hspace{1.0em}= A \cdot {\color{Mittel-Blau}\Phi_n} + B \cdot n
+    &\hspace{1.0em}= A \cdot {\color{MainA}\Phi_n} + B \cdot n
       \hspace{4.5em} \mid \text{we start with an empty tree}\\
-    &\hspace{1.0em}< A \cdot n + B \cdot n = O(n)
+    &\hspace{1.0em}< A \cdot n + B \cdot n \in O(n)
       \hspace{1.85em} \mid
-      \text{number of {\color{Mittel-Blau}degree 3} nodes}\\
+      \text{number of {\color{MainA}degree 3} nodes}\\
     &\hspace{12.5em} \text{< number of nodes}
   \end{align*}
 \end{frame}

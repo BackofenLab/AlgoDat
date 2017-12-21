@@ -1,26 +1,20 @@
-\section{Balanced Trees}
+\toclesssection{Balanced Trees}
 
-\subsection{Motivation}
+\toclesssubsection{Motivation}
 
 \begin{frame}{Balanced Trees}{Motivation}
   \textbf{Binary search tree:}
   \begin{itemize}
   \item<2->
-    With \texttt{\color{Mittel-Blau}BinarySearchTree} we could perform an
-    \texttt{\color{Mittel-Blau}lookup} or
-    \texttt{\color{Mittel-Blau}insert} in {\color{Mittel-Blau}$O(d)$}, with {\color{Mittel-Blau}$d$} being
-    the {\color{Mittel-Blau}depth} of the tree
+    With \texttt{\color{MainA}BinarySearchTree} we could perform an
+    \texttt{\color{MainA}lookup} or \texttt{\color{MainA}insert}
+    in {\color{MainA}$O(d)$}, with {\color{MainA}$d$} being the
+    {\color{MainA}depth} of the tree
   \item<3->
-    Best case: {\color{Mittel-Blau}$d = O(\log n)$}
-    \begin{itemize}
-    \item<4-> If the keys are inserted randomly
-    \end{itemize}   
-  \item<5->
-    Worst case: {\color{Mittel-Blau}$d = O(n)$}
-    \begin{itemize}
-    \item<6->if the keys are inserted in ascending / descending
-      order {\color{Mittel-Blau}$(20, 19, 18, \dotsc)$}
-    \end{itemize}  
+    Best case: {\color{MainA}$d \in O(\log n)$}, keys are inserted randomly
+  \item<4->
+    Worst case: {\color{MainA}$d \in O(n)$}, keys are inserted in
+    ascending / descending order {\color{MainA}$(20, 19, 18, \dotsc)$}
   \end{itemize}
 \end{frame}
 
@@ -61,18 +55,18 @@
   \textbf{Balanced trees:}
   \begin{itemize}
     \item<2->
-      We do not want to rely on certain properties of our {\color{Mittel-Blau}key set}
+      We do not want to rely on certain properties of our {\color{MainA}key set}
     \item<3->
-      We explicitly want a depth of ${\color{Mittel-Blau}O(\log n)}$
+      We explicitly want a depth of ${\color{MainA}O(\log n)}$
     \item<4->
-      We {\color{Mittel-Blau}rebalance} the tree from time to time
+      We {\color{MainA}rebalance} the tree from time to time
   \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Balanced Trees}{Motivation}
-  \textbf{How do we get a depth of {\color{Mittel-Blau}$O(\log n)$}?}
+  \textbf{How do we get a depth of {\color{MainA}$O(\log n)$}?}
   \begin{itemize}
     \item<2->
       \textbf{AVL-Tree:}
@@ -80,19 +74,18 @@
         \item<3->
           Binary tree with 2 children per node
         \item<4->
-          Balancing via \enquote{\color{Mittel-Blau}rotation}
+          Balancing via \enquote{\color{MainA}rotation}
       \end{itemize}
     \item<5->
       \textbf{(a,b)-Tree} or \textbf{B-Tree:}
       \begin{itemize}
         \item<6->
-          Node have between ${\color{Mittel-Blau}a}$ and
-          ${\color{Mittel-Blau}b}$ children
+          Node has between ${\color{MainA}a}$ and ${\color{MainA}b}$ children
         \item<7->
-          Balancing through {\color{Mittel-Blau}splitting} and
-          {\color{Mittel-Blau}merging} nodes
+          Balancing through {\color{MainA}splitting} and
+          {\color{MainA}merging} nodes
         \item<8->
-          Used in data bases and file systems
+          Used in databases and file systems
       \end{itemize}
     \item<9->
       \textbf{Red-Black-Tree:}
@@ -100,12 +93,12 @@
         \item<10->
           Binary tree with \enquote{black} and \enquote{red} nodes
         \item<11->
-          Balancing through \enquote{\color{Mittel-Blau}rotation} and
-          \enquote{\color{Mittel-Blau}recoloring}
+          Balancing through \enquote{\color{MainA}rotation} and
+          \enquote{\color{MainA}recoloring}
         \item<12->
           Can be interpreted as (2, 4)-tree
         \item<13->
-          Used in C++ std::map, Java SortedMap
+          Used in C++ \texttt{std::map} and Java \texttt{SortedMap}
       \end{itemize}
   \end{itemize}
 \end{frame}
