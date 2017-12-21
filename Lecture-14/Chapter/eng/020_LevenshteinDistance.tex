@@ -6,20 +6,19 @@
   \textbf{Definition of edit distance}: (\textit{Levenshtein-distance})
   \begin{itemize}
     \item<2->
-      Let {\color{Mittel-Blau}$x$}, {\color{Mittel-Blau}$y$} be two strings
-    \item<2->
-      Edit distance {\color{Mittel-Blau}$\mathrm{ED}(x, y)$} of
-      {\color{Mittel-Blau}$x$} and {\color{Mittel-Blau}$y$}:\\
-      The minimal number of operations to transform {\color{Mittel-Blau}$x$}
-      into {\color{Mittel-Blau}$y$}
+      Let {\color{MainA}$x$}, {\color{MainA}$y$} be two strings
+    \item<3->
+      Edit distance {\color{MainA}$\mathrm{ED}(x, y)$} of
+      {\color{MainA}$x$} and {\color{MainA}$y$}:\\
+      The minimal number of operations to transform {\color{MainA}$x$}
+      into {\color{MainA}$y$}
       \begin{itemize}
-        \item<3->
-          \texttt{Insert} a character
         \item<4->
-          \texttt{Replace} a character with another
+          \texttt{Insert} a character
         \item<5->
+          \texttt{Replace} a character with another
+        \item<6->
           \texttt{Delete} a character
-          % Die Position einer Operation ist ... siehe Beispiel ???
       \end{itemize}
   \end{itemize}
 \end{frame}
@@ -88,11 +87,11 @@
       $\varepsilon$ is the empty string
     \item<3->
       $\vert x \vert$ is the length of the string $x$ (number of characters)
-    \item<5->
+    \item<4->
       $x[i..j]$ is the slice of $x$ from $i$ to $j$ where
       $1 \leq i \leq j \leq \vert x \vert$
   \end{itemize}
-  \onslide<6->
+  \onslide<5->
   \begin{figure}[!h]
     \begin{adjustbox}{width=0.75\linewidth}
       \input{Images/Levenshtein_Distance/Slice.tikz}
@@ -103,7 +102,7 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Edit distance}
-  \textbf{Trivial facts:}
+  \textbf{Trivial properties:}
   \begin{itemize}
     \item<2->
       $\mathrm{ED}(x, y) = \mathrm{ED}(y, x)$
@@ -143,8 +142,8 @@
   \begin{itemize}
     \item<7->
       Dividing in two halves? Not a good idea:\\[0.5em]
-      {\color{Mittel-Blau}$\mathrm{ED}(GRAU, RAUM) = 2$} \; but \;
-      {\color{Mittel-Blau}$\mathrm{ED}(GR, RA) + \mathrm{ED}(AU, UM) = 4$}
+      {\color{MainA}$\mathrm{ED}(GRAU, RAUM) = 2$} \; but \;
+      {\color{MainA}$\mathrm{ED}(GR, RA) + \mathrm{ED}(AU, UM) = 4$}
       \\[0.5em]
     \item<8->
       Finding \enquote{smaller} sub problems?\\
@@ -158,11 +157,11 @@
   \textbf{Terminology:}
   \begin{itemize}
     \item<2->
-      Let {\color{Mittel-Blau}$x$}, {\color{Mittel-Blau}$y$} be two strings
+      Let {\color{MainA}$x$}, {\color{MainA}$y$} be two strings
     \item<3->
       Let $\sigma_1, \dots, \sigma_k$ be a sequence of $k$ operations
-      where $k = \mathrm{ED}(x, y)$ for {\color{Mittel-Blau}$x \rightarrow y$}
-      (transform {\color{Mittel-Blau}$x$} into {\color{Mittel-Blau}$y$})\\
+      where $k = \mathrm{ED}(x, y)$ for {\color{MainA}$x \rightarrow y$}
+      (transform {\color{MainA}$x$} into {\color{MainA}$y$})\\
       {\color{gray}(We do not know this sequence but we assume it exists)}
   \end{itemize}
 \end{frame}
@@ -172,35 +171,35 @@
 \begin{frame}{Edit distance}
   \textbf{Terminology:}
   \begin{itemize}
-    \item<2->
-      We only consider {\color{Mittel-Blau}monotonous} sequences:\\
+    \item
+      We only consider {\color{MainA}monotonous} sequences:\\
       The positition of $\sigma_{i+1}$ is $\geq$ the position of $\sigma_i$
       where we only allow the positions to be equal on a \texttt{delete}
       operation
   \end{itemize}
-  \onslide<3->
+  \onslide<2->
   \begin{columns}
     \begin{column}{0.5\linewidth}
       \begin{center}
         \begin{tabular}{c@{}c@{}c@{}c@{}cl}
           1 & 2 & 3 & 4 & 5\\
           D & O & O & F\\
-          \only<1-1>
+          \only<3->{
           {} & {} & $\downarrow$ & {} & {} &
-          \texttt{replace({\color{Mittel-Blau}1}, B)}\\
-          B & O & O & F\\
-          \only<2-2>
+          \texttt{replace({\color{MainA}1}, B)}\\
+          B & O & O & F\\}
+          \only<4->{
           {} & {} & $\downarrow$ & {} & {} &
-          \texttt{replace({\color{Mittel-Blau}2}, L)}\\
-          B & L & O & F\\
-          \only<3-3>
+          \texttt{replace({\color{MainA}2}, L)}\\
+          B & L & O & F\\}
+          \only<5->{
           {} & {} & $\downarrow$ & {} & {} &
-          \only{insert({\color{Mittel-Blau}4}, E)}\\
-          B & L & O & E & F\\
-          \only<4-4>
+          \texttt{insert({\color{MainA}4}, E)}\\
+          B & L & O & E & F\\}
+          \only<6->{
           {} & {} & $\downarrow$ & {} & {} &
-          \texttt{replace({\color{Mittel-Blau}5}, D)}\\
-          B & L & O & E & D
+          \texttt{replace({\color{MainA}5}, D)}\\
+          B & L & O & E & D}
         \end{tabular}
       \end{center}
     \end{column}
@@ -209,18 +208,22 @@
         \begin{tabular}{c@{}c@{}c@{}c@{}c@{}c@{}cl}
           1 & 2 & 3 & 4 & 5 & 6 & 7\\
           S & A & U & D & O & O & F\\
+          \only<7->{
           {} & {} & {} & $\downarrow$ & {} & {} & {} &
-          \texttt{delete({\color{Mittel-Blau}1})}\\
-          A & U & D & O & O & F\\
+          \texttt{delete({\color{MainA}1})}\\
+          A & U & D & O & O & F\\}
+          \only<8->{
           {} & {} & {} & $\downarrow$ & {} & {} & {} &
-          \texttt{delete({\color{Mittel-Blau}1})}\\
-          U & D & O & O & F\\
+          \texttt{delete({\color{MainA}1})}\\
+          U & D & O & O & F\\}
+          \only<9->{
           {} & {} & {} & $\downarrow$ & {} & {} & {} &
-          \texttt{delete({\color{Mittel-Blau}1})}\\
-          D & O & O & F\\
+          \texttt{delete({\color{MainA}1})}\\
+          D & O & O & F\\}
+          \only<10->{
           {} & {} & {} & $\downarrow$ & {} & {} & {} &
-          \texttt{insert({\color{Mittel-Blau}4}, O)}\\
-          D & O & O & O & F
+          \texttt{insert({\color{MainA}4}, O)}\\
+          D & O & O & O & F}
         \end{tabular}
       \end{center}
     \end{column}
@@ -234,9 +237,9 @@
   \begin{itemize}
     \item<2->
       \textbf{Lemma:}
-      For any {\color{Mittel-Blau}$x$} and {\color{Mittel-Blau}$y$}
-      with $k = \mathrm{ED}(x, y)$ exists a {\color{Mittel-Blau}monotonous}
-      sequence of $k$ operations for {\color{Mittel-Blau}$x \rightarrow y$}
+      For any {\color{MainA}$x$} and {\color{MainA}$y$}
+      with $k = \mathrm{ED}(x, y)$ exists a {\color{MainA}monotonous}
+      sequence of $k$ operations for {\color{MainA}$x \rightarrow y$}
     \item<3->
       \textbf{Intuition:}
       The order of our sequence is not relevant\\
@@ -273,7 +276,7 @@
   \textbf{Consider the last operation:}
   \begin{itemize}
     \item<2->
-      Solve {\color{Mittel-Blau}blue} part recursively
+      Solve {\color{MainA}blue} part recursively
   \end{itemize}
   \onslide<3->
   \begin{columns}[T]
@@ -281,12 +284,12 @@
       \begin{figure}[!h]
         \begin{center}
           \begin{tabular}{c@{}c@{}c@{}c@{}c@{}l}
-            \color{Mittel-Blau}D & \color{Mittel-Blau}O & \color{Mittel-Blau}O &
-            \color{Mittel-Blau}F\\
-            \color{Mittel-Blau}$\downarrow$ & \color{Mittel-Blau}$\downarrow$ &
-            \color{Mittel-Blau}$\downarrow$ & \color{Mittel-Blau}$\downarrow$\\
-            \color{Mittel-Blau}B & \color{Mittel-Blau}L & \color{Mittel-Blau}O &
-            \color{Mittel-Blau}E\\
+            \color{MainA}D & \color{MainA}O & \color{MainA}O &
+            \color{MainA}F\\
+            \color{MainA}$\downarrow$ & \color{MainA}$\downarrow$ &
+            \color{MainA}$\downarrow$ & \color{MainA}$\downarrow$\\
+            \color{MainA}B & \color{MainA}L & \color{MainA}O &
+            \color{MainA}E\\
             {} & {} & {} & {} & $\downarrow$ & \texttt{insert}\\
             B & L & O & E & D
           \end{tabular}
@@ -298,13 +301,13 @@
       \begin{figure}[!h]
         \begin{center}
           \begin{tabular}{c@{}c@{}c@{}c@{}c@{}c@{}l}
-            {} & {} & \color{Mittel-Blau}D & \color{Mittel-Blau}O &
-            \color{Mittel-Blau}O & \color{Mittel-Blau}F\\
-            \color{Mittel-Blau}$\downarrow$ & \color{Mittel-Blau}$\downarrow$ &
-            \color{Mittel-Blau}$\downarrow$ & \color{Mittel-Blau}$\downarrow$ &
-            \color{Mittel-Blau}$\downarrow$ & \color{Mittel-Blau}$\downarrow$\\
-            \color{Mittel-Blau}B & \color{Mittel-Blau}L & \color{Mittel-Blau}O &
-            \color{Mittel-Blau}E & \color{Mittel-Blau}D & \color{Mittel-Blau}F\\
+            {} & {} & \color{MainA}D & \color{MainA}O &
+            \color{MainA}O & \color{MainA}F\\
+            \color{MainA}$\downarrow$ & \color{MainA}$\downarrow$ &
+            \color{MainA}$\downarrow$ & \color{MainA}$\downarrow$ &
+            \color{MainA}$\downarrow$ & \color{MainA}$\downarrow$\\
+            \color{MainA}B & \color{MainA}L & \color{MainA}O &
+            \color{MainA}E & \color{MainA}D & \color{MainA}F\\
             {} & {} & {} & {} & {} & $\downarrow$ & \texttt{delete}\\
             B & L & O & E & D
           \end{tabular}
@@ -316,13 +319,13 @@
       \begin{figure}[!h]
         \begin{center}
           \begin{tabular}{c@{}c@{}c@{}c@{}c@{}l}
-            {} & \color{Mittel-Blau}D & \color{Mittel-Blau}O &
-            \color{Mittel-Blau}O & \color{Mittel-Blau}F\\
-            \color{Mittel-Blau}$\downarrow$ & \color{Mittel-Blau}$\downarrow$ &
-            \color{Mittel-Blau}$\downarrow$ & \color{Mittel-Blau}$\downarrow$ &
-            \color{Mittel-Blau}$\downarrow$\\
-            \color{Mittel-Blau}B & \color{Mittel-Blau}L & \color{Mittel-Blau}O &
-            \color{Mittel-Blau}E & \color{Mittel-Blau}F\\
+            {} & \color{MainA}D & \color{MainA}O &
+            \color{MainA}O & \color{MainA}F\\
+            \color{MainA}$\downarrow$ & \color{MainA}$\downarrow$ &
+            \color{MainA}$\downarrow$ & \color{MainA}$\downarrow$ &
+            \color{MainA}$\downarrow$\\
+            \color{MainA}B & \color{MainA}L & \color{MainA}O &
+            \color{MainA}E & \color{MainA}F\\
             {} & {} & {} & {} & $\downarrow$ & \texttt{replace}\\
             B & L & O & E & D
           \end{tabular}
@@ -338,22 +341,22 @@
 \begin{frame}{Edit distance}{Recursive approach}
   \textbf{Consider the last operation:}
   \begin{itemize}
-    \item<2->
-      Solve {\color{Mittel-Blau}blue} part recursively
+    \item
+      Solve {\color{MainA}blue} part recursively
   \end{itemize}
-  \onslide<3->
+  \onslide<2->
   \begin{columns}
     \begin{column}{0.3\linewidth}
       \begin{figure}[!h]
         \begin{center}
           \begin{tabular}{c@{}c@{}c@{}c@{}c@{}c@{}c@{}l}
-            \color{Mittel-Blau}W & \color{Mittel-Blau}I & \color{Mittel-Blau}N &
-            \color{Mittel-Blau}T & \color{Mittel-Blau}E & \color{Mittel-Blau}R\\
-            \color{Mittel-Blau}$\downarrow$ & \color{Mittel-Blau}$\downarrow$ &
-            \color{Mittel-Blau}$\downarrow$ & \color{Mittel-Blau}$\downarrow$ &
-            \color{Mittel-Blau}$\downarrow$ & \color{Mittel-Blau}$\downarrow$\\
-            \color{Mittel-Blau}S & \color{Mittel-Blau}O & \color{Mittel-Blau}M &
-            \color{Mittel-Blau}M & \color{Mittel-Blau}E & \color{Mittel-Blau}R\\
+            \color{MainA}W & \color{MainA}I & \color{MainA}N &
+            \color{MainA}T & \color{MainA}E & \color{MainA}R\\
+            \color{MainA}$\downarrow$ & \color{MainA}$\downarrow$ &
+            \color{MainA}$\downarrow$ & \color{MainA}$\downarrow$ &
+            \color{MainA}$\downarrow$ & \color{MainA}$\downarrow$\\
+            \color{MainA}S & \color{MainA}O & \color{MainA}M &
+            \color{MainA}M & \color{MainA}E & \color{MainA}R\\
             {} & {} & {} & {} & {} & $\downarrow$ & \texttt{nothing}\\
             S & O & M & M & E & R
           \end{tabular}
@@ -403,23 +406,22 @@
       \end{figure}
     \end{column}
   \end{columns}
-  \onslide<6->
   \begin{itemize}
-    \item<7->
+    \item<6->
       Optimal solutions consist of optimal partial solutions
       \begin{itemize}
-        \item<8->
+        \item<7->
           Shortest paths: Each partial path has to be optimal
-        \item<9->
+        \item<8->
           Edit distance: Each partial alignment has to be optimal\\
           \begin{figure}[!h]
-            \only<1|handout:0>{
+            \only<9|handout:0>{
               \begin{tabular}{cccccccccc}
                 \_ & \_ & \_ & B & L & O & E & D & E & R\\
                 S & A & U & B & L & O & E & D & \_ & \_
               \end{tabular}
             }%
-            \only<2>{%
+            \only<10|handout:1>{%
               \begin{tabular}{cccc|cccccc}
                 \_ & \_ & \_ & B & L & O & E & D & E & R\\
                 S & A & U & B & L & O & E & D & \_ & \_
@@ -427,7 +429,7 @@
             }%
           \end{figure}
       \end{itemize}
-    \item<10->
+    \item<11->
       Always solvable through dynamic programming\\
       (Caching of optimal partial solutions)
   \end{itemize}
@@ -443,8 +445,8 @@
       \begin{itemize}
         \item<3->
           $\sigma_1, \dots, \sigma_{k-1}$:
-          {\color{Mittel-Blau}$x \rightarrow z$} and $\sigma_k$:
-          {\color{Mittel-Blau}$z \rightarrow y$}\\
+          {\color{MainA}$x \rightarrow z$} and $\sigma_k$:
+          {\color{MainA}$z \rightarrow y$}\\
           Example:
           \begin{displaymath}
             x = \mathrm{DOOF}, \;
@@ -466,35 +468,35 @@
 \begin{frame}{Edit distance}
   \textbf{Case analysis:}
   \begin{itemize}
-    \item<2->
-      Case 1: {\color{Mittel-Blau}$\sigma_k$} does something at the outer end:
+    \item
+      Case 1: {\color{MainA}$\sigma_k$} does something at the outer end:
       \begin{itemize}
-        \item<3->
+        \item<2->
           Case 1a:
-          {\color{Mittel-Blau}$\sigma_k = \texttt{insert}(m' + 1, y[m])$}
+          {\color{MainA}$\sigma_k = \texttt{insert}(m' + 1, y[m])$}
           \hfill
-          [then {\color{Mittel-Blau}$m' = m - 1$}]
-        \item<4->
+          [then {\color{MainA}$m' = m - 1$}]
+        \item<3->
           Case 1b:
-          {\color{Mittel-Blau}$\sigma_k = \texttt{delete}(m')$}
+          {\color{MainA}$\sigma_k = \texttt{delete}(m')$}
           \hfill
-          [then {\color{Mittel-Blau}$m' = m + 1$}]
-        \item<5->
+          [then {\color{MainA}$m' = m + 1$}]
+        \item<4->
           Case 1c:
-          {\color{Mittel-Blau}$\sigma_k = \texttt{replace}(m', y[m])$}
+          {\color{MainA}$\sigma_k = \texttt{replace}(m', y[m])$}
           \hfill
-          [then {\color{Mittel-Blau}$m' = m$}]
+          [then {\color{MainA}$m' = m$}]
       \end{itemize}
       \vspace{0.5em}
-    \item<6->
-      Case 2: {\color{Mittel-Blau}$\sigma_k$} does nothing at the outer end:
+    \item<5->
+      Case 2: {\color{MainA}$\sigma_k$} does nothing at the outer end:
       \begin{itemize}
-        \item<7->
-          Then {\color{Mittel-Blau}$z[m'] = y[m]$} and
-          {\color{Mittel-Blau}$x[n'] = z[m']$} and with that\\
+        \item<6->
+          Then {\color{MainA}$z[m'] = y[m]$} and
+          {\color{MainA}$x[n'] = z[m']$} and with that\\
           $\sigma_1, \dots, \sigma_{k-1}$:
-          {\color{Mittel-Blau}$x[1..n-1] \rightarrow y[1..m-1]$} and
-          {\color{Mittel-Blau}$x[n] = y[m]$}
+          {\color{MainA}$x[1..n-1] \rightarrow y[1..m-1]$} and
+          {\color{MainA}$x[n] = y[m]$}
       \end{itemize}
   \end{itemize}
 \end{frame}
@@ -504,56 +506,56 @@
 \begin{frame}{Edit distance}
   \textbf{Case analysis:}
   \begin{itemize}
-    \item<2->
+    \item
       Case 1a (\texttt{insert}):
       \hfill
-      {\color{Mittel-Blau}$\sigma_1, \dots, \sigma_{k-1}$}:
-      {\color{Mittel-Blau}$x\hphantom{[1..n-1]} \rightarrow y[1..m-1]$}
-    \item<3->
+      {\color{MainA}$\sigma_1, \dots, \sigma_{k-1}$}:
+      {\color{MainA}$x\hphantom{[1..n-1]} \rightarrow y[1..m-1]$}
+    \item<2->
       Case 1b (\texttt{delete}):
       \hfill
-      {\color{Mittel-Blau}$\sigma_1, \dots, \sigma_{k-1}$}:
-      {\color{Mittel-Blau}$x[1..n-1] \rightarrow y\hphantom{[1..m-1]}$}
-    \item<4->
+      {\color{MainA}$\sigma_1, \dots, \sigma_{k-1}$}:
+      {\color{MainA}$x[1..n-1] \rightarrow y\hphantom{[1..m-1]}$}
+    \item<3->
       Case 1c (\texttt{replace}):
       \hfill
-      {\color{Mittel-Blau}$\sigma_1, \dots, \sigma_{k-1}$}:
-      {\color{Mittel-Blau}$x[1..n-1] \rightarrow y[1..m-1]$}
-    \item<5->
+      {\color{MainA}$\sigma_1, \dots, \sigma_{k-1}$}:
+      {\color{MainA}$x[1..n-1] \rightarrow y[1..m-1]$}
+    \item<4->
       Case 2 (\texttt{nothing}):
       \hfill
-      {\color{Mittel-Blau}$\sigma_1, \dots, \sigma_{k}$}:
-      {\color{Mittel-Blau}$x[1..n-1] \rightarrow y[1..m-1]$}
+      {\color{MainA}$\sigma_1, \dots, \sigma_{k}$}:
+      {\color{MainA}$x[1..n-1] \rightarrow y[1..m-1]$}
   \end{itemize}
-  \onslide<6->
+  \onslide<5->
   \textbf{This results in the recursive formula:}
   \begin{itemize}
-    \item<7->
-      For {\color{Mittel-Blau}$\vert x \vert > 0$} and
-      {\color{Mittel-Blau}$\vert y \vert > 0$} is
-      {\color{Mittel-Blau}$\mathrm{ED}(x, y)$} the minimum of
+    \item<6->
+      For {\color{MainA}$\vert x \vert > 0$} and
+      {\color{MainA}$\vert y \vert > 0$} is
+      {\color{MainA}$\mathrm{ED}(x, y)$} the minimum of
       \begin{itemize}
-        \item<8->
-          {\color{Mittel-Blau}
+        \item<7->
+          {\color{MainA}
             $\mathrm{ED}(x\hphantom{[1..n-1]}, y[1..m-1]) + 1$} and
-        \item<9->
-          {\color{Mittel-Blau}
+        \item<8->
+          {\color{MainA}
             $\mathrm{ED}(x[1..n-1], y\hphantom{[1..m-1]}) + 1$} and
-        \item<10->
-          {\color{Mittel-Blau}
+        \item<9->
+          {\color{MainA}
             $\mathrm{ED}(x[1..n-1], y[1..m-1]) + 1$} if
-          {\color{Mittel-Blau}$x[n] \neq y[m]$}
-        \item<11->
-          {\color{Mittel-Blau}
+          {\color{MainA}$x[n] \neq y[m]$}
+        \item<10->
+          {\color{MainA}
             $\mathrm{ED}(x[1..n-1], y[1..m-1]) + 0$} if
-          {\color{Mittel-Blau}$x[n] = y[m]$}
+          {\color{MainA}$x[n] = y[m]$}
       \end{itemize}
+    \item<11->
+      For {\color{MainA}$\vert x \vert = 0$} is
+      {\color{MainA}$\mathrm{ED}(x, y) = \vert y \vert$}
     \item<12->
-      For {\color{Mittel-Blau}$\vert x \vert = 0$} is
-      {\color{Mittel-Blau}$\mathrm{ED}(x, y) = \vert y \vert$}
-    \item<13->
-      For {\color{Mittel-Blau}$\vert y \vert = 0$} is
-      {\color{Mittel-Blau}$\mathrm{ED}(x, y) = \vert x \vert$}
+      For {\color{MainA}$\vert y \vert = 0$} is
+      {\color{MainA}$\mathrm{ED}(x, y) = \vert x \vert$}
   \end{itemize}
 \end{frame}
 
@@ -584,9 +586,9 @@
         & = 3 \cdot T(n-1, m-1)
       \end{align*}
     \item<3->
-      This results in {\color{Mittel-Blau}$T(n, n) \geq 3^n$}
+      This results in {\color{MainA}$T(n, n) \geq 3^n$}
     \item<4->[$\Rightarrow$]
-      The runtime is at least {\color{Mittel-Blau}exponential}
+      The runtime is at least {\color{MainA}exponential}
   \end{itemize}
 \end{frame}
 
@@ -600,7 +602,7 @@
       calculated entries
     \item<2->
       This results in a runtime and space consumption of
-      {\color{Mittel-Blau}$O(n \cdot m)$}
+      {\color{MainA}$O(n \cdot m)$}
   \end{itemize}
   \vspace{1em}
   \onslide<3->
@@ -612,8 +614,8 @@
     \item<5->
       We also display the replaced character on a \texttt{replace} operation
       to visualize operations without costs\\
-      $\Rightarrow$ \texttt{\color{Mittel-Blau}repl(\color{Mittel-Gruen}A%
-        \color{Mittel-Blau}, \color{Mittel-Gruen}A\color{Mittel-Blau})}
+      $\Rightarrow$ \texttt{\color{MainA}repl(\color{MainB}A%
+        \color{MainA}, \color{MainB}A\color{MainA})}
   \end{itemize}
 \end{frame}
 
@@ -636,7 +638,7 @@
 
 \begin{frame}{Edit distance}{Fast algorithm}
   \textbf{Fast algorithm:}\\
-  We can determine the {\color{Mittel-Blau}edit distance} for all combination
+  We can determine the {\color{MainA}edit distance} for all combination
   of partial strings from the top left to bottom right.
 \end{frame}
 
@@ -662,18 +664,18 @@
   \begin{itemize}
     \item<2->
       We save at each recursion the most efficient previous entry
-      (the {\color{Mittel-Blau}highlighted arrows} in our image)
+      (the {\color{MainA}highlighted arrows} in our image)
     \item<3->
-      There can be {\color{Mittel-Blau}more than one} arrows to the three
+      There can be {\color{MainA}more than one} arrow to the three
       previous entries
     \item<4->
-      If we follow the highlighted path from {\color{Mittel-Blau}$(n, m)$} to
-      {\color{Mittel-Blau}$(1, 1)$} we get the optimum operations to transform
-      {\color{Mittel-Blau}$x$} into {\color{Mittel-Blau}$y$}
+      If we follow the highlighted path from {\color{MainA}$(n, m)$} to
+      {\color{MainA}$(1, 1)$} we get the optimum operations to transform
+      {\color{MainA}$x$} into {\color{MainA}$y$}
       \begin{itemize}
         \item<5->
-          If we can follow {\color{Mittel-Blau}more than one path} there exist
-          more than one ideal {\color{Mittel-Blau}sequence}
+          If we can follow {\color{MainA}more than one path} there exist
+          more than one ideal {\color{MainA}sequence}
       \end{itemize}
   \end{itemize}
 \end{frame}
@@ -728,13 +730,13 @@
       \textit{Edit distance}: global alignment with $O(n^2)$ space and time
       consumption
     \item<3->
-      But: Model for deletition unrealistic
+      But: Model for deletion unrealistic
       \begin{itemize}
         \item<4->
-          In evolution larger pieces are more likely
+          In evolution deletion of larger sequences is more likely
         \item<5->
           \texttt{delete} operation: first gap expensive (e.g. 2),
-          remainding are cheaper (e.g. 0.5)
+          remaining are cheaper (e.g. 0.5)
           \begin{figure}[!h]
             \begin{tabular}{cccccccc}
               \_ & \_ & \_ & B & L & O & E & D\\
