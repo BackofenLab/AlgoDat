@@ -1,0 +1,5 @@
+\exercise{2} \points{10} \textit{Dijkstra's Algorithm}\\
+Extend the \texttt{Graph} class with the method \texttt{compute\_shortest\_paths()}.
+This method will use Dijkstra's algorithm to calculate the cost of all shortest paths from a given node to all reachable nodes.
+For this make use of the variable \texttt{costs} that is saved in the class \texttt{Arc}.
+To calculate the shortest path extend your class \texttt{Node} with the member variable \texttt{traceback\_arc}, which stores the edge that was used to calculate the lowest costs for this particular node (i.e., to reconstruct the shortest path).
