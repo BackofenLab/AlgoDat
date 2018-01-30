@@ -30,11 +30,16 @@
       \end{itemize}
     \end{column}
     \begin{column}{0.5\linewidth}
-      \begin{figure}[!t]
-        \includegraphics[width=0.7\linewidth]
-          {Images/Dijkstra/DijkstraTreeTF.pdf}
+\rlap{\onslide<1>{\includegraphics[width=0.7\linewidth]{Images/Dijkstra/DijkstraTreeTF-split-o1.pdf}}}%
+\rlap{\onslide<2>{\includegraphics[width=0.7\linewidth]{Images/Dijkstra/DijkstraTreeTF-split-o2.pdf}}}%
+\rlap{\onslide<3>{\includegraphics[width=0.7\linewidth]{Images/Dijkstra/DijkstraTreeTF-split-o3.pdf}}}%
+\rlap{\onslide<4>{\includegraphics[width=0.7\linewidth]{Images/Dijkstra/DijkstraTreeTF-split-o4.pdf}}}%
+\rlap{\onslide<5>{\includegraphics[width=0.7\linewidth]{Images/Dijkstra/DijkstraTreeTF-split-o5.pdf}}}%
+\rlap{\onslide<6>{\includegraphics[width=0.7\linewidth]{Images/Dijkstra/DijkstraTreeTF-split-o6.pdf}}}%
+\rlap{\onslide<7>{\includegraphics[width=0.7\linewidth]{Images/Dijkstra/DijkstraTreeTF-split-o7.pdf}}}%
+\rlap{\onslide<8->{\includegraphics[width=0.7\linewidth]{Images/Dijkstra/DijkstraTreeTF-split-o8.pdf}}}%
         \vspace{-0.5em}
-      \end{figure}
+
       \begin{itemize}
         \item
           Each node (pearl) now has a specific height
@@ -429,8 +434,8 @@
   \textbf{Induction step:} {\color{MainA}$i = i+1$}
   \begin{enumerate}
     \item
-      \textbf{To show:} Node {\color{MainA}$u_i$} contains the correct
-      distance ({\color{MainA}$\mathrm{td}(u_i) = \mathrm{dist}(s, u_i)$})
+      \textbf{To show:} Node {\color{MainA}$u_{i+1}$} contains the correct
+      distance ({\color{MainA}$\mathrm{td}(u_{i+1}) = \mathrm{dist}(s, u_{i+1})$})
       and is active
       \begin{itemize}
         \item
@@ -448,9 +453,9 @@
             \end{adjustbox}
           \end{figure}
         \item
-          With that results
+          Hence
           {\color{MainA}$\mathrm{dist}(s, v) < \mathrm{dist}(s, u_{i+1})$}
-          because {\color{MainA}$c > 0$}
+          because {\color{MainA}$c > 0$} ($c$=cost of edge)
         \item
           Because {\color{MainA}$u_{i+1}$} is currently settled, the node
           {\color{MainA}$v$} is one of the preceding nodes
