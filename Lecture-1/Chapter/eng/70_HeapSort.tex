@@ -122,7 +122,7 @@
       Replace the root with the last node
     \item<4- |handout:1>
       {\color{MainA}Sift} the new root node down until the
-      {\color{MainA}heap property} is statisfied
+      {\color{MainA}heap property} is satisfied
   \end{itemize}
   \only<5- |handout:1>{
     \begin{figure}[!h]%
@@ -145,7 +145,7 @@
           \end{adjustbox}%
         \end{column}%
       \end{columns}%
-      \caption{Repair of a min heap}%
+      \caption{Repairing a min heap}%
       \label{fig:minheap_repair}%
     \end{figure}
   }
@@ -166,7 +166,7 @@
         \item
           Move the last node to the root
         \item
-          Repair the heap like previously described
+          Repair the heap as described
       \end{itemize}
     \item<2- |handout:1>
       Output: {\color{MainB}4}%
@@ -209,14 +209,14 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Heapsort - Algorithm 6 / 10}
-  \textbf{Creation of a heap:}
+  \textbf{Creating a heap:}
   \begin{itemize}
     \item
       This operation is called {\color{MainA}heapify}
     \item<2- |handout:1>
-      The {\color{MainA}$n$} elements are already in the containing array
+      The {\color{MainA}$n$} elements are already stored in an array
     \item<3- |handout:1>
-      Interpret this field als binary heap where the {\color{MainA}heap property} is not yet statisfied
+      Interpret the array as binary heap where the {\color{MainA}heap property} is not yet satisfied
     \item<4- |handout:1>
       We repair the heap from bottom up (in layers) with {\color{MainA}sift}
   \end{itemize}
