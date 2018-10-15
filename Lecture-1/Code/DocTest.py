@@ -1,13 +1,13 @@
-def subOne(n):
+def subtract_one(n):
 	"""Subtracts 1 from n
 	
-	>>> subOne(5)
+	>>> subtract_one(5)
 	4
 	
-	>>> subOne(3)
+	>>> subtract_one(3)
 	2
 	"""
-	return n-2
+	return n-1
 
 if __name__ == "__main__":
-	print("2 minus 1: %d" % subOne(2))
+	print("2 - 1 = %d" % subtract_one(2))
