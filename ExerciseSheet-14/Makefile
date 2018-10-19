@@ -104,7 +104,7 @@ build/$(ALGO_BUILD_NAME).pdf: build/$(ALGO_BUILD_EXERCISES_NAME).tex
 
 # ------------------------------------------------------------------------------
 # Server (Do everything manually)
-build_server_forced: build/$(ALGO_BUILD_CHAPTER_NAME).tex
+build_server_forced: build/$(ALGO_BUILD_EXERCISES_NAME).tex
 	@echo "Building $(ALGO_BUILD_NAME).pdf (server)"
 	@
 	@echo "Creating $(ALGO_LANGUAGE) config"
