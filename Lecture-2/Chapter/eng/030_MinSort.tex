@@ -8,9 +8,9 @@
   How many operations does \textit{Minsort} need?
   \begin{itemize}
     \item<1- |handout:1>
-      \textbf{Abstraction 2:} We calculate the upper (lower) bound,
-      rather than counting the operations exactly\\[0.5em]
-      \textbf{Reason}: Runtime is approximated by number of basic operations,
+      \textbf{Abstraction 2:} we calculate the upper (lower) bound,
+      rather than exactly counting the number of operations\\[0.5em]
+      \textbf{Reason}: runtime is approximated by number of basic operations,
       but we can still infer:
       \begin{itemize}
         \item {\color{MainBLight}Upper bound}
@@ -36,10 +36,10 @@
   \begin{itemize}
     \item<1- |handout:1>
       \textbf{Observation:}
-      The number of operations depends only on the size
+      the number of operations depends only on the size
       {\color{MainA}$n$} of the array and not on the content!
     \item<2- |handout:1>
-      \textbf{Claim:} There are constants {\color{MainA}$C_1$}
+      \textbf{Claim:} there are constants {\color{MainA}$C_1$}
       and {\color{MainA}$C_2$} such that:
       \begin{displaymath}
         \textcolor{MainA}{C_1 \cdot n^2 \leq T(n) \leq C_2 \cdot n^2}
@@ -82,7 +82,7 @@
     \begin{adjustbox}{width=0.5\linewidth}
       \input{Images/MinSort/MinSort_Compact.tikz}%
     \end{adjustbox}%
-    \caption{\textit{Minsort} at the iteration $i = 4$.
+    \caption{\textit{Minsort} at iteration $i = 4$.
       We have to check $n - 3$ elements}%
     \label{fig:minsort_def}%
   \end{figure}
@@ -110,7 +110,7 @@
       \end{figure}
     \end{column}
     \begin{column}{0.40\textwidth}
-      Compares at each iteration:
+      Runtime for each iteration:
       \begin{align*}
         \only<2- |handout:1>{T_1 \leq &~ C'_2 \cdot (n-0)}\\
         \only<3- |handout:1>{T_2 \leq &~ C'_2 \cdot (n-1)}\\
@@ -338,7 +338,7 @@
 \begin{frame}{Runtime analysis - Minsort}
   \textbf{Proof of {\color{MainBLight}lower bound}:
     $C_1 \cdot n^2 \leq T(n)$}\\[0.5em]
-  \hspace{1.5em}Like for the upper boundary there exists a {\color{MainA}$C_1$}.
+  \hspace{1.5em}Like for the upper bound there exists a {\color{MainA}$C_1$}.
     Summation\\
   \hspace{1.5em}analysis is the same\onslide<4- |handout:1>{,
     \textcolor{MainA}{only final approximation differs}}
@@ -401,10 +401,10 @@
 \begin{frame}{Runtime Example}
   \begin{itemize}
     \item<1- |handout:1>
-      The runtime is growing quadratic with the number of elements
+      The runtime is growing quadratically with the number of elements
       ${\color{MainA}n}$ in the list
     \item<2- |handout:1>
-      Let constants $\color{MainA}C_1$ and $\color{MainA}C_2$
+      With constants $\color{MainA}C_1$ and $\color{MainA}C_2$
       for which $\color{MainA}C_1 \cdot n^2 \leq T(n) \leq C_2 \cdot n^2$
     \item<3- |handout:1>
       $2\, \times$ elements $\Rightarrow$ $4\, \times$ runtime
