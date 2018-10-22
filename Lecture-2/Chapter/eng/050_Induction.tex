@@ -29,7 +29,7 @@
 
 \begin{frame}{Induction - Example 1}
   \begin{block}{Claim:}
-    A \textbf{complete} binary tree of depth $d$ has $n(d) = 2^d - 1$ nodes
+    A \textbf{complete} binary tree of depth $d$ has $v(d) = 2^d - 1$ nodes
   \end{block}
   \begin{itemize}
     \item<2- |handout:1>
@@ -45,7 +45,7 @@
           \end{figure}
         \end{column}
         \begin{column}{0.5\linewidth}
-          {\color{MainA}$n(1) = 2^1 - 1 = 1$}\\
+          {\color{MainA}$v(1) = 2^1 - 1 = 1$}\\
           \onslide<3- |handout:1>{$\Rightarrow$ correct $\checkmark$}
         \end{column}
       \end{columns}
@@ -55,14 +55,14 @@
 %-------------------------------------------------------------------------------
 
 \begin{frame}{Induction - Example 1}
-  Number of nodes $n(d)$ in a binary tree with depth $d$:
+  Number of nodes $v(d)$ in a binary tree with depth $d$:
   \begin{itemize}
     \item
       \textbf{Induction assumption:}
-      {\color{MainA}$n(d) = 2^d-1$}
+      {\color{MainA}$v(d) = 2^d-1$}
     \item<2- |handout:1>
       \textbf{Induction basis:}
-      $n(1) = 2^d - 1 = 2^1 - 1 = 1 ~{\color{Mittel-Blau}\checkmark}$
+      $v(1) = 2^d - 1 = 2^1 - 1 = 1 ~{\color{Mittel-Blau}\checkmark}$
     \item<3- |handout:1>
       \textbf{Induction step:}
       to show for $d := d + 1$
@@ -81,7 +81,7 @@
           \vspace{1.5em}
           \begin{align*}
             \onslide<4- |handout:1>{
-              n(d + 1) = &~ 2 \cdot n(d) + 1
+              v(d + 1) = &~ 2 \cdot v(d) + 1
             }\\
             \onslide<5- |handout:1>{
               {} = &~ 2 \cdot \textcolor{MainA}{\left(2^d - 1\right)} + 1
@@ -95,7 +95,7 @@
           \end{align*}
           \onslide<8- |handout:1>{
             \llap{$\Rightarrow$ \textbf{By induction:}}
-            $n(d) = 2^d - 1 ~\forall n \in \mathbb{N} ~\Square$
+            $v(d) = 2^d - 1 ~\forall v \in \mathbb{N} ~\Square$
           }
         \end{column}
       \end{columns}
