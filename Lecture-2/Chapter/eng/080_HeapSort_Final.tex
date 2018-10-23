@@ -9,12 +9,11 @@
   \textbf{Runtime of the other operations:}
   \begin{itemize}
     \item<2- |handout:1>
-      Constant costs for taking out {\color{MainA}$n$} $\times$ maximum
+      {\color{MainA}$n$} $\times$ taking out maximum (each constant cost)
     \item<3- |handout:1>
-      Maximum of {\color{MainA}$d$} steps repairing the heap
-      {\color{MainA}$n$} times
-    \item<4- |handout:1>
-      Depth of heap at the start is {\color{MainA}$d \leq 1 + \log_2 n$}
+      Maximum of {\color{MainA}$d$} steps for each of {\color{MainA}$n$} $\times$ heap repair
+    \item[]<4- |handout:1>
+      $\Rightarrow$ Depth {\color{MainA}$d$} of initial heap is {\color{MainA}$\leq 1 + \log_2 n$}
       \only<4- |handout:0>{\hspace{1.5em}{\color{MainB}Why?}}
       \begin{displaymath}
         \textcolor{MainA}{
@@ -30,7 +29,7 @@
       \begin{itemize}
         \item<6- |handout:1>
           \textbf{Hence}:
-          {\color{MainA}$T(n) \leq n \cdot (1 +\log_2 n) \cdot C$}
+          {\color{MainA}$T(n) \leq n \cdot d \cdot C \leq n \cdot (1 +\log_2 n) \cdot C$}
         \item<7- |handout:1>
           We can reduce this to:
           \begin{displaymath}
