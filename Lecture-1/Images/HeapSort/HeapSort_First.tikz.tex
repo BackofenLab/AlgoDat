@@ -12,18 +12,18 @@
     level distance = 4.0em
   }
 ]%
-\node [node, color=MainB] (root) {\textbf{4}}
+\node [node, color=MainB] (root) {\textbf{2}}
 child [path] {
-  node [node] {8}
-  child[path] {node [node] {17}}
-  child[path] {node [node] {9}}
+  node [node] {3}
+  child[path] {node [node] {11}}
+  child[path] {node [node] {7}}
 }
 child [path] {
-  node [node] {5}
-  child {node [node] {11}}
-  child {node [node] (last) {\textbf{7}}}
+  node [node] {4}
+  child {node [node] {5}}
+  child {node [node] (last) {\textbf{8}}}
 };
 \draw[path, color={MainB}, ->] (root) to ($(root) + (0, 1.0)$);
-\onslide<3->\draw[path, color=black, ->]
+\only<3->\draw[path, color=black, ->]
   (last) to [out=45, in=0, looseness=1.0] (root);
 \end{tikzpicture}
