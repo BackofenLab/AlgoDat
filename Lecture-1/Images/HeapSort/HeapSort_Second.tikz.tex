@@ -17,7 +17,7 @@
     level distance = 4.0em
   }
 ]%
-\only<-4>{
+\only<-4 | handout:0>{
   \node[node] (root) {\textbf{8}}
   child[path, <-] {
     node[node] {3}
@@ -29,7 +29,7 @@
     child[path] {node[node] {5}}
   };
 }
-\only<5>{
+\only<5 | handout:1>{
   \node[node] (root) {\textbf{8}}
   child[path_error] {
     node[node] {3}
@@ -41,7 +41,7 @@
     child[path] {node[node] {5}}
   };
 }
-\only<6>{
+\only<6 | handout:0>{
   \node[node] (root) {3}
   child[path] {
     node[node] {\textbf{8}}
@@ -53,7 +53,7 @@
     child[path] {node[node] {5}}
   };
 }
-\only<7->{
+\only<7- | handout:0>{
   \node[node] (root) {3}
   child[path] {
     node[node] {7}
