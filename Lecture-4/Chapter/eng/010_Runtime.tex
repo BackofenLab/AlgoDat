@@ -181,6 +181,7 @@
       \end{table}
     \end{column}
     \begin{column}[t]{0.5\linewidth}
+      \onslide<2->
       \begin{table}[!t]%
         \caption{Binary addition with $n=2$}%
         \label{tab:runtime:binary_addition_two}%
@@ -196,16 +197,16 @@
     \end{column}
   \end{columns}
   \begin{columns}
-    \begin{column}{0.5\linewidth}
+\onslide<1->   \begin{column}{0.5\linewidth}
       \begin{align*}
         \overline{\text{steps}} &= \frac{1+1}{2} = 1\\[0.5em]
-        {} &= 2 - \frac{1}{1} = {\color{Mittel-Blau}2 - \frac{1}{2^{n-1}}}
+       % {} &= 2 - \frac{1}{1} = {\color{Mittel-Blau}2 - \frac{1}{2^{n-1}}}
       \end{align*}
     \end{column}
     \begin{column}{0.5\linewidth}
-      \begin{align*}
+\onslide<2->      \begin{align*}
         \overline{\text{steps}} &= \frac{1+2+1+2}{4} = \frac{3}{2}\\[0.5em]
-        {} &= 2 - \frac{1}{2} = {\color{Mittel-Blau}2 - \frac{1}{2^{n-1}}}
+%        {} &= 2 - \frac{1}{2} = {\color{Mittel-Blau}2 - \frac{1}{2^{n-1}}}
       \end{align*}
     \end{column}
   \end{columns}
@@ -239,13 +240,14 @@
       \begin{align*}
         \overline{\text{steps}}
           &= \frac{1+2+1+3+1+2+1+3}{8} = \frac{7}{4}\\[0.5em]
-        {} &= 2 - \frac{1}{4} = {\color{Mittel-Blau}2 - \frac{1}{2^{n-1}}}
+   {} &\onslide<2->{= 2 - \frac{1}{4} = {\color{Mittel-Blau}2 - \frac{1}{2^{n-1}}}}
       \end{align*}\\
-      $\Rightarrow$ {\color{Mittel-Blau}Average runtime}:
+\onslide<2->{    
+ $\Rightarrow$ {\color{Mittel-Blau}Average runtime}:
       \begin{math}
         \displaystyle\hspace*{1.5em}
         2 - \frac{1}{2^{n-1}} \in \mathcal{O}(1)
-        \end{math}
+        \end{math}}
     \end{column}
   \end{columns}
 \end{frame}
@@ -271,9 +273,9 @@
     \end{tabular}
   \end{table}
   \vspace{-0.5em}
-  {\color{Mittel-Blau}Average steps}:
+  \onslide<2->{{\color{Mittel-Blau}Average steps:}
   \vspace{-1.0em}
-  \begin{displaymath}
+ \begin{displaymath}
     \dfrac{
       1 \cdot 2^{n-1} + 2 \cdot 2^{n-2}+\dots+
       (n-1) \cdot 2^1 + n \cdot 2^0 + n \cdot 1
@@ -283,7 +285,7 @@
     }{
       \sum\limits_{i=0}^{n-1} 2^i + 1
     }
-  \end{displaymath}
+  \end{displaymath}}
 \end{frame}
 
 %-------------------------------------------------------------------------------
@@ -300,21 +302,21 @@
         \end{array}}{=}
         2^n - 1 + 1 = 2^n
       \end{displaymath}
-    \item
-      Counter:
+    \item \onslide<2->{
+      Counter:}
   \end{itemize}
   \begin{alignat*}{4}
-    & \sum_{i=1}^n \left(i \cdot 2^{n-i}\right) + n
-      \stackrel{a = 2\,a - a}{=}
+    & \onslide<2->{\sum_{i=1}^n \left(i \cdot 2^{n-i}\right) + n}
+     \onslide<3->{\stackrel{a = 2\,a - a}{=}
         2 \, \sum_{i=1}^n \left(i \cdot 2^{n-i}\right)
-        - \sum_{i=1}^n \left(i \cdot 2^{n-i}\right) + n\\
-    & \hspace*{1.5em} = 1 \cdot 2^n + 2 \cdot 2^{n-1} + 3 \cdot n^{n-2} + \dots
-        + (n-1) \cdot 2^2 + n \cdot 2^1\\
-    & \hspace{4.5em}- 1 \cdot 2^{n-1} - 2 \cdot 2^{n-2} - \dots
-        - (n-2) \cdot 2^2 - (n-1) \cdot 2^1 - n \cdot 2^0 + n\\
-    & \hspace*{1.5em} = \underbrace{2^n + 2^{n-1} + \dots
+        - \sum_{i=1}^n \left(i \cdot 2^{n-i}\right) + n}\\
+    &\onslide<3->{\hspace*{1.5em} = 1 \cdot 2^n + 2 \cdot 2^{n-1} + 3 \cdot n^{n-2} + \dots
+        + (n-1) \cdot 2^2 + n \cdot 2^1}\\
+    & \onslide<3->{\hspace{4.5em}- 1 \cdot 2^{n-1} - 2 \cdot 2^{n-2} - \dots
+        - (n-2) \cdot 2^2 - (n-1) \cdot 2^1 - n \cdot 2^0 + n}\\
+    & \onslide<3->{\hspace*{1.5em} = \underbrace{2^n + 2^{n-1} + \dots
         +2^1 + 2^0}_{2^{n+1}-1} - 1
-      = 2^{n+1} - 2
+      = 2^{n+1} - 2}
   \end{alignat*}
 \end{frame}
 
