@@ -104,6 +104,13 @@
           \multicolumn{1}{|c}{\onslide<6- |handout:1>{9}}&%
           \multicolumn{1}{|c}{\onslide<7- |handout:1>{11}}&%
           \multicolumn{1}{|c|}{\onslide<8- |handout:1>{7}}\\
+          % \multicolumn{1}{|c}{\only<2- |handout:1>{2}}&%
+          % \multicolumn{1}{|c}{\only<3- |handout:1>{3}}&%
+          % \multicolumn{1}{|c}{\only<4- |handout:1>{4}}&%
+          % \multicolumn{1}{|c}{\only<5- |handout:1>{11}}&%
+          % \multicolumn{1}{|c}{\only<6- |handout:1>{7}}&%
+          % \multicolumn{1}{|c}{\only<7- |handout:1>{5}}&%
+          % \multicolumn{1}{|c|}{\only<8- |handout:1>{8}}\\
           \hline
         \end{tabular}
       \end{table}
@@ -145,7 +152,7 @@
           \end{adjustbox}%
         \end{column}%
       \end{columns}%
-      \caption{Repairing a min heap}%
+      \caption{Repairing a min heap via sifting}%
       \label{fig:minheap_repair}%
     \end{figure}
   }
@@ -153,7 +160,7 @@
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{HeapSort - Algorithm 5 / 10}
+\begin{frame}{Heapsort - Algorithm 5 / 10}
   \textbf{Heapsort:}
   \begin{itemize}
     \item
@@ -171,6 +178,8 @@
     \item<2- |handout:1>
       Output: {\color{MainB}4}%
       \onslide<6- |handout:1>{, {\color{MainB}5}, {\color{MainB}\ldots}}
+      % Output: {\color{MainB}2}%
+      % \only<9- |handout:1>{, {\color{MainB}3}, {\color{MainB}\ldots}}
   \end{itemize}
   \vspace*{-0.5em}
   \onslide<2- |handout:1>{
@@ -191,7 +200,7 @@
               \end{adjustbox}%
             \end{centering}
           \end{column}%
-          \begin{column}{0.33\textwidth}<6- |handout:1>%
+          \begin{column}{0.33\textwidth}<8- |handout:1>%
             \begin{centering}
               \begin{adjustbox}{height=8em}
                 \input{Images/HeapSort/HeapSort_Third.tikz}%
@@ -218,7 +227,7 @@
     \item<3- |handout:1>
       Interpret the array as binary heap where the {\color{MainA}heap property} is not yet satisfied
     \item<4- |handout:1>
-      We repair the heap from bottom up (in layers) with {\color{MainA}sift}
+      We repair the heap from bottom up (in layers) with {\color{MainA}sifting}
   \end{itemize}
 \end{frame}
 

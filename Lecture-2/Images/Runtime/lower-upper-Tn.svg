@@ -15,7 +15,7 @@
    height="489.90213"
    id="svg5785"
    version="1.1"
-   inkscape:version="0.48.4 r9939"
+   inkscape:version="0.91 r13725"
    sodipodi:docname="lower-upper-Tn.svg">
   <sodipodi:namedview
      id="base"
@@ -24,14 +24,14 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.98994949"
-     inkscape:cx="364.69441"
-     inkscape:cy="43.105164"
+     inkscape:zoom="1.539638"
+     inkscape:cx="279.474"
+     inkscape:cy="238.39458"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="2495"
-     inkscape:window-height="1416"
+     inkscape:window-width="1855"
+     inkscape:window-height="1056"
      inkscape:window-x="65"
      inkscape:window-y="24"
      inkscape:window-maximized="1"
@@ -108,7 +108,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -132,26 +132,14 @@
     <text
        id="text186"
        x="-131.4292"
-       y="103.76591"
+       y="123.76591"
        style="font-size:15px;font-family:Arial;-inkscape-font-specification:Arial">
       <tspan
-         y="103.76591"
-         id="tspan188"
+         y="123.76591"
          sodipodi:role="line"
          x="-131.4292"
-         style="font-size:25px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Arial;-inkscape-font-specification:Arial">Number of Steps</tspan>
-    </text>
-    <text
-       id="text192"
-       x="-131.4292"
-       y="133.76591"
-       style="font-size:15px">
-      <tspan
-         y="133.76591"
-         x="-131.4292"
-         id="tspan194"
-         sodipodi:role="line"
-         style="font-size:25px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Arial;-inkscape-font-specification:Arial">(runtime [s])</tspan>
+         style="font-variant:normal;font-weight:normal;font-size:25px;font-family:Arial;-inkscape-font-specification:Arial;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="tspan4299">number of operations</tspan>
     </text>
     <text
        id="text220"
@@ -844,6 +832,8 @@
          style="font-size:20px;font-variant:normal;font-weight:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Arial;-inkscape-font-specification:Arial">C<tspan
    id="tspan6938"
    style="font-size:65.00091553%;baseline-shift:sub">2</tspan>
+
+
  =7/2 could have</tspan>
       <tspan
          id="tspan3238"

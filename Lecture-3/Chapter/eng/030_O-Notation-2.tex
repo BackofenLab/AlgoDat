@@ -52,8 +52,8 @@
       Trivial:
       \begin{eqnarray*}
         f & \in & \mathcal{O} (f)\\
-        k \cdot \mathcal{O} (f) & = & \mathcal{O} (f)\\
-        \mathcal{O} (f + k) & = & \mathcal{O} (f)
+        C \cdot \mathcal{O} (f) & = & \mathcal{O} (f)\\
+        \mathcal{O} (f + C) & = & \mathcal{O} (f)
       \end{eqnarray*}
     \item
       Addition:
@@ -382,7 +382,7 @@
       \item
         A has the runtime $f(n) = 80 \, n$
       \item
-        B has the runtime $f(n) = 2 \, n \, \log_2 n$
+        B has the runtime $g(n) = 2 \, n \, \log_2 n$
     \end{itemize}
     \item
       So $f = \mathcal{O}(g)$ but \textbf{not} $\Theta(g)$
@@ -391,7 +391,7 @@
           $\Rightarrow$ A is asymptotic faster than B
         \item
           $\Rightarrow$
-          There is a $n_0$ for that $n \geq n_0\!: \; f(n) \leq g(n)$
+          There is an $n_0$ for that $n \geq n_0\!: \; f(n) \leq g(n)$
       \end{itemize}
   \end{itemize}
 \end{frame}
