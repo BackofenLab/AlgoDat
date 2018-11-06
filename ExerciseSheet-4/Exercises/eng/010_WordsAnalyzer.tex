@@ -1,0 +1,26 @@
+\exercise{1} \points{10}\\
+  The aim of this exercise is to compare the effective runtime of  two different methods to count the number of occurrences of words. 
+  For this you will use a sorting algorithm and compare the runtime to that of a hashmap. 
+  To accomplish this you will use a given function to read a word list from a file and then compute the 5 most common words in this file by using both methods.
+  Use the template on our homepage (template\_ex4.py) with the predefined method \textit{read\_word\_list} to read the data file \textit{data.encrypted.txt}.
+  The read words are returned as list and are ready to be processed by you.
+
+ \textbf{ATTENTION}:\\
+   Do not upload the \textit{data.txt} file into the SVN directory!
+\begin{enumerate}
+  \item
+    Always copy the list before you apply the first method since the list is sorted in-place!
+    For the first implementation create a list (\textit{yourlist = []}) and use the integrated sorting algorithm of python via \textit{yourlist.sort()}.
+    After sorting the list each distinct word will be grouped together.
+    Use this to your advantage and count the size of each group to determine the occurrence count of each word.
+    Compute the 5 most commonly used words and print them to the console.
+  \item
+    Now compute the 5 most commonly used words by using a hash map (\textit{yourmap = \{\}}).
+    For each new word insert a new entry with a counter of 1 into the map.
+    For each repeating occurrence increment the counter.
+    To retrieve all existing entries after indexing all words use \textit{list(yourmap.items()}).
+\end{enumerate}
+
+Hints:
+For writing tests, you can use our \textit{test.encrypted.txt} file.
+
