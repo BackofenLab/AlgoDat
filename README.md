@@ -46,6 +46,16 @@ unzip ufcd-logo-imtek.tds.zip
 texhash ~/texmf
 ```
 
+**on Windows**: add the path to the list of your `TEXMF` root directories (ie. searched pathes) via the MiKTeX Console (Settings -> Directories -> '+' button).
+
+If you face a compilation issue that `tabitem-beamer.sty` was not found, you will have to create a `tex/latex/tabitem-beamer/` subfolder in `~/texmf` and push the file there, eg. from Lecture 1:
+```[bash]
+# create according subdirectory
+mkdir -f ~/texmf/tex/latex/tabitem-beamer
+# copy style file from Lecture-1
+cp Lecture-1/Packages/tabitem-beamer.sty ~/texmf/tex/latex/tabitem-beamer/.
+```
+
 ### Build slides and excercies
 
 You need the following localy installed:
