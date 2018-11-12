@@ -6,7 +6,7 @@ countries = {"DE" : "Deutschland", \
 if "EN" in countries:
 	print("Found %s!" % countries["EN"])
 
-# map key "DE" to value 0
+# map key "DE" to value "Germany"
 countries["DE"] = "Germany"
 
 # delete key "DE"

@@ -131,7 +131,7 @@
         \node (extwo) [anchor=base] {$\exists$};
       }\!\!C > 0,\tikz[baseline] {
         \node (forall) [anchor=base] {$\forall$};
-      }\!\!n > n_0\!\!\tikz[baseline] {
+      }\!\!n \geq n_0\!\!\tikz[baseline] {
         \node (such) [anchor=base] {:};
       }
       f(n) \leq C \cdot g(n)\rbrace
@@ -207,7 +207,7 @@
   \end{itemize}
   \begin{alertblock}{Attention}
     $f(n) \leq g(n)$ is not guaranteed, better is
-    $f(n) \leq C \cdot g(n) \;\; \forall n > n_0$.
+    $f(n) \leq C \cdot g(n) \;\; \forall n \geq n_0$.
   \end{alertblock}
 \end{frame}
 
@@ -310,7 +310,7 @@
   \begin{block}{\textbf{Formal:} $f \in \Omega(g)$}
     \begin{math}
       \Omega(g) = \lbrace f: \mathbb{N} \to \mathbb{R} ~ | ~
-        \exists n_0 \in \mathbb{N}, \, \exists C > 0, \,  \forall n > n_0:\,
+        \exists n_0 \in \mathbb{N}, \, \exists C > 0, \,  \forall n \geq n_0:\,
         f(n) \tikz[baseline] {\node (geq) [anchor=base] {$\geq$};}
         C \cdot g(n)\rbrace
     \end{math}

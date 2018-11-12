@@ -1,0 +1,25 @@
+\exercise{1} \points{12}\\
+  The aim of this exercise is to compare the effective runtime of two different methods to count the number of word occurrences. 
+  The first method will use a sorted list of words for counting their occurences while the second method will use a hashmap for the counting part.
+  To accomplish this you will use a given function to read in words from a text file and then compute the most common word as well as the 5 most common words in this file for both methods.
+  Use the template on our website (\textit{compare\_count\_methods.py}) with the predefined function \textit{read\_word\_list()} to read in the data file \textit{data.encrypted.txt}. 
+  The read-in words are returned as a list and are ready to be processed by you. 
+  Use the remaining functions in the template and implement the needed functionality.
+
+\textbf{ATTENTION}:\\
+    \textbf{DO NOT UPLOAD THE \textit{data.encrypted.txt} FILE INTO THE SVN REPOSITORY!}
+
+Hints:
+\begin{itemize}
+  \item
+    As mentioned on Exercise Sheet 2, Python uses call-by-reference when passing objects to functions. 
+    Since we want each function to work on the same input list when comparing runtimes, you therefore need to make a copy of the list before passing it to a function. 
+    In our case we want to sort the list, for which you can use the built-in function \textit{yourlist.sort()}. 
+    After sorting the list, each distinct word will be grouped together.
+    Use this to your advantage and count the size of each group to determine the occurrence count of each word.
+    Compute the most common as well as the 5 most common words (see given functions for more details) and print them to the console.
+  \item
+    When counting words with a hashmap (we use Python's dictionary data type for this), insert a new entry with a count of 1 into the map for each new word. For each repeating occurence just increment the counter.
+    After counting, you can convert the dictionary into a list of tuples (word, count) using \textit{list(yourmap.items())}. For writing tests, you can use our \textit{test.encrypted.txt} file.
+\end{itemize}
+
