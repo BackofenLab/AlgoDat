@@ -14,12 +14,12 @@
       {\color{MainA}hash table}
       \begin{itemize}
         \item<3->\textit{The {\color{MainA}hash function} stays fixed}\\
-        \item<4->\textit{For table size of 100: Try $100 \times (99 + 1)$ different numbers}\\
-       \item<5->\textit{Worst case: All 100 {\color{MainA}key sets} map to
+        \item<4->\textit{For table size of 100: try $100 \times (99 + 1)$ different numbers}\\
+       \item<5->\textit{Worst case: all 100 {\color{MainA}key sets} map to
          one bucket}
       \end{itemize}
     \item<5->
-      \textbf{Now:} Find a solution to avoid that problem
+      \textbf{Now:} find a solution to avoid that problem
   \end{itemize}
 \end{frame}
 
@@ -76,7 +76,7 @@
   \textbf{Definition:}
   \begin{itemize}
     \item<1->
-      We call {\color{MainA}$\mathbb{U}$} the set (universum) of
+      We call {\color{MainA}$\mathbb{U}$} the set (universe) of
       possible keys
     \item<2->
       The size {\color{MainA}$m$} of the hash table {\color{MainA}$T$}
@@ -145,7 +145,7 @@
   \vspace{-1em}
   \begin{itemize}
   \item<2->
-      With other words, given a arbitrary but fixed pair
+      In other words, given an arbitrary but fixed pair
       {\color{MainA}$x, y$}.\\
       If {\color{MainA}$h \in \mathbb{H}$} is chosen randomly then\\
       \onslide<3->{
@@ -170,13 +170,13 @@
       \begin{itemize}
         \item
           {\color{MainA}$\mathbb{U}$}:
-          Key universe
+          key universe
         \item
           {\color{MainA}$\mathbb{S}$}:
-          Used Keys
+          used Keys
         \item
           {\color{MainA}$\mathbb{S}_i \subseteq \mathbb{S}$}:
-          Keys mapping to Bucket {\color{MainA}$i$} (\enquote{synonyms})
+          keys mapping to Bucket {\color{MainA}$i$} (\enquote{synonyms})
        \item
          Ideal would be
          {\color{MainA}$\vert \mathbb{S}_i \vert =\dfrac{\vert \mathbb{S} \vert}{m}$}
@@ -209,7 +209,7 @@
       bucket is {\color{MainA}\[\E{}\left[\vert \mathbb{S}_i \vert\right]
         \leq 1 + c \cdot \frac{\vert \mathbb{S} \vert}{m}\]}
     \item<5->
-      Particulary: If  {\color{MainA}($m = \Omega(\vert \mathbb{S} \vert)$)} then
+      Particulary: if  {\color{MainA}($m = \Omega(\vert \mathbb{S} \vert)$)} then
       {\color{MainA}$\E{}\left[\vert \mathbb{S}_i \vert\right] = \mathcal{O}(n)$}
   \end{itemize}
 \end{frame}
