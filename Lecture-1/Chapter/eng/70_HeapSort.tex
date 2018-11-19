@@ -9,7 +9,7 @@
       Better structure for finding the smallest element quicker
   \end{itemize}
   \vspace{1em}
-  \only<2- |handout:1>{\textbf{Binary heap:}}
+  \onslide<2- |handout:1>{\textbf{Binary heap:}}
   \begin{itemize}
     \item<2- |handout:1>
       Preferably a complete binary tree
@@ -89,21 +89,21 @@
         \caption{Elements can be stored in array}
         \label{tab:minheap_numbered}
         \begin{tabular}{ccccccc}
-          \only<2- |handout:1>{\color{MainB}0}&
-          \only<3- |handout:1>{\color{MainB}1}&
-          \only<4- |handout:1>{\color{MainB}2}&
-          \only<5- |handout:1>{\color{MainB}3}&
-          \only<6- |handout:1>{\color{MainB}4}&
-          \only<7- |handout:1>{\color{MainB}5}&
-          \only<8- |handout:1>{\color{MainB}6}\\
+          \onslide<2- |handout:1>{\color{MainB}0}&%
+          \onslide<3- |handout:1>{\color{MainB}1}&%
+          \onslide<4- |handout:1>{\color{MainB}2}&%
+          \onslide<5- |handout:1>{\color{MainB}3}&%
+          \onslide<6- |handout:1>{\color{MainB}4}&%
+          \onslide<7- |handout:1>{\color{MainB}5}&%
+          \onslide<8- |handout:1>{\color{MainB}6}\\
           \hline
-          \multicolumn{1}{|c}{\only<2- |handout:1>{2}}&%
-          \multicolumn{1}{|c}{\only<3- |handout:1>{3}}&%
-          \multicolumn{1}{|c}{\only<4- |handout:1>{4}}&%
-          \multicolumn{1}{|c}{\only<5- |handout:1>{11}}&%
-          \multicolumn{1}{|c}{\only<6- |handout:1>{7}}&%
-          \multicolumn{1}{|c}{\only<7- |handout:1>{5}}&%
-          \multicolumn{1}{|c|}{\only<8- |handout:1>{8}}\\
+          \multicolumn{1}{|c}{\onslide<2- |handout:1>{2}}&%
+          \multicolumn{1}{|c}{\onslide<3- |handout:1>{3}}&%
+          \multicolumn{1}{|c}{\onslide<4- |handout:1>{4}}&%
+          \multicolumn{1}{|c}{\onslide<5- |handout:1>{11}}&%
+          \multicolumn{1}{|c}{\onslide<6- |handout:1>{7}}&%
+          \multicolumn{1}{|c}{\onslide<7- |handout:1>{5}}&%
+          \multicolumn{1}{|c|}{\onslide<8- |handout:1>{8}}\\
           \hline
         \end{tabular}
       \end{table}
@@ -124,7 +124,7 @@
       {\color{MainA}Sift} the new root node down until the
       {\color{MainA}heap property} is satisfied
   \end{itemize}
-  \only<5- |handout:1>{
+  \onslide<5- |handout:1>{
     \begin{figure}[!h]%
       \begin{columns}%
         \begin{column}{0.3\textwidth}%
@@ -169,11 +169,13 @@
           Repair the heap as described
       \end{itemize}
     \item<2- |handout:1>
-      Output: {\color{MainB}2}%
-      \only<9- |handout:1>{, {\color{MainB}3}, {\color{MainB}\ldots}}
+      % Output: {\color{MainB}4}%
+      % \onslide<6- |handout:1>{, {\color{MainB}5}, {\color{MainB}\ldots}}
+       Output: {\color{MainB}2}%
+       \onslide<9- |handout:1>{, {\color{MainB}3}, {\color{MainB}\ldots}}
   \end{itemize}
   \vspace*{-0.5em}
-  \only<2- |handout:1>{
+  \onslide<2- |handout:1>{
     \begin{center}
       \begin{figure}[!h]%
         \begin{columns}%
@@ -320,7 +322,7 @@
       \end{center}
   \end{itemize}
   \vspace*{1.5em}
-  \only<2- |handout:1>{
+  \onslide<2- |handout:1>{
     \textbf{Removing the minimum in Heapsort:}
     \begin{itemize}
       \item
@@ -334,3 +336,12 @@
     \end{itemize}
   }
 \end{frame}
+
+%%% ===================================================================
+%%% This should be at the END of the file !!!!!!
+%%%
+%%% Local Variables: 
+%%% mode: latex 
+%%% TeX-master: "../../Lecture.tex" 
+%%% End: 
+%%% ===================================================================

@@ -21,7 +21,7 @@
       in the range {\color{MainA} $[0, \ldots, 4]$ }
     \onslide <3-> \item We need an array {\color{MainA}T}
       with {\color{MainA}5} elements.\\
-      A \enquote{hashtable} with 5 \enquote{buckets}
+      A \enquote{hash table} with 5 \enquote{buckets}
     \onslide <4-> \item
       The element with the key {\color{MainA}x}
       is stored in {\color{MainA}$T[h(x)]$}
@@ -50,7 +50,7 @@
   \end{itemize}
   \vspace{0.1em}
   \begin{figure}
-  \caption{Hashtable T}
+  \caption{Hash table T}
   \centering
 \only<1-1>{\includegraphics[width=0.6\textwidth]{Images/Bucket1.pdf}}%
 \only<2-2>{\includegraphics[width=0.6\textwidth]{Images/Bucket2.pdf}}%
@@ -82,7 +82,7 @@
   \end{itemize}
   \vspace*{-1.0em}
   \begin{figure}
-    \caption{Hashtable T}
+    \caption{Hash table T}
     \centering
     \includegraphics[width=0.6\textwidth]{Images/Bucket4.pdf}
   \end{figure}
@@ -112,7 +112,7 @@
   \vspace*{-1.0em}
   \onslide <1->
   \begin{figure}
-    \caption{Hashtable T}
+    \caption{Hash table T}
     \centering
        \includegraphics[width=0.6\textwidth]{Images/Bucket4.pdf}
   \end{figure}
@@ -130,13 +130,13 @@
   \onslide<2->{\textbf{Easiest Solution:}}
   \begin{itemize}
     \item<3->
-      Represent each bucket as list of key value pairs
+      Represent each bucket as list of key-value pairs
     \item<4->
       Append new values to the end of the list
   \end{itemize}
     \vspace*{-1.0em}
     \begin{figure}
-    \onslide <3->\caption{Hashtable T}
+    \onslide <3->\caption{Hash table T}
     \centering
     \only<1-3>{\includegraphics[width=0.6\textwidth]{Images/Bucket4.pdf}}
     \only<4-4>{\includegraphics[width=0.6\textwidth]{Images/Bucket5.pdf}}
@@ -251,7 +251,7 @@
           We have {\color{MainA}$\approx \frac{n}{m}$} pairs per bucket
         \item
           The runtime for searching is nearly {\color{MainA}$\mathcal{O}(1)$}
-          when \textbf{not} {\color{MainA}$n \gg m$}
+          if \textbf{not} {\color{MainA}$n \gg m$}
       \end{itemize}
     \end{column}
     \begin{column}{0.5\linewidth}
