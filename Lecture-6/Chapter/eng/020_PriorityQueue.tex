@@ -26,14 +26,14 @@
   \onslide<3->
   \begin{tabular}{ll}
     {\color{Mittel-Blau}\texttt{insert(key, value):}} &
-    Inserts a new element into the queue
+    inserts a new element into the queue
   \end{tabular}
   \onslide<4->
   \begin{tabular}{ll}
     {\color{Mittel-Blau}\texttt{getMin():}} &
-    Returns the element with the smallest key\\
+    returns the element with the smallest key\\
     {\color{Mittel-Blau}\texttt{deleteMin():}} &
-    Removes the element with the smallest key
+    removes the element with the smallest key
   \end{tabular}
   \vspace{1.0em}
   \begin{itemize}
@@ -43,12 +43,12 @@
   \onslide<6->
   \begin{tabular}{ll}
     {\color{Mittel-Blau}\texttt{changeKey(item, key):}} &
-    Changes the key of the element
+    changes the key of the element
   \end{tabular}
   \onslide<7->
   \begin{tabular}{ll}
     {\color{Mittel-Blau}\texttt{remove(item):}} &
-    Removes the element from the queue
+    removes the element from the queue
   \end{tabular}
 \end{frame}
 
@@ -66,9 +66,9 @@
           If there is more than one element with the smallest key
           \begin{tabular}{ll}
             {\color{Mittel-Blau}\texttt{getMin():}} &
-            Returns just one of the possible elements\\
+            returns just one of the possible elements\\
             {\color{Mittel-Blau}\texttt{deleteMin():}} &
-            Deletes the element returned by
+            deletes the element returned by
             {\color{Mittel-Blau}\texttt{getMin}}
           \end{tabular}
       \end{itemize}
@@ -78,9 +78,9 @@
           {\color{Mittel-Blau}\texttt{remove}} operations
       \begin{itemize}
         \item<5->
-          There is no \textbf{quick-access} to a element in the queue
+          There is no \textbf{quick access} to an element in the queue
         \item<5->
-          Thats why {\color{Mittel-Blau}\texttt{insert}} and
+          That is why {\color{Mittel-Blau}\texttt{insert}} and
           {\color{Mittel-Blau}\texttt{getMin}} return a reference
           (handle, accessor object)
         \item<5->
@@ -245,7 +245,7 @@
   \textbf{Example 2:}
   \begin{itemize}
     \item<7->
-      For example Dijkstra's algorithm for computing the shortest path ($\leftarrow$ following lecture)
+      For example Dijkstra's algorithm for computing the shortest path (following lecture)
     \item<8->
       Among other applications it can be used for sorting
   \end{itemize}
@@ -276,7 +276,7 @@
       \input{Images/GenericHeap.tikz}%
     \end{adjustbox}
     \vspace{-0.75em}
-    \caption{Heap with 11 nodes}%
+    \caption{heap with 11 nodes}%
     \label{fig:priority_queue:impl_heap}%
   \end{figure}
 \end{frame}
@@ -306,7 +306,7 @@
       \hline
     \end{tabular}
     \vspace{-0.5em}
-    \caption{Min heap stored in array}%
+    \caption{min heap stored in array}%
     \label{fig:priority_queue:impl_min_heap}%
   \end{figure}%
  \vspace{-1.0em}
@@ -528,11 +528,11 @@
       \begin{itemize}
         \item<4->
           Downwards:
-          The key at index ${\color{Mittel-Blau}i}$ is not
+          the key at index ${\color{Mittel-Blau}i}$ is not
           ${\color{Mittel-Blau}\leq}$ than the value of its children
         \item<5->
           Upwards:
-          The key at index ${\color{Mittel-Blau}i}$ is not
+          the key at index ${\color{Mittel-Blau}i}$ is not
           ${\color{Mittel-Blau}\geq}$ than the value of its parent
       \end{itemize}
     \item<6->
@@ -571,7 +571,7 @@
         \end{adjustbox}%
       \end{column}%
     \end{columns}%
-    \caption{Repairing the heap downwards}%
+    \caption{repairing the heap downwards}%
     \label{fig:priority_queue:impl_repair_heap_down}%
   \end{figure}
 \end{frame}
@@ -606,7 +606,7 @@
           \end{adjustbox}%
         \end{column}%
       \end{columns}%
-      \caption{Repairing the heap downwards}%
+      \caption{repairing the heap downwards}%
       \label{fig:priority_queue:impl_repair_heap_down2}%
     \end{figure}
   \end{center}
@@ -637,7 +637,7 @@
           \end{adjustbox}%
         \end{column}%
       \end{columns}%
-      \caption{Repairing the heap upwards}%
+      \caption{repairing the heap upwards}%
       \label{fig:priority_queue:impl_repair_heap_up}%
     \end{figure}
   \end{center}
@@ -668,7 +668,7 @@
           \end{adjustbox}%
         \end{column}%
       \end{columns}%
-      \caption{Repairing the heap upwards}%
+      \caption{repairing the heap upwards}%
       \label{fig:priority_queue:impl_repair_heap_up2}%
     \end{figure}
   \end{center}
@@ -681,13 +681,13 @@
   \begin{itemize}
     \item<2->
       {\color{red}Attention:}
-      For {\color{Mittel-Blau}\texttt{changeKey}} and
+      for {\color{Mittel-Blau}\texttt{changeKey}} and
       {\color{Mittel-Blau}\texttt{remove}} the item has to \enquote{know} where
       it is located in the heap
     \item<3->
       Remember for {\color{Mittel-Blau}\texttt{repairHeapUp}} and
       {\color{Mittel-Blau}\texttt{repairHeapDown}}:\\
-      Update the index if moving an heap element
+      update the index if moving an heap element
   \end{itemize}
 \end{frame}
 
@@ -746,7 +746,7 @@
   \textbf{Summary lecture 1:}
   \begin{itemize}
     \item<2->
-      A full binary tree with {\color{Mittel-Blau}$n$} elements, has a {\color{Mittel-Blau}depth} of
+      A full binary tree with {\color{Mittel-Blau}$n$} elements has a {\color{Mittel-Blau}depth} of
       {\color{Mittel-Blau}$O(\log n)$}
     \item<3->
       The maximum distance from the root to a leaf can be
@@ -763,10 +763,10 @@
       {\color{Mittel-Blau}\texttt{deleteMin}},
       {\color{Mittel-Blau}\texttt{changeKey}},
       {\color{Mittel-Blau}\texttt{remove}}:\\
-      We have to repair the heap: {\color{Mittel-Blau}$O(\log n)$}
+      we have to repair the heap: {\color{Mittel-Blau}$O(\log n)$}
     \item<7->
       {\color{Mittel-Blau}\texttt{getMin}}:
-      Return the element at index 0: {\color{Mittel-Blau}$O(1)$}
+      return the element at index 0: {\color{Mittel-Blau}$O(1)$}
   \end{itemize}
 \end{frame}
 
@@ -789,21 +789,20 @@
   \textbf{Practical experience:}
   \begin{itemize}
     \item<5->
-      The binary heap is simpler: Costs for managing the structure are low
+      The binary heap is simpler: costs for managing the structure are low
     \item<6->
-      If the number of elements is relatively small so the difference is
-      negligible
+      The difference is negligible if the number of elements is relatively small 
     \item<7->
       Example:
     \begin{itemize}
       \item
-        For ${\color{Mittel-Blau}n = 2^{10}} \approx 1,000$ is the the
+        For ${\color{Mittel-Blau}n = 2^{10}} \approx 1,000$, the
         {\color{Mittel-Blau}depth}
-        $\log_2 n$ only 10
+        $\log_2 n$ is only 10
       \item
-        For ${\color{Mittel-Blau}n = 2^{20}} \approx 1,000,000$ is the
+        For ${\color{Mittel-Blau}n = 2^{20}} \approx 1,000,000$, the
         {\color{Mittel-Blau}depth}
-        $\log_2 n$ only 20
+        $\log_2 n$ is only 20
     \end{itemize}
   \end{itemize}
 \end{frame}

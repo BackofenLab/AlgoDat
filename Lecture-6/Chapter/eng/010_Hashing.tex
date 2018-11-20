@@ -14,14 +14,14 @@
       is mapped onto a small set: {\color{MainA}$\vert \mathbb{U} \vert > m$}
     \end{itemize}
   \item<4->
-    For random key sets also simple hash function work, e.g.
+    For random key sets also simple hash function works, e.g.
      {\color{MainA}\[\Rightarrow h(x) = x \mod m\]}\vspace*{-2em}
      \begin{itemize}
     \item<5->
       Then the random keys make sure that it is distributed evenly
      \end{itemize}
   \item<6->
-   To find a good hash function for every key set universal hashing is needed
+   To find a good hash function for every key set, universal hashing is needed
      \begin{itemize}
     \item<7->
       Then however, for a fixed set of keys not every hash function is suitable,
@@ -52,7 +52,7 @@
       Copy elements into the new table
       \begin{itemize}
         \item<7->
-          Expensive but happens not often
+          Expensive but does not happen often
         \item<8->
           Therefore the average cost is low
         \item<9->
@@ -116,10 +116,10 @@
   %   \end{tabularx}
   % \end{table}
    \item<5->
-     Operations in {\color{MainA}$O(1)$} are possible if a suitable tablesize and hashfunction is
+     Operations in {\color{MainA}$O(1)$} are possible if a suitable table size and hash function is
      selected
    \item<6->
-     Worst case {\color{MainA}$O(n)$}, e.g. tablesize of 1
+     Worst case {\color{MainA}$O(n)$}, e.g. table size of 1
    \item<7->
      Dynamic number of elements is possible 
   \end{itemize}
@@ -140,13 +140,13 @@
       all hash table entries are searched for a free bucket
       \begin{itemize}
       \item<4->
-        If a entry is already occupied, then iteratively the
-        {\color{MainA}following entry} can be checked.
+        If an entry is already occupied, then iteratively the
+        {\color{MainA}following entry} is checked.
         If a free entry is found the element is inserted
       \item<5->
         If element is not found at the corresponding table entry, even if
         the entry is occupied, then probing has to be performed until
-        the element or a free entry have been found
+        the element or a free entry has been found
     \end{itemize}
   \end{itemize}
 \end{frame}
@@ -574,7 +574,7 @@
   \textbf{Squared probing:}
   \begin{itemize}
     \item<2->
-      Motivation: Avoid local clustering
+      Motivation: avoid local clustering
       \begin{displaymath}
         {\color{MainA}g(s,j)}
         := (-1)^{\color{MainA}j}
@@ -630,7 +630,7 @@
         {\color{MainA}h(s,j) := (h(s) - c_1 \cdot j + c_2 \cdot j^2) \mod m}
       \end{math}
     \item<4->
-      Problem of secondary clustering\\
+      Problem of secondary clustering:\\
       No local clustering anymore, but keys with same hash value
       have similar probe sequence
   \end{itemize}
@@ -642,19 +642,19 @@
   \textbf{Uniform Probing:}
   \begin{itemize}
     \item<2->
-      Motivation: So far uses function ${\color{MainA}g(s,j)}$ only the step
+      Motivation: so far function ${\color{MainA}g(s,j)}$  uses only the step
       counter ${\color{MainA}j}$ for linear and squared probing\\
       {\color{red}$\Rightarrow$ The probe sequence is independent of the key
         $s$}
     \item<3->
-      Uniform probing computes the sequence ${\color{MainA}g(s,j)}$ of permutations of all possible indices in dependency on key ${\color{MainA}s}$ 
+      Uniform probing computes the sequence ${\color{MainA}g(s,j)}$ of permutations of all possible indices dependent on key ${\color{MainA}s}$ 
     \item<4->
       \textbf{Advantage:}
-      Prevents clustering because different keys with the same hash
+      prevents clustering because different keys with the same hash
       value do not produce the same probe sequence
     \item<5->
       \textbf{Disadvantage:}
-      Hard to implement
+      hard to implement
   \end{itemize}
 \end{frame}
 
@@ -667,13 +667,13 @@
     \begin{adjustbox}{width=0.9\linewidth}%
       \input{Images/OpenAddressing/DoubleHashing.tikz}%
     \end{adjustbox}
-    \caption{Double hashing probe sequence}%
+    \caption{double hashing probe sequence}%
     \label{fig:hashing:open_addressing:double_hashing}%
   \end{figure}
   \vspace{-1.0em}
   \begin{itemize}
     \item<2->
-      Motivation: Consider key {\color{MainA}$s$} in probe sequence
+      Motivation: consider key {\color{MainA}$s$} in probe sequence
     \item<3->
       Use two independent hash functions
       \begin{math}
@@ -706,7 +706,7 @@
         \mod m
       \end{math}
     \item<2->
-      probe sequence:
+      Probe sequence:
       \begin{displaymath}
         {\color{MainA}h_1(s)} ,\;
         {\color{MainA}h_1(s)} + {\color{MainB}h_2(s)} ,\;
@@ -748,7 +748,7 @@
   \vspace{-1.0em}
   \onslide<3->
   \begin{table}[!h]
-    \caption{Comparing both hash functions}
+    \caption{comparing both hash functions}
     \begin{tabular}{c|cccccc}
       {\color{MainA}s} & 10 & 19 & 31 & 22 & 14 & 16\\
       \midrule
@@ -774,7 +774,7 @@
       \input{Images/OpenAddressing/DoubleHashingNoBrent.tikz}%
     \end{adjustbox}
     \vspace{-1.0em}
-    \caption{Double hashing}%
+    \caption{double hashing}%
     \label{fig:hashing:open_addressing:double_hashing_no_brent}%
   \end{figure}
   \textbf{Double hashing by Brent:}
@@ -794,7 +794,7 @@
       \input{Images/OpenAddressing/DoubleHashingNoBrent.tikz}%
     \end{adjustbox}
     \vspace{-1.0em}
-    \caption{Double hashing}%
+    \caption{double hashing}%
     \label{fig:hashing:open_addressing:double_hashing_no_brent2}%
   \end{figure}
   \vspace{-1.0em}
@@ -832,7 +832,7 @@
       \input{Images/OpenAddressing/DoubleHashingBrent.tikz}%
     \end{adjustbox}
     \vspace{-1.0em}
-    \caption{Double hashing by Brent}%
+    \caption{double hashing by Brent}%
     \label{fig:hashing:open_addressing:double_hashing_brent}%
   \end{figure}
   \vspace{-1.0em}
@@ -840,7 +840,7 @@
   \item<4->
     Reversed sequence of keys would have been better
   \item<5->
-    \textbf{Brents Idea:}
+    \textbf{Brent's idea:}
     \begin{itemize}
     \item<6->
       Test if location ${\color{MainA}h(s_1, 1)}$ is free
@@ -859,11 +859,11 @@
   \textbf{ Idea:}
   \begin{itemize}
     \item Motivation:
-      Colliding elements are inserted in the hashtable sorted. 
+      colliding elements are inserted in the hash table sorted. 
     \item
       Therefore, in case of an unsuccessful search of elements
       in combination with linear probing or double hashing,
-      aborting is earlier possible because single probing steps
+      aborting is possible earlier because single probing steps
       have a fixed length
   \end{itemize}
   \hfill\\[0.5em]
@@ -929,8 +929,8 @@
         {\color{MainA}j_1} \;\text{or}\; {\color{MainA}j_2}
       \end{math})
     \item<5->
-      The key with the bigger search sequence is inserted at $p_1$
-      The other key is assigned a new location based on the sequence
+      The key with the bigger search sequence is inserted at $p_1$.
+      The other key is assigned to a new location based on the sequence
   \end{itemize}
 \end{frame}
 
@@ -952,9 +952,9 @@
         {\color{MainA}j_1} < {\color{MainA}j_2} \;
         ({\color{MainA}0} < {\color{MainA}7})
       \end{math}
-      the key ${\color{MainA}12}$ stays at position $p_1$
+      key ${\color{MainA}12}$ stays at position $p_1$
     \item
-      For the key ${\color{MainA}5}$ we iterate through the 
+      For key ${\color{MainA}5}$ we iterate through the 
       sequence
       \begin{displaymath}
         {\color{MainA}h(5, 1)} ,\;
@@ -985,10 +985,10 @@
   \begin{itemize}
     \item<3->
       \textbf{Remove:}
-      Elements are marked as removed, but not deleted
+      elements are marked as removed, but not deleted
     \item<4->
       \textbf{Inserting:}
-      Elements marked as removed will we overwritten
+      elements marked as removed will we overwritten
   \end{itemize}
 \end{frame}
 
@@ -1015,7 +1015,7 @@
         \item
           Easy to implement
         \item
-          Raise the probability of collisions because probing order does
+          Raises the probability of collisions because probing order does
           not depend on the key
       \end{itemize}
   \end{itemize}
@@ -1059,17 +1059,17 @@
   \textbf{Hashing:}
   \begin{itemize}
     \item<2->
-      Efficient fo dictionary operations:\\
+      Efficiency of dictionary operations:\\
       \hspace{1.5em}\texttt{Insert:} $O(1) \dots O(n)$\\
       \hspace{1.5em}\texttt{Search:} $O(1) \dots O(n)$\\
       \hspace{1.5em}\texttt{Remove:} $O(1) \dots O(n)$
     \item<3->
-      Direct access of all elements in a hash table 
+      Direct access oto all elements in a hash table 
     \item<4->
       Using a hash function to find the position (hash value) in the hash table
     \item<5->
       Hash function, size of the hash table and strategy to
-      avoid hash collisions influence the efficiency of the
-      datastructure
+      avoid hash collisions all influence the efficiency of the
+      data structure
   \end{itemize}
 \end{frame}
