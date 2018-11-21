@@ -3,7 +3,7 @@ def maxSubArray(X, i, j): @\onslide<2->@
 		return (X[i], i, i)
 
 	# recursive subsolutions for A, B
-	m = (i + j) / 2 @\onslide<3->@
+	m = (i + j) // 2 @\onslide<3->@
 	A = maxSubArray(X, i, m)
 	B = maxSubArray(X, m + 1, j) @\onslide<4->@
 

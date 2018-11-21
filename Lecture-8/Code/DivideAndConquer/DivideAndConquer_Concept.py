@@ -8,6 +8,6 @@ def solve(problem):
 		S2 = solve(P2)
 		...
 		Sk = solve(Pk)
-		
+
 		# combine solutions
 		return S1 + S2 + ... + Sk
