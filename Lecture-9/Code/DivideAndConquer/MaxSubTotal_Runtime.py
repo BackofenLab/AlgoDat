@@ -2,7 +2,7 @@ def maxSubArray(X, i, j):
 	if i == j:							@\onslide<3->@# O(1)@\onslide<1->@
 		return (X[i], i, i)				@\onslide<4->@# O(1)@\onslide<1->@
 	
-	m = (i + j) / 2						@\onslide<5->@# O(1)@\onslide<1->@
+	m = (i + j) // 2					@\onslide<5->@# O(1)@\onslide<1->@
 	A = maxSubArray(X, i, m)			@\onslide<6->@# T(n/2)@\onslide<1->@
 	B = maxSubArray(X, m + 1, j)		@\onslide<7->@# T(n/2)@\onslide<1->@
 

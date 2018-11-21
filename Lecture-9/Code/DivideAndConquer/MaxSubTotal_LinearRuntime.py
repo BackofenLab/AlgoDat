@@ -11,5 +11,5 @@ def maxSubArray(X):@\onslide<2->@
 		@\onslide<4->@
 		if rMax > tMax:
 			tMax, itMax = rMax, irMax
-	
+
 	return (tMax, itMax)

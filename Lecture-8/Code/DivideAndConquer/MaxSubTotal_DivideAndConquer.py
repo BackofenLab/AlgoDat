@@ -3,7 +3,7 @@ def maxSubArray(X, i, j):
 		return (X[i], i, i)
 
 	# recursive subsolutions for A, B
-	m = (i + j) / 2
+	m = (i + j) // 2
 	A = maxSubArray(X, i, m)
 	B = maxSubArray(X, m + 1, j)
 
