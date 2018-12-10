@@ -41,7 +41,7 @@
   \vspace{-1em}
   \onslide<4->
   \begin{table}[!t]
-    \caption{Input values}
+    \caption{input values}
     \begin{tabular}{c|c|c|c|c|c|c|c|c|c|c}
       Index & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9\\
       \midrule
@@ -87,9 +87,9 @@
   \vspace{-1.5em}
   \begin{itemize}
     \item<2->
-      Solve the left / right half of the problem {\color{MainA}recursive}
+      Solve the left / right half of the problem {\color{MainA}recursively}
     \item<3->
-      Combine both solutions into a overall solution
+      Combine both solutions into an overall solution
     \item<4->
       The maximum is located in the {\color{MainA}left~half~($A$)}
       or the {\color{MainA}right~half~($B$)}
@@ -116,12 +116,12 @@
     \item<3->
       Big problems are decomposed into two subproblems and solved recursively.
       Subsolutions {\color{MainA}$A$} and {\color{MainA}$B$}
-      are returned
+      are returned.
     \item<4->
       To solve {\color{MainA}$C$} we have to calculate
       {\color{MainA}rmax} and {\color{MainA}lmax}
     \item<5->
-      Overall solution is maximum of {\color{MainA}$A$}
+      The overall solution is the maximum of {\color{MainA}$A$},
       {\color{MainA}$B$} and {\color{MainA}$C$}
   \end{itemize}
 \end{frame}
@@ -241,7 +241,7 @@
     \item<3->
       We iterate over {\color{MainA}$X$} from {\color{MainA}$i+1$} to {\color{MainA}$j$} and update {\color{MainA}$sum$}
     \item<4->
-      If {\color{MainA}$sum > lmax$} then {\color{MainA}$lmax$}
+      If {\color{MainA}$sum > lmax$}, then {\color{MainA}$lmax$}
       gets updated
   \end{itemize}
 \end{frame}
@@ -355,7 +355,7 @@
     \begin{adjustbox}{width=\linewidth}
       \input{Images/DivideAndConquer/MaxSubTotal_Runtime.tikz}
     \end{adjustbox}
-    \caption{Illustration of the runtime}
+    \caption{illustration of the runtime}
     \label{fig:divide_and_conquer:max_sub_array_runtime}
   \end{figure}
 \end{frame}
@@ -367,7 +367,7 @@
     \begin{adjustbox}{width=\linewidth}
       \input{Images/DivideAndConquer/MaxSubTotal_Runtime_Tree.tikz}
     \end{adjustbox}
-    \caption{Recursion tree method}
+    \caption{recursion tree method}
     \label{fig:divide_and_conquer:max_sub_array_runtime_tree}
   \end{figure}
 \end{frame}
@@ -389,11 +389,11 @@
   \textbf{Runtime:}
   \begin{itemize}
     \item<5->
-      A total of {\color{MainA}$\log_2 n + 1$} levels with each cost of
-      {\color{MainA}$c \cdot n$}\\
+      A total of {\color{MainA}$\log_2 n + 1$} levels costing
+      {\color{MainA}$c \cdot n$} each\\
       \color{gray}
-      The costs of merging the solutions and solving of the trivial
-      problems are the same here
+      The costs of merging the solutions and solving the trivial
+      problems are the same in this case
   \end{itemize}
   \onslide<6->
   \begin{displaymath}
@@ -416,8 +416,8 @@
       Divide and conquer approach results in
       {\color{MainA}$\mathcal{O}(n\,\log n)$}
     \item<5->
-      There is an approach running in {\color{MainA}$\mathcal{O}(n)$}
-      if you assume that all subtotals are positive
+      There is an approach running in {\color{MainA}$\mathcal{O}(n)$},
+      under the assumption that all subtotals are positive
   \end{itemize}
 \end{frame}
 
@@ -428,7 +428,7 @@
     \begin{adjustbox}{width=\linewidth}
       \input{Images/DivideAndConquer/MaxSubTotal_LinearRuntime.tikz}
     \end{adjustbox}
-    \caption{Scanning the array in linear time}
+    \caption{scanning the array in linear time}
     \label{fig:divide_and_conquer:max_sub_total_linear}
   \end{figure}
 \end{frame}

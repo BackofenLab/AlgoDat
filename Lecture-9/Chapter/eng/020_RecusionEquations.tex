@@ -4,7 +4,7 @@
   \textbf{Recursion equation:}
   \begin{itemize}
     \item
-      Describes the runtime for recursive functions:
+      Runtime description for recursive functions:
   \end{itemize}
   \vspace{2em}
   \begin{displaymath}
@@ -59,7 +59,7 @@
   \textbf{Recursion equation:}
   \begin{itemize}
     \item<2->
-    Describes the runtime for recursive functions:
+    Runtime descripion for recursive functions:
     \begin{displaymath}
     {\color{MainA}T(n)} = \begin{cases}
       f_0(n) & n = n_0\\
@@ -67,15 +67,15 @@
     \end{cases}
     \end{displaymath}
     \item<3->
-      {\color{MainA}$n_0$} is normally small, {\color{MainA}$f_0(n_0) \; \in \; \Theta(1)$}
+      {\color{MainA}$n_0$} is usually small, {\color{MainA}$f_0(n_0) \; \in \; \Theta(1)$}
     \item<4->
-      Normally {\color{MainA}$a > 1$} and {\color{MainA}$b > 1$}
+      Usually, {\color{MainA}$a > 1$} and {\color{MainA}$b > 1$}
     \item<5->
       Dependent on the strategy of solving {\color{MainA}$T(n)$}
       {\color{MainA}$f_0$} is ignored
     \item<6->
       {\color{MainA}$T(n)$} is only defined for integers of
-      {\color{MainA}$\frac{n}{b}$} which is often ignored in benefit of
+      {\color{MainA}$\frac{n}{b}$}, which is often ignored in benefit of
       a simpler solution
   \end{itemize}
 \end{frame}
@@ -204,7 +204,7 @@
     \begin{adjustbox}{width=\linewidth}
       \input{Images/RecursionEquations/Example_RecursionTree.tikz}
     \end{adjustbox}
-    \caption{Recursion tree of example}
+    \caption{recursion tree of example}
     \label{fig:recursion_equations:example_recursion_tree}
   \end{figure}
 \end{frame}
@@ -216,7 +216,7 @@
     \begin{adjustbox}{width=\linewidth}
       \input{Images/RecursionEquations/Example_RecursionTree_Levels.tikz}
     \end{adjustbox}
-    \caption{Levels of the recursion tree}
+    \caption{levels of the recursion tree}
     \label{fig:recursion_equations:example_recursion_tree_layer}
   \end{figure}
 \end{frame}
@@ -234,7 +234,7 @@
         }
       \end{math}
     \item<3->
-      Costs of partial problem on {\color{MainA}level $i$}:
+      Costs of partial problems on {\color{MainA}level $i$}:
       \begin{displaymath}
         \color{MainA}{
           T_{i_p}(n) =
@@ -293,13 +293,13 @@
 \begin{frame}{Fun with logarithm}{Logarithm}
   \begin{itemize}
   \item
-    Transforming $\color{MainA}3^{\log_4 n}$ uses general log rules
+    Transforming $\color{MainA}3^{\log_4 n}$ using general log rules
     {\color{MainA}
     \begin{align*}
       \log_4 n & = \log_4 \left(3^{\log_3 n} \right) &&
-      \qquad \text{\color{black}uses } n= 3^{\log_3 n}\\
+      \qquad \text{\color{black}using } n= 3^{\log_3 n}\\
       \onslide<2->{& = {\log_3 n \cdot \log_4 3} &&
-        \qquad \text{\color{black}uses } \log a^b = b \cdot \log a}
+        \qquad \text{\color{black}using } \log a^b = b \cdot \log a}
     \end{align*}}
   \item<3->
     This proves the general log rule
@@ -309,9 +309,9 @@
 \color{MainA}
     \begin{align*}
       3^{\log_4 n} & = 3^{\log_3 n \cdot \log_4 3} &&
-      \qquad \text{\color{black}uses reformulation above}\\
+      \qquad \text{\color{black}using reformulation above}\\
       \onslide<5->{& = {\left(3^{\log_3 n}\right)}^{\log_4 3} &&
-        \qquad \text{\color{black}uses }x^{a \cdot b} = (x^a)^b}\\
+        \qquad \text{\color{black}using }x^{a \cdot b} = (x^a)^b}\\
       \onslide<6->{& = n^{\log_4 3}}
     \end{align*}
   \item<7->
@@ -448,7 +448,7 @@
   \textbf{Master theorem:}
   \begin{itemize}
     \item<2->
-      Approach to solve for a recursion equation of the form:
+      Solution approach for a recursion equation of the form:
       \begin{displaymath}
         \color{MainA}{
           T(n) = a \cdot T\left(\frac{n}{b}\right) + f(n),%
@@ -548,7 +548,7 @@
       \def\AlgoREScale{4.444}% 15 / (3/2)^3
       \input{Images/RecursionEquations/ProblemSizeTree.tikz}
     \end{adjustbox}
-    \caption{Simple recursion equation with {\color{MainA}$a = 3, b = 2$}}
+    \caption{simple recursion equation with {\color{MainA}$a = 3, b = 2$}}
     \label{fig:recursion_equations:master_theorem_tree_3_2}
   \end{figure}
   \onslide<2->
@@ -573,7 +573,7 @@
       \def\AlgoREScale{15}% 15
       \input{Images/RecursionEquations/ProblemSizeTree.tikz}
     \end{adjustbox}
-    \caption{Simple recursion equation with {\color{MainA}$a = 2, b = 2$}}
+    \caption{simple recursion equation with {\color{MainA}$a = 2, b = 2$}}
     \label{fig:recursion_equations:master_theorem_tree_2_2}
   \end{figure}
   \onslide<2->
@@ -598,7 +598,7 @@
 %      \def\AlgoREScale{15}% 15
 %      \input{Images/RecursionEquations/ProblemSizeTree.tikz}
 %    \end{adjustbox}
-%    \caption{Simple recursion equation with
+%    \caption{simple recursion equation with
 %      {\color{MainA}$a = 2, b = 4$}}
 %    \label{fig:recursion_equations:master_theorem_tree_2_4}
 %  \end{figure}
@@ -623,7 +623,7 @@
       \def\AlgoREScale{15}% 15
       \input{Images/RecursionEquations/ProblemSizeTree.tikz}
     \end{adjustbox}
-    \caption{Simple recursion equation with {\color{MainA}$a = 2, b = 3$}}
+    \caption{simple recursion equation with {\color{MainA}$a = 2, b = 3$}}
     \label{fig:recursion_equations:master_theorem_tree_2_3}
   \end{figure}
   \onslide<2->
@@ -651,7 +651,7 @@
   \vspace{-1.0em}
   \begin{itemize}
     \item<2->
-      $\ldots$ yields to a runtime of:
+      $\ldots$ yields a runtime of:
   \end{itemize}
   \onslide<3->
   \begin{displaymath}
