@@ -13,13 +13,13 @@
       {\color{MainA}Conquer} the subproblems through recursive solving.\\
       If subproblems are small enough solve them directly
     \item<4->
-      {\color{MainA}Connect} all solutions of the subproblems to a solution of the
+      {\color{MainA}Connect} all solutions of the subproblems to the solution of the
       full problem
     \item<5->
       {\color{MainA}Recursive} application of the algorithm to ever smaller
       subproblems
     \item<6->
-      {\color{MainA}Direct} solving of sufficently small subproblems
+      {\color{MainA}Direct} solving of sufficiently small subproblems
   \end{itemize}
 \end{frame}
 
@@ -56,7 +56,7 @@
     \item<3-| handout: 1>
       {\color{MainA}Solution} of the trivial problems has to be known
     \item<4-| handout: 1>
-      {\color{MainA}Dividing} in subproblems has to be possible
+      {\color{MainA}Dividing} into subproblems has to be possible
     \item<5-| handout: 1>
       {\color{MainA}Combination} of solutions has to be possible
   \end{itemize}
@@ -84,9 +84,7 @@
       Suitable for parallel processing
       \begin{itemize}
         \item<7->
-          Subproblems are {\color{MainA}independent} of each other
-        \item<8->
-          Only needed input for each subproblem has to be known
+          Parallel processing of subproblems possible since subproblems are {\color{MainA}independent} of each other
       \end{itemize}
   \end{itemize}
 \end{frame}
@@ -99,7 +97,7 @@
     \item<2->
       Smaller subproblems are elegant and simple
     \item<3->
-      Otherwise the efficiency will be improved if relative big subproblems
+      On the other hand the efficiency will be improved if relatively big subproblems
       can be solved directly
     \item<4->
       Recursion depth should not get too big (stack / memory overhead)
@@ -120,7 +118,7 @@
   \textbf{Combination of solutions:}
   \begin{itemize}
     \item<4->
-      Typically conceptional demanding
+      Typically conceptionally demanding
   \end{itemize}
 \end{frame}
 
@@ -151,7 +149,7 @@
       \end{tabular}
       \end{table}
     \onslide<8-> 
-  \textbf{Output:} Sum: 187, Start: 2, End: 6
+  \textbf{Output:} sum: 187, start: 2, end: 6
 \end{frame}
 
 %-------------------------------------------------------------------------------
@@ -188,7 +186,7 @@
       \includegraphics[width=0.9\textwidth]%
         {Images/DivideAndConquer/shares-graph.pdf}
     \end{center}
-    \caption{Stock value over time}
+    \caption{stock value over time}
     \label{fig:divide_and_conquer:shares_value}
   \end{figure}
 \end{frame}
@@ -237,7 +235,7 @@
   \textbf{Upper bound:}
   \begin{itemize}
     \item<2->
-      Three interleaved loops
+      Three nested loops
     \item<3->
       Each loop with runtime {\color{MainA}$O(n)$}
     \item<4->
@@ -351,7 +349,7 @@
     \label{fig:divide_and_conquer:max_sub_total_divide}
   \end{figure}
    \vspace{-1.5em}
-\textbf{Divide and Conquer Idea to solve:}
+\textbf{Divide and Conquer idea to solve:}
   \begin{itemize}
   \item<1->
     Split the sequence in the middle
@@ -382,7 +380,7 @@
       {\color{MainA}$n = 1 \Rightarrow \max = X[0]$}
     \item<3->
       Bigger problems are partitioned into two subproblems
-      and recursively solved.
+      and solved recursively.
       Subsolutions {\color{MainA}A} and {\color{MainA}B} are returned
     \item<4->
       To determine subsolution {\color{MainA}C}, {\color{MainA}rmax}

@@ -8,7 +8,7 @@
     \item<2->
       Up to now we always counted the {\color{MainA}number of operations}
     \item<2->
-      Assuming this is a good measure for the runtime of a algorithm/tool
+      Assuming this is a good measure for the runtime of an algorithm/tool
     \item<3->
       Today we will see examples where this is not suitable
   \end{itemize}
@@ -20,7 +20,7 @@
   \textbf{Example:}
   \begin{itemize}
     \item
-      We sum up all elements of a field {\color{MainA}$a$} of size
+      We sum up all elements of an array {\color{MainA}$a$} of size
       {\color{MainA}$n$} in $\ldots$
     \begin{itemize}
       \item
@@ -118,7 +118,7 @@
     \begin{center}
       \includegraphics[width=0.7\textwidth]{Images/Caching/sumlinear-plot.pdf}
     \end{center}
-    \caption{Summing elements in linear order}
+    \caption{summing elements in linear order}
     \label{fig:caching:sum_linear_order}
   \end{figure}
 \end{frame}
@@ -181,7 +181,7 @@
     \begin{center}
       \includegraphics[width=0.7\textwidth]{Images/Caching/sumrandom-plot.pdf}
     \end{center}
-    \caption{Summing elements in random order}
+    \caption{summing elements in random order}
     \label{fig:caching:sum_random_order}
   \end{figure}
 \end{frame}
@@ -192,9 +192,9 @@
   \textbf{Conclusion:}
   \begin{itemize}
     \item<2->
-      The number of operations are identical for both algorithms
+      The number of operations is identical for both algorithms
     \item<3->
-      Accessing elements in random order takes a lot longer (Factor 10)
+      Accessing elements in random order takes a lot longer (factor 10)
       \onslide<3-| handout: 0>{{\color{MainA}Why?}\\}
     \item<3->
       The costs in terms of memory access are very different
@@ -261,7 +261,7 @@
         \item<8->
           {\color{MainA}First in first out (FIFO)}
       \end{itemize}
-      \item<9-> Details of discarding are not the topic for today
+      \item<9-> Details of discarding not discussed today
   \end{itemize}
 \end{frame}
 
@@ -309,7 +309,7 @@
       We use the number of {\color{MainA}block operations} as runtime
       estimation
     \item<4->
-      We ignore runtime costs of cache accesses / management
+      We ignore runtime costs of cache access / management
   \end{itemize}
 \end{frame}
 
@@ -321,7 +321,7 @@
     \begin{adjustbox}{width=\linewidth}%
       \input{Images/Caching/MemoryLocality.tikz}%
     \end{adjustbox}%
-    \caption{Comparison good / bad locality}
+    \caption{comparison good / bad locality}
     \label{fig:caching:memory_locality}
   \end{figure}%
   \textbf{Accessing the cache {\color{MainA}$B$} times:}
@@ -344,8 +344,8 @@
     The following settings change only a small constant factor in number of block operations
     \begin{itemize}
     \item<3-> Partionining of the slow memory into blocks
-    \item<4-> Regardless of the block size: {\color{MainA}1 Bytes} or
-      {\color{MainA}4 Bytes} or {\color{MainA}8 Bytes}
+    \item<4-> Regardless of the block size: {\color{MainA}1 bytes} or
+      {\color{MainA}4 bytes} or {\color{MainA}8 bytes}
     \end{itemize}
   \end{itemize}
   \vspace{1.0em}
@@ -392,9 +392,9 @@
   \textbf{Terminology:}
   \begin{itemize}
     \item<2->
-      Block loads on CPU-cache are called {\color{MainA}cache~misses}
+      Block loads on CPU cache are called {\color{MainA}cache~misses}
     \item<3->
-      Block operations on disk-cache are called {\color{MainA}IOs}\\
+      Block operations on disk cache are called {\color{MainA}IOs}\\
       (input / output operations)
     \item<4->
       These also fall under the term {\color{MainA}cache~efficiency} or
@@ -427,7 +427,7 @@
     \begin{adjustbox}{width=\linewidth}%
       \input{Images/Caching/MemoryLocality_Linear.tikz}%
     \end{adjustbox}%
-    \caption{Good locality of sum operation}
+    \caption{good locality of sum operation}
     \label{fig:caching:memory_locality_linear}
   \end{figure}%
 \end{frame}
@@ -458,7 +458,7 @@
     \begin{adjustbox}{width=\linewidth}%
       \input{Images/Caching/MemoryLocality_Random.tikz}%
     \end{adjustbox}%
-    \caption{Bad locality of sum operation}
+    \caption{bad locality of sum operation}
     \label{fig:caching:memory_locality_random}
   \end{figure}%
   \vspace{-1.0em}
@@ -473,7 +473,7 @@
       Even with a {\color{MainA}random order} we access 4
       neighboring bytes at once per \texttt{int} (\text{int32\_t})
     \item<3->
-      The next element might already be loaded in the cache
+      The next element might already be loaded into the cache
     \item<4->
       If {\color{MainA}not $n \gg M$} this might occur with a high probability 
   \end{itemize}
@@ -481,17 +481,17 @@
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Cache Efficiency}{Block Operations - QuickSort}
-  \textbf{QuickSort:}\\
+\begin{frame}{Cache Efficiency}{Block Operations - Quicksort}
+  \textbf{Quicksort:}\\
   \begin{itemize}
     \item<2->
-      \textbf{Strategy:} Divide and conquer
+      \textbf{Strategy:} Divide and Conquer
     \item<3->
       Divide the data into two parts where the \enquote{left} part contains
-      all values {\color{MainA}$\leq$} those in the right part
+      all values {\color{MainA}$\leq$} the values in the right part
     \item<4->
       Choose one element (e.g the first one) as
-      {\color{MainA}\enquote{pivot}-element}
+      {\color{MainA}\enquote{pivot} element}
     \item<5->
       Ideally both parts are the same size
     \item<6->
@@ -503,7 +503,7 @@
     \begin{adjustbox}{width=\linewidth}%
       \input{Images/Caching/QuickSort_Pivot.tikz}%
     \end{adjustbox}%
-    \caption{\textit{QuickSort} with pivot-element}
+    \caption{\textit{Quicksort} with pivot element}
     \label{fig:caching:quicksort_pivot}
   \end{figure}%
 \end{frame}
@@ -513,8 +513,8 @@
 \begin{frame}
   \frametitle{Idea of Quicksort}
   \begin{itemize}
-  \item \textbf{At start:} Pivot in first position, first re-arrange list such
-    that left part contains small, right part larger elements
+  \item \textbf{At start:} pivot in first position, first re-arrange list such
+    that left part contains smaller and right part larger elements
   \item Do required changes \emph{in place}
   \end{itemize}
   \hspace*{1cm}\onslide<1>{\rlap{\includegraphics[width=0.55\textwidth]{Images/Caching/quicksort-idea-o1.pdf}}}%
@@ -535,7 +535,7 @@
 %-------------------------------------------------------------------------------
 
 \codeslide{python}{
-\begin{frame}{Cache Efficiency}{Block Operations - QuickSort - Python}
+\begin{frame}{Cache Efficiency}{Block Operations - Quicksort - Python}
   \textbf{Python:}
   \lstinputlisting[
     language=Python,
@@ -551,7 +551,7 @@
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Cache Efficiency}{Block Operations - QuickSort - Python}
+\begin{frame}{Cache Efficiency}{Block Operations - Quicksort - Python}
   \vspace{-1em}
   \lstinputlisting[
     language=Python,
@@ -569,7 +569,7 @@
 %TODO: Implement algorithm in Java / C++
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Cache Efficiency}{Block Operations - QuickSort}
+\begin{frame}{Cache Efficiency}{Block Operations - Quicksort}
   \textbf{Number of operations for Quicksort:}
   \begin{itemize}
     \item<2->Let {\color{MainA}$T(n)$} be the runtime for the
@@ -579,16 +579,16 @@
   \onslide<3->\textbf{Assumptions:}
   \begin{itemize}
     \item<4->
-      Fields are always separated perfectly in the middle
+      Arrays are always separated perfectly in the middle
     \item<5->
-      {\color{MainA}$n$} is a power of two and recursion depth is
+      {\color{MainA}$n$} is a power-of-two and recursion depth is
       {\color{MainA}$k = \log_2 n$}
   \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Cache Efficiency}{Block Operations - QuickSort}
+\begin{frame}{Cache Efficiency}{Block Operations - Quicksort}
   \begin{eqnarray*}
     {\color{MainA}T(n)} &\leq\hspace{1.5em}&
       \underbrace{
@@ -627,12 +627,12 @@
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Cache Efficiency}{Block Operations - QuickSort}
+\begin{frame}{Cache Efficiency}{Block Operations - Quicksort}
   \begin{figure}%
     \begin{adjustbox}{width=\linewidth}%
       \input{Images/Caching/MemoryLocality_QuickSort.tikz}%
     \end{adjustbox}%
-    \caption{Locality of quicksort}
+    \caption{locality of Quicksort}
     \label{fig:caching:memory_locality_quicksort}
   \end{figure}%
   \begin{itemize}
@@ -648,7 +648,7 @@
 
 %-------------------------------------------------------------------------------
 
-\begin{frame}{Cache Efficiency}{Block Operations - QuickSort}
+\begin{frame}{Cache Efficiency}{Block Operations - Quicksort}
   \begin{eqnarray*}
     {\color{MainA}IO(n)} &\leq\hspace{1em}&
       \underbrace{
