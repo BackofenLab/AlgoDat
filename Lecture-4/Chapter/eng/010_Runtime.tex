@@ -27,23 +27,23 @@
   \begin{itemize}
     \item
       Input: Array $a$ with $n$ elements
-      $a[i] \in \mathbb{N}, \; 0 \leq a[i] \leq n, \; 0 \leq i < n$
+      $a[i] \in \mathbb{N}, \; 1 \leq a[i] \leq n, \; 0 \leq i < n$
     \item
       Output: Updated $a$ with $n$ elements where $a[0] \neq 1$
   \end{itemize}
   \begin{tabularx}{\textwidth}{P{11em}O{4em}O{1.75em}O{4.5em}O{1.75em}L}
-  if $a[0]$ == 1: & $\mathcal{O}(1)$ & {} & {} & {} & {}\\
+  if $a[0]\,$ == 1: & $\mathcal{O}(1)$ & {} & {} & {} & {}\\
     \hhline{~*{1}{-}}
-    $\hspace*{1.5em}$ $a[0]$ = 2 & $\mathcal{O}(1)$ &
+    $\hspace*{1.5em}$ $a[0]\,$ = 2 & $\mathcal{O}(1)$ &
     \multirow{-2}{*}{$\left.%
       \begin{array}{@{}c@{}}\\[1em]\end{array}%
       \right\rbrace$} &%
     \multirow{-2}{*}{$\mathcal{O}(1)$} & {} & {}\\
     else: & {} & {} & {} & {} & {}\\
-    $\hspace*{1.5em}$ for $i$ in range(0, n): & $\mathcal{O}(n)$ &
+    $\hspace*{1.5em}$ for $\,i\,$ in range(0, n): & $\mathcal{O}(n)$ &
     {} & {} & {} & {}\\
     \hhline{~*{1}{-}}
-    $\hspace*{3em}$ $a[i]$ = 2 & $\mathcal{O}(1)$ &
+    $\hspace*{3em}$ $a[i]\,$ = 2 & $\mathcal{O}(1)$ &
     \multirow{-2}{*}{$\left.
       \begin{array}{@{}c@{}}\\[1em]\end{array}
       \right\rbrace$} &
@@ -90,14 +90,14 @@
             language=Python,
             style={python-idle-code},
             basicstyle=\small
-            ]|a[i] == 1|
+            ]|a[0] == 1|
           in $n^{n-1}$ instances
         \item<4->
           \lstinline[
             language=Python,
             style={python-idle-code},
             basicstyle=\small
-          ]|a[i] != 1|
+          ]|a[0] != 1|
           in $n^n - n^{n-1} = n^{n-1} \cdot (n-1)$ instances
       \end{itemize}
     \item<5->
@@ -108,13 +108,13 @@
             language=Python,
             style={python-idle-code},
             basicstyle=\small
-          ]|a[i] == 1|
+          ]|a[0] == 1|
         } + \underbrace{n^{n-1} \cdot (n-1) \cdot \mathcal{O}(n)}_{
           \lstinline[
             language=Python,
             style={python-idle-code},
             basicstyle=\small
-          ]|a[i] != 1|
+          ]|a[0] != 1|
         }
       \end{displaymath}
     \item<6->
@@ -133,9 +133,9 @@
 \begin{frame}{Runtime Complexity}{Example 2 - Binary Addition}
   \begin{itemize}
     \item
-      Input: $n$ digit dual number $a$
+      Input: binary number $b$ with $n$ digits
     \item
-      Output: $n$ digit dual number $a + 1$
+      Output: binary number $b+1$ with $n$ digits
     \item<2->
       Runtime of the algorithm is determined by the number of bits getting
       changed (steps)
