@@ -52,8 +52,8 @@
   \begin{columns}
     \begin{column}{0.9\textwidth}
       \begin{table}[!t]
-        \caption{Country data query from \url{http://geonames.org}}
         \label{tab:extended_sorting:country_query}
+        \caption{Country data query from \url{http://geonames.org}}
         \begin{tabular}{ccccc}
           ISO & ISO3 & Country & Continent & $\dots$\\
           \midrule
@@ -89,7 +89,7 @@
       There are two typical ways to solve this:
       \begin{itemize}
         \item
-          Using Sorting
+          Using sorting
         \item
           Using an associative array
       \end{itemize}
@@ -108,8 +108,8 @@
   \textbf{Idea using sorting:}
   \begin{itemize}
     \item
-      We sort the columns 2 and 3 by continent, so that all countries
-      with the same continent are grouped in one block
+      We sort the table by Continent, so that all countries
+      from the same continent are grouped in one block
     \item
       We count the size of the blocks\\[0.5em]
       \textbf{Disadvantage:}
@@ -134,7 +134,8 @@
   \textbf{Input:}
   \begin{itemize}
     \item
-      The data is saved as tab seperated text (countryInfo.txt)
+      The data is saved as tab seperated text
+      (\href{http://download.geonames.org/export/dump/countryInfo.txt}{countryInfo.txt})
     \item
       Comments begin with a hash sign \#
   \end{itemize}
@@ -150,7 +151,7 @@
       \textbf{cut}: Selects specific columns of each line (tab separated)\\
       \texttt{cut -f5,9}\\
       $\hspace{1.5em}$\texttt{-f5,9}: columns 5 and 9
-      (columns 2, 3 of Table~\ref{tab:extended_sorting:country_query})\\
+      (= columns 3+4 of shown Table~\ref{tab:extended_sorting:country_query})\\
   \end{itemize}
 \end{frame}
 
