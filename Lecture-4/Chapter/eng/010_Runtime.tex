@@ -254,6 +254,8 @@
 
 %-------------------------------------------------------------------------------
 
+
+
 \begin{frame}{Runtime Complexity}{Example 2 - Average Steps}
   \vspace{-2.0em}
   \begin{table}[!h]%
@@ -263,13 +265,26 @@
     \begin{tabular}{cccc}
       Input & Output & Instances & Steps\\
       \midrule
-      $\_\_\_ \ldots \_\_\_0$ & $\_\_\_ \ldots \_\_\_1$ &$2^{n-1}$ & 1\\
-      $\_\_\_ \ldots \_\_01$ & $\_\_\_ \ldots \_\_10$ & $2^{n-2}$ & 2\\
-      $\_\_\_ \ldots \_011$ & $\_\_\_ \ldots \_100$ & $2^{n-3}$ & 3\\
-      $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$\\
-      $\_01 \ldots 1111$ & $\_10 \ldots 0000$ & $2^{1}$ & n-1\\
-      $011 \ldots 1111$ & $100 \ldots 0000$ & $2^0$ & n\\
-      $111 \ldots 1111$ & $000 \ldots 0000$ & 1 & n\\
+      $\_\_\_ \ldots \_\_\_0$ & $\_\_\_ \ldots \_\_\_1$ &
+      {\only<2>{\color{red}}$2^{n-1}$} & 1
+      \\
+      $\_\_\_ \ldots \_\_01$ & $\_\_\_ \ldots \_\_10$ &
+      {\only<2>{\color{red}}$2^{n-2}$} & 2
+      \\
+      $\_\_\_ \ldots \_011$ & $\_\_\_ \ldots \_100$ &
+      {\only<2>{\color{red}}$2^{n-3}$} & 3
+      \\
+      $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$
+      \\
+      $\_01 \ldots 1111$ & $\_10 \ldots 0000$ & 
+      {\only<2>{\color{red}}$2^{1}$} &
+      n-1
+      \\
+      $011 \ldots 1111$ & $100 \ldots 0000$ & 
+      {\only<2>{\color{red}}$2^0$} & n
+      \\
+      $111 \ldots 1111$ & $000 \ldots 0000$ & 
+      {\only<2>{\color{red}}1} & n
     \end{tabular}
   \end{table}
   \vspace{-0.5em}
@@ -277,14 +292,18 @@
   \vspace{-1.0em}
  \begin{displaymath}
     \dfrac{
-      1 \cdot 2^{n-1} + 2 \cdot 2^{n-2}+\dots+
-      (n-1) \cdot 2^1 + n \cdot 2^0 + n \cdot 1
-    }{2^{n-1}+2^{n-2}+\dots+2^{1}+2^{0}+1}
-    = \frac{
-      \left(\sum\limits_{i=1}^n i \cdot 2^{n-i}\right) + n
-    }{
-      \left(\sum\limits_{i=0}^{n-1} 2^i\right) + 1
-    }
+      {\only<3->{\color{Mittel-Blau}} 
+      1 \cdot {\only<2>{\color{red}} 2^{n-1}}
+	+ 2 \cdot {\only<2>{\color{red}}2^{n-2}}
+	+ \dots 
+	+ (n-1) \cdot {\only<2>{\color{red}}2^1} 
+	+ n \cdot {\only<2>{\color{red}}2^0}}
+	+ n \cdot {\only<2>{\color{red}}1}
+	}{{\only<3->{\color{blue}}2^{n-1}+2^{n-2}+\dots+2^{1}+2^{0}}+1} = \onslide<3->{\frac{
+      {\color{Mittel-Blau}\left(\sum\limits_{i=1}^n i \cdot
+      2^{n-i}\right)} + n }{
+      {\color{blue}\left(\sum\limits_{i=0}^{n-1} 2^i\right)} + 1
+    }}
   \end{displaymath}}
 \end{frame}
 
@@ -309,13 +328,13 @@
     & \onslide<2->{\left(\sum_{i=1}^n i \cdot 2^{n-i}\right) + n}
      \onslide<3->{\stackrel{\color{Mittel-Blau}[x = {\color{red}2x} - x]}{=}
         {\color{red}\left(2 \, \sum_{i=1}^n i \cdot 2^{n-i}\right)}
-        - \left(\sum_{i=1}^n i \cdot 2^{n-i}\right) + n}\\
-    &\onslide<3->{\hspace*{1.5em} = {\color{red}1 \cdot 2^n + 2 \cdot 2^{n-1} +
+        {\color{Mittel-Blau}- \left(\sum_{i=1}^n i \cdot 2^{n-i}\right)} + n}\\
+    &\onslide<4->{\hspace*{1.5em} = {\color{red}1 \cdot 2^n + 2 \cdot 2^{n-1} +
     3 \cdot n^{n-2} + \dots + (n-1) \cdot 2^2 + n \cdot 2^1}}\\
-    & \onslide<3->{\hspace{4.5em}- 1 \cdot 2^{n-1} - 2 \cdot 2^{n-2} - \dots
-        - (n-2) \cdot 2^2 - (n-1) \cdot 2^1 - n \cdot 2^0 + n}\\
-    & \onslide<3->{\hspace*{1.5em} = \underbrace{{\color{red}2^n + 2^{n-1} +
-    \dots +2^1} + {\color{Mittel-Blau}2^0}}_{2^{n+1}-1}{\color{Mittel-Blau} - 1}
+    & \onslide<4->{\hspace{4.5em}{\color{Mittel-Blau}- 1 \cdot 2^{n-1} - 2 \cdot
+    2^{n-2} - \dots - (n-2) \cdot 2^2 - (n-1) \cdot 2^1 - n \cdot 2^0} + n}\\
+    & \onslide<5->{\hspace*{1.5em} = \underbrace{{\color{red}2^n + 2^{n-1} +
+    \dots +2^1} + {\color{blue}2^0}}_{2^{n+1}-1}{\color{blue} - 2^0}
       = 2^{n+1} - 2}
   \end{alignat*}
 \end{frame}
@@ -327,10 +346,10 @@
   \begin{displaymath}
     \overline{steps}
     = \frac{
-      \sum\limits_{i=1}^n \left(i \cdot 2^{n-i}\right) + n
-    }{\sum\limits_{i=0}^{n-1} 2^i + 1}
+      \left(\sum\limits_{i=1}^n i \cdot 2^{n-i}\right) + n
+    }{\left(\sum\limits_{i=0}^{n-1} 2^i \right) + 1}
     = \frac{2^{n+1} - 2}{2^n}
-    = 2 - \frac{1}{2^{n-1}}
+    = {\color{Mittel-Blau}2 - \frac{1}{2^{n-1}}}
   \end{displaymath}
   \begin{displaymath}
     \lim_{n \to \infty} \left(2 - \frac{1}{2^{n-1}}\right) = 2
