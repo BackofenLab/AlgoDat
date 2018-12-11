@@ -32,18 +32,18 @@
       Output: Updated $a$ with $n$ elements where $a[0] \neq 1$
   \end{itemize}
   \begin{tabularx}{\textwidth}{P{11em}O{4em}O{1.75em}O{4.5em}O{1.75em}L}
-  if a[0] == 1: & $\mathcal{O}(1)$ & {} & {} & {} & {}\\
+  if $a[0]$ == 1: & $\mathcal{O}(1)$ & {} & {} & {} & {}\\
     \hhline{~*{1}{-}}
-    $\hspace*{1.5em}$ a[0] = 2 & $\mathcal{O}(1)$ &
+    $\hspace*{1.5em}$ $a[0]$ = 2 & $\mathcal{O}(1)$ &
     \multirow{-2}{*}{$\left.%
       \begin{array}{@{}c@{}}\\[1em]\end{array}%
       \right\rbrace$} &%
     \multirow{-2}{*}{$\mathcal{O}(1)$} & {} & {}\\
     else: & {} & {} & {} & {} & {}\\
-    $\hspace*{1.5em}$ for i in range(0, n): & $\mathcal{O}(n)$ &
+    $\hspace*{1.5em}$ for $i$ in range(0, n): & $\mathcal{O}(n)$ &
     {} & {} & {} & {}\\
     \hhline{~*{1}{-}}
-    $\hspace*{3em}$ a[i] = 2 & $\mathcal{O}(1)$ &
+    $\hspace*{3em}$ $a[i]$ = 2 & $\mathcal{O}(1)$ &
     \multirow{-2}{*}{$\left.
       \begin{array}{@{}c@{}}\\[1em]\end{array}
       \right\rbrace$} &
@@ -61,14 +61,14 @@
       $\mathcal{O}(?)$
     }%
   \end{tabularx}
-  \begin{itemize}
+  \onslide<2->{\begin{itemize}
     \item
       {\color{Mittel-Blau}Best runtime:}
       $\mathcal{O}(1) + \mathcal{O}(1) = \mathcal{O}(1)$
     \item
       {\color{Mittel-Blau}Worst runtime:}
       $\mathcal{O}(1) + \mathcal{O}(n) = \mathcal{O}(n)$
-  \end{itemize}
+  \end{itemize}}
 \end{frame}
 
 %-------------------------------------------------------------------------------
@@ -78,21 +78,21 @@
     \item
       The {\color{Mittel-Blau}average runtime} is determined by the average
       runtime for all input instances of size $n$
-    \item
+    \item<2->
       Every element of $a$ can have $n$ different values\\
       \begin{math}
         \hspace{1.5em}\Rightarrow n \cdot \ldots \cdot n = n^n
       \end{math}
       different input instances of size $n$
       \begin{itemize}
-        \item
+        \item<3->
           \lstinline[
             language=Python,
             style={python-idle-code},
             basicstyle=\small
             ]|a[i] == 1|
           in $n^{n-1}$ instances
-        \item
+        \item<4->
           \lstinline[
             language=Python,
             style={python-idle-code},
@@ -100,7 +100,7 @@
           ]|a[i] != 1|
           in $n^n - n^{n-1} = n^{n-1} \cdot (n-1)$ instances
       \end{itemize}
-    \item
+    \item<5->
       Sum of all runtime complexities:
       \begin{displaymath}
         \underbrace{n^{n-1} \cdot \mathcal{O}(1)\vphantom{()}}_{
@@ -117,8 +117,9 @@
           ]|a[i] != 1|
         }
       \end{displaymath}
-    \item
-      {\color{Mittel-Blau}Average runtime}:
+    \item<6->
+      {\color{Mittel-Blau}Average runtime}: {\footnotesize (normalize by
+      number of instances)}
       \begin{displaymath}
         \frac{n^{n-1} + n^{n-1} \cdot (n-1) \cdot n}{n^n}
         = \frac{1}{n} + n - 1
@@ -135,17 +136,17 @@
       Input: $n$ digit dual number $a$
     \item
       Output: $n$ digit dual number $a + 1$
-    \item
+    \item<2->
       Runtime of the algorithm is determined by the number of bits getting
       changed (steps)
       \begin{enumerate}
         \item "0" $\to$ "1"
         \item "1" $\to$ "0"
       \end{enumerate}
-    \item
+    \item<3->
       {\color{Mittel-Blau}Best runtime:}
       $1\,\text{step} = \mathcal{O}(1)$
-    \item
+    \item<3->
       {\color{Mittel-Blau}Worst runtime:}
       $n\,\text{steps} = \mathcal{O}(n)$
   \end{itemize}
