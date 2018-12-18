@@ -3,10 +3,7 @@ class Node:
 		list.
 	"""
 	
-	def __init__(self, value, nextNode):
+	def __init__(self, value, nextNode=None):
 		self.value = value
 		self.nextNode = nextNode
 
-	def __init__(self, value):
-		self.value = value;
-		self.nextNode = None
