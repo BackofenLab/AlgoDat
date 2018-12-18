@@ -354,7 +354,7 @@
         style={python-idle-code}
       ]|pre.nextNode = cur.nextNode|
     \item<3->
-      \texttt{cur} will get automatically destroyed if no more references exist
+      \texttt{cur} will get destroyed automatically if no more references exist
       (\lstinline[
         language=Python,
         style={python-idle-code},
@@ -661,7 +661,7 @@
   \textbf{Getting a reference to node at \texttt{pos}:}
   \begin{itemize}
     \item
-      Iterate the entries of the list until at position in $O(n)$
+      Iterate the entries of the list until position in $O(n)$
   \end{itemize}
   \onslide<2->
   \lstinputlisting[
@@ -743,8 +743,7 @@
     \item<2->
       It is helpful to have a {\color{Mittel-Blau}head} node
     \item<3->
-      We only need {\color{Mittel-Blau}one head} node if we connect the list
-      cyclic
+      We only need {\color{Mittel-Blau}one head} node if we cyclically connect the list
   \end{itemize}
   \onslide<4->
   \begin{flushleft}

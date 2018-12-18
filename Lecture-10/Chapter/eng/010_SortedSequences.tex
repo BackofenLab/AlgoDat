@@ -7,19 +7,19 @@
       We have a set of {\color{MainA}keys} mapped to
       {\color{MainA}values}
     \item<3->
-      We have a ordering {\color{MainA}<} applied to the keys
+      We have an ordering {\color{MainA}<} applied to the keys
     \item<4->
       We need the following operations:
       \begin{itemize}
       \item<5->{\color{MainA}\texttt{insert(key, value)}}:
-        Insert the given pair
+        insert the given pair
       \item<6->{\color{MainA}\texttt{remove(key)}}:
-        Remove the pair with the given {\color{MainA}key}
+        remove the pair with the given {\color{MainA}key}
       \item<7->{\color{MainA}\texttt{lookup(key)}}:
-        Find the element with the given {\color{MainA}key},
+        find the element with the given {\color{MainA}key},
         if it is not available find the element with the next smallest key
       \item<8->{\color{MainA}\texttt{next()/previous()}}:
-        Returns the element with the next bigger/smaller {\color{MainA}key}.
+        returns the element with the next bigger/smaller {\color{MainA}key}.
         This enables iteration over all elements
       \end{itemize}
   \end{itemize}
@@ -31,11 +31,11 @@
   \textbf{Application examples:}
   \begin{itemize}
     \item<2->
-      Example: Database for books, products or apartments
+      Example: database for books, products or apartments
     \item<3->
       Large number of records (data sets / tuples)
     \item<4->
-      Typical query: Return all apartments with a monthly rent between
+      Typical query: return all apartments with a monthly rent between
       400\euro\, and 600\euro
       \begin{itemize}
         \item<5->
@@ -45,7 +45,7 @@
           {\color{MainA}\texttt{lookup(key)}} and
           {\color{MainA}\texttt{next()}}
         \item<7->
-          It's not essential if an apartments exists with \textbf{exactly}
+          It's not essential that an apartment exists with \textbf{exactly}
           400\euro\, monthly rent
       \end{itemize}
     \item<8->
