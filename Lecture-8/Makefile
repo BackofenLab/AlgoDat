@@ -93,6 +93,7 @@ directories_server:
 # Create the index for all chapters
 build/$(ALGO_BUILD_CHAPTER_NAME).tex:
 	@echo "Reading chapters ($(ALGO_BUILD_CHAPTER_NAME))"
+	@mkdir -p build | true
 	@ls Chapter/$(ALGO_LANGUAGE)/*.tex | awk '{printf "\\input{%s}\n", $$1}' > build/$(ALGO_BUILD_CHAPTER_NAME).tex
 
 # ------------------------------------------------------------------------------
