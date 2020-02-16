@@ -11,7 +11,7 @@ def read_word_list(path):
     word_list = []
     regex = re.compile(r"[ ,.'\"*,^\r\n]|<.+?>", re.IGNORECASE)
 
-    with open(path) as file:
+    with open(path, encoding='utf-8') as file:
         for line in file.readlines():
             words = map(str.strip, regex.split(codecs.decode(line, 'rot13')))
             word_list.extend([word.lower() for word in words if len(word) >= 5])
